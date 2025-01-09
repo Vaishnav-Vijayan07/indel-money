@@ -1,0 +1,23 @@
+// banner section
+
+.hero_banner {
+  background-image: url("/images/hero_banner.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: calc(100vh - 80px);
+}
+
+// Money Deals Section
+.money__deals {
+  background-color: #cae5f4;
+  padding: 40px 100px;
+
+  .card__container {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 20px;
+    grid-column-gap: 10px;
+  }
+}
