@@ -1,4 +1,4 @@
-import ServiceForm from "../../../components/ServiceForm";
+import ServiceForm from "../../common/ServiceForm";
 
 export default function HeroBanner({ styles }) {
   return (

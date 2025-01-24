@@ -1,0 +1,14 @@
+@use "@/styles/abstracts" as *;
+
+.service_card__container {
+    background-color: #17479E;
+    padding: 25px;
+}
+
+.service__form {
+    background-color: #e7eff9;
+    padding: 50px 20px;
+    width: 40%;
+    height: 100%;
+    float: right;
+}

@@ -1,0 +1,39 @@
+
+:root {
+  --container-x: 100%;
+  --header-y: 90px;
+
+  @media only screen and (min-width: 576px) {
+    --header-y: 120px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    --header-y: 140px;
+    --container-x: 1040px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    --container-x: 1180px;
+  }
+
+  @media only screen and (min-width: 1351px) {
+    --container-x: 1280px;
+  }
+
+  @media only screen and (min-width: 1441px) {
+    --container-x: 1380px;
+  }
+
+  @media only screen and (min-width: 1551px) {
+    --header-y: 160px;
+    --container-x: 1480px;
+  }
+
+  @media only screen and (min-width: 1661px) {
+    --container-x: 1580px;
+  }
+
+  @media only screen and (min-width: 1771px) {
+    --container-x: 1680px;
+  }
+}

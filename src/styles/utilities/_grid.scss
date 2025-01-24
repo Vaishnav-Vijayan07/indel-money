@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    max-width: var(--container-x);
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+    &__sp {
+        max-width: 100%;
+
+        @media only screen and (min-width: 992px) {
+            max-width: calc(100% - ((100% - var(--container-x)) / 2));
+        }
+
+    }
+}

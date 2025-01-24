@@ -1,13 +1,13 @@
-import HeroBanner from "@/app/components/home/HeroBanner";
-import styles from "@/styles/pages/Home.module.scss";
-import MoneyDeals from "./components/home/MoneyDeals";
-import DreamsToReality from "./components/home/DreamsToReality";
-import GoldLoanCalculator from "./components/home/GoldLoanCalculator";
-import LifeAtIndel from "./components/home/LifeAtIndel";
-import LatestUpdates from "./components/home/LatestUpdates";
-import TrustedInvestment from "./components/home/TrustedInvestment";
-import BranchLocator from "./components/home/BranchLocator";
-import FAQ from "./components/home/FAQ";
+import HeroBanner from "@/components/features/home/HeroBanner";
+import MoneyDeals from "../components/features/home/MoneyDeals";
+import DreamsToReality from "../components/features/home/DreamsToReality";
+import GoldLoanCalculator from "../components/features/home/GoldLoanCalculator";
+import LifeAtIndel from "../components/features/home/LifeAtIndel";
+import LatestUpdates from "../components/features/home/LatestUpdates";
+import TrustedInvestment from "../components/features/home/TrustedInvestment";
+import BranchLocator from "../components/features/home/BranchLocator";
+import FAQ from "../components/features/home/FAQ";
+import styles from "./Home.module.scss";
 
 export default function Home() {
   return (

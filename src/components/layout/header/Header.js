@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from '@/styles/components/Navbar.module.scss';
+import styles from './Header.module.scss';
 
 export default function Navbar() {
   return (

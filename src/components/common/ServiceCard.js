@@ -1,4 +1,4 @@
-import styles from "@/styles/components/ServiceCard.module.scss";
+import styles from "./Common.module.scss";
 import Image from "next/image";
 export default function ServiceCard({ item }) {
   return (

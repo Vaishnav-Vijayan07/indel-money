@@ -1,4 +1,4 @@
-import styles from "@/styles/components/ServiceForm.module.scss";
+import styles from "./Common.module.scss";
 export default function ServiceForm() {
   return (
     <div className={styles.service__form}>
