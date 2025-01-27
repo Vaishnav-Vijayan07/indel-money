@@ -14,10 +14,6 @@
   padding: 40px 100px;
 
   .card__container {
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-column-gap: 20px;
-    grid-column-gap: 10px;
+    @include display;
   }
 }

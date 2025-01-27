@@ -1,5 +1,9 @@
 @use "../abstracts" as *;
 
+main{
+  margin-top: var(--header-y);
+}
+
 .main-title {
   font-size: var(--fs-900);
   margin-block: 0;

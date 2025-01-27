@@ -27,6 +27,8 @@ body {
     sans-serif;
   font-size: 18px;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 input,
@@ -42,15 +44,5 @@ picture {
 }
 
 a {
-  color: #0070f3;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-img {
-  max-width: 100%;
-  display: block;
 }

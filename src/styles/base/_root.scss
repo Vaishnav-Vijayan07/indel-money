@@ -1,14 +1,10 @@
 
 :root {
   --container-x: 100%;
-  --header-y: 90px;
-
-  @media only screen and (min-width: 576px) {
-    --header-y: 120px;
-  }
+  --header-y: 75px;
 
   @media only screen and (min-width: 992px) {
-    --header-y: 140px;
+    --header-y: 80px;
     --container-x: 1040px;
   }
 
@@ -25,7 +21,7 @@
   }
 
   @media only screen and (min-width: 1551px) {
-    --header-y: 160px;
+    --header-y: 100px;
     --container-x: 1480px;
   }
 
