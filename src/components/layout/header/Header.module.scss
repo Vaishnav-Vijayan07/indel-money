@@ -13,10 +13,35 @@
     align-items: center;
     @include display;
 
+    // --- Placeholder Base Text Style --- //
+    %navbarTxt {
+        font-size: 12px;
+        line-height: 1;
+        font-weight: 400;
+        color: $text;
+
+        @media only screen and (min-width: 576px) {
+            font-size: 13px;
+        }
+
+        @media only screen and (min-width: 992px) {
+            font-size: 14px;
+        }
+
+        @media only screen and (min-width: 1551px) {
+            font-size: 16px;
+        }
+
+        @media only screen and (min-width: 1551px) {
+            font-size: 18px;
+        }
+    }
+
     &__logo {
         display: flex;
         align-items: center;
-        img{
+
+        img {
             @include imgFit;
         }
     }
@@ -37,9 +62,8 @@
         }
     }
 
-    &__links {
+    &_links {
         display: flex;
-        gap: 1.5rem;
 
         &.mobile {
             position: absolute;
@@ -58,11 +82,15 @@
         }
     }
 
-    &__link {
+    &_link {
+        @extend %navbarTxt;
+        text-transform: uppercase;
         text-decoration: none;
-        color: #333;
-        font-weight: 500;
+        display: block;
+        cursor: pointer;
+        padding: 15px;
         position: relative;
+        z-index: 0;
         transition: color 0.3s ease;
 
         &:hover {
@@ -70,17 +98,42 @@
         }
 
         &.active {
-            color: #007bff;
+            color: red;
+        }
+    }
 
-            &::after {
-                content: '';
+    &_dropdown {
+        span {
+            margin-right: 15px;
+            display: inline-block;
+            position: relative;
+            z-index: 0;
+
+            &::before {
+                content: "";
+                width: 12px;
+                height: 100%;
+                background-image: url('/images/default/nav-icon.svg');
+                background-size: 12px 6px;
+                background-position: center;
+                background-repeat: no-repeat;
+                display: block;
                 position: absolute;
-                bottom: -5px;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                background-color: #007bff;
+                z-index: 0;
+                left: calc(100% + 5px);
+                top: auto;
+                bottom: auto;
             }
+        }
+        &_items{
+            width: 100%;
+            min-width: 180px;
+            height: auto;
+            padding: 10px;
+            background-color: $white;
+            position: absolute;
+            z-index: 0;
+            top: 40px;
         }
     }
 
