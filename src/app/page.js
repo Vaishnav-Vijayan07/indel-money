@@ -13,7 +13,6 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1 className="text-3xl text-red-700 font-bold underline">Hello</h1>
         {/* banner section contents*/}
         <HeroBanner styles={styles} />
 
