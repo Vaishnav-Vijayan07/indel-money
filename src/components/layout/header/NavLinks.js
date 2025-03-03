@@ -127,14 +127,14 @@ const Content = ({ selected, dir, tabs }) => {
       initial={animationVariants.initial}
       animate={animationVariants.animate}
       exit={animationVariants.exit}
-      className="absolute z-1 left-0 top-[calc(100%_+_24px)] w-96 rounded-lg border border-neutral-600 bg-gradient-to-b from-neutral-900 via-neutral-900 to-neutral-800 p-4"
+      className="absolute z-1 left-0 top-[calc(100%)] w-full rounded-lg"
     >
       <Bridge />
       <Nub selected={selected} />
 
       {selectedTab?.Component && (
         <motion.div
-          className="overflow-hidden absolute"
+          className="overflow-hidden absolute z-1 bg-white p-2"
           initial={dir === "l" ? animationVariants.slideLeft : dir === "r" ? animationVariants.slideRight : animationVariants.initial}
           animate={animationVariants.center}
           transition={{ duration: 0.25, ease: "easeInOut" }}
@@ -147,7 +147,7 @@ const Content = ({ selected, dir, tabs }) => {
 };
 
 const Bridge = () => (
-  <div className="absolute -top-[24px] left-0 right-0 h-[24px]" />
+  <div className="absolute -top-[10px] left-0 right-0 h-[10px]" />
 );
 
 const Nub = ({ selected }) => {

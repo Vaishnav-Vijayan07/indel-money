@@ -1,48 +1,58 @@
-// import ServiceForm from "../../../components/ServiceForm";
+"use client"; // Add this at the top of your component
 import Image from "next/image";
 
-import { Card, CardContent } from "../../../components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../../../components/ui/carousel"
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import Link from "next/link";
 
-export default function HeroBanner({ styles }) {
+const slides = [
+  {
+    image: "/images/MainSlide1.webp",
+    alt: "Indel Money Banner 1",
+    title: "Indel Money: Your trusted partner for a brighter future.",
+    link: "/",
+  },
+  {
+    image: "/images/MainSlide1.webp",
+    alt: "Indel Money Banner 2",
+    title: "Empowering your financial dreams with confidence.",
+    link: "/",
+  },
+  {
+    image: "/images/MainSlide1.webp",
+    alt: "Indel Money Banner 3",
+    title: "Your reliable partner in every financial journey.",
+    link: "/",
+  }
+];
+
+export default function HeroBanner() {
   return (
-    <section className={styles.MainBanner}>
-      <Carousel className="w-full">
-        <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem className="CarouselItem relative" key={index}>
-              <Image
-                src="/images/MainSlide1.webp"
-                alt="Logo"
-                width={1920}
-                height={844}
-              // blurDataURL="data:..." automatically provided
-              // placeholder="blur" // Optional blur-up while loading
-              />
-              <Card className="absolute top-0 left-0 w-full h-full bg-[#0000000]">
-                <div className="container max-w-sm md:max-w-[1220px]">
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <div className="text-center">
-                      <h2 className="text-3xl text-white">
-                        <span className="text-3xl font-bold text-[#EE3824]">Indel Money:</span> Your trusted partner for a brighter future.
-                      </h2>
-                    </div>
-                  </CardContent>
-                </div>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+    <section className="w-full">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        loop={true}
+        className="mySwiper h-[500px]"
+      >
+        {slides.map((slide, index) => (
+          <SwiperSlide key={index} className="relative z-0">
+            <Image src={slide.image} width={1920} height={1080} alt={slide.alt} className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+              <h1 className="text-xl text-white mb-4">{slide.title}</h1>
+              <Link href={slide.link} className="btn-red">
+                KNOW MORE
+              </Link>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   );
 }

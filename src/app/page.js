@@ -14,7 +14,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         {/* banner section contents*/}
-        <HeroBanner styles={styles} />
+        <HeroBanner />
 
         {/* Smart Money Deals contents*/}
         <MoneyDeals styles={styles} />

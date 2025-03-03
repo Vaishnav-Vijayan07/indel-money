@@ -1,4 +1,5 @@
-@import "tailwindcss";    
+@import "tailwindcss";
+@tailwind components;
 
 @plugin "tailwindcss-animate";
 
@@ -15,11 +16,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
+/* * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
+} */
 
 a {
   color: inherit;
@@ -60,6 +61,8 @@ a {
   --sidebar-ring: oklch(0.87 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+
+  --header-y: 80px;
 }
 
 .dark {
@@ -140,7 +143,14 @@ a {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .btn-red {
+    @apply bg-danger px-5 w-full rounded-full flex items-center justify-center text-white;
   }
 }
