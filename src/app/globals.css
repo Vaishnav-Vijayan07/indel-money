@@ -5,23 +5,21 @@
   --marquee-y: 50px;
 }
 
-
-
 @theme {
   /* Existing Colors */
   --color-base1: #17479e;
   --color-base2: #ee3824;
 
   /* Custom Container Sizes (Override Defaults) */
-  --container-sm: 30rem;
+  --container-sm: 40rem;
   /* 480px, vs default 640px */
-  --container-md: 36rem;
+  --container-md: 48rem;
   /* 576px, vs default 768px */
-  --container-lg: 48rem;
+  --container-lg: 64rem;
   /* 768px, vs default 1024px */
   --container-xl: 80rem;
   /* 960px, vs default 1280px */
-  --container-2xl: 72rem;
+  --container-2xl: 96rem;
   /* 1152px, vs default 1536px */
   --container-padding: 1.5rem;
   /* Optional: Custom padding */
@@ -104,27 +102,29 @@
     font-size: 1rem;
     line-height: 1;
     font-weight: 500;
+    text-transform: uppercase;
     color: #fff;
     width: 100%;
-    min-width: 100px;
+    min-width: 80px;
     height: 45px;
-    background: red;
+    background: none;
     border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px;
+    transition: all 0.4s;
   }
 
   @media (min-width: 1024px) {
     .btn {
-      min-width: 120px;
+      min-width: 100px;
     }
   }
 
   @media (min-width: 1280px) {
     .btn {
-      min-width: 140px;
+      min-width: 120px;
       padding: 10px;
     }
   }
@@ -133,5 +133,17 @@
     .btn {
       min-width: 160px;
     }
+  }
+  .btn-base1 {
+    background-color: #17479e;
+  }
+  .btn-base1:hover{
+    background-color: #ee3824;
+  }
+  .btn-base2 {
+    background-color: #ee3824;
+  }
+  .btn-base2:hover{
+    background-color: #17479e;
   }
 }

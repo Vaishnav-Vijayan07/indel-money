@@ -67,7 +67,7 @@ export default function Header() {
               </div>
               <div>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">quick pay</DropdownMenuTrigger>
+                  <DropdownMenuTrigger className="btn btn-base2">quick pay</DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
@@ -79,7 +79,7 @@ export default function Header() {
                 </DropdownMenu>
               </div>
               <div>
-                <Link href={"/"} className="btn">
+                <Link href={"/"} className="btn btn-base1">
                   Contact Us
                 </Link>
               </div>
