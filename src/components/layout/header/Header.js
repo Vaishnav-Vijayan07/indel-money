@@ -21,7 +21,7 @@ import {
 export default function Header() {
   return (
     <header className="w-full" style={{ height: "var(--header-y)" }}>
-      <div className="container mx-auto">
+      <div className="container">
         <div className="flex items-center h-[80px]">
           <div className="w-[140px]">
             <Image
@@ -79,7 +79,7 @@ export default function Header() {
                 </DropdownMenu>
               </div>
               <div>
-                <Link href={"/"} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full text-colors-primary">
+                <Link href={"/"} className="btn">
                   Contact Us
                 </Link>
               </div>
