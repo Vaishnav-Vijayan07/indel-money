@@ -1,9 +1,8 @@
 import Image from "next/image";
-import styles from "@/styles/components/Footer.module.scss";
 
 export default function Footer() {
   return (
-    <footer className={styles.footer_container}>
+    <footer>
       <Image
         src="/icons/logo_lg.svg"
         alt="Logo"

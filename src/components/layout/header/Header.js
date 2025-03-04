@@ -1,18 +1,27 @@
+
 import Image from "next/image";
-import styles from './Header.module.scss';
-import { ShiftingDropDown } from "./NavLinks";
+import NavMenu from "./NavMenu";
 import Link from "next/link";
 // import iconMap from "public/images/icon-map.svg";
 // import iconCall from "@/public/images/icon-call.svg";
 // import appStore from "public/images/icon-appStore.svg";
 // import playStore from "./images/MainSlide1.webp";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
 
 
 
 export default function Header() {
   return (
     <header className="w-full" style={{ height: "var(--header-y)" }}>
-      <div className="container">
+      <div className="container mx-auto">
         <div className="flex items-center h-[80px]">
           <div className="w-[140px]">
             <Image
@@ -26,11 +35,9 @@ export default function Header() {
           </div>
           <nav className="w-[calc(100%-140px)] flex justify-end">
 
-
-            
             <div className="flex items-center gap-4">
               <div>
-              <ShiftingDropDown />
+                <NavMenu />
               </div>
               <div>
                 <Link href={"/"} className="flex items-center gap-2">
@@ -59,22 +66,29 @@ export default function Header() {
                 </Link>
               </div>
               <div>
-                <Link href={"/"} className="flex items-center gap-2">
-                  <span>QUICK PAY</span>
-                </Link>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">quick pay</DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                    <DropdownMenuItem>Billing</DropdownMenuItem>
+                    <DropdownMenuItem>Team</DropdownMenuItem>
+                    <DropdownMenuItem>Subscription</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
               <div>
-                <Link href={"/"} className="flex items-center gap-2">
-                  <span>Contact Us</span>
+                <Link href={"/"} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full text-colors-primary">
+                  Contact Us
                 </Link>
               </div>
             </div>
-
-
-            {/* <button className={`${styles.contact__btn} {""}`}>Contact</button> */}
           </nav>
         </div>
       </div>
     </header>
   );
 }
+
+

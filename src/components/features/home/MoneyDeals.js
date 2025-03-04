@@ -1,6 +1,6 @@
-import ServiceCard from "@/components/ServiceCard";
+import ServiceCard from "@/components/common/ServiceCard";
 
-export default function MoneyDeals({ styles }) {
+export default function MoneyDeals() {
   const services = [
     { id: 1, title: "GOLD LOAN", icon: "/icons/services/gold_loan.svg" },
     { id: 2, title: "MSME LOAN", icon: "/icons/services/msme_loan.svg" },
@@ -9,10 +9,10 @@ export default function MoneyDeals({ styles }) {
     { id: 5, title: "FOREIGN EXCHANGE", icon: "/icons/services/foreign_echange.svg" },
   ];
   return (
-    <section className={styles.money__deals}>
+    <section>
       <h4>Smart Money Deals</h4>
 
-      <div className={styles.card__container}>
+      <div>
         {services?.map((item) => (
           <ServiceCard item={item} key={item?.id} />
         ))}
