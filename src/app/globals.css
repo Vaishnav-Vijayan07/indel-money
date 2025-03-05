@@ -200,3 +200,19 @@
     background-color: #17479e;
   }
 }
+
+@layer components {
+  .swiper-pagination {
+    bottom: 0;
+    left: 20px;
+    width: fit-content;
+  }
+
+  .swiper-pagination-bullet {
+    @apply w-[10px] h-[10px] bg-[#17479E] opacity-100;
+  }
+
+  .swiper-pagination-bullet-active {
+    @apply bg-[#17479E];
+  }
+}
