@@ -22,8 +22,8 @@ export default function Header() {
   return (
     <header className="w-full relative z-99 flex items-center" style={{ height: "var(--header-y)" }}>
       <div className="container">
-        <div className="flex items-center h-[80px]">
-          <div className="w-[100px] 2xl:w-[140px]">
+        <div className="flex items-center">
+          <div className="w-[60px] xl:w-[100px] 2xl:w-[140px]">
             <Image
               src="/icons/logo_sm.svg"
               alt="Logo"
@@ -33,7 +33,7 @@ export default function Header() {
             // placeholder="blur" // Optional blur-up while loading
             />
           </div>
-          <nav className="w-[calc(100%-100px)] 2xl:w-[calc(100%-140px)] flex justify-end">
+          <nav className="w-[calc(100%-60px)] xl:w-[calc(100%-100px)] 2xl:w-[calc(100%-140px)] flex justify-end">
 
             <div className="flex items-center gap-[8px] xl:gap-[12px] 2xl:gap-[14px]">
               <div>
@@ -56,18 +56,18 @@ export default function Header() {
                 </Link>
               </div>
               <div>
-                <Link href={"/"} className="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.05]">
+                <Link href={"/"} className="w-[10px] lg:w-[14px] 2xl:w-[18px] h-auto block transition-transform duration-300 hover:scale-[1.05]">
                   <Image src={"/images/icon-appStore.svg"} width={18} height={18} alt="app" />
                 </Link>
               </div>
               <div>
-                <Link href={"tel:18004253990"} className="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.05]">
+                <Link href={"tel:18004253990"} className="w-[10px] lg:w-[14px] 2xl:w-[18px] h-auto block transition-transform duration-300 hover:scale-[1.05]">
                   <Image src={"/images/icon-playStore.svg"} width={18} height={18} alt="app" />
                 </Link>
               </div>
               <div>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[100px] xl:min-w-[100px] 2xl:min-w-[140px]">quick pay</DropdownMenuTrigger>
+                  <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[75px] xl:min-w-[100px] 2xl:min-w-[140px]">quick pay</DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-white">
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
@@ -79,7 +79,7 @@ export default function Header() {
                 </DropdownMenu>
               </div>
               <div>
-                <Link href={"/"} className="btn btn-base2 min-w-[80px] lg:min-w-[100px] xl:min-w-[100px] 2xl:min-w-[140px]">
+                <Link href={"/"} className="btn btn-base2 min-w-[80px] lg:min-w-[75px] xl:min-w-[100px] 2xl:min-w-[140px]">
                   Contact Us
                 </Link>
               </div>
