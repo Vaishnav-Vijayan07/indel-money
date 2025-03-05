@@ -18,11 +18,13 @@ export default function Home() {
         {/* banner section contents*/}
         <HeroBanner />
 
+        {/* Dreams to Reality contents*/}
+        <DreamsToReality />
+
         {/* Smart Money Deals contents*/}
         <MoneyDeals />
 
-        {/* Dreams to Reality contents*/}
-        <DreamsToReality />
+
 
         {/* Gold loan calculator contents*/}
         <GoldLoanCalculator />
