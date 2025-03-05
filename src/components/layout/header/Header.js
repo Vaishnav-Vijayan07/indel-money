@@ -20,7 +20,7 @@ import {
 
 export default function Header() {
   return (
-    <header className="w-full" style={{ height: "var(--header-y)" }}>
+    <header className="w-full relative z-99" style={{ height: "var(--header-y)" }}>
       <div className="container">
         <div className="flex items-center h-[80px]">
           <div className="w-[140px]">
@@ -67,8 +67,8 @@ export default function Header() {
               </div>
               <div>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="btn btn-base2">quick pay</DropdownMenuTrigger>
-                  <DropdownMenuContent>
+                  <DropdownMenuTrigger className="btn btn-base2 min-w-[80px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[160px]">quick pay</DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-white">
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -79,7 +79,7 @@ export default function Header() {
                 </DropdownMenu>
               </div>
               <div>
-                <Link href={"/"} className="btn btn-base1">
+                <Link href={"/"} className="btn btn-base1 min-w-[80px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[160px]">
                   Contact Us
                 </Link>
               </div>

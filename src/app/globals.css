@@ -9,6 +9,7 @@
   /* Existing Colors */
   --color-base1: #17479e;
   --color-base2: #ee3824;
+  --color-base3: #b7d0ff;
 
   /* Custom Container Sizes (Override Defaults) */
   --container-sm: 40rem;
@@ -99,14 +100,13 @@
 
 @layer components {
   .btn {
-    font-size: 1rem;
+    font-size: 0.6rem;
     line-height: 1;
     font-weight: 500;
     text-transform: uppercase;
     color: #fff;
     width: 100%;
-    min-width: 80px;
-    height: 45px;
+    height: 35px;
     background: none;
     border-radius: 50px;
     display: flex;
@@ -116,34 +116,33 @@
     transition: all 0.4s;
   }
 
-  @media (min-width: 1024px) {
-    .btn {
-      min-width: 100px;
-    }
-  }
-
   @media (min-width: 1280px) {
     .btn {
-      min-width: 120px;
-      padding: 10px;
+      font-size: 0.8rem;
+      height: 40px;
     }
   }
 
   @media (min-width: 1536px) {
     .btn {
-      min-width: 160px;
+      font-size: 1rem;
+      height: 45px;
     }
   }
+
   .btn-base1 {
     background-color: #17479e;
   }
-  .btn-base1:hover{
+
+  .btn-base1:hover {
     background-color: #ee3824;
   }
+
   .btn-base2 {
     background-color: #ee3824;
   }
-  .btn-base2:hover{
+
+  .btn-base2:hover {
     background-color: #17479e;
   }
 }
