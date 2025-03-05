@@ -3,19 +3,19 @@ export default function DreamsToReality() {
   return (
     <section className="w-full pt-[200px] pb-[128px] md:pt-[150px] md:pb-[100px] sm:pt-[100px] sm:pb-[80px]">
       <div className="container">
-        <div className="flex flex-wrap">
-          <div className="w-[calc(100%-610px)]">
+        <div className="flex w-full flex-wrap m-[-60px]">
+          <div className="w-[calc(100%-610px)] p-[60px]">
             <div className="max-w-[900px]">
               <div className="text-[20px]">
-                Welcome to <span className="text-[var(--color-base3)] ">INDEL MONEY</span>
+                Welcome to <span className="text-base3 ">INDEL MONEY</span>
               </div>
 
               <h1 className="text-[55px] font-medium mt-2 leading-tight">
-                From <span className="text-[var(--color-base2)] font-bold">Dreams To Reality</span>,
+                From <span className="text-base2 font-bold">Dreams To Reality</span>,
                 We're With You Every Step Of The Way.
               </h1>
 
-              <h2 className="text-lg font-bold mt-4 text-[var(--color-base1)]">
+              <h2 className="text-lg font-bold mt-4 text-base1">
                 Indel Money : <span className="font-normal text-[#343434]">Overview</span>
               </h2>
 
@@ -36,10 +36,11 @@ export default function DreamsToReality() {
             </div>
 
           </div>
-          <div className="w-[610px] text-base1">
-            <div className="w-100  rounded-[20px]">
-              <Image src={"/images/aboutImg.webp"} alt="aboutImg" width={610} height={535} className="w-100 h-100  bject-contain" />
+          <div className="w-[610px] text-base1 p-[60px] relative">
+            <div className="w-full h-full rounded-[20px] overflow-hidden group">
+              <Image src={"/images/aboutImg.webp"} alt="aboutImg" width={610} height={535} className="w-full h-full  object-cover duration-450 transition-all group hover:scale-[1.1]  " />
             </div>
+
           </div>
         </div>
       </div>
