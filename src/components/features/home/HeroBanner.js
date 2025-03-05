@@ -35,7 +35,7 @@ const slides = [
 
 export default function HeroBanner() {
   return (
-    <section className="w-full">
+    <section className="w-full block">
       <Swiper
         modules={[Pagination, Autoplay]}
         navigation={false}
@@ -46,11 +46,11 @@ export default function HeroBanner() {
         className="heroSlide h-[calc(100vh-(var(--header-y)+var(--marquee-y)))]"
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={index} className="relative z-0">
+          <SwiperSlide key={index} className="relative z-0 before:absolute before:inset-0 before:block before:bg-gradient-to-r before:from-[rgba(0,0,0,0.5)] before:to-transparent before:w-full before:h-full">
             <Image src={slide.image} width={1920} height={1080} alt={slide.alt} className="w-full h-full object-cover" />
             <div className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <div className="max-w-[576px]">
-                <h1 className="text-5xl capitalize font-medium text-white mb-6"><span className="text-base2 font-medium">{slide.title1}</span> {slide.title2}</h1>
+                <h1 className="text-5xl capitalize font-medium font-amino text-white mb-6"><span className="text-base2 font-bold">{slide.title1}</span> {slide.title2}</h1>
                 <Link href={slide.link} className="btn btn-base2 max-w-[80px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[160px]">
                   KNOW MORE
                 </Link>
@@ -59,16 +59,16 @@ export default function HeroBanner() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="w-full h-[var(--marquee-y)] flex flex-wrap items-center bg-base3">
-        <div className="w-[340px] h-[var(--marquee-y)] flex items-center justify-center bg-green-900">
-          <Image src={"/images/marquee-1.png"} width={25} height={25} alt={"coin"} className="w-6 h-6 mr-3 object-contain" />
+      <div className="w-full h-[var(--marquee-y)] flex flex-wrap items-center bg-[#b7d0ff]">
+        <div className="w-[300px] 2xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm-1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
+          <Image src={"/images/marquee-1.png"} width={25} height={25} alt={"coin"} className="w-5 h-5 2xl:w-6 2xl:h-6 mr-2 2xl:mr-3 object-contain" />
           Todays Gold rate : Rs.59,080
         </div>
-        <div className="w-[calc(100%-340px)]">
+        <div className="w-[calc(100%-300px)] 2xl:w-[calc(100%-340px)]">
           <Marquee
             speed={80}
             pauseOnHover={true}
-            className="marquee"
+            className="text-sm-1"
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
           </Marquee>

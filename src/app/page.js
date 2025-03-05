@@ -13,8 +13,7 @@ const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 
 export default function Home() {
   return (
-    <div>
-      <main>
+    <>
         {/* banner section contents*/}
         <HeroBanner />
 
@@ -43,7 +42,6 @@ export default function Home() {
 
         {/* faq contents */}
         <FAQS />
-      </main>
-    </div>
+    </>
   );
 }
