@@ -11,7 +11,7 @@ export default function LifeAtIndel() {
     <section className="w-full pt-[200px] pb-[128px] md:pt-[150px] md:pb-[100px] sm:pt-[100px] sm:pb-[80px]">
       <div className="container">
         <div className="flex flex-wrap">
-          <div className="w-[795px]">
+          <div className="2xl:w-[795px] xl:w-[655px] lg:w-[560px]">
             <div className="w-full h-[625px]">
               <div className="flex flex-wrap h-full">
                 <div className="w-[calc(100%-480px)] h-full">
@@ -69,28 +69,29 @@ export default function LifeAtIndel() {
 
             <div className="w-full pt-[25px] relative">
               <Swiper
-                modules={[Pagination, Autoplay]}
-                className="w-full"
+                modules={[Pagination,]}
                 slidesPerView={1}
                 spaceBetween={20}
-                autoplay={{ delay: 3000 }}
+                // autoplay={{ delay: 3000 }}
+                autoplay={false}
                 pagination={{ clickable: true }}
                 breakpoints={{
                   640: { slidesPerView: 1 },
                 }}
+                className="w-full lifeSlide pb-[30px]"
               >
                 {[...Array(3)].map((_, index) => (
                   <SwiperSlide key={index} className="w-full">
                     <div className="w-full rounded-[24px] bg-[#E6EDF7] overflow-hidden p-[20px] pl-[25px]">
                       <div className="w-full flex flex-wrap">
                         <div className="w-[calc(100%-200px)] pr-[30px]">
-                          <h5 className="text-[#1E1E1E] text-[24px] font-normal leading-normal mb-[25px]">
+                          <h5 className="text-[#1E1E1E] text-[23px] font-normal leading-normal mb-[25px]">
                             Indel Money Limited is bestowed as
                             <span className="text-[#EE3824] uppercase font-medium pl-[5px]">
                               ‘GREAT PLACE TO WORK’
                             </span>
                           </h5>
-                          <p className="line-clamp-4">
+                          <p className="line-clamp-4 mb-[30px]">
                             Every year, more than 10,000 organizations from
                             over 60 countries partner with Great Place to Work®
                             over 60 countries partner with Great Place to Work®
@@ -99,7 +100,7 @@ export default function LifeAtIndel() {
                           </p>
                         </div>
                         <div className="w-[200px]">
-                          <div className="w-full h-auto max-h-[250px] rounded-[24px] overflow-hidden group">
+                          <div className="w-full h-auto h-full rounded-[24px] overflow-hidden group">
                             <Image
                               src="/images/life04.webp"
                               alt="lifeintelImg"
