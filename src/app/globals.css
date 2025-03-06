@@ -218,6 +218,7 @@
     .text-title1 {
       font-size: 44px;
     }
+
     .text-header-sm {
       font-size: 14px;
     }
@@ -239,13 +240,7 @@
     }
   }
 
-  .text-title1>span {
-    font-weight: 700;
-    color: #ee3824;
-  }
-
-
-
+  /* BANNER_SLIDER */
   .heroSlide {
     --swiper-pagination-bottom: 40px;
     --swiper-pagination-color: #fff;
