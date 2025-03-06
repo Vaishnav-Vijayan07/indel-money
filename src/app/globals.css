@@ -287,6 +287,10 @@
     right: 0;
     margin: auto;
   }
+  .lifeSlide .swiper-slide {
+    height: auto !important;
+
+  }
 
   .lifeSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 1px solid #17479E;

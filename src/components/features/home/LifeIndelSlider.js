@@ -50,7 +50,7 @@ export default function LifeIndelSlider() {
                 <SwiperSlide key={index}>  
                     <Link
                         href={slide.link}
-                        className="block w-full rounded-[24px] bg-[#E6EDF7] overflow-hidden p-[20px] pl-[25px]"
+                        className="block w-full h-full rounded-[24px] bg-[#E6EDF7] overflow-hidden p-[20px] pl-[25px]"
                     >
                         <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
                             {/* Text Content Section */}
