@@ -11,10 +11,10 @@ export default function LifeAtIndel() {
     <section className="w-full pt-[200px] pb-[128px] md:pt-[150px] md:pb-[100px] sm:pt-[100px] sm:pb-[80px]">
       <div className="container">
         <div className="flex flex-wrap">
-          <div className="2xl:w-[795px] xl:w-[655px] lg:w-[560px]">
-            <div className="w-full h-[625px]">
+          <div className="2xl:w-[795px] xl:w-[580px] lg:w-[560px]">
+            <div className="w-full 2xl:h-[625px] xl:h-[450px]">
               <div className="flex flex-wrap h-full">
-                <div className="w-[calc(100%-480px)] h-full">
+                <div className="2xl:w-[calc(100%-480px)] xl:w-[calc(100%-395px)] h-full">
                   <div className="w-full h-full flex flex-wrap">
                     <div className="w-full h-1/2 p-[10px]">
                       <div className="w-full h-full rounded-[36px] overflow-hidden group">
@@ -40,7 +40,7 @@ export default function LifeAtIndel() {
                     </div>
                   </div>
                 </div>
-                <div className="w-[480px]">
+                <div className="2xl:w-[480px] xl:w-[395px] h-full">
                   <div className="w-full h-full p-[10px]">
                     <div className="w-full h-full rounded-[36px] overflow-hidden group">
                       <Image
@@ -58,7 +58,7 @@ export default function LifeAtIndel() {
           </div>
 
           {/* Swiper Section */}
-          <div className="w-[calc(100%-795px)] pl-[75px] md:pl-[50px] sm:pl-[30px]">
+          <div className="2xl:w-[calc(100%-795px)] xl:w-[calc(100%-580px)] 2xl:pl-[75px] xl:pl-[40px] sm:pl-[30px]">
             <h2 className="text-title1">
               Life at <span>Indel</span>
             </h2>

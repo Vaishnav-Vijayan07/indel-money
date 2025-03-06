@@ -105,6 +105,11 @@
 
 }
 
+.conterTxt span {
+  font-weight: 400;
+  color: #000;
+}
+
 @layer components {
   .btn {
     font-size: 0.6rem;
