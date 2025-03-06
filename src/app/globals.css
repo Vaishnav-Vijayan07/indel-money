@@ -48,6 +48,7 @@
 
   @media (min-width: 1536px) {
 
+    /* 2xl */
     :root {
       /* 960px, vs default 1280px */
       --container-x: 96rem;
