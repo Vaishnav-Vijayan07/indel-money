@@ -7,14 +7,14 @@ import LifeAtIndel from "../components/features/home/LifeAtIndel";
 import LatestUpdates from "../components/features/home/LatestUpdates";
 import TrustedInvestment from "../components/features/home/TrustedInvestment";
 import BranchLocator from "../components/features/home/BranchLocator";
+import Innovations from "../components/features/home/Innovations";
 import FAQ from "../components/features/home/FAQ";
 
 const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 
 export default function Home() {
   return (
-    <div>
-      <main>
+    <>
         {/* banner section contents*/}
         <HeroBanner />
 
@@ -35,6 +35,10 @@ export default function Home() {
         {/* Latest Updates contents*/}
         <LatestUpdates />
 
+        {/* Innovations*/}
+
+        <Innovations />
+
         {/* Trusted investment contents*/}
         <TrustedInvestment />
 
@@ -43,7 +47,6 @@ export default function Home() {
 
         {/* faq contents */}
         <FAQS />
-      </main>
-    </div>
+    </>
   );
 }

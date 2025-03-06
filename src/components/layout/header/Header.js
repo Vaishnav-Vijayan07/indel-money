@@ -20,10 +20,10 @@ import {
 
 export default function Header() {
   return (
-    <header className="w-full relative z-99" style={{ height: "var(--header-y)" }}>
+    <header className="w-full relative z-99 flex items-center" style={{ height: "var(--header-y)" }}>
       <div className="container">
         <div className="flex items-center h-[80px]">
-          <div className="w-[140px]">
+          <div className="w-[100px] 2xl:w-[140px]">
             <Image
               src="/icons/logo_sm.svg"
               alt="Logo"
@@ -33,41 +33,41 @@ export default function Header() {
             // placeholder="blur" // Optional blur-up while loading
             />
           </div>
-          <nav className="w-[calc(100%-140px)] flex justify-end">
+          <nav className="w-[calc(100%-100px)] 2xl:w-[calc(100%-140px)] flex justify-end">
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-[8px] xl:gap-[12px] 2xl:gap-[14px]">
               <div>
                 <NavMenu />
               </div>
               <div>
-                <Link href={"/"} className="flex items-center gap-2">
+                <Link href={"/"} className="group flex items-center gap-1 transition-transform duration-300">
                   <span>
-                    <Image src={"/images/icon-map.svg"} width={15} height={15} alt="map" />
+                    <Image src={"/images/icon-map.svg"} width={15} height={15} alt="map" className="w-[10px] h-[auto] 2xl:w-[14px] block"/>
                   </span>
-                  <span>Branch Locator</span>
+                  <span className="text-header-sm group-hover:text-base2">Branch Locator</span>
                 </Link>
               </div>
               <div>
-                <Link href={"tel:18004253990"} className="flex items-center gap-2">
+                <Link href={"tel:18004253990"} className="group flex items-center gap-1 transition-transform duration-300">
                   <span>
-                    <Image src={"/images/icon-call.svg"} width={15} height={15} alt="call" />
+                    <Image src={"/images/icon-call.svg"} width={15} height={15} alt="call" className="w-[10px] h-[auto] 2xl:w-[14px] block" />
                   </span>
-                  <span>1800 4253 990</span>
+                  <span className="text-header-sm group-hover:text-base2">1800 4253 990</span>
                 </Link>
               </div>
               <div>
-                <Link href={"/"} className="flex items-center gap-2">
+                <Link href={"/"} className="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.05]">
                   <Image src={"/images/icon-appStore.svg"} width={18} height={18} alt="app" />
                 </Link>
               </div>
               <div>
-                <Link href={"tel:18004253990"} className="flex items-center gap-2">
+                <Link href={"tel:18004253990"} className="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.05]">
                   <Image src={"/images/icon-playStore.svg"} width={18} height={18} alt="app" />
                 </Link>
               </div>
               <div>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="btn btn-base2 min-w-[80px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[160px]">quick pay</DropdownMenuTrigger>
+                  <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[100px] xl:min-w-[100px] 2xl:min-w-[140px]">quick pay</DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-white">
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
@@ -79,7 +79,7 @@ export default function Header() {
                 </DropdownMenu>
               </div>
               <div>
-                <Link href={"/"} className="btn btn-base1 min-w-[80px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[160px]">
+                <Link href={"/"} className="btn btn-base2 min-w-[80px] lg:min-w-[100px] xl:min-w-[100px] 2xl:min-w-[140px]">
                   Contact Us
                 </Link>
               </div>

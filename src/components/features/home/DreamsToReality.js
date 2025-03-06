@@ -42,24 +42,31 @@ export default function DreamsToReality() {
 
               <Link
                 href="#"
-                className="2xl:mt-[30px] xl:mt-[20px] mt-[15px] w-full max-w-[175px] xl:max-w-[200px] 2xl:max-w-[230px] relative
-                flex flex-wrap rounded-full bg-base1 2xl:px-[15px] px-[10px] justify-between 
-                text-white font-medium items-center leading-none 
-                2xl:text-[20px] xl:text-[18px] md:text-[16px] text-[14px] 
-                2xl:h-[65px] lg:h-[50px] h-[45px] btnGroup 
-                transition-all duration-300 group overflow-hidden hover:bg-base1"
+                className="relative group flex items-center justify-between lg:mt-[30px] mt-[15px]
+                    w-full max-w-[175px] xl:max-w-[200px] 2xl:max-w-[230px] 
+                    px-5 2xl:h-[65px] lg:h-[50px] h-[45px] 
+                    rounded-full bg-base1 text-white 
+                    font-medium transition-all duration-300 overflow-hidden shadow-lg"
               >
-                <span className="pl-4 transition-all duration-300 group-hover:-translate-x-[50px]">
+             
+                <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px]">
                   Our Story
                 </span>
-                <div className="absolute top-0 bottom-0 m-auto right-[15px] 
-                    flex items-center justify-center 
-                    2xl:w-[48px] 2xl:h-[48px] lg:w-[40px] lg:h-[40px] w-[35px] h-[35px] 
-                    rounded-full transition-all duration-300 
-                    group-hover:w-full group-hover:right-0 group-hover:bg-base1"
+
+ 
+                <div
+                  className="relative z-10 flex items-center justify-center 
+                      w-[35px] h-[35px] lg:w-[40px] lg:h-[40px] 2xl:w-[48px] 2xl:h-[48px] 
+                      bg-white rounded-full text-red-500 transition-all duration-300 
+                      group-hover:translate-x-2 group-hover:bg-red-600 group-hover:text-white"
                 >
-                  <svg width="48" height="49" viewBox="0 0 48 49"  >
-                    <path d="M24 0.777344C10.7456 0.777344 0 11.523 0 24.7773C0 38.0317 10.7456 48.7773 24 48.7773C37.2544 48.7773 48 38.0317 48 24.7773C48 11.523 37.2544 0.777344 24 0.777344ZM37.7812 25.4617L29.5659 33.7473C29.477 33.842 29.37 33.9178 29.2513 33.9704C29.1325 34.023 29.0044 34.0512 28.8746 34.0535C28.7448 34.0558 28.6158 34.032 28.4953 33.9836C28.3748 33.9352 28.2652 33.8632 28.173 33.7717C28.0808 33.6803 28.0078 33.5713 27.9584 33.4512C27.909 33.3311 27.8842 33.2023 27.8854 33.0724C27.8866 32.9426 27.9139 32.8143 27.9655 32.6951C28.0171 32.5759 28.092 32.4683 28.1859 32.3786C30.6207 29.9234 28.8816 25.7495 25.4238 25.7495H10.9097C10.6518 25.7495 10.4046 25.6471 10.2222 25.4648C10.0399 25.2825 9.9375 25.0352 9.9375 24.7773C9.9375 24.5195 10.0399 24.2722 10.2222 24.0899C10.4046 23.9076 10.6518 23.8052 10.9097 23.8052H25.4229C28.8806 23.8052 30.6197 19.6313 28.185 17.1761C28.0911 17.0864 28.0161 16.9788 27.9645 16.8596C27.9129 16.7404 27.8857 16.6121 27.8845 16.4823C27.8833 16.3524 27.9081 16.2236 27.9575 16.1035C28.0069 15.9834 28.0798 15.8744 28.172 15.783C28.2642 15.6915 28.3738 15.6195 28.4943 15.5711C28.6148 15.5227 28.7438 15.4989 28.8737 15.5012C29.0035 15.5034 29.1316 15.5317 29.2503 15.5843C29.3691 15.6369 29.4761 15.7127 29.565 15.8073L37.7812 24.093C37.9619 24.2749 38.0633 24.5209 38.0633 24.7773C38.0633 25.0338 37.9619 25.2798 37.7812 25.4617Z" fill="#EE3824" />
+                  <svg viewBox="0 0 48 49"
+                    className="transition-all duration-100 group-hover:fill-white"
+                  >
+                    <path
+                      d="M24 0.777344C10.7456 0.777344 0 11.523 0 24.7773C0 38.0317 10.7456 48.7773 24 48.7773C37.2544 48.7773 48 38.0317 48 24.7773C48 11.523 37.2544 0.777344 24 0.777344ZM37.7812 25.4617L29.5659 33.7473C29.477 33.842 29.37 33.9178 29.2513 33.9704C29.1325 34.023 29.0044 34.0512 28.8746 34.0535C28.7448 34.0558 28.6158 34.032 28.4953 33.9836C28.3748 33.9352 28.2652 33.8632 28.173 33.7717C28.0808 33.6803 28.0078 33.5713 27.9584 33.4512C27.909 33.3311 27.8842 33.2023 27.8854 33.0724C27.8866 32.9426 27.9139 32.8143 27.9655 32.6951C28.0171 32.5759 28.092 32.4683 28.1859 32.3786C30.6207 29.9234 28.8816 25.7495 25.4238 25.7495H10.9097C10.6518 25.7495 10.4046 25.6471 10.2222 25.4648C10.0399 25.2825 9.9375 25.0352 9.9375 24.7773C9.9375 24.5195 10.0399 24.2722 10.2222 24.0899C10.4046 23.9076 10.6518 23.8052 10.9097 23.8052H25.4229C28.8806 23.8052 30.6197 19.6313 28.185 17.1761C28.0911 17.0864 28.0161 16.9788 27.9645 16.8596C27.9129 16.7404 27.8857 16.6121 27.8845 16.4823C27.8833 16.3524 27.9081 16.2236 27.9575 16.1035C28.0069 15.9834 28.0798 15.8744 28.172 15.783C28.2642 15.6915 28.3738 15.6195 28.4943 15.5711C28.6148 15.5227 28.7438 15.4989 28.8737 15.5012C29.0035 15.5034 29.1316 15.5317 29.2503 15.5843C29.3691 15.6369 29.4761 15.7127 29.565 15.8073L37.7812 24.093C37.9619 24.2749 38.0633 24.5209 38.0633 24.7773C38.0633 25.0338 37.9619 25.2798 37.7812 25.4617Z"
+                      fill="currentColor"
+                    />
                   </svg>
                 </div>
               </Link>
@@ -67,10 +74,14 @@ export default function DreamsToReality() {
 
 
 
+
+
+
+
             </div>
           </div>
-          <div className="2xl:w-[700px] xl:w-[570px] lg:w-[450px]  w-full h-full lg:pl-[60px] 2xl:pl-[120px] lg:m-0 m-auto relative z-0">
-            <div className="w-full h-full relative z-0">
+          <div className="2xl:w-[700px] xl:w-[570px] lg:w-[450px]  w-full   lg:pl-[60px] 2xl:pl-[120px] lg:m-0 m-auto relative z-0">
+            <div className="w-full  relative z-0">
               <div className="w-full h-full rounded-[20px] overflow-hidden group z-20">
                 <Image src={"/images/aboutImg.webp"} alt="aboutImg" width={610} height={535} className="w-full h-full  object-cover duration-450 transition-all group hover:scale-[1.1]  " />
               </div>
