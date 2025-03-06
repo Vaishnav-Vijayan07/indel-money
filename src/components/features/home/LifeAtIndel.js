@@ -62,7 +62,7 @@ export default function LifeAtIndel() {
             <h2 className="text-title1">
               Life at <span>Indel</span>
             </h2>
-            <p>
+            <p className="text-sm-1">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry...
             </p>
@@ -75,10 +75,7 @@ export default function LifeAtIndel() {
                 // autoplay={{ delay: 3000 }}
                 autoplay={false}
                 pagination={{ clickable: true }}
-                breakpoints={{
-                  640: { slidesPerView: 1 },
-                }}
-                className="w-full lifeSlide pb-[30px]"
+                className="lifeSlide mb-[30px]"
               >
                 {[...Array(3)].map((_, index) => (
                   <SwiperSlide key={index} className="w-full">
@@ -87,11 +84,11 @@ export default function LifeAtIndel() {
                         <div className="w-[calc(100%-200px)] pr-[30px]">
                           <h5 className="text-[#1E1E1E] text-[23px] font-normal leading-normal mb-[25px]">
                             Indel Money Limited is bestowed as
-                            <span className="text-[#EE3824] uppercase font-medium pl-[5px]">
-                              ‘GREAT PLACE TO WORK’
+                            <span className="text-base2 uppercase font-medium pl-[5px]">
+                            &apos;GREAT PLACE TO WORK&apos;
                             </span>
                           </h5>
-                          <p className="line-clamp-4 mb-[30px]">
+                          <p className="text-sm-1 line-clamp-4 mb-[30px]">
                             Every year, more than 10,000 organizations from
                             over 60 countries partner with Great Place to Work®
                             over 60 countries partner with Great Place to Work®
@@ -100,7 +97,7 @@ export default function LifeAtIndel() {
                           </p>
                         </div>
                         <div className="w-[200px]">
-                          <div className="w-full h-auto h-full rounded-[24px] overflow-hidden group">
+                          <div className="group w-full h-auto h-full rounded-[24px] overflow-hidden">
                             <Image
                               src="/images/life04.webp"
                               alt="lifeintelImg"
@@ -116,7 +113,6 @@ export default function LifeAtIndel() {
                 ))}
               </Swiper>
             </div>
-
             <div className="w-full pt-10">
               <div className="w-fit">
                 <div className="flex flex-wrap w-full">
@@ -133,12 +129,10 @@ export default function LifeAtIndel() {
                         VISIT GALLERY
                       </span>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
