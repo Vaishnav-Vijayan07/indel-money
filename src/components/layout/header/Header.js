@@ -2,10 +2,6 @@
 import Image from "next/image";
 import NavMenu from "./NavMenu";
 import Link from "next/link";
-// import iconMap from "public/images/icon-map.svg";
-// import iconCall from "@/public/images/icon-call.svg";
-// import appStore from "public/images/icon-appStore.svg";
-// import playStore from "./images/MainSlide1.webp";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,9 +10,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
-
-
 
 export default function Header() {
   return (
@@ -36,7 +29,6 @@ export default function Header() {
             </Link>
           </div>
           <nav className="w-[calc(100%-60px)] xl:w-[calc(100%-100px)] 2xl:w-[calc(100%-140px)] flex justify-end">
-
             <div className="flex items-center gap-[8px] xl:gap-[12px] 2xl:gap-[14px]">
               <div>
                 <NavMenu />
@@ -69,7 +61,16 @@ export default function Header() {
               </div>
               <div>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[75px] xl:min-w-[100px] 2xl:min-w-[140px]">quick pay <Image src="/images/icon-dropdown.svg" width={11} height={7} alt="dropdown" className="ml-1" /> </DropdownMenuTrigger>
+                  <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[75px] xl:min-w-[100px] 2xl:min-w-[140px] cursor-pointer">
+                    quick pay
+                    <Image
+                      src="/images/icon-dropdown.svg"
+                      width={11}
+                      height={7}
+                      alt="dropdown"
+                      className="ml-1"
+                    />
+                  </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-[#d2dff6] border-none">
                     <DropdownMenuLabel><div className="text-header-sm">Payment modes</div></DropdownMenuLabel>
                     <DropdownMenuSeparator className="bg-black/20" />

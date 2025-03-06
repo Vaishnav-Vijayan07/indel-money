@@ -1,11 +1,10 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import CountUp from "react-countup";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 export default function DreamsToReality() {
-  const countUpRef = useRef(null);
   const { ref, inView } = useInView({ triggerOnce: true }); // Detect when the section enters the viewport
 
 
@@ -21,7 +20,7 @@ export default function DreamsToReality() {
 
               <h2 className="text-title1 font-medium mt-2 leading-tight">
                 From <span className="text-base2 font-bold">Dreams To Reality</span>,
-                We're With You Every Step Of The Way.
+                We&apos;re With You Every Step Of The Way.
               </h2>
 
               <h2 className="2xl:text-[24px] xl:text-[22px] md:text-[20px] lg:text-[17px] text-[15px] font-bold lg:mt-4 mt-2 text-base1">

@@ -15,38 +15,35 @@ const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 export default function Home() {
   return (
     <>
-        {/* banner section contents*/}
-        <HeroBanner />
+      {/* banner section contents*/}
+      <HeroBanner />
 
-        {/* Dreams to Reality contents*/}
-        <DreamsToReality />
+      {/* Dreams to Reality contents*/}
+      <DreamsToReality />
 
-        {/* Smart Money Deals contents*/}
-        <MoneyDeals />
+      {/* Smart Money Deals contents*/}
+      <MoneyDeals />
 
+      {/* Gold loan calculator contents*/}
+      <GoldLoanCalculator />
 
+      {/* Life at Indel contents*/}
+      <LifeAtIndel />
 
-        {/* Gold loan calculator contents*/}
-        <GoldLoanCalculator />
+      {/* Latest Updates contents*/}
+      <LatestUpdates />
 
-        {/* Life at Indel contents*/}
-        <LifeAtIndel />
+      {/* Innovations*/}
+      <Innovations />
 
-        {/* Latest Updates contents*/}
-        <LatestUpdates />
+      {/* Trusted investment contents*/}
+      <TrustedInvestment />
 
-        {/* Innovations*/}
+      {/* Branch locator contents*/}
+      <BranchLocator />
 
-        <Innovations />
-
-        {/* Trusted investment contents*/}
-        <TrustedInvestment />
-
-        {/* Branch locator contents*/}
-        <BranchLocator />
-
-        {/* faq contents */}
-        <FAQS />
+      {/* faq contents */}
+      {/* <FAQS /> */}
     </>
   );
 }

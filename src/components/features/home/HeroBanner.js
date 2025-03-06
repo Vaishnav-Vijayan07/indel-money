@@ -1,64 +1,11 @@
-"use client"; // Add this at the top of your component
+import HomeSlider from "@/components/features/home/HomeSlider";
 import Image from "next/image";
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import Link from "next/link";
-
 import Marquee from "react-fast-marquee";
-
-const slides = [
-  {
-    image: "/images/MainSlide1.webp",
-    alt: "Indel Money Banner 1",
-    title1: "Indel Money:",
-    title2: "Your trusted partner for a brighter future.",
-    link: "/",
-  },
-  {
-    image: "/images/MainSlide1.webp",
-    alt: "Indel Money Banner 2",
-    title1: "Empowering your",
-    title2: "Financial dreams with confidence.",
-    link: "/",
-  },
-  {
-    image: "/images/MainSlide1.webp",
-    alt: "Indel Money Banner 3",
-    title1: "Your reliable",
-    title2: "Partner in every financial journey.",
-    link: "/",
-  }
-];
 
 export default function HeroBanner() {
   return (
     <section className="w-full block">
-      <Swiper
-        modules={[Pagination, Autoplay]}
-        navigation={false}
-        pagination={true}
-        autoplay={false}
-        // autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop={true}
-        className="heroSlide h-[calc(100vh-(var(--header-y)+var(--marquee-y)))]"
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index} className="relative z-0 before:absolute before:inset-0 before:block before:bg-gradient-to-r before:from-[rgba(0,0,0,0.5)] before:to-transparent before:w-full before:h-full">
-            <Image src={slide.image} width={1920} height={1080} alt={slide.alt} className="w-full h-full object-cover" />
-            <div className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="max-w-[576px]">
-                <h1 className="text-5xl capitalize font-medium font-amino text-white mb-6"><span className="text-base2 font-bold">{slide.title1}</span> {slide.title2}</h1>
-                <Link href={slide.link} className="btn btn-base2 max-w-[80px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[160px]">
-                  KNOW MORE
-                </Link>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <HomeSlider />
       <div className="w-full h-[var(--marquee-y)] flex flex-wrap items-center bg-[#b7d0ff]">
         <div className="w-[300px] 2xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm-1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
           <Image src={"/images/marquee-1.png"} width={25} height={25} alt={"coin"} className="w-5 h-5 2xl:w-6 2xl:h-6 mr-2 2xl:mr-3 object-contain" />
