@@ -69,15 +69,7 @@ export default function DreamsToReality() {
                     />
                   </svg>
                 </div>
-              </Link>
-
-
-
-
-
-
-
-
+              </Link>  
             </div>
           </div>
           <div className="2xl:w-[700px] xl:w-[570px] lg:w-[450px]  w-full   lg:pl-[60px] 2xl:pl-[120px] lg:m-0 m-auto relative z-0">
