@@ -17,7 +17,7 @@ export default function LifeAtIndel() {
                 <div className="2xl:w-[calc(100%-480px)] xl:w-[calc(100%-395px)] lg:w-[calc(100%-320px)] sm:w-[40%] w-[100%] h-full lg:h-full md:h-[100%]">
                   <div className="w-full lg:h-full h-full flex flex-wrap">
                     <div className="lg:w-full sm:w-full w-[50%] md:w-[100%] lg:h-1/2 sm:h-1/2 h-full 2xl:p-[10px] md:p-[6px] p-[4px]">
-                      <div className="w-full h-full 2xl:rounded-[36px] xl:rounded-[30px] md:rounded-[30px] rounded-[18px] overflow-hidden group">
+                      <div className="group w-full h-full 2xl:rounded-[36px] xl:rounded-[30px] md:rounded-[30px] rounded-[18px] overflow-hidden">
                         <Image
                           src={"/images/life01.webp"}
                           alt="lifeintelImg"
@@ -28,7 +28,7 @@ export default function LifeAtIndel() {
                       </div>
                     </div>
                     <div className="lg:w-full sm:w-full w-[50%] md:w-[100%] lg:h-1/2 sm:h-1/2 h-full 2xl:p-[10px] md:p-[6px] p-[4px]">
-                      <div className="w-full h-full 2xl:rounded-[36px] xl:rounded-[30px] md:rounded-[30px] rounded-[18px] overflow-hidden group">
+                      <div className="group w-full h-full 2xl:rounded-[36px] xl:rounded-[30px] md:rounded-[30px] rounded-[18px] overflow-hidden">
                         <Image
                           src={"/images/life02.webp"}
                           alt="lifeintelImg"
@@ -42,7 +42,7 @@ export default function LifeAtIndel() {
                 </div>
                 <div className="2xl:w-[480px] xl:w-[395px] lg:w-[320px] sm:w-[60%] w-[100%] lg:h-full md:h-[100%] h-full">
                   <div className="w-full h-full 2xl:p-[10px] md:p-[6px] p-[4px]">
-                    <div className="w-full h-full 2xl:rounded-[36px] xl:rounded-[30px] md:rounded-[30px] rounded-[18px] overflow-hidden group">
+                    <div className="group w-full h-full 2xl:rounded-[36px] xl:rounded-[30px] md:rounded-[30px] rounded-[18px] overflow-hidden">
                       <Image
                         src={"/images/life03.webp"}
                         alt="lifeintelImg"
@@ -101,7 +101,7 @@ export default function LifeAtIndel() {
                           </div>
                         </div>
                         <div className="2xl:w-[200px] xl:w-[150px] lg:w-[100px] w-[100px]">
-                          <div className="w-full h-auto xl:h-full rounded-[24px] overflow-hidden group">
+                          <div className="group w-full h-auto xl:h-full rounded-[24px] overflow-hidden">
                             <Image
                               src="/images/life04.webp"
                               alt="lifeintelImg"
