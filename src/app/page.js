@@ -21,13 +21,14 @@ export default function Home() {
 
       {/* Dreams to Reality contents*/}
       <DreamsToReality />
-    
+     {/* Gold loan calculator contents*/}
+     
+     <GoldLoanCalculator />
 
       {/* Smart Money Deals contents*/}
       <MoneyDeals />
 
-      {/* Gold loan calculator contents*/}
-      <GoldLoanCalculator />
+     
 
       {/* Life at Indel contents*/}
       <LifeAtIndel />
