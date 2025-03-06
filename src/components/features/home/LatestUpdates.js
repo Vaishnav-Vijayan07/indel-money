@@ -1,5 +1,7 @@
+
 import Image from "next/image";
 import Link from "next/link";
+import LatestUpdatesSlide from "@/components/common/LatestUpdatesSlide";
 
 
 export default function LatestUpdates() {
@@ -21,10 +23,10 @@ export default function LatestUpdates() {
                 />
               </Link>
             </div>
+            <LatestUpdatesSlide />
           </div>
           <div className="w-1/2">
             <div className="group w-full h-full overflow-hidden block relative z-0">
-              {/* This image scales on outer box hover */}
               <Image
                 src="/images/news-1.jpg"
                 width={768}
@@ -39,7 +41,6 @@ export default function LatestUpdates() {
                 <div className="text-sm sm:text-lg md:text-xl xl:text-3xl 2xl:text-4xl text-white font-medium line-clamp-2 mb-4 2xl:mb-6">
                   Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting
                 </div>
-                {/* Link has its own group class and hover effect */}
                 <Link href="/" className="group text-sm font-bold text-white uppercase flex items-center">
                   Read More
                   <Image
