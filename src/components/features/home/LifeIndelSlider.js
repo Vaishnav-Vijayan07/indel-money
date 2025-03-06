@@ -21,7 +21,7 @@ const slides = [
         image: "/images/life04.webp",
         alt: "Indel Money Banner 2",
         p: "We are committed to financial excellence and providing reliable services for our customers.",
-        mHd: "Building a brighter financial future",
+        h5: "Building a brighter financial future",
         span: "TOGETHER",
         link: "/",
     },
@@ -29,7 +29,7 @@ const slides = [
         image: "/images/life04.webp",
         alt: "Indel Money Banner 3",
         p: "With a legacy of trust and innovation, we empower individuals and businesses alike.",
-        mHd: "Your reliable financial partner",
+        h5: "Your reliable financial partner",
         span: "FOR LIFE",
         link: "/",
     },
@@ -55,7 +55,7 @@ export default function LifeIndelSlider() {
                         <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
                             {/* Text Content Section */}
                             <div className="2xl:w-[calc(100%-200px)] xl:w-[calc(100%-150px)] lg:w-[calc(100%-100px)] sm:w-[calc(100%-100px)] w-full 2xl:pr-[30px] sm:pr-[20px] sm:pt-0 pt-[20px]">
-                                <h5 className="mHd text-[#1E1E1E] 2xl:text-[23px] xl:text-[18px] sm:text-[16px] text-[15px] font-normal leading-normal 2xl:mb-[25px] mb-[15px]">
+                                <h5 className="text-[#1E1E1E] 2xl:text-[23px] xl:text-[18px] sm:text-[16px] text-[15px] font-normal leading-normal 2xl:mb-[25px] mb-[15px]">
                                     {slide.mHd}
                                     <span className="text-base2 uppercase font-medium pl-[5px]">
                                         {slide.span}
