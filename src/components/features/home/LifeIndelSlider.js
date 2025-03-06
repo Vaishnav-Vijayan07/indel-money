@@ -11,26 +11,26 @@ import Link from 'next/link';
 const slides = [
     {
         image: "/images/life04.webp",
-        alt: "Indel Money Banner 1",
+        alt: "Life at Indel Image 1",
         p: "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute...",
-        mHd: "Indel Money Limited is bestowed as",
+        h5: "Indel Money Limited is bestowed as",
         span: "GREAT PLACE TO WORK’",
         link: "/",
     },
     {
         image: "/images/life04.webp",
-        alt: "Indel Money Banner 2",
+        alt: "Life at Indel Image 2",
         p: "We are committed to financial excellence and providing reliable services for our customers.",
-        h5: "Building a brighter financial future",
-        span: "TOGETHER",
+        h5: "Indel Money Limited is bestowed as",
+        span: "GREAT PLACE TO WORK’",
         link: "/",
     },
     {
         image: "/images/life04.webp",
-        alt: "Indel Money Banner 3",
+        alt: "Life at Indel Image 3",
         p: "With a legacy of trust and innovation, we empower individuals and businesses alike.",
-        h5: "Your reliable financial partner",
-        span: "FOR LIFE",
+        h5: "Indel Money Limited is bestowed as",
+        span: "GREAT PLACE TO WORK’",
         link: "/",
     },
 ];
@@ -46,8 +46,8 @@ export default function LifeIndelSlider() {
             pagination={{ clickable: true }}
             className="w-full lifeSlide pb-[30px]"
         >
-            {slides.map((slide, index) => (  
-                <SwiperSlide key={index}>  
+            {slides.map((slide, index) => (
+                <SwiperSlide key={index}>
                     <Link
                         href={slide.link}
                         className="block w-full h-full rounded-[24px] bg-[#E6EDF7] overflow-hidden p-[20px] pl-[25px]"
@@ -56,7 +56,7 @@ export default function LifeIndelSlider() {
                             {/* Text Content Section */}
                             <div className="2xl:w-[calc(100%-200px)] xl:w-[calc(100%-150px)] lg:w-[calc(100%-100px)] sm:w-[calc(100%-100px)] w-full 2xl:pr-[30px] sm:pr-[20px] sm:pt-0 pt-[20px]">
                                 <h5 className="text-[#1E1E1E] 2xl:text-[23px] xl:text-[18px] sm:text-[16px] text-[15px] font-normal leading-normal 2xl:mb-[25px] mb-[15px]">
-                                    {slide.mHd}
+                                    {slide.h5}
                                     <span className="text-base2 uppercase font-medium pl-[5px]">
                                         {slide.span}
                                     </span>
