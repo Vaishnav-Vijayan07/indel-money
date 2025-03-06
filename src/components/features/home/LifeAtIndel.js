@@ -62,6 +62,7 @@ export default function LifeAtIndel() {
               Life at <span>Indel</span>
             </h2>
             <p className="text-sm-1">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry...
             </p>
@@ -73,7 +74,8 @@ export default function LifeAtIndel() {
                 // autoplay={{ delay: 3000 }}
                 autoplay={false}
                 pagination={{ clickable: true }}
-                className="lifeSlide mb-[30px]"
+              
+                className="w-full lifeSlide pb-[30px]"
               >
                 {[...Array(5)].map((_, index) => (
                   <SwiperSlide key={index} className="">
@@ -133,6 +135,7 @@ export default function LifeAtIndel() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
