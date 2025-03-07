@@ -54,7 +54,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${amino.variable} font-amino min-h-screen flex flex-col`}>
+      <body className={`${amino.variable} font-amino min-h-screen flex flex-col antialiased`}>
         <Header />
         <main className="flex-grow">
         {children}
