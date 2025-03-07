@@ -12,7 +12,7 @@ export default function DreamsToReality() {
 
 
   return (
-    <section className="w-full 2xl:pt-[200px] 2xl:pb-[60px] md:pt-[60px] md:pb-[30px] pt-[40px] pb-[20px]">
+    <section className="w-full 2xl:pt-[100px] 2xl:pb-[60px] md:pt-[60px] md:pb-[30px] pt-[40px] pb-[20px]">
       <div className="container">
         <div className="flex w-full flex-wrap">
           <div className="2xl:w-[calc(100%-700px)] xl:w-[calc(100%-570px)] lg:w-[calc(100%-450px)] md:w-full mb-4">
