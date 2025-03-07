@@ -34,20 +34,10 @@ export default function Header() {
                 <NavMenu />
               </div>
               <div>
-                <Link href={"/"} className="group flex items-center gap-1">
-                  <span>
-                    <Image src={"/images/icon-map.svg"} width={15} height={15} alt="map" className="w-[10px] h-[auto] 2xl:w-[14px] block" />
-                  </span>
-                  <span className="text-header-sm group-hover:text-base2 transition-color duration-300">Branch Locator</span>
-                </Link>
+                <ContactBox href="/" src="/images/icon-map.svg" title="Branch Locator" alt="location" />
               </div>
               <div>
-                <Link href={"tel:18004253990"} className="group flex items-center gap-1">
-                  <span>
-                    <Image src={"/images/icon-call.svg"} width={15} height={15} alt="call" className="w-[10px] h-[auto] 2xl:w-[14px] block" />
-                  </span>
-                  <span className="text-header-sm group-hover:text-base2 transition-color duration-300">1800 4253 990</span>
-                </Link>
+                <ContactBox href="tel:18004253990" src="/images/icon-call.svg" title="1800 4253 990" alt="call" />
               </div>
               <div>
                 <Link href={"/"} className="w-[10px] lg:w-[14px] 2xl:w-[18px] h-auto block transition-transform duration-300 hover:scale-105">
@@ -97,6 +87,18 @@ export default function Header() {
       </div>
     </header>
   );
+}
+
+
+export function ContactBox({ href, src, title, alt }) {
+  return (
+    <a href={href} className="group flex items-center gap-1">
+      <span>
+        <Image src={src} width={15} height={15} alt={alt} className="w-[10px] h-[auto] 2xl:w-[14px] block" />
+      </span>
+      <span className="text-header-sm group-hover:text-base2 transition-color duration-300">{title}</span>
+    </a>
+  )
 }
 
 

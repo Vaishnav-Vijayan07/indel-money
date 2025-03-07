@@ -108,11 +108,6 @@
 
 }
 
-.conterTxt span {
-  font-weight: 400;
-  color: #000;
-}
-
 @layer components {
   .btn {
     font-size: 0.6rem;
@@ -175,6 +170,13 @@
     color: #000;
   }
 
+  .text-sm-1 {
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: #000;
+  }
+
   .text-header-sm {
     font-size: 12px;
     line-height: 1;
@@ -182,11 +184,18 @@
     color: #000;
   }
 
-  .text-sm-1 {
-    font-size: 12px;
-    line-height: 1.4;
-    font-weight: 400;
+  .text-footer-1 {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 500;
     color: #000;
+  }
+
+  .text-footer-2 {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 400;
+    color: rgba(0,0,0,0.8);
   }
 
   @media (min-width: 640px) {
@@ -212,11 +221,19 @@
       font-size: 30px;
     }
 
+    .text-sm-1 {
+      font-size: 14px;
+    }
+
     .text-header-sm {
       font-size: 12px;
     }
 
-    .text-sm-1 {
+    .text-footer-1 {
+      font-size: 18px;
+    }
+
+    .text-footer-2 {
       font-size: 14px;
     }
   }
@@ -236,11 +253,19 @@
       font-size: 48px;
     }
 
+    .text-sm-1 {
+      font-size: 16px;
+    }
+
     .text-header-sm {
       font-size: 16px;
     }
 
-    .text-sm-1 {
+    .text-footer-1 {
+      font-size: 22px;
+    }
+
+    .text-footer-2 {
       font-size: 16px;
     }
   }
@@ -269,6 +294,7 @@
   .heroSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 3px solid #ee3824;
   }
+
   .lifeSlide {
     --swiper-pagination-bottom: 20px;
     --swiper-pagination-color: #17479E;
@@ -288,6 +314,7 @@
     right: 0;
     margin: auto;
   }
+
   .lifeSlide .swiper-slide {
     height: auto !important;
 
