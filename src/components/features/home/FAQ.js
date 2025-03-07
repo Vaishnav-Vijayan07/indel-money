@@ -7,7 +7,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 export default function FAQ() {
   return (
 
-    <section className="w-full 2xl:pt-[200px] 2xl:pb-[100px] md:pt-[60px] md:pb-[60px] pt-[40px] pb-[40px]">
+    <section className="w-full 2xl:pt-[100px] 2xl:pb-[100px] md:pt-[60px] md:pb-[60px] pt-[40px] pb-[40px]">
       <div className="container">
         <div className="flex flex-wrap">
           <div className="w-[550px]">
@@ -26,24 +26,24 @@ export default function FAQ() {
                     w-full max-w-[150px] lg:h-[50px] h-[45px] 
                     rounded-full bg-base2 text-white 
                     font-medium transition-all duration-300 overflow-hidden hover:bg-base1"
-                > 
-                 <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px] ">
+                >
+                  <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px] ">
                     VIEW ALL
                   </span>
-                           
+
                 </Link>
               </div>
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
-                  <AccordionTrigger>What is Next.js?</AccordionTrigger>
-                  <AccordionContent>
-                    Next.js is a React framework that enables server-side rendering and static site generation.
+                  <AccordionTrigger className="font-medium text-black text-[1.25rem] cursor-pointer hover:no-underline">There are many variations of passages of Lorem Ipsum available?</AccordionTrigger>
+                  <AccordionContent className="font-normal text-[18px]">
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
-                  <AccordionTrigger>What is Tailwind CSS?</AccordionTrigger>
-                  <AccordionContent>
-                    Tailwind CSS is a utility-first CSS framework for rapidly building modern web designs.
+                  <AccordionTrigger className="font-medium text-black text-[1.25rem] cursor-pointer hover:no-underline">If you are going to use a passage of Lorem Ipsum, you need to be sure?</AccordionTrigger>
+                  <AccordionContent className="font-normal text-[18px]">
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>

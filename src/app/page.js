@@ -1,6 +1,5 @@
 import React from "react";
 import HeroBanner from "@/components/features/home/HeroBanner";
-import MoneyDeals from "../components/features/home/MoneyDeals";
 import DreamsToReality from "../components/features/home/DreamsToReality";
 import GoldLoanCalculator from "../components/features/home/GoldLoanCalculator";
 import LifeAtIndel from "../components/features/home/LifeAtIndel";
@@ -21,14 +20,9 @@ export default function Home() {
 
       {/* Dreams to Reality contents*/}
       <DreamsToReality />
+
       {/* Gold loan calculator contents*/}
-
       <GoldLoanCalculator />
-
-      {/* Smart Money Deals contents*/}
-      <MoneyDeals />
-
-
 
       {/* Life at Indel contents*/}
       <LifeAtIndel />
@@ -36,11 +30,11 @@ export default function Home() {
       {/* Latest Updates contents*/}
       <LatestUpdates />
 
-      {/* Innovations*/}
-      <Innovations />
-
       {/* Trusted investment contents*/}
       <TrustedInvestment />
+
+      {/* Innovations*/}
+      <Innovations />
 
       {/* Branch locator contents*/}
       <BranchLocator />

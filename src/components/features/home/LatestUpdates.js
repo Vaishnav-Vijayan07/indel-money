@@ -49,7 +49,7 @@ export default function LatestUpdates() {
           <div className="w-1/2 p-8">
             <div className="flex justify-between items-center gap-2 mb-[10px] xl:mb-[15px] 2xl:mb-[20px]">
               <h3 className="text-sm sm:text-lg md:text-xl xl:text-4xl 2xl:text-5xl text-black font-medium">Latest Updates</h3>
-              <Link href="/" className="text-sm font-bold flex items-center">
+              <Link href="/" className="text-sm font-bold flex items-center hover:text-base2 transition-color duration-300">
                 VIEW ALL
                 <Image
                   src="/images/icon-right.svg"
@@ -60,7 +60,7 @@ export default function LatestUpdates() {
                 />
               </Link>
             </div>
-            <LatestUpdatesSlide slides={slides.slice(1)} />
+            <LatestUpdatesSlide className={"relative lg:before:[''] lg:before:block lg:before:absolute lg:before:bottom-0 lg:before:right-0 before:w-[calc(100%-276px-1rem)] before:2xl:w-[calc(100%-320px-1rem)] before:h-[1px] before:bg-[#a8a8a8]"} slides={slides.slice(1)} />
           </div>
           <div className="w-1/2">
             {/* Show only the first object */}

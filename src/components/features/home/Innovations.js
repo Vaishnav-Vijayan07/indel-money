@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Innovations() {
     return (
-        <section className="w-full 2xl:pt-[200px] 2xl:pb-[128px] md:pt-[60px] md:pb-[30px] pt-[40px] pb-[20px]">
+        <section className="w-full 2xl:pt-[100px] 2xl:pb-[60px] md:pt-[60px] md:pb-[30px] pt-[40px] pb-[20px]">
             <div className="container">
                 <div className="downldBx rounded-[36px] bg-[#CAE5F4] 2xl:px-[85px] lg:px-[45px] px-[30px] h-full w-full" >
                     <div className="flex flex-wrap relative  h-full w-full 2xl:py[60px] lg:py-[40px] py-[25px]">
