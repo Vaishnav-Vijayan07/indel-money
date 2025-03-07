@@ -69,7 +69,6 @@
   --color-base3: #b7d0ff;
   --color-base4: #114e87;
 
-
   /* 1152px, vs default 1536px */
   --container-padding: 1.5rem;
   /* Optional: Custom padding */
@@ -170,7 +169,7 @@
     color: #000;
   }
 
-  .text-sm-1 {
+  .text-sm-1, p {
     font-size: 12px;
     line-height: 1.4;
     font-weight: 400;
@@ -221,7 +220,7 @@
       font-size: 30px;
     }
 
-    .text-sm-1 {
+    .text-sm-1, p {
       font-size: 14px;
     }
 
@@ -253,7 +252,7 @@
       font-size: 48px;
     }
 
-    .text-sm-1 {
+    .text-sm-1, p {
       font-size: 16px;
     }
 

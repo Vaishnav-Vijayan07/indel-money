@@ -60,7 +60,7 @@ export default function LatestUpdates() {
                 />
               </Link>
             </div>
-            <LatestUpdatesSlide slides={slides.slice(1)} />
+            <LatestUpdatesSlide className={"relative lg:before:[''] lg:before:block lg:before:absolute lg:before:bottom-0 lg:before:right-0 before:w-[calc(100%-276px-1rem)] before:2xl:w-[calc(100%-320px-1rem)] before:h-[1px] before:bg-[#a8a8a8]"} slides={slides.slice(1)} />
           </div>
           <div className="w-1/2">
             {/* Show only the first object */}

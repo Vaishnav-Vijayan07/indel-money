@@ -22,7 +22,7 @@ export default function LifeAtIndel() {
       <div className="container">
         <div className="flex flex-wrap items-center lg:-mx-[20px] xl:-mx-[30px] 2xl:-mx-[35px]">
           <div className="w-full mb-[15px] lg:mb-0 lg:w-1/2 lg:px-[20px] xl:px-[30px] 2xl:px-[35px]">
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap 2xl:h-[625px] xl:h-[450px] lg:h-[405px] h-[auto]">
               <div className="w-4/10">
                 {images.slice(0, 2).map((item, index) => (
                   <ImageBox
@@ -83,7 +83,7 @@ export function ImageBox({ item, className }) {
       className={`${className} w-full p-1 sm:p-2`}
     >
       <div
-        className={`${className} group w-full h-full rounded-[35px] overflow-hidden`}
+        className={`${className} group w-full h-full xl:rounded-[35px] md:rounded-[28px] rounded-[20px] overflow-hidden`}
       >
         <Image
           src={item.src}
