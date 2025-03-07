@@ -45,13 +45,13 @@ export default function HomeSlider() {
             loop={true}
             className="heroSlide h-[calc(100vh-(var(--header-y)+var(--marquee-y)))]"
         >
-            {slides.map((slide, index) => (
+            {slides?.map((item, index) => (
                 <SwiperSlide key={index} className="relative z-0 before:absolute before:inset-0 before:block before:bg-gradient-to-r before:from-[rgba(0,0,0,0.6)] before:to-transparent before:w-full before:h-full">
-                    <Image src={slide.image} width={1920} height={1080} alt={slide.alt} className="w-full h-full object-cover" />
+                    <Image src={item?.image} width={1920} height={1080} alt={item?.alt} className="w-full h-full object-cover" />
                     <div className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                         <div className="max-w-[576px]">
-                            <h1 className="text-5xl capitalize font-medium font-amino text-white mb-6"><span className="text-base2 font-bold">{slide.title1}</span> {slide.title2}</h1>
-                            <Link href={slide.link} className="btn btn-base2 max-w-[80px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[160px]">
+                            <h1 className="text-5xl capitalize font-medium font-amino text-white mb-6"><span className="text-base2 font-bold">{item?.title1}</span> {item?.title2}</h1>
+                            <Link href={item?.link} className="btn btn-base2 max-w-[80px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[160px]">
                                 KNOW MORE
                             </Link>
                         </div>
