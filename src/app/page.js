@@ -7,7 +7,7 @@ import LifeAtIndel from "../components/features/home/LifeAtIndel";
 import LatestUpdates from "../components/features/home/LatestUpdates";
 import TrustedInvestment from "../components/features/home/TrustedInvestment";
 import BranchLocator from "../components/features/home/BranchLocator";
-import Innovations from "../components/features/home/Innovations"; 
+import Innovations from "../components/features/home/Innovations";
 
 import FAQ from "../components/features/home/FAQ";
 
@@ -21,14 +21,14 @@ export default function Home() {
 
       {/* Dreams to Reality contents*/}
       <DreamsToReality />
-     {/* Gold loan calculator contents*/}
-     
-     <GoldLoanCalculator />
+      {/* Gold loan calculator contents*/}
+
+      <GoldLoanCalculator />
 
       {/* Smart Money Deals contents*/}
       <MoneyDeals />
 
-     
+
 
       {/* Life at Indel contents*/}
       <LifeAtIndel />
@@ -46,7 +46,7 @@ export default function Home() {
       <BranchLocator />
 
       {/* faq contents */}
-      {/* <FAQS /> */}
+      <FAQS />
     </>
   );
 }
