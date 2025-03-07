@@ -30,7 +30,7 @@ export default function FAQ() {
                   <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px] ">
                     VIEW ALL
                   </span>
-
+  
                 </Link>
               </div>
               <Accordion type="single" collapsible className="w-full">
