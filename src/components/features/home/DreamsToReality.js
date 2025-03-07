@@ -1,15 +1,18 @@
-"use client";
+
 import Image from "next/image";
-import React, { useRef } from "react";
-import CountUp from "react-countup";
 import Link from "next/link";
-import { useInView } from "react-intersection-observer";
+import CounterBox from "./CounterBox";
 export default function DreamsToReality() {
-  const { ref, inView } = useInView({ triggerOnce: true }); // Detect when the section enters the viewport
+  const counters = [
+    { end: 30, suffix: "+", text: "Backed by years of experience" },
+    { end: 300, suffix: "+", text: "Over 300 Convenient Locations Across India" },
+    { end: 1, suffix: "Million +", text: "Trusted by millions, our financial services" },
+    { end: 1700, suffix: "+", text: "Trusted, Skilled Employees Committed to Excellence" },
+  ];
 
 
   return (
-    <section className="w-full 2xl:pt-[200px] 2xl:pb-[128px] md:pt-[60px] md:pb-[30px] pt-[40px] pb-[20px]">
+    <section className="w-full 2xl:pt-[200px] 2xl:pb-[60px] md:pt-[60px] md:pb-[30px] pt-[40px] pb-[20px]">
       <div className="container">
         <div className="flex w-full flex-wrap">
           <div className="2xl:w-[calc(100%-700px)] xl:w-[calc(100%-570px)] lg:w-[calc(100%-450px)] md:w-full mb-4">
@@ -47,12 +50,12 @@ export default function DreamsToReality() {
                     rounded-full bg-base1 text-white 
                     font-medium transition-all duration-300 overflow-hidden shadow-lg"
               >
-             
+
                 <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px]">
                   Our Story
                 </span>
 
- 
+
                 <div
                   className="relative z-10 flex items-center justify-center 
                       w-[35px] h-[35px] lg:w-[40px] lg:h-[40px] 2xl:w-[48px] 2xl:h-[48px] 
@@ -67,16 +70,10 @@ export default function DreamsToReality() {
                       fill="currentColor"
                     />
                   </svg>
+                 
+
                 </div>
               </Link>
-
-
-
-
-
-
-
-
             </div>
           </div>
           <div className="2xl:w-[700px] xl:w-[570px] lg:w-[450px]  w-full   lg:pl-[60px] 2xl:pl-[120px] lg:m-0 m-auto relative z-0">
@@ -90,64 +87,21 @@ export default function DreamsToReality() {
         </div>
 
 
+        {/* counter section */}
 
         <div
           className="w-full h-full mt-[45px] xl:p-[35px] p-[25px] 2xl:px-[75px] xl:px-[45px] px-[35px] overflow-hidden rounded-[28px] 
-            bg-[linear-gradient(156deg,rgba(23,71,158,0.15)_6%,rgba(198,59,59,0.15)_91%)]"
-          ref={ref} // Attach ref here to detect visibility
+          bg-[linear-gradient(156deg,rgba(23,71,158,0.15)_6%,rgba(198,59,59,0.15)_91%)]"
         >
-          {inView && ( // Start animation only when section enters view
-            <div className="flex flex-wrap w-full justify-center lg:text-left text-center">
-              <div className="lg:w-[calc(100%/4)] md:w-[calc(100%/3)] sm:w-[calc(100%/2)] p-2 relative max-lg:before:hidden before:content-[''] before:absolute before:top-0 before:m-auto  before:bottom-0 before:right-0 before:w-[4px] before:h-[60px] before:bg-gradient-to-r before:from-[#17479E] before:to-[#EE3824] before:rounded-full">
-
-                <div className="w-full h-full lg:pl-[25px]">
-                  <div className="text-title1 conterTxt text-black font-normal">
-                    <CountUp end={30} duration={20} />+
-                  </div>
-                  <div className="text-[14px] 2xl:[text-[16px]] text-black font-medium lg:max-w-[60%]">
-                    Backed by years of experience,
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:w-[calc(100%/4)] md:w-[calc(100%/3)] sm:w-[calc(100%/2)] p-2 relative before:content-[''] max-lg:before:hidden  before:absolute before:top-0 before:bottom-0 before:m-auto before:right-0 before:w-[4px] before:h-[60px] before:bg-gradient-to-r before:from-[#17479E] before:to-[#EE3824] before:rounded-full">
-
-                <div className="w-full h-full lg:pl-[30px] 2xl:pl-[50px]">
-                  <div className="text-title1 conterTxt text-black font-normal">
-                    <CountUp end={300} duration={2} />+
-                  </div>
-                  <div className="text-[14px] 2xl:[text-[16px]] text-black font-medium lg:max-w-[80%]">
-                    Over 300 Convenient Locations Across India
-                  </div>
-                </div>
-              </div>
-              <div className="lg:w-[calc(100%/4)] md:w-[calc(100%/3)] sm:w-[calc(100%/2)] p-2 relative before:content-[''] max-lg:before:hidden  before:absolute before:top-0 before:bottom-0 before:m-auto before:right-0 before:w-[4px] before:h-[60px] before:bg-gradient-to-r before:from-[#17479E] before:to-[#EE3824] before:rounded-full">
-
-                <div className="w-full h-full  lg:pl-[30px] 2xl:pl-[50px]">
-                  <div className="text-title1 conterTxt text-black font-normal">
-                    <CountUp end={1} duration={10} />Million+
-                  </div>
-                  <div className="text-[14px] 2xl:[text-[16px]] text-black font-medium lg:max-w-[80%]">
-                    Trusted by millions, our financial services
-                  </div>
-                </div>
-              </div>
-              <div className="lg:w-[calc(100%/4)] md:w-[calc(100%/3)] sm:w-[calc(100%/2)] p-2 relative">
-
-                <div className="w-full h-full lg:pl-[30px] 2xl:pl-[50px]">
-                  <div className="text-title1 conterTxt text-black font-normal">
-                    <CountUp end={1700} duration={2} />+
-                  </div>
-                  <div className="text-[14px] 2xl:[text-[16px]] text-black font-medium max-w-[100%] xl:max-w-[80%]">
-                    Trusted, Skilled Employees Committed to Excellence
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          <div className="flex flex-wrap w-full justify-center lg:text-left text-center">
+            {counters.map((item, index) => (
+              <CounterBox key={index} {...item} showDivider={index < 3} />
+            ))}
+          </div>
         </div>
 
+
       </div>
-    </section>
+    </section >
   )
 }
