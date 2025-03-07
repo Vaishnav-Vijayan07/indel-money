@@ -31,7 +31,7 @@ export default function TrustedInvestment() {
             <div className="text-sm-1 mb-[15px] xl:mb-[20px]">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
             </div>
-            <ul className="list-disc pl-[10px] space-y-2 marker:text-red-600 marker:text-[20px] marker:content-['•']">
+            <ul className="list-disc pl-[10px] space-y-1 lg:space-y-2 marker:text-red-600 marker:text-[20px] marker:content-['•']">
               <li className="text-[#323232] pl-[15px] text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[20px]">Listed in NSE/BSE</li>
               <li className="text-[#323232] pl-[15px] text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[20px]">Listed in stock market</li>
               <li className="text-[#323232] pl-[15px] text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[20px]">Company total revenue: 500cr +</li>
