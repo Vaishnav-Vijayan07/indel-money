@@ -34,7 +34,7 @@ export default function FAQ() {
                 </Link>
               </div>
               <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
+                <AccordionItem value="item-1"> 
                   <AccordionTrigger className="font-medium text-black text-[1.25rem] cursor-pointer hover:no-underline">There are many variations of passages of Lorem Ipsum available?</AccordionTrigger>
                   <AccordionContent className="font-normal text-[18px]">
                     Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
