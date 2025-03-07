@@ -16,7 +16,7 @@ export default function Header() {
     <header className="w-full relative z-99 flex items-center" style={{ height: "var(--header-y)" }}>
       <div className="container">
         <div className="flex items-center">
-          <div className="w-[60px] xl:w-[100px] 2xl:w-[140px]">
+          <div className="w-[60px] xl:w-[100px] 2xl:w-[120px] 3xl:w-[140px">
             <Link href="/" className="inline-block transition-transform duration-300 hover:scale-105">
               <Image
                 src="/icons/logo_sm.svg"
@@ -28,8 +28,8 @@ export default function Header() {
               />
             </Link>
           </div>
-          <nav className="w-[calc(100%-60px)] xl:w-[calc(100%-100px)] 2xl:w-[calc(100%-140px)] flex justify-end">
-            <div className="flex items-center gap-[8px] xl:gap-[12px] 2xl:gap-[14px]">
+          <nav className="w-[calc(100%-60px)] xl:w-[calc(100%-100px)] 2xl:w-[calc(100%-120px)] 3xl:w-[calc(100%-140px)] flex justify-end">
+            <div className="flex items-center gap-[8px] xl:gap-[10px] 2xl:gap-[14px] 3xl:gap-[14px]">
               <div>
                 <NavMenu />
               </div>
@@ -51,7 +51,7 @@ export default function Header() {
               </div>
               <div>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[75px] xl:min-w-[100px] 2xl:min-w-[140px] cursor-pointer">
+                  <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[75px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px] cursor-pointer">
                     quick pay
                     <Image
                       src="/images/icon-dropdown.svg"
@@ -77,7 +77,7 @@ export default function Header() {
                 </DropdownMenu>
               </div>
               <div>
-                <Link href={"/"} className="btn btn-base2 min-w-[80px] lg:min-w-[75px] xl:min-w-[100px] 2xl:min-w-[140px]">
+                <Link href={"/"} className="btn btn-base2 min-w-[80px] lg:min-w-[75px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px]">
                   Contact Us
                 </Link>
               </div>
@@ -94,7 +94,7 @@ export function ContactBox({ href, src, title, alt }) {
   return (
     <a href={href} className="group flex items-center gap-1">
       <span>
-        <Image src={src} width={15} height={15} alt={alt} className="w-[10px] h-[auto] 2xl:w-[14px] block" />
+        <Image src={src} width={15} height={15} alt={alt} className="w-[10px] h-[auto] lg:w-[12px]3xl:w-[14px] block" />
       </span>
       <span className="text-header-sm group-hover:text-base2 transition-color duration-300">{title}</span>
     </a>
