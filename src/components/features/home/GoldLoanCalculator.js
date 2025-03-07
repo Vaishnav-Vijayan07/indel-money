@@ -9,7 +9,7 @@ export default function GoldLoanCalculator() {
     { title: "Step 3", text: "After evaluation, our officer will sanction the loan", img: "/images/step3.webp" },
   ];
   return (
-    <section className="w-full 2xl:pt-[60px] 2xl:pb-[60px] md:pt-[30px] md:pb-[30px] pt-[20px] pb-[20px]">
+    <section className="w-full 2xl:pt-[50px] 2xl:pb-50px] md:pt-[30px] md:pb-[30px] pt-[20px] pb-[20px]">
       <div className="container">
         <div className="text-title1 font-normal">Our Easy Step <span className="font-bold text-base2" >Gold Loan</span> </div>
 

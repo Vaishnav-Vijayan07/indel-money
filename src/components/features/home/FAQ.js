@@ -17,17 +17,17 @@ export default function FAQ() {
           </div>
           <div className="w-[calc(100%-550px)] pl-[70px]">
             <div className="contentBx w-full">
-              <div className="text-bold text-black mb-2 text-[20px] uppercase">FAQ</div>
-              <div className="flex flex-wrap justify-between">
-                <div className="text-bold text-black mb-2 uppercase">Frequently asked Questions</div>
+              <div className="font-bold text-black mb-2 text-[20px] uppercase">FAQ</div>
+              <div className="flex justify-between pb-[20px] border-b-1 border-[rgba(0,0,0,0.68)]">
+                <div className="text-black mb-2 text-title1">Frequently asked Questions</div>
                 <Link
                   href="#"
                   className="relative group flex items-center justify-center  
                     w-full max-w-[150px] lg:h-[50px] h-[45px] 
                     rounded-full bg-base2 text-white 
-                    font-medium transition-all duration-300 overflow-hidden"
+                    font-medium transition-all duration-300 overflow-hidden hover:bg-base1"
                 > 
-                 <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px]">
+                 <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px] ">
                     VIEW ALL
                   </span>
                            
