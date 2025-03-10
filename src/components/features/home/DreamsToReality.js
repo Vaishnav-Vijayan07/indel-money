@@ -24,7 +24,7 @@ export default function DreamsToReality() {
     >
       <div className="container">
         <div className="flex w-full flex-wrap">
-          <div className="3xl:w-[calc(100%-700px)] xl:w-[calc(100%-530px)] lg:w-[calc(100%-500px)] md:w-full mb-4">
+          <div className="3xl:w-[calc(100%-700px)] xl:w-[calc(100%-530px)]   md:w-full mb-4">
             <div className="3xl:text-[20px] xl:text-[16px] lg:text-[15px] md:text-[13px] text-[12px]">
               Welcome to <span className="text-base4 ">INDEL MONEY</span>
             </div>
@@ -75,7 +75,7 @@ export default function DreamsToReality() {
               </div>
             </Link>
           </div>
-          <div className="3xl:w-[700px] xl:w-[530px] lg:w-[500px] w-full lg:pl-[60px] 2xl:pl-[120px] lg:m-0 m-auto relative z-0">
+          <div className="3xl:w-[700px] xl:w-[530px]  w-full xl:pl-[60px] 2xl:pl-[120px] lg:m-0 m-auto relative z-0">
             <div className="w-full  relative z-0">
               <div className="w-full h-full rounded-[20px] overflow-hidden group z-20">
                 <Image src={"/images/aboutImg.webp"} alt="aboutImg" width={610} height={535} className="w-full h-full  object-cover duration-450 transition-all group hover:scale-[1.1]  " />

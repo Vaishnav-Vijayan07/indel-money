@@ -3,19 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Innovations() {
     return (
-        <section className="w-full 2xl:pt-[100px] 2xl:pb-[60px] md:pt-[60px] md:pb-[30px] pt-[40px] pb-[20px]">
+        <section className="w-full 2xl:pt-[80px] 2xl:pb-[30px] md:pt-[30px] md:pb-[30px] pt-[40px] pb-[20px]">
             <div className="container">
                 <div className="downldBx rounded-[36px] bg-[#CAE5F4] 2xl:px-[85px] lg:px-[45px] px-[30px] h-full w-full" >
                     <div className="flex flex-wrap relative  h-full w-full 2xl:py[60px] lg:py-[40px] py-[25px]">
                         {/* leftSec */}
-                        <div className="2xl:max-w-[750px] xl:max-w-[650px] max-w-[550px] max-lg:max-w-full">
+                        <div className="2xl:max-w-[750px] xl:max-w-[650px] max-w-[450px] max-lg:max-w-full">
                             {/* titleSec */}
                             <div className="flex flex-wrap mb-[15px] lg:mb[20px] 2xl:mb[30px]">
-                                <div className="tileWrap 2xl:w-[410px]  xl:w-[350px] lg:w-[250px] w-full lg:border-r-1 lg:border-r-[rgba(0,0,0,0.77)]  h-full">
+                                <div className="tileWrap 2xl:w-[410px] lg:w-[200px] w-full lg:border-r-1 lg:border-r-[rgba(0,0,0,0.77)]  h-full">
                                     <div className="text-title1 max-w-[350px] leading-tight ">Innovations
                                         and <span>Features</span></div>
                                 </div>
-                                <div className="2xl:w-[calc(100%-410px] xl:w-[calc(100%-350px] lg:w-[calc(100%-250px] xl:pl-[50px] lg:pl-[30px] max-lg:w-full max-lg:mt-3">
+                                <div className="2xl:w-[calc(100%-410px] xl:w-[calc(100%-350px] lg:w-[calc(100%-200px] xl:pl-[50px] lg:pl-[30px] max-lg:w-full max-lg:mt-3">
                                     <ul>
                                         <li className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]" >Mobile app</li>
                                         <li className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]" >⁠Door step assistance</li>

@@ -38,22 +38,22 @@ export default function FAQ() {
     <section className="w-full 2xl:pt-[100px] 2xl:pb-[100px] md:pt-[60px] md:pb-[60px] pt-[40px] pb-[40px]">
       <div className="container">
         <div className="flex flex-wrap">
-          <div className="2xl:w-[550px] xl:w-[485px] lg:w-[420px] md:w-[380px] max-lg:mb-5">
+          <div className="2xl:w-[550px] xl:w-[485px] lg:w-[350px]  w-full max-lg:mb-5">
             <div className="w-full   overflow-hidden rounded-[35px]">
-              <Image src={"/images/faqImg.webp"} alt="aboutImg" width={550} height={610} className="w-full h-full object-cover duration-450 transition-all group hover:scale-[1.1]  " />
+              <Image src={"/images/faqImg.webp"} alt="aboutImg" width={550} height={610} className="w-full h-full object-cover duration-450 transition-all group hover:scale-[1.1] " />
             </div>
           </div>
-          <div className="2xl:w-[calc(100%-550px)] xl:w-[calc(100%-485px)] lg:w-[calc(100%-420px)] md:w-[calc(100%-380px)] 2xl:pl-[70px] lg:pl-[50px] md:pl-[30px]">
+          <div className="2xl:w-[calc(100%-550px)] xl:w-[calc(100%-485px)] lg:w-[calc(100%-350px)] w-full 2xl:pl-[70px] xl:pl-[50px] lg:pl-[30px]">
             <div className="contentBx w-full">
-              <div className="font-bold text-black mb-2 text-[20px] uppercase">FAQ</div>
+              <div className="font-bold text-black mb-2 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">FAQ</div>
               <div className="flex items-center justify-between mb-5 pb-[20px] border-b-1 border-[rgba(0,0,0,0.68)]">
                 <div className="text-black text-title1">Frequently asked Questions</div>
                 <Link
                   href="#"
                   className="relative group flex items-center justify-center  
-                    w-full 2xl:max-w-[150px] max-w-[130px] 2xl:h-[50px] h-[45px] 
+                    w-full 2xl:max-w-[150px] lg:max-w-[130px] max-w-[100px] 2xl:h-[50px] lg:h-[45px] h-[35px]
                     rounded-full bg-base2 text-white 
-                    font-bold transition-all duration-300 overflow-hidden hover:bg-base1 2xl:text-[18px] lg:text-[14px]"  >
+                    font-bold transition-all duration-300 overflow-hidden hover:bg-base1 2xl:text-[18px] lg:text-[14px] text-[12px] "  >
                   <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px] ">
                     VIEW ALL
                   </span>
@@ -62,7 +62,7 @@ export default function FAQ() {
               </div>
 
               {faqs.map((faq, index) => (
-                <div key={index} className="border-b last:border-none pt-[15px] pb-[10px]">
+                <div key={index} className="border-b last:border-none 2xl:pt-[15px] pt-[10px] pb-[5px] 2xl:pb-[10px]">
                   <button
                     className="flex justify-between w-full items-center font-medium text-left text-black 2xl:text-[1.25rem] xl:text[1rem] cursor-pointer hover:no-underline  transition-all duration-300 pb-[10px]"
                     onClick={() => toggleAccordion(index)}
@@ -75,7 +75,7 @@ export default function FAQ() {
                     )}
                   </button>
                   {openIndex === index && (
-                    <div className="font-normal text-[18px] pb-[10px] transition-all duration-300">{faq.answer}</div>
+                    <div className="font-normal 2xl:text-[18px] xl:text-[16px] text-[14px] pb-[10px] transition-all duration-300">{faq.answer}</div>
                   )}
                 </div>
               ))}
