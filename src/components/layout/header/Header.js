@@ -16,7 +16,7 @@ export default function Header() {
     <header className="w-full relative z-99 flex items-center" style={{ height: "var(--header-y)" }}>
       <div className="container">
         <div className="flex items-center">
-          <div className="w-[60px] xl:w-[100px] 2xl:w-[120px] 3xl:w-[140px">
+          <div className="w-[60px] xl:w-[100px] 2xl:w-[120px] 3xl:w-[140px]">
             <Link href="/" className="inline-block transition-transform duration-300 hover:scale-105">
               <Image
                 src="/icons/logo_sm.svg"

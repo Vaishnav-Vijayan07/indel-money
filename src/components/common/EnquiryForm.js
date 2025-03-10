@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -52,52 +53,95 @@ export default function EnquiryForm() {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <FormField
+                    className=""
                     control={form.control}
                     name="yourName"
                     render={({ field }) => (
-                        <FormItem>
-                            <FormControl>
-                                <Input placeholder="Your Name" {...field} />
+                        <FormItem
+                            className="relative z-0 mb-2 xl:mb-3 3xl:mb-5"
+                        >
+                            <Image src={"/images/enquiry-yourName.svg"}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                style={{
+                                    width: '18px',
+                                    height: 'auto',
+                                }}
+                                className="absolute z-1 top-0 left-[15px] bottom-0 m-auto" alt="yourName"
+                            />
+                            <FormControl className="pl-[40px]">
+                                <Input className="bg-white border-white" placeholder="Your Name" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
                 <FormField
+                    className=""
                     control={form.control}
                     name="contactNumber"
                     render={({ field }) => (
-                        <FormItem>
-                            <FormControl>
-                                <Input placeholder="Contact Number" {...field} />
+                        <FormItem
+                            className="relative z-0 mb-2 xl:mb-3 3xl:mb-5"
+                        >
+                            <Image src={"/images/enquiry-contactNumber.svg"}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                style={{
+                                    width: '18px',
+                                    height: 'auto',
+                                }}
+                                className="absolute z-1 top-0 left-[15px] bottom-0 m-auto" alt="contactNumber"
+                            />
+                            <FormControl className="pl-[40px]">
+                                <Input className="bg-white border-white" placeholder="Contact Number" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
                 <FormField
+                    className=""
                     control={form.control}
                     name="emailAddress"
                     render={({ field }) => (
-                        <FormItem>
-                            <FormControl>
-                                <Input placeholder="Email Address" {...field} />
+                        <FormItem
+                            className="relative z-0 mb-2 xl:mb-3 3xl:mb-5"
+                        >
+                            <Image src={"/images/enquiry-emailAddress.svg"}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                style={{
+                                    width: '18px',
+                                    height: 'auto',
+                                }}
+                                className="absolute z-1 top-0 left-[15px] bottom-0 m-auto" alt="emailAddress"
+                            />
+                            <FormControl className="pl-[40px]">
+                                <Input className="bg-white border-white" placeholder="Email Address" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
-                    />
-                <Select>
-                    <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="1">gold Loan</SelectItem>
-                        <SelectItem value="2">Other Loans</SelectItem>
-                        <SelectItem value="3">Door Step Gold Loan</SelectItem>
-                    </SelectContent>
-                </Select>
-                <Button className="btn btn-base2" type="submit">Submit</Button>
+                />
+                <FormItem
+                    className="relative z-0 mb-2 xl:mb-3 3xl:mb-5"
+                >
+                    <Select>
+                        <SelectTrigger className="w-full bg-white border-white">
+                            <SelectValue placeholder="Select service" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white border-white">
+                            <SelectItem value="1">Gold Loan</SelectItem>
+                            <SelectItem value="2">Other Loans</SelectItem>
+                            <SelectItem value="3">Door Step Gold Loan</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </FormItem>
+                <Button className="btn btn-base2 ml-auto block max-w-[80px] lg:max-w-[75px] xl:max-w-[95px] 2xl:max-w-[115px] 3xl:max-w-[140px]" type="submit">Submit</Button>
             </form>
         </Form>
     )

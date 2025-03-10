@@ -190,8 +190,8 @@ export default function BranchLocationMap() {
     };
 
     return (
-        <div className="flex w-full h-[510px] min-[1551px]:h-[670px] relative z-[1] rounded-2xl overflow-hidden">
-            <div className="w-[calc(100%-430px)] min-[992px]:w-[calc(100%-320px)] min-[1200px]:w-[calc(100%-360px)] min-[1551px]:w-[calc(100%-430px)] relative">
+        <div className="flex w-full h-[510px] 2xl:h-[670px] relative z-[1] rounded-2xl overflow-hidden">
+            <div className="w-[calc(100%-430px)] lg:w-[calc(100%-320px)] xl:w-[calc(100%-360px)] 2xl:w-[calc(100%-430px)] relative">
                 <MapContainer
                     center={mapCenter}
                     zoom={12}
@@ -206,7 +206,7 @@ export default function BranchLocationMap() {
                 </MapContainer>
             </div>
 
-            <div className="w-[430px] min-[992px]:w-[320px)] min-[1200px]:w-[360px)] min-[1551px]:w-[430px] bg-[#17479E] text-white">
+            <div className="w-[430px] lg:w-[320px)] xl:w-[360px)] 2xl:w-[430px] bg-[#17479E] text-white">
                 <h2 className="text-[22px] font-bold pt-[15px] pb-[15px] pl-[30px] pr-[30px] border-solid border border-[rgba(255,255,255,0.80)]">20 Branches Near You</h2>
                 <div className="overflow-y-auto max-h-[calc(100%-65px)]">
                     {branchLocations.map((branch) => (
