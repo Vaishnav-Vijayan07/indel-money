@@ -36,7 +36,7 @@ export default function Innovations() {
                                                 alt="downloadImg"
                                                 width={180}
                                                 height={60}
-                                                className="w-full h-full object-contain"
+                                                className="w-full h-full object-cover duration-450 transition-all group hover:scale-[1.1] "
                                             />
                                         </Link>
                                     </div>
@@ -47,7 +47,7 @@ export default function Innovations() {
                                                 alt="downloadImg"
                                                 width={180}
                                                 height={60}
-                                                className="w-full h-full object-contain"
+                                                className="w-full h-full oobject-cover duration-450 transition-all group hover:scale-[1.1] "
                                             />
                                         </Link>
                                     </div>

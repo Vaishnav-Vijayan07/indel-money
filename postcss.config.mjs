@@ -4,6 +4,11 @@ const config = {
     // tailwindcss: {},
     autoprefixer: {},
   },
+  safelist: [
+    {
+      pattern: /has-.+/,
+    },
+  ],
 };
 export default config;
 

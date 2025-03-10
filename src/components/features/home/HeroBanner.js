@@ -5,7 +5,7 @@ import Marquee from "react-fast-marquee";
 
 export default function HeroBanner() {
   return (
-    <section className="w-full block">
+    <section className="w-full block relative z-0">
       <HomeSlider />
       <div className="w-full h-[var(--marquee-y)] flex flex-wrap items-center bg-[#b7d0ff]">
         <div className="w-[300px] 2xl:w-[320px] 3xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm-1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
@@ -22,9 +22,10 @@ export default function HeroBanner() {
           </Marquee>
         </div>
       </div>
-      <div className="">
+      {/* <div className="w-full h-auto max-w-[576px] bg-white absolute z-1 top-1/2 right-[calc((100%-var(--container-x))/2))]">
+        <div className="text-sm mb-4 3xl:mb-5">Select the type of service you are looking for?</div>
         <EnquiryForm />
-      </div>
+      </div> */}
     </section>
   );
 }
