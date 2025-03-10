@@ -38,12 +38,12 @@ export default function FAQ() {
     <section className="w-full 2xl:pt-[100px] 2xl:pb-[100px] md:pt-[60px] md:pb-[60px] pt-[40px] pb-[40px]">
       <div className="container">
         <div className="flex flex-wrap">
-          <div className="2xl:w-[550px] xl:w-[485px] lg:w-[350px]  w-full max-lg:mb-5">
+          <div className="2xl:w-[550px] xl:w-[450px] lg:w-[350px]  w-full max-lg:mb-5">
             <div className="w-full   overflow-hidden rounded-[35px]">
               <Image src={"/images/faqImg.webp"} alt="aboutImg" width={550} height={610} className="w-full h-full object-cover duration-450 transition-all group hover:scale-[1.1] " />
             </div>
           </div>
-          <div className="2xl:w-[calc(100%-550px)] xl:w-[calc(100%-485px)] lg:w-[calc(100%-350px)] w-full 2xl:pl-[70px] xl:pl-[50px] lg:pl-[30px]">
+          <div className="2xl:w-[calc(100%-550px)] xl:w-[calc(100%-450px)] lg:w-[calc(100%-350px)] w-full 2xl:pl-[70px] xl:pl-[50px] lg:pl-[30px]">
             <div className="contentBx w-full">
               <div className="font-bold text-black mb-2 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">FAQ</div>
               <div className="flex items-center justify-between mb-5 pb-[20px] border-b-1 border-[rgba(0,0,0,0.68)]">
@@ -64,7 +64,7 @@ export default function FAQ() {
               {faqs.map((faq, index) => (
                 <div key={index} className="border-b last:border-none 2xl:pt-[15px] pt-[10px] pb-[5px] 2xl:pb-[10px]">
                   <button
-                    className="flex justify-between w-full items-center font-medium text-left text-black 2xl:text-[1.25rem] xl:text[1rem] cursor-pointer hover:no-underline  transition-all duration-300 pb-[10px]"
+                    className="flex justify-between w-full items-center font-medium text-left text-black 2xl:text-[1.25rem] xl:text[1rem] text-[0.8rem] cursor-pointer hover:no-underline  transition-all duration-300 pb-[10px]"
                     onClick={() => toggleAccordion(index)}
                   >
                     <div className="2xl:w-[calc(100% -33px )] w-[calc(100%-25px)] pr-2">{faq.question}</div>
