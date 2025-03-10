@@ -41,12 +41,31 @@ export default function Header() {
               </div>
               <div>
                 <Link href={"/"} className="w-[10px] lg:w-[14px] 2xl:w-[18px] h-auto block transition-transform duration-300 hover:scale-105">
-                  <Image src={"/images/icon-appStore.svg"} width={18} height={18} alt="app" />
+                  <Image src={"/images/icon-appStore.svg"}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                    alt="app"
+                  />
                 </Link>
               </div>
               <div>
                 <Link href={"tel:18004253990"} className="w-[10px] lg:w-[14px] 2xl:w-[18px] h-auto block transition-transform duration-300 hover:scale-105">
-                  <Image src={"/images/icon-playStore.svg"} width={18} height={18} alt="app" />
+                  <Image
+                    src={"/images/icon-playStore.svg"}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                    alt="app"
+                  />
                 </Link>
               </div>
               <div>
@@ -56,7 +75,11 @@ export default function Header() {
                     <Image
                       src="/images/icon-dropdown.svg"
                       width={11}
-                      height={7}
+                      height={6}
+                      style={{
+                        maxWidth: '100%',
+                        height: 'auto'
+                      }}
                       alt="dropdown"
                       className="ml-1"
                     />

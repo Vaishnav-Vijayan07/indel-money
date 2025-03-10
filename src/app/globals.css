@@ -6,6 +6,7 @@
     --header-y: 80px;
     --marquee-y: 40px;
     --container-x: 100%;
+    --container-padding: 7rem;
   }
 
   @media (min-width: 640px) {
@@ -33,6 +34,7 @@
       /* 576px, vs default 768px */
       --container-x: 64rem;
       --header-y: 60px;
+      --container-padding: 5rem;
     }
   }
 
@@ -44,6 +46,7 @@
       --container-x: 80rem;
       --header-y: 80px;
       --marquee-y: 40px;
+      --container-padding: 7rem;
     }
   }
 
@@ -62,14 +65,18 @@
       /* 960px, vs default 1280px */
       --container-x: 120rem;
       --marquee-y: 50px;
-      --header-y: 100px;
+      --header-y: 100px; 
     }
   }
 
   body {
     font-family: var(--font-amino);
   }
+ 
+
 }
+
+
 
 @theme {
   /* Existing Colors */
@@ -78,8 +85,9 @@
   --color-base3: #b7d0ff;
   --color-base4: #114e87;
 
-  /* 1152px, vs default 1536px */
-  --container-padding: 7rem;
+
+  /* 1280px, vs default 1536px */
+
   /* Optional: Custom padding */
 
   --breakpoint-3xl: 120rem;
@@ -202,7 +210,7 @@
   }
 
   .text-footer-1 {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1;
     font-weight: 500;
     color: #000;
@@ -235,7 +243,7 @@
 
     /* lg */
     .text-title1 {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     .text-sm-1, p {
@@ -247,7 +255,7 @@
     }
 
     .text-footer-1 {
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .text-footer-2 {
@@ -271,7 +279,7 @@
     }
 
     .text-footer-1 {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .text-footer-2 {

@@ -40,7 +40,7 @@ export default function Home() {
       <BranchLocator />
 
       {/* faq contents */}
-      <FAQS />
+      <FAQ />
     </>
   );
 }
