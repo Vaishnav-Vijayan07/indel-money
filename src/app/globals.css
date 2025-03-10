@@ -45,10 +45,9 @@
     :root {
       /* 768px, vs default 1024px */
       --container-x: 80rem;
-      --container-padding: 7rem;
+      --container-padding: 6rem;
       --header-y: 70px;
-      --marquee-y: 40px;
-      --container-padding: 7rem;
+      --marquee-y: 30px;
     }
   }
 
@@ -59,6 +58,7 @@
       /* 960px, vs default 1280px */
       --container-x: 96rem;
       --header-y: 80px;
+      --marquee-y: 40px;
     }
   }
 
@@ -149,14 +149,14 @@
   @media (min-width: 1280px) {
     .btn {
       font-size: 12px;
-      height: 40px;
+      height: 30px;
     }
   }
 
   @media (min-width: 1536px) {
     .btn {
       font-size: 14px;
-      height: 44px;
+      height: 40px;
     }
   }
 
@@ -243,12 +243,12 @@
 
     /* lg */
     .text-title1 {
-      font-size: 25px;
+      font-size: 32px;
     }
 
     .text-sm-1,
     p {
-      font-size: 14px;
+      font-size: 12px;
     }
 
     .text-header-sm {
