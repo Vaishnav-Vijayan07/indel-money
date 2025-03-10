@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image"; 
+import Image from "next/image";
 export default function GoldLoanCalculator() {
   const steps = [
     { title: "Step 1", text: "Walk in any of our branches with your gold", img: "/images/step1.webp" },
@@ -9,7 +9,7 @@ export default function GoldLoanCalculator() {
     { title: "Step 3", text: "After evaluation, our officer will sanction the loan", img: "/images/step3.webp" },
   ];
   return (
-    <section className="w-full 3xl:pt-[60px] 3xl:pb-[60px] md:pt-[30px] md:pb-[30px] pt-[20px] pb-[20px]">
+    <section className="w-full 2xl:pt-[50px] 2xl:pb-50px] md:pt-[30px] md:pb-[30px] pt-[20px] pb-[20px]">
       <div className="container">
         <div className="text-title1 font-normal">Our Easy Step <span className="font-bold text-base2" >Gold Loan</span> </div>
 
@@ -27,13 +27,12 @@ export default function GoldLoanCalculator() {
                 {/* Arrow - Animated & Hides for last step */}
                 {index !== steps.length - 1 && (
                   <div
-                    className={`absolute 
-                  3xl:right-[calc((-100%-(-155px)))] xl:right-[calc((-100%-(-110px)))] 
-                  lg:right-[calc((-100%-(-80px)))] md:right-[calc((-100%-(-20px)))] right-[calc((-100%-(-70px)))]
-                  3xl:max-w-[280px] xl:max-w-[230px] lg:max-w-[170px] md:max-w-[140px] max-w-[100px] 
+                    className={`absolute 2xl:left-[255px] xl:left-[195px]  lg:left-[155px] md:left-[130px] left-[110px]
+                  
+                  2xl:max-w-[250px] xl:max-w-[180px]   md:max-w-[140px] max-w-[110px] 
                   w-full 
                   ${index % 2 === 1 ? "rotate-x-[-180deg]  top-1/4" : "top-[30px]"}`}
-                    
+
                   >
                     <Image
                       src="/images/ArrowGold.webp"
@@ -47,7 +46,7 @@ export default function GoldLoanCalculator() {
 
                 {/* Step Circle - Animated */}
                 <motion.div
-                  className="3xl:w-[240px] 3xl:h-[240px] xl:w-[200px] xl:h-[200px] lg:w-[180px] lg:h-[180px] w-[100px] h-[100px] 
+                  className="2xl:w-[240px] 2xl:h-[240px] xl:w-[180px] xl:h-[180px] lg:w-[130px] lg:h-[130px] w-[100px] h-[100px] 
                     lg:p-[35px] p-[15px] rounded-full flex items-center justify-center overflow-hidden group 
                      bg-gradient-to-b from-transparent to-[#C0DBFF]"
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -66,7 +65,7 @@ export default function GoldLoanCalculator() {
 
                 {/* Step Info */}
                 <motion.div
-                  className="info mt-[1.9rem] 3xl:max-w-[350px] xl:max-w-[280px] lg:max-w-[220px] max-w-[140px]"
+                  className="info mt-[1.9rem] 3xl:max-w-[350px] xl:max-w-[245px] lg:max-w-[220px] max-w-[140px]"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false, amount: 0.3 }}
@@ -88,14 +87,14 @@ export default function GoldLoanCalculator() {
                     {index !== steps.length - 1 && (
                       <motion.div
                         className="border-dashed 3xl:top-[30px] top-[18px] border border-black ml-[40px] h-[1px] w-full absolute 
-                        3xl:left-[calc((100%-230px))] xl:left-[calc((100%-180px))] lg:left-[calc((100%-140px))] 
-                        md:left-[calc((100%-80px))] left-[calc((100%-100px))] before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-[-1px] before:w-[10px] before:h-[10px] before:bg-base1 before:rounded-full"
+                        2xl:left-[calc((100%-90px))] xl:left-[calc((100%-170px))] lg:left-[calc((100%-170px))] 
+                        md:left-[calc((100%-65px))] left-[calc((100%-100px))] before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-[-1px] before:w-[10px] before:h-[10px] before:bg-base1 before:rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: "100%" }}
                         viewport={{ once: false, amount: 0.3 }}
                         transition={{ duration: 0.5, delay: index * 0.3 }}
                       >
-                       <span className="w-[20px] h-[20px] rounded-full bg-base1 absolute top-0 right-[-2px] bottom-0 m-auto 
+                        <span className="w-[20px] h-[20px] rounded-full bg-base1 absolute top-0 right-[-2px] bottom-0 m-auto 
                             before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-0 before:right-0 before:w-[10px] before:h-[10px] before:bg-base2 before:rounded-full">
                         </span>
                       </motion.div>
@@ -103,7 +102,7 @@ export default function GoldLoanCalculator() {
                   </div>
 
                   <motion.p
-                    className="text-[#002362] 3xl:text-[1.5rem] xl:text-[1.2rem] lg:text-[1rem] text-[0.8rem] font-medium mt-[1rem]"
+                    className="text-[#002362] 3xl:text-[1.5rem] xl:text-[1rem] text-[0.8rem] font-medium mt-[1rem]"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.3 }}

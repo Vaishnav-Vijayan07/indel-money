@@ -8,7 +8,7 @@ const CounterBox = ({ end, suffix, text, showDivider }) => {
 
     return (
         <motion.div
-            className={`lg:w-[calc(100%/4)] md:w-[calc(100%/3)] sm:w-[calc(100%/2)] p-2 relative ${showDivider
+            className={`lg:w-[calc(100%/4)] md:w-[calc(100%/3)] max-lg:p-2 sm:w-[calc(100%/2)]  relative ${showDivider
                 ? "before:content-[''] before:absolute before:top-0 before:m-auto before:bottom-0 before:right-0 before:w-[4px] before:h-[60px] before:bg-gradient-to-r before:from-[#17479E] before:to-[#EE3824] before:rounded-full max-lg:before:hidden"
                 : ""
                 }`}
@@ -26,7 +26,7 @@ const CounterBox = ({ end, suffix, text, showDivider }) => {
                 <div className="text-title1 conterTxt font-medium">
                     <CountUp start={start ? 0 : null} end={end} duration={3} suffix={suffix} />
                 </div>
-                <div className="text-[14px] lg:text-[15px] 3xl:text-[16px] leading-[1.2] text-black font-medium xl:max-w-[90%] max-w-full">
+                <div className="text-[14px] lg:text-[14px] 3xl:text-[16px] leading-[1.2] text-black font-medium xl:max-w-[90%] max-w-full">
                     {text}
                 </div>
             </div>
