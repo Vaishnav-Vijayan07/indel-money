@@ -6,6 +6,7 @@
     --header-y: 80px;
     --marquee-y: 40px;
     --container-x: 100%;
+    --container-padding: 1rem;
   }
 
   @media (min-width: 640px) {
@@ -32,6 +33,7 @@
     :root {
       /* 576px, vs default 768px */
       --container-x: 64rem;
+      --container-padding: 1.5rem;
       --header-y: 60px;
     }
   }
@@ -42,6 +44,7 @@
     :root {
       /* 768px, vs default 1024px */
       --container-x: 80rem;
+      --container-padding: 7rem;
       --header-y: 80px;
       --marquee-y: 40px;
     }
@@ -78,10 +81,6 @@
   --color-base2: #ee3824;
   --color-base3: #b7d0ff;
   --color-base4: #114e87;
-
-  /* 1152px, vs default 1536px */
-  --container-padding: 7rem;
-  /* Optional: Custom padding */
 
   --breakpoint-3xl: 120rem;
 
@@ -188,7 +187,8 @@
     color: #000;
   }
 
-  .text-sm-1, p {
+  .text-sm-1,
+  p {
     font-size: 12px;
     line-height: 1.4;
     font-weight: 400;
@@ -213,7 +213,7 @@
     font-size: 12px;
     line-height: 1;
     font-weight: 400;
-    color: rgba(0,0,0,0.8);
+    color: rgba(0, 0, 0, 0.8);
   }
 
   @media (min-width: 640px) {
@@ -239,7 +239,8 @@
       font-size: 30px;
     }
 
-    .text-sm-1, p {
+    .text-sm-1,
+    p {
       font-size: 14px;
     }
 
@@ -263,7 +264,8 @@
       font-size: 42px;
     }
 
-    .text-sm-1, p {
+    .text-sm-1,
+    p {
       font-size: 14px;
     }
 
@@ -287,7 +289,8 @@
       font-size: 48px;
     }
 
-    .text-sm-1, p {
+    .text-sm-1,
+    p {
       font-size: 16px;
     }
 
