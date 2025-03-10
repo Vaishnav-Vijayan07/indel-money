@@ -24,8 +24,8 @@ export default function DreamsToReality() {
     >
       <div className="container">
         <div className="flex w-full flex-wrap">
-          <div className="3xl:w-[calc(100%-700px)] xl:w-[calc(100%-576px)] lg:w-[calc(100%-450px)] md:w-full mb-4">
-            <div className="3xl:text-[20px] xl:text-[18px] lg:text-[16px] md:text-[13px] text-[12px]">
+          <div className="3xl:w-[calc(100%-700px)] xl:w-[calc(100%-530px)]   md:w-full mb-4">
+            <div className="3xl:text-[20px] xl:text-[16px] lg:text-[15px] md:text-[13px] text-[12px]">
               Welcome to <span className="text-base4 ">INDEL MONEY</span>
             </div>
             <h2 className="text-title1 font-medium mb-2 2xl:mb-3 leading-tight">
@@ -51,7 +51,7 @@ export default function DreamsToReality() {
               href="/"
               className="relative group flex items-center justify-between lg:mt-[30px] mt-[15px]
                     w-full max-w-[175px] xl:max-w-[200px] 3xl:max-w-[220px] 
-                    px-5 3xl:h-[65px] lg:h-[50px] h-[45px] 
+                    pr-3 pl-5 3xl:h-[65px] lg:h-[50px] h-[45px] 
                     rounded-full bg-base1 text-white 
                     font-medium transition-all duration-300 overflow-hidden shadow-lg"
             >
@@ -75,7 +75,7 @@ export default function DreamsToReality() {
               </div>
             </Link>
           </div>
-          <div className="3xl:w-[700px] xl:w-[576px] lg:w-[450px] w-full lg:pl-[60px] 2xl:pl-[120px] lg:m-0 m-auto relative z-0">
+          <div className="3xl:w-[700px] xl:w-[530px]  w-full xl:pl-[60px] 2xl:pl-[120px] lg:m-0 m-auto relative z-0">
             <div className="w-full  relative z-0">
               <div className="w-full h-full rounded-[20px] overflow-hidden group z-20">
                 <Image src={"/images/aboutImg.webp"} alt="aboutImg" width={610} height={535} className="w-full h-full  object-cover duration-450 transition-all group hover:scale-[1.1]  " />
@@ -86,7 +86,7 @@ export default function DreamsToReality() {
         </div>
         {/* counter section */}
         <div
-          className="w-full h-full mt-[45px] xl:p-[35px] p-[25px] 2xl:px-[75px] xl:px-[45px] px-[35px] overflow-hidden rounded-[28px] 
+          className="w-full h-full mt-[45px] xl:p-[35px] p-[25px] 2xl:px-[75px] xl:px-[35px] px-[30px] overflow-hidden rounded-[28px] 
           bg-[linear-gradient(156deg,rgba(23,71,158,0.15)_6%,rgba(198,59,59,0.15)_91%)]"
         >
           <div className="flex flex-wrap w-full justify-center lg:text-left text-center">
