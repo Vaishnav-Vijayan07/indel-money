@@ -22,10 +22,12 @@ export default function HeroBanner() {
           </Marquee>
         </div>
       </div>
-      {/* <div className="w-full h-auto max-w-[576px] bg-white absolute z-1 top-1/2 right-[calc((100%-var(--container-x))/2))]">
-        <div className="text-sm mb-4 3xl:mb-5">Select the type of service you are looking for?</div>
-        <EnquiryForm />
-      </div> */}
+      <div className="w-full max-w-[200px] sm:max-w-[276px] lg:max-w-[376px] 2xl:max-w-[468px] 3xl:max-w-[520px] h-auto max:h-full absolute z-1 top-0 bottom-[var(--marquee-y)] my-auto right-[calc(((100vw-var(--container-x))/2)+var(--container-padding))] flex items-center">
+        <div className="w-full h-auto relative z-00 bg-[#c0dbff] rounded-[10px] lg:py-[15px] lg:px-[30px] 3xl:py-[20px] 3xl:px-[35px]">
+          <div className="text-sm lg:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[24px] font-medium text-black mb-2 xl:mb-3 3xl:mb-4">Select the type of service you are looking for?</div>
+          <EnquiryForm />
+        </div>
+      </div>
     </section>
   );
 }
