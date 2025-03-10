@@ -98,25 +98,25 @@ const navigations = [
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="w-full h-auto block bg-[#e6edf7] pt-[30px] lg:pt-[40px] xl:pt-[60px] 2xl:pt-[80px] pb-[15px] lg:pb-[20px] xl:pb-[30px] 2xl:pb-[40px]">
+    <footer className="w-full h-auto block bg-[#e6edf7] pt-[30px] lg:pt-[40px] xl:pt-[60px] 3xl:pt-[80px] pb-[15px] lg:pb-[20px] xl:pb-[30px] 3xl:pb-[40px]">
       <div className="container">
-        <div className="flex flex-wrap mx-0 lg:-mx-[20px] xl:-mx-[30px] 2xl:-mx-[35px] mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]">
-          <div className="w-full lg:w-3/10 py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 2xl:px-[35px]">
-            <div className="w-full h-auto block mb-4 2xl:mb-6">
+        <div className="flex flex-wrap mx-0 lg:-mx-[20px] xl:-mx-[30px] 3xl:-mx-[35px] mb-[20px] lg:mb-[30px] xl:mb-[40px] 3xl:mb-[60px]">
+          <div className="w-full lg:w-3/10 py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
+            <div className="w-full h-auto block mb-4 3xl:mb-6">
               <Image
                 src="/images/logo-ft.svg"
                 alt="logo"
                 width={360}
                 height={60}
-                className="max-w-[200px] lg:max-w-[240px] 2xl:max-w-[340px]"
+                className="max-w-[200px] lg:max-w-[240px] 3xl:max-w-[340px]"
               />
             </div>
-            <div className="w-full h-auto block mb-2 2xl:mb-4">
-              <div className="text-footer-1 mb-2 2xl:mb-4">Registered Office</div>
+            <div className="w-full h-auto block mb-2 3xl:mb-4">
+              <div className="text-footer-1 mb-2 3xl:mb-4">Registered Office</div>
               <div className="text-footer-2 leading-[1.3]">Indel Money Limited Office No. 301, Floor No. 3, Sai Arcade, N S Road, Mulund, West Mumbai - 400 080</div>
             </div>
-            <div className="w-full h-auto block mb-2 2xl:mb-4">
-              <div className="flex gap-1 lg:gap-2 2xl:gap-3 text-sm lg:text-[16px] 2xl:text-[20px] font-medium text-[#1b1b1b] my-1 2xl:my-2">
+            <div className="w-full h-auto block mb-2 3xl:mb-4">
+              <div className="flex gap-1 lg:gap-2 3xl:gap-3 text-sm lg:text-[16px] 3xl:text-[20px] font-medium text-[#1b1b1b] my-1 3xl:my-2">
                 <Image
                   src="/images/icon-ft-call.svg"
                   alt="call"
@@ -125,7 +125,7 @@ export default function Footer() {
                 />
                 <Link href="tel:18004253990" target="_blank" rel="noopener noreferrer" className="hover:text-base2 transition-color duration-300">1800 4253 990</Link>
               </div>
-              <div className="flex gap-1 lg:gap-2 2xl:gap-3 text-sm lg:text-[16px] 2xl:text-[20px] font-medium text-[#1b1b1b] my-1 2xl:my-2">
+              <div className="flex gap-1 lg:gap-2 3xl:gap-3 text-sm lg:text-[16px] 3xl:text-[20px] font-medium text-[#1b1b1b] my-1 3xl:my-2">
                 <Image
                   src="/images/icon-ft-email.svg"
                   alt="mail"
@@ -135,19 +135,19 @@ export default function Footer() {
                 <Link href="mailto:care@indelmoney.com" target="_blank" rel="noopener noreferrer" className="hover:text-base2 transition-color duration-300">care@indelmoney.com</Link>
               </div>
             </div>
-            <div className="w-full h-auto block mb-2 lg:mb-4 2xl:mb-8">
+            <div className="w-full h-auto block mb-2 lg:mb-4 3xl:mb-8">
               <h2
-                className="text-[14px] lg:text-[16px] 2xl:text-[18px] font-medium text-black mb-1 2xl:mb-2">
+                className="text-[14px] lg:text-[16px] 3xl:text-[18px] font-medium text-black mb-1 3xl:mb-2">
                 Subscribe News letter
               </h2>
               <PlaceholdersAndVanishInputDemo />
             </div>
             <div className="w-full h-auto block">
-              <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
+              <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 3xl:gap-[20px]">
                 <div>
                   <Link
                     href="/"
-                    className="btn btn-base1 min-w-[100px] lg:min-w-[120px] xl:min-w-[140px] 2xl:min-w-[160px]"
+                    className="btn btn-base1 min-w-[100px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[160px]"
                   >
                     E-Connect
                   </Link>
@@ -155,7 +155,7 @@ export default function Footer() {
                 <div>
                   <Link
                     href="/"
-                    className="btn btn-base2 min-w-[100px] lg:min-w-[120px] xl:min-w-[140px] 2xl:min-w-[160px]"
+                    className="btn btn-base2 min-w-[100px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[160px]"
                   >
                     Indel Remit
                   </Link>
@@ -163,14 +163,14 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-7/10  py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 2xl:px-[35px]">
+          <div className="w-full lg:w-7/10  py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
             <div className="w-full h-auto columns-4">
               {navigations.map((item, index) => (
-                <div key={index} className="break-inside-avoid-column [display:table] w-full h-auto mb-3 2xl:mb-6">
+                <div key={index} className="break-inside-avoid-column [display:table] w-full h-auto mb-3 3xl:mb-6">
                   <div className="text-footer-1">{item.title}</div>
-                  <div className="w-100% max-w-[120px] flex h-auto mt-1 2xl:mt-2 mb-2 2xl:mb-4"><span className="w-4/10 h-[4px] bg-base1"></span><span className="w-6/10 h-[4px] bg-base2"></span></div>
+                  <div className="w-100% max-w-[120px] flex h-auto mt-1 3xl:mt-2 mb-2 3xl:mb-4"><span className="w-4/10 h-[4px] bg-base1"></span><span className="w-6/10 h-[4px] bg-base2"></span></div>
                   {item.links.map((link, linkIndex) => (
-                    <div key={linkIndex} className="w-full mb-1 2xl:mb-1.5">
+                    <div key={linkIndex} className="w-full mb-1 3xl:mb-1.5">
                       <Link href={link.href} className="text-footer-2 inline-block transition-color duration-300 hover:text-base2">
                         {link.linkname}
                       </Link>
@@ -181,15 +181,15 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="w-full h-auto bg-[#c0dbff] rounded-[10px] 2xl:rounded-[20px] px-[20px] lg:px-[40px] xl:px-[60px] 2xl:px-[70px] py-[10px] lg:py-[15px] xl:py-[20px] 2xl:py-[30px] flex items-center justify-center mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]">
+        <div className="w-full h-auto bg-[#c0dbff] rounded-[10px] 3xl:rounded-[20px] px-[20px] lg:px-[40px] xl:px-[60px] 3xl:px-[70px] py-[10px] lg:py-[15px] xl:py-[20px] 3xl:py-[30px] flex items-center justify-center mb-[20px] lg:mb-[30px] xl:mb-[40px] 3xl:mb-[60px]">
           <div className="w-full h-auto flex flex-wrap items-center justify-between gap-2">
-            <div className="flex flex-wrap items-center gap-y-[10px] gap-x-[15px] lg:gap-x-[20px] 2xl:gap-x-[30px]">
+            <div className="flex flex-wrap items-center gap-y-[10px] gap-x-[15px] lg:gap-x-[20px] 3xl:gap-x-[30px]">
               <div>
-                <div className="text-sm sm:text-md-[16px] lg:text-[20px] 2xl:text-[24px] font-medium text-black">Follow Us on:</div>
+                <div className="text-sm sm:text-md-[16px] lg:text-[20px] 3xl:text-[24px] font-medium text-black">Follow Us on:</div>
               </div>
               {socialmedias?.map((item, index) => (
                 <div key={index}>
-                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="w-[15px] lg:w-[20px] 2xl:w-[25px] h-auto aspect-4/4 block transition-transform duration-300 hover:scale-105">
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="w-[15px] lg:w-[20px] 3xl:w-[25px] h-auto aspect-4/4 block transition-transform duration-300 hover:scale-105">
                     <Image
                       src={item.src}
                       width={18}
@@ -231,11 +231,11 @@ export default function Footer() {
 
 export function ContactBox({ href, src, title, alt }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 2xl:gap-2">
+    <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 3xl:gap-2">
       <span>
-        <Image src={src} width={36} height={36} alt={alt} className="w-[15px] sm:w-[20px] lg:w-[26px] 2xl:w-[32px] h-[auto] block" />
+        <Image src={src} width={36} height={36} alt={alt} className="w-[15px] sm:w-[20px] lg:w-[26px] 3xl:w-[32px] h-[auto] block" />
       </span>
-      <span className="text-[16px] sm:text-md-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[34px] font-medium group-hover:text-base2 transition-color duration-300">{title}</span>
+      <span className="text-[16px] sm:text-md-[20px] lg:text-[24px] xl:text-[28px] 3xl:text-[34px] font-medium group-hover:text-base2 transition-color duration-300">{title}</span>
     </a>
   )
 }

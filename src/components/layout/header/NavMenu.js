@@ -34,14 +34,14 @@ const GoldLoans = [
 
 const NavMenu = () => {
   return (
-    <div className='flex gap-[8px] xl:gap-[12px] 2xl:gap-[14px]'>
+    <div className='flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[14px]'>
       <NavigationMenu className="h-[var(--header-y)]">
-        <NavigationMenuList className="flex gap-[8px] xl:gap-[12px] 2xl:gap-[14px]">
+        <NavigationMenuList className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[14px]">
           {/* Gold Loan Menu */}
           <NavigationMenuItem>
             <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Gold Loan</span></NavigationMenuTrigger>
             <NavigationMenuContent className="bg-white p-0">
-              <ul className="grid w-[400px] p-[10px] 2xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 {GoldLoans.map((item, index) => (
                   <li key={index}>
                     <Link href={item.link}
@@ -49,12 +49,12 @@ const NavMenu = () => {
                       passHref
                     >
                       <NavigationMenuLink
-                        className="group flex gap-[5px] 2xl:gap-[10px] p-[10px] 2xl:p-[15px] flex-row items-center"
+                        className="group flex gap-[5px] lg:gap-[8px] 3xl:gap-[10px] p-[10px] 3xl:p-[15px] flex-row items-center"
                       >
-                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 2xl:w-[60px] 2xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
+                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
                           <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
                         </div>
-                        <div className="w-[calc(100%-40px)] 2xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
+                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
                       </NavigationMenuLink>
                     </Link>
                   </li>
@@ -67,7 +67,7 @@ const NavMenu = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Foreign Exchange</span></NavigationMenuTrigger>
             <NavigationMenuContent className="bg-white p-0">
-              <ul className="grid w-[400px] p-[10px] 2xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 {GoldLoans.map((item, index) => (
                   <li key={index}>
                     <Link href={item.link}
@@ -75,12 +75,12 @@ const NavMenu = () => {
                       passHref
                     >
                       <NavigationMenuLink
-                        className="group flex gap-[5px] 2xl:gap-[10px] p-[10px] 2xl:p-[15px] flex-row items-center"
+                        className="group flex gap-[5px] lg:gap-[8px] 3xl:gap-[10px] p-[10px] 3xl:p-[15px] flex-row items-center"
                       >
-                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 2xl:w-[60px] 2xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
+                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
                           <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
                         </div>
-                        <div className="w-[calc(100%-40px)] 2xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
+                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
                       </NavigationMenuLink>
                     </Link>
                   </li>
@@ -106,7 +106,7 @@ const NavMenu = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">About</span></NavigationMenuTrigger>
             <NavigationMenuContent className="bg-white p-0">
-              <ul className="grid w-[400px] p-[10px] 2xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 {GoldLoans.map((item, index) => (
                   <li key={index}>
                     <Link href={item.link}
@@ -114,12 +114,12 @@ const NavMenu = () => {
                       passHref
                     >
                       <NavigationMenuLink
-                        className="group flex gap-[5px] 2xl:gap-[10px] p-[10px] 2xl:p-[15px] flex-row items-center"
+                        className="group flex gap-[5px] lg:gap-[8px] 3xl:gap-[10px] p-[10px] 3xl:p-[15px] flex-row items-center"
                       >
-                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 2xl:w-[60px] 2xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
+                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
                           <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
                         </div>
-                        <div className="w-[calc(100%-40px)] 2xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
+                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
                       </NavigationMenuLink>
                     </Link>
                   </li>

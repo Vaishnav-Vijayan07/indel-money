@@ -28,9 +28,9 @@ export default function GoldLoanCalculator() {
                 {index !== steps.length - 1 && (
                   <div
                     className={`absolute 
-                  2xl:right-[calc((-100%-(-155px)))] xl:right-[calc((-100%-(-110px)))] 
+                  3xl:right-[calc((-100%-(-155px)))] xl:right-[calc((-100%-(-110px)))] 
                   lg:right-[calc((-100%-(-80px)))] md:right-[calc((-100%-(-20px)))] right-[calc((-100%-(-70px)))]
-                  2xl:max-w-[280px] xl:max-w-[230px] lg:max-w-[170px] md:max-w-[140px] max-w-[100px] 
+                  3xl:max-w-[280px] xl:max-w-[230px] lg:max-w-[170px] md:max-w-[140px] max-w-[100px] 
                   w-full 
                   ${index % 2 === 1 ? "rotate-x-[-180deg]  top-1/4" : "top-[30px]"}`}
                     
@@ -47,7 +47,7 @@ export default function GoldLoanCalculator() {
 
                 {/* Step Circle - Animated */}
                 <motion.div
-                  className="2xl:w-[240px] 2xl:h-[240px] xl:w-[200px] xl:h-[200px] lg:w-[180px] lg:h-[180px] w-[100px] h-[100px] 
+                  className="3xl:w-[240px] 3xl:h-[240px] xl:w-[200px] xl:h-[200px] lg:w-[180px] lg:h-[180px] w-[100px] h-[100px] 
                     lg:p-[35px] p-[15px] rounded-full flex items-center justify-center overflow-hidden group 
                      bg-gradient-to-b from-transparent to-[#C0DBFF]"
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -66,7 +66,7 @@ export default function GoldLoanCalculator() {
 
                 {/* Step Info */}
                 <motion.div
-                  className="info mt-[1.9rem] 2xl:max-w-[350px] xl:max-w-[280px] lg:max-w-[220px] max-w-[140px]"
+                  className="info mt-[1.9rem] 3xl:max-w-[350px] xl:max-w-[280px] lg:max-w-[220px] max-w-[140px]"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false, amount: 0.3 }}
@@ -75,7 +75,7 @@ export default function GoldLoanCalculator() {
                   <div className="relative flex justify-between w-full">
                     <motion.div
                       className="bg-base2 text-white px-4 py-2 rounded-lg 
-                      2xl:text-[1.8rem] xl:text-[1.2rem] lg:text-[1rem] text-[0.8rem] font-bold"
+                      3xl:text-[1.8rem] xl:text-[1.2rem] lg:text-[1rem] text-[0.8rem] font-bold"
                       initial={{ opacity: 0, y: -20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: false, amount: 0.3 }}
@@ -87,8 +87,8 @@ export default function GoldLoanCalculator() {
                     {/* Dashed Line Animation (Only if not last step) */}
                     {index !== steps.length - 1 && (
                       <motion.div
-                        className="border-dashed 2xl:top-[30px] top-[18px] border border-black ml-[40px] h-[1px] w-full absolute 
-                        2xl:left-[calc((100%-230px))] xl:left-[calc((100%-180px))] lg:left-[calc((100%-140px))] 
+                        className="border-dashed 3xl:top-[30px] top-[18px] border border-black ml-[40px] h-[1px] w-full absolute 
+                        3xl:left-[calc((100%-230px))] xl:left-[calc((100%-180px))] lg:left-[calc((100%-140px))] 
                         md:left-[calc((100%-80px))] left-[calc((100%-100px))] before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-[-1px] before:w-[10px] before:h-[10px] before:bg-base1 before:rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: "100%" }}
@@ -103,7 +103,7 @@ export default function GoldLoanCalculator() {
                   </div>
 
                   <motion.p
-                    className="text-[#002362] 2xl:text-[1.5rem] xl:text-[1.2rem] lg:text-[1rem] text-[0.8rem] font-medium mt-[1rem]"
+                    className="text-[#002362] 3xl:text-[1.5rem] xl:text-[1.2rem] lg:text-[1rem] text-[0.8rem] font-medium mt-[1rem]"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.3 }}

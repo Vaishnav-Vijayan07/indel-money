@@ -42,7 +42,7 @@ export default function LifeIndelSlider() {
             spaceBetween={20}
             autoplay={false}
             pagination={{ clickable: true }}
-            className="lifeSlide mb-[15px] lg::mb-[20px] 2xl:mb-[40px]"
+            className="lifeSlide mb-[15px] lg::mb-[20px] xl:mb-[30px]"
         >
             {slides.map((item, index) => (
                 <SwiperSlide key={index}>
@@ -51,19 +51,19 @@ export default function LifeIndelSlider() {
                         className="w-full h-full block rounded-[24px] bg-[#E6EDF7] overflow-hidden p-[20px] pl-[25px]"
                     >
                         <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
-                            <div className="2xl:w-[calc(100%-200px)] xl:w-[calc(100%-150px)] lg:w-[calc(100%-100px)] sm:w-[calc(100%-100px)] w-full 2xl:pr-[30px] sm:pr-[20px] sm:pt-0 pt-[20px]">
-                                <h5 className="text-[14px] sm:text-[16px] xl:text-[18px] 2xl:text-[24px] text-[#1e1e1e] font-normal mb-[15px] 2xl:mb-[20px]">
+                            <div className="3xl:w-[calc(100%-200px)] xl:w-[calc(100%-150px)] lg:w-[calc(100%-100px)] sm:w-[calc(100%-100px)] w-full 3xl:pr-[30px] sm:pr-[20px] sm:pt-0 pt-[20px]">
+                                <h5 className="text-[14px] sm:text-[16px] xl:text-[18px] 3xl:text-[24px] text-[#1e1e1e] font-normal mb-[15px] 3xl:mb-[20px]">
                                     {item.title}
                                     <span className="text-base2 uppercase font-bold">&nbsp;&apos;
                                         {item.title2}
                                         &apos;
                                     </span>
                                 </h5>
-                                <div className="w-full mb-[15px] 2xl:mb-[20px] text-sm-1 line-clamp-4">
+                                <div className="w-full mb-[15px] 3xl:mb-[20px] text-sm-1 line-clamp-4">
                                     {item.discription}
                                 </div>
                             </div>
-                            <div className="2xl:w-[200px] xl:w-[150px] lg:w-[100px] w-[100px]">
+                            <div className="3xl:w-[200px] xl:w-[150px] lg:w-[100px] w-[100px]">
                                 <div className="group w-full h-auto xl:h-full rounded-[24px] overflow-hidden">
                                     <Image
                                         src={item.image}
