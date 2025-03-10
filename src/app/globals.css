@@ -45,17 +45,18 @@
       /* 768px, vs default 1024px */
       --container-x: 80rem;
       --container-padding: 7rem;
-      --header-y: 80px;
+      --header-y: 70px;
       --marquee-y: 40px;
     }
   }
 
   @media (min-width: 1536px) {
-
+    
     /* 2xl */
     :root {
       /* 960px, vs default 1280px */
       --container-x: 96rem;
+      --header-y: 80px;
     }
   }
 
@@ -253,7 +254,7 @@
     }
 
     .text-footer-2 {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 
