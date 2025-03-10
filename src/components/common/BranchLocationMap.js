@@ -226,7 +226,7 @@ export default function BranchLocationMap() {
                                     target="_blank"
                                     className="bg-none text-[16px] text-white-400 transition-colors flex items-center justify-between w-[123px]"
                                 >
-                                    <span class="">Get Direction</span>
+                                    <span className="">Get Direction</span>
                                     <svg className={`w-[16px] h-[16px] ${selectedBranch.id === branch.id
                                         ? 'fill-white'
                                         : ''

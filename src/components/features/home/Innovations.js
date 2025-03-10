@@ -17,14 +17,14 @@ export default function Innovations() {
                                 </div>
                                 <div className="2xl:w-[calc(100%-410px] xl:w-[calc(100%-350px] lg:w-[calc(100%-250px] xl:pl-[50px] lg:pl-[30px] max-lg:w-full max-lg:mt-3">
                                     <ul>
-                                        <li className="2xl:text-[22px]  xl:text-[18px] lg:text-[16px]  text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]" >Mobile app</li>
-                                        <li className="2xl:text-[22px]  xl:text-[18px] lg:text-[16px]  text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]" >⁠Door step assistance</li>
-                                        <li className="2xl:text-[22px]  xl:text-[18px] lg:text-[16px]  text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] " >Paperless operation</li>
+                                        <li className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]" >Mobile app</li>
+                                        <li className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]" >⁠Door step assistance</li>
+                                        <li className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] " >Paperless operation</li>
                                     </ul>
                                 </div>
                             </div>
                             {/* content */}
-                            <p className="mb-[15px] lg:mb[20px] 2xl:mb[35px]">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
+                            <p className="mb-[15px] lg:mb[20px] 2xl:mb[35px]">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable</p>
                             {/* download app */}
                             <div className="downloadbx">
                                 <div className="text-[18px] text-[#323232] mb-[10px] font-bold ">Download our mobile application from:</div>
@@ -34,9 +34,9 @@ export default function Innovations() {
                                             <Image
                                                 src={"/images/Appstore.webp"}
                                                 alt="downloadImg"
-                                                width={610}
-                                                height={535}
-                                                className="w-full h-full object-contain transition-all duration-[450ms] hover:scale-[1.1]"
+                                                width={180}
+                                                height={60}
+                                                className="w-full h-full object-contain"
                                             />
                                         </Link>
                                     </div>
@@ -45,20 +45,17 @@ export default function Innovations() {
                                             <Image
                                                 src={"/images/PlayStore.webp"}
                                                 alt="downloadImg"
-                                                width={610}
-                                                height={535}
-                                                className="w-full h-full object-contain transition-all duration-[450ms] hover:scale-[1.1]"
+                                                width={180}
+                                                height={60}
+                                                className="w-full h-full object-contain"
                                             />
                                         </Link>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         {/* rtSec */}
-
                         <div className="absolute bottom-0 right-0 max-w-[300px] xl:max-w-[370px] max-lg:hidden">
-
                             <Image
                                 src={"/images/appImg.webp"}
                                 alt="downloadImg"
@@ -66,15 +63,9 @@ export default function Innovations() {
                                 height={570}
                                 className="w-full h-full object-cover transition-all duration-[450ms]"
                             />
-
                         </div>
-
-
-
                     </div>
                 </div>
-
-
             </div>
         </section>
     )

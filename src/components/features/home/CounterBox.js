@@ -26,7 +26,7 @@ const CounterBox = ({ end, suffix, text, showDivider }) => {
                 <div className="text-title1 conterTxt font-medium">
                     <CountUp start={start ? 0 : null} end={end} duration={3} suffix={suffix} />
                 </div>
-                <div className="text-[14px] 2xl:text-[16px] text-black font-medium xl:max-w-[80%] max-w-full">
+                <div className="text-[14px] lg:text-[15px] 3xl:text-[16px] leading-[1.2] text-black font-medium xl:max-w-[90%] max-w-full">
                     {text}
                 </div>
             </div>

@@ -1,18 +1,27 @@
 
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import CounterBox from "./CounterBox";
+import { motion } from "framer-motion";
+
+
 export default function DreamsToReality() {
+
   const counters = [
     { end: 30, suffix: "+", text: "Backed by years of experience" },
     { end: 300, suffix: "+", text: "Over 300 Convenient Locations Across India" },
-    { end: 1, suffix: "Million +", text: "Trusted by millions, our financial services" },
+    { end: 1, suffix: "Million+", text: "Trusted by millions, our financial services" },
     { end: 1700, suffix: "+", text: "Trusted, Skilled Employees Committed to Excellence" },
   ];
 
-
   return (
-    <section className="w-full pt-[40px] md:pt-[60px] 2xl:pt-[120px] 3xl:pt-[160px] pb-[20px] md:pb-[30px] lg:pb-[40px] 3xl:pb-[60px]">
+    <motion.section
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="w-full pt-[40px] md:pt-[60px] 2xl:pt-[120px] 3xl:pt-[160px] pb-[20px] md:pb-[30px] lg:pb-[40px] 3xl:pb-[60px] overflow-hidden"
+    >
       <div className="container">
         <div className="flex w-full flex-wrap">
           <div className="3xl:w-[calc(100%-700px)] xl:w-[calc(100%-576px)] lg:w-[calc(100%-450px)] md:w-full mb-4">
@@ -87,6 +96,6 @@ export default function DreamsToReality() {
           </div>
         </div>
       </div>
-    </section >
+    </motion.section >
   )
 }

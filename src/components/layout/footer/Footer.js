@@ -102,7 +102,7 @@ export default function Footer() {
       <div className="container">
         <div className="flex flex-wrap mx-0 lg:-mx-[20px] xl:-mx-[30px] 3xl:-mx-[35px] mb-[20px] lg:mb-[30px] xl:mb-[40px] 3xl:mb-[60px]">
           <div className="w-full lg:w-3/10 py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
-            <div className="w-full h-auto block mb-4 3xl:mb-6">
+            <div className="w-full h-auto block mb-4 2xl:mb-6">
               <Image
                 src="/images/logo-ft.svg"
                 alt="logo"
@@ -111,11 +111,11 @@ export default function Footer() {
                 className="max-w-[200px] lg:max-w-[240px] 3xl:max-w-[340px]"
               />
             </div>
-            <div className="w-full h-auto block mb-2 3xl:mb-4">
-              <div className="text-footer-1 mb-2 3xl:mb-4">Registered Office</div>
+            <div className="w-full h-auto block mb-2 2xl:mb-4">
+              <div className="text-footer-1 mb-2 2xl:mb-4">Registered Office</div>
               <div className="text-footer-2 leading-[1.3]">Indel Money Limited Office No. 301, Floor No. 3, Sai Arcade, N S Road, Mulund, West Mumbai - 400 080</div>
             </div>
-            <div className="w-full h-auto block mb-2 3xl:mb-4">
+            <div className="w-full h-auto block mb-2 2xl:mb-4">
               <div className="flex gap-1 lg:gap-2 3xl:gap-3 text-sm lg:text-[16px] 3xl:text-[20px] font-medium text-[#1b1b1b] my-1 3xl:my-2">
                 <Image
                   src="/images/icon-ft-call.svg"
@@ -135,7 +135,7 @@ export default function Footer() {
                 <Link href="mailto:care@indelmoney.com" target="_blank" rel="noopener noreferrer" className="hover:text-base2 transition-color duration-300">care@indelmoney.com</Link>
               </div>
             </div>
-            <div className="w-full h-auto block mb-2 lg:mb-4 3xl:mb-8">
+            <div className="w-full h-auto block mb-2 lg:mb-4 2xl:mb-8">
               <h2
                 className="text-[14px] lg:text-[16px] 3xl:text-[18px] font-medium text-black mb-1 3xl:mb-2">
                 Subscribe News letter
@@ -163,14 +163,14 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-7/10  py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
+          <div className="w-full lg:w-7/10 py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
             <div className="w-full h-auto columns-4">
               {navigations.map((item, index) => (
-                <div key={index} className="break-inside-avoid-column [display:table] w-full h-auto mb-3 3xl:mb-6">
+                <div key={index} className="break-inside-avoid-column [display:table] w-full h-auto mb-3 2xl:mb-6">
                   <div className="text-footer-1">{item.title}</div>
-                  <div className="w-100% max-w-[120px] flex h-auto mt-1 3xl:mt-2 mb-2 3xl:mb-4"><span className="w-4/10 h-[4px] bg-base1"></span><span className="w-6/10 h-[4px] bg-base2"></span></div>
+                  <div className="w-100% max-w-[80px] lg:max-w-[100px] 3xl:max-w-[120px] flex h-auto mt-1 2xl:mt-2 mb-2 2xl:mb-4"><span className="w-4/10 h-[4px] bg-base1"></span><span className="w-6/10 h-[4px] bg-base2"></span></div>
                   {item.links.map((link, linkIndex) => (
-                    <div key={linkIndex} className="w-full mb-1 3xl:mb-1.5">
+                    <div key={linkIndex} className="w-full mb-1 2xl:mb-1.5">
                       <Link href={link.href} className="text-footer-2 inline-block transition-color duration-300 hover:text-base2">
                         {link.linkname}
                       </Link>
@@ -181,7 +181,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="w-full h-auto bg-[#c0dbff] rounded-[10px] 3xl:rounded-[20px] px-[20px] lg:px-[40px] xl:px-[60px] 3xl:px-[70px] py-[10px] lg:py-[15px] xl:py-[20px] 3xl:py-[30px] flex items-center justify-center mb-[20px] lg:mb-[30px] xl:mb-[40px] 3xl:mb-[60px]">
+        <div className="w-full h-auto bg-[#c0dbff] rounded-[10px] 3xl:rounded-[20px] px-[20px] lg:px-[40px] xl:px-[60px] 3xl:px-[70px] py-[10px] lg:py-[15px] xl:py-[20px] 3xl:py-[30px] flex items-center justify-center mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]">
           <div className="w-full h-auto flex flex-wrap items-center justify-between gap-2">
             <div className="flex flex-wrap items-center gap-y-[10px] gap-x-[15px] lg:gap-x-[20px] 3xl:gap-x-[30px]">
               <div>
