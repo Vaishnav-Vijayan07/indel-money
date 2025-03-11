@@ -9,14 +9,12 @@ import BranchLocator from "../components/features/home/BranchLocator";
 import Innovations from "../components/features/home/Innovations";
 
 import FAQ from "../components/features/home/FAQ";
-import Image from "next/image";
 
 const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 
 export default function Home() {
   return (
     <>
-    <Image src={"/images/home-bg.jpg"} width={1920} height={9526} alt="home bg" className="absolute z-1 top-0 left-0 opacity-50 pointer-events-none" />
       {/* banner section contents*/}
       <HeroBanner />
 

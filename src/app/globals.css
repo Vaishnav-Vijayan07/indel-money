@@ -57,6 +57,7 @@
     :root {
       /* 960px, vs default 1280px */
       --container-x: 96rem;
+      --container-padding: 7rem;
       --header-y: 80px;
       --marquee-y: 40px;
     }
@@ -68,6 +69,7 @@
     :root {
       /* 960px, vs default 1280px */
       --container-x: 120rem;
+      --container-padding: 8rem;
       --marquee-y: 50px;
       --header-y: 100px; 
     }
@@ -243,7 +245,7 @@
 
     /* lg */
     .text-title1 {
-      font-size: 32px;
+      font-size: 34px;
     }
 
     .text-sm-1,
