@@ -26,7 +26,7 @@ export default function KickStartVenture() {
                         </Link>
                     </div>
                     <div className="w-5/10 px-[40px]">
-                        <div class="text-[#17479E] font-normal leading-normal text-[40px]">
+                        <div className="text-[#17479E] font-normal leading-normal text-[40px]">
                             Our Offerings
                         </div>
                         <div className="text-sm-1 mb-[15px] xl:mb-[20px] max-w-[90%]">

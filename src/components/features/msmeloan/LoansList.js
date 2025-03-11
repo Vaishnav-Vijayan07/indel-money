@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
 import LoanSlider from "@/components/features/msmeloan/LoanSlider";
 
 export default function LoansList() {
