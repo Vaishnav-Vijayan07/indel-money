@@ -10,7 +10,7 @@ const GoldLoans = [
     image: "/images/icon-goldLoan-1.svg",
     alt: "item",
     title: "Gold Loan Steps:",
-    link: "/",
+    link: "about",
   },
   {
     image: "/images/icon-goldLoan-2.svg",

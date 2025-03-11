@@ -313,7 +313,7 @@
   }
 
   /* BANNER_SLIDER */
-  .heroSlide {
+  .heroSlide, .aboutSlide {
     --swiper-pagination-bottom: 40px;
     --swiper-pagination-color: #fff;
     --swiper-pagination-bullet-width: 8px;
@@ -321,6 +321,10 @@
     --swiper-pagination-bullet-inactive-color: #fff;
     --swiper-pagination-bullet-inactive-opacity: 1;
     --swiper-pagination-bullet-horizontal-gap: 10px;
+  }
+  .aboutSlide { 
+    --swiper-pagination-color: #ffffff; 
+    --swiper-pagination-bullet-inactive-color: #000000; 
   }
 
   .heroSlide .swiper-pagination {
@@ -336,6 +340,7 @@
   .heroSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 3px solid #ee3824;
   }
+  
 
   .lifeSlide {
     --swiper-pagination-bottom: 20px;
