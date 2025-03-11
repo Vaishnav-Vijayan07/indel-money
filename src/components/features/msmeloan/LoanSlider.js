@@ -11,7 +11,7 @@ const slides = [
         alt: "Loan Image 1",
         title: "Trader’s Loan",
         title2: "Short Term Trader’s Loan",
-        discription: "We understand the requirement of small trading businesses and your struggle to meet daily working capital requirements. ",
+        description: "We understand the requirement of small trading businesses and your struggle to meet daily working capital requirements. ",
         href: "/",
     },
     {
@@ -19,15 +19,15 @@ const slides = [
         alt: "Loan Image 2",
         title: "Business Loans",
         title2: "Structured Business Loans",
-        discription: "The key success factor of every MSME sector enterprise is ready availability of credit to facilitate working capital or fixed asset purchase requirements. ",
+        description: "The key success factor of every MSME sector enterprise is ready availability of credit to facilitate working capital or fixed asset purchase requirements. ",
         href: "/",
     },
     {
         image: "/images/loan03.jpg",
         alt: "Loan Image 3",
         title: "Loans Against Property",
-        title2: "Loans against property ",
-        discription: "We understand the long-term financial needs of the small business units. Our long-term business loan options enables your access to high value loans by encashing the power of your property assets. ",
+        title2: "Loans against property",
+        description: "We understand the long-term financial needs of the small business units. Our long-term business loan options enables your access to high value loans by encashing the power of your property assets. ",
         href: "/",
     },
 ];
