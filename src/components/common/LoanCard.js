@@ -8,7 +8,7 @@ export default function LoanCard({ item }) {
             className="group w-full h-full block rounded-[36px] overflow-hidden p-[30px] pb-[40px] transition-all duration-[600ms] hover:bg-[#F8FBFF] hover:shadow-[0px_0px_15px_0px_rgba(0,0,0,0.15)]"
         >
             <div className="w-full flex flex-wrap sm:flex-row">
-                <div className="w-full h-auto xl:h-full rounded-[24px] overflow-hidden mb-[30px]">
+                <div className="w-full h-auto xl:h-full rounded-[24px] overflow-hidden mb-[30px] aspect-465/295">
                     <Image
                         src={item.image}
                         alt={item.alt}
@@ -25,7 +25,7 @@ export default function LoanCard({ item }) {
                         {item.title2}
                     </div>
                     <div className="w-full mb-[15px] 3xl:mb-[20px] text-sm-1 line-clamp-4">
-                        {item.description}
+                        {item.discription}
                     </div>
                 </div>
             </div>
