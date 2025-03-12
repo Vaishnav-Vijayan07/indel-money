@@ -23,10 +23,10 @@ const CounterBox = ({ end, suffix, text, showDivider }) => {
         >
             <div className="w-full h-full lg:pl-[30px] 2xl:pl-[50px]">
                 {/* CountUp Animation */}
-                <div className="text-title1 conterTxt font-medium">
+                <div className="text-title1 font-medium">
                     <CountUp start={start ? 0 : null} end={end} duration={3} suffix={suffix} />
                 </div>
-                <div className="text-[14px] lg:text-[14px] 3xl:text-[16px] leading-[1.2] text-black font-medium xl:max-w-[90%] max-w-full">
+                <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-[1.2] text-black font-medium xl:max-w-[90%] max-w-full">
                     {text}
                 </div>
             </div>

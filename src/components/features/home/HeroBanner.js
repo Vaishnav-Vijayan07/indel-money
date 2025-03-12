@@ -4,15 +4,16 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
 export default function HeroBanner() {
+
   return (
-    <section className="w-full block relative z-0">
+    <section className="w-full block relative z-0 overflow-hidden">
       <HomeSlider />
       <div className="w-full h-[var(--marquee-y)] flex flex-wrap items-center bg-[#b7d0ff]">
-        <div className="w-[300px] 2xl:w-[320px] 3xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm-1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
+        <div className="w-[300px] lg:w-[240px] 2xl:w-[300px] 3xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm-1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
           <Image src={"/images/marquee-1.png"} width={25} height={25} alt={"coin"} className="w-5 h-5 3xl:w-6 3xl:h-6 mr-2 3xl:mr-3 object-contain" />
           Todays Gold rate : Rs.59,080
         </div>
-        <div className="w-[calc(100%-300px)] 2xl:w-[calc(100%-320px)] 3xl:w-[calc(100%-340px)]">
+        <div className="w-[calc(100%-300px)] lg:w-[calc(100%-240px)] 2xl:w-[calc(100%-300px)] 3xl:w-[calc(100%-340px)]">
           <Marquee
             speed={80}
             pauseOnHover={true}
@@ -22,10 +23,7 @@ export default function HeroBanner() {
           </Marquee>
         </div>
       </div>
-      {/* <div className="w-full h-auto max-w-[576px] bg-white absolute z-1 top-1/2 right-[calc((100%-var(--container-x))/2))]">
-        <div className="text-sm mb-4 3xl:mb-5">Select the type of service you are looking for?</div>
-        <EnquiryForm />
-      </div> */}
+      <EnquiryForm />
     </section>
   );
 }
