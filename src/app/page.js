@@ -25,6 +25,9 @@ export default function Home() {
       {/* Gold loan calculator contents*/}
       <GoldLoanCalculator />
 
+      {/* Branch locator contents*/}
+      <BranchLocator />
+
       {/* Life at Indel contents*/}
       <LifeAtIndel />
 
@@ -36,9 +39,6 @@ export default function Home() {
 
       {/* Innovations*/}
       <Innovations />
-
-      {/* Branch locator contents*/}
-      <BranchLocator />
 
       {/* faq contents */}
       <FAQ />

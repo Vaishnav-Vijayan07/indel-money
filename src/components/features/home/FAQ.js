@@ -49,15 +49,9 @@ export default function FAQ() {
               <div className="flex items-center justify-between mb-5 pb-[20px] border-b-1 border-[rgba(0,0,0,0.68)]">
                 <div className="text-black text-title1">Frequently asked Questions</div>
                 <Link
-                  href="#"
-                  className="relative group flex items-center justify-center  
-                    w-full 2xl:max-w-[150px] lg:max-w-[130px] max-w-[100px] 2xl:h-[50px] lg:h-[45px] h-[35px]
-                    rounded-full bg-base2 text-white 
-                    font-bold transition-all duration-300 overflow-hidden hover:bg-base1 2xl:text-[18px] lg:text-[14px] text-[12px] "  >
-                  <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px] ">
-                    VIEW ALL
-                  </span>
-
+                  href="/"
+                  className="btn btn-base2 max-w-[100px] lg:max-w-[130px] 2xl:max-w-[150px]"  >
+                  <span>VIEW ALL</span>
                 </Link>
               </div>
 

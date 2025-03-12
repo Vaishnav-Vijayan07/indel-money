@@ -56,7 +56,7 @@ export default function LatestUpdates() {
                   width={7}
                   height={13}
                   alt="right"
-                  className="ml-1"
+                  className="ml-1 lg:ml-2"
                 />
               </Link>
             </div>
@@ -68,8 +68,7 @@ export default function LatestUpdates() {
               <div key={index} className="group w-full h-full overflow-hidden block relative z-0">
                 <Image
                   src={item?.image}
-                  width={768}
-                  height={840}
+                  fill
                   alt={item?.alt}
                   className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
                 />

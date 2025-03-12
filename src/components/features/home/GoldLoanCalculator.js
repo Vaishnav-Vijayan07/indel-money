@@ -81,7 +81,7 @@ export default function GoldLoanCalculator() {
                     {/* Dashed Line Animation (Only if not last step) */}
                     {index !== steps.length - 1 && (
                       <motion.div
-                        className="border-dashed 3xl:top-[30px] top-[18px] border border-black ml-[40px] h-[1px] w-full absolute 
+                        className="border-dashed 3xl:top-[30px] top-[18px] border border-black h-[1px] w-full absolute 
                         2xl:left-[calc((100%-90px))] xl:left-[calc((100%-170px))] lg:left-[calc((100%-170px))] 
                         md:left-[calc((100%-65px))] left-[calc((100%-100px))] before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-[-1px] before:w-[10px] before:h-[10px] before:bg-base1 before:rounded-full"
                         initial={{ width: 0 }}

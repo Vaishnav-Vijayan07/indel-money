@@ -19,7 +19,7 @@ export default function BlogCard({ item, className }) {
                 <div className="text-{14px} lg:text-[16px] xl:text-[18px] 3xl:text-[22px] leading-[1.3] text-black font-bold line-clamp-2 mb-1 3xl:mb-3">
                     {item?.title}
                 </div>
-                <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-4">
+                <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-4">
                     {item?.discription}
                 </div>
             </div>
