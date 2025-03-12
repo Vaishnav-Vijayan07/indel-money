@@ -27,12 +27,7 @@ export default function GoldLoanCalculator() {
                 {/* Arrow - Animated & Hides for last step */}
                 {index !== steps.length - 1 && (
                   <div
-                    className={`absolute 2xl:left-[255px] xl:left-[195px]  lg:left-[155px] md:left-[130px] left-[110px]
-                  
-                  2xl:max-w-[250px] xl:max-w-[180px]   md:max-w-[140px] max-w-[110px] 
-                  w-full 
-                  ${index % 2 === 1 ? "rotate-x-[-180deg]  top-1/4" : "top-[30px]"}`}
-
+                    className={`absolute left-[110px] md:left-[130px] lg:left-[155px] xl:left-[195px] 2xl:left-[255px] 2xl:max-w-[250px] max-w-[110px] md:max-w-[140px] xl:max-w-[160px] w-full ${index % 2 === 1 ? "rotate-x-[-180deg]  top-1/4" : "top-[30px]"}`}
                   >
                     <Image
                       src="/images/ArrowGold.webp"
@@ -46,7 +41,7 @@ export default function GoldLoanCalculator() {
 
                 {/* Step Circle - Animated */}
                 <motion.div
-                  className="2xl:w-[240px] 2xl:h-[240px] xl:w-[180px] xl:h-[180px] lg:w-[130px] lg:h-[130px] w-[100px] h-[100px] 
+                  className="2xl:w-[240px] 2xl:h-[240px] xl:w-[160px] xl:h-[160px] lg:w-[130px] lg:h-[130px] w-[100px] h-[100px] 
                     lg:p-[35px] p-[15px] rounded-full flex items-center justify-center overflow-hidden group 
                      bg-gradient-to-b from-transparent to-[#C0DBFF]"
                   initial={{ scale: 0.8, opacity: 0 }}

@@ -34,9 +34,8 @@ const GoldLoans = [
 
 const NavMenu = () => {
   return (
-    <div className='flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[14px]'>
-      <NavigationMenu className="h-[var(--header-y)]">
-        <NavigationMenuList className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[14px]">
+      <NavigationMenu className="h-[var(--header-y)] lg:px-[10px] 2xl:px-[15px] 3xl:px-[20px]">
+        <NavigationMenuList className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px]">
           {/* Gold Loan Menu */}
           <NavigationMenuItem>
             <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Gold Loan</span></NavigationMenuTrigger>
@@ -129,7 +128,6 @@ const NavMenu = () => {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-    </div>
   );
 };
 

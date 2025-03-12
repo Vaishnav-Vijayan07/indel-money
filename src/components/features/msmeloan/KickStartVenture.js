@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function KickStartVenture() {
     return (
-        <section className="w-full py-[70px]">
+        <section className="w-full py-[20px] md:py-[20px] xl:pt-[30px] 2xl:py-[50px] 3xl:py-[70px]">
             <div className="container">
                 <div className="flex flex-wrap -mx-[40px]">
                     <div className="w-5/10 px-[40px] relative before:content-[''] before:absolute before:h-[460px] before:w-[1px] before:top-[0] before:right-0 before:bg-[rgba(22,69,156,0.26)] before:opacity-25">
@@ -12,7 +12,7 @@ export default function KickStartVenture() {
                             with our
                             <span className="text-base2 font-bold">&nbsp;MSME loan</span>
                         </h2>
-                        <div className="text-[24px] mb-[15px] xl:mb-[20px] text-[#1E1E1E] font-normal leading-normal">
+                        <div className="text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px] mb-[15px] xl:mb-[20px] text-[#1E1E1E] font-normal leading-normal">
                             Our MSME loans are bespoke for aspiring and upcoming entrepreneurs.
                         </div>
                         <div className="text-sm-1 mb-[15px] xl:mb-[20px]">
@@ -20,7 +20,7 @@ export default function KickStartVenture() {
                         </div>
                         <Link
                             href="/"
-                            className="btn btn-base2 w-fit min-w-[100px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[180px]"
+                            className="btn btn-base2 w-fit min-w-[90px] lg:min-w-[110px] xl:min-w-[120px] 3xl:min-w-[180px]"
                         >
                             GET A CALL
                         </Link>
