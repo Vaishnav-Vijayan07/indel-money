@@ -38,23 +38,22 @@ export default function FAQ() {
     <section className="w-full 2xl:pt-[100px] 2xl:pb-[100px] md:pt-[60px] md:pb-[60px] pt-[40px] pb-[40px]">
       <div className="container">
         <div className="flex flex-wrap">
-          <div className="2xl:w-[550px] xl:w-[450px] lg:w-[350px]  w-full max-lg:mb-5">
-            <div className="w-full   overflow-hidden rounded-[35px]">
+          <div className="w-full lg:w-[320px] xl:w-[340px] 2xl:w-[520px] 3xl:w-[550px] max-lg:mb-5">
+            <div className="w-full overflow-hidden rounded-[35px]">
               <Image src={"/images/faqImg.webp"} alt="aboutImg" width={550} height={610} className="w-full h-full object-cover duration-450 transition-all group hover:scale-[1.1] " />
             </div>
           </div>
-          <div className="2xl:w-[calc(100%-550px)] xl:w-[calc(100%-450px)] lg:w-[calc(100%-350px)] w-full 2xl:pl-[70px] xl:pl-[50px] lg:pl-[30px]">
+          <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-340px)] 2xl:w-[calc(100%-520px)] 3xl:w-[calc(100%-550px)] lg:pl-[30px] xl:pl-[50px] 3xl:pl-[70px]">
             <div className="contentBx w-full">
-              <div className="font-bold text-black mb-2 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">FAQ</div>
-              <div className="flex items-center justify-between mb-5 pb-[20px] border-b-1 border-[rgba(0,0,0,0.68)]">
+              <div className="font-bold text-black mb-1 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">FAQ</div>
+              <div className="flex items-center justify-between mb-2 pb-[30px] border-b-1 border-[rgba(0,0,0,0.68)]">
                 <div className="text-black text-title1">Frequently asked Questions</div>
                 <Link
                   href="/"
-                  className="btn btn-base2 max-w-[100px] lg:max-w-[130px] 2xl:max-w-[150px]"  >
+                  className="btn btn-base2 max-w-[100px] lg:max-w-[90px] xl:max-w-[100px] 2xl:max-w-[120px] 3xl:max-w-[140px]"  >
                   <span>VIEW ALL</span>
                 </Link>
               </div>
-
               {faqs.map((faq, index) => (
                 <div key={index} className="border-b last:border-none 2xl:pt-[15px] pt-[10px] pb-[5px] 2xl:pb-[10px]">
                   <button
@@ -69,11 +68,10 @@ export default function FAQ() {
                     )}
                   </button>
                   {openIndex === index && (
-                    <div className="font-normal 2xl:text-[18px] xl:text-[16px] text-[14px] pb-[10px] transition-all duration-300">{faq.answer}</div>
+                    <div className="text-sm-1 pb-[10px] transition-all duration-300">{faq.answer}</div>
                   )}
                 </div>
               ))}
-
             </div>
           </div>
         </div>
