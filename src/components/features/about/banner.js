@@ -53,7 +53,7 @@ export default function HomeSlider() {
                     <div className="absolute inset-0 w-[60%] h-full bg-gradient-to-r from-white/80 to-gray-500/0"></div>
                     <Image src={item?.image} width={1920} height={570} alt={item?.alt || "Slide Image"} priority className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 container">
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 custom-container ">
                         <div className="max-w-[350px] lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[550px] 3xl:max-w-[750px]">
                             <div className='text-[14px] lg:text-[18px] 2xl:text-[20px] text-[#17479E] font-[400] mb-[10px] leading-[1] uppercase'>{item?.mainTitle}</div>
                             <h1 className="text-[28px] sm:text-[32px] lg:text-[38px] xl:text-[46px] 2xl:text-[52px] 3xl:text-[68px] leading-[1.2] capitalize font-normal text-black mb-4">
