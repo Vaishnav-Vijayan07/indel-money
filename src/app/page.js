@@ -8,6 +8,7 @@ import TrustedInvestment from "../components/features/home/TrustedInvestment";
 import BranchLocator from "../components/features/home/BranchLocator";
 import Innovations from "../components/features/home/Innovations";
 
+
 import FAQ from "../components/features/home/FAQ";
 
 const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
@@ -24,6 +25,9 @@ export default function Home() {
       {/* Gold loan calculator contents*/}
       <GoldLoanCalculator />
 
+      {/* Branch locator contents*/}
+      <BranchLocator />
+
       {/* Life at Indel contents*/}
       <LifeAtIndel />
 
@@ -36,11 +40,10 @@ export default function Home() {
       {/* Innovations*/}
       <Innovations />
 
-      {/* Branch locator contents*/}
-      <BranchLocator />
-
       {/* faq contents */}
-      <FAQS />
+      <FAQ />
     </>
   );
 }
+
+

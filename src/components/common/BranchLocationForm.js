@@ -15,7 +15,7 @@ export default function BranchLocationForm() {
     return (
         <form action="/search">
             <div className="bg-white shadow-lg rounded-[30px] px-[50px] py-[30px] flex gap-[30px] mb-[35px]">
-                <div class="basis-1/5">
+                <div className="basis-1/5">
                     <select
                         className="px-[10px] py-[20px] border rounded-[10px] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] h-[48px]"
                         value={state}
@@ -26,7 +26,7 @@ export default function BranchLocationForm() {
                         <option value="state2">State 2</option>
                     </select>
                 </div>
-                <div class="basis-1/5">
+                <div className="basis-1/5">
                     <select
                         className="px-[10px] py-[20px] border rounded-[10px] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] h-[48px]"
                         value={district}
@@ -37,7 +37,7 @@ export default function BranchLocationForm() {
                         <option value="district2">District 2</option>
                     </select>
                 </div>
-                <div class="basis-1/5">
+                <div className="basis-1/5">
                     <select
                         className="px-[10px] py-[20px] border rounded-[10px] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] h-[48px]"
                         value={location}
@@ -48,7 +48,7 @@ export default function BranchLocationForm() {
                         <option value="location2">Location 2</option>
                     </select>
                 </div>
-                <div class="basis-1/5">
+                <div className="basis-1/5">
                     <select
                         className="px-[10px] py-[20px] border rounded-[10px] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] h-[48px]"
                         value={distance}
@@ -59,7 +59,7 @@ export default function BranchLocationForm() {
                         <option value="10km">10 KM</option>
                     </select>
                 </div>
-                <div class="basis-1/5">
+                <div className="basis-1/5">
                     <button
                         className="bg-red-500 text-white px-6 py-2 rounded-md font-semibold"
                         onClick={handleSearch}
