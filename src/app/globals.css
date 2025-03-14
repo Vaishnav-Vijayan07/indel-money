@@ -52,7 +52,7 @@
   }
 
   @media (min-width: 1536px) {
-    
+
     /* 2xl */
     :root {
       /* 960px, vs default 1280px */
@@ -371,7 +371,7 @@
     height: auto !important;
 
   }
-  
+
   .lifeSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 1px solid #17479E;
   }
@@ -432,8 +432,9 @@
   /* 3xl */
   .custom-container {
     max-width: 1640px;
-   
+
   }
 }
+
 
  

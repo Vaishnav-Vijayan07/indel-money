@@ -24,7 +24,7 @@ export default function Messages() {
 
     return (
         <section className="py-[80px]">
-            <div className="custom-container">
+            <div className="container">
                 {messages.map((item, index) => (
                     <div
                         key={index}
@@ -36,25 +36,25 @@ export default function Messages() {
                     >
                         {/* Left Section */}
                         <div className="w-[180px]">
-                            <div className={`w-full h-full rounded-[20px] overflow-hidden pt-[25px] 
+                            <div className={`w-full h-full rounded-[20px] overflow-hidden pt-[25px] flex flex-col justify-between
                                 ${index % 2 === 0 ? "bg-[#EE3824]" : "bg-[#17479E]"}`}>
-                                <div className="text-[30px] mb-[10px] text-white text-center leading-[1]">
+                                <div className="3xl:text-[30px] 2xl:text-[28px] xl:text-[24px] mb-[10px] text-white text-center leading-[1]">
                                     {item.post}
                                 </div>
-                                <div className="w-full max-w-[180px] m-auto">
+                                <div className="w-full max-w-[180px]">
                                     <Image
                                         src={item.image}
                                         alt={item.name}
                                         width={180}
                                         height={180}
-                                        className="w-full h-auto object-contain"
+                                        className="w-full h-auto object-cover"
                                     />
                                 </div>
                             </div>
                         </div>
 
                         {/* Right Section */}
-                        <div className={`w-[calc(100%-180px)] ${index % 2 === 0 ? "3xl:pl-[60px] 2xl:pl-[50px] pl-[30px]" : "3xl:pr-[60px] 2xl:pr-[50px] pr-[30px] text-right"} py-[50px]`}>
+                        <div className={`w-[calc(100%-180px)] ${index % 2 === 0 ? "3xl:pl-[60px] 2xl:pl-[50px] pl-[30px]" : "3xl:pr-[60px] 2xl:pr-[50px] pr-[30px] text-right"} 3xl:py-[50px] py-[30px]`}>
                             <div className="text-title1 mb-[25px]" dangerouslySetInnerHTML={{ __html: item.title }}></div>
                             <p>{item.message}</p>
                             <div className="mt-[30px]">

@@ -6,7 +6,7 @@ export default function Supermarket() {
     return (
         <section className="relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:content-[''] before:bg-[linear-gradient(270deg,rgba(23,71,158,0.00)_3.16%,rgba(23,71,158,0.15)_97.06%)]">
 
-            <div className="custom-container">
+            <div className="container">
                 <div className="flex flex-wrap max-md:flex-col-reverse">
                     {/* leftSec */}
                     <div className="3xl:w-[620px] 2xl:w-[550px] xl:w-[450px] lg:w-[350px] md:w-[300px] w-full  ">
