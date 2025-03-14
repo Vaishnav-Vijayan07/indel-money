@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function WhyMsme() {
     return (
-        <section className="w-full pb-[50px]">
+        <section className="w-full pb-[30px] xl:pb-[50px]">
             <div className="container">
                 <div className="w-full rounded-[20px] overflow-hidden bg-gradient-to-br from-[rgba(23,71,158,0.20)] to-[rgba(198,59,59,0.20)] py-[40px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px] px-[40px]">
                     <div className="flex flex-wrap md:-mx-[15px] lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[30px]">

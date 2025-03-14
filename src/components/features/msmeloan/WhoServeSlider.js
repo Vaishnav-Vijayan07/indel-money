@@ -32,7 +32,6 @@ const slides = [
 export default function WhoServeSlider({ className }) {
     return (
         <Swiper
-            modules={[]}
             spaceBetween={10}
             autoplay={false}
             pagination={{ clickable: false }}
@@ -41,12 +40,23 @@ export default function WhoServeSlider({ className }) {
                 768: { slidesPerView: 2, spaceBetween: 20 },
                 1024: { slidesPerView: 3, spaceBetween: 30 },
             }}
-            className="LoanSlider mb-[15px] lg::mb-[20px] xl:mb-[30px]">
-            {slides?.map((item, index) => (
-                <SwiperSlide key={index}>
-                    <LoanCard className={className} item={item} />
-                </SwiperSlide>
-            ))}
+            className="LoanSlider mb-[15px] lg:mb-[20px] xl:mb-[30px]"
+        >
+            {slides?.map((item, index) => {
+                // Define dynamic classes for even/odd slides
+                const cardClass =
+                    index % 2 === 0
+                        ? "bg-[linear-gradient(156deg,_rgba(23,71,158,0.20)_6.47%,_rgba(198,59,59,0.20)_91.2%)]"
+                        : "bg-[linear-gradient(156deg,_rgba(198,59,59,0.20)_6%,_rgba(23,71,158,0.20)_91%)]";
+
+                return (
+                    <SwiperSlide key={index}>
+                        {/* Pass dynamic class to LoanCard */}
+                        <LoanCard className={cardClass} item={item} />
+                    </SwiperSlide>
+                );
+
+            })}
         </Swiper>
 
     );
