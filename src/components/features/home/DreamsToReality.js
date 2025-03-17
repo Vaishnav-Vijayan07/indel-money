@@ -49,23 +49,15 @@ export default function DreamsToReality() {
             </p>
             <Link
               href="/"
-              className="group btn btn-base1 relative z-0 flex items-center justify-between mt-[15px] lg:mt-[30px] w-full max-w-[140px] xl:max-w-[160px] 2xl:max-w-[200px] 3xl:max-w-[220px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[65px] rounded-full bg-base1 text-white font-medium transition-all duration-300 overflow-hidden shadow-lg"
+              className="group btn btn-base1 relative z-0 flex items-center mt-[15px] lg:mt-[30px] w-full max-w-[140px] xl:max-w-[160px] 2xl:max-w-[200px] 3xl:max-w-[220px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[65px] rounded-full bg-base1 text-white font-medium transition-all duration-300 overflow-hidden shadow-lg"
             >
-              <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px]">
+              <span className="text-center relative z-10 w-[calc(100%-30px)] lg:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-48px)] transition-transform duration-300 group-hover:-translate-x-[-15px]">
                 Our Story
               </span>
               <div
-                className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[40px] 3xl:w-[48px] 3xl:h-[48px] bg-white rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:bg-red-600 group-hover:text-white"
+                className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[40px] 3xl:w-[48px] 3xl:h-[48px] rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:text-white"
               >
-                <svg viewBox="0 0 48 49"
-                  className="transition-all duration-100 group-hover:fill-white"
-                  fill="#ff0"
-                >
-                  <path
-                    d="M24 0.777344C10.7456 0.777344 0 11.523 0 24.7773C0 38.0317 10.7456 48.7773 24 48.7773C37.2544 48.7773 48 38.0317 48 24.7773C48 11.523 37.2544 0.777344 24 0.777344ZM37.7812 25.4617L29.5659 33.7473C29.477 33.842 29.37 33.9178 29.2513 33.9704C29.1325 34.023 29.0044 34.0512 28.8746 34.0535C28.7448 34.0558 28.6158 34.032 28.4953 33.9836C28.3748 33.9352 28.2652 33.8632 28.173 33.7717C28.0808 33.6803 28.0078 33.5713 27.9584 33.4512C27.909 33.3311 27.8842 33.2023 27.8854 33.0724C27.8866 32.9426 27.9139 32.8143 27.9655 32.6951C28.0171 32.5759 28.092 32.4683 28.1859 32.3786C30.6207 29.9234 28.8816 25.7495 25.4238 25.7495H10.9097C10.6518 25.7495 10.4046 25.6471 10.2222 25.4648C10.0399 25.2825 9.9375 25.0352 9.9375 24.7773C9.9375 24.5195 10.0399 24.2722 10.2222 24.0899C10.4046 23.9076 10.6518 23.8052 10.9097 23.8052H25.4229C28.8806 23.8052 30.6197 19.6313 28.185 17.1761C28.0911 17.0864 28.0161 16.9788 27.9645 16.8596C27.9129 16.7404 27.8857 16.6121 27.8845 16.4823C27.8833 16.3524 27.9081 16.2236 27.9575 16.1035C28.0069 15.9834 28.0798 15.8744 28.172 15.783C28.2642 15.6915 28.3738 15.6195 28.4943 15.5711C28.6148 15.5227 28.7438 15.4989 28.8737 15.5012C29.0035 15.5034 29.1316 15.5317 29.2503 15.5843C29.3691 15.6369 29.4761 15.7127 29.565 15.8073L37.7812 24.093C37.9619 24.2749 38.0633 24.5209 38.0633 24.7773C38.0633 25.0338 37.9619 25.2798 37.7812 25.4617Z"
-                    fill="#f00"
-                  />
-                </svg>
+                <Image src="/images/about-btn.svg" width={48} height={48} alt="about btn" />
               </div>
             </Link>
           </div>
