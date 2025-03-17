@@ -75,21 +75,20 @@ export default function ManagementTeam() {
         },
     ];
     return (
-        <section className="w-full py-[30px] lg:py-[40px] xl:py-[70px]">
+        <section className="relative w-full py-[30px] lg:py-[40px] xl:py-[70px]">
+            <div className="absolute bottom-[12%] left-0 w-full h-[60%] bg-[linear-gradient(94deg,rgba(243,0,0,0.00)_3.16%,rgba(235,2,8,0.10)_97.06%)] z-0"></div>
             <div className="container">
                 <div className="flex flex-wrap mb-[60px]">
-                    <div className="w-[40%]">
+                    <div className="w-[45%] 2xl:w-[40%]">
                         <h2 className="text-title1 mb-[15px] 2xl:mb-[20px]">
                             <span className="text-base2 font-bold">Indely</span>
                             ’s Guiding Lights
-
                         </h2>
                     </div>
-                    <div className="w-[60%]">
-
-                        <h2 className="text-sm-1 w-full">
+                    <div className="w-[55%] 2xl:w-[60%]">
+                        <p className="text-sm-1">
                             Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
-                        </h2>
+                        </p>
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-[17px] -my-[30px]">
