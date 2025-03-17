@@ -68,7 +68,7 @@ export default function PageBreadcrumb({
                             alt="breadcrumb"
                             width={11}
                             height={7}
-                            className="w-[4px] lg:w-[6px] 2xl:w-[10px]"
+                            className="w-[4px] lg:w-[6px]"
                         />
                     </BreadcrumbSeparator>
                 )}

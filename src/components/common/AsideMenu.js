@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import { useState } from 'react';
 import Link from "next/link";
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
-export default function AsideMenu({ aside_items }) {
-    const router = useRouter();
+export default function AsideMenu({ navigationItems }) {
+    const pathname = usePathname();
     const [openMenuIndex, setOpenMenuIndex] = useState(null);
 
     // Toggle submenu for specific item
@@ -14,29 +14,11 @@ export default function AsideMenu({ aside_items }) {
         setOpenMenuIndex(openMenuIndex === index ? null : index);
     };
 
-    const isActive = (href) => {
-        if (!href || !router.pathname) return false;
-
-        // Exact match
-        if (router.pathname === href) return true;
-
-        // Parent route match (only if href is not root)
-        if (href !== '/' && router.pathname.startsWith(href)) return true;
-
-        return false;
-    };
-
     return (
         <aside className="w-full h-full bg-base3 lg:py-[15px] 2xl:py-[20px] 3xl:py-[25px] rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px]">
             <ol>
-                {aside_items?.map((item, index) => {
-                    const isItemActive = isActive(item.href);
+                {navigationItems?.map((item, index) => {
 
-                    const isChildActive = item.sub_menu?.some(subItem =>
-                        isActive(subItem.href)
-                    );
-                    console.log("isChildActive", isChildActive);
-                    
                     return (
                         <li key={index}>
                             <div
@@ -44,10 +26,9 @@ export default function AsideMenu({ aside_items }) {
                             >
                                 <Link
                                     href={item.href}
-                                    className={`text-[12px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[30px] text-white text-nowrap text-ellipsis capitalize font-medium w-full h-full  block p-[10px_15px] lg:p-[10px_20px] xl:p-[15px_30px] 2xl:p-[20px_40px] 3xl:p-[30px_50px] ${isItemActive ? "bg-base2" : "bg-transparent"}`}
+                                    className={`text-[12px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[30px] text-[#050505] text-nowrap text-ellipsis capitalize font-normal w-full h-full  block p-[10px_15px] lg:p-[10px_20px] xl:p-[15px_30px] 2xl:p-[20px_40px] 3xl:p-[30px_50px] ${pathname === item.href ? "bg-base2" : "bg-transparent"}`}
                                 >
                                     {item.title}
-                                    {item.href}
                                 </Link>
 
                                 {item.sub_menu && (
@@ -64,16 +45,15 @@ export default function AsideMenu({ aside_items }) {
                                 )}
                             </div>
 
-                            {item.sub_menu && (openMenuIndex === index || isChildActive) && (
+                            {item.sub_menu && (openMenuIndex === index) && (
                                 <ul className="submenu pl-4 lg:pl-6 xl:pl-8">
                                     {item.sub_menu.map((subItem, subIndex) => {
-                                        const isSubItemActive = isActive(subItem.href);
 
                                         return (
                                             <li key={subIndex} className="submenu-item">
                                                 <Link
                                                     href={subItem.href}
-                                                    className={`text-white text-nowrap text-ellipsis capitalize block text-xs lg:text-base xl:text-xl 2xl:text-2xl p-2 lg:p-4 xl:p-5 2xl:p-6 ${isSubItemActive ? 'bg-base2' : 'bg-transparent'}`}
+                                                    className={`text-white text-nowrap text-ellipsis capitalize block text-xs lg:text-base xl:text-xl 2xl:text-2xl p-2 lg:p-4 xl:p-5 2xl:p-6 ${pathname === subItem.href ? 'bg-base2' : 'bg-transparent'}`}
                                                 >
                                                     {subItem.title}
                                                 </Link>
