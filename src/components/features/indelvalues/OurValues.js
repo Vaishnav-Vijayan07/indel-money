@@ -49,6 +49,17 @@ export default function OurValues() {
                             <ValueBox item={item} />
                         </div>
                     ))}
+                    <div className="w-1/3 py-[30px] px-[20px]">
+                        <div className="w-full h-full">
+                            <Image
+                                src="/images/valueLogo.png"
+                                alt="indel-valueLogo"
+                                width={72}
+                                height={65}
+                                className="relative w-full h-full object-contain  transition-transform duration-600 group-hover:scale-[1.05]"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -57,7 +68,7 @@ export default function OurValues() {
 export function ValueBox({ item }) {
     return (
         <div className="w-full h-full relative overflow-hidden bg-white shadow-[0px_0px_28.45px_rgba(0,0,0,0.10)] p-[40px] rounded-[20px]">
-            <div className="w-[240px] h-[240px] rounded-full absolute left-[-15%] top-[-15%] bg-gradient-to-b from-[rgba(23,71,158,0.07)] via-[rgba(23,71,158,0.14)] to-[rgba(238,56,36,0.35)]">
+            <div className="w-[240px] h-[240px] rotate-[150deg] rounded-full absolute left-[-10%] top-[-15%] bg-gradient-to-b from-[rgba(23,71,158,0.07)] via-[rgba(23,71,158,0.14)] to-[rgba(238,56,36,0.35)]">
             </div>
             <div className="w-[75px] h-[65px] mb-[90px]">
                 <Image
@@ -68,7 +79,7 @@ export function ValueBox({ item }) {
                     className="relative w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
                 />
             </div>
-            <div className="text-[28px] text-black font-400 leading-[1.1] mb-[45px]">
+            <div className="text-[28px] text-black font-400 leading-[1.1] mb-[20px] min-h-[60px]">
                 {item.title}
             </div>
             <div className="text-black text-sm-1">
