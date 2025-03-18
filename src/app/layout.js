@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import "./globals.css";
 import Header from "@/components/layout/header/Header";
 import Footer from "@/components/layout/footer/Footer";
+// import ModalPortalContainer from '@/components/common/ModalPortalContainer';
 
 
 
@@ -57,9 +58,10 @@ export default function RootLayout({ children }) {
       <body className={`${amino.variable} font-amino min-h-screen flex flex-col antialiased`}>
         <Header />
         <main className="flex-grow">
-        {children}
+          {children}
         </main>
         <Footer />
+        {/* <ModalPortalContainer /> */}
       </body>
     </html>
   );
