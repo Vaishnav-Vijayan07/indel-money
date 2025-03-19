@@ -26,7 +26,7 @@ export default function Home() {
       <GoldLoanCalculator />
 
       {/* Branch locator contents*/}
-      <BranchLocator />
+      <BranchLocator variant={"home"} />
 
       {/* Life at Indel contents*/}
       <LifeAtIndel />
