@@ -1,7 +1,7 @@
 import AsideMenu from "@/components/common/AsideMenu"
 import PageBreadcrumb from "@/components/common/PageBreadcrumb"
 import Image from "next/image";
-
+ 
 export const navigationItems = [
     {
         title: "Debt partners",
