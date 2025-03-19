@@ -436,5 +436,13 @@
   }
 }
 
+.bg-custom-gradient {
+  background: linear-gradient(180deg, rgba(23, 71, 158, 0.30) 0%, rgba(235, 2, 8, 0.30) 100%);
+}
 
- 
+.custom-prev.swiper-button-disabled,
+.custom-next.swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
