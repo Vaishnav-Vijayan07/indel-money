@@ -230,12 +230,22 @@
     font-weight: 400;
     color: rgba(0, 0, 0, 0.8);
   }
+  .text-banner-1 {
+    font-size: 26px;
+    line-height: 1;
+    font-weight: 400;
+    color: #000;
+    text-transform: capitalize;
+  }
 
   @media (min-width: 640px) {
 
     /* sm */
     .text-title1 {
       font-size: 22px;
+    }
+    .text-banner-1 {
+      font-size: 30px;
     }
   }
 
@@ -244,6 +254,9 @@
     /* md */
     .text-title1 {
       font-size: 26px;
+    }
+    .text-banner-1 {
+      font-size: 34px;
     }
   }
 
@@ -270,6 +283,9 @@
     .text-footer-2 {
       font-size: 12px;
     }
+    .text-banner-1 {
+      font-size: 40px;
+    }
   }
 
   @media (min-width: 1536px) {
@@ -295,6 +311,9 @@
     .text-footer-2 {
       font-size: 14px;
     }
+    .text-banner-1 {
+      font-size: 48px;
+    }
   }
 
   @media (min-width: 1920px) {
@@ -319,6 +338,9 @@
 
     .text-footer-2 {
       font-size: 16px;
+    }
+    .text-banner-1 {
+      font-size: 68px;
     }
   }
 
