@@ -124,7 +124,13 @@
     padding-left: var(--container-padding, 1rem);
     padding-right: var(--container-padding, 1rem);
   }
-
+  .sp-container{
+    max-width: calc(100% - ((100% - var(--container-x))/ 2));
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding, 1rem);
+    padding-right: var(--container-padding, 1rem);
+  }
 }
 
 @layer components {
@@ -245,7 +251,7 @@
 
     /* lg */
     .text-title1 {
-      font-size: 34px;
+      font-size: 36px;
     }
 
     .text-sm-1,
@@ -300,7 +306,7 @@
 
     .text-sm-1,
     p {
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .text-header-sm {
@@ -385,15 +391,6 @@
 
 }
 
-.custom-container {
-  margin: auto;
-  padding: 0 15px;
-  width: 100%;
-  max-width: 100%;
-
-
-}
-
 @media (min-width: 640px) {
 
   /* sm */
@@ -454,3 +451,23 @@
   cursor: not-allowed;
   pointer-events: none;
 }
+.scrollbar-custom::-webkit-scrollbar {
+  width: 1.5px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  border-radius: 100px;
+  background: rgba(23, 71, 158, 0.60);
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: red;
+  width: 6px !important;
+  min-height: 50px;
+  border-radius: 100px;
+}
+
+
+
+
+ 

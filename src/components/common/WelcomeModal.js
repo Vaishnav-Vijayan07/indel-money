@@ -14,7 +14,9 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+// } from "@/components/ui/alert-dialog"
+} from "../../components/ui/alert-dialog"
+
 import { useState, useEffect } from "react";
 
 
@@ -139,7 +141,7 @@ export default function WelcomeModal() {
     )
 }
 
-export function WelcomeBox({ item, index }) {
+function WelcomeBox({ item, index }) {
     const isActive = index === 0;
     return (
         <div
