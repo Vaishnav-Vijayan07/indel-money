@@ -119,16 +119,12 @@ export default function ManagementTeam() {
                         </div>
                     ))}
                 </div>
-
-                {/* <div className="w-full pt-[60px]">
-                    <TeamModal item={slides[0]} />
-                </div> */}
             </div>
         </section>
     );
 }
 
-export function TeamBox({ item }) {
+function TeamBox({ item }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -165,7 +161,7 @@ export function TeamBox({ item }) {
 }
 
 
-export function TeamModal({ item }) {
+function TeamModal({ item }) {
     return (
         <div className="container">
             <div className="relative z-1 w-full flex flex-wrap bg-white rounded-[36px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] px-[20px] xl:px-[35px] 2xl:px-[55px] 3xl:px-[75px] py-[25px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[80px]">

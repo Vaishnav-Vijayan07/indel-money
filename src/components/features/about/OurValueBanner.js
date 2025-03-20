@@ -1,3 +1,4 @@
+import PageBreadcrumb from "@/components/common/PageBreadcrumb"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,13 +7,13 @@ export default function InnerBanner() {
         <section className="relative w-full overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.50)] to-[rgba(102,102,102,0.00)] z-10"></div>
 
-            <div className="relative w-full h-auto md:h-[280px] lg:h-[400px] xl:h-[420px] 2xl:h-[460px] 3xl:h-[480px]">
+            <div className="relative w-full h-auto md:h-[280px] lg:h-[340px] xl:h-[365px] 2xl:h-[460px] 3xl:h-[560px]">
                 <picture className="block w-full h-full">
                     <source media="(min-width: 640px)" srcSet="/images/valueBanner.jpg" />
                     <img
-                        src="/images/valueBanner.jpg"
+                        src="/images/valueBannerMb.jpg"
                         width={640}
-                        height={400}
+                        height={500}
                         alt="value-innerBanner"
                         loading="lazy"
                         className="w-full h-full object-cover"
@@ -24,8 +25,8 @@ export default function InnerBanner() {
                     <h1 className="text-title1 text-white mb-[15px] 2xl:mb-[20px]">
                         Our
                         <span className="text-base2 font-bold">&nbsp;Values</span>
-
                     </h1>
+                    <PageBreadcrumb />
                 </div>
             </div>
         </section>

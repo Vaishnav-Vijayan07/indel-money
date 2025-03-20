@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 export default function OurValues() {
     const slides = [
@@ -36,27 +35,22 @@ export default function OurValues() {
     ];
 
     return (
-        <section className="w-full py-[30px]">
+        <section className="w-full pt-[30px] xl:pt-[60px] 2xl:pt-[100px] pb-[25px] lg:pb-[40px] 2xl:pb-[70px]">
             <div className="container">
-                <h2 className="text-title1 mb-[15px] 2xl:mb-[20px]">
-                    Our
-                    <span className="text-base2 font-bold">&nbsp;Values</span>
-
-                </h2>
-                <div className="flex flex-wrap -my-[30px] -mx-[20px]">
-                    {slides.map((item, index) => (
-                        <div key={index} className="w-1/3 py-[30px] px-[20px]">
+                <div className="flex flex-wrap -my-[15px] xl:-my-[20px] 2xl:-my-[30px] -mx-[10px] xl:-mx-[15px] 2xl:-mx-[20px]">
+                    {slides?.map((item, index) => (
+                        <div key={index} className="w-2/4 lg:w-1/3 py-[15px] xl:py-[20px] 2xl:py-[30px] px-[10px] xl:px-[15px] 2xl:px-[20px]">
                             <ValueBox item={item} />
                         </div>
                     ))}
-                    <div className="w-1/3 py-[30px] px-[20px]">
-                        <div className="w-full h-full">
+                    <div className="w-2/4 lg:w-1/3 py-[15px] xl:py-[20px] 2xl:py-[30px] px-[10px] xl:px-[15px] 2xl:px-[20px]">
+                        <div className="group w-full h-full relative z-0">
                             <Image
                                 src="/images/valueLogo.png"
                                 alt="indel-valueLogo"
-                                width={72}
-                                height={65}
-                                className="relative w-full h-full object-contain  transition-transform duration-600 group-hover:scale-[1.05]"
+                                fill
+                                style={{ objectFit: "contain" }}
+                                className="transition-transform duration-300 group-hover:scale-105"
                             />
                         </div>
                     </div>
@@ -67,22 +61,21 @@ export default function OurValues() {
 }
 export function ValueBox({ item }) {
     return (
-        <div className="w-full h-full relative overflow-hidden bg-white shadow-[0px_0px_28.45px_rgba(0,0,0,0.10)] p-[40px] rounded-[20px]">
-            <div className="w-[240px] h-[240px] rotate-[150deg] rounded-full absolute left-[-10%] top-[-15%] bg-gradient-to-b from-[rgba(23,71,158,0.07)] via-[rgba(23,71,158,0.14)] to-[rgba(238,56,36,0.35)]">
-            </div>
-            <div className="w-[75px] h-[65px] mb-[90px]">
+        <div className="w-full h-full relative overflow-hidden bg-white shadow-[0_0_28px_rgba(0,0,0,0.10)] p-[20px] xl:p-[30px] 2xl:p-[40px] rounded-[20px] transition-transform duration-600 hover:transform hover:translate-y-2 2xl:hover:translate-y-4">
+            <div className="w-[120px] xl:w-[145px] 2xl:w-[190px] 3xl:w-[240px] h-[120px] xl:h-[145px] 2xl:h-[190px] 3xl:h-[240px] rotate-[65deg] 2xl:rotate-[150deg] rounded-full absolute left-[-8%] xl:left-[-5%] 2xl:left-[-10%] top-[-11%] 2xl:top-[-15%] bg-gradient-to-b from-[rgba(23,71,158,0.07)] via-[rgba(23,71,158,0.14)] to-[rgba(238,56,36,0.65)]"></div>
+            <div className="group w-[40px] xl:w-[50px] 3xl:w-[75px] h-[40px] xl:h-[45px] 3xl:h-[65px] mb-[45px] xl:mb-[65px] 2xl:mb-[80px] 3xl:mb-[90px]">
                 <Image
                     src={item.image}
                     alt={item.alt}
                     width={72}
                     height={65}
-                    className="relative w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
+                    className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
                 />
             </div>
-            <div className="text-[28px] text-black font-400 leading-[1.1] mb-[20px] min-h-[60px]">
+            <div className="text-black font-medium 2xl:font-normal leading-[1.1] text-[18px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[28px] mb-[20px] xl:min-h-[40px] 2xl:min-h-[50px] 3xl:min-h-[60px]">
                 {item.title}
             </div>
-            <div className="text-black text-sm-1">
+            <div className="text-sm-1 text-black ">
                 {item.description}
             </div>
         </div>
