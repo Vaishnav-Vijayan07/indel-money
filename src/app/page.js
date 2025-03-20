@@ -15,7 +15,9 @@ const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 export default function Home() {
   return (
     <>
+      {/* welcome contents*/}
       <WelcomeModal />
+      
       {/* banner section contents*/}
       <HeroBanner />
 

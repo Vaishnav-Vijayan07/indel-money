@@ -23,8 +23,8 @@ const defaultTransformLabel = (label) => {
 
 export default function PageBreadcrumb({
     homeElement = 'Home',
-    activeItemClasses = 'text-gray-500 font-medium',
-    inactiveItemClasses = 'hover:text-base2',
+    activeItemClasses = 'text-[#383838] font-normal',
+    inactiveItemClasses = 'text-[#383838] hover:text-base2',
     transformLabel = defaultTransformLabel,
 }) {
 
@@ -68,7 +68,7 @@ export default function PageBreadcrumb({
                             alt="breadcrumb"
                             width={11}
                             height={7}
-                            className="w-[4px] lg:w-[6px]"
+                            className="w-[4px] lg:w-[5px] 2xl:w-[6px] 3xl:w-[10px]"
                         />
                     </BreadcrumbSeparator>
                 )}
@@ -81,7 +81,7 @@ export default function PageBreadcrumb({
 
                             ) : (
                                 <BreadcrumbLink asChild>
-                                    <Link href={item.href} className="hover:text-base2">
+                                    <Link href={item.href} className="text-[#383838] hover:text-base2">
                                         {item.label}
                                     </Link>
                                 </BreadcrumbLink>
@@ -94,7 +94,7 @@ export default function PageBreadcrumb({
                                         alt="breadcrumb"
                                         width={11}
                                         height={7}
-                                        className="w-[4px] lg:w-[6px] 2xl:w-[10px]"
+                                        className="w-[4px] lg:w-[5px] 2xl:w-[6px] 3xl:w-[10px]"
                                     />
                                 </BreadcrumbSeparator>
                             )}
