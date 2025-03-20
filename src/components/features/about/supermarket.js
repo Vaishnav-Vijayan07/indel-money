@@ -4,7 +4,7 @@ import Sliderbox from "./sliderbox";
 export default function Supermarket() {
 
     return (
-        <section className="relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:content-[''] before:bg-[linear-gradient(270deg,rgba(23,71,158,0.00)_3.16%,rgba(23,71,158,0.15)_97.06%)]">
+        <section className="relative  top-0 left-0 w-full h-full content-[''] bg-[linear-gradient(270deg,rgba(23,71,158,0.00)_3.16%,rgba(23,71,158,0.15)_97.06%)]">
 
             <div className="container">
                 <div className="flex flex-wrap max-md:flex-col-reverse">

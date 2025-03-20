@@ -13,7 +13,7 @@ import {
 
 export default function Header() {
   return (
-    <header className="w-full relative z-99 flex items-center" style={{ height: "var(--header-y)" }}>
+    <header className="w-full relative z-10 flex items-center" style={{ height: "var(--header-y)" }}>
       <div className="container">
         <div className="flex items-center">
           <div className="w-[60px] xl:w-[90px] 2xl:w-[120px] 3xl:w-[140px]">
@@ -111,11 +111,11 @@ export default function Header() {
 }
 
 
-export function ContactBox({ href, src, title, alt }) {
+function ContactBox({ href, src, title, alt }) {
   return (
     <a href={href} className="group flex items-center gap-1">
       <span>
-        <Image src={src} width={15} height={15} alt={alt} className="w-[10px] h-[auto] lg:w-[12px]3xl:w-[14px] block" />
+        <Image src={src} width={15} height={15} alt={alt} className="w-[10px] h-[auto] lg:w-[12px] 3xl:w-[14px] block" />
       </span>
       <span className="text-header-sm group-hover:text-base2 transition-color duration-300">{title}</span>
     </a>

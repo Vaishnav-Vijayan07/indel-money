@@ -151,7 +151,7 @@
   @media (min-width: 1280px) {
     .btn {
       font-size: 12px;
-      height: 30px;
+      height: 34px;
     }
   }
 
@@ -295,7 +295,7 @@
 
     /* 3xl */
     .text-title1 {
-      font-size: 48px;
+      font-size: 54px;
     }
 
     .text-sm-1,
@@ -375,6 +375,14 @@
   .lifeSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 1px solid #17479E;
   }
+}
+.LoanSlider .swiper-wrapper {
+  padding: 20px 0 !important;
+
+}
+.LoanSlider .swiper-slide {
+  height: auto !important;
+
 }
 
 .custom-container {
