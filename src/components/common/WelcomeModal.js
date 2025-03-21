@@ -57,7 +57,6 @@ export default function WelcomeModal() {
 
     const [isOpen, setIsOpen] = useState(false);
 
-
     useEffect(() => {
         // Check if the user has seen the modal before using localStorage
         const hasSeenModal = localStorage.getItem("hasSeenWelcomeModal");

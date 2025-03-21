@@ -7,7 +7,7 @@ export default function DifferentShadesIndelBanner() {
         <div className="w-full mb-[20px] lg:mb-[30px] 2xl:mb-[50px]">
           <PageBreadcrumb />
         </div>
-        <div className="text-title2 mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
+        <div className="text-title2">
           Different <br />
           Shades Of {""}
           <span className="font-bold text-base2">
