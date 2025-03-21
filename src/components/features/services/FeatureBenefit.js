@@ -59,10 +59,10 @@ export default function FeatureBenefit() {
         },
     ];
     return (
-        <section className="w-full bg-gradient-to-r from-[rgba(243,0,0,0.00)] via-transparent to-[rgba(235,2,8,0.10)]">
+        <section className="w-full bg-gradient-to-r from-[rgba(243,0,0,0.00)] via-transparent to-[rgba(235,2,8,0.10)] py-[20px] lg:py-0">
             <div className="max-w-[var(--container-x)] lg:max-w-[calc(100%-(100%-var(--container-x))/2)] mx-auto lg:ml-[0] px-[var(--container-padding,1rem)] lg:pl-[0]">
 
-                <div className="w-full flex flex-wrap">
+                <div className="w-full flex flex-wrap flex-col-reverse lg:flex-row">
                     <div className="group h-full lg:h-auto w-full lg:w-[400px] xl:w-[470px] 2xl:w-[690px] overflow-hidden rounded-[36px] lg:rounded-tl-none lg:rounded-bl-none">
                         <Image
                             src="/images/ftrBeneft.jpg"
@@ -72,12 +72,12 @@ export default function FeatureBenefit() {
                             className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]" />
                     </div>
                     <div className="flex flex-wrap content-between w-full lg:w-[calc(100%-400px)] xl:w-[calc(100%-470px)] 2xl:w-[calc(100%-690px)] lg:p-[25px] xl:p-[30px] 2xl:p-[40px] 3xl:p-[55px]">
-                        <div className="w-full">
+                        <div className="w-full pb-[20px] lg:pb-[0]">
                             <h2 className="text-title1">
                                 Features and
                                 <span className="text-base2 font-bold">&nbsp;Benefits</span>
                             </h2>
-                            <div className="w-full rounded-[36px] overflow-hidden mt-[25px]">
+                            <div className="w-full rounded-[36px] overflow-hidden mt-[15px] xl:mt-[25px]">
                                 <div className="relative w-full bg-[#DCEAFB] p-[25px] xl:p-[40px] 2xl:p-[50px]">
                                     <div className="absolute z-0 left-0 top-0 w-[45%] h-full pointer-events-none">
                                         <Image
