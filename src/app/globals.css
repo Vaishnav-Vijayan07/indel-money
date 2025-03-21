@@ -124,7 +124,8 @@
     padding-left: var(--container-padding, 1rem);
     padding-right: var(--container-padding, 1rem);
   }
-  .sp-container{
+
+  .sp-container {
     max-width: calc(100% - ((100% - var(--container-x))/ 2));
     margin-left: auto;
     margin-right: auto;
@@ -382,10 +383,12 @@
     outline: 1px solid #17479E;
   }
 }
+
 .LoanSlider .swiper-wrapper {
   padding: 20px 0 !important;
 
 }
+
 .LoanSlider .swiper-slide {
   height: auto !important;
 
@@ -451,6 +454,7 @@
   cursor: not-allowed;
   pointer-events: none;
 }
+
 .scrollbar-custom::-webkit-scrollbar {
   width: 1.5px;
 }
@@ -468,6 +472,88 @@
 }
 
 
+/* 
+.dot-timeline {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(147, 191, 250, 1);
+  position: relative;
+  margin: 20px 0;
+  transition: all 0.3s;
+}
 
+.dot-timeline.active {
+  width: 56px;
+  height: 56px;
+  background-color: #eb0208;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s;
+}
 
- 
+.dot-timeline.active .arrow-up,
+.dot-timeline.active .arrow-down {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transition: all 1s;
+}
+
+.dot-timeline.active .arrow-up {
+  top: 15px;
+  transform: rotate(135deg);
+}
+
+.dot-timeline.active .arrow-down {
+  bottom: 15px;
+  transform: rotate(-45deg);
+} */
+
+.dot-timeline {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(147, 191, 250, 1);
+  margin: 14px 0;
+}
+
+.moving-arrows-indicator {
+  position: absolute;
+  left: 2px;
+  right: 0;
+  width: 56px;
+  height: 56px;
+  background-color: #EB0208;
+  border-radius: 50%;
+  transform: translate(-50%, 0);
+  transition: transform 2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
+
+.arrow-up,
+.arrow-down {
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.arrow-up {
+  transform: rotate(135deg);
+  margin-bottom: 4px;
+}
+
+.arrow-down {
+  transform: rotate(-45deg);
+  margin-top: 4px;
+}

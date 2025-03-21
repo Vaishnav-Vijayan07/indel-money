@@ -1,14 +1,16 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from 'next/link';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Mousewheel } from "swiper/modules";
+import { Pagination, Autoplay, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 export default function Yearsinception() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const dotsRef = useRef([]);
+    const [arrowPos, setArrowPos] = useState(0);
 
     const slides = [
         {
@@ -35,79 +37,148 @@ export default function Yearsinception() {
             title: "Future Vision",
             desc: "Focused on innovation and global reach.",
         },
+        {
+            year: "2050",
+            image: "/images/h4.webp",
+            title: "Future Vision",
+            desc: "Focused on innovation and global reach.",
+        },
     ];
 
+    useEffect(() => {
+        const activeDotIndex = Math.round(
+            (activeIndex / (slides.length - 1)) * (12 - 1)
+        );
+        const activeDot = dotsRef.current[activeDotIndex];
+        if (activeDot) {
+            const offset = activeDot.offsetTop;
+            setArrowPos(offset);
+        }
+    }, [activeIndex, slides.length]);
+
     return (
-        <section className="relative   bg-[#003596]">
+        <section className="relative &:after:content[] after:absolute after:top-0 after:left-0 after:h-full after:w-[50%] after:bg-[#003596]">
             <div className="container">
-                <div className="flex flex-wrap" >
-                    <div className="w-[420px] py-[120px] flex items-end">
+                <div className="flex flex-wrap relative z-10">
+                    <div className="w-[300px] 2xl:w-[350px]  3xl:w-[420px] py-[120px] flex items-end">
                         <div className="h-fit w-full">
-                            <div className="w-full text-[68px] text-white font-normal leading-[1]">Years Since
-                                Inception</div>
+                            <div className="w-full text-[45px] 2xl:text-[50px] 3xl:text-[68px] text-white font-normal leading-[1]">
+                                Years Since Inception
+                            </div>
                         </div>
                     </div>
-                    <div className="w-[calc(100%-420px)] bg-[#17479E] pl-[130px] pt-[70px]">
-                        <div className="relative flex justify-center max-w-[760px]">
-                            <div className="relative z-10 w-[120px]">
-                                <div className="text-white text-[90px] leading-none font-bold">
-                                    19
+                    <div className="w-[calc(100%-300px)] 2xl:w-[calc(100%-350px)] 3xl:w-[calc(100%-420px)] bg-[#17479E] pl-[60px] 3xl:pl-[130px] pt-[50px] 3xl:pt-[70px]">
+                        <div className="flex flex-wrap w-full justify-between">
+                            <div className="relative flex justify-center max-w-[760px] w-[calc(100%-120px)] 3xl:w-[calc(100%-200px)]">
+                                <div className="relative z-10 w-[75px] 3xl:w-[120px]">
+                                    <div className="text-white text-[55px] 2xl:text-[80px] 3xl:text-[93px] leading-none font-bold">
+                                        {slides[activeIndex]?.year.slice(0, 2)}
+                                    </div>
+                                </div>
+                                <div className="w-[calc(100%-75px)] 3xl:w-[calc(100%-120px)]">
+                                    <Swiper
+                                        direction="vertical"
+                                        slidesPerView={1.6}
+                                        spaceBetween={50}
+                                        speed={1000}
+                                        mousewheel={true}
+                                        autoplay={{
+                                            delay: 3000,
+                                            disableOnInteraction: false,
+                                            pauseOnMouseEnter: true,
+                                        }}
+                                        pagination={{
+                                            el: ".custom-pagination",
+                                            clickable: true,
+                                            renderBullet: (index, className) => {
+                                                return `<span class="${className} custom-dot" data-index="${index}"></span>`;
+                                            },
+                                        }}
+                                        modules={[Pagination, Mousewheel, Autoplay]}
+                                        className="h-[400px] 2xl:h-[650px] 3xl:h-[750px]"
+                                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                                    >
+                                        {slides.map((item, index) => (
+                                            <SwiperSlide key={index}>
+                                                <div className="flex flex-wrap items-start text-white relative h-full">
+                                                    <div className="w-[100px] relative h-full">
+                                                        <div className="text-white text-[55px] 2xl:text-[80px] 3xl:text-[93px] leading-none font-bold">
+                                                            {item.year.slice(2)}
+                                                        </div>
+                                                        {index !== slides.length - 1 && (
+                                                            <div className="absolute bg-white w-[2px] left-0 right-0 m-auto bottom-0 h-[calc(100%-70px)] 3xl:h-[calc(100%-100px)] before:content-[''] before:absolute before:top-0 before:left-[-5px] before:m-auto before:w-[12px] before:h-[12px] before:bg-white before:rounded-full">
+                                                                <span className="absolute bottom-0 left-[-8px] m-auto bg-[#DCEBFF] w-[18px] h-[18px] rounded-full before:content-[''] before:absolute before:inset-0 before:m-auto before:w-[10px] before:h-[10px] before:bg-[#EB0208] before:rounded-full"></span>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                    <div className="w-[calc(100%-100px)] pl-[50px]">
+                                                        <div className="w-full h-full">
+                                                            <div className="rounded-[24px] overflow-hidden w-full mb-[15px]">
+                                                                <Image
+                                                                    src={item.image}
+                                                                    alt={item.title}
+                                                                    width={400}
+                                                                    height={250}
+                                                                    className="w-full object-cover max-h-[175px] 3xl:max-h-[250px]"
+                                                                />
+                                                            </div>
+                                                            <h3 className="text-[18px] 2xl:text-[20px] 3xl:text-[22px] text-white font-semibold mb-[10px]">
+                                                                {item.title}
+                                                            </h3>
+                                                            <p className="text-white">{item.desc}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </SwiperSlide>
+                                        ))}
+                                        <SwiperSlide>
+                                            <div className="h-full w-full flex items-center justify-center"></div>
+                                        </SwiperSlide>
+                                    </Swiper>
                                 </div>
                             </div>
 
-                            <div className="w-[calc(100%-120px)]">
-                                <Swiper
-                                    direction="vertical"
-                                    slidesPerView={2}
-                                    spaceBetween={50}
-                                    mousewheel={true}
-                                    pagination={{ clickable: true }}
-                                    modules={[Pagination, Mousewheel]}
-                                    className="h-[750px]"
-                                >
-                                    {slides.map((slide, index) => (
-                                        <SwiperSlide key={index}>
-                                            <div className="flex flex-wrap items-start text-white relative">
-                                                <div className="w-[100px]">
-                                                    <div className="text-white text-[93px] leading-none font-bold ">
-                                                        {slide.year.slice(2)}
-                                                    </div>
-                                                </div>
-                                                <div className="w-[calc(100%-100px)] pl-[50px]">
-                                                    <div className="w-full block h-full">
-                                                        <div className="rounded-[24px] overflow-hidden w-full mb-[15px]">
-                                                            <Image
-                                                                src={slide.image}
-                                                                alt={slide.title}
-                                                                width={400}
-                                                                height={250}
-                                                                className="w-full object-cover max-h-[250px]"
-                                                            />
-                                                        </div>
-                                                        <h3 className="text-[18px] 2xl:text-[20px] 3xl:text-[22px] text-white font-semibold mb-[10px]">
-                                                            {slide.title}
-                                                        </h3>
-                                                        <p className="text-white ">{slide.desc}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </SwiperSlide>
-                                    ))}
+                            {/* Timeline with moving arrow */}
+                            <div className="relative w-[120px] 3xl:w-[200px] flex flex-col items-center justify-between h-[300px] 2xl:h-[510px] 3xl:h-[620px] my-auto mx-0 custom-pagination-wrapper">
+                                <div className="text-white text-[14px] mb-2">
+                                    {slides[0].year}
+                                </div>
 
-                                    {/* Dummy slide */}
-                                    <SwiperSlide>
-                                        <div className="h-full w-full flex items-center justify-center">
-                                            {/* You can leave this empty or show a subtle message/image */}
-                                        </div>
-                                    </SwiperSlide>
-                                </Swiper>
+                                <div className="flex flex-col justify-between items-center relative h-full">
+                                    {[...Array(12)].map((_, index) => {
+                                        const activeDotIndex = Math.round(
+                                            (activeIndex / (slides.length - 1)) * (12 - 1)
+                                        );
+                                        return (
+                                            <div
+                                                key={index}
+                                                ref={(el) => (dotsRef.current[index] = el)}
+                                                className={`dot-timeline ${index === activeDotIndex ? "active" : ""
+                                                    }`}
+                                            ></div>
+                                        );
+                                    })}
+
+                                    <div
+                                        className="moving-arrows-indicator"
+                                        style={{
+                                            transform: `translateY(${arrowPos}px) translateX(-50%)`,
+                                            transition: "transform 0.8s ease",
+                                        }}
+                                    >
+                                        <div className="arrow-up" />
+                                        <div className="arrow-down" />
+                                    </div>
+                                </div>
+
+                                <div className="text-white text-[14px] mt-2">
+                                    {slides[slides.length - 1].year}
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-        </section >
-
+        </section>
     );
 }
