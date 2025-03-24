@@ -47,8 +47,8 @@ export default function Indelhistory() {
                 </div>
 
                 <div className="flex flex-wrap">
-                    <div className="lg:w-[670px]">
-                        <div className="w-full h-fit p-[44px] rounded-[25px] shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
+                    <div className="w-full lg:w-[350px] xl:w-[465px] 2xl:w-[535px] 3xl:w-[670px]">
+                        <div className="w-full h-fit p-[25px] 2xl:p-[44px] rounded-[25px] shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
                             <div className="text-[20px] lg:text-[25px] xl:text-[30px] 2xl:text-[35px] 3xl:text-[40px] text-black font-medium mb-[10px]">Our History</div>
                             <p className="mb-3">Indel Money is was founded by Mr.Palliyil Janardhanan Nair (1929- 2011), known as Peejay was one of the pilots in
                                 the first batch of then Bharat Airways which later became “The Indian Airlines”. After serving in the popular Tata Tea,
@@ -63,16 +63,16 @@ export default function Indelhistory() {
                                 serving millions of people across the region.</p>
                         </div>
                     </div>
-                    <div className="w-[calc(100%-670px)] pl-[40px]">
-                        <div className="columns-1 sm:columns-2 md:columns-3  gap-4">
+                    <div className="w-full lg:w-[calc(100%-350px)] xl:w-[calc(100%-465px)] 2xl:w-[calc(100%-535px)] 3xl:w-[calc(100%-670px)] pl-[40px]">
+                        <div className="columns-3 gap-4 xl:gap-7 3xl:gap-10 itemsList max-lg:max-w-[80%] max-lg:mx-auto max-lg:mt-[20px]">
                             {historyImages.map((img, index) => (
-                                <div key={index} className="mb-4 break-inside-avoid">
+                                <div key={index} className="mb-[15px] xl:mb-[25px] 3xl:mb-[30px] break-inside-avoid overflow-hidden rounded-[15px] 3xl:rounded-[20px] item">
                                     <Image
                                         src={img.image}
                                         width={500}
                                         height={500}
                                         alt={img.alt}
-                                        className="w-full h-auto rounded-[20px] object-cover max-h-[320px]"
+                                        className="w-full h-full object-cover max-h-[320px]"
                                     />
                                 </div>
                             ))}

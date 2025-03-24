@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-export default function GoldLoanCalculator() {
+export default function GoldLoanCalculator({ hideTitle = false }) {
   const steps = [
     { title: "Step 1", text: "Walk in any of our branches with your gold", img: "/images/step1.webp" },
     { title: "Step 2", text: "Fill in and submit the required documents", img: "/images/step2.webp" },
@@ -11,7 +11,7 @@ export default function GoldLoanCalculator() {
   return (
     <section className="w-full pt-[20px] md:pt-[30px] 2xl:pt-[60px] pb-[20px] md:pb-[30px] 2xl:pb-[100px]">
       <div className="container">
-        <div className="text-title1 font-normal">Our Easy Step <span className="font-bold text-base2" >Gold Loan</span> </div>
+        {!hideTitle && <div className="text-title1 font-normal">Our Easy Step <span className="font-bold text-base2" >Gold Loan</span> </div>}
         <div className="flex justify-between mt-[2.5rem]">
           {steps.map((step, index) => (
             <motion.div
@@ -26,7 +26,7 @@ export default function GoldLoanCalculator() {
                 {/* Arrow - Animated & Hides for last step */}
                 {index !== steps.length - 1 && (
                   <div
-                    className={`absolute left-[110px] md:left-[130px] lg:left-[155px] xl:left-[195px] 2xl:left-[255px] 2xl:max-w-[250px] max-w-[110px] md:max-w-[140px] xl:max-w-[160px] w-full ${index % 2 === 1 ? "rotate-x-[-180deg]  top-1/4" : "top-[30px]"}`}
+                    className={`absolute left-[110px] md:left-[130px] lg:left-[145px] xl:left-[180px] 2xl:left-[260px] 3xl:left-[265px] max-w-[110px] w-full md:max-w-[140px] lg:max-w-[160px] xl:max-w-[220px]  2xl:max-w-[260px] 3xl:max-w-[380px]   ${index % 2 === 1 ? "rotate-x-[-180deg]  top-1/4" : "top-[30px]"}`}
                   >
                     <Image
                       src="/images/ArrowGold.webp"
