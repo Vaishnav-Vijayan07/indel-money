@@ -111,11 +111,11 @@ export default function Header() {
 }
 
 
-export function ContactBox({ href, src, title, alt }) {
+function ContactBox({ href, src, title, alt }) {
   return (
     <a href={href} className="group flex items-center gap-1">
       <span>
-        <Image src={src} width={15} height={15} alt={alt} className="w-[10px] h-[auto] lg:w-[12px]3xl:w-[14px] block" />
+        <Image src={src} width={15} height={15} alt={alt} className="w-[10px] h-[auto] lg:w-[12px] 3xl:w-[14px] block" />
       </span>
       <span className="text-header-sm group-hover:text-base2 transition-color duration-300">{title}</span>
     </a>

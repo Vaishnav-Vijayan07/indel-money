@@ -20,11 +20,20 @@ const defaultTransformLabel = (label) => {
         .replace(/\b\w/g, (char) => char.toUpperCase());
 };
 
+function BreadcrumbSeparatorImage({ variant }) {
+    return (
+        <svg className="w-[4px]! lg:w-[5px]! 2xl:w-[6px]! h-auto! block" width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 5.5L0.75 0.73686V10.2631L6 5.5Z" fill={variant === "white" ? "#93bffa" : "#17479e"} />
+        </svg>
+    )
+}
+
 
 export default function PageBreadcrumb({
+    variant = 'default',
     homeElement = 'Home',
-    activeItemClasses = 'text-gray-500 font-medium',
-    inactiveItemClasses = 'hover:text-base2',
+    activeItemClasses = `${variant === "white" ? "text-white" : "text-[#383838]"} font-normal`,
+    inactiveItemClasses = `${variant === "white" ? "text-white" : "text-[#383838]"} hover:text-base2`,
     transformLabel = defaultTransformLabel,
 }) {
 
@@ -63,13 +72,14 @@ export default function PageBreadcrumb({
                 </BreadcrumbItem>
                 {items.length > 0 && (
                     <BreadcrumbSeparator>
-                        <Image
+                        {/* <Image
                             src="/images/icon-breadcrumb.svg"
                             alt="breadcrumb"
                             width={11}
                             height={7}
-                            className="w-[4px] lg:w-[6px]"
-                        />
+                            className="w-[4px] lg:w-[5px] 2xl:w-[6px]"
+                        /> */}
+                        <BreadcrumbSeparatorImage variant={variant} />
                     </BreadcrumbSeparator>
                 )}
                 {items.map((item, index) => (
@@ -81,7 +91,7 @@ export default function PageBreadcrumb({
 
                             ) : (
                                 <BreadcrumbLink asChild>
-                                    <Link href={item.href} className="hover:text-base2">
+                                    <Link href={item.href} className={`${variant === "white" ? "text-white" : "text-[#383838]"} "hover:text-base2"`}>
                                         {item.label}
                                     </Link>
                                 </BreadcrumbLink>
@@ -89,13 +99,7 @@ export default function PageBreadcrumb({
 
                             {!item.isLast && (
                                 <BreadcrumbSeparator>
-                                    <Image
-                                        src="/images/icon-breadcrumb.svg"
-                                        alt="breadcrumb"
-                                        width={11}
-                                        height={7}
-                                        className="w-[4px] lg:w-[6px] 2xl:w-[10px]"
-                                    />
+                                    <BreadcrumbSeparatorImage variant={variant} />
                                 </BreadcrumbSeparator>
                             )}
                         </BreadcrumbItem>
@@ -105,3 +109,6 @@ export default function PageBreadcrumb({
         </Breadcrumb>
     )
 }
+
+
+
