@@ -189,7 +189,7 @@ function JobResultBox({ }) {
 
 export default function FindJob() {
     return (
-        <section className="w-full block py-[40px_20px] lg:py-[60px_30px] 2xl:py-[80px_40px] 3xl:py-[100px_50px] relative z-0 after:content-[''] after-w-full after:h-[50%] after:absolute after:-z-1 after:bottom-0 after:left-0 after:right-0 after:block after:bg-gradient-to-r after:to-[#fde7e7] after:from-transparent">
+        <section className="w-full block py-[40px_20px] lg:py-[60px_30px] 2xl:py-[80px_40px] 3xl:py-[100px_50px] relative z-0 after:content-[''] after:w-full after:h-[50%] after:absolute after:-z-1 after:bottom-0 after:left-0 after:right-0 after:block after:bg-gradient-to-r after:to-[#fde7e7] after:from-transparent">
             <div className="container">
                 <div className="flex justify-between mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
                     <div className="text-title1">

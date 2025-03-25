@@ -1,3 +1,4 @@
+import BenefitsEmployee from "@/components/features/career/BenefitsEmployee";
 import CareerBanner from "@/components/features/career/CareerBanner";
 import CareerLifeAtIndel from "@/components/features/career/CareerLifeAtIndel";
 import FindJob from "@/components/features/career/FindJob";
@@ -10,6 +11,7 @@ export default function Career() {
       <FindJob />
       <MakeYourMove />
       <CareerLifeAtIndel />
+      <BenefitsEmployee />
     </>
   )
 }
