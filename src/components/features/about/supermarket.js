@@ -4,7 +4,7 @@ import Sliderbox from "./sliderbox";
 export default function Supermarket() {
 
     return (
-        <section className="relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:content-[''] before:bg-[linear-gradient(270deg,rgba(23,71,158,0.00)_3.16%,rgba(23,71,158,0.15)_97.06%)]">
+        <section className="relative absolute top-0 left-0 w-full h-full content-[''] bg-[linear-gradient(270deg,rgba(23,71,158,0.00)_3.16%,rgba(23,71,158,0.15)_97.06%)]">
 
             <div className="custom-container">
                 <div className="flex flex-wrap">
@@ -14,7 +14,7 @@ export default function Supermarket() {
                     </div>
 
                     {/* right sec  */}
-                    <div className="w-[calc(100%-630px)] pl-[110px] py-[40px] flex flex-wrap items-center before:absolute before:top-0 before:right-0 before:w-[60%] before:h-full before:content-[''] before:bg-[linear-gradient(94deg,rgba(243,0,0,0.00)_3.16%,rgba(235,2,8,0.15)_97.06%)]">
+                    <div className="w-[calc(100%-630px)] pl-[110px] py-[40px] flex flex-wrap items-center absolute top-0 right-0 w-[60%] h-full content-[''] bg-[linear-gradient(94deg,rgba(243,0,0,0.00)_3.16%,rgba(235,2,8,0.15)_97.06%)]">
                         <div className="contentBx">
                             <div className="text-[45px] text-[##1E1E1E] font-normal leading-[1.2] mb-[20px] ">
                                 The Complete Financial
