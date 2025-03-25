@@ -1,5 +1,5 @@
-import EnquiryForm from "@/components/common/EnquiryForm";
-import HomeSlider from "@/components/features/home/HomeSlider";
+import EnquiryForm from "../../common/EnquiryForm"
+import HomeSlider from "../../features/home/HomeSlider";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 

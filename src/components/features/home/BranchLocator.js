@@ -1,5 +1,8 @@
-import BranchForm from '@/components/common/BranchForm';
-import BranchLocationMap from '@/components/common/BranchLocationMap';
+// import BranchForm from '@/components/common/BranchForm';
+// import BranchLocationMap from '@/components/common/BranchLocationMap';
+
+import BranchForm from '../../common/BranchForm'
+import BranchLocationMap from '../../common/BranchLocationMap';
 
 export default function BranchLocator({ variant = 'default' }) {
   return (

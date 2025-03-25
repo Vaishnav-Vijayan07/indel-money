@@ -5,7 +5,7 @@ export default function Innovations() {
     return (
         <section className="w-full 2xl:pt-[80px] 2xl:pb-[30px] md:pt-[30px] md:pb-[30px] pt-[40px] pb-[20px]">
             <div className="container">
-                <div className="w-full h-auto rounded-[36px] bg-[#CAE5F4] 2xl:px-[85px] lg:px-[45px] px-[30px]" >
+                <div className="rounded-[36px] bg-[#CAE5F4] 2xl:px-[85px] lg:px-[45px] px-[30px] h-full w-full" >
                     <div className="flex flex-wrap relative  h-full w-full 2xl:py[60px] lg:py-[40px] py-[25px]">
                         <div className="w-full max-w-[calc(100%-220px)] lg:max-w-[calc(100%-300px)] xl:max-w-[calc(100%-320px)] 2xl:max-w-[calc(100%-376px)] 3xl:max-w-[calc(100%-400px)]">
                             <div className="flex flex-wrap items-center mb-[15px] lg:mb[20px] 2xl:mb[30px]">
@@ -21,22 +21,33 @@ export default function Innovations() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="w-full max-w-[468px] lg:max-w-[576px] 2xl:max-w-[768px] 3xl:max-w-[840px] mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable</p>
-                            </div>
-                            <div>
-                                <div className="2xl:text-[18px] xl:text-[16px] text-[14px] text-[#323232] mb-[10px] font-bold ">Download our mobile application from:</div>
-                                <div className="flex flex-wrap gap-[6px] 2xl:gap-[8px]">
-                                    <DownloadBx
-                                        src="/images/app-download-1.svg"
-                                        alt="app store"
-                                        href="/"
-                                    />
-                                    <DownloadBx
-                                        src="/images/app-download-2.svg"
-                                        alt="app store"
-                                        href="/"
-                                    />
+                            {/* content */}
+                            <p className="mb-[15px] lg:mb[20px] 2xl:mb[35px]">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&apos;t look even slightly believable</p>
+                            {/* download app */}
+
+                            <div className="2xl:text-[18px] xl:text-[16px] text-[14px] text-[#323232] mb-[10px] font-bold ">Download our mobile application from:</div>
+                            <div className="flex flex-wrap m-[-4px] max-w-[380px] w-full">
+                                <div className="w-1/2 p-[4px]">
+                                    <Link href="#" className="overflow-hidden rounded-[10px] w-full h-full bg-white flex items-center justify-center">
+                                        <Image
+                                            src={"/images/Appstore.webp"}
+                                            alt="downloadImg"
+                                            width={180}
+                                            height={60}
+                                            className="w-full h-full object-cover duration-450 transition-all group hover:scale-[1.1] "
+                                        />
+                                    </Link>
+                                </div>
+                                <div className="w-1/2 p-[4px]">
+                                    <Link href="#" className="overflow-hidden rounded-[10px] w-full h-full bg-white flex items-center justify-center">
+                                        <Image
+                                            src={"/images/PlayStore.webp"}
+                                            alt="downloadImg"
+                                            width={180}
+                                            height={60}
+                                            className="w-full h-full oobject-cover duration-450 transition-all group hover:scale-[1.1] "
+                                        />
+                                    </Link>
                                 </div>
                             </div>
                         </div>
