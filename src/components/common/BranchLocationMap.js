@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState, useRef, useEffect } from 'react';
 import dynamic from 'next/dynamic';
@@ -206,7 +206,7 @@ export default function BranchLocationMap() {
                 </MapContainer>
             </div>
 
-            <div className="w-[430px] lg:w-[320px)] xl:w-[360px)] 2xl:w-[430px] bg-[#17479E] text-white">
+            <div className="w-[430px] lg:w-[320px] xl:w-[360px] 2xl:w-[430px] bg-[#17479E] text-white">
                 <h2 className="text-[22px] font-bold pt-[15px] pb-[15px] pl-[30px] pr-[30px] border-solid border border-[rgba(255,255,255,0.80)]">20 Branches Near You</h2>
                 <div className="overflow-y-auto max-h-[calc(100%-65px)]">
                     {branchLocations.map((branch) => (
