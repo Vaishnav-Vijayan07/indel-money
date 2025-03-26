@@ -152,8 +152,6 @@ export default function Gallery() {
                         </div>
                     </TabsContent>
                 </Tabs>
-
-
             </div>
         </section>
     );

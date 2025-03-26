@@ -252,7 +252,7 @@
       font-size: 22px;
     }
     .text-banner-1 {
-      font-size: 30px;
+      font-size: 30px;    }
 
     .text-title2 {
       font-size: 28px;
@@ -267,7 +267,7 @@
     }
     .text-banner-1 {
       font-size: 34px;
-
+    }
     .text-title2 {
       font-size: 36px;
     }
@@ -428,7 +428,6 @@
   .lifeSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 1px solid #17479E;
   }
-}
 .LoanSlider .swiper-wrapper {
   padding: 20px 0 !important;
 
@@ -503,8 +502,4 @@
   min-height: 50px;
   border-radius: 100px;
 }
-
-
-
-
- 
+}
