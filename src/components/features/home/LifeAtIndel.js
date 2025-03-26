@@ -78,7 +78,7 @@ export default function LifeAtIndel() {
   );
 }
 
-export function ImageBox({ item, className }) {
+function ImageBox({ item, className }) {
   return (
     <div
       className={`${className} w-full p-1 sm:p-2`}

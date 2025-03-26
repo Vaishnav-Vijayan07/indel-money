@@ -56,7 +56,7 @@ export default function Innovations() {
     )
 }
 
-export function DownloadBx({ src, href, alt }) {
+function DownloadBx({ src, href, alt }) {
     return (
         <Link href={href} className="w-full max-w-[100px] lg:max-w-[120px] 3xl:max-w-[180px] h-auto d-bloc d-block" >
             <Image

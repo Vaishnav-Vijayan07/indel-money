@@ -30,20 +30,27 @@ const slides = [
         description: "We understand the long-term financial needs of the small business units. Our long-term business loan options enables your access to high value loans by encashing the power of your property assets. ",
         href: "/",
     },
+    {
+        image: "/images/loan02.jpg",
+        alt: "Loan Image 2",
+        title: "Business Loans",
+        title2: "Structured Business Loans",
+        description: "The key success factor of every MSME sector enterprise is ready availability of credit to facilitate working capital or fixed asset purchase requirements. ",
+        href: "/",
+    },
 ];
 
 export default function LoanSlider() {
     return (
         <Swiper
             modules={[]}
-            spaceBetween={30}
+            spaceBetween={10}
             autoplay={false}
             pagination={{ clickable: false }}
             breakpoints={{
-                320: { slidesPerView: 1 },
                 640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-                1440: { slidesPerView: 3 },
+                768: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 30 },
             }}
             className="LoanSlider mb-[15px] lg::mb-[20px] xl:mb-[30px]">
             {slides?.map((item, index) => (

@@ -18,44 +18,44 @@ import {
 import { useState, useEffect } from "react";
 
 
+const slides = [
+    {
+        src: "/images/welcome-1.jpg",
+        alt: "welcome-1",
+        title: "Gold Loans",
+        description: "Need quick financing? Get the best rates with our secure gold loans.",
+        link: "/",
+        linkname: "Get a Gold Loan Today",
+    },
+    {
+        src: "/images/welcome-2.jpg",
+        alt: "welcome-1",
+        title: "Other Services",
+        description: "We offer a range of services tailored to your needs. Let us guide you.",
+        link: "/",
+        linkname: "Explore Our Services",
+    },
+    {
+        src: "/images/welcome-3.jpg",
+        alt: "welcome-1",
+        title: "Career Opportunities",
+        description: "Looking for a new opportunity? Explore our open positions and start your journey with us.",
+        link: "/",
+        linkname: "FIND YOUR DREAM JOB",
+    },
+    {
+        src: "/images/welcome-4.jpg",
+        alt: "welcome-1",
+        title: "Quick pay",
+        description: "efficient payment solution designed to make transactions faster and easier.",
+        link: "/",
+        linkname: "Make your payment",
+    },
+];
+
 export default function WelcomeModal() {
 
     const [isOpen, setIsOpen] = useState(false);
-
-    const slides = [
-        {
-            src: "/images/welcome-1.jpg",
-            alt: "welcome-1",
-            title: "Gold Loans",
-            description: "Need quick financing? Get the best rates with our secure gold loans.",
-            link: "/",
-            linkname: "Get a Gold Loan Today",
-        },
-        {
-            src: "/images/welcome-2.jpg",
-            alt: "welcome-1",
-            title: "Other Services",
-            description: "We offer a range of services tailored to your needs. Let us guide you.",
-            link: "/",
-            linkname: "Explore Our Services",
-        },
-        {
-            src: "/images/welcome-3.jpg",
-            alt: "welcome-1",
-            title: "Career Opportunities",
-            description: "Looking for a new opportunity? Explore our open positions and start your journey with us.",
-            link: "/",
-            linkname: "FIND YOUR DREAM JOB",
-        },
-        {
-            src: "/images/welcome-4.jpg",
-            alt: "welcome-1",
-            title: "Quick pay",
-            description: "efficient payment solution designed to make transactions faster and easier.",
-            link: "/",
-            linkname: "Make your payment",
-        },
-    ];
 
     useEffect(() => {
         // Check if the user has seen the modal before using localStorage
@@ -87,59 +87,59 @@ export default function WelcomeModal() {
     };
 
     return (
-            <AlertDialog
-                open={isOpen}
-                onOpenChange={setIsOpen}
-            >
-                <AlertDialogContent>
-                    <div className="w-full sm:min-w-[608px] md:min-w-[736px] lg:min-w-[864px] xl:min-w-[1088px] 2xl:min-w-[1312px] 3xl:min-w-[1664px] mx-auto bg-white rounded-[15px] lg:rounded-[36px] py-[20px] lg:py-[30px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[70px] px-[15px] lg:px-[40px] xl:px-[45px] 2xl:px-[50px] 3xl:px-[60px] relative z-0">
-                        <AlertDialogCancel
-                            onClick={handleClose}
-                            className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] lg:top-[40px] xl:top-[45px] 2xl:top-[50px] 3xl:top-[60px] right-[15px] lg:right-[40px] xl:right-[45px] 2xl:right-[50px] 3xl:right-[60px] transition-color cursor-pointer hover:text-base2"
-                        >
-                            Close
+        <AlertDialog
+            open={isOpen}
+            onOpenChange={setIsOpen}
+        >
+            <AlertDialogContent>
+                <div className="w-full sm:min-w-[608px] md:min-w-[736px] lg:min-w-[864px] xl:min-w-[1088px] 2xl:min-w-[1312px] 3xl:min-w-[1664px] mx-auto bg-white rounded-[15px] lg:rounded-[36px] py-[20px] lg:py-[30px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[70px] px-[15px] lg:px-[40px] xl:px-[45px] 2xl:px-[50px] 3xl:px-[60px] relative z-0">
+                    <AlertDialogCancel
+                        onClick={handleClose}
+                        className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] lg:top-[40px] xl:top-[45px] 2xl:top-[50px] 3xl:top-[60px] right-[15px] lg:right-[40px] xl:right-[45px] 2xl:right-[50px] 3xl:right-[60px] transition-color cursor-pointer hover:text-base2"
+                    >
+                        Close
+                        <Image
+                            src="/images/modal-cancel.svg"
+                            alt="modal-cancel"
+                            width={24}
+                            height={24}
+                        />
+                    </AlertDialogCancel>
+                    <div className="flex flex-wrap gap-[15px] lg:gap-[20px] xl:gap-[30px] 2xl:gap-[40px] 3xl:gap-[50px] mb-[10px] sm:mb-[15px] lg:mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
+                        <div className="w-full max-w-[80px] sm:max-w-[90px] md:max-w-[100px] lg:max-w-[120px] xl:max-w-[140px] 2xl:max-w-[180px] 3xl:max-w-[280px] h-auto inline-block">
                             <Image
-                                src="/images/modal-cancel.svg"
-                                alt="modal-cancel"
-                                width={24}
-                                height={24}
+                                src="/icons/logo_sm.svg"
+                                alt="logo"
+                                width={218}
+                                height={112}
+                                inert
                             />
-                        </AlertDialogCancel>
-                        <div className="flex flex-wrap gap-[15px] lg:gap-[20px] xl:gap-[30px] 2xl:gap-[40px] 3xl:gap-[50px] mb-[10px] sm:mb-[15px] lg:mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
-                            <div className="w-full max-w-[80px] sm:max-w-[90px] md:max-w-[100px] lg:max-w-[120px] xl:max-w-[140px] 2xl:max-w-[180px] 3xl:max-w-[280px] h-auto inline-block">
-                                <Image
-                                    src="/icons/logo_sm.svg"
-                                    alt="logo"
-                                    width={218}
-                                    height={112}
-                                    inert
-                                />
-                            </div>
-                            <div>
-                                <AlertDialogTitle className="text-[18px] sm:text-[24px] md:text-[30px] lg:text-[38px] xl:text-[44px] 2xl:text-[56px] 3xl:text-[64px] text-base2 leading-[1] font-bold mt-[2px] 2xl:mt-[4px] mb-[4px] 2xl:mb-[6px]">Welcome!</AlertDialogTitle>
-                                <div className="text-[14px] sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[36px] text-[#1e1e1e] leading-[1] font-normal">What Brings You Here Today?</div>
-                            </div>
                         </div>
-                        <div className="-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px] relative z-0 before:absolute before:inset-0 before:left-auto before:z-2 before:block before:bg-gradient-to-r before:to-white before:from-transparent before:w-[20px] before:h-full before:pointer-events-none before:xl:hidden">
-                            <Swiper
-                                slidesPerView={'auto'}
-                                spaceBetween={0}
-                                className="welcomeSlide"
-                            >
-                                {slides?.map((item, index) => (
-                                    <SwiperSlide key={index} className={`${index === 0 ? "max-w-[220px] sm:max-w-[240px] lg:max-w-[260px] xl:max-w-[290px] 2xl:max-w-[360px] 3xl:max-w-[450px]" : "max-w-[200px] sm:max-w-[220px] lg:max-w-[240px] xl:max-w-[calc((100%-290px)/3)] 2xl:max-w-[calc((100%-360px)/3)] 3xl:max-w-[calc((100%-450px)/3)]"} h-auto! p-[4px] lg:p-[6px] 2xl:p-[10px] transition-all duration-300 `}>
-                                        <WelcomeBox item={item} index={index} />
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
+                        <div>
+                            <AlertDialogTitle className="text-[18px] sm:text-[24px] md:text-[30px] lg:text-[38px] xl:text-[44px] 2xl:text-[56px] 3xl:text-[64px] text-base2 leading-[1] font-bold mt-[2px] 2xl:mt-[4px] mb-[4px] 2xl:mb-[6px]">Welcome!</AlertDialogTitle>
+                            <div className="text-[14px] sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[36px] text-[#1e1e1e] leading-[1] font-normal">What Brings You Here Today?</div>
                         </div>
                     </div>
-                </AlertDialogContent>
-            </AlertDialog>
+                    <div className="-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px] relative z-0 before:absolute before:inset-0 before:left-auto before:z-2 before:block before:bg-gradient-to-r before:to-white before:from-transparent before:w-[20px] before:h-full before:pointer-events-none before:xl:hidden">
+                        <Swiper
+                            slidesPerView={'auto'}
+                            spaceBetween={0}
+                            className="welcomeSlide"
+                        >
+                            {slides?.map((item, index) => (
+                                <SwiperSlide key={index} className={`${index === 0 ? "max-w-[220px] sm:max-w-[240px] lg:max-w-[260px] xl:max-w-[290px] 2xl:max-w-[360px] 3xl:max-w-[450px]" : "max-w-[200px] sm:max-w-[220px] lg:max-w-[240px] xl:max-w-[calc((100%-290px)/3)] 2xl:max-w-[calc((100%-360px)/3)] 3xl:max-w-[calc((100%-450px)/3)]"} h-auto! p-[4px] lg:p-[6px] 2xl:p-[10px] transition-all duration-300 `}>
+                                    <WelcomeBox item={item} index={index} />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+            </AlertDialogContent>
+        </AlertDialog>
     )
 }
 
-export function WelcomeBox({ item, index }) {
+function WelcomeBox({ item, index }) {
     const isActive = index === 0;
     return (
         <div
