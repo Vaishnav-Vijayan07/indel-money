@@ -271,7 +271,7 @@ export default function CareerForm() {
                                 alt="careerBtn"
                                 width={40}
                                 height={40}
-                                className="w-[25px] lg:w-[25px] xl:w-[30px] 2xl:w-[35px] 3xl:w-[40px] h-auto aspect-4/4 block"
+                                className="w-[25px] lg:w-[25px] 2xl:w-[35px] 3xl:w-[40px] h-auto aspect-4/4 block"
                             />
                         </Button>
                     </div>

@@ -10,7 +10,7 @@ export default function NotFound() {
                     alt="404-image"
                     width={800}
                     height={480}
-                    className="w-full h-full object-cover transition-transform duration-600"
+                    className="w-full h-full object-contain transition-transform duration-600"
                 />
             </div>
             <h1 className="text-title1 mb-[15px] md:mb-[20px] xl:mb-[30px] 2xl:mb-[40px] font-bold">Page not found</h1>

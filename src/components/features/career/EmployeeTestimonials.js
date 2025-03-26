@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from 'react';
+import AwardHighlightBox from '../award/AwardHighlightBox';
 
 const employeeTestimonials = [
     {
@@ -213,7 +214,12 @@ export default function EmployeeTestimonials() {
     };
 
     return (
-        <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] bg-base2/20">
+        <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] relative z-0 after:content-[''] after:w-full after:h-[75%] after:absolute after:-z-1 after:inset-0 after:block after:bg-gradient-to-r after:to-[#fde7e7] after:from-transparent after:m-auto">
+            <div className="mb-[20px] sm:mb-[40px] lg:mb-[60px] 2xl:mb-[80px]">
+                <div className="container">
+                    <AwardHighlightBox variant={"employeeTestimonials"} />
+                </div>
+            </div>
             <div className="container mb-[30px] lg:mb-[40px] 2xl:mb-[60px] 3xl:mb-[80px]">
                 <div className="flex flex-wrap items-center">
                     <div className="w-full lg:w-[468px] xl:w-[520px] 2xl:w-[768px] 3xl:w-[820px]">

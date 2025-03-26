@@ -24,7 +24,7 @@ export default function BlogCard({ item, className }) {
                     {item?.discription}
                 </div>
                 {item?.year &&
-                    <div className="text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-medium text-[#2d2d2d] line-clamp-1 mt-[10px] lg:mt-[15px] 2xl:mt-[20px]">
+                    <div className="text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-medium text-[#2d2d2d] line-clamp-1 mt-[10px] lg:mt-[10px] 2xl:mt-[20px]">
                         Award Year:
                         <span className="text-[#eb0208] font-bold">{item?.year}</span>
                     </div>
