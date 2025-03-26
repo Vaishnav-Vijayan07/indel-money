@@ -24,7 +24,7 @@ export default function Home() {
       {/* Dreams to Reality contents*/}
       <DreamsToReality />
 
-      {/* Gold loan calculator contents*/}
+      {/* Gold loan calculator contents*/} 
       <GoldLoanCalculator />
 
       {/* Branch locator contents*/}

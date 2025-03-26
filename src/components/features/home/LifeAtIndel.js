@@ -27,7 +27,7 @@ export default function LifeAtIndel() {
                 {images.slice(0, 2).map((item, index) => (
                   <ImageBox
                     key={index}
-                    item={item}
+                    item={item} 
                     className="h-1/2"
                   />
                 ))}

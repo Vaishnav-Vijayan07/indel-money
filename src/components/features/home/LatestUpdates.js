@@ -55,7 +55,7 @@ export default function LatestUpdates() {
                   src="/images/icon-right.svg"
                   width={7}
                   height={13}
-                  alt="right"
+                  alt="right" 
                   className="ml-1 lg:ml-2"
                 />
               </Link>

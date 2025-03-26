@@ -428,9 +428,9 @@
     margin: auto;
   }
 
-  .lifeSlide .swiper-slide {
+  .lifeSlide,
+  .awardSlide .swiper-slide {
     height: auto !important;
-
   }
 
   .lifeSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
