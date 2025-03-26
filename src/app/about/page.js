@@ -17,5 +17,5 @@ export default function About() {
             {/* Financial Supermarket section */}
             <Supermarket />
         </>
-    );
+    ); 
 }

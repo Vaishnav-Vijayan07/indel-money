@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import LatestUpdatesSlide from "@/components/common/LatestUpdatesSlide";
 
-
+ 
 
 export default function LatestUpdates() {
 
