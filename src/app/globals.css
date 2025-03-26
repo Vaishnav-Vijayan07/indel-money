@@ -349,7 +349,7 @@
 
     /* 3xl */
     .text-title1 {
-      font-size: 54px;
+      font-size: 56px;
     }
 
     .text-title2 {
@@ -380,7 +380,7 @@
 
   /* BANNER_SLIDER */
   .heroSlide,
-  .aboutSlide {
+  .aboutSlide, .careerBannerSlide {
     --swiper-pagination-bottom: 40px;
     --swiper-pagination-color: #fff;
     --swiper-pagination-bullet-width: 8px;
@@ -395,7 +395,7 @@
     --swiper-pagination-bullet-inactive-color: #000000;
   }
 
-  .heroSlide .swiper-pagination {
+  .heroSlide .swiper-pagination, .careerBannerSlide .swiper-pagination {
     text-align: start !important;
     max-width: var(--container-x);
     padding-left: var(--container-padding, 1rem);
@@ -405,10 +405,10 @@
     margin: auto;
   }
 
-  .heroSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  .heroSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .careerBannerSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 3px solid #ee3824;
   }
-
+  
   .lifeSlide {
     --swiper-pagination-bottom: 20px;
     --swiper-pagination-color: #17479E;
