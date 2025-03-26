@@ -41,7 +41,7 @@ export default function Gallery() {
                                                         width={800}
                                                         height={335}
                                                         alt={item.alt}
-                                                        className="w-full h-auto rounded-[20px] object-cover transition-transform duration-600 hover:scale-[1.05]"
+                                                        className="w-full h-full rounded-[20px] object-cover transition-transform duration-600 hover:scale-[1.05]"
                                                     />
                                                 </div>
                                             ))}
@@ -56,7 +56,7 @@ export default function Gallery() {
                                                             width={380}
                                                             height={445}
                                                             alt={item.alt}
-                                                            className="w-full h-auto rounded-[20px] object-cover transition-transform duration-600 hover:scale-[1.05]"
+                                                            className="w-full h-full rounded-[20px] object-cover transition-transform duration-600 hover:scale-[1.05]"
                                                         />
                                                     </div>
                                                 </div>
@@ -68,10 +68,88 @@ export default function Gallery() {
                         </div>
                     </TabsContent>
                     <TabsContent value="photo">
-                        <p>photos</p>
+                        <div className="mx-auto flex flex-wrap">
+                            {slides.map((group, index) => {
+                                const gallClass = index % 2 === 0 ? "flex-col" : "flex-col-reverse";
+
+                                return (
+                                    <div key={index} className={`${gallClass} w-full lg:w-1/2 mb-6 h-[815px] flex flex-wrap`}>
+                                        {/* First Image (100% Width) */}
+                                        <div className="flex flex-wrap w-full p-2 h-[40%]">
+                                            {group.slice(0, 1).map((item, i) => (
+                                                <div key={i} className="group rounded-[20px] overflow-hidden w-full mb-4 h-full">
+                                                    <Image
+                                                        src={item.src}
+                                                        width={800}
+                                                        height={335}
+                                                        alt={item.alt}
+                                                        className="w-full h-full rounded-[20px] object-cover transition-transform duration-600 hover:scale-[1.05]"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="flex flex-wrap w-full h-[60%]">
+                                            {group.slice(1, 3).map((item, i) => (
+                                                <div key={i} className="w-1/2 p-2 h-full">
+                                                    <div className="group rounded-[20px] overflow-hidden w-full h-full">
+                                                        <Image
+                                                            src={item.src}
+                                                            width={380}
+                                                            height={445}
+                                                            alt={item.alt}
+                                                            className="w-full h-full rounded-[20px] object-cover transition-transform duration-600 hover:scale-[1.05]"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </TabsContent>
                     <TabsContent value="video">
-                        <p>video</p>
+                        <div className="mx-auto flex flex-wrap">
+                            {slides.map((group, index) => {
+                                const gallClass = index % 2 === 0 ? "flex-col" : "flex-col-reverse";
+
+                                return (
+                                    <div key={index} className={`${gallClass} w-full lg:w-1/2 mb-6 h-[815px] flex flex-wrap`}>
+                                        {/* First Image (100% Width) */}
+                                        <div className="flex flex-wrap w-full p-2 h-[44%]">
+                                            {group.slice(0, 1).map((item, i) => (
+                                                <div key={i} className="group rounded-[20px] overflow-hidden w-full mb-4 h-full">
+                                                    <Image
+                                                        src={item.src}
+                                                        width={800}
+                                                        height={335}
+                                                        alt={item.alt}
+                                                        className="w-full h-full rounded-[20px] object-cover transition-transform duration-600 hover:scale-[1.05]"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="flex flex-wrap w-full h-[56%]">
+                                            {group.slice(1, 3).map((item, i) => (
+                                                <div key={i} className="w-1/2 p-2 h-full">
+                                                    <div className="group rounded-[20px] overflow-hidden w-full h-full">
+                                                        <Image
+                                                            src={item.src}
+                                                            width={380}
+                                                            height={445}
+                                                            alt={item.alt}
+                                                            className="w-full h-full rounded-[20px] object-cover transition-transform duration-600 hover:scale-[1.05]"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </TabsContent>
                 </Tabs>
 
