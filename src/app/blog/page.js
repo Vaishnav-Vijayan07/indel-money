@@ -2,7 +2,7 @@ import BlogCard from "@/components/common/BlogCard";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import LatestUpdates from "@/components/features/home/LatestUpdates";
 
-
+ 
 const blogs = [
     {
         href: "/",

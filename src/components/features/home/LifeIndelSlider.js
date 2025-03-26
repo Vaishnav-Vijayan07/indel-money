@@ -32,7 +32,7 @@ const slides = [
         discription: "With a legacy of trust and innovation, we empower individuals and businesses alike.",
         href: "/",
     },
-];
+]; 
 
 export default function LifeIndelSlider() {
     return (
@@ -42,7 +42,7 @@ export default function LifeIndelSlider() {
             spaceBetween={20}
             autoplay={false}
             pagination={{ clickable: true }}
-            className="lifeSlide mb-[15px] lg::mb-[20px] xl:mb-[30px]"
+            className="lifeSlide"
         >
             {slides.map((item, index) => (
                 <SwiperSlide key={index}>
