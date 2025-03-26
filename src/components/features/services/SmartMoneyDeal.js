@@ -35,7 +35,7 @@ export default function SmartMoneyDeal() {
     ];
 
     return (
-        <section className="relative z-1 w-full pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[100px] pb-[30px] xl:pb-[40px] 2xl:pb-[90px]">
+        <section className="relative z-1 w-full pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[100px] pb-[50px] xl:pb-[40px] 2xl:pb-[90px]">
             <div className="container">
                 <div className="flex flex-wrap mb-[25px] 2xl:mb-[30px]">
                     <div className="w-full md:w-[45%] xl:w-[40%]">
@@ -51,9 +51,9 @@ export default function SmartMoneyDeal() {
                     </div>
                 </div>
 
-                <div className="w-full bg-[#CAE5F4] flex flex-wrap rounded-[36px] overflow-hidden">
-                    <div className="w-[calc(100%-445px)] 2xl:w-[calc(100%-700px)] p-[35px] 2xl:p-[45px]">
-                        <div className="font-bold leading-none text-base1 text-[20px] md:text-[22px] lg:text-[26px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] mb-[15px]">
+                <div className="w-full relative bg-[#CAE5F4] flex flex-wrap rounded-[36px] overflow-hidden">
+                    <div className="w-full lg:w-[calc(100%-345px)] xl:w-[calc(100%-445px)] 2xl:w-[calc(100%-700px)] p-[25px] xl:p-[35px] 2xl:p-[45px]">
+                        <div className="font-bold leading-none text-base1 text-[20px] md:text-[20px] lg:text-[22px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] mb-[15px]">
                             GOLD LOAN
                         </div>
                         <p className="text-sm-1">
@@ -89,7 +89,7 @@ export default function SmartMoneyDeal() {
                             </div>
                         </div>
                     </div>
-                    <div className="group w-[445px] 2xl:w-[700px] overflow-hidden">
+                    <div className="group w-full h-full lg:h-auto lg:w-[345px] xl:w-[445px] 2xl:w-[700px] overflow-hidden absolute left-0 top-0 opacity-[20%] lg:opacity-[100%] lg:relative z-0 lg:z-1">
                         <Image
                             src="/images/deal01.jpg"
                             alt="money-deal"

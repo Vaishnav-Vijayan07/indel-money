@@ -38,12 +38,12 @@ export default function CareerBanner() {
         modules={[EffectFade, Pagination, Autoplay]}
         navigation={false}
         pagination={{
-            clickable: true,
+          clickable: true,
         }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         slidesPerView={1}
         spaceBetween={0}
-        className="careerBannerSlide overflow-visible!"
+        className="careerBannerSlide"
       >
         {slides?.map((item, index) => (
           <SwiperSlide key={index}>
