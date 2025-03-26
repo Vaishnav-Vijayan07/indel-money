@@ -50,7 +50,7 @@ export default function FindJobForm() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex items-center bg-base1 rounded-[20px] lg:rounded-[30px] 2xl:rounded-[36px] p-[10px_5px] lg:p-[15px_5px] 2xl:p-[20px_10px]">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex items-center bg-base1 rounded-[20px] lg:rounded-[30px] 2xl:rounded-[36px] p-[15px_10px] lg:p-[20px_10px] 2xl:p-[25px_10px]">
                 <div
                     className="w-full md:w-[220px] px-[5px] lg:px-[10px] 2xl:px-[15px]">
                     <div

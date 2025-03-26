@@ -192,7 +192,7 @@ export default function FindJob() {
         <section className="w-full block py-[40px_20px] lg:py-[60px_30px] 2xl:py-[80px_40px] 3xl:py-[100px_50px] relative z-0 after:content-[''] after:w-full after:h-[50%] after:absolute after:-z-1 after:bottom-0 after:left-0 after:right-0 after:block after:bg-gradient-to-r after:to-[#fde7e7] after:from-transparent">
             <div className="container">
                 <div className="flex justify-between mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
-                    <div className="text-title1">
+                    <div className="text-title1 font-bold">
                         Find Your
                         <span className="font-bold text-base2">
                             {""}   Ideal Job
@@ -226,7 +226,7 @@ export default function FindJob() {
                     className="flex flex-wrap"
                 >
                     <div className="w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-468px)] 2xl:w-[calc(100%-576px)] 3xl:w-[calc(100%-700px)]">
-                        <ScrollArea className="w-full h-[320px] lg:h-[376px] xl:h-[376px] 2xl:h-[468px] 3xl:h-[500px]">
+                        <ScrollArea className="w-full h-[320px] lg:h-[376px] xl:h-[376px] 2xl:h-[468px] 3xl:h-[540px]">
                             <div className="flex flex-wrap -mx-[4px] lg:-mx-[8px] 2xl:-mx-[12px]">
                                 {jobLocations?.map((item, index) => (
                                     <div key={index} className="w-1/4 p-[0_4px_8px] lg:p-[0_8px_16px] 2xl:p-[0_12px_24px]">
@@ -239,7 +239,7 @@ export default function FindJob() {
                     </div>
                     <div className="w-full lg:w-[468px] xl:w-[468px] 2xl:w-[576px] 3xl:w-[700px] pl-[15px] lg:pl-[20px] 2xl:pl-[30px]">
                         {jobResults?.map((item, index) => (
-                            <div key={index} className="w-full mb-[15px] lg:mb-[20px] 2xl:mb-[25px]">
+                            <div key={index} className="w-full mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
                                 <JobResultBox item={item} />
                             </div>
                         ))}

@@ -409,7 +409,6 @@
     outline: 3px solid #ee3824;
   }
 
-
   .lifeSlide {
     --swiper-pagination-bottom: 20px;
     --swiper-pagination-color: #17479E;
@@ -437,80 +436,114 @@
   .lifeSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 1px solid #17479E;
   }
-}
 
-.LoanSlider .swiper-wrapper {
-  padding: 20px 0 !important;
-
-}
-
-.LoanSlider .swiper-slide {
-  height: auto !important;
-
-}
-
-@media (min-width: 640px) {
-
-  /* sm */
-  .custom-container {
-    max-width: 600px;
-    padding: 0;
-  }
-}
-
-@media (min-width: 768px) {
-
-  /* md */
-  .custom-container {
-    max-width: 750px;
-  }
-}
-
-@media (min-width: 1024px) {
-
-  /* lg */
-  .custom-container {
-    max-width: 980px;
-  }
-}
-
-@media (min-width: 1280px) {
-
-  /* xl */
-  .custom-container {
-    max-width: 1180;
-  }
-}
-
-@media (min-width: 1536px) {
-
-  /* 2xl */
-  .custom-container {
-    max-width: 1430px;
-  }
-}
-
-@media (min-width: 1920px) {
-
-  /* 3xl */
-  .custom-container {
-    max-width: 1640px;
+  .LoanSlider .swiper-wrapper {
+    padding: 20px 0 !important;
 
   }
-}
 
-.scrollbar-custom::-webkit-scrollbar {
-  width: 1.5px;
-}
+  .LoanSlider .swiper-slide {
+    height: auto !important;
 
-.scrollbar-custom::-webkit-scrollbar-track {
-  border-radius: 100px;
-  background: rgba(23, 71, 158, 0.60);
-}
+  }
+  
+  .employeeTestimonialsSlide .swiper-pagination {
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 400;
+    color: #000;
+    text-align: right !important;
+  }
 
-.scrollbar-custom::-webkit-scrollbar-thumb {
-  background: red;
-  width: 6px !important;
-  min-height: 50px;
-  border-radius: 100px;
+  @media (min-width: 1024px) {
+    .employeeTestimonialsSlide .swiper-pagination {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .employeeTestimonialsSlide .swiper-pagination {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .employeeTestimonialsSlide .swiper-pagination {
+      font-size: 22px;
+    }
+  }
+  .employeeTestimonialsSlide .swiper-pagination .swiper-pagination-current{
+    font-size: 130%;
+    line-height: 1;
+    font-weight: bold;
+    color: var(--color-base2);
+  }
+
+
+  @media (min-width: 640px) {
+
+    /* sm */
+    .custom-container {
+      max-width: 600px;
+      padding: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    /* md */
+    .custom-container {
+      max-width: 750px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+
+    /* lg */
+    .custom-container {
+      max-width: 980px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+
+    /* xl */
+    .custom-container {
+      max-width: 1180;
+    }
+  }
+
+  @media (min-width: 1536px) {
+
+    /* 2xl */
+    .custom-container {
+      max-width: 1430px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+
+    /* 3xl */
+    .custom-container {
+      max-width: 1640px;
+
+    }
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 1.5px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    border-radius: 100px;
+    background: rgba(23, 71, 158, 0.60);
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: red;
+    width: 6px !important;
+    min-height: 50px;
+    border-radius: 100px;
+  }
+
 }

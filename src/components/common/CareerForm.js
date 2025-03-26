@@ -79,8 +79,8 @@ export default function CareerForm() {
     return (
         <div>
             <div className="w-full mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]">
-                <div className="text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[24px] 2xl:text-[30px] 3xl:text-[36px] text-[#525252] font-normal flex items-center mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
-                    Make Your &nbsp; <span className="text-base2 font-bold"> Indel</span></div>
+                <div className="text-[18px] sm:text-[22px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[48px] text-black font-bold flex items-center mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
+                    Make Your <span className="text-base2 font-bold">&nbsp;Move</span></div>
                 <div className="text-sm-1">Upload Your Resume ; we&apos;ll connect when the right role opens up.</div>
             </div>
             <Form {...form}>
@@ -90,7 +90,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="yourName"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <FormControl>
                                         <Input className="bg-white border-white" placeholder="Name" {...field} />
                                     </FormControl>
@@ -104,7 +104,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="phoneNumber"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <FormControl>
                                         <Input type="tel" className="bg-white border-white" placeholder="Phone Number" {...field} />
                                     </FormControl>
@@ -118,7 +118,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="emailAddress"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <FormControl>
                                         <Input type="email" className="bg-white border-white" placeholder="Email Address" {...field} />
                                     </FormControl>
@@ -132,7 +132,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="preferredLocation"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                         <SelectTrigger className="w-full bg-white border-white">
                                             <SelectValue placeholder="Preferred Location" />
@@ -153,7 +153,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="referredName"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <FormControl>
                                         <Input className="bg-white border-white" placeholder="Referred employee name" {...field} />
                                     </FormControl>
@@ -167,7 +167,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="referralCode"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <FormControl>
                                         <Input className="bg-white border-white" placeholder="Employee referral code" {...field} />
                                     </FormControl>
@@ -181,7 +181,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="age"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <FormControl>
                                         <Input className="bg-white border-white" placeholder="Age" {...field} />
                                     </FormControl>
@@ -195,7 +195,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="preferredRole"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                         <SelectTrigger className="w-full bg-white border-white">
                                             <SelectValue placeholder="Preferred Role" />
@@ -216,7 +216,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="currentSalary"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <FormControl>
                                         <Input className="bg-white border-white" placeholder="Current Salary (Month)" {...field} />
                                     </FormControl>
@@ -230,7 +230,7 @@ export default function CareerForm() {
                             control={form.control}
                             name="expectedSalary"
                             render={({ field }) => (
-                                <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
+                                <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                                     <FormControl>
                                         <Input className="bg-white border-white" placeholder="Expected Salary (Month)" {...field} />
                                     </FormControl>
