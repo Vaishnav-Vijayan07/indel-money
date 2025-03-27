@@ -33,11 +33,11 @@ const navigations = [
   {
     title: "About",
     links: [
-      { linkname: "About Indel Money", href: "#" },
+      { linkname: "About Indel Money", href: "/about" },
       { linkname: "Board of Directors", href: "#" },
       { linkname: "Life at Indel Money", href: "#" },
       { linkname: "Employee Testimonials", href: "#" },
-      { linkname: "Different Shades of Indel", href: "#" }
+      { linkname: "Different Shades of Indel", href: "/about/different-shades-of-indel" }
     ]
   },
   {
@@ -86,8 +86,8 @@ const navigations = [
   {
     title: "Quick Links",
     links: [
-      { linkname: "Contact Us", href: "#" },
-      { linkname: "Careers", href: "#" },
+      { linkname: "Contact Us", href: "/contact" },
+      { linkname: "Careers", href: "/career" },
       { linkname: "EMI Calculator", href: "#" },
       { linkname: "Downloads", href: "#" },
       { linkname: "KYC Policy", href: "#" }
@@ -122,6 +122,7 @@ export default function Footer() {
                   alt="call"
                   width={16}
                   height={16}
+                  className="aspect-square"
                 />
                 <Link href="tel:18004253990" target="_blank" rel="noopener noreferrer" className="hover:text-base2 transition-color duration-300">1800 4253 990</Link>
               </div>
@@ -131,6 +132,7 @@ export default function Footer() {
                   alt="mail"
                   width={16}
                   height={16}
+                  className="aspect-square"
                 />
                 <Link href="mailto:care@indelmoney.com" target="_blank" rel="noopener noreferrer" className="hover:text-base2 transition-color duration-300">care@indelmoney.com</Link>
               </div>
@@ -143,11 +145,11 @@ export default function Footer() {
               <PlaceholdersAndVanishInputDemo />
             </div>
             <div className="w-full h-auto block">
-              <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 3xl:gap-[20px]">
+              <div className="flex flex-wrap gap-[5px] lg:gap-[10px] 2xl:gap-[15px] 3xl:gap-[20px]">
                 <div>
                   <Link
                     href="/"
-                    className="btn btn-base1 min-w-[100px] lg:min-w-[120px] xl:min-w-[110px] 3xl:min-w-[160px]"
+                    className="btn btn-base1 min-w-[100px] lg:min-w-[100px] xl:min-w-[110px] 3xl:min-w-[160px]"
                   >
                     E-Connect
                   </Link>
@@ -155,7 +157,7 @@ export default function Footer() {
                 <div>
                   <Link
                     href="/"
-                    className="btn btn-base2 min-w-[100px] lg:min-w-[120px] xl:min-w-[110px] 3xl:min-w-[160px]"
+                    className="btn btn-base2 min-w-[100px] lg:min-w-[100px] xl:min-w-[110px] 3xl:min-w-[160px]"
                   >
                     Indel Remit
                   </Link>
@@ -181,7 +183,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="w-full h-auto bg-[#c0dbff] rounded-[10px] 3xl:rounded-[20px] px-[20px] lg:px-[40px] 2xl:px-[60px] 3xl:px-[70px] py-[10px] lg:py-[15px] xl:py-[20px] 3xl:py-[30px] flex items-center justify-center mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]">
+        <div className="w-full h-auto bg-[#c0dbff] rounded-[10px] 3xl:rounded-[20px] px-[15px] lg:px-[20px] xl:px-[40px] 2xl:px-[60px] 3xl:px-[70px] py-[10px] lg:py-[15px] xl:py-[20px] 3xl:py-[30px] flex items-center justify-center mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]">
           <div className="w-full h-auto flex flex-wrap items-center justify-between gap-2">
             <div className="flex flex-wrap items-center gap-y-[10px] gap-x-[10px] lg:gap-x-[15px] 2xl:gap-x-[20px] 3xl:gap-x-[30px]">
               <div>
@@ -189,13 +191,13 @@ export default function Footer() {
               </div>
               {socialmedias?.map((item, index) => (
                 <div key={index}>
-                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="w-[15px] lg:w-[20px] 3xl:w-[25px] h-auto aspect-4/4 block transition-transform duration-300 hover:scale-105">
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="w-[15px] xl:w-[20px] 3xl:w-[25px] h-auto aspect-square block transition-transform duration-300 hover:scale-105">
                     <Image
                       src={item.src}
+                      alt={item.alt}
                       width={18}
                       height={36}
-                      alt={item.alt}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full aspect-square object-contain"
                     />
                   </a>
                 </div>
@@ -216,9 +218,10 @@ export default function Footer() {
             <a href={"https:www.intersmart.com/"} target="_blank" rel="noopener noreferrer">
               <Image
                 src={"/images/intersmart.svg"}
+                alt={"intersmart"}
                 width={104}
                 height={16}
-                alt={"intersmart"}
+                className="aspect-square"
               />
             </a>
           </div>
@@ -229,13 +232,13 @@ export default function Footer() {
 }
 
 
-export function ContactBox({ href, src, title, alt }) {
+function ContactBox({ href, src, title, alt }) {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 3xl:gap-2">
       <span>
-        <Image src={src} width={36} height={36} alt={alt} className="w-[15px] sm:w-[20px] lg:w-[26px] 3xl:w-[32px] h-[auto] block" />
+        <Image src={src} width={36} height={36} alt={alt} className="w-[15px] lg:w-[20px] xl:w-[25px] 3xl:w-[30px] h-[auto] block" />
       </span>
-      <span className="text-[16px] sm:text-md-[20px] lg:text-[24px] 2xl:text-[28px] 3xl:text-[34px] font-medium group-hover:text-base2 transition-color duration-300">{title}</span>
+      <span className="text-[16px] lg:text-[20px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] font-medium group-hover:text-base2 transition-color duration-300">{title}</span>
     </a>
   )
 }

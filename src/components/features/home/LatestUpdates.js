@@ -68,8 +68,9 @@ export default function LatestUpdates() {
               <div key={index} className="group w-full h-full overflow-hidden block relative z-0">
                 <Image
                   src={item?.image}
-                  fill
                   alt={item?.alt}
+                  fill
+                  sizes="520px"
                   className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
                 />
                 <div className="w-full h-auto absolute inset-0 top-auto p-[15px] lg:p-[20px] xl:p-[30px] 3xl:p-[50px] bg-gradient-to-t from-black/60 to-transparent">

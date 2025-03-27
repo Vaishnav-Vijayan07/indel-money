@@ -97,7 +97,7 @@ const NavMenu = () => {
 
           {/* Careers Menu */}
           <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
+            <Link href="/career" legacyBehavior passHref>
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} p-0 cursor-pointer`}><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Careers</span></NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

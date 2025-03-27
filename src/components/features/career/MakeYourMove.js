@@ -6,8 +6,8 @@ export default function MakeYourMove() {
     return (
         <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[50px]">
             <div className="container">
-                <div className="flex bg-[#dceafb] rounded-[15px] lg:rounded-[20px] 2xl:rounded-[30px] 3xl:rounded-[36px] p-[15px_0_15px_15px] lg:p-[20px_0_20px_20px] 2xl:p-[30px_0_30px_30px] 3xl:p-[35px_0_35px_35px] overflow-hidden">
-                    <div className="w-full lg:w-[calc(100%-420px)] xl:w-[calc(100%-460px)] 2xl:w-[calc(100%-576px)] 3xl:w-[calc(100%-668px)]">
+                <div className="flex flex-wrap bg-[#dceafb] rounded-[15px] lg:rounded-[20px] 2xl:rounded-[30px] 3xl:rounded-[36px] p-[15px] sm:p-[15px_0_15px_15px] lg:p-[20px_0_20px_20px] 2xl:p-[30px_0_30px_30px] 3xl:p-[35px_0_35px_35px] overflow-hidden">
+                    <div className="w-full sm:w-[calc(100%-468px)] lg:w-[calc(100%-420px)] xl:w-[calc(100%-460px)] 2xl:w-[calc(100%-576px)] 3xl:w-[calc(100%-668px)]">
                         <div className="group w-full h-full rounded-[15px] lg:rounded-[20px] 2xl:rounded-[30px] 3xl:rounded-[36px] overflow-hidden relative z-0">
                             <Image
                                 src={"/images/career-1.jpg"}
@@ -18,8 +18,15 @@ export default function MakeYourMove() {
                             />
                         </div>
                     </div>
-                    <div className="w-full lg:w-[420px] xl:w-[460px] 2xl:w-[576px] 3xl:w-[668px] flex items-center p-[15px] lg:p-[15px_30px] xl:p-[15px_40px] 2xl:p-[20px_60px] 3xl:p-[20px_70px]">
-                        <CareerForm />
+                    <div className="w-full sm:w-[468px] lg:w-[420px] xl:w-[460px] 2xl:w-[576px] 3xl:w-[668px] flex items-center p-[15px] lg:p-[15px_30px] xl:p-[15px_40px] 2xl:p-[20px_60px] 3xl:p-[20px_70px]">
+                        <div>
+                            <div className="w-full mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]">
+                                <div className="text-[18px] sm:text-[22px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[48px] text-black font-bold flex items-center mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
+                                    Make Your <span className="text-base2 font-bold">&nbsp;Move</span></div>
+                                <div className="text-sm-1">Upload Your Resume ; we&apos;ll connect when the right role opens up.</div>
+                            </div>
+                            <CareerForm />
+                        </div>
                     </div>
                 </div>
             </div>
