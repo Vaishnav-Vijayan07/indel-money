@@ -8,7 +8,7 @@ export default function BlogCard({ item, className }) {
             <div className="group w-[160px] lg:w-[180px] xl:w-[220px] 3xl:w-[320px] overflow-hidden rounded-[20px] relative z-0">
                 <Image
                     src={item?.image}
-                    fill
+                    fill 
                     alt={item?.alt}
                     className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
                 />
