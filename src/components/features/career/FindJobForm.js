@@ -52,14 +52,14 @@ export default function FindJobForm() {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex items-center bg-base1 rounded-[20px] lg:rounded-[30px] 2xl:rounded-[36px] p-[15px_10px] lg:p-[20px_10px] 2xl:p-[25px_10px]">
                 <div
-                    className="w-full lg:w-[380px] xl:w-[140px] 2xl:w-[180px] 3xl:w-[220px] px-[5px] lg:px-[10px] 2xl:px-[15px]">
+                    className="w-full lg:w-[380px] xl:w-[140px] 2xl:w-[160px] 3xl:w-[220px] px-[5px] lg:px-[10px] 2xl:px-[15px]">
                     <div
                         className="text-[14px] sm:text-[16px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px] 3xl:text-[28px] text-white font-bold"
                     >
                         Filter
                     </div>
                 </div>
-                <div className="w-full lg:w-[calc((100%-380px)/3)] xl:w-[calc((100%-140px)/3)] 2xl:w-[calc((100%-180px)/3)] 3xl:w-[calc((100%-220px)/3)] px-[5px] lg:px-[10px] 2xl:px-[15px]">
+                <div className="w-full lg:w-[calc((100%-380px)/3)] xl:w-[calc((100%-140px)/3)] 2xl:w-[calc((100%-160px)/3)] 3xl:w-[calc((100%-220px)/3)] px-[5px] lg:px-[10px] 2xl:px-[15px]">
                     {/* Select Service Field */}
                     <FormField
                         control={form.control}
@@ -81,7 +81,7 @@ export default function FindJobForm() {
                         )}
                     />
                 </div>
-                <div className="w-full lg:w-[calc((100%-380px)/3)] xl:w-[calc((100%-140px)/3)] 2xl:w-[calc((100%-180px)/3)] 3xl:w-[calc((100%-220px)/3)] px-[5px] lg:px-[10px] 2xl:px-[15px]">
+                <div className="w-full lg:w-[calc((100%-380px)/3)] xl:w-[calc((100%-140px)/3)] 2xl:w-[calc((100%-160px)/3)] 3xl:w-[calc((100%-220px)/3)] px-[5px] lg:px-[10px] 2xl:px-[15px]">
                     {/* Select Service Field */}
                     <FormField
                         control={form.control}
@@ -103,7 +103,7 @@ export default function FindJobForm() {
                         )}
                     />
                 </div>
-                <div className="w-full lg:w-[calc((100%-380px)/3)] xl:w-[calc((100%-140px)/3)] 2xl:w-[calc((100%-180px)/3)] 3xl:w-[calc((100%-220px)/3)] px-[5px] lg:px-[10px] 2xl:px-[15px]">
+                <div className="w-full lg:w-[calc((100%-380px)/3)] xl:w-[calc((100%-140px)/3)] 2xl:w-[calc((100%-160px)/3)] 3xl:w-[calc((100%-220px)/3)] px-[5px] lg:px-[10px] 2xl:px-[15px]">
                     {/* Select Service Field */}
                     <FormField
                         control={form.control}

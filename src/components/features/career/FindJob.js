@@ -226,7 +226,7 @@ export default function FindJob() {
                     className="flex flex-wrap"
                 >
                     <div className="w-full lg:w-[calc(100%-440px)] xl:w-[calc(100%-468px)] 2xl:w-[calc(100%-576px)] 3xl:w-[calc(100%-700px)]">
-                        <ScrollArea className="w-full h-[320px] lg:h-[376px] xl:h-[340px] 2xl:h-[468px] 3xl:h-[540px]">
+                        <ScrollArea className="w-full h-[320px] lg:h-[376px] xl:h-[340px] 2xl:h-[430px] 3xl:h-[540px]">
                             <div className="flex flex-wrap -mx-[4px] lg:-mx-[8px] 2xl:-mx-[12px]">
                                 {jobLocations?.map((item, index) => (
                                     <div key={index} className="w-1/4 p-[0_4px_8px] lg:p-[0_8px_16px] 2xl:p-[0_12px_24px]">

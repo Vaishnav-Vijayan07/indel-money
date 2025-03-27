@@ -222,7 +222,7 @@ export default function EmployeeTestimonials() {
             </div>
             <div className="container mb-[30px] lg:mb-[40px] 2xl:mb-[60px] 3xl:mb-[80px]">
                 <div className="flex flex-wrap items-center">
-                    <div className="w-full lg:w-[468px] xl:w-[520px] 2xl:w-[768px] 3xl:w-[820px]">
+                    <div className="w-full lg:w-[468px] xl:w-[520px] 2xl:w-[676px] 3xl:w-[820px]">
                         <div className="w-[320px] lg:w-[420px] xl:w-[476px] 2xl:w-[576px] 3xl:w-[720px] h-auto aspect-square block m-auto relative z-0">
                             <Image
                                 src={"/images/employeeTestimonials-logo.svg"}
@@ -270,7 +270,7 @@ export default function EmployeeTestimonials() {
                             ))}
                         </div>
                     </div>
-                    <div className="w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-520px)] 2xl:w-[calc(100%-768px)] 3xl:w-[calc(100%-820px)] lg:pl-[60px] 2xl:pl-[60px]">
+                    <div className="w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-520px)] 2xl:w-[calc(100%-676px)] 3xl:w-[calc(100%-820px)] lg:pl-[60px] 2xl:pl-[60px]">
                         <div className="w-full mb-[10px] lg:mb-[15px] 2xl:mb-[30px] flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
                             <div className="text-title1 flex-1">Employee
                                 <span className="font-bold text-base2">&nbsp;Testimonials</span>
