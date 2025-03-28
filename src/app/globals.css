@@ -478,7 +478,17 @@
     font-weight: bold;
     color: var(--color-base2);
   }
-
+  .gallTab button {
+      background: none; 
+      color: #17479E;
+    }
+    
+    .gallTab button[aria-selected="true"] {
+      background: linear-gradient(156deg, #17479E 6.47%, #C63B3B 91.2%);
+      color: #fff;
+    }
+     
+  
 
   @media (min-width: 640px) {
 
@@ -545,5 +555,6 @@
     min-height: 50px;
     border-radius: 100px;
   }
+  
 
 }
