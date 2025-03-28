@@ -1,11 +1,8 @@
 import BlogCard from "@/components/common/BlogCard";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
-<<<<<<< HEAD
-=======
 import AwardHighlightBox from "@/components/features/award/AwardHighlightBox";
 import LifeAtIndel from "@/components/features/home/LifeAtIndel";
->>>>>>> 441ade02e7b743f7aa9e4bf8fc99cf90765a0391
-
+import AwardHighlightBox from "@/components/features/award/AwardHighlightBox";
 
 const awards = [
     {

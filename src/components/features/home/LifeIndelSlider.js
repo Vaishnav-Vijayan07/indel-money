@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const slides = [
     {
-        image: "/images/life04.webp",
+        image: "/images/awards-img-1.jpg",
         alt: "Life at Indel Image 1",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
@@ -17,7 +17,7 @@ const slides = [
         href: "/",
     },
     {
-        image: "/images/life04.webp",
+        image: "/images/awards-img-1.jpg",
         alt: "Life at Indel Image 2",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
@@ -25,7 +25,7 @@ const slides = [
         href: "/",
     },
     {
-        image: "/images/life04.webp",
+        image: "/images/awards-img-1.jpg",
         alt: "Life at Indel Image 3",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
@@ -52,14 +52,14 @@ export default function LifeIndelSlider() {
                     >
                         <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
                             <div className="3xl:w-[calc(100%-200px)] xl:w-[calc(100%-150px)] lg:w-[calc(100%-100px)] sm:w-[calc(100%-100px)] w-full 3xl:pr-[30px] sm:pr-[20px] sm:pt-0 pt-[20px]">
-                                <h5 className="text-[14px] sm:text-[16px] xl:text-[18px] 3xl:text-[24px] text-[#1e1e1e] font-normal mb-[15px] 3xl:mb-[20px]">
+                                <h5 className="text-[14px] sm:text-[16px] xl:text-[18px] 3xl:text-[24px] text-[#1e1e1e] font-normal mb-[5px] xl:mb-[10px] 3xl:mb-[15px]">
                                     {item.title}
                                     <span className="text-base2 uppercase font-bold">&nbsp;&apos;
                                         {item.title2}
                                         &apos;
                                     </span>
                                 </h5>
-                                <div className="w-full mb-[15px] 3xl:mb-[20px] text-sm-1 line-clamp-4">
+                                <div className="w-full mb-[10px] xl:mb-[15px] 3xl:mb-[20px] text-sm-1 line-clamp-4">
                                     {item.discription}
                                 </div>
                             </div>
