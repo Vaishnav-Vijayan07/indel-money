@@ -1,6 +1,8 @@
 import BlogCard from "@/components/common/BlogCard";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import AwardHighlightBox from "@/components/features/award/AwardHighlightBox";
+import LifeAtIndel from "@/components/features/home/LifeAtIndel";
+import AwardHighlightBox from "@/components/features/award/AwardHighlightBox";
 
 const awards = [
     {
