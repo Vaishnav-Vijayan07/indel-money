@@ -9,11 +9,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "../../ui/dropdown-menu"
 
 export default function Header() {
   return (
-    <header className="w-full relative z-10 flex items-center" style={{ height: "var(--header-y)" }}>
+    <header className="w-full relative z-10 flex items-center bg-white border-base1/10 border-b-1 " style={{ height: "var(--header-y)" }}>
       <div className="container">
         <div className="flex items-center">
           <div className="w-[60px] xl:w-[90px] 2xl:w-[120px] 3xl:w-[140px]">

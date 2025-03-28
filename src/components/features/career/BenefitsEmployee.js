@@ -43,54 +43,53 @@ export default function BenefitsEmployee() {
     return (
         <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[50px]">
             <div className="container">
-                <div className="text-title1 capitalize flex items-center mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[40px]">
+                <div className="text-title1 font-medium capitalize flex items-center mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[40px]">
                     <Image
                         src={"/images/icon-contact-tle.svg"}
                         alt="contact tle"
                         width={50}
                         height={50}
-                        className="inline mr-[10px] lg:mr-[15px] 2xl:mr-[20px]"
+                        className="w-[30px] xl:w-[40px] 2xl:w-[50px] inline aspect-square mr-[10px] lg:mr-[15px] 2xl:mr-[20px]"
                     />
                     Benefits of being an
                     <span className="text-base2 font-bold">
                         &nbsp;indel employee
                     </span>
                 </div>
-                <div className="flex flex-wrap -mx-[15px] lg:-mx-[20px] 2xl:-mx-[40px]">
-                    <div className="flex flex-wrap">
-                        {benefitsEmployee?.map((item, index) => (
+                <div className="flex flex-wrap -mx-[5px] sm:-mx-[10px] lg:-mx-[15px] xl:-mx-[30px] 2xl:-mx-[40px]">
+                    {benefitsEmployee?.map((item, index) => (
+                        <div
+                            key={index}
+                            className="w-full sm:w-1/2 md:w-1/3 p-[5px_5px] sm:p-[5px_10px] lg:p-[5px_15px] xl:p-[10px_30px] 2xl:p-[15px_40px]"
+                        >
                             <div
-                                key={index}
-                                className="w-1/3 p-[10px_15px] lg:p-[15px_20px] 2xl:p-[15px_40px]"
-                            >
-                                <div
-                                    className={`
-                                        ${index % 2 === 0 ? 'border-base1/10' : 'border-[#d6071e]/10'} 
-                                        w-full h-full flex rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] shadow-[0_4px_15px_0_rgba(0,0,0,0.15)] border overflow-hidden
+                                className={`
+                                        ${index % 2 === 0 ? 'border-base1/20 hover:shadow-[0_4px_15px_0_rgba(23,71,71,0.20)]' : 'border-[#d6071e]/20 hover:shadow-[0_4px_15px_0_rgba(214,7,30,0.20)]'} 
+                                        w-full h-full flex rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] shadow-[0_4px_15px_0_rgba(0,0,0,0.15)] border overflow-hidden hover:-translate-y-[5px] transition-all duration-300
                                         `}
-                                >
-                                    <div className={`
+                            >
+                                <div className={`
                                         ${index % 2 === 0 ? 'bg-base1' : 'bg-[#d6071e]'} 
-                                        w-[80px] lg:w-[100px] 2xl:w-[120px] p-[20px_10px] lg:p-[30px_15px] 2xl:p-[40px_20px] flex items-center justify-center`}>
-                                        <Image
-                                            src={item.src}
-                                            alt={item.alt}
-                                            width={70}
-                                            height={70}
-                                        />
+                                        w-[50px] lg:w-[60px] xl:w-[80px] 2xl:w-[100px] 3xl:w-[120px] p-[20px_10px] lg:p-[30px_15px] 2xl:p-[40px_20px] flex items-center justify-center`}>
+                                    <Image
+                                        src={item.src}
+                                        alt={item.alt}
+                                        width={70}
+                                        height={70}
+                                        className="aspect-square"
+                                    />
+                                </div>
+                                <div className="w-[calc(100%-50px)] lg:w-[calc(100%-60px)] xl:w-[calc(100%-80px)] 2xl:w-[calc(100%-100px)] 3xl:w-[calc(100%-120px)] p-[15px_10px] lg:p-[30px_15px] 2xl:p-[40px_20px] flex flex-col justify-center">
+                                    <div className="text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[24px] 3xl:text-[28px] font-medium leading-[1] text-[#161616] mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
+                                        {item.title}
                                     </div>
-                                    <div className="w-[calc(100%-80px)] lg:w-[calc(100%-100px)] 2xl:w-[calc(100%-120px)] p-[20px_10px] lg:p-[30px_15px] 2xl:p-[40px_20px] flex flex-col justify-center">
-                                        <div className="text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[28px] font-medium leading-[1] text-[#161616] mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
-                                            {item.title}
-                                        </div>
-                                        <div className="text-sm-1 text-[#161616] line-clamp-3">
-                                            {item.description}
-                                        </div>
+                                    <div className="text-sm-1 text-[#161616] line-clamp-3">
+                                        {item.description}
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

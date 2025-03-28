@@ -1,8 +1,8 @@
 
 import localFont from 'next/font/local'
-import "./globals.css";
-import Header from "@/components/layout/header/Header";
-import Footer from "@/components/layout/footer/Footer";
+import "./globals.css"; 
+import Header from '../components/layout/header/Header'; 
+import Footer from '../components/layout/footer/Footer';
 // import ModalPortalContainer from '@/components/common/ModalPortalContainer';
 
 

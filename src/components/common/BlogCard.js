@@ -8,8 +8,9 @@ export default function BlogCard({ item, className }) {
             <div className="group w-[160px] lg:w-[180px] xl:w-[220px] 3xl:w-[320px] overflow-hidden rounded-[20px] relative z-0">
                 <Image
                     src={item?.image}
-                    fill
                     alt={item?.alt}
+                    fill
+                    sizes="320px"
                     className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
                 />
             </div>
@@ -24,7 +25,7 @@ export default function BlogCard({ item, className }) {
                     {item?.discription}
                 </div>
                 {item?.year &&
-                    <div className="text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-medium text-[#2d2d2d] line-clamp-1 mt-[10px] lg:mt-[15px] 2xl:mt-[20px]">
+                    <div className="text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-medium text-[#2d2d2d] line-clamp-1 mt-[10px] lg:mt-[10px] 2xl:mt-[20px]">
                         Award Year:
                         <span className="text-[#eb0208] font-bold">{item?.year}</span>
                     </div>

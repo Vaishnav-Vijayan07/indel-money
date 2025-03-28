@@ -38,16 +38,16 @@ export default function CareerBanner() {
         modules={[EffectFade, Pagination, Autoplay]}
         navigation={false}
         pagination={{
-            clickable: true,
+          clickable: true,
         }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         slidesPerView={1}
         spaceBetween={0}
-        className="careerBannerSlide overflow-visible!"
+        className="careerBannerSlide"
       >
         {slides?.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="w-full lg:h-[376px] xl:h-[420px] 2xl:h-[476px] 3xl:h-[576px] relative z-0 py-[30px] lg:py-[40px] 2xl:py-[50px] flex items-center">
+            <div className="w-full h-[276px] lg:h-[376px] xl:h-[420px] 2xl:h-[476px] 3xl:h-[568px] relative z-0 py-[30px] lg:py-[40px] 2xl:py-[50px] flex items-center">
               <Image
                 src={item?.src}
                 alt={item?.alt}
@@ -56,7 +56,7 @@ export default function CareerBanner() {
                 className="-z-1"
               />
               <div className="container">
-                <div className="text-title2 font-bold text-base2 w-full lg:max-w-[420px] xl:max-w-[476px] 2xl:max-w-[576px] 3xl:max-w-[700px] mb-[4px] lg:mb-[6px] 2xl:mb-[10px]">
+                <div className="text-title2 font-bold text-base2 w-full lg:max-w-[420px] xl:max-w-[476px] 2xl:max-w-[576px] 3xl:max-w-[740px] mb-[4px] lg:mb-[6px] 2xl:mb-[10px]">
                   {item?.title}
                 </div>
                 <div className="w-full">

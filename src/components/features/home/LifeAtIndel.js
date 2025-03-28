@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import LifeIndelSlider from "@/components/features/home/LifeIndelSlider";
+import LifeIndelSlider from "../../features/home/LifeIndelSlider";
 
 const images = [
   {
@@ -16,6 +16,30 @@ const images = [
     alt: "3",
   },
 ];
+
+
+
+
+function ImageBox({ item, className }) {
+  return (
+    <div
+      className={`${className} w-full p-1 sm:p-2`}
+    >
+      <div
+        className={`${className} group w-full h-full xl:rounded-[35px] md:rounded-[28px] rounded-[20px] overflow-hidden`}
+      >
+        <Image
+          src={item.src}
+          width={276}
+          height={276}
+          alt={item.alt}
+          className="w-full h-full object-cover transition-transform duration-300  group-hover:scale-105"
+        />
+      </div>
+    </div>
+  )
+}
+
 export default function LifeAtIndel() {
   return (
     <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px]">
@@ -48,10 +72,12 @@ export default function LifeAtIndel() {
               Life at
               <span className="text-base2 font-bold">&nbsp;Indel</span>
             </h2>
-            <div className="text-sm-1 line-clamp-4 mb-[15px] xl:mb-[20px]">
+            <div className="text-sm-1 line-clamp-4 mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
             </div>
-            <LifeIndelSlider />
+            <div className="mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
+              <LifeIndelSlider />
+            </div>
             <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 3xl:gap-[20px]">
               <div>
                 <Link
@@ -74,28 +100,8 @@ export default function LifeAtIndel() {
         </div>
       </div>
     </section>
-    
-  );
-}
 
-function ImageBox({ item, className }) {
-  return (
-    <div
-      className={`${className} w-full p-1 sm:p-2`}
-    >
-      <div
-        className={`${className} group w-full h-full xl:rounded-[35px] md:rounded-[28px] rounded-[20px] overflow-hidden`}
-      >
-        <Image
-          src={item.src}
-          width={276}
-          height={276}
-          alt={item.alt}
-          className="w-full h-full object-cover transition-transform duration-300  group-hover:scale-105"
-        />
-      </div>
-    </div>
-  )
+  );
 }
 
 

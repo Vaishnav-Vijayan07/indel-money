@@ -12,7 +12,6 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import Image from 'next/image';
 
 const defaultTransformLabel = (label) => {
     return label
@@ -22,7 +21,7 @@ const defaultTransformLabel = (label) => {
 
 function BreadcrumbSeparatorImage({ variant }) {
     return (
-        <svg className="w-[4px]! lg:w-[5px]! 2xl:w-[6px]! h-auto! block" width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-[4px]! 2xl:w-[6px]! h-auto! block" width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 5.5L0.75 0.73686V10.2631L6 5.5Z" fill={variant === "white" ? "#93bffa" : "#17479e"} />
         </svg>
     )
@@ -72,13 +71,6 @@ export default function PageBreadcrumb({
                 </BreadcrumbItem>
                 {items.length > 0 && (
                     <BreadcrumbSeparator>
-                        {/* <Image
-                            src="/images/icon-breadcrumb.svg"
-                            alt="breadcrumb"
-                            width={11}
-                            height={7}
-                            className="w-[4px] lg:w-[5px] 2xl:w-[6px]"
-                        /> */}
                         <BreadcrumbSeparatorImage variant={variant} />
                     </BreadcrumbSeparator>
                 )}

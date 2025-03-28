@@ -1,4 +1,4 @@
-import HeroBanner from "@/components/features/home/HeroBanner";
+import HeroBanner from "../components/features/home/HeroBanner";
 import DreamsToReality from "../components/features/home/DreamsToReality";
 import GoldLoanCalculator from "../components/features/home/GoldLoanCalculator";
 import LifeAtIndel from "../components/features/home/LifeAtIndel";
@@ -9,7 +9,8 @@ import Innovations from "../components/features/home/Innovations";
 import FAQ from "../components/features/home/FAQ";
 import Gallery from "../components/features/home/Gallery";
 import React from "react";
-import WelcomeModal from "@/components/common/WelcomeModal";
+import WelcomeModal from "../components/common/WelcomeModal";
+
 
 const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 
@@ -28,7 +29,7 @@ export default function Home() {
       {/* Dreams to Reality contents*/}
       <DreamsToReality />
 
-      {/* Gold loan calculator contents*/}
+      {/* Gold loan calculator contents*/} 
       <GoldLoanCalculator />
 
       {/* Branch locator contents*/}
