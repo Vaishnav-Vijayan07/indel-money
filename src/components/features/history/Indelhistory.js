@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from 'next/link';
+import styles from "../history/history.module.css";
 
 export default function Indelhistory() {
 
@@ -64,7 +65,9 @@ export default function Indelhistory() {
                         </div>
                     </div>
                     <div className="w-full lg:w-[calc(100%-350px)] xl:w-[calc(100%-465px)] 2xl:w-[calc(100%-535px)] 3xl:w-[calc(100%-670px)] pl-[40px]">
-                        <div className="columns-3 gap-4 xl:gap-7 3xl:gap-10 itemsList max-lg:max-w-[80%] max-lg:mx-auto max-lg:mt-[20px]">
+                        <div className={`columns-3 gap-4 xl:gap-7 3xl:gap-10 max-lg:max-w-[80%] max-lg:mx-auto max-lg:mt-[20px] ${styles.itemsList}`}>
+
+
                             {historyImages.map((img, index) => (
                                 <div key={index} className="mb-[15px] xl:mb-[25px] 3xl:mb-[30px] break-inside-avoid overflow-hidden rounded-[15px] 3xl:rounded-[20px] item">
                                     <Image

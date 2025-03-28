@@ -108,7 +108,7 @@ export default function Footer() {
                 alt="logo"
                 width={360}
                 height={60}
-                className="max-w-[180px] lg:max-w-[200px] xl:max-w-[220px] 3xl:max-w-[320px]"
+                className="max-w-[180px] lg:max-w-[200px] xl:max-w-[220px] 3xl:max-w-[320px] aspect-360/60"
               />
             </div>
             <div className="w-full h-auto block mb-2 xl:mb-4">

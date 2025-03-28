@@ -16,14 +16,16 @@ const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 export default function Home() {
   return (
     <>
+      {/* welcome contents*/}
       <WelcomeModal />
+      
       {/* banner section contents*/}
       <HeroBanner />
 
       {/* Dreams to Reality contents*/}
       <DreamsToReality />
 
-      {/* Gold loan calculator contents*/}
+      {/* Gold loan calculator contents*/} 
       <GoldLoanCalculator />
 
       {/* Branch locator contents*/}

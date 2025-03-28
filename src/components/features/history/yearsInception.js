@@ -6,6 +6,7 @@ import { Pagination, Autoplay, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import styles from "../history/history.module.css";
 
 export default function Yearsinception() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -166,7 +167,7 @@ export default function Yearsinception() {
                                     })}
 
                                     <div
-                                        className="moving-arrows-indicator"
+                                        className="moving-arrows-indicator" 
                                         style={{
                                             transform: `translateY(${arrowPos}px) translateX(-50%)`,
                                             transition: "transform 0.8s ease",

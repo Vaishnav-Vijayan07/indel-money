@@ -7,7 +7,7 @@ import BlogCard from './BlogCard';
 
 export default function LatestUpdatesSlide({ slides, className }) {
     return (
-        <Swiper
+        <Swiper 
             direction={'vertical'}
             slidesPerView={'auto'}
             spaceBetween={0}
