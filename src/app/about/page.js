@@ -1,4 +1,4 @@
-import React from "react";
+
 import Banner from "../../components/features/about/banner";
 import Finacial from "../../components/features/about/finacial"; 
 import Supermarket from "../../components/features/about/supermarket";
