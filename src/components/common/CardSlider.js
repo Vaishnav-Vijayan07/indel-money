@@ -28,7 +28,7 @@ export default function CardSlider() {
                 grabCursor={true}
                 centeredSlides={true}
                 slidesPerView={1.5}
-                spaceBetween={5}
+                spaceBetween={20}
                 loop={true}
                 initialSlide={2}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -47,11 +47,11 @@ export default function CardSlider() {
                 breakpoints={{
                     640: {
                         slidesPerView: 1.8,
-                        spaceBetween: 10,
+                        spaceBetween: 30,
                         coverflowEffect: {
                             rotate: -5,
                             stretch: 0,
-                            depth: 120,
+                            depth: 80,
                             modifier: 1.2,
                             slideShadows: false,
                         },
@@ -80,12 +80,12 @@ export default function CardSlider() {
                     },
                     1920: {
                         slidesPerView: 5,
-                        spaceBetween: 60,
+                        spaceBetween: 40,
                         coverflowEffect: {
                             rotate: -5,
                             stretch: 0,
-                            depth: 80,
-                            modifier: 1.2,
+                            depth: 20,
+                            modifier: 1.8,
                             slideShadows: false,
                         },
                     },

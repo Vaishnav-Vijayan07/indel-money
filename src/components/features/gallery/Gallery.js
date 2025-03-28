@@ -3,6 +3,7 @@ import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/custom-tabs";
+import CardSlider from '@/components/common/CardSlider';
 
 export default function Gallery() {
     const data = [
@@ -110,12 +111,15 @@ export default function Gallery() {
                 <Tabs defaultValue="all" className="w-full gallTab">
                     <div className="w-full h-fit lg:max-w-[85%] xl:max-w-[75%] m-auto flex justify-center mb-[40px] xl:mb-[60px] 3xl:mb-[100px] rounded-[50px] bg-white shadow-[0px_0px_25px_0px_rgba(0,0,0,0.10)] p-[15px] 2xl:p-[25px]">
                         <TabsList className="flex flex-wrap h-fit w-full lg:max-w-[90%] xl:max-w-[70%] m-auto">
-                            <TabsTrigger value="all" className="text-title1 xl:text-[13px] uppercase text-base1 rounded-[30px] overflow-hidden w-1/3 px-[30px] 2xl:px-[35px] 3xl:px-[50px] py-[12px] 2xl:py-[15px] 3xl:py-[20px] h-fit aria-selected:text-[#fff]">All Gallery Gallery Gallery</TabsTrigger>
+                            <TabsTrigger value="all" className="text-title1 xl:text-[13px] uppercase text-base1 rounded-[30px] overflow-hidden w-1/3 px-[30px] 2xl:px-[35px] 3xl:px-[50px] py-[12px] 2xl:py-[15px] 3xl:py-[20px] h-fit aria-selected:text-[#fff]">All Gallery</TabsTrigger>
                             <TabsTrigger value="photo" className="text-title1 xl:text-[13px] uppercase text-base1 rounded-[30px] overflow-hidden w-1/3 px-[30px] 2xl:px-[35px] 3xl:px-[50px] py-[12px] 2xl:py-[15px] 3xl:py-[20px] h-fit aria-selected:text-[#fff]">Photo Gallery</TabsTrigger>
                             <TabsTrigger value="video" className="text-title1 xl:text-[13px] uppercase text-base1 rounded-[30px] overflow-hidden w-1/3 px-[30px] 2xl:px-[35px] 3xl:px-[50px] py-[12px] 2xl:py-[15px] 3xl:py-[20px] h-fit aria-selected:text-[#fff]">Video Gallery</TabsTrigger>
                         </TabsList>
                     </div>
                     <TabsContent value="all">
+                        <div className="w-full 2xl:pb-[100px] md:pb-[60px] pb-[40px]">
+                            <CardSlider />
+                        </div>
                         <div className="mx-auto flex flex-wrap">
                             {slides?.map((group, index) => {
                                 const gallClass = index % 2 === 0 ? "flex-col" : "flex-col-reverse";
