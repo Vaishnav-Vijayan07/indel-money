@@ -7,7 +7,7 @@ import {
     AlertDialogContent,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+} from "@/components/ui/custom-alert-dialog"
 import CareerForm from "@/components/common/CareerForm";
 
 function JobResultAlert() {
