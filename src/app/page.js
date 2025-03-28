@@ -1,4 +1,3 @@
-import React from "react";
 import HeroBanner from "@/components/features/home/HeroBanner";
 import DreamsToReality from "../components/features/home/DreamsToReality";
 import GoldLoanCalculator from "../components/features/home/GoldLoanCalculator";
@@ -7,14 +6,22 @@ import LatestUpdates from "../components/features/home/LatestUpdates";
 import TrustedInvestment from "../components/features/home/TrustedInvestment";
 import BranchLocator from "../components/features/home/BranchLocator";
 import Innovations from "../components/features/home/Innovations";
-
 import FAQ from "../components/features/home/FAQ";
+import Gallery from "../components/features/home/Gallery";
+import React from "react";
+import WelcomeModal from "@/components/common/WelcomeModal";
 
 const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 
 export default function Home() {
   return (
     <>
+      {/* Gallery */}
+      <Gallery />
+
+      {/* welcome contents*/}
+      <WelcomeModal />
+
       {/* banner section contents*/}
       <HeroBanner />
 
@@ -23,6 +30,9 @@ export default function Home() {
 
       {/* Gold loan calculator contents*/}
       <GoldLoanCalculator />
+
+      {/* Branch locator contents*/}
+      <BranchLocator variant={"home"} />
 
       {/* Life at Indel contents*/}
       <LifeAtIndel />
@@ -36,11 +46,10 @@ export default function Home() {
       {/* Innovations*/}
       <Innovations />
 
-      {/* Branch locator contents*/}
-      <BranchLocator />
-
       {/* faq contents */}
-      <FAQS />
+      <FAQ />
     </>
   );
 }
+
+

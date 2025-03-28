@@ -20,8 +20,8 @@ export default function LifeAtIndel() {
   return (
     <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px]">
       <div className="container">
-        <div className="flex flex-wrap items-center lg:-mx-[20px] xl:-mx-[30px] 3xl:-mx-[35px]">
-          <div className="w-full mb-[15px] lg:mb-0 lg:w-1/2 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
+        <div className="flex flex-wrap items-center lg:-mx-[15px] xl:-mx-[20px] 3xl:-mx-[35px]">
+          <div className="w-full mb-[15px] lg:mb-0 lg:w-1/2 lg:px-[15px] xl:px-[20px] 3xl:px-[35px]">
             <div className="flex flex-wrap">
               <div className="w-4/10">
                 {images.slice(0, 2).map((item, index) => (
@@ -43,7 +43,7 @@ export default function LifeAtIndel() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
+          <div className="w-full lg:w-1/2 lg:px-[15px] xl:px-[20px] 3xl:px-[35px]">
             <h2 className="text-title1">
               Life at
               <span className="text-base2 font-bold">&nbsp;Indel</span>
@@ -74,10 +74,11 @@ export default function LifeAtIndel() {
         </div>
       </div>
     </section>
+    
   );
 }
 
-export function ImageBox({ item, className }) {
+function ImageBox({ item, className }) {
   return (
     <div
       className={`${className} w-full p-1 sm:p-2`}
@@ -96,3 +97,7 @@ export function ImageBox({ item, className }) {
     </div>
   )
 }
+
+
+
+
