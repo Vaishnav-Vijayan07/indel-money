@@ -6,7 +6,7 @@ export default function Financial() {
 
     return (
         <section className="relative 3xl:py-[100px] 2xl:py-[80px] py-[50px]">
-            <div className="custom-container">
+            <div className="container">
                 <div className="flex flex-wrap items-end w-full ">
                     {/* Left Content Section */}
                     <div className="3xl:w-[620px] 2xl:w-[450px] xl:w-[400px] lg:w-[300px]  w-full max-lg:p-[10px]">

@@ -1,4 +1,4 @@
-import PlaceholdersAndVanishInputDemo from "@/components/layout/footer/SubscribeForm";
+import PlaceholdersAndVanishInputDemo from "../footer/SubscribeForm";
 import Image from "next/image";
 import Link from "next/link";
 
