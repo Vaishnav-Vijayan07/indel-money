@@ -95,6 +95,18 @@ const navigations = [
   }
 ];
 
+
+function ContactBox({ href, src, title, alt }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 3xl:gap-2">
+      <span>
+        <Image src={src} width={36} height={36} alt={alt} className="w-[15px] lg:w-[20px] xl:w-[25px] 3xl:w-[30px] h-[auto] block" />
+      </span>
+      <span className="text-[16px] lg:text-[20px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] font-medium group-hover:text-base2 transition-color duration-300">{title}</span>
+    </a>
+  )
+}
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
@@ -221,7 +233,7 @@ export default function Footer() {
                 alt={"intersmart"}
                 width={104}
                 height={16}
-                className="aspect-square"
+                className="aspect-104/16 inline"
               />
             </a>
           </div>
@@ -232,14 +244,4 @@ export default function Footer() {
 }
 
 
-function ContactBox({ href, src, title, alt }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 3xl:gap-2">
-      <span>
-        <Image src={src} width={36} height={36} alt={alt} className="w-[15px] lg:w-[20px] xl:w-[25px] 3xl:w-[30px] h-[auto] block" />
-      </span>
-      <span className="text-[16px] lg:text-[20px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] font-medium group-hover:text-base2 transition-color duration-300">{title}</span>
-    </a>
-  )
-}
 
