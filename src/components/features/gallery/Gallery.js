@@ -3,6 +3,7 @@ import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/custom-tabs";
+import CardSlider from '@/components/common/CardSlider';
 
 export default function Gallery() {
     const data = [
@@ -116,6 +117,9 @@ export default function Gallery() {
                         </TabsList>
                     </div>
                     <TabsContent value="all">
+                        <div className="w-full 2xl:pb-[100px] md:pb-[60px] pb-[40px]">
+                            <CardSlider />
+                        </div>
                         <div className="mx-auto flex flex-wrap">
                             {slides?.map((group, index) => {
                                 const gallClass = index % 2 === 0 ? "flex-col" : "flex-col-reverse";
