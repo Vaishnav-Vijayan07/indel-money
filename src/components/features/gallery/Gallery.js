@@ -63,8 +63,7 @@ export default function Gallery() {
             <div
                 className="group relative rounded-[20px] overflow-hidden w-full h-full"
                 onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-            >
+                onMouseLeave={() => setHovered(false)}>
                 <div className="relative w-full h-full">
                     {item.images.map((img, index) => (
                         <Image
