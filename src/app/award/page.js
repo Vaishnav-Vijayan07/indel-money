@@ -77,7 +77,7 @@ const awards = [
     },
     {
         href: "/",
-        image: "/images/award-4.jpg", 
+        image: "/images/award-4.jpg",  
         alt: "news-1",
         title: "Lorem Ipsum is simply dummy text of the printing 2024",
         discription: "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",

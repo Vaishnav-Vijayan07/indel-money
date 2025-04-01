@@ -96,7 +96,7 @@ const blogs = [
         href: "/",
         image: "/images/blog-4.jpg",
         alt: "news-1",
-        date: "24 SEPTEMBER 2024:",
+        date: "24 SEPTEMBER 2024:", 
         title: "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
         discription: "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
