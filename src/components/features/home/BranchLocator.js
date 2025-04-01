@@ -20,7 +20,7 @@ export default function BranchLocator({ variant = "default" }) {
           <div className="w-full lg:w-[468px] xl:w-[500px] 2xl:w-[600px] 3xl:w-[668px] mt-2 xl:mt-[15px] xl:text-right">
             <p className="text-[12px] lg:text-[12px] xl:text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#323232]">
               Find the closest Indel Money branch using our locator tool and unlock gold loan opportunities in your vicinity.
-              Let's work together to meet your financial needs.
+              Let&apos;s work together to meet your financial needs.
             </p>
           </div>
         </div>

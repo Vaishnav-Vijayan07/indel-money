@@ -3,6 +3,8 @@ import { Slider } from "@/components/ui/slider";
 
 const labelStyle =
   "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-normal text-black";
+const resultStyle =
+  "text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[20px] leading-[1] font-bold text-black";
 
 export default function GoldLoanForm() {
   // Handle form submission
@@ -14,20 +16,40 @@ export default function GoldLoanForm() {
     <form onSubmit={onSubmit}>
       <div className="flex flex-wrap">
         <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
-          <div className={labelStyle}>Loan Amount</div>
+          <div className={labelStyle}>Loan Amount (lakhs)</div>
           <Slider defaultValue={[33]} max={100} step={1} />
         </div>
         <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
-          <div className={labelStyle}>Loan Amount</div>
-          <Slider defaultValue={[33]} max={100} step={1} />
+          <div className={labelStyle}>Interest rate (%)</div>
+          <Slider defaultValue={[20]} max={31} step={1} />
         </div>
         <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
-          <div className={labelStyle}>Loan Amount</div>
-          <Slider defaultValue={[33]} max={100} step={1} />
+          <div className={labelStyle}>Tenure (in months)</div>
+          <Slider defaultValue={[69]} max={70} step={[12]} />
         </div>
         <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
-          <div className={labelStyle}>Loan Amount</div>
-          <Slider defaultValue={[33]} max={100} step={1} />
+          <div className="flex flex-wrap items-center space-x-3">
+            <div>
+              <div className={`${labelStyle} mb-[5px] lg:mb-[10px] 2xl:mb-[15px]`}>
+                Loan EMI
+              </div>
+              <div className={resultStyle}>₹2500</div>
+            </div>
+            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[60px] 3xl:h-[80px] bg-[#6497db]"></div>
+            <div>
+              <div className={`${labelStyle} mb-[5px] lg:mb-[10px] 2xl:mb-[15px]`}>
+                Total Interest Payable
+              </div>
+              <div className={resultStyle}>₹1500</div>
+            </div>
+            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[60px] 3xl:h-[80px] bg-[#6497db]"></div>
+            <div>
+              <div className={`${labelStyle} mb-[5px] lg:mb-[10px] 2xl:mb-[15px]`}>
+                Total Payment (Principal + Interest)
+              </div>
+              <div className={resultStyle}>₹4000</div>
+            </div>
+          </div>
         </div>
         <div className="w-full mt-[15px] lg:mt-[20px] 2xl:mt-[30px]">
           <Button

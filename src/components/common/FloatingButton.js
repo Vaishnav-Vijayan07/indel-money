@@ -18,6 +18,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import GoldLoanForm from "./GoldLoanForm";
 
 function FloatingCalculator() {
   return (
@@ -54,6 +55,7 @@ function FloatingCalculator() {
                 opens up.
               </div>
             </div>
+            <GoldLoanForm />
           </div>
         </div>
       </AlertDialogContent>
@@ -95,7 +97,7 @@ function FloatingSearch() {
                   className="text-[12px] lg:text-[12px] 2xl:text-[14px] font-normal"
                   heading="Suggestions"
                 >
-                  <div className="overflow-y-auto h-[176px] lg:h-[220px] 2xl:h-[268px]">
+                  {/* <div className="overflow-y-auto h-[176px] lg:h-[220px] 2xl:h-[268px]"> */}
                     <CommandItem>Calendar</CommandItem>
                     <CommandItem>Search Emoji</CommandItem>
                     <CommandItem>Calculator</CommandItem>
@@ -108,7 +110,7 @@ function FloatingSearch() {
                     <CommandItem>Calendar</CommandItem>
                     <CommandItem>Search Emoji</CommandItem>
                     <CommandItem>Calculator</CommandItem>
-                  </div>
+                  {/* </div> */}
                 </CommandGroup>
               </CommandList>
             </Command>

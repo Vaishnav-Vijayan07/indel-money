@@ -149,7 +149,7 @@ export default function GoldLoanForm() {
                     alt="refresh"
                     width={16}
                     height={16}
-                    className="aspect-square absolute z-1 top-0 bottom-0 right-[10px] 2xl:right-[15px] m-auto cursor-pointer hover:scale-95 transition-transform duration-300"
+                    className="w-[6px] lg:w-[10px] 2xl:w-[15px] aspect-square absolute z-1 top-0 bottom-0 right-[10px] lg:right-[12px] 2xl:right-[15px] m-auto cursor-pointer hover:scale-95 transition-transform duration-300"
                   />
                 </div>
                 <FormDescription className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-normal text-[#3c3c3c]">

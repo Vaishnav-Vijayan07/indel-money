@@ -61,8 +61,8 @@ export default function EnquiryForm() {
 
     return (
         <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: "[calc(((100vw-var(--container-x))/2)+var(--container-padding))]" }}
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: "[calc(((100vw-var(--container-x))/2)+var(--container-padding))]", opacity: 1 }}
             className={`${open ? "right-[calc(((100vw-var(--container-x))/2)+var(--container-padding))]" : "right-0 translate-x-full"} w-full max-w-[200px] sm:max-w-[276px] lg:max-w-[320px] 2xl:max-w-[420px] 3xl:max-w-[476px] h-auto absolute z-1 top-0 bottom-[var(--marquee-y)] my-auto flex items-center transition-transform duration-300`}
         >
             <div className="w-full h-auto relative bg-[#c0dbff] rounded-tr-[10px] rounded-br-[10px] rounded-bl-[10px] rounded-tl-0 py-[10px] px-[15px] lg:py-[20px] lg:px-[20px] 3xl:py-[20px] 3xl:px-[35px]">
