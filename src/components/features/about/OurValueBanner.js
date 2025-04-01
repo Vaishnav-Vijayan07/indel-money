@@ -26,7 +26,7 @@ export default function InnerBanner() {
                         Our
                         <span className="text-base2 font-bold">&nbsp;Values</span>
                     </h1>
-                    <PageBreadcrumb />
+                    <PageBreadcrumb variant="white" />
                 </div>
             </div>
         </section>

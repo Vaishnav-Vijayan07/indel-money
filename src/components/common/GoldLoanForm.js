@@ -22,6 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
+import { useState } from "react";
 
 // Schema Validation
 const formSchema = z.object({
@@ -55,6 +56,12 @@ export default function GoldLoanForm() {
   function onSubmit(values) {
     console.log("Form submitted:", values);
   }
+
+  const [unit, setUnit] = useState("gm");
+
+  const handleToggle = (selectedUnit) => {
+    setUnit(selectedUnit);
+  };
 
   return (
     <Form {...form}>
@@ -116,7 +123,27 @@ export default function GoldLoanForm() {
             name="goldAmount"
             render={({ field }) => (
               <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
-                <FormLabel className={labelStyle}>Gold amount </FormLabel>
+                <div className="flex">
+                  <FormLabel className={labelStyle}>Gold amount </FormLabel>
+                  <div className="inline-flex rounded-full bg-[#e6f0fa] p-1">
+                    <button
+                      onClick={() => handleToggle("gm")}
+                      className={`${
+                        unit === "gm" ? "bg-base1" : " bg-base1/50"
+                      } "text-[12px] lg:text-[14px] 2xl:text-[16px] leading-[1] font-normal text-white w-[40px] lg:w-[50px] 2xl:w-[54px] h-[30px]rounded-[4px] lg:rounded-[6px] transition-colors"`}
+                    >
+                      gm
+                    </button>
+                    <button
+                      onClick={() => handleToggle("kg")}
+                      className={`${
+                        unit === "kg" ? "bg-base1" : " bg-base1/50"
+                      } "text-[12px] lg:text-[14px] 2xl:text-[16px] leading-[1] font-normal text-white w-[40px] lg:w-[50px] 2xl:w-[54px] h-[30px]rounded-[4px] lg:rounded-[6px] transition-colors"`}
+                    >
+                      kg
+                    </button>
+                  </div>
+                </div>
                 <FormControl>
                   <Input
                     className="bg-white border-white"

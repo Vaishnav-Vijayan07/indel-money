@@ -134,7 +134,7 @@ export default function Footer() {
                   alt="call"
                   width={16}
                   height={16}
-                  className="aspect-square"
+                  className="w-[16px] h-auto aspect-1/1"
                 />
                 <Link href="tel:18004253990" target="_blank" rel="noopener noreferrer" className="hover:text-base2 transition-color duration-300">1800 4253 990</Link>
               </div>
@@ -144,7 +144,7 @@ export default function Footer() {
                   alt="mail"
                   width={16}
                   height={16}
-                  className="aspect-square"
+                  className="w-[16px] h-auto aspect-1/1"
                 />
                 <Link href="mailto:care@indelmoney.com" target="_blank" rel="noopener noreferrer" className="hover:text-base2 transition-color duration-300">care@indelmoney.com</Link>
               </div>

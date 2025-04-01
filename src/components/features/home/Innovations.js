@@ -1,5 +1,8 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
 export default function Innovations() {
   return (
     <section className="w-full 2xl:pt-[80px] 2xl:pb-[30px] md:pt-[30px] md:pb-[30px] pt-[40px] pb-[20px]">
@@ -61,7 +64,13 @@ export default function Innovations() {
                 </Link>
               </div>
             </div>
-            <div className="w-full max-w-[220px] lg:max-w-[300px] xl:max-w-[320px] 2xl:max-w-[376px] 3xl:max-w-[400px] max-lg:hidden absolute bottom-0 right-0 ">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="w-full max-w-[220px] lg:max-w-[300px] xl:max-w-[320px] 2xl:max-w-[376px] 3xl:max-w-[400px] max-lg:hidden absolute bottom-0 right-0"
+            >
               <Image
                 src={"/images/app-1.png"}
                 alt="app"
@@ -69,7 +78,7 @@ export default function Innovations() {
                 height={600}
                 className="w-full h-full object-cover transition-transform duration-300"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -81,7 +90,7 @@ function DownloadBx({ src, href, alt }) {
   return (
     <Link
       href={href}
-      className="w-full max-w-[100px] lg:max-w-[120px] 3xl:max-w-[180px] h-auto d-bloc d-block"
+      className="w-full max-w-[100px] lg:max-w-[120px] 3xl:max-w-[180px] h-auto block"
     >
       <Image
         src={src}
