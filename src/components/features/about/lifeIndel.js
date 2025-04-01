@@ -69,7 +69,7 @@ export default function lifeatIndel() {
                                                             : `translateX(${translateValue}px) rotateZ(${translateValue}deg)`,
                                                         opacity: isVisible ? 1 : 0,
                                                         zIndex: isActive ? 9999 : images.length - index,
-                                                        transition: "all 0.5s ease",
+                                                        transition: "all 1s ease",
                                                     }}
                                                 >
                                                     <img

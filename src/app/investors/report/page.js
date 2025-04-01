@@ -1,7 +1,7 @@
 import React from "react";
-import Report from "../../components/features/investors/report"; 
+import Report from "../../../components/features/investors/report"; 
 
-export default function MsmeLoan() {
+export default function report() {
   return (
     <>
       {/* Report*/}

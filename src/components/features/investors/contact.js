@@ -86,7 +86,7 @@ export default function contact() {
                     <div className="w-[270px] xl:w-[330px] 2xl:w-[400px] 3xl:w-[510px]">
                         <Sidebar />
                     </div>
-                    <div className="w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
+                    <div className="w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
                         <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">Investors Contact</div>
 
                         <div className="flex flex-wrap w-full m-[-8px] 2xl:m-[-15px] 3xl:m-[-20px]">
