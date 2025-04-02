@@ -34,36 +34,36 @@ const navigations = [
     title: "About",
     links: [
       { linkname: "About Indel Money", href: "/about" },
-      { linkname: "Board of Directors", href: "#" },
-      { linkname: "Life at Indel Money", href: "#" },
-      { linkname: "Employee Testimonials", href: "#" },
+      { linkname: "Board of Directors", href: "/about" },
+      { linkname: "Life at Indel Money", href: "/about" },
+      { linkname: "Employee Testimonials", href: "/about" },
       { linkname: "Different Shades of Indel", href: "/about/different-shades-of-indel" }
     ]
   },
   {
     title: "Investors",
     links: [
-      { linkname: "Investors Reports", href: "#" },
-      { linkname: "Ombudsman Scheme", href: "#" }
+      { linkname: "Investors Reports", href: "/investors/report" },
+      { linkname: "Ombudsman Scheme", href: "/ombudsman" }
     ]
   },
   {
     title: "Product & Services",
     links: [
-      { linkname: "MSME Loan", href: "#" },
-      { linkname: "Consumer Durable Loans", href: "#" },
-      { linkname: "Loan Against Property", href: "#" },
-      { linkname: "Gold Loan Schemes", href: "#" },
+      { linkname: "MSME Loan", href: "/msme-loan" },
+      { linkname: "Consumer Durable Loans", href: "/" },
+      { linkname: "Loan Against Property", href: "/" },
+      { linkname: "Gold Loan Schemes", href: "/gold-loan" },
       { linkname: "E-Connect", href: "#" }
     ]
   },
   {
     title: "Media",
     links: [
-      { linkname: "News", href: "#" },
-      { linkname: "Blog", href: "#" },
-      { linkname: "Image Gallery", href: "#" },
-      { linkname: "Video Gallery", href: "#" }
+      { linkname: "News", href: "/blog" },
+      { linkname: "Blog", href: "/blog" },
+      { linkname: "Image Gallery", href: "/gallery" },
+      { linkname: "Video Gallery", href: "/gallery" }
     ]
   },
   {

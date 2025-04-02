@@ -18,7 +18,9 @@ export default function BranchLocator({ variant = "default" }) {
         variant === "contact"
           ? "bg-[#e6edf7] py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px]"
           : ""
-      } w-full block`}
+      }
+       ${variant === "branch" ? "pt-[40px] pb-[0px] 2xl:pt-[30px] 2xl:pb-[90px] 3xl:pt-[50px] 3xl:pb-[120px]" : ""}
+       w-full block`}
     >
       <div className="container">
         <div className="mb-7.5 flex flex-col lg:flex-row items-start xl:items-start justify-between flex-wrap">
