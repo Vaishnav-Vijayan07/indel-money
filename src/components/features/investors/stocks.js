@@ -63,7 +63,7 @@ export default function StockExchange() {
                             {/* Board Meeting Section */}
                             <div className="mb-[20px] xl:mb-[25px]">
                                 <div className="text-[18px] lg:text-[26px] xl:text-[28px] 2xl:text-[35px] 3xl:text-[42px] font-medium text-black mb-[20px] xl:mb-[25px]">
-                                    1. Board Meeting
+                                    1. Board Meeting {year}
                                 </div>
                                 <div className="overflow-auto w-full">
                                     <table className="w-full border-collapse rounded-[20px] px-[55px] 3xl:px-[76px] bg-[#D7E9FF] overflow-hidden">
