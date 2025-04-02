@@ -71,7 +71,7 @@ export default function EnquiryForm() {
                 </div>
 
                 <div
-                    className="text-sm-1 leading-1 [writing-mode:vertical-lr] rotate-[180deg] w-[30px] h-[80px] 3xl:w-[40px] 3xl:h-[120px] bg-[#c0dbff] cursor-pointer absolute top-0 right-full flex justify-center items-center rounded-br-[10px] rounded-tr-[10px] transition-opacity duration-300 hover:opacity-95"
+                    className="text-sm-1 leading-1 [writing-mode:vertical-lr] rotate-[180deg] w-[30px] h-[80px] 3xl:w-[36px] 3xl:h-[120px] bg-[#c0dbff] cursor-pointer absolute top-0 right-full flex justify-center items-center rounded-br-[10px] rounded-tr-[10px] transition-opacity duration-300 hover:opacity-95"
                     onClick={() => setOpen(!open)}
                 >
                     {open ? "Close" : "Open"}
@@ -90,12 +90,8 @@ export default function EnquiryForm() {
                                         src="/images/enquiry-yourName.svg"
                                         width={0}
                                         height={0}
-                                        sizes="100vw"
-                                        style={{
-                                            width: "18px",
-                                            height: "auto"
-                                        }}
-                                        className="absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(40px/2)] 2xl:top-[calc(44px/2)] 3xl:top-[calc(48px/2)]"
+                                        sizes="18px"
+                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)]"
                                         alt="Your Name"
                                     />
                                     <FormControl>
@@ -116,12 +112,8 @@ export default function EnquiryForm() {
                                         src="/images/enquiry-contactNumber.svg"
                                         width={0}
                                         height={0}
-                                        sizes="100vw"
-                                        style={{
-                                            width: "18px",
-                                            height: "auto"
-                                        }}
-                                        className="absolute -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(40px/2)] 2xl:top-[calc(44px/2)] 3xl:top-[calc(48px/2)] left-[15px]"
+                                        sizes="18px"
+                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)]"
                                         alt="Contact Number"
                                     />
                                     <FormControl>
@@ -142,12 +134,8 @@ export default function EnquiryForm() {
                                         src="/images/enquiry-emailAddress.svg"
                                         width={0}
                                         height={0}
-                                        sizes="100vw"
-                                        style={{
-                                            width: "18px",
-                                            height: "auto"
-                                        }}
-                                        className="absolute -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(40px/2)] 2xl:top-[calc(44px/2)] 3xl:top-[calc(48px/2)] left-[15px]"
+                                        sizes="18px"
+                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)]"
                                         alt="Email Address"
                                     />
                                     <FormControl>

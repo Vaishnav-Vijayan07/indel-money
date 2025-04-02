@@ -302,7 +302,10 @@ export default function EmployeeTestimonials() {
                                 type: 'fraction',
                                 clickable: true,
                             }}
-                            // autoplay={{ delay: 5000, disableOnInteraction: false }}
+                            // autoplay={{
+                            //     delay: 4000,
+                            //     disableOnInteraction: false
+                            // }}
                             autoplay={false}
                             slidesPerView={1}
                             spaceBetween={0}

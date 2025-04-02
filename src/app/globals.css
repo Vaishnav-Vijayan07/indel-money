@@ -133,7 +133,7 @@
 
 @layer components {
   .btn {
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1;
     font-weight: 500;
     text-transform: uppercase;
@@ -293,7 +293,7 @@
     }
 
     .text-header-sm {
-      font-size: 12px;
+      font-size: 10px;
     }
 
     .text-footer-1 {
@@ -306,6 +306,12 @@
 
     .text-banner-1 {
       font-size: 40px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .text-header-sm {
+      font-size: 12px;
     }
   }
 
