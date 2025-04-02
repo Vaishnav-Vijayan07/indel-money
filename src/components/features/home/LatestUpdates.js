@@ -79,7 +79,7 @@ export default function LatestUpdates() {
             </div>
             <LatestUpdatesSlide
               className={
-                "relative lg:before:[''] before:hidden lg:before:block before:absolute before:bottom-0 before:right-0 before:w-[calc(100%-160px)] before:lg:w-[calc(100%-180px)] before:xl:w-[calc(100%-230px)] before:2xl:w-[calc(100%-220px-25px)] before:3xl:w-[calc(100%-320px-30px)] before:h-[1px] before:bg-[#a8a8a8] "
+                "relative lg:before:[''] before:hidden lg:before:block before:absolute before:bottom-0 before:right-0 before:w-[170px] before:lg:w-[198px] before:xl:w-[249px] before:2xl:w-[337px] before:3xl:w-[430px] before:h-[1px] before:bg-[#a8a8a8]"
               }
               slides={slides.slice(1)}
             />
