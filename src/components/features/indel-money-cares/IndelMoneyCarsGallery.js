@@ -67,13 +67,13 @@ const IndelMoneyCarsGallery = () => {
                         },
                     },
                 }}
-                autoplay={{ delay: 1000 }}
+                autoplay={{ delay: 100000000000000 }}
                 loop={true}
                 className="w-full rounded-[35px]"
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={index} className="">
-                        <div className="relative z-0 w-[90%] h-[400px] md:h-[690px] mx-auto overflow-hidden rounded-[35px]">
+                        <div className="relative z-0 w-[90%] h-[400px] 2xl:h-[690px] xl:h-[480px] mx-auto overflow-hidden rounded-[35px]">
                             <div className="group w-full h-full overflow-hidden">
                                 <Image
                                     src={slide.image}
@@ -83,9 +83,9 @@ const IndelMoneyCarsGallery = () => {
                                     className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
                                 />
                             </div>
-                            <div className="absolute z-1 bottom-0 left-0 block w-full bg-gradient-to-t from-black/80 to-transparent p-6 text-white rounded-[35px]">
-                                <h2 className="text-lg font-bold">{slide.caption}</h2>
-                                <p className="text-sm">{slide.date}</p>
+                            <div className="absolute z-1 bottom-0 left-0 block w-full bg-gradient-to-t from-black/80 to-transparent text-white rounded-[35px] 2xl:p-[0_0_55px_65px] xl:p-[0_0_40px_40px] md:p-[0_0_30px_30px]">
+                                <h2 className="2xl:text-[36px] xl:text-[24px] md:text-[22px] leading-[1.3] font-bold 2xl:max-w-[874px] xl:max-w-[720px] md:max-w-[640px] xl:mb-[15px] mb-[10px]">{slide.caption}</h2>
+                                <p className="2xl:text-[18px] xl:text-[16px] text-[14px] font-normal text-white">{slide.date}</p>
                             </div>
                         </div>
                     </SwiperSlide>

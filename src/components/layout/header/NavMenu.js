@@ -1,4 +1,4 @@
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from '@/components/ui/navigation-menu';
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from '../../ui/navigation-menu';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -97,7 +97,7 @@ const NavMenu = () => {
 
           {/* Careers Menu */}
           <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
+            <Link href="/career" legacyBehavior passHref>
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} p-0 cursor-pointer`}><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Careers</span></NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

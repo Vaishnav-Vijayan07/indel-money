@@ -3,6 +3,15 @@ import Image from "next/image";
 import BlogCard from "@/components/common/BlogCard";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import IndelMoneyCarsGallery from "@/components/features/indel-money-cares/IndelMoneyCarsGallery";
+import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from "@/components/ui/pagination";
 
 const events = [
     {
@@ -45,7 +54,7 @@ export default function IndelMoneyCars() {
             <section className="pb-[50px]">
                 <IndelMoneyCarsGallery />
             </section>
-            <section className="w-full block 2xl:p-[80px_0_70px] lg:p-[40px_0_50px] sm:p-[30px_0_40px] relative z-0 before:content-[''] before:absolute before:top-0 before:left-0 before:block before:w-full before:h-[80%] before:bg-gradient-to-r before:from-[rgba(243,0,0,0.00)] before:to-[rgba(235,2,8,0.10)] before:pointer-events-none">
+            <section className="w-full block 2xl:p-[80px_0_70px] lg:p-[40px_0_50px] sm:p-[30px_0_40px] relative z-0 before:content-[''] before:absolute before:top-0 before:left-0 before:block before:w-full before:h-[70%] before:bg-gradient-to-r before:from-[rgba(243,0,0,0.00)] before:to-[rgba(235,2,8,0.10)] before:pointer-events-none">
                 <div className="container">
                     <h2 className="text-title1 2xl:mb-[40px] xl:mb-[30px] sm:mb-[20px]">
                         <span className="text-base2 font-bold">Indel&nbsp;</span>
@@ -91,10 +100,33 @@ export default function IndelMoneyCars() {
                                 </div>
                             ))}
                         </div>
+                        <Pagination className="justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
+                            <PaginationContent>
+                                <PaginationItem>
+                                    <PaginationPrevious href="#" />
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink href="#" isActive>
+                                        1
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink href="#">2</PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink href="#">3</PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationEllipsis />
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationNext href="#" />
+                                </PaginationItem>
+                            </PaginationContent>
+                        </Pagination>
                     </div>
                 </div>
             </section>
-
         </>
     );
 }

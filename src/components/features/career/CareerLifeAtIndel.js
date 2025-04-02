@@ -64,17 +64,17 @@ export default function CareerLifeAtIndel() {
                     <div>
                         <Link
                             href={"/"}
-                            className="btn btn-base2 min-w-[100px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[140px] 3xl:min-w-[180px]"
+                            className="btn btn-base2 min-w-[120px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[140px] 3xl:min-w-[180px]"
                         >
                             VISIT GALLERY
                         </Link>
                     </div>
                 </div>
             </div>
-            <div className="w-full max-w-[calc(100%-((100%-var(--container-x))/2))] pl-[var(--container-padding)] ml-auto">
+            <div className="max-w-[var(--container-x)] mx-auto pl-[var(--container-padding)] pr-[var(--container-padding)] lg:max-w-[calc(100%-((100%-var(--container-x))/2))] lg:pr-0 lg:mr-0">
                 <div className="flex flex-wrap">
-                    <div className="w-full lg:w-[376px] xl:w-[420px] 2xl:w-[520px] 3xl:w-[676px]">
-                        <div className="w-full h-full p-[20x_15px] lg:p-[30px_20px] xl:p-[40px_30px] 2xl:p-[60px_40px] 3xl:p-[80px_60px] rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] bg-linear-to-b from-transparent to-white relative z-0 overflow-hidden after:content-[''] after:absolute after:-z-1 after:inset-0 after:opacity-50 after:block after:bg-linear-to-b after:from-base1 after:to-base2 after:pointer-events-none flex items-center">
+                    <div className="w-full lg:w-[376px] xl:w-[420px] 2xl:w-[520px] 3xl:w-[676px] mb-[15px] lg:mb-0">
+                        <div className="w-full h-full p-[20px_15px] lg:p-[30px_20px] xl:p-[40px_30px] 2xl:p-[60px_40px] 3xl:p-[80px_60px] rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] bg-linear-to-b from-transparent to-white relative z-0 overflow-hidden after:content-[''] after:absolute after:-z-1 after:inset-0 after:opacity-50 after:block after:bg-linear-to-b after:from-base1 after:to-base2 after:pointer-events-none flex items-center">
                             <Image
                                 src="/images/careerLifeAtIndel-bg.jpg"
                                 alt="careerLifeAtIndel-bg"
@@ -107,14 +107,14 @@ export default function CareerLifeAtIndel() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full lg:w-[calc(100%-376px)] xl:w-[calc(100%-420px)] 2xl:w-[calc(100%-520px)] 3xl:w-[calc(100%-676px)] px-[4px] lg:px-[6px] 2xl:px-[10px]">
-                        <div className="flex flex-wrap -my-[4px] lg:-my-[6px] 2xl:-my-[10px]">
+                    <div className="w-full lg:w-[calc(100%-376px)] xl:w-[calc(100%-420px)] 2xl:w-[calc(100%-520px)] 3xl:w-[calc(100%-676px)] lg:px-[6px] 2xl:px-[10px]">
+                        <div className="flex flex-wrap -mx-[4px] lg:mx-0 lg:-my-[6px] 2xl:-my-[10px]">
                             {/* First div: items 0,1 */}
                             <div className="w-[30%]">
                                 {careerLifeAtIndelImages?.slice(0, 2).map((item, index) => (
                                     <div
                                         key={item.id}
-                                        className="w-full h-[140px] lg:h-[220px] 2xl:h-[240px] 3xl:h-[320px] [&:nth-child(2)]:h-[180px] lg:[&:nth-child(2)]:h-[240px] 2xl:[&:nth-child(2)]:h-[320px] 3xl:[&:nth-child(2)]:h-[360px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
+                                        className="w-full h-[176px] lg:h-[220px] 2xl:h-[240px] 3xl:h-[320px] [&:nth-child(2)]:h-[180px] lg:[&:nth-child(2)]:h-[240px] 2xl:[&:nth-child(2)]:h-[320px] 3xl:[&:nth-child(2)]:h-[360px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
                                     >
                                         <ImageBox item={item} />
                                     </div>
@@ -126,7 +126,7 @@ export default function CareerLifeAtIndel() {
                                 {careerLifeAtIndelImages?.slice(2, 4).map((item, index) => (
                                     <div
                                         key={item.id}
-                                        className="w-full h-[140px] lg:h-[160px] 2xl:h-[200px] 3xl:h-[240px] [&:nth-child(2)]:h-[220px] lg:[&:nth-child(2)]:h-[300px] 2xl:[&:nth-child(2)]:h-[360px] 3xl:[&:nth-child(2)]:h-[440px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
+                                        className="w-full h-[135px] lg:h-[160px] 2xl:h-[200px] 3xl:h-[240px] [&:nth-child(2)]:h-[220px] lg:[&:nth-child(2)]:h-[300px] 2xl:[&:nth-child(2)]:h-[360px] 3xl:[&:nth-child(2)]:h-[440px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
                                     >
                                         <ImageBox item={item} />
                                     </div>
@@ -138,7 +138,7 @@ export default function CareerLifeAtIndel() {
                                 <div className="w-[35%]">
                                     <div
                                         key={careerLifeAtIndelImages[4].id}
-                                        className="w-full h-[360px] lg:h-[460px] 2xl:h-[560px] 3xl:h-[680px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
+                                        className="w-full h-[355px] lg:h-[460px] 2xl:h-[560px] 3xl:h-[680px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
                                     >
                                         <ImageBox item={careerLifeAtIndelImages[4]} />
                                     </div>
@@ -148,7 +148,7 @@ export default function CareerLifeAtIndel() {
                             {/* Items > 4: separate divs */}
                             {careerLifeAtIndelImages?.slice(5).map((item) => (
                                 <div key={item.id} className="w-[25%]">
-                                    <div className="w-full h-[140px] lg:h-[180px] 2xl:h-[200px] 3xl:h-[240px] p-[4px] lg:p-[6px] 2xl:p-[10px]">
+                                    <div className="w-full h-[120px] lg:h-[180px] 2xl:h-[200px] 3xl:h-[240px] p-[4px] lg:p-[6px] 2xl:p-[10px]">
                                         <ImageBox item={item} />
                                     </div>
                                 </div>

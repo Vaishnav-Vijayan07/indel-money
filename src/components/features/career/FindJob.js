@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import FindJobForm from "./FindJobForm";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import JobResultBoxSlide from "./JobResultBoxSlide";
 
 const jobLocations = [
     {
@@ -106,14 +107,52 @@ const jobLocations = [
 
 const jobResults = [
     {
+        id: 0,
         job_title: "Senior Accountant",
         location: "Kochi, Kerala",
-        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis"
+        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. "
     },
     {
+        id: 1,
+        job_title: "Sales Manager",
+        location: "Mumbai, Maharashtra",
+        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. "
+    },
+    {
+        id: 2,
+        job_title: "Branch Manager",
+        location: "Kochi, Kerala",
+        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. "
+    },
+    {
+        id: 3,
         job_title: "IT Administrator",
         location: "Mumbai, Maharashtra",
-        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis"
+        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. "
+    },
+    {
+        id: 4,
+        job_title: "Branch Manager",
+        location: "Kochi, Kerala",
+        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. "
+    },
+    {
+        id: 5,
+        job_title: "IT Administrator",
+        location: "Mumbai, Maharashtra",
+        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. "
+    },
+    {
+        id: 6,
+        job_title: "Branch Manager",
+        location: "Kochi, Kerala",
+        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. "
+    },
+    {
+        id: 7,
+        job_title: "IT Administrator",
+        location: "Mumbai, Maharashtra",
+        job_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. "
     },
 ];
 
@@ -136,57 +175,6 @@ function JobLocationBox({ item }) {
     );
 }
 
-function JobResultBox({ }) {
-    return (
-        <div className="w-full h-auto bg-[#dceafb] rounded-[15px] lg:rounded-[20px] xl:rounded-[25px] 2xl:rounded-[30px] 3xl:rounded-[36px] p-[15px_20px] lg:p-[20px_25px] 2xl:p-[25px_30px]">
-            <div className="w-full h-auto block border-b-[1px] border-dashed border-[#7670b3] mb-[5px] lg:mb-[10px] 2xl:mb-[20px]">
-                <div className="flex flex-wrap items-center mb-[4px] lg:mb-[6px] 2xl:mb-[8px]">
-                    <div className="w-1/2">
-                        <div className="text-[12px] lg:text-[14px] xl:lg-[16px] 2xl:text-[18px] 3xl:text-[22px] font-bold leading-[1] text-black">Senior Accountant</div>
-                    </div>
-                    <div className="w-1/2 flex justify-end items-center gap-[5px] lg:gap-[10px] 2xl:gap-[20px]">
-                        <div>
-                            <Link href={"/"} className="text-[12px] lg:text-[14px] 2xl:lg-[16px] 3xl:text-[18px] font-normal leading-[1] text-[#484877] w-full h-auto flex items-center gap-[2px] lg:gap-[4px] 2xl:gap-[6px] hover:text-base2">
-                                <Image
-                                    src={"/images/icon-share.svg"}
-                                    alt={"share"}
-                                    width={20}
-                                    height={20}
-                                    className="w-[10px] lg:w-[15px] 2xl:w-[20px] h-auto aspect-4/4 block"
-                                />
-                                Share
-                            </Link>
-                        </div>
-                        <div>
-                            <Link
-                                href={"/"}
-                                className="text-[12px] lg:text-[11px] 2xl:text-[12px] 3xl:text-[16px] leading-[1] font-bold text-white h-[25px] lg:h-[30px] xl:h-[30px] 2xl:h-[35px] 3xl:h-[48px] flex items-center bg-base2 rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
-                            >
-                                <span
-                                    className="px-[2px] lg:px-[4px] 2xl:px-[6px]">
-                                    APPLY NOW
-                                </span>
-                                <Image
-                                    src={"/images/icon-careerBtn.svg"}
-                                    alt="careerBtn"
-                                    width={30}
-                                    height={30}
-                                    className="w-[15px] lg:w-[15px] xl:w-[20px] 2xl:w-[25px] 3xl:w-[30px] h-auto aspect-4/4 block"
-                                />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                <div className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-medium text-[#484877] mb-[5px] lg:mb-[10px] 2xl:mb-[20px]">Location : Kochi, Kerala</div>
-            </div>
-            <div className="w-full h-auto block">
-                <div className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-[#4b4b4b] mb-[4px] lg:mb-[6px] 2xl:mb-[10px]">Job Description</div>
-                <div className="text-sm-1 text-[#4d4d4d] line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis</div>
-            </div>
-        </div>
-    )
-}
-
 export default function FindJob() {
     return (
         <section className="w-full block py-[40px_20px] lg:py-[60px_30px] 2xl:py-[80px_40px] 3xl:py-[100px_50px] relative z-0 after:content-[''] after:w-full after:h-[50%] after:absolute after:-z-1 after:bottom-0 after:left-0 after:right-0 after:block after:bg-gradient-to-r after:to-[#fde7e7] after:from-transparent">
@@ -200,11 +188,11 @@ export default function FindJob() {
                     </div>
                     <div>
                         <Link
-                            href={"/"}
+                            href={"/career/active-jobs"}
                             className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-white h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[54px] flex items-center bg-base2 rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
                         >
                             <span
-                                className="px-[4px] lg:px-[15px] 2xl:px-[20px]">
+                                className="px-[5px] md:px-[10px] lg:px-[15px] 2xl:px-[20px]">
                                 VIEW ACTIVE ROLES
                             </span>
                             <Image
@@ -225,8 +213,8 @@ export default function FindJob() {
                 <div
                     className="flex flex-wrap"
                 >
-                    <div className="w-full lg:w-[calc(100%-440px)] xl:w-[calc(100%-468px)] 2xl:w-[calc(100%-576px)] 3xl:w-[calc(100%-700px)]">
-                        <ScrollArea className="w-full h-[320px] lg:h-[376px] xl:h-[340px] 2xl:h-[430px] 3xl:h-[540px]">
+                    <div className="w-full lg:w-[calc(100%-368px)] xl:w-[calc(100%-468px)] 2xl:w-[calc(100%-576px)] 3xl:w-[calc(100%-700px)] mb-[15px] lg-mb-0">
+                        <ScrollArea className="w-full h-[270px] lg:h-[276px] xl:h-[340px] 2xl:h-[430px] 3xl:h-[540px]">
                             <div className="flex flex-wrap -mx-[4px] lg:-mx-[8px] 2xl:-mx-[12px]">
                                 {jobLocations?.map((item, index) => (
                                     <div key={index} className="w-1/4 p-[0_4px_8px] lg:p-[0_8px_16px] 2xl:p-[0_12px_24px]">
@@ -237,12 +225,8 @@ export default function FindJob() {
                             {/* <ScrollBar className="right-[calc(100%+15px)]!" /> */}
                         </ScrollArea>
                     </div>
-                    <div className="w-full lg:w-[440px] xl:w-[468px] 2xl:w-[576px] 3xl:w-[700px] pl-[15px] lg:pl-[20px] 2xl:pl-[30px]">
-                        {jobResults?.map((item, index) => (
-                            <div key={index} className="w-full mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
-                                <JobResultBox item={item} />
-                            </div>
-                        ))}
+                    <div className="w-full lg:w-[368px] xl:w-[468px] 2xl:w-[576px] 3xl:w-[700px] lg:pl-[20px] 2xl:pl-[30px]">
+                        <JobResultBoxSlide jobResults={jobResults} />
                     </div>
                 </div>
             </div>

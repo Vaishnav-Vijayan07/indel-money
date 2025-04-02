@@ -2,7 +2,15 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
-
+import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from "@/components/ui/pagination";
 const TestimonialFilter = {
     ALL: "ALL_TESTIMONIALS",
     WORDS: "EMPLOYEE_WORDS",
@@ -232,6 +240,30 @@ export default function Testimonial() {
                         </div>
                     )}
                 </div>
+                <Pagination className="justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
+                    <PaginationContent>
+                        <PaginationItem>
+                            <PaginationPrevious href="#" />
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationLink href="#" isActive>
+                                1
+                            </PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationLink href="#">2</PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationLink href="#">3</PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationEllipsis />
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationNext href="#" />
+                        </PaginationItem>
+                    </PaginationContent>
+                </Pagination>
             </div>
         </section>
     );
