@@ -18,7 +18,7 @@ export default function Home() {
     <>
       {/* welcome contents*/}
       <WelcomeModal />
-      
+
       {/* banner section contents*/}
       <HeroBanner />
 

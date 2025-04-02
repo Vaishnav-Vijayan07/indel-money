@@ -2,14 +2,14 @@ import BlogCard from "@/components/common/BlogCard";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import AwardHighlightBox from "@/components/features/award/AwardHighlightBox";
 import {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-  } from "@/components/ui/pagination";
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 const awards = [
   {

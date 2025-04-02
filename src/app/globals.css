@@ -444,33 +444,6 @@
     outline: 1px solid #17479E;
   }
 
-  .awardSlide {
-    --swiper-pagination-color: #EB0208;
-  }
-
-  .awardSlide .swiper-pagination {
-    position: unset !important;
-    text-align: start !important;
-    padding-right: 15px;
-    margin-left: -8px;
-  }
-
-  .awardSlide .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-  }
-
-  .awardSlide .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    outline: 1px solid var(--swiper-pagination-color);
-  }
-
-  @media (max-width: 1200px) {
-    .awardSlide .swiper-pagination-bullet {
-      width: 8px;
-      height: 8px;
-    }
-  }
-
   .LoanSlider .swiper-wrapper {
     padding: 20px 0 !important;
 
@@ -520,6 +493,17 @@
     width: 100%;
     max-width: 100%;
   }
+  /* .gallTab button {
+      background: none; 
+      color: #17479E;
+    }
+    
+    .gallTab button[aria-selected="true"] {
+      background: linear-gradient(156deg, #17479E 6.47%, #C63B3B 91.2%);
+      color: #fff;
+    } */
+     
+  
 
   @media (min-width: 640px) {
 
@@ -608,6 +592,7 @@
     align-items: center;
     justify-content: center;
   }
+  
 
   .arrow-up,
   .arrow-down {

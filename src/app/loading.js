@@ -1,7 +1,9 @@
+import LoadingCircleSpinner from "@/components/common/LoadingCircleSpinner";
 
 export default function Loading() {
   return (
-    <div className="bg-red-700 w-[100vw] h-[100vh]">loading</div>
-  )
+    <div className="fixed inset-0 z-9999">
+      <LoadingCircleSpinner />
+    </div>
+  );
 }
-

@@ -56,7 +56,7 @@ export default function LifeAtIndel() {
                 ))}
               </div>
               <div className="w-6/10">
-                {images.slice(2).map((item, index) => (
+                {images.slice(2, 3).map((item, index) => (
                   <ImageBox key={index} item={item} className="h-full" />
                 ))}
               </div>
