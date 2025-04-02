@@ -153,7 +153,6 @@ export default function Award() {
               </div>
             ))}
           </div>
-
           <Pagination className="justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
             <PaginationContent>
               <PaginationItem>
@@ -161,14 +160,14 @@ export default function Award() {
               </PaginationItem>
               <PaginationItem>
                 <PaginationLink href="#" isActive>
-                  1
+                  01
                 </PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">2</PaginationLink>
+                <PaginationLink href="#">02</PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
+                <PaginationLink href="#">03</PaginationLink>
               </PaginationItem>
               <PaginationItem>
                 <PaginationEllipsis />
