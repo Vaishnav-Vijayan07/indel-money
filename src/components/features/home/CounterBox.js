@@ -19,7 +19,7 @@ const CounterBox = ({ end, suffix, text, showDivider }) => {
                 transition: { duration: 0.6 },
             }}
             viewport={{ once: true, amount: 0.3 }} // Triggers only once when 30% of section is in view
-            onViewportEnter={() => setStart(true)} // Start counter when enters view
+            onViewportEnter={() => setStart(true)}
         >
             <div className="w-full h-full lg:pl-[30px] 2xl:pl-[50px]">
                 {/* CountUp Animation */}

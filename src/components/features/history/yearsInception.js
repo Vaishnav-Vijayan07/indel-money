@@ -12,7 +12,7 @@ export default function Yearsinception() {
     const [activeIndex, setActiveIndex] = useState(0);
     const dotsRef = useRef([]);
     const [arrowPos, setArrowPos] = useState(0);
-
+    console.log(styles)
     const slides = [
         {
             year: "1986",
@@ -160,21 +160,20 @@ export default function Yearsinception() {
                                             <div
                                                 key={index}
                                                 ref={(el) => (dotsRef.current[index] = el)}
-                                                className={`dot-timeline ${index === activeDotIndex ? "active" : ""
+                                                className={`${styles.dotTimeline} ${index === activeDotIndex ? "active" : ""
                                                     }`}
                                             ></div>
                                         );
                                     })}
 
-                                    <div
-                                        className="moving-arrows-indicator" 
+                                    <div className={styles.movingArrowsIndicator}
                                         style={{
                                             transform: `translateY(${arrowPos}px) translateX(-50%)`,
                                             transition: "transform 0.8s ease",
                                         }}
                                     >
-                                        <div className="arrow-up" />
-                                        <div className="arrow-down" />
+                                        <div className={styles.arrowUp}/>
+                                        <div className={styles.arrowDown}/>
                                     </div>
                                 </div>
 

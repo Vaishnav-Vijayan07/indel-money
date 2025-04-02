@@ -112,12 +112,12 @@ const employeeTestimonialsVideo = [
 function EmployeeTestimonialsBox({ item }) {
     return (
         <div className='w-full h-auto block'>
-            <div className="w-full h-[140px] lg:h-[176px] xl:h-[250px] 2xl:h-[268px] 3xl:h-[276px] text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-normal text-black line-clamp-7 py-[20px] lg:py-[40px] 2xl:py-[60px">
+            <div className="w-full h-[140px] lg:h-[150px] xl:h-[250px] 2xl:h-[268px] 3xl:h-[276px] text-[12px] lg:text-[12px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-normal text-black line-clamp-7 py-[15px] lg:py-[20px] xl:py-[40px] 2xl:py-[60px">
                 {item.description}
             </div>
-            <div className="max-w-[90%] flex flex-wrap">
+            <div className="max-w-[90%] flex">
                 <div
-                    className="w-[40px] lg:w-[60px] 2xl:w-[80px] aspect-square flex items-center justify-center bg-base1 rounded-[10px_0_0_10px] lg:rounded-[15px_0_0_15px] 2xl:rounded-[20px_0_0_20px]"
+                    className="w-[40px] lg:w-[60px] 2xl:w-[80px] h-[40px] lg:h-[60px] 2xl:h-[80px] flex items-center justify-center bg-base1 rounded-[10px_0_0_10px] lg:rounded-[15px_0_0_15px] 2xl:rounded-[20px_0_0_20px]"
                 >
                     <div
                         className="group w-[20px] lg:w-[40px] 2xl:w-[60px] h-[20px] lg:h-[40px] 2xl:h-[60px] rounded-full overflow-hidden border-white border-1 border-solid relative z-0"
@@ -131,17 +131,17 @@ function EmployeeTestimonialsBox({ item }) {
                         />
                     </div>
                 </div>
-                <div className='flex flex-col'>
-                    <div className="w-full h-1/2">
-                        <div className='w-auto h-full bg-base1 rounded-[0_10px_0_0] lg:rounded-[0_15px_0_0] 2xl:rounded-[0_20px_0_0] inline-flex items-end pr-[15px] lg:pr-[20px] 2xl:pr-[30px]'>
+                <div className='flex flex-wrap'>
+                    <div className="w-full h-[20px] lg:h-[30px] 2xl:h-[40px] flex">
+                        <div className='w-auto h-[20px] lg:h-[30px] 2xl:h-[40px] bg-base1 rounded-[0_10px_0_0] lg:rounded-[0_15px_0_0] 2xl:rounded-[0_20px_0_0] inline-flex items-end pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]'>
                             <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-[1] font-medium text-white capitalize line-clamp-1">
                                 {item.title}
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-1/2">
-                        <div className='w-auto h-full bg-base1 rounded-[0_10px_10px_0] lg:rounded-[0_15px_15px_0] 2xl:rounded-[0_20px_20px_0] inline-flex items-center pr-[15px] lg:pr-[20px] 2xl:pr-[30px]'>
-                            <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-medium text-white capitalize line-clamp-1">
+                    <div className="w-full h-[20px] lg:h-[30px] 2xl:h-[40px] flex">
+                        <div className='w-auto h-[20px] lg:h-[30px] 2xl:h-[40px] bg-base1 rounded-[0_10px_10px_0] lg:rounded-[0_15px_15px_0] 2xl:rounded-[0_20px_20px_0] inline-flex items-center pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]'>
+                            <div className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-medium text-white capitalize line-clamp-1">
                                 {item.designation}
                             </div>
                         </div>
@@ -222,26 +222,26 @@ export default function EmployeeTestimonials() {
             </div>
             <div className="container mb-[30px] lg:mb-[40px] 2xl:mb-[60px] 3xl:mb-[80px]">
                 <div className="flex flex-wrap items-center">
-                    <div className="w-full lg:w-[468px] xl:w-[520px] 2xl:w-[768px] 3xl:w-[820px]">
-                        <div className="w-[320px] lg:w-[420px] xl:w-[476px] 2xl:w-[576px] 3xl:w-[720px] h-auto aspect-square block m-auto relative z-0">
+                    <div className="w-full md:w-[268px] lg:w-[368px] xl:w-[520px] 2xl:w-[676px] 3xl:w-[820px] mb-[20px] lg:mb-0">
+                        <div className="w-[220px] md:w-[220px] lg:w-[340px] xl:w-[476px] 2xl:w-[576px] 3xl:w-[720px] h-auto aspect-square block m-auto relative z-0">
                             <Image
                                 src={"/images/employeeTestimonials-logo.svg"}
                                 alt="employeeTestimonials-logo"
                                 fill
                                 sizes="576px"
                             />
-                            <div className="w-[20px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#93bffa] absolute z-1 top-[15%] left-[40%] scale-100"></div>
-                            <div className="w-[20px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#43baff] absolute z-1 top-[40%] left-[60%] scale-80"></div>
-                            <div className="w-[20px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#93baff] absolute z-1 top-[50%] -left-[6%] scale-60"></div>
-                            <div className="w-[20px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#ee3824] absolute z-1 top-[60%] left-[85%] scale-50"></div>
-                            <div className="w-[20px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#c9e0ff] absolute z-1 top-[70%] left-[65%] scale-70"></div>
-                            <div className="w-[20px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#dcebff] absolute z-1 top-[85%] left-[10%] scale-80"></div>
-                            <div className="w-[20px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#ffb1b1] absolute z-1 top-[80%] left-[75%] scale-90"></div>
+                            <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#93bffa] absolute z-1 top-[15%] left-[40%] scale-100"></div>
+                            <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#43baff] absolute z-1 top-[40%] left-[60%] scale-80"></div>
+                            <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#93baff] absolute z-1 top-[50%] -left-[6%] scale-60"></div>
+                            <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#ee3824] absolute z-1 top-[60%] left-[85%] scale-50"></div>
+                            <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#c9e0ff] absolute z-1 top-[70%] left-[65%] scale-70"></div>
+                            <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#dcebff] absolute z-1 top-[85%] left-[10%] scale-80"></div>
+                            <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#ffb1b1] absolute z-1 top-[80%] left-[75%] scale-90"></div>
 
                             {employeeTestimonials?.slice(0, 7).map((item, index) => (
                                 <div
                                     key={index}
-                                    className={`group w-[60px] lg:w-[80px] 2xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 
+                                    className={`group w-[40px] lg:w-[60px] 2xl:w-[80px] 3xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[2px] lg:border-[3px] 2xl:border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 
                                         ${index === activeIndex ? 'border-base2 scale-100' : 'border-white'}
                                         ${index === 0
                                             ? 'top-[2%] left-[15%] scale-75'
@@ -270,12 +270,12 @@ export default function EmployeeTestimonials() {
                             ))}
                         </div>
                     </div>
-                    <div className="w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-520px)] 2xl:w-[calc(100%-768px)] 3xl:w-[calc(100%-820px)] lg:pl-[60px] 2xl:pl-[60px]">
+                    <div className="w-full md:w-[calc(100%-268px)] lg:w-[calc(100%-368px)] xl:w-[calc(100%-520px)] 2xl:w-[calc(100%-676px)] 3xl:w-[calc(100%-820px)] lg:pl-[20px] xl:pl-[60px] 2xl:pl-[60px]">
                         <div className="w-full mb-[10px] lg:mb-[15px] 2xl:mb-[30px] flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
                             <div className="text-title1 flex-1">Employee
                                 <span className="font-bold text-base2">&nbsp;Testimonials</span>
                             </div>
-                            <div className="w-[40px] lg:w-[50px] 2xl:w-[60px] 3xl:w-[80px] h-auto aspect-4/4 relative z-0">
+                            <div className="w-[30px] lg:w-[50px] 2xl:w-[60px] 3xl:w-[80px] h-auto aspect-4/4 relative z-0">
                                 <Image
                                     src="/images/employeeTestimonials-delmt-1.svg"
                                     alt={"dfgdg"}
@@ -290,7 +290,7 @@ export default function EmployeeTestimonials() {
                             </div>
                             <Link
                                 href={"/"}
-                                className="btn btn-base2 max-w-[80px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[180px]"
+                                className="btn btn-base2 max-w-[100px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[180px]"
                             >
                                 VIEW MORE
                             </Link>
@@ -302,7 +302,8 @@ export default function EmployeeTestimonials() {
                                 type: 'fraction',
                                 clickable: true,
                             }}
-                            autoplay={{ delay: 5000, disableOnInteraction: false }}
+                            // autoplay={{ delay: 5000, disableOnInteraction: false }}
+                            autoplay={false}
                             slidesPerView={1}
                             spaceBetween={0}
                             className="employeeTestimonialsSlide"
@@ -328,6 +329,10 @@ export default function EmployeeTestimonials() {
                     spaceBetween={10}
                     className="employeeTestimonialsVideoSlide"
                     breakpoints={{
+                        376: {
+                            slidesPerView: 2,
+                            spaceBetween: 10,
+                        },
                         640: {
                             slidesPerView: 2,
                             spaceBetween: 10,

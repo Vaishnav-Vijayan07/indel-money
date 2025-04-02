@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const slides = [
     {
-        image: "/images/life04.webp",
+        image: "/images/awards-img-1.jpg",
         alt: "Life at Indel Image 1",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
@@ -16,7 +16,7 @@ const slides = [
         href: "/",
     },
     {
-        image: "/images/life04.webp",
+        image: "/images/awards-img-1.jpg",
         alt: "Life at Indel Image 2",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
@@ -24,7 +24,7 @@ const slides = [
         href: "/",
     },
     {
-        image: "/images/life04.webp",
+        image: "/images/awards-img-1.jpg",
         alt: "Life at Indel Image 3",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
@@ -32,7 +32,7 @@ const slides = [
         href: "/",
     },
     {
-        image: "/images/life04.webp",
+        image: "/images/awards-img-1.jpg",
         alt: "Life at Indel Image 3",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
@@ -40,7 +40,7 @@ const slides = [
         href: "/",
     },
     {
-        image: "/images/life04.webp",
+        image: "/images/awards-img-1.jpg",
         alt: "Life at Indel Image 3",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
@@ -51,34 +51,34 @@ const slides = [
 
 export default function AwardHighlightBox({ variant = 'default' }) {
     return (
-        <div className="relative z-0 w-full h-full block rounded-[35px] bg-[#B7D0FF] 2xl:p-[80px_50px_50px_70px] xl:p-[40px_30px_40px_40px] md:p-[30px_30px] sm:p-[30px]">
+        <div className="relative z-0 w-full h-full block rounded-[35px] bg-[#B7D0FF] p-[15px_20px] sm:p-[30px_30px] lg:p-[30px] 2xl:p-[40px_30px_40px_40px] 3xl:p-[80px_50px_50px_70px]">
             <Swiper
                 modules={[Pagination]}
                 slidesPerView={1}
-                spaceBetween={20}
+                spaceBetween={10}
                 autoplay={false}
                 pagination={{ clickable: true }}
                 className="awardSlide">
                 {slides.map((item, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
-                            <div className="3xl:w-[calc(100%-370px)] xl:w-[calc(100%-240px)] md:w-[calc(100%-180px)] sm:w-[calc(100%-150px)] w-full 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">
+                            <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-276px)] 3xl:w-[calc(100%-376px)] 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">
                                 {variant === "employeeTestimonials" &&
                                     <div className="text-title1 font-bold leading-[1] mb-[5px] lg:mb-[10px] text-[#f30000]">Awards</div>
 
                                 }
-                                <h5 className="sm:text-[18px] md:text-[22px] xl:text-[28px] 3xl:text-[40px] text-[#000000] font-normal sm:mb-[15px] xl:mb-[20px] 2xl:mb-[35px]">
+                                <h5 className="sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[40px] text-black font-normal mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
                                     {item.title}
                                     <span className="block text-[#EB0208] uppercase font-bold">&nbsp;&apos;
                                         {item.title2}
                                         &apos;
                                     </span>
                                 </h5>
-                                <div className="w-full mb-[15px] 3xl:mb-[20px] text-[13px] md:text-[14px] 2xl:text-[18px] line-clamp-8">
+                                <div className="w-full mb-[15px] 3xl:mb-[20px] text-[12px] lg:text-[13px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] line-clamp-8">
                                     {item.discription}
                                 </div>
                             </div>
-                            <div className="3xl:w-[370px] xl:w-[240px] md:w-[180px] sm:w-[150px]">
+                            <div className="w-[150px] lg:w-[180px] xl:w-[220px] 2xl:w-[276px] 3xl:w-[376px]">
                                 <div className="group w-full h-full rounded-[24px] overflow-hidden">
                                     <Image
                                         src={item.image}

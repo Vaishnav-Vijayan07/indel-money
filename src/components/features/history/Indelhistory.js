@@ -69,7 +69,7 @@ export default function Indelhistory() {
 
 
                             {historyImages.map((img, index) => (
-                                <div key={index} className="mb-[15px] xl:mb-[25px] 3xl:mb-[30px] break-inside-avoid overflow-hidden rounded-[15px] 3xl:rounded-[20px] item">
+                                <div key={index} className={`mb-[15px] xl:mb-[25px] 3xl:mb-[30px] break-inside-avoid overflow-hidden rounded-[15px] 3xl:rounded-[20px] ${styles.item}`}>
                                     <Image
                                         src={img.image}
                                         width={500}

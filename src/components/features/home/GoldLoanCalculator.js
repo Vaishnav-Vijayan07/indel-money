@@ -2,31 +2,56 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import GoldLoanForm from "../../common/GoldLoanForm";
+import EmiForm from "../../common/EmiForm";
+
+const steps = [
+  {
+    title: "Step 1",
+    text: "Walk in any of our branches with your gold",
+    img: "/images/step1.webp",
+  },
+  {
+    title: "Step 2",
+    text: "Fill in and submit the required documents",
+    img: "/images/step2.webp",
+  },
+  {
+    title: "Step 3",
+    text: "After evaluation, our officer will sanction the loan",
+    img: "/images/step3.webp",
+  },
+];
+
 export default function GoldLoanCalculator({ hideTitle = false }) {
-  const steps = [
-    { title: "Step 1", text: "Walk in any of our branches with your gold", img: "/images/step1.webp" },
-    { title: "Step 2", text: "Fill in and submit the required documents", img: "/images/step2.webp" },
-    { title: "Step 3", text: "After evaluation, our officer will sanction the loan", img: "/images/step3.webp" },
-  ];
   return (
     <section className="w-full pt-[20px] md:pt-[30px] 2xl:pt-[60px] pb-[20px] md:pb-[30px] 2xl:pb-[100px]">
       <div className="container">
-        {!hideTitle && <div className="text-title1 font-normal">Our Easy Step <span className="font-bold text-base2" >Gold Loan</span> </div>}
-        <div className="flex justify-between mt-[2.5rem]">
+        {!hideTitle && (
+          <div className="text-title1 font-normal mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
+            Our Easy Step{" "}
+            <span className="font-bold text-base2">Gold Loan</span>{" "}
+          </div>
+        )}
+        <div className="flex justify-between mb-[20px] sm:mb-[30px] lg:mb-[40px] 2xl:mb-[60px]">
           {steps.map((step, index) => (
             <motion.div
               key={index}
               className="relative"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
               <div>
                 {/* Arrow - Animated & Hides for last step */}
                 {index !== steps.length - 1 && (
                   <div
-                    className={`absolute left-[110px] md:left-[130px] lg:left-[145px] xl:left-[180px] 2xl:left-[260px] 3xl:left-[265px] max-w-[110px] w-full md:max-w-[140px] lg:max-w-[160px] xl:max-w-[220px]  2xl:max-w-[260px] 3xl:max-w-[380px]   ${index % 2 === 1 ? "rotate-x-[-180deg]  top-1/4" : "top-[30px]"}`}
+                    className={`absolute left-[110px] md:left-[130px] lg:left-[145px] xl:left-[180px] 2xl:left-[260px] 3xl:left-[265px] max-w-[110px] w-full md:max-w-[140px] lg:max-w-[160px] xl:max-w-[220px]  2xl:max-w-[260px] 3xl:max-w-[380px]   ${
+                      index % 2 === 1
+                        ? "rotate-x-[-180deg] top-1/4"
+                        : "top-[30px]"
+                    }`}
                   >
                     <Image
                       src="/images/ArrowGold.webp"
@@ -45,7 +70,7 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
                      bg-gradient-to-b from-transparent to-[#C0DBFF]"
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: false, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                 >
                   <Image
@@ -71,7 +96,7 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
                       3xl:text-[1.8rem] xl:text-[1.2rem] lg:text-[1rem] text-[0.8rem] font-bold"
                       initial={{ opacity: 0, y: -20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: false, amount: 0.3 }}
+                      viewport={{ once: true, amount: 0.3 }}
                       transition={{ duration: 0.5, delay: index * 0.3 }}
                     >
                       {step.title}
@@ -83,11 +108,10 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
                         className="border border-black border-dashed top-[18px] 3xl:top-[30px] h-[1px] w-full absolute left-[calc((100%-55px))] md:left-[calc((100%-30px))] lg:left-[calc((100%-125px))] xl:left-[calc((100%-120px))] 2xl:left-[calc((100%-50px))] 3xl:left-[calc((100%-130px))] before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-[-1px] before:w-[10px] before:h-[10px] before:bg-base1 before:rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: "100%" }}
-                        viewport={{ once: false, amount: 0.3 }}
+                        viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.5, delay: index * 0.3 }}
                       >
-                        <span className="w-[20px] h-[20px] rounded-full bg-base1 absolute top-0 right-[-2px] bottom-0 m-auto before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-0 before:right-0 before:w-[10px] before:h-[10px] before:bg-base2 before:rounded-full">
-                        </span>
+                        <span className="w-[20px] h-[20px] rounded-full bg-base1 absolute top-0 right-[-2px] bottom-0 m-auto before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-0 before:right-0 before:w-[10px] before:h-[10px] before:bg-base2 before:rounded-full"></span>
                       </motion.div>
                     )}
                   </div>
@@ -96,7 +120,7 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
                     className="text-[#002362] 3xl:text-[1.5rem] xl:text-[1rem] text-[0.8rem] font-medium mt-[1rem]"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.5, delay: index * 0.3 }}
                   >
                     {step.text}
@@ -107,7 +131,37 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
           ))}
         </div>
 
-      </div >
-    </section >
+        <div className="flex flex-wrap -mx-[10px] lg:-mx-[15px] 2xl:-mx-[20px]">
+          <div className="w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-full h-full bg-[#c0dbff] rounded-[15px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_20px] sm:p-[25px_30px] lg:p-[40px_45px] 2xl:p-[45px_55px] 3xl:p-[50px_65px]"
+            >
+              <div className="text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] leading-[1] font-medium mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
+                Gold Loan Calculator
+              </div>
+              <GoldLoanForm />
+            </motion.div>
+          </div>
+          <div className="w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-full h-full bg-[#fcdcdc] rounded-[15px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_20px] sm:p-[25px_30px] lg:p-[40px_45px] 2xl:p-[45px_55px] 3xl:p-[50px_65px]"
+            >
+              <div className="text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] leading-[1] font-medium mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
+                Gold Loan Calculator
+              </div>
+              <EmiForm />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
