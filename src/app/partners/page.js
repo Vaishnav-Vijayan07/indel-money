@@ -94,7 +94,7 @@ const partners = [
   },
 ];
 
-export default function Partners() {
+export default function PartnersPage() {
   return (
     <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[50px]">
       <div className="container">
