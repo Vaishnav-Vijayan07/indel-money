@@ -1,4 +1,5 @@
 'use client'
+import 'swiper/css/pagination';
 import Image from "next/image";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 
@@ -12,19 +13,9 @@ export default function GalleryDetail() {
         { images: ["/images/gallDet06.jpg"] },
     ];
 
-    const GalleryItem = ({ item, width, height }) => (
-        <div className="group relative rounded-[20px] overflow-hidden w-full h-full">
-            <Image
-                src={item.images[0].trim()}
-                width={width}
-                height={height}
-                alt="Gallery Image"
-                className="absolute w-full h-full rounded-[20px]  object-cover transition-transform group-hover:scale-105 duration-300" />
-        </div>
-    );
 
     const ImageBox = ({ item, className }) => (
-        <div className={`${className} w-full p-1 sm:p-2`}>
+        <div className={`w-full p-1 sm:p-2 ${className}`}>
             <div className="group w-full h-full rounded-[15px] overflow-hidden">
                 <Image
                     src={item.images[0]}
@@ -61,17 +52,17 @@ export default function GalleryDetail() {
                     </div>
 
                     <div className="w-full lg:w-1/2 mb-2 flex flex-wrap h-[450px] md:h-[540px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
-                        <div className="flex flex-wrap w-full p-2 h-[40%] md:h-[50%]">
+                        <div className="flex flex-wrap w-full h-[40%] md:h-[50%]">
                             <div className="w-full mb-4 h-full">
-                                <GalleryItem item={data[3]} width={800} height={335} />
+                                <ImageBox item={data[3]} width={800} height={335} className="h-full" />
                             </div>
                         </div>
                         <div className="flex flex-wrap w-full h-[60%] md:h-[50%]">
-                            <div className="w-1/2 p-2 h-full">
-                                <GalleryItem item={data[4]} width={380} height={445} />
+                            <div className="w-1/2 h-full">
+                                <ImageBox item={data[4]} width={380} height={445} className="h-full" />
                             </div>
-                            <div className="w-1/2 p-2 h-full">
-                                <GalleryItem item={data[5]} width={380} height={445} />
+                            <div className="w-1/2 h-full">
+                                <ImageBox item={data[5]} width={380} height={445} className="h-full" />
                             </div>
                         </div>
                     </div>
