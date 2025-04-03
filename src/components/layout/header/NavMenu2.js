@@ -22,19 +22,19 @@ const GoldLoans = [
     image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "Instant & hassle free Gold Loan",
-    link: "/",
+    link: "#",
   },
   {
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "Our Easy Step Gold Loan",
-    link: "/",
+    link: "#",
   },
   {
     image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Gold Loan Scheme",
-    link: "/",
+    link: "#",
   },
 ];
 const OtherLoans = [
@@ -60,13 +60,13 @@ const OtherLoans = [
     image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Loan againist property",
-    link: "/",
+    link: "#",
   },
   {
     image: "/images/icon-goldloan-1.svg",
     alt: "item",
     title: "Foreign exchange",
-    link: "/",
+    link: "#",
   },
 ];
 const Careers = [
