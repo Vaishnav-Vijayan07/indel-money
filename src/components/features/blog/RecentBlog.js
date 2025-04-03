@@ -5,7 +5,7 @@ import BlogCard from "@/components/common/BlogCard";
 
 const blogs = [
     {
-        href: "/",
+        href: "/blog-detail",
         image: "/images/blog-1.jpg",
         alt: "news-1",
         date: "24 SEPTEMBER 2024:",
@@ -13,7 +13,7 @@ const blogs = [
         discription: "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie.",
     },
     {
-        href: "/",
+        href: "/blog-detail",
         image: "/images/blog-2.jpg",
         alt: "news-1",
         date: "24 SEPTEMBER 2024:",

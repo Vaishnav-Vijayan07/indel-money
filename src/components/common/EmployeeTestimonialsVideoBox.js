@@ -9,9 +9,9 @@ import "lightgallery/css/lg-video.css";
 
 import Image from "next/image";
 
-export default function EmployeeTestimonialsVideoBox({ item }) {
+export default function EmployeeTestimonialsVideoBox({ className, item }) {
   return (
-    <div className="group w-full h-auto aspect-[526/360] overflow-hidden rounded-[10px] lg:rounded-[20px] 2xl:rounded-[24px] block relative z-0">
+    <div className={`${className} group w-full h-auto aspect-[526/360] overflow-hidden rounded-[10px] lg:rounded-[20px] 2xl:rounded-[24px] block relative z-0`}>
       <LightGallery
         speed={300}
         plugins={[lgThumbnail, lgZoom, lgVideo]}
@@ -40,7 +40,7 @@ export default function EmployeeTestimonialsVideoBox({ item }) {
           sizes="48px"
         />
       </div>
-      <div className="w-[30px] lg:w-[35px] 2xl:w-[48px] aspect-square absolute z-1 inset-0 m-auto">
+      <div className="w-[30px] lg:w-[35px] 2xl:w-[48px] aspect-square absolute z-1 inset-0 m-auto pointer-events-none">
         <Image src={"/images/icon-play.svg"} alt={"play"} fill sizes="48px" />
       </div>
       <div className="flex flex-wrap items-center gap-[5px] lg:gap-[10px] 2xl:gap-[20px] p-[10px_15px] lg:p-[15px_20px] 2xl:p-[20px_30px] absolute z-1 bottom-0 left-0 right-0 bg-linear-to-t to-transparent from-black/85">

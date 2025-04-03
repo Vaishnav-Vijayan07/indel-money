@@ -36,7 +36,7 @@ const navigations = [
       { linkname: "About Indel Money", href: "/about" },
       { linkname: "Board of Directors", href: "/about" },
       { linkname: "Life at Indel Money", href: "/about" },
-      { linkname: "Employee Testimonials", href: "/about" },
+      { linkname: "Employee Testimonials", href: "/employee-testimonial" },
       { linkname: "Different Shades of Indel", href: "/about/different-shades-of-indel" }
     ]
   },

@@ -10,7 +10,6 @@ export default function Sidebar() {
         { name: "Investors Contact", link: "/investors/contact" },
         { name: "NCD", link: "/ncd" },
         { name: "Policies", link: "/investors/policy" },
-        { name: "Annual Report", link: "/investors/report" },
         { name: "Quarterly Results", link: "/quarterly-results" },
         { name: "Stock Exchange Filing", link: "/investors/stockexchange" },
         { name: "Corporate Governance", link: "/investors/Goverenance" },
