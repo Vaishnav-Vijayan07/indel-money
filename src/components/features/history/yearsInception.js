@@ -12,7 +12,6 @@ export default function Yearsinception() {
     const [activeIndex, setActiveIndex] = useState(0);
     const dotsRef = useRef([]);
     const [arrowPos, setArrowPos] = useState(0);
-    console.log(styles)
     const slides = [
         {
             year: "1986",

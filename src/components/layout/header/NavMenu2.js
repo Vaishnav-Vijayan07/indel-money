@@ -12,25 +12,25 @@ import Link from "next/link";
 
 const GoldLoans = [
   {
-    image: "/images/icon-goldLoan-1.svg",
+    image: "/images/icon-goldloan-1.svg",
     alt: "item",
     title: "Gold Loan Steps:",
     link: "about",
   },
   {
-    image: "/images/icon-goldLoan-2.svg",
+    image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "Instant & hassle free Gold Loan",
     link: "/",
   },
   {
-    image: "/images/icon-goldLoan-3.svg",
+    image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "Our Easy Step Gold Loan",
     link: "/",
   },
   {
-    image: "/images/icon-goldLoan-4.svg",
+    image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Gold Loan Scheme",
     link: "/",
@@ -38,31 +38,31 @@ const GoldLoans = [
 ];
 const OtherLoans = [
   {
-    image: "/images/icon-goldLoan-1.svg",
+    image: "/images/icon-goldloan-1.svg",
     alt: "item",
     title: "Gold Loan",
     link: "/gold-loan",
   },
   {
-    image: "/images/icon-goldLoan-2.svg",
+    image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "MSME Loan",
     link: "/msme-loan",
   },
   {
-    image: "/images/icon-goldLoan-3.svg",
+    image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "consumer durable Loan",
     link: "/",
   },
   {
-    image: "/images/icon-goldLoan-4.svg",
+    image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Loan againist property",
     link: "/",
   },
   {
-    image: "/images/icon-goldLoan-1.svg",
+    image: "/images/icon-goldloan-1.svg",
     alt: "item",
     title: "Foreign exchange",
     link: "/",

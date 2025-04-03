@@ -75,6 +75,7 @@ const employeeTestimonials = [
       "Team Indel Money is like my second home. I feel honored and valued as a member in this environment that holds inclusiveness at its core. My company understands my life roles as a professional and also as a mother. My peers and the company always extend their helping hands whenever I face an emergency situation. The vibrant atmosphere and culture in the office binds everyone together and experience a feeling of togetherness.",
   },
 ];
+
 const employeeTestimonialsVideo = [
   {
     thumbnail: "/images/employeeTestimonialsVideo-1.jpg",
@@ -119,6 +120,9 @@ const employeeTestimonialsVideo = [
     designation: "Branch Manager",
   },
 ];
+
+const stylesBox =
+  "w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full";
 
 function EmployeeTestimonialsBox({ item }) {
   return (
@@ -178,7 +182,7 @@ export default function EmployeeTestimonials() {
       </div>
       <div className="container mb-[30px] lg:mb-[40px] 2xl:mb-[60px] 3xl:mb-[80px]">
         <div className="flex flex-wrap items-center">
-          <div className="w-full md:w-[268px] lg:w-[368px] xl:w-[520px] 2xl:w-[676px] 3xl:w-[820px] mb-[20px] lg:mb-0">
+          <div className="w-full md:w-[268px] lg:w-[368px] xl:w-[520px] 2xl:w-[676px] 3xl:w-[820px] mb-[20px] lg:mb-0 select-none">
             <div className="w-[220px] md:w-[220px] lg:w-[340px] xl:w-[476px] 2xl:w-[576px] 3xl:w-[720px] h-auto aspect-square block m-auto relative z-0">
               <Image
                 src={"/images/employeeTestimonials-logo.svg"}
@@ -186,28 +190,36 @@ export default function EmployeeTestimonials() {
                 fill
                 sizes="576px"
               />
-              <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#93bffa] absolute z-1 top-[15%] left-[40%] scale-100"></div>
-              <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#43baff] absolute z-1 top-[40%] left-[60%] scale-80"></div>
-              <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#93baff] absolute z-1 top-[50%] -left-[6%] scale-60"></div>
-              <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#ee3824] absolute z-1 top-[60%] left-[85%] scale-50"></div>
-              <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#c9e0ff] absolute z-1 top-[70%] left-[65%] scale-70"></div>
-              <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#dcebff] absolute z-1 top-[85%] left-[10%] scale-80"></div>
-              <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#ffb1b1] absolute z-1 top-[80%] left-[75%] scale-90"></div>
+
+              <div className="absolute z-1 top-[15%] left-[40%] scale-100">
+                <motion.div
+                  animate={{
+                    originX: ["-100px", "100px", "-100px"],
+                  }}
+                  className={`${stylesBox} bg-[#93bffa]`}
+                />
+              </div>
+              <div className="absolute z-1 top-[40%] left-[60%] scale-80">
+                <div className={`${stylesBox} bg-[#43baff]`}></div>
+              </div>
+              <div className="absolute z-1 top-[50%] -left-[6%] scale-60">
+                <div className={`${stylesBox} bg-[#93baff]`}></div>
+              </div>
+              <div className="absolute z-1 top-[60%] left-[85%] scale-50">
+                <div className={`${stylesBox} bg-[#ee3824]`}></div>
+              </div>
+              <div className="absolute z-1 top-[70%] left-[65%] scale-70">
+                <div className={`${stylesBox} bg-[#c9e0ff]`}></div>
+              </div>
+              <div className="absolute z-1 top-[85%] left-[10%] scale-80">
+                <div className={`${stylesBox} bg-[#dcebff]`}></div>
+              </div>
+              <div className="absolute z-1 top-[80%] left-[75%] scale-90">
+                <div className={`${stylesBox} bg-[#ffb1b1]`}></div>
+              </div>
 
               {employeeTestimonials?.slice(0, 7).map((item, index) => (
-                <motion.div
-                animate={{
-                    scale: [1, 2, 2, 1, 1],
-                    rotate: [0, 0, 180, 180, 0],
-                    borderRadius: ["0%", "0%", "50%", "50%", "0%"],
-                }}
-                transition={{
-                    duration: 2,
-                    ease: "easeInOut",
-                    times: [0, 0.2, 0.5, 0.8, 1],
-                    repeat: Infinity,
-                    repeatDelay: 1,
-                }}
+                <div
                   key={index}
                   className={`group w-[40px] lg:w-[60px] 2xl:w-[80px] 3xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[2px] lg:border-[3px] 2xl:border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 
                                         ${
@@ -239,7 +251,7 @@ export default function EmployeeTestimonials() {
                     sizes="120px"
                     className="group-hover:scale-105 object-cover transition-transform duration-300"
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -279,11 +291,10 @@ export default function EmployeeTestimonials() {
                 type: "fraction",
                 clickable: true,
               }}
-              // autoplay={{
-              //     delay: 4000,
-              //     disableOnInteraction: false
-              // }}
-              autoplay={false}
+              autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false
+              }}
               slidesPerView={1}
               spaceBetween={0}
               className="employeeTestimonialsSlide"

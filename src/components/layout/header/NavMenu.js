@@ -7,25 +7,25 @@ const navigationMenuTriggerStyle = () => 'hover:bg-gray-100 p-2 rounded-md trans
 
 const GoldLoans = [
   {
-    image: "/images/icon-goldLoan-1.svg",
+    image: "/images/icon-goldloan-1.svg",
     alt: "item",
     title: "Gold Loan Steps:",
     link: "about",
   },
   {
-    image: "/images/icon-goldLoan-2.svg",
+    image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "Instant & hassle free Gold Loan",
     link: "/",
   },
   {
-    image: "/images/icon-goldLoan-3.svg",
+    image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "Our Easy Step Gold Loan",
     link: "/",
   },
   {
-    image: "/images/icon-goldLoan-4.svg",
+    image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Gold Loan Scheme",
     link: "/",
@@ -33,19 +33,19 @@ const GoldLoans = [
 ];
 const Careers = [
   {
-    image: "/images/icon-goldLoan-1.svg",
+    image: "/images/icon-goldloan-1.svg",
     alt: "item",
     title: "career 1:",
     link: "about",
   },
   {
-    image: "/images/icon-goldLoan-2.svg",
+    image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "career 2",
     link: "/",
   },
   {
-    image: "/images/icon-goldLoan-3.svg",
+    image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "career 3",
     link: "/",
