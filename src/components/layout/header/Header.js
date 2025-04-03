@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "../../ui/dropdown-menu";
 import { useEffect, useState } from "react";
+import NavMenu2 from "./NavMenu2";
 
 function ContactBox({ href, src, title, alt }) {
   return (
@@ -81,7 +82,8 @@ export default function Header() {
             <nav className="w-[calc(100%-60px)] xl:w-[calc(100%-90px)] 2xl:w-[calc(100%-120px)] 3xl:w-[calc(100%-140px)] flex justify-end">
               <div className="flex items-center gap-[6px] xl:gap-[10px] 2xl:gap-[14px] 3xl:gap-[14px]">
                 <div>
-                  <NavMenu />
+                  {/* <NavMenu /> */}
+                  <NavMenu2 />
                 </div>
                 <div>
                   <ContactBox
@@ -185,7 +187,7 @@ export default function Header() {
                 </div>
                 <div>
                   <Link
-                    href={"/"}
+                    href="/contact"
                     className="btn btn-base2 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px]"
                   >
                     Contact Us

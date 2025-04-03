@@ -32,7 +32,7 @@ function JobResultAlert() {
             <AlertDialogContent>
                 <div className="w-full max-w-[340px] sm:max-w-[360px] md:max-w-[376px] lg:max-w-[420px] xl:max-w-[468px] 2xl:max-w-[576px] 3xl:max-w-[668px] mx-auto bg-[#dceafb] rounded-[15px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_25px] lg:p-[20px_30px] xl:p-[30px_50px] 2xl:p-[40px_60px] 3xl:p-[50px_80px] relative z-0">
                     <AlertDialogCancel
-                        className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] xl:top-[20px] 2xl:top-[25px] 3xl:top-[30px] right-[15px] xl:right-[20px] 2xl:right-[25px] 3xl:right-[30px] transition-color cursor-pointer hover:text-base2"
+                        className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-[1] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] xl:top-[20px] 2xl:top-[25px] 3xl:top-[30px] right-[15px] xl:right-[20px] 2xl:right-[25px] 3xl:right-[30px] transition-color cursor-pointer hover:text-base2 items-center"
                     >
                         Close
                         <Image

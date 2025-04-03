@@ -22,6 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
+import { useState } from "react";
 
 // Schema Validation
 const formSchema = z.object({
@@ -38,6 +39,8 @@ const formSchema = z.object({
 
 const labelStyle =
   "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-normal text-black";
+const toggleBtnStyle =
+  "text-[10px] lg:text-[12px] 2xl:text-[14px] text-center leading-[1.2] font-normal text-white w-[40px] lg:w-[50px] 2xl:w-[54px] h-[20px] lg:h-[22px] 2xl:h-[26px] rounded-[4px] lg:rounded-[6px] flex items-center justify-center cursor-pointer transition-colors duration-300";
 
 export default function GoldLoanForm() {
   // Define form
@@ -55,6 +58,12 @@ export default function GoldLoanForm() {
   function onSubmit(values) {
     console.log("Form submitted:", values);
   }
+
+  const [unit, setUnit] = useState("gm");
+
+  const handleToggle = (selectedUnit) => {
+    setUnit(selectedUnit);
+  };
 
   return (
     <Form {...form}>
@@ -116,7 +125,27 @@ export default function GoldLoanForm() {
             name="goldAmount"
             render={({ field }) => (
               <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
-                <FormLabel className={labelStyle}>Gold amount </FormLabel>
+                <div className="flex">
+                  <FormLabel className={`${labelStyle} flex-1`}>Gold amount </FormLabel>
+                  <div className="inline-flex gap-[4px] lg:gap-[6px] 2xl:gap-[8px] rounded-[5px] lg:rounded-[10px] 2xl:rounded-[15px] bg-white p-[2px_4px] lg:p-[3px_6px] 2xl:p-[4px_8px]">
+                    <div
+                      onClick={() => handleToggle("gm")}
+                      className={`${
+                        unit === "gm" ? "bg-base1" : " bg-base1/50 hover:bg-base1/60"
+                      } ${toggleBtnStyle}`}
+                    >
+                      gm
+                    </div>
+                    <div
+                      onClick={() => handleToggle("kg")}
+                      className={`${
+                        unit === "kg" ? "bg-base1" : " bg-base1/50 hover:bg-base1/60"
+                      } ${toggleBtnStyle}`}
+                    >
+                      kg
+                    </div>
+                  </div>
+                </div>
                 <FormControl>
                   <Input
                     className="bg-white border-white"

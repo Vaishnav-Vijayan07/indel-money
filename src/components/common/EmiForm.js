@@ -28,23 +28,23 @@ export default function GoldLoanForm() {
           <Slider defaultValue={[69]} max={70} step={[12]} />
         </div>
         <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
-          <div className="flex flex-wrap items-center space-x-3">
+          <div className="flex flex-wrap items-center xl:justify-between space-x-2 sm:space-x-2 md:space-x-3 gap-[5px] sm:gap-[10px] xl:gap-0">
             <div>
-              <div className={`${labelStyle} mb-[5px] lg:mb-[10px] 2xl:mb-[15px]`}>
+              <div className={`${labelStyle} mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`}>
                 Loan EMI
               </div>
               <div className={resultStyle}>₹2500</div>
             </div>
-            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[60px] 3xl:h-[80px] bg-[#6497db]"></div>
+            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[46px] 3xl:h-[52px] bg-[#6497db] hidden sm:block"></div>
             <div>
-              <div className={`${labelStyle} mb-[5px] lg:mb-[10px] 2xl:mb-[15px]`}>
+              <div className={`${labelStyle} mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`}>
                 Total Interest Payable
               </div>
               <div className={resultStyle}>₹1500</div>
             </div>
-            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[60px] 3xl:h-[80px] bg-[#6497db]"></div>
+            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[46px] 3xl:h-[52px] bg-[#6497db] hidden sm:block"></div>
             <div>
-              <div className={`${labelStyle} mb-[5px] lg:mb-[10px] 2xl:mb-[15px]`}>
+              <div className={`${labelStyle} mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`}>
                 Total Payment (Principal + Interest)
               </div>
               <div className={resultStyle}>₹4000</div>
