@@ -1,6 +1,7 @@
 'use client'
 import 'swiper/css/pagination';
 import Image from "next/image";
+import "swiper/css/pagination";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 
 export default function GalleryDetail() {
