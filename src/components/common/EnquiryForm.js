@@ -61,8 +61,8 @@ export default function EnquiryForm() {
 
     return (
         <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: "[calc(((100vw-var(--container-x))/2)+var(--container-padding))]" }}
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: "[calc(((100vw-var(--container-x))/2)+var(--container-padding))]", opacity: 1 }}
             className={`${open ? "right-[calc(((100vw-var(--container-x))/2)+var(--container-padding))]" : "right-0 translate-x-full"} w-full max-w-[200px] sm:max-w-[276px] lg:max-w-[320px] 2xl:max-w-[420px] 3xl:max-w-[476px] h-auto absolute z-1 top-0 bottom-[var(--marquee-y)] my-auto flex items-center transition-transform duration-300`}
         >
             <div className="w-full h-auto relative bg-[#c0dbff] rounded-tr-[10px] rounded-br-[10px] rounded-bl-[10px] rounded-tl-0 py-[10px] px-[15px] lg:py-[20px] lg:px-[20px] 3xl:py-[20px] 3xl:px-[35px]">
@@ -71,7 +71,7 @@ export default function EnquiryForm() {
                 </div>
 
                 <div
-                    className="text-sm-1 leading-1 [writing-mode:vertical-lr] rotate-[180deg] w-[30px] h-[80px] 3xl:w-[40px] 3xl:h-[120px] bg-[#c0dbff] cursor-pointer absolute top-0 right-full flex justify-center items-center rounded-br-[10px] rounded-tr-[10px] transition-opacity duration-300 hover:opacity-95"
+                    className="text-sm-1 leading-1 [writing-mode:vertical-lr] rotate-[180deg] w-[30px] h-[80px] 3xl:w-[36px] 3xl:h-[120px] bg-[#c0dbff] cursor-pointer absolute top-0 right-full flex justify-center items-center rounded-br-[10px] rounded-tr-[10px] transition-opacity duration-300 hover:opacity-95"
                     onClick={() => setOpen(!open)}
                 >
                     {open ? "Close" : "Open"}
@@ -90,12 +90,8 @@ export default function EnquiryForm() {
                                         src="/images/enquiry-yourName.svg"
                                         width={0}
                                         height={0}
-                                        sizes="100vw"
-                                        style={{
-                                            width: "18px",
-                                            height: "auto"
-                                        }}
-                                        className="absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(40px/2)] 2xl:top-[calc(44px/2)] 3xl:top-[calc(48px/2)]"
+                                        sizes="18px"
+                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)]"
                                         alt="Your Name"
                                     />
                                     <FormControl>
@@ -116,12 +112,8 @@ export default function EnquiryForm() {
                                         src="/images/enquiry-contactNumber.svg"
                                         width={0}
                                         height={0}
-                                        sizes="100vw"
-                                        style={{
-                                            width: "18px",
-                                            height: "auto"
-                                        }}
-                                        className="absolute -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(40px/2)] 2xl:top-[calc(44px/2)] 3xl:top-[calc(48px/2)] left-[15px]"
+                                        sizes="18px"
+                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)]"
                                         alt="Contact Number"
                                     />
                                     <FormControl>
@@ -142,12 +134,8 @@ export default function EnquiryForm() {
                                         src="/images/enquiry-emailAddress.svg"
                                         width={0}
                                         height={0}
-                                        sizes="100vw"
-                                        style={{
-                                            width: "18px",
-                                            height: "auto"
-                                        }}
-                                        className="absolute -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(40px/2)] 2xl:top-[calc(44px/2)] 3xl:top-[calc(48px/2)] left-[15px]"
+                                        sizes="18px"
+                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)]"
                                         alt="Email Address"
                                     />
                                     <FormControl>

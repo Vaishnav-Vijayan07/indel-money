@@ -11,25 +11,28 @@ const images = [
     "/images/lifeImage2.webp",
     "/images/lifeImage3.webp",
     "/images/lifeImage1.webp",
+    "/images/lifeImage1.webp", 
 ];
 export default function lifeatIndel() {
 
 
     return (
 
-        <section className="w-full py-[40px] xl:py-[80px] 2xl:py-[120px] bg-[linear-gradient(95deg, rgba(243, 0, 0, 0) 3%, rgba(235, 2, 8, 0.15) 100%)]">
+        <section className="w-full py-[80px] xl:py-[80px] 2xl:py-[120px] bg-[linear-gradient(95deg, rgba(243, 0, 0, 0) 3%, rgba(235, 2, 8, 0.15) 100%)]">
             <div className="container">
                 <div className="flex flex-wrap items-center m-[-8px]">
-                    <div className="xl:w-1/2 w-full p-[8px]">
+                    <div className="w-full xl:w-[600px] 2xl:w-[750px] p-[8px]">
                         <div className="relative w-full max-w-[750px] m-auto">
                             <Swiper
                                 slidesPerView={4}
-                                slidesPerGroup={1}  
+                                slidesPerGroup={1}
                                 grabCursor={true}
                                 centeredSlides={true}
                                 watchSlidesProgress={true}
                                 spaceBetween={-500}
                                 modules={[Navigation]}
+                                simulateTouch={false}  
+                                allowTouchMove={false}
                                 navigation={{
                                     nextEl: ".custom-next",
                                     prevEl: ".custom-prev",
@@ -52,7 +55,7 @@ export default function lifeatIndel() {
                                         spaceBetween: -500,
                                     },
                                 }}
-                                className="relative w-[250px] lg:w-[240px] xl:w-[520px] h-full m-auto !overflow-visible"
+                                className="relative w-[250px] lg:w-[260px] xl:w-[520px] h-full m-auto !overflow-visible lifeSlider"
                             >
                                 {images.map((img, index) => (
                                     <SwiperSlide key={index} className="flex justify-center">
@@ -62,20 +65,20 @@ export default function lifeatIndel() {
 
                                             return (
                                                 <div
-                                                    className="relative w-[300px] h-[350px] m-auto rounded-lg shadow-xl transition-transform duration-500 overflow-hidden"
+                                                    className="relative w-[300px] h-[350px] m-auto rounded-lg shadow-xl overflow-hidden"
                                                     style={{
                                                         transform: isActive
-                                                            ? "rotateZ(0deg)"
-                                                            : `translateX(${translateValue}px) rotateZ(${translateValue}deg)`,
+                                                            ? `rotateZ(0deg) translateX(${translateValue + 20}px) `
+                                                            : `translateX(${translateValue + 20}px) rotateZ(${translateValue + offset}deg)`,
                                                         opacity: isVisible ? 1 : 0,
                                                         zIndex: isActive ? 9999 : images.length - index,
-                                                        transition: "all 0.5s ease",
+                                                        transition: "transform 0.5s ease, opacity 1s ease",
                                                     }}
                                                 >
                                                     <img
                                                         src={img}
                                                         alt={`Slide ${index}`}
-                                                        className="w-full h-full object-cover transition-all duration-500"
+                                                        className="w-full h-full object-cover"
                                                     />
                                                 </div>
                                             );
@@ -110,10 +113,10 @@ export default function lifeatIndel() {
 
 
                     </div>
-                    <div className="xl:w-1/2 w-full flex items-center p-[8px]">
+                    <div className=" w-full xl:w-[calc(100%-600px)] 2xl:w-[calc(100%-750px)] max-xl:pt-[50px] flex items-center p-[8px]">
                         <div className="w-full lg:pl-[60px]">
                             <div className="text-title1 font-medium xl:mb-[20px] mb-[10px]">
-                                Life at <span className="text-[#EE3824] font-bold">Indel</span> 
+                                Life at <span className="text-[#EE3824] font-bold">Indel</span>
                             </div>
                             <p className="3xl:text-[18px] mb-[15px]">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                             <p className="3xl:text-[18px]">Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. </p>

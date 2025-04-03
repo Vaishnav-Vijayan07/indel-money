@@ -41,7 +41,10 @@ export default function HomeSlider() {
             pagination={{
                 clickable: true,
             }}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            autoplay={{
+                delay: 4000,
+                disableOnInteraction: false
+            }}
             loop={true}
             className="heroSlide h-[calc(100vh-(var(--header-y)+var(--marquee-y)))]"
         >

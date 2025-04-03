@@ -31,6 +31,26 @@ const GoldLoans = [
     link: "/",
   }
 ];
+const Careers = [
+  {
+    image: "/images/icon-goldLoan-1.svg",
+    alt: "item",
+    title: "career 1:",
+    link: "about",
+  },
+  {
+    image: "/images/icon-goldLoan-2.svg",
+    alt: "item",
+    title: "career 2",
+    link: "/",
+  },
+  {
+    image: "/images/icon-goldLoan-3.svg",
+    alt: "item",
+    title: "career 3",
+    link: "/",
+  },
+];
 
 const NavMenu = () => {
   return (
@@ -96,14 +116,47 @@ const NavMenu = () => {
           </NavigationMenuItem>
 
           {/* Careers Menu */}
-          <NavigationMenuItem>
+          {/* <NavigationMenuItem>
             <Link href="/career" legacyBehavior passHref>
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} p-0 cursor-pointer`}><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Careers</span></NavigationMenuLink>
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} p-0 cursor-pointer`}>
+                <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Careers</span>
+                </NavigationMenuLink>
             </Link>
+          </NavigationMenuItem> */}
+          <NavigationMenuItem className="relative z-0">
+            <NavigationMenuTrigger className="p-0 cursor-pointer">
+              <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Careers</span>
+              </NavigationMenuTrigger>
+            <NavigationMenuContent className="bg-white p-0">
+              <ul className="flex flex-col md:grid-cols-2 p-[10px] 3xl:p-[15px] w-[120px] md:w-[200px] lg:w-[200px]">
+                {Careers.map((item, index) => (
+                  <li key={index}>
+                    <Link href={item.link}
+                      legacyBehavior
+                      passHref
+                    >
+                      <NavigationMenuLink
+                        className="group flex gap-[5px] lg:gap-[8px] 3xl:gap-[10px] p-[10px] 3xl:p-[15px] flex-row items-center"
+                      >
+                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
+                          <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
+                        </div>
+                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
+                      </NavigationMenuLink>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </NavigationMenuContent>
           </NavigationMenuItem>
+
+
+
           {/* About Menu */}
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">About</span></NavigationMenuTrigger>
+            <NavigationMenuTrigger className="p-0 cursor-pointer">
+              <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">About</span>
+              </NavigationMenuTrigger>
             <NavigationMenuContent className="bg-white p-0">
               <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 {GoldLoans.map((item, index) => (

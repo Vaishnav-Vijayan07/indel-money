@@ -14,7 +14,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from "../../components/ui/alert-dialog"
+} from "../ui/custom-alert-dialog"
 
 import { useState, useEffect } from "react";
 
@@ -96,7 +96,7 @@ export default function WelcomeModal() {
                 <div className="w-full sm:min-w-[608px] md:min-w-[736px] lg:min-w-[864px] xl:min-w-[1088px] 2xl:min-w-[1312px] 3xl:min-w-[1664px] mx-auto bg-white rounded-[15px] lg:rounded-[36px] py-[20px] lg:py-[30px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[70px] px-[15px] lg:px-[40px] xl:px-[45px] 2xl:px-[50px] 3xl:px-[60px] relative z-0">
                     <AlertDialogCancel
                         onClick={handleClose}
-                        className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] lg:top-[40px] xl:top-[45px] 2xl:top-[50px] 3xl:top-[60px] right-[15px] lg:right-[40px] xl:right-[45px] 2xl:right-[50px] 3xl:right-[60px] transition-color cursor-pointer hover:text-base2"
+                        className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-[1] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] lg:top-[40px] xl:top-[45px] 2xl:top-[50px] 3xl:top-[60px] right-[15px] lg:right-[40px] xl:right-[45px] 2xl:right-[50px] 3xl:right-[60px] transition-color cursor-pointer hover:text-base2 items-center"
                     >
                         Close
                         <Image

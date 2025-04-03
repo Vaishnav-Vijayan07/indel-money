@@ -1,3 +1,4 @@
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -16,3 +17,4 @@ const nextConfig = {
 };
 
 export default nextConfig;
+

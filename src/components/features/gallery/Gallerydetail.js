@@ -11,6 +11,7 @@ export default function GalleryDetail() {
         { images: ["/images/gallDet04.jpg"] },
         { images: ["/images/gallDet05.jpg"] },
         { images: ["/images/gallDet06.jpg"] },
+        { images: ["/images/gallDet06.jpg"] },
     ];
 
 

@@ -5,39 +5,40 @@ import Image from "next/image";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/custom-tabs";
 import CardSlider from '@/components/common/CardSlider';
 
+const data = [
+    {
+        title: "Christmas 2023",
+        desc: "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
+        images: ["/images/gall01.jpg", "/images/gall011.jpg", "/images/gall012.jpg"]
+    },
+    {
+        title: "Onam 2024",
+        desc: "Lorem ipsum",
+        images: ["/images/gall02.jpg"]
+    },
+    {
+        title: "Convention 2024",
+        desc: "Lorem ipsum",
+        images: ["/images/gall03.jpg"]
+    },
+    {
+        title: "Ramzan 2024",
+        desc: "Lorem ipsum",
+        images: ["/images/gall06.jpg"],
+    },
+    {
+        title: "Anniversary 2024",
+        desc: "Lorem ipsum",
+        images: ["/images/gall05.jpg"],
+    },
+    {
+        title: "Christmas 2024",
+        desc: "Lorem ipsum",
+        images: ["/images/gall04.jpg"],
+    }
+];
+
 export default function Gallery() {
-    const data = [
-        {
-            title: "Christmas 2023",
-            desc: "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
-            images: ["/images/gall01.jpg", "/images/gall011.jpg", "/images/gall012.jpg"]
-        },
-        {
-            title: "Onam 2024",
-            desc: "Lorem ipsum",
-            images: ["/images/gall02.jpg"]
-        },
-        {
-            title: "Convention 2024",
-            desc: "Lorem ipsum",
-            images: ["/images/gall03.jpg"]
-        },
-        {
-            title: "Ramzan 2024",
-            desc: "Lorem ipsum",
-            images: ["/images/gall06.jpg"],
-        },
-        {
-            title: "Anniversary 2024",
-            desc: "Lorem ipsum",
-            images: ["/images/gall05.jpg"],
-        },
-        {
-            title: "Christmas 2024",
-            desc: "Lorem ipsum",
-            images: ["/images/gall04.jpg"],
-        }
-    ];
 
     const slides = Array.from({ length: Math.ceil(data.length / 3) }, (_, i) =>
         data.slice(i * 3, i * 3 + 3)
@@ -103,7 +104,7 @@ export default function Gallery() {
                     </div>
                     <div className="w-full md:w-[70%] xl:w-[80%] 2xl:w-[74%] pt-[20px] md:pt-0 md:pl-[20px] 2xl:pl-[30px]">
                         <p className="text-sm-1">
-                            Welcome to The Gallery, a vibrant space where art comes to life. Discover a carefully curated collection of contemporary and classic works, each telling a unique story. Whether you're an art enthusiast or a curious visitor, step into a world of creativity, inspiration, and connection
+                            Welcome to The Gallery, a vibrant space where art comes to life. Discover a carefully curated collection of contemporary and classic works, each telling a unique story. Whether you&apos;re an art enthusiast or a curious visitor, step into a world of creativity, inspiration, and connection
                         </p>
                     </div>
                 </div>
