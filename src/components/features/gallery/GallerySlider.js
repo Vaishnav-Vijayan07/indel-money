@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -45,8 +46,9 @@ const GallSliderBx = ({ item }) => {
     }, [hovered, item.images.length]);
 
     return (
-        <div
-            className="group relative rounded-[20px] overflow-hidden w-full h-[250px] md:h-[205px] xl:h-[275px] 2xl:h-[360px] 3xl:h-[410px]"
+        <Link
+        href={"/"}
+            className="group block relative rounded-[20px] overflow-hidden w-full h-[250px] md:h-[205px] xl:h-[275px] 2xl:h-[360px] 3xl:h-[410px]"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
@@ -71,7 +73,7 @@ const GallSliderBx = ({ item }) => {
                     <div className="text-sm-1 w-full text-white line-clamp-3">{item.desc}</div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
