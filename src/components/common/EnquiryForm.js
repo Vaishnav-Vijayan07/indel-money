@@ -91,7 +91,7 @@ export default function EnquiryForm() {
                                         width={0}
                                         height={0}
                                         sizes="18px"
-                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)]"
+                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)] pointer-events-none"
                                         alt="Your Name"
                                     />
                                     <FormControl>
@@ -113,7 +113,7 @@ export default function EnquiryForm() {
                                         width={0}
                                         height={0}
                                         sizes="18px"
-                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)]"
+                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)] pointer-events-none"
                                         alt="Contact Number"
                                     />
                                     <FormControl>
@@ -135,7 +135,7 @@ export default function EnquiryForm() {
                                         width={0}
                                         height={0}
                                         sizes="18px"
-                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)]"
+                                        className="w-[14px] xl:w-[16px] 3xl:w-[18px] h-auto absolute left-[15px] -translate-y-1/2 top-[calc(30px/2)] xl:top-[calc(35px/2)] 2xl:top-[calc(40px/2)] 3xl:top-[calc(48px/2)] pointer-events-none"
                                         alt="Email Address"
                                     />
                                     <FormControl>

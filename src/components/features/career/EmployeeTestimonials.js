@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useState } from "react";
 import AwardHighlightBox from "../award/AwardHighlightBox";
 import EmployeeTestimonialsVideoBox from "@/components/common/EmployeeTestimonialsVideoBox";
+import { motion } from "framer-motion";
 
 const employeeTestimonials = [
   {
@@ -194,7 +195,19 @@ export default function EmployeeTestimonials() {
               <div className="w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full bg-[#ffb1b1] absolute z-1 top-[80%] left-[75%] scale-90"></div>
 
               {employeeTestimonials?.slice(0, 7).map((item, index) => (
-                <div
+                <motion.div
+                animate={{
+                    scale: [1, 2, 2, 1, 1],
+                    rotate: [0, 0, 180, 180, 0],
+                    borderRadius: ["0%", "0%", "50%", "50%", "0%"],
+                }}
+                transition={{
+                    duration: 2,
+                    ease: "easeInOut",
+                    times: [0, 0.2, 0.5, 0.8, 1],
+                    repeat: Infinity,
+                    repeatDelay: 1,
+                }}
                   key={index}
                   className={`group w-[40px] lg:w-[60px] 2xl:w-[80px] 3xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[2px] lg:border-[3px] 2xl:border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 
                                         ${
@@ -226,7 +239,7 @@ export default function EmployeeTestimonials() {
                     sizes="120px"
                     className="group-hover:scale-105 object-cover transition-transform duration-300"
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
