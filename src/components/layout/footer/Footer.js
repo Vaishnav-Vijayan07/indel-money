@@ -51,10 +51,10 @@ const navigations = [
     title: "Product & Services",
     links: [
       { linkname: "MSME Loan", href: "/msme-loan" },
-      { linkname: "Consumer Durable Loans", href: "/" },
-      { linkname: "Loan Against Property", href: "/" },
+      { linkname: "Consumer Durable Loans", href: "/services/consumer-durable-loan" },
+      { linkname: "Loan Against Property", href: "/services" },
       { linkname: "Gold Loan Schemes", href: "/gold-loan" },
-      { linkname: "E-Connect", href: "#" }
+      { linkname: "E-Connect", href: "/services" }
     ]
   },
   {
@@ -69,18 +69,18 @@ const navigations = [
   {
     title: "Policies",
     links: [
-      { linkname: "Privacy Policy", href: "#" },
-      { linkname: "Disclaimer", href: "#" },
-      { linkname: "Mobile App Policy", href: "#" },
-      { linkname: "Fair Practice Code", href: "#" },
-      { linkname: "Terms & Conditions", href: "#" },
-      { linkname: "KYC Policy", href: "#" },
-      { linkname: "Privacy Policy", href: "#" },
-      { linkname: "Disclaimer", href: "#" },
-      { linkname: "Mobile App Policy", href: "#" },
-      { linkname: "Fair Practice Code", href: "#" },
-      { linkname: "Terms & Conditions", href: "#" },
-      { linkname: "KYC Policy", href: "#" }
+      { linkname: "Privacy Policy", href: "/privacy-policy" },
+      { linkname: "Disclaimer", href: "/privacy-policy" },
+      { linkname: "Mobile App Policy", href: "/privacy-policy" },
+      { linkname: "Fair Practice Code", href: "/privacy-policy" },
+      { linkname: "Terms & Conditions", href: "/privacy-policy" },
+      { linkname: "KYC Policy", href: "/privacy-policy" },
+      { linkname: "Privacy Policy", href: "/privacy-policy" },
+      { linkname: "Disclaimer", href: "/privacy-policy" },
+      { linkname: "Mobile App Policy", href: "/privacy-policy" },
+      { linkname: "Fair Practice Code", href: "/privacy-policy" },
+      { linkname: "Terms & Conditions", href: "/privacy-policy" },
+      { linkname: "KYC Policy", href: "/privacy-policy" }
     ]
   },
   {

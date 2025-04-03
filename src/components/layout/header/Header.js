@@ -60,8 +60,8 @@ export default function Header() {
       <motion.header
         initial={{ y: 0 }}
         animate={{ y: isVisible ? 0 : -100 }}
-        transition={{ duration: 0.3 }}
-        className="w-full relative z-10 flex items-center bg-white border-base1/10 border-b-1 "
+        transition={{ duration: 0.4 }}
+        className="w-full flex items-center bg-white border-base1/10 border-b-1 fixed z-10 top-0 left-0 right-0 shadow-[0_0_10px_rgba(0,0,0,0.20)]"
         style={{ height: "var(--header-y)" }}
       >
         <div className="container">
