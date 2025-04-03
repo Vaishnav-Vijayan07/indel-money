@@ -35,10 +35,10 @@ export default function Messages() {
                             }`}
                     >
                         {/* Left Section */}
-                        <div className="w-[120px] 3xl:w-[180px]">
+                        <div className="w-[150px] 3xl:w-[180px]">
                             <div className={`w-full h-full rounded-[20px] overflow-hidden pt-[25px] flex flex-col justify-between
                                 ${index % 2 === 0 ? "bg-[#EE3824]" : "bg-[#17479E]"}`}>
-                                <div className="3xl:text-[30px] 2xl:text-[28px]  text-[18px] mb-[10px] text-white text-center leading-[1]">
+                                <div className="3xl:text-[30px] 2xl:text-[26px] text-[18px] mb-[10px] text-white text-center leading-[1]">
                                     {item.post}
                                 </div>
                                 <div className="w-full max-w-[180px]">
@@ -54,7 +54,7 @@ export default function Messages() {
                         </div>
 
                         {/* Right Section */}
-                        <div className={`w-[calc(100%-120px)] 3xl:w-[calc(100%-180px)] ${index % 2 === 0 ? "3xl:pl-[60px] 2xl:pl-[50px] pl-[30px]" : "3xl:pr-[60px] 2xl:pr-[50px] pr-[30px] text-right"} 3xl:py-[50px] py-[30px]`}>
+                        <div className={`w-[calc(100%-150px)] 3xl:w-[calc(100%-180px)] ${index % 2 === 0 ? "3xl:pl-[60px] 2xl:pl-[50px] pl-[30px]" : "3xl:pr-[60px] 2xl:pr-[50px] pr-[30px] text-right"} 3xl:py-[50px] py-[30px]`}>
                             <div className="text-title1 mb-[25px]" dangerouslySetInnerHTML={{ __html: item.title }}></div>
                             <p>{item.message}</p>
                             <div className="mt-[30px]">
