@@ -1,29 +1,114 @@
-import EnquiryForm from "../../common/EnquiryForm"
-import HomeSlider from "./HomeSlider";
+"use client";
+import EnquiryForm from "../../common/EnquiryForm";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-export default function MobHeroBanner() {
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+import Link from "next/link";
 
+const slides = [
+  {
+    image: "/images/mob-MainSlide1.jpg",
+    alt: "Indel Money Banner 1",
+    title1: "Indel Money:",
+    title2: "Your trusted partner for a brighter future.",
+    link: "/",
+  },
+  {
+    image: "/images/mob-MainSlide1.jpg",
+    alt: "Indel Money Banner 2",
+    title1: "Empowering your",
+    title2: "Financial dreams with confidence.",
+    link: "/",
+  },
+  {
+    image: "/images/mob-MainSlide1.jpg",
+    alt: "Indel Money Banner 3",
+    title1: "Your reliable",
+    title2: "Partner in every financial journey.",
+    link: "/",
+  },
+];
+
+export default function MobHeroBanner() {
   return (
     <section className="w-full block relative z-0 overflow-hidden">
-      <HomeSlider />
-      <div className="w-full h-[var(--marquee-y)] flex flex-wrap items-center bg-[#b7d0ff]">
-        <div className="w-[200px] lg:w-[220px] 2xl:w-[300px] 3xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm-1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
-          <Image src={"/images/marquee-1.png"} width={25} height={25} alt={"coin"} className="w-5 h-5 3xl:w-6 3xl:h-6 mr-2 3xl:mr-3 object-contain" priority={true} />
-          Todays Gold rate : Rs.59,080
-        </div>
-        <div className="w-[calc(100%-200px)] lg:w-[calc(100%-220px)] 2xl:w-[calc(100%-300px)] 3xl:w-[calc(100%-340px)]">
-          <Marquee
-            speed={80}
-            pauseOnHover={true}
-            className="text-sm-1"
+      <Swiper
+        effect={"fade"}
+        modules={[EffectFade, Pagination, Autoplay]}
+        navigation={false}
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={false}
+        // autoplay={{
+        //   delay: 4000,
+        //   disableOnInteraction: false,
+        // }}
+        loop={true}
+        className="heroSlide h-[calc(100vh-(var(--header-y)+var(--marquee-y)))]"
+      >
+        {slides?.map((item, index) => (
+          <SwiperSlide
+            key={index}
+            className="relative z-0 before:absolute before:inset-0 before:block before:bg-gradient-to-r before:from-[rgba(0,0,0,0.6)] before:to-transparent before:w-full before:h-full"
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-          </Marquee>
+            <Image
+              src={item?.image}
+              width={430}
+              height={775}
+              alt={item?.alt}
+              priority
+              className="w-full h-full object-cover"
+            />
+            <div className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div className="max-w-full">
+                <h1 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-6">
+                  <span className="text-base2 font-bold">{item?.title1}</span>{" "}
+                  {item?.title2}
+                </h1>
+                <Link href={item?.link} className="btn btn-base2 max-w-[130px]">
+                  KNOW MORE
+                </Link>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <div className="w-full absolute z-1 bottom-0 left-0 right-0">
+        <div className="container">
+          <div className="w-full text-sm-1 leading-[1] text-white flex items-center gap-[6px] mb-[10px]">
+            <Image
+              src={"/images/mob-marquee-1.svg"}
+              alt={"coin"}
+              width={19}
+              height={16}
+              className="w-[18px] @sm:w-[15px] object-contain"
+            />
+            Gold rate
+            <span className="p-[6px_10px] bg-[#e8c002] rounded-[20px]">
+              &#8377; 59,080
+            </span>
+          </div>
+        </div>
+        <div className="w-full h-[var(--marquee-y)] bg-base1 flex items-center">
+          <div className="container">
+            <Marquee speed={80} pauseOnHover={true} className="text-sm-1 text-white">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy
+              text ever since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged.
+            </Marquee>
+          </div>
         </div>
       </div>
-      <EnquiryForm />
+      {/* <EnquiryForm /> */}
     </section>
   );
 }
