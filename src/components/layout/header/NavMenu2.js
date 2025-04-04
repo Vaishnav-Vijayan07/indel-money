@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/menubar";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from 'next/navigation'
 
 const GoldLoans = [
   {
@@ -21,19 +22,19 @@ const GoldLoans = [
     image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "Instant & hassle free Gold Loan",
-    link: "/",
+    link: "#",
   },
   {
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "Our Easy Step Gold Loan",
-    link: "/",
+    link: "#",
   },
   {
     image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Gold Loan Scheme",
-    link: "/",
+    link: "#",
   },
 ];
 const OtherLoans = [
@@ -53,19 +54,19 @@ const OtherLoans = [
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "consumer durable Loan",
-    link: "/",
+    link: "/services/consumer-durable-loan",
   },
   {
     image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Loan againist property",
-    link: "/",
+    link: "#",
   },
   {
     image: "/images/icon-goldloan-1.svg",
     alt: "item",
     title: "Foreign exchange",
-    link: "/",
+    link: "#",
   },
 ];
 const Careers = [
@@ -75,7 +76,7 @@ const Careers = [
   },
   {
     title: "employee testimonial",
-    link: "/",
+    link: "/employee-testimonial",
   },
   {
     title: "current openings",
@@ -125,13 +126,14 @@ const Arrow = () => {
 };
 
 function DropdownMenu({ items }) {
+  const pathname = usePathname();
   return (
     <ul className="flex flex-col p-[5px] 3xl:p-[10px] w-[180px] lg:w-[200px] 2xl:w-[240px]">
       {items.map((item, index) => (
         <li key={index}>
           <Link href={item.link} legacyBehavior passHref>
             <MenubarItem>
-              <div className="text-header-sm hover:text-base2 capitalize cursor-pointer transition-color duration-300">
+              <div className={`${pathname === item.link ? "text-base2" : "" } text-header-sm hover:text-base2 capitalize cursor-pointer transition-color duration-300`}>
                 {item.title}
               </div>
             </MenubarItem>
@@ -143,6 +145,7 @@ function DropdownMenu({ items }) {
 }
 
 function MegaMenu({ items }) {
+  const pathname = usePathname();
   return (
     <ul className="grid md:grid-cols-2 p-[10px] 3xl:p-[15px] w-[360px] lg:w-[420px] 2xl:w-[576px] 3xl:w-[600px]">
       {items.map((item, index) => (
@@ -164,7 +167,7 @@ function MegaMenu({ items }) {
                     className="w-full h-full block max-w-2/4 object-contain"
                   />
                 </div>
-                <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm capitalize group-hover:text-base2 transition-color duration-300">
+                <div className={`${pathname === item.link ? "text-base2" : "" } w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm capitalize group-hover:text-base2 transition-color duration-300`}>
                   {item.title}
                 </div>
               </div>
@@ -177,6 +180,7 @@ function MegaMenu({ items }) {
 }
 
 export default function NavMenu2() {
+  const pathname = usePathname();
   return (
     <Menubar className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px] h-[var(--header-y)] lg:px-[10px] 2xl:px-[15px] 3xl:px-[20px] border-none shadow-none">
       <MenubarMenu>
@@ -194,7 +198,7 @@ export default function NavMenu2() {
       <MenubarMenu>
         <Link
           href={"#"}
-          className="text-header-sm uppercase hover:text-base2 transition-color duration-300 p-0 cursor-pointer block"
+          className={`${pathname === "#" ? "" : "" } text-header-sm uppercase hover:text-base2 transition-color duration-300 p-0 cursor-pointer block`}
         >
           FOREIGN EXCHANGE
         </Link>
@@ -238,3 +242,4 @@ export default function NavMenu2() {
     </Menubar>
   );
 }
+

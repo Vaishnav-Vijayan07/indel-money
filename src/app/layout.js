@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
         className={`${amino.variable} font-amino min-h-screen flex flex-col antialiased`}
       >
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         <Footer />
         {/* <ModalPortalContainer /> */}
         <FloatingButton />
