@@ -10,6 +10,7 @@ import FAQ from "../components/features/home/FAQ";
 import React from "react";
 import WelcomeModal from "../components/common/WelcomeModal";
 
+import MobHeroBanner from "../components/features/home/MobHeroBanner";
 
 const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 
@@ -17,34 +18,35 @@ export default function Home() {
   return (
     <>
       {/* welcome contents*/}
-      <WelcomeModal />
+      {/* <WelcomeModal /> */}
 
       {/* banner section contents*/}
-      <HeroBanner />
+      {/* <HeroBanner /> */}
+      <MobHeroBanner />
 
       {/* Dreams to Reality contents*/}
-      <DreamsToReality />
+      {/* <DreamsToReality /> */}
 
       {/* Gold loan calculator contents*/} 
-      <GoldLoanCalculator />
+      {/* <GoldLoanCalculator /> */}
 
       {/* Branch locator contents*/}
-      <BranchLocator variant={"home"} />
+      {/* <BranchLocator variant={"home"} /> */}
 
       {/* Life at Indel contents*/}
-      <LifeAtIndel />
+      {/* <LifeAtIndel /> */}
 
       {/* Latest Updates contents*/}
-      <LatestUpdates />
+      {/* <LatestUpdates /> */}
 
       {/* Trusted investment contents*/}
-      <TrustedInvestment />
+      {/* <TrustedInvestment /> */}
 
       {/* Innovations*/}
-      <Innovations />
+      {/* <Innovations /> */}
 
       {/* faq contents */}
-      <FAQ />
+      {/* <FAQ /> */}
     </>
   );
 }

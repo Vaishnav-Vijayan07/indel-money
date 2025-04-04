@@ -1,9 +1,9 @@
 import EnquiryForm from "../../common/EnquiryForm"
-import HomeSlider from "../../features/home/HomeSlider";
+import HomeSlider from "./HomeSlider";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-export default function HeroBanner() {
+export default function MobHeroBanner() {
 
   return (
     <section className="w-full block relative z-0 overflow-hidden">
