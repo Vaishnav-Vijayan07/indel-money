@@ -6,7 +6,7 @@ const labelStyle =
 const resultStyle =
   "text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[20px] leading-[1] font-bold text-black";
 
-export default function GoldLoanForm() {
+export default function EmiForm() {
   // Handle form submission
   function onSubmit(values) {
     console.log("Form submitted:", values);

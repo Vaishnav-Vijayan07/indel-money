@@ -41,9 +41,10 @@ export default function MobHeroBanner() {
         effect={"fade"}
         modules={[EffectFade, Pagination, Autoplay]}
         navigation={false}
-        pagination={{
-          clickable: true,
-        }}
+        // pagination={{
+        //   clickable: true,
+        // }}
+        pagination={false}
         autoplay={false}
         // autoplay={{
         //   delay: 4000,
@@ -55,17 +56,16 @@ export default function MobHeroBanner() {
         {slides?.map((item, index) => (
           <SwiperSlide
             key={index}
-            className="relative z-0 before:absolute before:inset-0 before:block before:bg-gradient-to-r before:from-[rgba(0,0,0,0.6)] before:to-transparent before:w-full before:h-full"
+            className="relative z-0 flex! items-end before:absolute before:inset-0 before:-z-1 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full py-[calc(var(--marquee-y)+65px)]"
           >
             <Image
               src={item?.image}
-              width={430}
-              height={775}
+              fill
               alt={item?.alt}
               priority
-              className="w-full h-full object-cover"
+              className="-z-2"
             />
-            <div className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="container">
               <div className="max-w-full">
                 <h1 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-6">
                   <span className="text-base2 font-bold">{item?.title1}</span>{" "}
@@ -90,7 +90,7 @@ export default function MobHeroBanner() {
               className="w-[18px] @sm:w-[15px] object-contain"
             />
             Gold rate
-            <span className="p-[6px_10px] bg-[#e8c002] rounded-[20px]">
+            <span className="text-black p-[6px_10px] bg-[#e8c002] rounded-[20px]">
               &#8377; 59,080
             </span>
           </div>

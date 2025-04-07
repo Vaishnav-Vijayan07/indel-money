@@ -11,6 +11,10 @@ import React from "react";
 import WelcomeModal from "../components/common/WelcomeModal";
 
 import MobHeroBanner from "../components/features/home/MobHeroBanner";
+import MobSmartMoneyDeals from "../components/features/home/MobSmartMoneyDeals";
+import MobStepGoldLoan from "../components/features/home/MobStepGoldLoan";
+import MobBranchLocator from "../components/features/home/MobBranchLocator";
+import MobJoinTeam from "../components/features/home/MobJoinTeam";
 
 const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
 
@@ -26,15 +30,19 @@ export default function Home() {
 
       {/* Dreams to Reality contents*/}
       {/* <DreamsToReality /> */}
+      <MobSmartMoneyDeals />
 
       {/* Gold loan calculator contents*/} 
       {/* <GoldLoanCalculator /> */}
+      <MobStepGoldLoan />
 
       {/* Branch locator contents*/}
       {/* <BranchLocator variant={"home"} /> */}
+      <MobBranchLocator />
 
       {/* Life at Indel contents*/}
       {/* <LifeAtIndel /> */}
+      <MobJoinTeam />
 
       {/* Latest Updates contents*/}
       {/* <LatestUpdates /> */}

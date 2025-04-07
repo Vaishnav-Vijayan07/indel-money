@@ -19,7 +19,11 @@ export default function BranchLocator({ variant = "default" }) {
           ? "bg-[#e6edf7] py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px]"
           : ""
       }
-       ${variant === "branch" ? "pt-[40px] pb-[0px] 2xl:pt-[30px] 2xl:pb-[90px] 3xl:pt-[50px] 3xl:pb-[120px]" : ""}
+       ${
+         variant === "branch"
+           ? "pt-[40px] pb-[0px] 2xl:pt-[30px] 2xl:pb-[90px] 3xl:pt-[50px] 3xl:pb-[120px]"
+           : ""
+       }
        w-full block`}
     >
       <div className="container">
@@ -56,7 +60,9 @@ export default function BranchLocator({ variant = "default" }) {
         transition={{ duration: 0.5 }}
         className="container"
       >
-        <BranchForm />
+        <div className="bg-white shadow-[0_0_50px_rgba(0,0,0,0.15)] rounded-[22px] 2xl:rounded-[30px] p-[10px] 2xl:p-[15px] mb-[30px] 2xl:mb-[35px]">
+          <BranchForm />
+        </div>
       </motion.div>
       <div
         className={`${
