@@ -45,7 +45,7 @@ export default function SmartMoneyDeal() {
                         </h2>
                     </div>
                     <div className="w-full md:w-[55%] xl:w-[60%] md:pl-[30px]">
-                        <p className="text-sm-1">
+                        <p className="text-sm1">
                             There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
                         </p>
                     </div>
@@ -56,7 +56,7 @@ export default function SmartMoneyDeal() {
                         <div className="font-bold leading-none text-base1 text-[20px] md:text-[20px] lg:text-[22px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] mb-[15px]">
                             GOLD LOAN
                         </div>
-                        <p className="text-sm-1">
+                        <p className="text-sm1">
                             Indel Money is a leading and trusted provider via years of dedicated service in the gold loan industry. We have become a household name synonymous with gold loaning for our low interest rates, easy documentation, instant processing and various tailor-made loan options that fit your requirement.
                         </p>
                         <div className="w-full rounded-[36px] overflow-hidden mt-[25px]">

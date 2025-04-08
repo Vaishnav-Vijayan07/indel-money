@@ -81,7 +81,7 @@ export default function MsmePresence() {
                                 MSME Presence –  <br />
                                 <span className="text-base2 font-bold">&nbsp;Driving the Economy</span>
                             </h2>
-                            <div className="text-sm-1 w-full xl:w-[85%] 2xl:w-[82%]">
+                            <div className="text-sm1 w-full xl:w-[85%] 2xl:w-[82%]">
                                 In India, the Micro, Small & Medium Enterprises (MSMEs) have been a major engine of economic growth, employment, and for promoting equitable development. The major advantage of this sector for India is its high employment potential at low capital cost and opportunities for growth. The labour intensity of the MSME sector is much higher than that of the large enterprises which are part of the organized sector. Helping MSMEs grow means that more and more labour is entered into the organized sector. <br />
                                 MSMEs influence our economy in almost all the major sectors of the Indian industry such as:
                             </div>

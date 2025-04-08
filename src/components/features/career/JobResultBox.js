@@ -46,7 +46,7 @@ function JobResultAlert() {
                         <div className="w-full mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]">
                             <AlertDialogTitle className="text-[18px] sm:text-[22px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[48px] text-black font-bold flex items-center mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
                                 Make Your <span className="text-base2 font-bold">&nbsp;Move</span></AlertDialogTitle>
-                            <div className="text-sm-1">Upload Your Resume ; we&apos;ll connect when the right role opens up.</div>
+                            <div className="text-sm1">Upload Your Resume ; we&apos;ll connect when the right role opens up.</div>
                         </div>
                         <CareerForm />
                     </div>
@@ -93,7 +93,7 @@ export default function JobResultBox({ item, variant = 'default' }) {
                 <div className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-[#4b4b4b] mb-[4px] lg:mb-[6px] 2xl:mb-[10px]">
                     Job Description
                 </div>
-                <div className={`${variant === "default" ? "line-clamp-2" : ""} text-sm-1 text-[#4d4d4d]`}>
+                <div className={`${variant === "default" ? "line-clamp-2" : ""} text-sm1 text-[#4d4d4d]`}>
                     {item.job_description}
                 </div>
             </div>

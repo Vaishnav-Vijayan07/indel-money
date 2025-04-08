@@ -60,7 +60,7 @@ export default function Scheme() {
                                 )}
                             </button>
                             {openIndex === index && (
-                                <div className="text-sm-1 pb-[10px] transition-all duration-300 text-[rgba(0,0,0,0.75)] max-w-[500px] xl:max-w-[600px] leading-[1.5]">{faq.answer}</div>
+                                <div className="text-sm1 pb-[10px] transition-all duration-300 text-[rgba(0,0,0,0.75)] max-w-[500px] xl:max-w-[600px] leading-[1.5]">{faq.answer}</div>
                             )}
                         </div>
                     ))}

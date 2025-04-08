@@ -7,6 +7,8 @@ import 'swiper/css/effect-fade';
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import Image from 'next/image';
 
+import "./Career.css";
+
 const slides = [
   {
     src: "/images/banner-career-1.jpg",

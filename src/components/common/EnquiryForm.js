@@ -71,7 +71,7 @@ export default function EnquiryForm() {
                 </div>
 
                 <div
-                    className="text-sm-1 leading-1 [writing-mode:vertical-lr] rotate-[180deg] w-[30px] h-[80px] 3xl:w-[36px] 3xl:h-[120px] bg-[#c0dbff] cursor-pointer absolute top-0 right-full flex justify-center items-center rounded-br-[10px] rounded-tr-[10px] transition-opacity duration-300 hover:opacity-95"
+                    className="text-sm1 leading-1 [writing-mode:vertical-lr] rotate-[180deg] w-[30px] h-[80px] 3xl:w-[36px] 3xl:h-[120px] bg-[#c0dbff] cursor-pointer absolute top-0 right-full flex justify-center items-center rounded-br-[10px] rounded-tr-[10px] transition-opacity duration-300 hover:opacity-95"
                     onClick={() => setOpen(!open)}
                 >
                     {open ? "Close" : "Open"}

@@ -58,7 +58,7 @@ const NavMenu = () => {
         <NavigationMenuList className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px]">
           {/* Gold Loan Menu */}
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Gold Loan</span></NavigationMenuTrigger>
+            <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Gold Loan</span></NavigationMenuTrigger>
             <NavigationMenuContent className="bg-white p-0">
               <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 {GoldLoans.map((item, index) => (
@@ -73,7 +73,7 @@ const NavMenu = () => {
                         <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
                           <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
                         </div>
-                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
+                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 group-hover:text-base2 transition-color duration-300">{item.title}</div>
                       </NavigationMenuLink>
                     </Link>
                   </li>
@@ -84,7 +84,7 @@ const NavMenu = () => {
 
           {/* Foreign Exchange Menu */}
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Foreign Exchange</span></NavigationMenuTrigger>
+            <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Foreign Exchange</span></NavigationMenuTrigger>
             <NavigationMenuContent className="bg-white p-0">
               <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 {GoldLoans.map((item, index) => (
@@ -99,7 +99,7 @@ const NavMenu = () => {
                         <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
                           <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
                         </div>
-                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
+                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 group-hover:text-base2 transition-color duration-300">{item.title}</div>
                       </NavigationMenuLink>
                     </Link>
                   </li>
@@ -111,7 +111,7 @@ const NavMenu = () => {
           {/* Other Loan Menu */}
           <NavigationMenuItem>
             <Link href="/docs" legacyBehavior passHref>
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} p-0 cursor-pointer`}><span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Other Loan</span></NavigationMenuLink>
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} p-0 cursor-pointer`}><span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Other Loan</span></NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
 
@@ -119,13 +119,13 @@ const NavMenu = () => {
           {/* <NavigationMenuItem>
             <Link href="/career" legacyBehavior passHref>
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} p-0 cursor-pointer`}>
-                <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Careers</span>
+                <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Careers</span>
                 </NavigationMenuLink>
             </Link>
           </NavigationMenuItem> */}
           <NavigationMenuItem className="relative z-0">
             <NavigationMenuTrigger className="p-0 cursor-pointer">
-              <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">Careers</span>
+              <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Careers</span>
               </NavigationMenuTrigger>
             <NavigationMenuContent className="bg-white p-0">
               <ul className="flex flex-col md:grid-cols-2 p-[10px] 3xl:p-[15px] w-[120px] md:w-[200px] lg:w-[200px]">
@@ -141,7 +141,7 @@ const NavMenu = () => {
                         <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
                           <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
                         </div>
-                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
+                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 group-hover:text-base2 transition-color duration-300">{item.title}</div>
                       </NavigationMenuLink>
                     </Link>
                   </li>
@@ -155,7 +155,7 @@ const NavMenu = () => {
           {/* About Menu */}
           <NavigationMenuItem>
             <NavigationMenuTrigger className="p-0 cursor-pointer">
-              <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">About</span>
+              <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">About</span>
               </NavigationMenuTrigger>
             <NavigationMenuContent className="bg-white p-0">
               <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -171,7 +171,7 @@ const NavMenu = () => {
                         <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
                           <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
                         </div>
-                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm group-hover:text-base2 transition-color duration-300">{item.title}</div>
+                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 group-hover:text-base2 transition-color duration-300">{item.title}</div>
                       </NavigationMenuLink>
                     </Link>
                   </li>

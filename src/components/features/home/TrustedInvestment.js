@@ -35,7 +35,7 @@ export default function TrustedInvestment() {
             <h2 className="text-title1 mb-[15px] 2xl:mb-[20px]">
               Your Trusted <br></br> Investment Opportunity
             </h2>
-            <div className="text-sm-1 mb-[15px] xl:mb-[20px] 2xl:mb-[30px]">
+            <div className="text-sm1 mb-[15px] xl:mb-[20px] 2xl:mb-[30px]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley

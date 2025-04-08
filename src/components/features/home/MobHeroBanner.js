@@ -81,7 +81,7 @@ export default function MobHeroBanner() {
       </Swiper>
       <div className="w-full absolute z-1 bottom-0 left-0 right-0">
         <div className="container">
-          <div className="w-full text-sm-1 leading-[1] text-white flex items-center gap-[6px] mb-[10px]">
+          <div className="w-full text-sm1 leading-[1] text-white flex items-center gap-[6px] mb-[10px]">
             <Image
               src={"/images/mob-marquee-1.svg"}
               alt={"coin"}
@@ -97,7 +97,7 @@ export default function MobHeroBanner() {
         </div>
         <div className="w-full h-[var(--marquee-y)] bg-base1 flex items-center">
           <div className="container">
-            <Marquee speed={80} pauseOnHover={true} className="text-sm-1 text-white">
+            <Marquee speed={80} pauseOnHover={true} className="text-sm1 text-white">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley

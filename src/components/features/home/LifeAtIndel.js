@@ -73,7 +73,7 @@ export default function LifeAtIndel() {
               Life at
               <span className="text-base2 font-bold">&nbsp;Indel</span>
             </h2>
-            <div className="text-sm-1 line-clamp-4 mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
+            <div className="text-sm1 line-clamp-4 mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley

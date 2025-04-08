@@ -8,7 +8,7 @@ export default function ConsumerDurable() {
         <section className="w-full pt-[30px] pb-[20px] 2xl:pt-[50px]  2xl:pb-[70px] md:pb-[40px] sm:pt-[30px] sm:pb-[30px]">
             <div className="container">
                 <div className="w-full pb-[20px] lg:pb-[40px] 2xl:pb-[60px]">
-                    <h1 className="text-banner-1 text-black mb-[15px] 2xl:mb-[20px]">
+                    <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px]">
                         Consumer Durable
                         <span className="text-base2 font-bold">&nbsp;Loans</span>
                     </h1>
@@ -33,7 +33,7 @@ export default function ConsumerDurable() {
                             <span className="text-base2 font-bold">&nbsp;NO cost (EMIs)</span>
 
                         </h2>
-                        <div className="text-sm-1">
+                        <div className="text-sm1">
                             Now you can purchase consumer durables, electronic items, home appliances etc., of your choice through Indel Money’s no cost CD loans. Just walk-in to any of our branches and avail CD loans for your next purchase. We assure you the best loaning experience with no EMIs, flexible repayment loans, no processing fee, no down payments etc. Never be doubtful again about your purchase decisions!
                         </div>
                         <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px] mt-[15px] xl:mt-[30px] 2xl:mt-[40px]">

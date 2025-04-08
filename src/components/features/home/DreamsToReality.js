@@ -54,7 +54,7 @@ export default function DreamsToReality() {
               Indel Money :{" "}
               <span className="font-normal text-[#343434]">Overview</span>
             </div>
-            <p className="text-sm-1 mb-5">
+            <p className="text-sm1 mb-5">
               Indel Money is a comprehensive financial services provider
               dedicated to offering a diverse array of solutions to meet the
               unique needs of every individual and organization. Our wide range
@@ -63,7 +63,7 @@ export default function DreamsToReality() {
               alike, ensuring that everyone, regardless of their financial
               standing, has access to expert financial guidance and solutions.
             </p>
-            <p className="text-sm-1 ">
+            <p className="text-sm1 ">
               We understand that life is filled with various financial
               requirements, both expected and unforeseen, and that each
               person&apos;s needs are different. That’s why at Indel Money, we

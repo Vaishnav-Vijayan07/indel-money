@@ -83,7 +83,7 @@ export default function Gallery() {
                         <div className="relative text-white font-semibold text-[17px] 2xl:text-[20px] 3xl:text-[25px] leading-[1.1] uppercase pb-[6px] 2xl:pb-[10px] 3xl:pb-[15px] mb-[8px] 2xl:mb-[10px] 3xl:mb-[15px] after:content-[''] after:w-[17%] 2xl:after:w-[23%] after:h-[1px] after:bg-white after:absolute after:left-0 after:bottom-0">
                             {item.title}
                         </div>
-                        <div className="text-sm-1 w-full text-white">
+                        <div className="text-sm1 w-full text-white">
                             {item.desc}
                         </div>
                     </div>
@@ -103,7 +103,7 @@ export default function Gallery() {
                         <PageBreadcrumb />
                     </div>
                     <div className="w-full md:w-[70%] xl:w-[80%] 2xl:w-[74%] pt-[20px] md:pt-0 md:pl-[20px] 2xl:pl-[30px]">
-                        <p className="text-sm-1">
+                        <p className="text-sm1">
                             Welcome to The Gallery, a vibrant space where art comes to life. Discover a carefully curated collection of contemporary and classic works, each telling a unique story. Whether you&apos;re an art enthusiast or a curious visitor, step into a world of creativity, inspiration, and connection
                         </p>
                     </div>

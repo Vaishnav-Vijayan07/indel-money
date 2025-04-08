@@ -133,7 +133,7 @@ function DropdownMenu({ items }) {
         <li key={index}>
           <Link href={item.link} legacyBehavior passHref>
             <MenubarItem>
-              <div className={`${pathname === item.link ? "text-base2" : "" } text-header-sm hover:text-base2 capitalize cursor-pointer transition-color duration-300`}>
+              <div className={`${pathname === item.link ? "text-base2" : "" } text-header1 hover:text-base2 capitalize cursor-pointer transition-color duration-300`}>
                 {item.title}
               </div>
             </MenubarItem>
@@ -167,7 +167,7 @@ function MegaMenu({ items }) {
                     className="w-full h-full block max-w-2/4 object-contain"
                   />
                 </div>
-                <div className={`${pathname === item.link ? "text-base2" : "" } w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header-sm capitalize group-hover:text-base2 transition-color duration-300`}>
+                <div className={`${pathname === item.link ? "text-base2" : "" } w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 capitalize group-hover:text-base2 transition-color duration-300`}>
                   {item.title}
                 </div>
               </div>
@@ -185,7 +185,7 @@ export default function NavMenu2() {
     <Menubar className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px] h-[var(--header-y)] lg:px-[10px] 2xl:px-[15px] 3xl:px-[20px] border-none shadow-none">
       <MenubarMenu>
         <MenubarTrigger className="group p-0 cursor-pointer">
-          <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">
+          <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">
             Gold Loan
           </span>
           <Arrow />
@@ -198,7 +198,7 @@ export default function NavMenu2() {
       <MenubarMenu>
         <Link
           href={"#"}
-          className={`${pathname === "#" ? "" : "" } text-header-sm uppercase hover:text-base2 transition-color duration-300 p-0 cursor-pointer block`}
+          className={`${pathname === "#" ? "" : "" } text-header1 uppercase hover:text-base2 transition-color duration-300 p-0 cursor-pointer block`}
         >
           FOREIGN EXCHANGE
         </Link>
@@ -206,7 +206,7 @@ export default function NavMenu2() {
 
       <MenubarMenu>
         <MenubarTrigger className="group p-0 cursor-pointer">
-          <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">
+          <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">
             other loan
           </span>
           <Arrow />
@@ -218,7 +218,7 @@ export default function NavMenu2() {
 
       <MenubarMenu>
         <MenubarTrigger className="group p-0 cursor-pointer">
-          <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">
+          <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">
             CAREERS
           </span>
           <Arrow />
@@ -230,7 +230,7 @@ export default function NavMenu2() {
 
       <MenubarMenu>
         <MenubarTrigger className="group p-0 cursor-pointer">
-          <span className="text-header-sm uppercase hover:text-base2 transition-color duration-300">
+          <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">
             ABOUT
           </span>
           <Arrow />

@@ -48,7 +48,7 @@ export default function GalleryDetail() {
     <section className="w-full pt-[40px] pb-[30px] xl:pb-[40px] 3xl:pb-[80px]">
       <div className="container mx-auto">
         <div className="w-full pb-[20px] lg:pb-[40px] 2xl:pb-[60px]">
-          <h1 className="text-banner-1 text-black mb-[15px] 2xl:mb-[20px]">
+          <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px]">
             Onam Celebrations 2024 for LIFE@INDEL
           </h1>
           <PageBreadcrumb />

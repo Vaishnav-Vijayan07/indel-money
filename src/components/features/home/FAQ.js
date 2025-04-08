@@ -104,7 +104,7 @@ export default function FAQ() {
                     )}
                   </button>
                   {openIndex === index && (
-                    <div className="text-sm-1 pb-[10px] transition-all duration-300">
+                    <div className="text-sm1 pb-[10px] transition-all duration-300">
                       {faq.answer}
                     </div>
                   )}

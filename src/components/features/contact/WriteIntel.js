@@ -29,7 +29,7 @@ export default function WriteIntel() {
                                         className="inline mr-[10px] lg:mr-[15px] 2xl:mr-[20px]"
                                     />
                                     Write to <span className="text-base2 font-bold">&nbsp;Indel</span></div>
-                                <div className="text-sm-1">Kindly fill up the form below to reach out to us.</div>
+                                <div className="text-sm1">Kindly fill up the form below to reach out to us.</div>
                             </div>
                             <ContactForm />
                         </div>

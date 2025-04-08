@@ -25,7 +25,7 @@ export default function LoanCard({ item, className }) {
                             {item.title2}
                         </div>
                     )}
-                    <div className="w-full mb-[15px] 3xl:mb-[20px] text-sm-1 line-clamp-4">
+                    <div className="w-full mb-[15px] 3xl:mb-[20px] text-sm1 line-clamp-4">
                         {item?.description || "No description available."}
                     </div>
                 </div>
