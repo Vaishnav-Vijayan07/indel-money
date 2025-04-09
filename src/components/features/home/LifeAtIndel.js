@@ -88,7 +88,7 @@ export default function LifeAtIndel() {
               <div>
                 <Link
                   href="/"
-                  className="btn btn-base2 min-w-[160px] lg:min-w-[180px] xl:min-w-[220px] 3xl:min-w-[280px]"
+                  className="btn btn-base2 min-w-[200px] lg:min-w-[180px] xl:min-w-[220px] 3xl:min-w-[280px]"
                 >
                   TAKE ME TO CAREERS PAGE
                 </Link>
@@ -96,7 +96,7 @@ export default function LifeAtIndel() {
               <div>
                 <Link
                   href="/"
-                  className="btn btn-base2 min-w-[100px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[180px]"
+                  className="btn btn-base2 min-w-[120px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[180px]"
                 >
                   VISIT GALLERY
                 </Link>

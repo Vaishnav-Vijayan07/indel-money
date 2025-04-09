@@ -141,7 +141,7 @@ function TeamBox({ item }) {
                         />
                     </div>
                     <div className="mt-[20px]">
-                        <div className="text-footer-1 mb-[10px]">{item.title}</div>
+                        <div className="text-footer1 mb-[10px]">{item.title}</div>
                         <div className="text-sm1">{item.post}</div>
                     </div>
                 </div>
@@ -195,7 +195,7 @@ function TeamModal({ item }) {
                             className="TeamSwiper"
                         >
                             <SwiperSlide>
-                                <div className="text-footer-1 font-normal leading-[150%] text-[#323232]">
+                                <div className="text-footer1 font-normal leading-[150%] text-[#323232]">
                                     {item.desciption}
                                 </div>
                             </SwiperSlide>
@@ -213,7 +213,7 @@ function TeamModal({ item }) {
                         className="TeamSwiper"
                     >
                         <SwiperSlide>
-                            <div className="text-footer-1 font-normal leading-[150%] text-[#323232]">
+                            <div className="text-footer1 font-normal leading-[150%] text-[#323232]">
                                 {item.desciption}
                             </div>
                         </SwiperSlide>

@@ -23,7 +23,7 @@ export default function BranchForm() {
             className="flex flex-wrap -mx-[10px] sm:-mx-[10px] 2xl:-mx-[15px]"
         >
             {/* State */}
-            <div className="w-1/2 md:w-1/5 p-[5px_10px] sm:p-[10px] 2xl:p-[15px]">
+            <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
                 <Select className="shadow-none outline-none border-none focus-within:shadow-none focus:shadow-none">
                     <SelectTrigger className="w-[100%] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] rounded-[7px] 2xl:rounded-[10px] shadow-none outline-none border-none cursor-pointer focus-within:shadow-none">
                         <SelectValue placeholder="Select State" />
@@ -37,7 +37,7 @@ export default function BranchForm() {
             </div>
 
             {/* District */}
-            <div className="w-1/2 md:w-1/5 p-[5px_10px] sm:p-[10px] 2xl:p-[15px]">
+            <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
                 <Select>
                     <SelectTrigger className="w-[100%] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] rounded-[7px] 2xl:rounded-[10px] shadow-none outline-none border-none cursor-pointer">
                         <SelectValue placeholder="Select District" />
@@ -51,7 +51,7 @@ export default function BranchForm() {
             </div>
 
             {/* Location */}
-            <div className="w-1/2 md:w-1/5 p-[5px_10px] sm:p-[10px] 2xl:p-[15px]">
+            <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
                 <Select>
                     <SelectTrigger className="w-[100%] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] rounded-[7px] 2xl:rounded-[10px] shadow-none outline-none border-none cursor-pointer">
                         <SelectValue placeholder="Select Location" />
@@ -65,7 +65,7 @@ export default function BranchForm() {
             </div>
 
             {/* Distance */}
-            <div className="w-1/2 md:w-1/5 p-[5px_10px] sm:p-[10px] 2xl:p-[15px]">
+            <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
                 <Select>
                     <SelectTrigger className="w-[100%] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] rounded-[7px] 2xl:rounded-[10px] shadow-none outline-none border-none cursor-pointer">
                         <SelectValue placeholder="Select Distance" />
@@ -79,7 +79,7 @@ export default function BranchForm() {
             </div>
 
             {/* Search Button */}
-            <div className="w-full md:w-1/5 p-[5px_10px] sm:p-[10px] 2xl:p-[15px] flex items-center justify-center md:justify-end">
+            <div className="w-full md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px] flex items-center justify-center md:justify-end">
                 <Button type="submit" className="w-full cursor-pointer text-[14px] xl:text-[16px] 2xl:text-[18px] max-w-full md-w-[100px] lg:max-w-[120px] xl:max-w-[140px] 2xl:max-w-[180px] 3xl:max-w-[195px] bg-[#EE3824] text-white rounded-[100px] h-[30px] xl:h-[40px] 2xl:h-[44px] 3xl:h-[48px] hover:bg-base1 transition-all">SEARCH</Button>
             </div>
         </form>

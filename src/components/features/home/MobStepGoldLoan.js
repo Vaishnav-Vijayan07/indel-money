@@ -35,10 +35,10 @@ export default function MobStepGoldLoan() {
           Our Easy Step&nbsp;
           <span className="text-base2 font-bold">Gold Loan</span>
         </div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap mb-[20px]">
           {steps?.map((item, index) => (
             <div key={index} className="w-full py-[10px]">
-              <div className="w-full h-auto rounded-[10px] bg-gradient-to-r from-base1/10 to-base2/10 border-dashed border-[1px] border-base1 p-[15px] flex gap-[20px] @md:gap-[25px] items-center">
+              <div className="w-full h-auto rounded-[10px] bg-gradient-to-r from-base1/10 to-base2/10 border-dashed border-[1px] border-base1/80 p-[15px] flex gap-[20px] @md:gap-[25px] items-center">
                 <div className="w-[80px] h-[80px] relative z-0">
                   <Image
                     src={item.image}
@@ -76,7 +76,7 @@ export default function MobStepGoldLoan() {
           </TabsContent>
           <TabsContent value="emicalculator">
             <div className="w-full h-auto p-[30px_25px] bg-[#c0dbff] rounded-[20px_0_20px_20px]">
-              <div>dfdgfdg</div>
+              <EmiForm />
             </div>
           </TabsContent>
         </Tabs>

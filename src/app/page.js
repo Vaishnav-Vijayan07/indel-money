@@ -1,4 +1,5 @@
 import React from "react";
+// DESKTOP COMPONENTS
 import HeroBanner from "../components/features/home/HeroBanner";
 import DreamsToReality from "../components/features/home/DreamsToReality";
 import GoldLoanCalculator from "../components/features/home/GoldLoanCalculator";
@@ -9,7 +10,7 @@ import BranchLocator from "../components/features/home/BranchLocator";
 import Innovations from "../components/features/home/Innovations";
 import FAQ from "../components/features/home/FAQ";
 import WelcomeModal from "../components/common/WelcomeModal";
-
+// MOBILE COMPONENTS
 import MobHeroBanner from "../components/features/home/MobHeroBanner";
 import MobSmartMoneyDeals from "../components/features/home/MobSmartMoneyDeals";
 import MobStepGoldLoan from "../components/features/home/MobStepGoldLoan";
@@ -24,41 +25,41 @@ export default function Home() {
   return (
     <>
       {/* welcome contents*/}
-      {/* <WelcomeModal /> */}
+      <WelcomeModal />
 
       {/* banner section contents*/}
-      {/* <HeroBanner /> */}
-      <MobHeroBanner />
+      <HeroBanner />
+      {/* <MobHeroBanner /> */}
       
       {/* Dreams to Reality contents*/}
-      {/* <DreamsToReality /> */}
-      <MobSmartMoneyDeals />
+      <DreamsToReality />
+      {/* <MobSmartMoneyDeals /> */}
 
       {/* Gold loan calculator contents*/} 
       {/* <GoldLoanCalculator /> */}
       <MobStepGoldLoan />
 
       {/* Branch locator contents*/}
-      {/* <BranchLocator variant={"home"} /> */}
-      <MobBranchLocator />
+      <BranchLocator variant={"home"} />
+      {/* <MobBranchLocator /> */}
 
       {/* Life at Indel contents*/}
-      {/* <LifeAtIndel /> */}
-      <MobJoinTeam />
+      <LifeAtIndel />
+      {/* <MobJoinTeam /> */}
 
       {/* Latest Updates contents*/}
-      {/* <LatestUpdates /> */}
-      <MobLatestUpdates />
+      <LatestUpdates />
+      {/* <MobLatestUpdates /> */}
 
       {/* Trusted investment contents*/}
-      {/* <TrustedInvestment /> */}
+      <TrustedInvestment />
 
       {/* Innovations*/}
-      {/* <Innovations /> */}
-      <MobInnovations />
+      <Innovations />
+      {/* <MobInnovations /> */}
 
       {/* faq contents */}
-      {/* <FAQ /> */}
+      <FAQ />
     </>
   );
 }

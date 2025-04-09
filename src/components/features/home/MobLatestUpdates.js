@@ -65,10 +65,10 @@ export default function MobLatestUpdates() {
               VIEW ALL
               <Image
                 src="/images/icon-right.svg"
-                width={7}
-                height={13}
+                width={5}
+                height={9}
                 alt="right"
-                className="ml-1 lg:ml-2"
+                className="ml-[5px]"
               />
             </Link>
           </div>

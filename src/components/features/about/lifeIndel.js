@@ -13,11 +13,9 @@ const images = [
     "/images/lifeImage1.webp",
     "/images/lifeImage1.webp", 
 ];
+
 export default function lifeatIndel() {
-
-
     return (
-
         <section className="w-full py-[80px] xl:py-[80px] 2xl:py-[120px] bg-[linear-gradient(95deg, rgba(243, 0, 0, 0) 3%, rgba(235, 2, 8, 0.15) 100%)]">
             <div className="container">
                 <div className="flex flex-wrap items-center m-[-8px]">

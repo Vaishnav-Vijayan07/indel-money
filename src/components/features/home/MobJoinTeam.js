@@ -61,7 +61,7 @@ const awards = [
 export default function MobJoinTeam() {
   return (
     <section className="w-full pb-[30px]">
-      <div className="w-full py-[30px_15px] mb-[30px] bg-[#E3E3E3] rounded-[10px_10px_0_0] bg-gradient-to-tl from-base1 to-base2">
+      <div className="w-full py-[30px] mb-[30px] bg-[#E3E3E3] rounded-[15px] bg-gradient-to-tl from-base1 to-base2">
         <div className="container">
           <div className="text-title1 text-white mb-[15px] 2xl:mb-[30px]">
             Join the&nbsp;
@@ -118,7 +118,7 @@ export default function MobJoinTeam() {
               </Link>
             </div>
             <div className="p-[5px]">
-              <Link href={"#"} className="btn btn-base1 min-w-[140px]">
+              <Link href={"#"} className="btn bg-white text-base1 hover:bg-base2 hover:text-white min-w-[140px]">
                 VISIT GALLERY
               </Link>
             </div>

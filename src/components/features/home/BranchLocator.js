@@ -60,7 +60,7 @@ export default function BranchLocator({ variant = "default" }) {
         transition={{ duration: 0.5 }}
         className="container"
       >
-        <div className="bg-white shadow-[0_0_50px_rgba(0,0,0,0.15)] rounded-[22px] 2xl:rounded-[30px] p-[10px] 2xl:p-[15px] mb-[30px] 2xl:mb-[35px]">
+        <div className="bg-white shadow-[0_0_50px_rgba(0,0,0,0.15)] rounded-[20px] 2xl:rounded-[30px] p-[10px_15px] lg:p-[15px_20px] 2xl:p-[20px_30px] mb-[30px] 2xl:mb-[35px]">
           <BranchForm />
         </div>
       </motion.div>

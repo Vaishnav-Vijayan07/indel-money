@@ -123,7 +123,7 @@ function FloatingSearch() {
 
 export default function FloatingButton() {
   return (
-    <div className="flex flex-wrap flex-col gap-[4px] lg:gap-[6px] 2xl:gap-[10px] fixed z-4 top-[50%] right-[40px] translate-y-[-50%]">
+    <div className="hidden flex-wrap flex-col gap-[4px] lg:gap-[6px] 2xl:gap-[10px] fixed z-4 top-[50%] right-[40px] translate-y-[-50%]">
       <div>
         <Link
           href={"/"}
