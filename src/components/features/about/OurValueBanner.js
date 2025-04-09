@@ -5,11 +5,11 @@ import Link from "next/link";
 export default function InnerBanner() {
     return (
         <section className="relative w-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.50)] to-[rgba(102,102,102,0.00)] z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.50)] to-[rgba(102,102,102,0.00)] z-1"></div>
 
             <div className="relative w-full h-auto md:h-[280px] lg:h-[340px] xl:h-[365px] 2xl:h-[460px] 3xl:h-[560px]">
                 <picture className="block w-full h-full">
-                    <source media="(min-width: 640px)" srcSet="/images/valueBanner.jpg" />
+                    <source media="(min-width: 640px)" srcSet="/images/valueBannerDesk.jpg" />
                     <img
                         src="/images/valueBannerMb.jpg"
                         width={640}

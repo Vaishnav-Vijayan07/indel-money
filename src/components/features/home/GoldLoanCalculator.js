@@ -8,17 +8,17 @@ import EmiForm from "../../common/EmiForm";
 const steps = [
   {
     title: "Step 1",
-    text: "Walk in any of our branches with your gold",
+    description: "Walk in any of our branches with your gold",
     img: "/images/step1.webp",
   },
   {
     title: "Step 2",
-    text: "Fill in and submit the required documents",
+    description: "Fill in and submit the required documents",
     img: "/images/step2.webp",
   },
   {
     title: "Step 3",
-    text: "After evaluation, our officer will sanction the loan",
+    description: "After evaluation, our officer will sanction the loan",
     img: "/images/step3.webp",
   },
 ];
@@ -123,7 +123,7 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.5, delay: index * 0.3 }}
                   >
-                    {step.text}
+                    {step.description}
                   </motion.p>
                 </motion.div>
               </div>

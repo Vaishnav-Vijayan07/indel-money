@@ -10,8 +10,10 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/custom-alert-dialog";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import "./Mnagement.css";
+import "./management.config.js";
 
 
 export default function ManagementTeam() {
@@ -36,7 +38,7 @@ export default function ManagementTeam() {
             image: "/images/team03.png",
             alt: "team-1",
             title: "Sudheesh PR",
-            post: "Head – Strategy, Operations",
+            post: "Head – Strategy, ",
         },
         {
             href: "/",
@@ -122,7 +124,7 @@ function TeamBox({ item }) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <div className="w-full  cursor-pointer sm:px-0 px-[10px] sm:py-0 py-[20px] bg-white shadow-[0_0_50px_rgba(0,0,0,0.15)] sm:bg-none sm:shadow-none overflow-hidden sm:rounded-0 rounded-[10px]">
+                <div className="w-full h-full sm:h-fit cursor-pointer sm:px-0 px-[10px] sm:py-0 py-[20px] bg-white shadow-[0_0_50px_rgba(0,0,0,0.15)] sm:bg-none sm:shadow-none overflow-hidden sm:rounded-0 rounded-[10px]">
                     <div className="relative sm:m-0 m-auto group w-[100px] sm:w-full h-[100px] sm:h-full xl:rounded-[20px] md:rounded-[18px] sm:rounded-[15px] rounded-full overflow-hidden aspect-100/100 sm:aspect-380/455 sm:p-0 p-[15px] pb-0">
                         <div className="absolute inset-0 bg-[linear-gradient(180deg,#EFEFEF_0%,#DBEEF9_100%)] transition-opacity duration-500 group-hover:opacity-0 hidden sm:block"></div>
                         <div className="absolute inset-0 sm:bg-[linear-gradient(180deg,#EE3824_0%,#17479E_100%)] bg-[linear-gradient(180deg,#17479E_0%,#EE3824_100%)] opacity-100 sm:opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
@@ -169,7 +171,7 @@ function TeamModal({ item }) {
         <div className="container">
             <div className="relative z-[1] w-full flex flex-wrap bg-white rounded-[10px] sm:rounded-[36px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:px-[20px] xl:px-[35px] 2xl:px-[55px] 3xl:px-[75px] sm:py-[25px]  pb-[60px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[80px]  p-0">
                 <div className="group w-full sm:w-[150px] lg:w-[250px] xl:w-[270px] 2xl:w-[385px] flex sm:justify-center items-end sm:items-center bg-gradient-to-t from-[rgba(238,56,36,0.40)] via-[rgba(23,71,158,0.25)] to-[rgba(23,71,158,0.10)] sm:bg-gradient-to-b sm:from-[#EFEFEF] sm:to-[#AFDBF6] rounded-[10px] sm:rounded-[20px] p-[15px] pb-0 sm:p-0 overflow-hidden">
-                    <div className="group w-[135px] h-auto sm:w-full flex justify-center items-center">
+                    <div className="group h-auto sm:w-full w-[135px] flex justify-center items-center">
                         <Image
                             src={item.image}
                             alt={item.alt}
@@ -179,7 +181,7 @@ function TeamModal({ item }) {
                             className="rounded-lg object-cover transition-transform duration-600 group-hover:scale-[1.05]"
                         />
                     </div>
-                    <div className="w-[calc(100%-135px)] pl-[15px] pb-[15px] block sm:hidden">
+                    <div className="w-[calc(100%-105px)] xs:w-[calc(100%-135px)] pl-[15px] pb-[15px] block sm:hidden">
                         <h2 className="text-[18px] xl:text-[22px] 2xl:text-[28px] 3xl:text-[35px] font-bold flex items-center text-#000">
                             {item.title}
                         </h2>
@@ -196,10 +198,11 @@ function TeamModal({ item }) {
                     </div>
 
                     <div className="w-full hidden lg:block h-[200px] xl:h-[220px] 2xl:h-[335px] scrollbar-custom overflow-y-auto mt-[20px] 2xl:mt-[35px] [&::-webkit-scrollbar]:w-[4px]
-                    [&::-webkit-scrollbar-thumb]:bg-[#EE3824]
-                    [&::-webkit-scrollbar-thumb]:rounded-full
-                    [&::-webkit-scrollbar-track]:bg-[rgba(23,71,158,0.60)]
-                    scroll-smooth">
+                        [&::-webkit-scrollbar-thumb]:bg-[#EE3824]
+                        [&::-webkit-scrollbar-thumb]:rounded-full
+                        [&::-webkit-scrollbar-track]:bg-[rgba(23,71,158,0.60)]
+                        [&::-webkit-scrollbar-track]:rounded-full
+                        scroll-smooth">
                         <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">
                             {item.desciption}
                         </div>
@@ -220,5 +223,6 @@ function TeamModal({ item }) {
         </div>
     );
 }
+
 
 
