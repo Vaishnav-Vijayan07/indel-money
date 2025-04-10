@@ -1,6 +1,7 @@
-
 "use client"
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import LoanCard from "@/components/common/LoanCard";
@@ -30,35 +31,49 @@ const slides = [
         description: "We understand the long-term financial needs of the small business units. Our long-term business loan options enables your access to high value loans by encashing the power of your property assets. ",
         href: "/",
     },
-    {
-        image: "/images/loan02.jpg",
-        alt: "Loan Image 2",
-        title: "Business Loans",
-        title2: "Structured Business Loans",
-        description: "The key success factor of every MSME sector enterprise is ready availability of credit to facilitate working capital or fixed asset purchase requirements. ",
-        href: "/",
-    },
 ];
 
 export default function LoanSlider() {
+    const [showPagination, setShowPagination] = useState(false);
+
+    useEffect(() => {
+        const updatePagination = () => {
+            const screenWidth = window.innerWidth;
+            let visibleSlides = 1.3;
+
+            if (screenWidth >= 1024) visibleSlides = 3;
+            else if (screenWidth >= 768) visibleSlides = 2;
+            else if (screenWidth >= 640) visibleSlides = 2;
+
+            setShowPagination(slides.length > visibleSlides);
+        };
+
+        updatePagination();
+        window.addEventListener("resize", updatePagination);
+        return () => window.removeEventListener("resize", updatePagination);
+    }, []);
+
     return (
         <Swiper
-            modules={[]}
+            modules={[Pagination]}
             spaceBetween={10}
             autoplay={false}
-            pagination={{ clickable: false }}
+            pagination={showPagination ? { clickable: true } : false}
+            centeredSlides={true}
+            centeredSlidesBounds={true}
+            slidesPerView={1.3}
             breakpoints={{
                 640: { slidesPerView: 2 },
                 768: { slidesPerView: 2, spaceBetween: 20 },
                 1024: { slidesPerView: 3, spaceBetween: 30 },
             }}
-            className="LoanSlider mb-[15px] lg::mb-[20px] xl:mb-[30px]">
-            {slides?.map((item, index) => (
+            className="LoanSlider !pb-[25px] !sm:pb-[20px] !lg:pb-[20px] !xl:pb-[30px]"
+        >
+            {slides.map((item, index) => (
                 <SwiperSlide key={index}>
                     <LoanCard item={item} />
                 </SwiperSlide>
             ))}
         </Swiper>
-
     );
 }

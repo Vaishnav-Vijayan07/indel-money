@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  
+
   --font-amino: "Amino", sans-serif;
 
   --color-base1: #17479e;
@@ -9,17 +9,28 @@
   --color-base3: #b7d0ff;
   --color-base4: #114e87;
 
-  --breakpoint-5xs: 20rem; /* 320px */
-  --breakpoint-4xs: 24rem; /* 384px */
-  --breakpoint-3xs: 28rem; /* 448px */
-  --breakpoint-2xs: 32rem; /* 512px */
-  --breakpoint-xs: 36rem; /* 576px */
-  --breakpoint-sm: 40rem; /* 640px */
-  --breakpoint-md: 48rem; /* 768px */
-  --breakpoint-lg: 64rem; /* 1024px */
-  --breakpoint-xl: 80rem; /* 1280px */
-  --breakpoint-2xl: 96rem; /* 1536px */
-  --breakpoint-3xl: 120rem; /* 1920px */
+  --breakpoint-5xs: 20rem;
+  /* 320px */
+  --breakpoint-4xs: 24rem;
+  /* 384px */
+  --breakpoint-3xs: 28rem;
+  /* 448px */
+  --breakpoint-2xs: 32rem;
+  /* 512px */
+  --breakpoint-xs: 36rem;
+  /* 576px */
+  --breakpoint-sm: 40rem;
+  /* 640px */
+  --breakpoint-md: 48rem;
+  /* 768px */
+  --breakpoint-lg: 64rem;
+  /* 1024px */
+  --breakpoint-xl: 80rem;
+  /* 1280px */
+  --breakpoint-2xl: 96rem;
+  /* 1536px */
+  --breakpoint-3xl: 120rem;
+  /* 1920px */
 
 }
 
@@ -32,6 +43,7 @@
   }
 
   @media (min-width: 640px) {
+
     /* sm */
     :root {
       --container-x: var(--breakpoint-sm);
@@ -39,6 +51,7 @@
   }
 
   @media (min-width: 768px) {
+
     /* md */
     :root {
       --container-x: var(--breakpoint-md);
@@ -46,6 +59,7 @@
   }
 
   @media (min-width: 1024px) {
+
     /* lg */
     :root {
       --container-x: var(--breakpoint-lg);
@@ -56,6 +70,7 @@
   }
 
   @media (min-width: 1280px) {
+
     /* xl */
     :root {
       --container-x: var(--breakpoint-xl);
@@ -66,6 +81,7 @@
   }
 
   @media (min-width: 1536px) {
+
     /* 2xl */
     :root {
       --container-x: var(--breakpoint-2xl);
@@ -76,6 +92,7 @@
   }
 
   @media (min-width: 1920px) {
+
     /* 3xl */
     :root {
       --container-x: var(--breakpoint-3xl);
@@ -202,6 +219,7 @@
   }
 
   @media (min-width: 640px) {
+
     /* sm */
     .text-title1 {
       font-size: 22px;
@@ -213,6 +231,7 @@
   }
 
   @media (min-width: 768px) {
+
     /* md */
     .text-title1 {
       font-size: 24px;
@@ -224,6 +243,7 @@
   }
 
   @media (min-width: 1024px) {
+
     /* lg */
     .text-title1 {
       font-size: 30px;
@@ -240,6 +260,7 @@
   }
 
   @media (min-width: 1536px) {
+
     /* 2xl */
     .text-title1 {
       font-size: 36px;
@@ -256,6 +277,7 @@
   }
 
   @media (min-width: 1920px) {
+
     /* 3xl */
     .text-title1 {
       font-size: 54px;
@@ -298,9 +320,7 @@
     margin: auto;
   }
 
-  .heroSlide
-    .swiper-pagination
-    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  .heroSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 3px solid #ee3824;
   }
 
@@ -327,18 +347,24 @@
     height: auto !important;
   }
 
-  .lifeSlide
-    .swiper-pagination
-    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  .lifeSlide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     outline: 1px solid #17479e;
   }
 
+  .LoanSlider {
+    margin: 0 -15px;
+  }
+
   .LoanSlider .swiper-wrapper {
-    padding: 20px 0 !important;
+    padding: 20px 15px !important;
   }
 
   .LoanSlider .swiper-slide {
     height: auto !important;
+  }
+
+  .LoanSlider .swiper-pagination {
+    top: 15px;
   }
 
   .employeeTestimonialsSlide .swiper-pagination {
@@ -382,6 +408,7 @@
   }
 
   @media (min-width: 640px) {
+
     /* sm */
     .custom-container {
       max-width: 600px;
@@ -390,6 +417,7 @@
   }
 
   @media (min-width: 768px) {
+
     /* md */
     .custom-container {
       max-width: 750px;
@@ -397,6 +425,7 @@
   }
 
   @media (min-width: 1024px) {
+
     /* lg */
     .custom-container {
       max-width: 980px;
@@ -404,6 +433,7 @@
   }
 
   @media (min-width: 1280px) {
+
     /* xl */
     .custom-container {
       max-width: 1180px;
@@ -411,6 +441,7 @@
   }
 
   @media (min-width: 1536px) {
+
     /* 2xl */
     .custom-container {
       max-width: 1430px;
@@ -418,6 +449,7 @@
   }
 
   @media (min-width: 1920px) {
+
     /* 3xl */
     .custom-container {
       max-width: 1640px;
@@ -425,11 +457,9 @@
   }
 
   .bg-custom-gradient {
-    background: linear-gradient(
-      180deg,
-      rgba(23, 71, 158, 0.3) 0%,
-      rgba(235, 2, 8, 0.3) 100%
-    );
+    background: linear-gradient(180deg,
+        rgba(23, 71, 158, 0.3) 0%,
+        rgba(235, 2, 8, 0.3) 100%);
   }
 
   .custom-prev.swiper-button-disabled,

@@ -42,3 +42,14 @@
       outline-width: 3px;
     }
   }
+
+.even-slide-gradient
+    .GradientClass{
+        background: linear-gradient(
+      -80deg,
+      rgba(23, 71, 158, 0.06) 0%,
+      rgba(23, 71, 158, 0.12) 30%,
+      rgba(238, 56, 36, 0.30) 100%
+    );
+    
+}

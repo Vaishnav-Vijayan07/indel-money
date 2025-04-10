@@ -72,16 +72,25 @@ export default function MsmePresence() {
     ];
 
     return (
-        <section className="w-full py-[40px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[90px] bg-[rgba(192,219,255,0.50)]">
-            <div className="container">
+        <section className="w-full py-[30px] pt-[10px] sm:py-[40px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[90px] sm:bg-[rgba(192,219,255,0.50)]">
+            <div className="container relative">
+                <div className="w-full max-w-[410px] h-fit absolute left-0 right-0 bottom-0 top-0 m-auto pointer-events-none sm:hidden flex aspect-410/375">
+                    <img
+                        src="/images/whoServeMobBg.png"
+                        width={410}
+                        height={375}
+                        alt="value-image"
+                        loading="lazy"
+                        className="w-full h-full object-cover" />
+                </div>
                 <div className="flex flex-wrap md:-mx-[15px] lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[30px]">
                     <div className="w-full lg:w-[45%] 2xl:w-[40%] md:px-[15px] pb-[30px] lg:pb-[0] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]">
                         <div className="w-full">
                             <h2 className="text-title1 mb-[20px] 2xl:mb-[30px]">
-                                MSME Presence –  <br />
+                                MSME Presence – <br className="sm:block hidden"></br>
                                 <span className="text-base2 font-bold">&nbsp;Driving the Economy</span>
                             </h2>
-                            <div className="text-sm1 w-full xl:w-[85%] 2xl:w-[82%]">
+                            <div className="text-sm1 w-full xl:w-[85%] 2xl:w-[82%] sm:block hidden">
                                 In India, the Micro, Small & Medium Enterprises (MSMEs) have been a major engine of economic growth, employment, and for promoting equitable development. The major advantage of this sector for India is its high employment potential at low capital cost and opportunities for growth. The labour intensity of the MSME sector is much higher than that of the large enterprises which are part of the organized sector. Helping MSMEs grow means that more and more labour is entered into the organized sector. <br />
                                 MSMEs influence our economy in almost all the major sectors of the Indian industry such as:
                             </div>
@@ -102,8 +111,8 @@ export function PresenceBox({ slides }) {
     return (
         <>
             {slides.map((item, index) => (
-                <div key={index} className="w-1/2 sm:w-1/3 md:w-1/4 h-fit flex flex-wrap justify-center p-[7px] 2xl:p-[15px] 3xl:p-[20px]">
-                    <div className="w-[50px] 2xl:w-[65px] 3xl:w-[72px] h-[50px] 2xl:h-[65px] 3xl:h-[72px] bg-base2 border-4 border-[#93BFFA] rounded-full flex items-center justify-center overflow-hidden p-[7px] 2xl:p-[12px] mb-[10px] 2xl:mb-[20px]">
+                <div key={index} className="w-1/2 4xs:w-1/3 md:w-1/4 h-fit flex flex-wrap justify-center p-[7px] 2xl:p-[15px] 3xl:p-[20px]">
+                    <div className="w-[42px] sm:w-[50px] 2xl:w-[65px] 3xl:w-[72px] h-[42px] sm:h-[50px] 2xl:h-[65px] 3xl:h-[72px] bg-base2 border-4 border-[#93BFFA] rounded-full flex items-center justify-center overflow-hidden p-[7px] 2xl:p-[12px] mb-[10px] 2xl:mb-[20px]">
                         <Image
                             src={item.image}
                             alt={item.alt}

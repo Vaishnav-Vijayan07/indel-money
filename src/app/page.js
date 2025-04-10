@@ -29,12 +29,12 @@ export default function Home() {
       {/* banner section contents*/}
       {/* <HeroBanner /> */}
       <MobHeroBanner />
-      
+
       {/* Dreams to Reality contents*/}
       {/* <DreamsToReality /> */}
       <MobSmartMoneyDeals />
 
-      {/* Gold loan calculator contents*/} 
+      {/* Gold loan calculator contents*/}
       {/* <GoldLoanCalculator /> */}
       <MobStepGoldLoan />
 
