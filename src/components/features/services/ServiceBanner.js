@@ -21,7 +21,7 @@ export default function ServiceBanner() {
             <div className="container absolute inset-0 flex items-center justify-start p-4 md:p-6 lg:p-8 xl:p-10 text-white z-20 max-w-screen-lg mx-auto">
                 <div className="max-w-[655px] md:max-w-[755px] lg:max-w-[840px]">
                     <div className="text-[#17479E] text-[16px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-normal leading-normal uppercase mb-[8px] lg:mb-[10px] 2xl:mb-[15px]">OUR SERVICES</div>
-                    <h1 className="text-banner-1 text-black mb-[15px] 2xl:mb-[20px]">
+                    <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px]">
                         Explore a World of <br></br>
                         <span className="text-base2 font-bold">Financial&nbsp;</span>
                         Services

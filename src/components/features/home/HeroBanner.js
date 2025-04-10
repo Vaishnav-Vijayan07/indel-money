@@ -9,7 +9,7 @@ export default function HeroBanner() {
     <section className="w-full block relative z-0 overflow-hidden">
       <HomeSlider />
       <div className="w-full h-[var(--marquee-y)] flex flex-wrap items-center bg-[#b7d0ff]">
-        <div className="w-[200px] lg:w-[220px] 2xl:w-[300px] 3xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm-1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
+        <div className="w-[200px] lg:w-[220px] 2xl:w-[300px] 3xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
           <Image src={"/images/marquee-1.png"} width={25} height={25} alt={"coin"} className="w-5 h-5 3xl:w-6 3xl:h-6 mr-2 3xl:mr-3 object-contain" priority={true} />
           Todays Gold rate : Rs.59,080
         </div>
@@ -17,7 +17,7 @@ export default function HeroBanner() {
           <Marquee
             speed={80}
             pauseOnHover={true}
-            className="text-sm-1"
+            className="text-sm1"
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
           </Marquee>

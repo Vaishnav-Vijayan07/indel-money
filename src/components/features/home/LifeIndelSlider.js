@@ -65,7 +65,7 @@ export default function LifeIndelSlider() {
                     &apos;
                   </span>
                 </h5>
-                <div className="w-full mb-[10px] xl:mb-[15px] 3xl:mb-[20px] text-sm-1 line-clamp-4">
+                <div className="w-full mb-[10px] xl:mb-[15px] 3xl:mb-[20px] text-sm1 line-clamp-4">
                   {item.discription}
                 </div>
               </div>

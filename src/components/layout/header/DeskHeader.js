@@ -28,7 +28,7 @@ function ContactBox({ href, src, title, alt }) {
           className="w-[10px] h-[auto] lg:w-[12px] 3xl:w-[14px] block"
         />
       </span>
-      <span className="text-header-sm group-hover:text-base2 transition-color duration-300">
+      <span className="text-header1 group-hover:text-base2 transition-color duration-300">
         {title}
       </span>
     </a>
@@ -153,13 +153,13 @@ export default function DeskHeader() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="bg-[#d2dff6] border-none">
                       <DropdownMenuLabel>
-                        <div className="text-header-sm">Payment modes</div>
+                        <div className="text-header1">Payment modes</div>
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator className="bg-black/20" />
                       <DropdownMenuItem>
                         <Link
                           href="/"
-                          className="text-header-sm hover:text-base2"
+                          className="text-header1 hover:text-base2"
                         >
                           Payment 1
                         </Link>
@@ -167,7 +167,7 @@ export default function DeskHeader() {
                       <DropdownMenuItem>
                         <Link
                           href="/"
-                          className="text-header-sm hover:text-base2"
+                          className="text-header1 hover:text-base2"
                         >
                           Payment 2
                         </Link>
@@ -175,7 +175,7 @@ export default function DeskHeader() {
                       <DropdownMenuItem>
                         <Link
                           href="/"
-                          className="text-header-sm hover:text-base2"
+                          className="text-header1 hover:text-base2"
                         >
                           Payment 3
                         </Link>

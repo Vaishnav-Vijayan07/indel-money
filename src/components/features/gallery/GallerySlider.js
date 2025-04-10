@@ -81,7 +81,7 @@ const GallSliderBx = ({ item }) => {
           <div className="relative text-white font-semibold text-[17px] 2xl:text-[20px] 3xl:text-[25px] leading-[1.1] uppercase pb-[6px] 2xl:pb-[10px] 3xl:pb-[15px] mb-[8px] 2xl:mb-[10px] 3xl:mb-[15px] after:content-[''] after:w-[17%] line-clamp-2 2xl:after:w-[23%] after:h-[1px] after:bg-white after:absolute after:left-0 after:bottom-0">
             {item.title}
           </div>
-          <div className="text-sm-1 w-full text-white line-clamp-3">
+          <div className="text-sm1 w-full text-white line-clamp-3">
             {item.desc}
           </div>
         </div>

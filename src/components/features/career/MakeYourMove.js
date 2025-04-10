@@ -23,7 +23,7 @@ export default function MakeYourMove() {
                             <div className="w-full mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]">
                                 <div className="text-[18px] sm:text-[22px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[48px] text-black font-bold flex items-center mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
                                     Make Your <span className="text-base2 font-bold">&nbsp;Move</span></div>
-                                <div className="text-sm-1">Upload Your Resume ; we&apos;ll connect when the right role opens up.</div>
+                                <div className="text-sm1">Upload Your Resume ; we&apos;ll connect when the right role opens up.</div>
                             </div>
                             <CareerForm />
                         </div>

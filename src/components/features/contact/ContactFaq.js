@@ -104,7 +104,7 @@ function AddressBox({ items }) {
             <div className="text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[30px] text-base1 font-bold mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
                 {items.title}
             </div>
-            <div className="text-sm-1 text-black/80 mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
+            <div className="text-sm1 text-black/80 mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
                 {items.address}
             </div>
             <LinkBox
@@ -143,7 +143,7 @@ function FaqAccordion({ items }) {
                         {item.title}
                     </AccordionTrigger>
                     <AccordionContent>
-                        <div className="text-sm-1 text-black/75 [&>*:text-sm-1] [&>*:text-black/75]">
+                        <div className="text-sm1 text-black/75 [&>*:text-sm1] [&>*:text-black/75]">
                             {item.description}
                         </div>
                     </AccordionContent>

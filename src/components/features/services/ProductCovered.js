@@ -97,7 +97,7 @@ export default function () {
                             <li className="3xl:text-[20px] 2xl:text-[15px] xl:text-[13px] text-[12px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px] mb-[3px]">Customer type – IMPL customer</li>
                             <li className="3xl:text-[20px] 2xl:text-[15px] xl:text-[13px] text-[12px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px]">Security – Gold Ornament</li>
                         </ul>
-                        <div className="text-sm-1 font-medium max-w-[70%]">
+                        <div className="text-sm1 font-medium max-w-[70%]">
                             With up to 100% financing and swift approval, enjoy a hassle-free process.
                         </div>
                     </div>

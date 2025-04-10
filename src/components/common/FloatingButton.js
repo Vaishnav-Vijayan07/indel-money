@@ -50,7 +50,7 @@ function FloatingCalculator() {
                 Make Your{" "}
                 <span className="text-base2 font-bold">&nbsp;Move</span>
               </AlertDialogTitle>
-              <div className="text-sm-1">
+              <div className="text-sm1">
                 Upload Your Resume ; we&apos;ll connect when the right role
                 opens up.
               </div>

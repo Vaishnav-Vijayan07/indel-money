@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./Career.module.css";
+import "./Career.css";
 
 const careerLifeAtIndelImages = [
     {
@@ -59,7 +59,7 @@ export default function CareerLifeAtIndel() {
                                 {""}   Indel
                             </span>
                         </div>
-                        <div className="text-sm-1 ">Indel is more than just a workplace; it&apos;s a community where innovation thrives, and individuals flourish. Here, you&apos;ll experience:</div>
+                        <div className="text-sm1 ">Indel is more than just a workplace; it&apos;s a community where innovation thrives, and individuals flourish. Here, you&apos;ll experience:</div>
                     </div>
                     <div>
                         <Link
@@ -82,7 +82,7 @@ export default function CareerLifeAtIndel() {
                                 sizes="676px"
                                 className="opacity-5 pointer-events-none"
                             />
-                            <div className={styles.editor}>
+                            <div className="editor">
                                 <ul>
                                     <li>
                                         <b>A Culture of Excellence: </b>Immerse yourself in a culture that values hard work, creativity, and a relentless pursuit of excellence.

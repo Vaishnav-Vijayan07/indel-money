@@ -103,7 +103,7 @@ export default function ManagementTeam() {
                         </h2>
                     </div>
                     <div className="w-full md:w-[55%] 2xl:w-[60%] md:pl-[30px]">
-                        <p className="text-sm-1">
+                        <p className="text-sm1">
                             Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
                         </p>
                     </div>

@@ -77,7 +77,7 @@ export function ValueBox({ item }) {
                     {item.title}
                 </div>
             </div>
-            <div className="text-sm-1 text-black line-clamp-6">
+            <div className="text-sm1 text-black line-clamp-6">
                 {item.description}
             </div>
         </div>

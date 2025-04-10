@@ -16,7 +16,7 @@ export default function KickStartVenture() {
                             <div className="text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px] mb-[15px] xl:mb-[20px] text-[#1E1E1E] font-normal leading-normal">
                                 Our MSME loans are bespoke for aspiring and upcoming entrepreneurs.
                             </div>
-                            <div className="text-sm-1 mb-[15px] xl:mb-[20px]">
+                            <div className="text-sm1 mb-[15px] xl:mb-[20px]">
                                 We are delighted to offer our premium services to Micro, Small, and Medium Enterprises (MSMEs) as well as aspiring entrepreneurs. Our tailored financial packages are designed to meet the specific needs of your business, ensuring that you receive the support necessary to help you grow and succeed. Whether you are looking for working capital to manage day-to-day operations, financing for the purchase of fixed assets to expand your capabilities, or a combination of both, we have the perfect solutions to match your goals. Our expert team will work closely with you to understand your unique challenges and provide personalized assistance that fosters your business's growth, stability, and long-term success. Let us be your trusted partner in turning your entrepreneurial vision into a reality.
                             </div>
                             <Link 
@@ -31,7 +31,7 @@ export default function KickStartVenture() {
                         <div className="text-base1 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] font-medium 2xl:font-normal leading-normal lg:pl-[30px]">
                             Our Offerings
                         </div>
-                        <div className="text-sm-1 mb-[15px] xl:mb-[20px] max-w-[90%] lg:pl-[30px]">
+                        <div className="text-sm1 mb-[15px] xl:mb-[20px] max-w-[90%] lg:pl-[30px]">
                             To be with you at the cornerstone of development of MSME segment, we extend
                             our product offerings to fulfil your needs:
                         </div>
@@ -47,7 +47,7 @@ export default function KickStartVenture() {
                                             className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
                                         />
                                     </div>
-                                    <div className="text-sm-1 text-[#151515] font-medium 2xl:font-normal w-full pt-[10px] 2xl:pt-[15px]">
+                                    <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-full pt-[10px] 2xl:pt-[15px]">
                                         For CAPEX / working capital expenses
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@ export default function KickStartVenture() {
                                             className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
                                         />
                                     </div>
-                                    <div className="text-sm-1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-20px)] xl:w-[calc(100%-26px)] 2xl:w-[calc(100%-35px)] 3xl:w-[calc(100%-40px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
+                                    <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-20px)] xl:w-[calc(100%-26px)] 2xl:w-[calc(100%-35px)] 3xl:w-[calc(100%-40px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
                                         For CAPEX / working capital expenses
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@ export default function KickStartVenture() {
                                                 className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
                                             />
                                         </div>
-                                        <div className="text-sm-1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
+                                        <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
                                             Balance transfer from other NBFC’s to reduce interest / EMI burden
                                         </div>
                                     </div>
@@ -96,7 +96,7 @@ export default function KickStartVenture() {
                                                 className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
                                             />
                                         </div>
-                                        <div className="text-sm-1 text-[#151515] font-medium 2xl:font-normal  w-[calc(100%-25px)] xl:w-[calc(100%-35px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
+                                        <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal  w-[calc(100%-25px)] xl:w-[calc(100%-35px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
                                             Business<br></br> expansion
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ export default function KickStartVenture() {
                                             className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
                                         />
                                     </div>
-                                    <div className="text-sm-1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
+                                    <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
                                         Debt <br></br> consolidation
                                     </div>
                                 </div>

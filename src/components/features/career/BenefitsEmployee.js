@@ -83,7 +83,7 @@ export default function BenefitsEmployee() {
                                     <div className="text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[24px] 3xl:text-[28px] font-medium leading-[1] text-[#161616] mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
                                         {item.title}
                                     </div>
-                                    <div className="text-sm-1 text-[#161616] line-clamp-3">
+                                    <div className="text-sm1 text-[#161616] line-clamp-3">
                                         {item.description}
                                     </div>
                                 </div>

@@ -44,7 +44,7 @@ export default function FAQ() {
                             Grow with  
                                 <span className="text-base2 font-bold">&nbsp;MSME loan</span>
                             </h2>
-                            <div className="text-sm-1">
+                            <div className="text-sm1">
                             We at Indel Money understand the necessity for growth of small business units and their productive impact on the economy. We are committed to providing requisite timely financial assistance to the sector through our MSME product suits.
 Indel Money believes in market linkage and provide ‘Go to Market Initiative’ application services to get connected with the suppliers, retailers, buyers and sellers for their products.
 The major hurdle faced by the sector to progress and survive is inadequate working capital. Less than optimum book of accounts and banking habits also makes it difficult to access financial support. Indel Money analyses the cash flow through spending time and understanding individual business dynamics and guides you to properly deploy funds in income generating activities.

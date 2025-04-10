@@ -75,7 +75,7 @@ export function ValueBox({ item }) {
             <div className="text-black font-medium 2xl:font-normal leading-[1.1] text-[20px] sm:text-[18px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[28px] mb-[20px] xl:min-h-[40px] 2xl:min-h-[50px] 3xl:min-h-[60px]">
                 {item.title}
             </div>
-            <div className="text-sm-1 text-black ">
+            <div className="text-sm1 text-black ">
                 {item.description}
             </div>
         </div>

@@ -53,10 +53,10 @@ export default function IndelRemit() {
                             <div className="w-full font-bold leading-none text-base1 text-[20px] lg:text-[24px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] mb-[15px]">
                                 INDEL REMIT
                             </div>
-                            <p className="text-sm-1 line-clamp-4 mb-[20px] xl:mb-[25px] 2xl:mb-[35px]">
+                            <p className="text-sm1 line-clamp-4 mb-[20px] xl:mb-[25px] 2xl:mb-[35px]">
                                 There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
                             </p>
-                            <p className="text-sm-1 line-clamp-5">
+                            <p className="text-sm1 line-clamp-5">
                                 All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
                             </p>
                         </div>
@@ -90,7 +90,7 @@ function ValueBox({ item }) {
                         className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"
                     />
                 </div>
-                <div className="text-sm-1 w-[calc(100%-20px)] 2xl:w-[calc(100%-25px)] pl-[15px]">
+                <div className="text-sm1 w-[calc(100%-20px)] 2xl:w-[calc(100%-25px)] pl-[15px]">
                     {item.benefit}
                 </div>
             </div>

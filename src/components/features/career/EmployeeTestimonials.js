@@ -272,7 +272,7 @@ export default function EmployeeTestimonials() {
             </div>
             <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
               <div className="flex-1">
-                <div className="text-sm-1">
+                <div className="text-sm1">
                   Avarage tenure is Lorem ipsum dolor sit amet, consectetur
                   adipiscing elit. Sed volutpat commodo elementum.{" "}
                 </div>

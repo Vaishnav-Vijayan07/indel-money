@@ -6,7 +6,7 @@ export default function DifferentShadesIndelInfo() {
   return (
     <section className="w-full block pb-[40px] lg:pb-[60px] 2xl:pb-[80px]">
       <div className="container">
-        <div className="[&_p]:text-sm-1 [&_p]:mb-[10px] sm:[&_p]:mb-[15px] lg:[&_p]:mb-[20px] [&_img]:mb-[10px] sm:[&_img]:mb-[15px] lg:[&_img]:mb-[20px]">
+        <div className="[&_p]:text-sm1 [&_p]:mb-[10px] sm:[&_p]:mb-[15px] lg:[&_p]:mb-[20px] [&_img]:mb-[10px] sm:[&_img]:mb-[15px] lg:[&_img]:mb-[20px]">
             <Image
               src="/images/shadeIndel-disc-1.png"
               alt="indel"
