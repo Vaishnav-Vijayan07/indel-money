@@ -45,12 +45,12 @@ export default function () {
         },
     ];
     return (
-        <section className="w-full relative bg-[#C0DBFF] py-[20px] md:p-0">
+        <section className="w-full relative sm:bg-[#C0DBFF] bg-[#E5F6FF] sm:rounded-[0] rounded-[20px] py-[20px] md:p-0">
             <div className="absolute hidden md:block bg-[#D4E6FF] left-0 top-0 w-[50%] h-full z-0"></div>
             <div className="container">
                 <div className="flex flex-wrap">
-                    <div className="relative w-full md:w-[calc(100%-285px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-590px)] bg-[#D4E6FF] overflow-hidden rounded-[36px] md:rounded-tl-[0] md:rounded-bl-[0] pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[90px] pr-[30px] 2xl:pr-[45px] 3xl:pr-[55px] pb-[30px] xl:pb-[40px] 2xl:pb-[50px] pl-[20px] md:pl-0">
-                        <div className="group w-full absolute right-[20px] 2xl:right-[35px] 3xl:right-[55px] bottom-0 max-w-[250px] lg:max-w-[350px] xl:max-w-[420px] 2xl:max-w-[560px] 3xl:max-w-[670px] overflow-hidden h-auto">
+                    <div className="relative w-full flex flex-wrap flex-col-reverse sm:flex-row md:w-[calc(100%-285px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-590px)] sm:bg-[#D4E6FF] overflow-hidden rounded-[36px] md:rounded-tl-[0] md:rounded-bl-[0] pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[90px] sm:pr-[30px] 2xl:pr-[45px] 3xl:pr-[55px] pb-[30px] xl:pb-[40px] 2xl:pb-[50px] sm:pl-[20px] md:pl-0">
+                        <div className="group w-full sm:absolute right-[20px] 2xl:right-[35px] 3xl:right-[55px] bottom-0 sm:max-w-[250px] lg:max-w-[350px] xl:max-w-[420px] 2xl:max-w-[560px] 3xl:max-w-[670px] overflow-hidden h-auto">
                             <Image
                                 src={"/images/proCoveredImg.png"}
                                 alt="productCover"
@@ -59,14 +59,14 @@ export default function () {
                                 className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
                             />
                         </div>
-                        <div className="max-w-[180px] lg:max-w-[210px] xl:max-w-[236px] 2xl:max-w-[325px] RELATIVE Z-1">
+                        <div className="w-full sm:max-w-[180px] lg:max-w-[210px] xl:max-w-[236px] 2xl:max-w-[325px] relative z-1 sm:mb-0 mb-[40px]">
                             <h2 className="font-normal text-black leading-normal text-[18px] md:text-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]">
                                 Products
                                 <span className="text-base2 font-bold">&nbsp;Covered</span>
                             </h2>
-                            <div className="relative z-1 flex flex-wrap -my-[5px] 2xl:-my-[8px] -mx-[10px] 2xl:-mx-[15px]">
+                            <div className="relative z-1 flex flex-wrap sm:-my-[5px] 2xl:-my-[8px] sm:-mx-[10px] 2xl:-mx-[15px] bg-[#FFF] sm:bg-[#0000] sm:rounded-[0px] rounded-[15px] sm:py-0 py-[20px] sm:px-0 px-[20px]">
                                 {slides?.map((item, index) => (
-                                    <div key={index} className="w-full py-[5px] 2xl:py-[8px] px-[10px] 2xl:px-[15px] transition-transform duration-600 hover:ml-[5px]">
+                                    <div key={index} className="w-full 4xs:w-1/2 sm:w-full py-[5px] 2xl:py-[8px] px-[10px] 2xl:px-[15px] transition-transform duration-600 hover:ml-[5px]">
                                         <ProductCoveredBox item={item} />
                                     </div>
                                 ))}
@@ -74,7 +74,7 @@ export default function () {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full md:w-[285px] xl:w-[400px] 2xl:w-[500px] 3xl:w-[590px] pl-[25px] xl:pl-[45px] 2xl:pl-[55px] 3xl:pl-[75px] pb-[30px] xl:pb-[40px] 2xl:pb-[60px] pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[90px] bg-[#C0DBFF] relative z-1">
+                    <div className="w-full md:w-[285px] xl:w-[400px] 2xl:w-[500px] 3xl:w-[590px] pl-[25px] xl:pl-[45px] 2xl:pl-[55px] 3xl:pl-[75px] pb-[30px] xl:pb-[40px] 2xl:pb-[60px] pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[90px] bg-[#C0DBFF] relative z-1 sm:block hidden">
                         <div className="flex items-center mb-[10px] 2xl:mb-[20px]">
                             <div className="w-[40px] xl:w-[50px] 2xl:w-[60px] 3xl:w-[72px] h-[40px] xl:h-[50px] 2xl:h-[60px] 3xl:h-[72px] bg-[#EB0208] p-[5px] xl:p-[8px] 2xl:p-[12px] rounded-full border-3 2xl:border-5 border-white overflow-hidden">
                                 <Image
@@ -110,7 +110,7 @@ function ProductCoveredBox({ item }) {
     return (
         <div className="w-wfull">
             <div className="flex items-center">
-                <div className="group w-[16px]  :w-[25px] 3xl:w-[25px] h-[16px] 2xl:h-[20px] 3xl:h-[25px]">
+                <div className="group w-[25px] 3xl:w-[25px] h-[16px] 2xl:h-[20px] 3xl:h-[25px]">
                     <Image
                         src={item.icon}
                         alt={item.alt}
@@ -119,7 +119,7 @@ function ProductCoveredBox({ item }) {
                         className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"
                     />
                 </div>
-                <div className="text-[11px] 2xl:text-[14px] 3xl:text-[17px] leading-[1.4] font-normal text-[#151515] xl:w-[calc(100%-16px)] 2xl:w-[calc(100%-20px)] 3xl:w-[calc(100%-25px)] pl-[10px] 2xl:pl-[15px]">
+                <div className="text-[13px] 2xl:text-[14px] 3xl:text-[17px] leading-[1.4] font-normal text-[#151515] xl:w-[calc(100%-25px)] pl-[10px] 2xl:pl-[15px]">
                     {item.benefit}
                 </div>
             </div>
