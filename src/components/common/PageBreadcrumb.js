@@ -31,8 +31,8 @@ function BreadcrumbSeparatorImage({ variant }) {
 export default function PageBreadcrumb({
     variant = 'default',
     homeElement = 'Home',
-    activeItemClasses = `${variant === "white" ? "text-white" : "text-[#383838]"} font-normal`,
-    inactiveItemClasses = `${variant === "white" ? "text-white" : "text-[#383838]"} hover:text-base2`,
+    activeItemClasses = `${variant === "white" ? "text-white" : "text-[#383838]"} text-[12px] lg:text-[14px] 2xl:text-[16px] leading-[1] font-normal font-normal`,
+    inactiveItemClasses = `${variant === "white" ? "text-white" : "text-[#383838]"} text-[12px] lg:text-[14px] 2xl:text-[16px] leading-[1] font-normal hover:text-base2`,
     transformLabel = defaultTransformLabel,
 }) {
 
@@ -83,7 +83,7 @@ export default function PageBreadcrumb({
 
                             ) : (
                                 <BreadcrumbLink asChild>
-                                    <Link href={item.href} className={`${variant === "white" ? "text-white" : "text-[#383838]"} "hover:text-base2"`}>
+                                    <Link href={item.href} className={`${variant === "white" ? "text-white" : "text-[#383838]"} "text-[12px] lg:text-[14px] 2xl:text-[16px] leading-[1] font-normal hover:text-base2"`}>
                                         {item.label}
                                     </Link>
                                 </BreadcrumbLink>

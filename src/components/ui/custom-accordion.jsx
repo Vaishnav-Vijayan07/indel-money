@@ -47,14 +47,14 @@ function AccordionTrigger({
           alt="accordion-close"
           width={30}
           height={30}
-          className="w-[15px] h-auto aspect-4/4 lg:w-[20px] 3xl:w-[30px] pointer-events-none transition-transform duration-300 group-data-[state=open]:hidden"
+          className="w-[20px] h-auto aspect-4/4 3xl:w-[30px] pointer-events-none transition-transform duration-300 group-data-[state=open]:hidden"
         />
         <Image
           src="/images/icon-accordion-open.svg"
           alt="accordion-open"
           width={30}
           height={30}
-          className="w-[15px] h-auto aspect-4/4 lg:w-[20px] 3xl:w-[30px] pointer-events-none transition-all group-data-[state=closed]:hidden"
+          className="w-[20px] h-auto aspect-4/4 3xl:w-[30px] pointer-events-none transition-all group-data-[state=closed]:hidden"
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>

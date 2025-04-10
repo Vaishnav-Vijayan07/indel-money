@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 // Dynamically import BranchLocationMap with SSR disabled
 const BranchLocationMap = dynamic(
-  () => import("@/components/common/BranchLocationMap"),
+  () => import("@/components/features/home/BranchLocationMap"),
   {
     ssr: false, // Ensures this only runs on the client
   }
@@ -16,7 +16,7 @@ export default function BranchLocator({ variant = "default" }) {
     <section
       className={`${
         variant === "contact"
-          ? "bg-[#e6edf7] py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px]"
+          ? "sm:bg-[#e6edf7] rounded-t-[10px] sm:py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px] shadow-[0_0_150px_0_rgba(0,0,0,0.25)]"
           : ""
       }
        ${
@@ -26,44 +26,46 @@ export default function BranchLocator({ variant = "default" }) {
        }
        w-full block`}
     >
-      <div className="container">
-        <div className="mb-7.5 flex flex-col lg:flex-row items-start xl:items-start justify-between flex-wrap">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-title1 w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-668px)] xl:pr-[20px] 2xl:pr-[60px] 3xl:pr-[80px]"
-          >
-            Discover Gold Loan Options Near You with Our{" "}
-            <span className="text-base2 font-bold">Branch Locator</span>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="w-full lg:w-[468px] xl:w-[500px] 2xl:w-[600px] 3xl:w-[668px] mt-2 xl:mt-[15px] xl:text-right"
-          >
-            <p className="text-[12px] lg:text-[12px] xl:text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#323232]">
-              Find the closest Indel Money branch using our locator tool and
-              unlock gold loan opportunities in your vicinity. Let&apos;s work
-              together to meet your financial needs.
-            </p>
-          </motion.div>
+      <div className="py-[20px] sm:py-0">
+        <div className="container">
+          <div className="mb-[15px] sm:mb-[20px] lg:mb-30px flex flex-col lg:flex-row items-start xl:items-start justify-between flex-wrap">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-title1 w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-668px)] xl:pr-[20px] 2xl:pr-[60px] 3xl:pr-[80px]"
+            >
+              Discover Gold Loan Options Near You with Our{" "}
+              <span className="text-base2 font-bold">Branch Locator</span>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="w-full lg:w-[468px] xl:w-[500px] 2xl:w-[600px] 3xl:w-[668px] mt-2 xl:mt-[15px] xl:text-right hidden sm:block"
+            >
+              <p className="text-[12px] lg:text-[12px] xl:text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#323232]">
+                Find the closest Indel Money branch using our locator tool and
+                unlock gold loan opportunities in your vicinity. Let&apos;s work
+                together to meet your financial needs.
+              </p>
+            </motion.div>
+          </div>
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="container"
+        >
+          <div className="sm:bg-white sm:shadow-[0_0_50px_rgba(0,0,0,0.15)] sm:rounded-[20px] 2xl:rounded-[30px] sm:p-[10px_15px] lg:p-[15px_20px] 2xl:p-[20px_30px] sm:mb-[15px] lg:mb-[30px] 2xl:mb-[35px]">
+            <BranchForm />
+          </div>
+        </motion.div>
       </div>
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="container"
-      >
-        <div className="bg-white shadow-[0_0_50px_rgba(0,0,0,0.15)] rounded-[20px] 2xl:rounded-[30px] p-[10px_15px] lg:p-[15px_20px] 2xl:p-[20px_30px] mb-[30px] 2xl:mb-[35px]">
-          <BranchForm />
-        </div>
-      </motion.div>
       <div
         className={`${
           variant === "home"
@@ -73,7 +75,7 @@ export default function BranchLocator({ variant = "default" }) {
             : ""
         }`}
       >
-        <div className="container">
+        <div className="sm:container">
           <BranchLocationMap />
         </div>
       </div>

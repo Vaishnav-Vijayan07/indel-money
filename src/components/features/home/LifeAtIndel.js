@@ -39,7 +39,7 @@ function ImageBox({ item, className }) {
 
 export default function LifeAtIndel() {
   return (
-    <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px]">
+    <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px] overflow-hidden">
       <div className="container">
         <div className="flex flex-wrap items-center lg:-mx-[15px] xl:-mx-[20px] 3xl:-mx-[35px]">
           <motion.div

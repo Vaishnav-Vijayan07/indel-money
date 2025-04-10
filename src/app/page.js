@@ -18,26 +18,28 @@ import MobBranchLocator from "../components/features/home/MobBranchLocator";
 import MobJoinTeam from "../components/features/home/MobJoinTeam";
 import MobLatestUpdates from "../components/features/home/MobLatestUpdates";
 import MobInnovations from "../components/features/home/MobInnovations";
+import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
-const FAQS = React.lazy(() => import("../components/features/home/FAQ"))
+const FAQS = React.lazy(() => import("../components/features/home/FAQ"));
 
 export default function Home() {
   return (
     <>
       {/* welcome contents*/}
       <WelcomeModal />
+      {/* <MobWelcomeModal /> */}
 
       {/* banner section contents*/}
       <HeroBanner />
       {/* <MobHeroBanner /> */}
-      
+
       {/* Dreams to Reality contents*/}
       <DreamsToReality />
       {/* <MobSmartMoneyDeals /> */}
 
-      {/* Gold loan calculator contents*/} 
-      {/* <GoldLoanCalculator /> */}
-      <MobStepGoldLoan />
+      {/* Gold loan calculator contents*/}
+      <GoldLoanCalculator />
+      {/* <MobStepGoldLoan /> */}
 
       {/* Branch locator contents*/}
       <BranchLocator variant={"home"} />
@@ -63,5 +65,3 @@ export default function Home() {
     </>
   );
 }
-
-
