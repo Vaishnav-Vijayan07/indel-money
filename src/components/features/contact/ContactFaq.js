@@ -167,7 +167,7 @@ function FaqAccordion({ items }) {
 export default function ContactFaq() {
   return (
     <section className="w-full block py-[20px_0] sm:py-[40px_40px] lg:py-[80px_60px] 2xl:py-[100px_80px] sm:bg-gradient-to-r sm:to-[#fde7e7] sm:from-transparent">
-      <div className="sm:container">
+      <div className="max-sm:max-w-full max-sm:px-0! container">
         <div className="flex flex-wrap lg:-mx-[15px] 2xl:-mx-[20px]">
           <div className="w-full lg:w-[376px] xl:w-[468px] 2xl:w-[576px] 3xl:w-[700px] py-[10px] lg:py-0 lg:px-[15px] 2xl:px-[20px] max-sm:px-[var(--container-padding)] max-sm:mb-[20px]">
             {addressBox.map((item, index) => (

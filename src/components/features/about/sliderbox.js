@@ -13,7 +13,7 @@ const slides = [
     { image: "/images/spImg2.webp", alt: "Indel Money Banner 3" },
 ];
 
-export default function AboutVSlider() {
+export default function AboutSlider() {
     return (
         <div className="flex justify-center items-center 3xl:h-[700px] 2xl:h-[650px] xl:h-[500px] lg:h-[450px] sm:h-[400px] h-[350px] w-full ">
             <Swiper

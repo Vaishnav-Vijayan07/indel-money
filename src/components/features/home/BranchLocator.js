@@ -16,7 +16,7 @@ export default function BranchLocator({ variant = "default" }) {
     <section
       className={`${
         variant === "contact"
-          ? "sm:bg-[#e6edf7] rounded-t-[10px] sm:py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px] shadow-[0_0_150px_0_rgba(0,0,0,0.25)]"
+          ? "sm:bg-[#e6edf7] rounded-t-[10px] sm:py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px] max-sm:shadow-[0_0_150px_0_rgba(0,0,0,0.25)]"
           : ""
       }
        ${
@@ -69,13 +69,13 @@ export default function BranchLocator({ variant = "default" }) {
       <div
         className={`${
           variant === "home"
-            ? "pb-[45px] xl:pb-[60px] 2xl:pb-[90px] relative z-0 before:content-[''] before:block before:w-full before:h-[calc(100%-95px)] before:bg-gradient-to-r before:from-[rgba(243,0,0,0)] before:to-[rgba(235,2,8,0.10)] before:absolute before:bottom-0 before:left-0 before:-z-1 before:pointer-events-none before:rotate-180"
+            ? "sm:pb-[45px] xl:pb-[60px] 2xl:pb-[90px] relative z-0 before:content-[''] before:block before:w-full before:h-[calc(100%-95px)] before:bg-gradient-to-r before:from-[rgba(243,0,0,0)] before:to-[rgba(235,2,8,0.10)] before:absolute before:bottom-0 before:left-0 before:-z-1 before:pointer-events-none before:rotate-180"
             : variant === "contact"
             ? ""
             : ""
         }`}
       >
-        <div className="sm:container">
+        <div className="max-sm:max-w-full max-sm:px-0! container">
           <BranchLocationMap />
         </div>
       </div>
