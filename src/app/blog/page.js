@@ -1,6 +1,7 @@
 import BlogCard from "@/components/common/BlogCard";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import LatestUpdates from "@/components/features/home/LatestUpdates";
+import MobLatestUpdates from "@/components/features/blog/MobLatestUpdates";
 import {
     Pagination,
     PaginationContent,
@@ -141,11 +142,18 @@ export default function Blog() {
                 <div className="container">
                     <div className="w-full mb-[20px] lg:mb-[15px] 2xl:mb-[20px]">
                         <div className="text-title1 font-bold text-base2">Blogs</div>
-                        <PageBreadcrumb />
+                        <div className="sm:block hidden">
+                            <PageBreadcrumb />
+                        </div>
                     </div>
                 </div>
             </section>
-            <LatestUpdates />
+            <div className="sm:hidden block">
+                <MobLatestUpdates />
+            </div>
+            <div className="sm:block hidden">
+                <LatestUpdates />
+            </div>
             <section className="p-[30px_0_20px_0] 2xl:p-[40px_0_60px_0]">
                 <div className="container">
                     <div className="text-sm sm:text-lg md:text-xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl text-black font-medium mb-[15px]">

@@ -351,12 +351,12 @@
     outline: 1px solid #17479e;
   }
 
-  .LoanSlider {
+  /* .LoanSlider {
     margin: 0 -15px;
-  }
+  } */
 
   .LoanSlider .swiper-wrapper {
-    padding: 20px 15px !important;
+    padding: 20px 0px !important;
   }
 
   .LoanSlider .swiper-slide {

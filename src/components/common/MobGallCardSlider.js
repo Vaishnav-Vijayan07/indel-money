@@ -1,4 +1,5 @@
 "use client";
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -6,44 +7,61 @@ import 'swiper/css/navigation';
 import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
 
 const slides = [
-    { src: '/images/gallSlide01.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages' },
-    { src: '/images/gallSlide02.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages' },
-    { src: '/images/gallSlide03.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages' },
-    { src: '/images/gallSlide04.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages' },
-    { src: '/images/gallSlide05.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages' },
-    { src: '/images/gallSlide02.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages' },
-    { src: '/images/gallSlide04.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages' },
+    { src: '/images/gallSlide01.jpg', title: '0nam 2021', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages 1' },
+    { src: '/images/gallSlide02.jpg', title: '0nam 2022', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages 2' },
+    { src: '/images/gallSlide03.jpg', title: '0nam 2023', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages 3' },
+    { src: '/images/gallSlide04.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages 4' },
+    { src: '/images/gallSlide05.jpg', title: '0nam 2025', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages 5' },
+    { src: '/images/gallSlide02.jpg', title: '0nam 2026', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages 6' },
+    { src: '/images/gallSlide04.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages 7' },
 ];
 
-export default function CardSlider() {
+export default function MobGallCardSlider() {
+    const [activeIndex, setActiveIndex] = useState(2);
     return (
-        <div className="w-full flex justify-center items-center py-10">
+        <div className="w-full flex flex-wrap justify-center items-center">
+            <div className='container mb-[40px]'>
+                <div className="relative overflow-hidden w-full max-w-full text-center 4xs:px-[45px] px-[35px] py-[20px] bg-[#17479E] text-white rounded-[20px] bg-[linear-gradient(180deg,rgba(23,71,158,0.80)_6.47%,rgba(198,59,59,0.80)_91.2%)]">
+                    <div className="absolute inset-0 bg-white opacity-10 backdrop-blur-lg pointer-events-none rounded-[20px]" />
+                    <h3 className="text-lg font-semibold mb-1">{slides[activeIndex]?.title}</h3>
+                    <p className="text-sm text-white">{slides[activeIndex]?.description}</p>
+                </div>
+            </div>
             <style>{`
           .GallRoundSlide:not(.swiper-slide-active) .SwiprCntn{
                 opacity: 0;
           }`}</style>
+
+
             <Swiper
                 effect={'coverflow'}
+                modules={[EffectCoverflow]}
                 grabCursor={true}
                 centeredSlides={true}
-                slidesPerView={1.5}
-                spaceBetween={20}
+                slidesPerView={2.3}
+                spaceBetween={15}
                 loop={true}
                 initialSlide={2}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-                navigation={true}
+                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                navigation={false}
                 coverflowEffect={{
                     // rotate: -2,
                     // stretch: 2,
                     // depth: 3,
                     // modifier: 2,
-                    rotate: -5,
+                    rotate: -7,
                     stretch: 0,
                     depth: 80,
-                    modifier: 1.2,
+                    modifier: 2.2,
                     slideShadows: false,
                 }}
                 breakpoints={{
+                    360: {
+                        slidesPerView: 3.4,
+                        spaceBetween: 20,
+
+                    },
                     640: {
                         slidesPerView: 1.8,
                         spaceBetween: 30,
@@ -89,22 +107,19 @@ export default function CardSlider() {
                         },
                     },
                 }}
-                modules={[EffectCoverflow, Navigation,    ]}
                 className="w-full max-w-full"
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={index} className="w-full h-full GallRoundSlide not-[:where(.swiper-slide-visible)]:opacity-0 not-[:has(.swiper-slide-active)]:[.SwiprCntn]:opacity-0">
                         {({ isActive }) => (
-                            <div className="relative w-full h-[370px] lg:h-[350px] xl:h-[400px] 2xl:h-[400px] 3xl:h-[518px] rounded-[38px] overflow-hidden shadow-lg">
+                            <div className="relative w-full 4xs:h-[180px] h-[160px] rounded-[13px] overflow-hidden shadow-lg">
                                 <img
                                     src={slide.src}
                                     alt={`Slide ${index}`}
                                     className="w-full h-full object-cover"
                                 />
                                 {/* {isActive && ( */}
-                                <div className="SwiprCntn absolute bottom-0 left-0 right-0 text-white text-center py-[65px] px-[25px] bg-gradient-to-b from-[rgba(143,0,0,0)] to-[#17479E] z-1 pointer-events-none">
-                                    <h3 className="font-black text-[18px] lg:text-[18px] xl:text-[20px] 2xl:text-[18px] 3xl:text-[25px] text-[#fff] uppercase mb-[15px] pb-[15px] relative before:content-[''] before:absolute before:bottom-0 before:m-auto before:w-[30%] before:h-[1px] before:right-0 before:left-0 before:bg-white">{slide.title}</h3>
-                                    <p className="font-normal text-[14px] lg:text-[14px] xl:text-[16px] 2xl:text-[14px] 3xl:text-[18px] text-[#fff]">{slide.description}</p>
+                                <div className="SwiprCntn absolute bottom-0 left-0 right-0 text-white text-center py-[65px] px-[25px]  bg-gradient-to-b from-transparent via-[#80000080] to-[#0047AB] z-1 pointer-events-none">
                                 </div>
                                 {/* // )} */}
                             </div>
