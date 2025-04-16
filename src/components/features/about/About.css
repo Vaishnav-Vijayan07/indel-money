@@ -48,3 +48,10 @@
     outline: 3px solid #ee3824;
   }
 }
+
+/* MOBACCOLADESSLIDE */
+.mobAccoladesSlide .swiper-pagination {
+  width: initial;
+  left: auto;
+  right: 60px;
+}

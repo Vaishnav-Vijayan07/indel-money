@@ -37,7 +37,7 @@ function TabsTrigger({ className, ...props }) {
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "text-[#17479E] bg-none inline-flex h-[calc(100%-1px)] text-sm xl:text-xs w-1/2 xl:w-1/3 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 font-medium transition-[color,box-shadow] focus-visible:ring-2 focus-visible:ring-[#17479E] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm",
+        "text-base1 bg-none inline-flex h-[calc(100%-1px)] text-sm xl:text-xs w-1/2 xl:w-1/3 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 font-medium transition-[color,box-shadow] focus-visible:ring-2 focus-visible:ring-[#17479E] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm",
         "aria-selected:bg-gradient-to-r aria-selected:from-[#17479E] aria-selected:to-[#C63B3B] aria-selected:text-white",
         "whitespace-inherit",
         className

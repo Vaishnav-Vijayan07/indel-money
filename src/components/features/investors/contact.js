@@ -94,7 +94,7 @@ export default function contact() {
                                 <div key={index} className="w-[calc(100%/2)] p-[8px] 2xl:p-[-15px] 3xl:p-[20px]">
                                     <div className="w-full h-full bg-[#E5ECF5] px-[25px] py-[15px] 3xl:px-[35px] 3xl:py-[25px] rounded-[15px]">
                                         <div className="border-b border-dashed border-[#17479E]">
-                                            <div className="text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px] font-bold text-[#17479E] pb-[15px] leading-[1.3] max-w-[75%]">
+                                            <div className="text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px] font-bold text-base1 pb-[15px] leading-[1.3] max-w-[75%]">
                                                 {contact.title}
                                             </div>
                                         </div>
