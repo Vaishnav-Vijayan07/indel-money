@@ -9,7 +9,6 @@ export default function History() {
             <Indelhistory />
 
             {/* Yearsinception section */}
-            
             <Yearsinception/>
         </>
     );

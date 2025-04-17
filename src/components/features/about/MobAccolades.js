@@ -61,8 +61,8 @@ export default function MobAccolades() {
         >
           {awards.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="w-full h-auto flex p-[15px_10px_30px_15px] rounded-[20px] bg-gradient-to-l from-[rgba(255,197,197,0.40)] via-[rgba(23,71,158,0.30)] to-[rgba(255,197,197,0.30)]">
-                <div className="w-[calc(100%-135px)] pr-[20px]">
+              <div className="w-full h-auto flex flex-wrap p-[15px_10px_30px_15px] rounded-[20px] bg-gradient-to-l from-[rgba(255,197,197,0.40)] via-[rgba(23,71,158,0.30)] to-[rgba(255,197,197,0.30)]">
+                <div className="w-full 4xs:w-[calc(100%-135px)] pr-[10px] 4xs:pr-[20px] mb-[15px] 4xs:mb-0">
                   <div className="text-[18px] leading-[1.2] font-normal text-[#1e1e1e] mb-[15px]">
                     {item.title.replace(item.highlight, "")}
                     <span className="text-base2 font-bold">
@@ -82,12 +82,12 @@ export default function MobAccolades() {
                       alt="btn"
                       width={24}
                       height={24}
-                      className="aspect-square ml-[8px] group-hover:translate-x-[4px] transition-transform duration-300"
+                      className="w-[15px] 4xs:w-[24px] aspect-square ml-[8px] group-hover:translate-x-[4px] transition-transform duration-300"
                     />
                   </Link>
                 </div>
-                <div className="w-[135px] overflow-hidden rounded-[20px] relative z-0">
-                  <Image src={item.image} alt={item.alt} fill sizes={135} />
+                <div className="w-full 4xs:w-[135px] h-[320px] 4xs:h-auto  overflow-hidden rounded-[20px] relative z-0">
+                  <Image src={item.image} alt={item.alt} fill sizes={135} className="object-cover" />
                 </div>
               </div>
             </SwiperSlide>
