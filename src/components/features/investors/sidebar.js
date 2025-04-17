@@ -21,15 +21,15 @@ export default function Sidebar() {
     const pathname = usePathname();  
 
     return (
-        <aside className="w-full bg-[#B7D0FF] rounded-[25px] overflow-hidden h-full">
-            <ul className="py-[25px] 3xl:py-[30px]">
+        <aside className="w-full sm:bg-[#B7D0FF] rounded-[25px] overflow-hidden h-full">
+            <ul className="py-[25px] 3xl:py-[30px] sm:block flex flex-wrap sm:m-0 -m-[-5px]">
                 {menuItems.map((item, index) => {
                     const isActive = pathname === item.link;  
                     return (
-                        <li key={index} className="group">
+                        <li key={index} className="group sm:p-0 p-[5px] sm:w-full w-fit sm:min-w-full ">
                             <Link
                                 href={item.link}
-                                className={`text-[16px] xl:text-[20px] 2xl:text-[25px] 3xl:text-[30px] cursor-pointer transition-all duration-300 py-[15px] px-[25px] 2xl:py-[20px] 2xl:px-[40px] 3xl:py-[30px] 3xl:px-[50px] flex justify-between items-center 
+                                className={`text-[12px] sm:text-[16px] xl:text-[20px] 2xl:text-[25px] 3xl:text-[30px] cursor-pointer transition-all duration-300 py-[8px] sm:py-[15px] px-[16px] sm:px-[25px] 2xl:py-[20px] 2xl:px-[40px] 3xl:py-[30px] 3xl:px-[50px] flex justify-between items-center bg-[#B7D0FF] sm:rounded-[0] rounded-[10px]
                                     ${isActive
                                         ? "bg-[#DE5647] text-white font-bold"
                                         : "hover:bg-[#DE5647] hover:text-white"

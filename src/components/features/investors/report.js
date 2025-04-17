@@ -42,10 +42,10 @@ export default function Scheme() {
                 </div>
 
                 <div className="flex flex-wrap">
-                    <div className="w-[270px] xl:w-[330px] 2xl:w-[400px] 3xl:w-[510px]">
+                    <div className="w-full sm:w-[270px] xl:w-[330px] 2xl:w-[400px] 3xl:w-[510px]">
                         <Sidebar />
                     </div>
-                     <div className="w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
+                     <div className="w-full sm:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
                        
                         <Annualreport />
                         <Annualreturns />
