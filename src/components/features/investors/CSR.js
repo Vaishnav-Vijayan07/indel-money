@@ -72,17 +72,17 @@ export default function CSR() {
                                 <table className="w-full border-collapse rounded-[20px] px-[55px] 3xl:px-[76px] bg-[#D7E9FF] overflow-hidden">
                                     <thead>
                                         <tr className="bg-[#CDE2FF] text-left text-gray-800">
-                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">Name of Directors</th>
-                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">Nature of Directorship</th>
-                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] whitespace-nowrap">Designation</th>
+                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">Name of Directors</th>
+                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">Nature of Directorship</th>
+                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] whitespace-normal sm:whitespace-nowrap">Designation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {Corporate.map((Corporate, index) => (
                                             <tr key={index} className="bg-[#E7EFF6] border-t border-[#E5F0FA]">
-                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px]  3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">{Corporate.Name}</td>
-                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px]  3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">{Corporate.directorship}</td>
-                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px]  3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">{Corporate.Designation}</td>
+                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px]  3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">{Corporate.Name}</td>
+                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px]  3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">{Corporate.directorship}</td>
+                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px]  3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">{Corporate.Designation}</td>
 
                                             </tr>
                                         ))}
@@ -100,16 +100,16 @@ export default function CSR() {
                                 <table className="w-full border-collapse rounded-[20px] px-[55px] 3xl:px-[76px] bg-[#CDE2FF] overflow-hidden">
                                     <thead>
                                         <tr className="bg-[#CDE2FF] text-left text-gray-800">
-                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap w-[65%]">Monthly</th>
-                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap ">Record Date Intimation</th>
+                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap w-[50%] sm:w-[65%]">Monthly</th>
+                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap ">Record Date Intimation</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {Plan.map((Plan, index) => (
                                             <tr key={index} className="bg-[#E7EFF6] border-t border-[#E5F0FA]">
-                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">{Plan.Year}</td>
-                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">
+                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">{Plan.Year}</td>
+                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">
 
                                                     <Link
                                                         href={Plan.Report}
@@ -144,16 +144,16 @@ export default function CSR() {
                                 <table className="w-full border-collapse rounded-[20px] px-[55px] 3xl:px-[76px] bg-[#CDE2FF] overflow-hidden">
                                     <thead>
                                         <tr className="bg-[#CDE2FF] text-left text-gray-800">
-                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap w-[65%]">Monthly</th>
-                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap ">Record Date Intimation</th>
+                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap w-[50%] sm:w-[65%]">Monthly</th>
+                                            <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap ">Record Date Intimation</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {Plan.map((Plan, index) => (
                                             <tr key={index} className="bg-[#E7EFF6] border-t border-[#E5F0FA]">
-                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">{Plan.Year}</td>
-                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">
+                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">{Plan.Year}</td>
+                                                <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">
 
                                                     <Link
                                                         href={Plan.Report}
@@ -192,7 +192,7 @@ export default function CSR() {
                                 href="#"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-between bg-[#F30000] text-white text-[12px] 2xl:text-[16px] 3xl:text-[18px] font-bold px-5 py-2 rounded-full min-w-[150px] 3xl:min-w-[200px] transition-all duration-300 ease-in-out hover:bg-[#D20000] hover:scale-105"
+                                className="flex items-center justify-between bg-[#F30000] text-white text-[12px] 2xl:text-[16px] 3xl:text-[18px] font-bold px-[17px] sm:px-5 py-[15px] sm:py-2 rounded-full min-w-[120px] sm:min-w-[150px] 3xl:min-w-[200px] transition-all duration-300 ease-in-out hover:bg-[#D20000] hover:scale-105"
                             >
                                 VIEW PDF
                                 <div className="w-[20px] h-[20px] xl:w-[30px] xl:h-[30px] 3xl:w-[40px] 3xl:h-[40px] ml-2 bg-white rounded-full flex items-center justify-center ">
