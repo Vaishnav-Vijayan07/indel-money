@@ -49,8 +49,7 @@ export default function AsideMenu({ navigationItems }) {
                     onClick={() => toggleSubmenu(index)}
                     className="w-[20px] lg:w-[20px] xl:w-[25px] 2xl:w-[30px] 3xl:w-[35px] absolute z-1 top-0 bottom-0 right-[15px] lg:right-[20px] xl:right-[30px] 2xl:right-[40px] 3xl:right-[50px]"
                     aria-expanded={openMenuIndex === index ? "true" : "false"}
-                    aria-label={`Toggle ${item.title} submenu`}
-                  >
+                    aria-label={`Toggle ${item.title} submenu`}>
                     <svg
                       width="11"
                       height="6"

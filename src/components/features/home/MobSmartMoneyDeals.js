@@ -79,8 +79,7 @@ export default function MobSmartMoneyDeals() {
             <SwiperSlide key={index}>
               <Link
                 href={item.link}
-                className="w-full h-full min-h-[120px] rounded-[15px] bg-gradient-to-tl from-base1/40 to-base2/40 p-[12px] flex items-center justify-center"
-              >
+                className="w-full h-full min-h-[120px] rounded-[15px] bg-gradient-to-tl from-base1/40 to-base2/40 p-[12px] flex items-center justify-center">
                 <div>
                   <Image
                     src={item.image}

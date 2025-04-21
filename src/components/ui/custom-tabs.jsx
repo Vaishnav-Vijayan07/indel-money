@@ -21,8 +21,8 @@ function TabsList({ className, ...props }) {
       <TabsPrimitive.List
         data-slot="tabs-list"
         className={cn(
-          "bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]",
-          "flex-wrap",
+          "bg-muted text-muted-foreground inline-flex h-9 w-fit justify-center sm:flex-wrap 3xs:flex-nowrap flex-wrap rounded-lg p-[3px]",
+          "",
           className
         )}
         {...props}
@@ -37,9 +37,11 @@ function TabsTrigger({ className, ...props }) {
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "text-base1 bg-none inline-flex h-[calc(100%-1px)] text-sm xl:text-xs w-1/2 xl:w-1/3 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 font-medium transition-[color,box-shadow] focus-visible:ring-2 focus-visible:ring-[#17479E] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm",
-        "aria-selected:bg-gradient-to-r aria-selected:from-[#17479E] aria-selected:to-[#C63B3B] aria-selected:text-white",
+        "text-[#17479E] bg-none inline-flex text-sm xl:text-xs w-1/3 xl:w-1/3 items-center justify-center gap-1.5 border border-transparent sm:mx-0 mx-[5px] px-2 py-1 font-medium transition-[color,box-shadow] focus-visible:ring-2 focus-visible:ring-[#17479E] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm",
+        "bg-[#C0DBFF] sm:bg-[#0000] sm:aria-selected:bg-gradient-to-r sm:aria-selected:from-[#17479E] sm:aria-selected:to-[#C63B3B] aria-selected:bg-[#17479E] aria-selected:text-white",
         "whitespace-inherit",
+        "rounded-md", // default
+        "sm:aria-selected:bg-gradient-to-r aria-selected:from-[#17479E] aria-selected:to-[#17479E]",
         className
       )}
       {...props}

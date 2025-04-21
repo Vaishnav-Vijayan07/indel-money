@@ -39,8 +39,8 @@ export default function IndelRemit() {
         <section className="relative z-1 w-full pt-[25 px] lg:pt-[40px] 2xl:pt-[30px] pb-[30px] xl:pb-[40px] 2xl:pb-[90px]">
             <div className="container">
 
-                <div className="relative w-full bg-[#CAE5F4] flex flex-wrap rounded-[36px] overflow-hidden">
-                    <div className="group h-full lg:h-auto w-full lg:w-[400px] xl:w-[470px] 2xl:w-[700px] overflow-hidden absolute left-0 top-0 opacity-[30%] lg:opacity-[100%] lg:relative z-0 lg:z-1">
+                <div className="relative w-full bg-[#CAE5F4] flex flex-wrap rounded-[36px] overflow-hidden lg:flex-row flex-col-reverse">
+                    <div className="group h-full lg:h-auto w-full lg:w-[400px] xl:w-[470px] 2xl:w-[700px] overflow-hidden z-1">
                         <Image
                             src="/images/remit01.jpg"
                             alt="money-deal"
@@ -60,14 +60,14 @@ export default function IndelRemit() {
                                 All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
                             </p>
                         </div>
-                        <Link href="/" className="w-full text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center hover:text-base2 transition-color duration-300 mt-[20px]">
+                        <Link href="/" className="group w-full text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center leading-[1] hover:text-base2 transition-color duration-300 mt-[20px]">
                             LEARN MORE
                             <Image
                                 src="/images/icon-right.svg"
                                 width={7}
                                 height={13}
                                 alt="right"
-                                className="ml-1 lg:ml-2"
+                                className="ml-1 lg:ml-2 group-hover:ml-[15px] duration-600"
                             />
                         </Link>
                     </div>
