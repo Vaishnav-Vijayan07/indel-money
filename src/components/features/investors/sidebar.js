@@ -21,8 +21,8 @@ export default function Sidebar() {
     const pathname = usePathname();  
 
     return (
-        <aside className="w-full sm:bg-[#B7D0FF] rounded-[25px] overflow-hidden h-full">
-            <ul className="py-[25px] 3xl:py-[30px] sm:block flex flex-wrap sm:m-0 -m-[-5px]">
+        <aside className="w-full sm:bg-[#B7D0FF] sm:rounded-[25px] overflow-hidden h-full">
+            <ul className="py-[15px] sm:py-[25px] 3xl:py-[30px] sm:block flex flex-wrap sm:m-0 -m-[5px]">
                 {menuItems.map((item, index) => {
                     const isActive = pathname === item.link;  
                     return (
@@ -38,15 +38,22 @@ export default function Sidebar() {
                                 {item.name}
                              
                                 <span
-                                    className={`transition-opacity duration-300 opacity-0 group-hover:opacity-100 
+                                    className={`transition-opacity duration-300 opacity-0 group-hover:opacity-100 sm:ml-[0] ml-[10px] 
                                     ${isActive ? "opacity-100" : ""}`}
                                 >
+                                    <Image
+                                        src="/images/arrowIconMob.svg"
+                                        alt="arrow"
+                                        width={12}
+                                        height={12}
+                                        className="w-full h-full object-contain max-w-[12px] sm:max-w-[20px] max-h-[20px] 2xl:max-w-[25px] 2xl:max-h-[25px] 3xl:max-w-[38px] 3xl:max-h-[38px] sm:hidden block"
+                                    />
                                     <Image
                                         src="/images/arrowIcon.svg"
                                         alt="arrow"
                                         width={24}
                                         height={24}
-                                        className="w-full h-full object-contain max-w-[20px] max-h-[20px] 2xl:max-w-[25px] 2xl:max-h-[25px] 3xl:max-w-[38px] 3xl:max-h-[38px]"
+                                        className="w-full h-full object-contain max-w-[12px] sm:max-w-[20px] max-h-[20px] 2xl:max-w-[25px] 2xl:max-h-[25px] 3xl:max-w-[38px] 3xl:max-h-[38px] sm:block hidden"
                                     />
                                 </span>
                             </Link>

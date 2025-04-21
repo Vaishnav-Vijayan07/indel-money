@@ -56,11 +56,11 @@ export default function LatestUpdates() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex bg-[#cae5f4] rounded-[30px] overflow-hidden"
+          className="flex flex-wrap bg-[#cae5f4] rounded-[30px] overflow-hidden"
         >
-          <div className="w-1/2 p-4 lg:p-6 xl:p-8">
+          <div className="w-full md:w-[55%] lg:w-1/2 p-4 lg:p-6 xl:p-8">
             <div className="flex justify-between items-center gap-2 mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">
-              <h3 className="text-sm sm:text-lg md:text-xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl text-black font-medium">
+              <h3 className="text-title1 text-black font-medium">
                 Latest Updates
               </h3>
               <Link
@@ -73,7 +73,7 @@ export default function LatestUpdates() {
                   width={7}
                   height={13}
                   alt="right"
-                  className="ml-1 lg:ml-2"
+                  className="w-[4px] lg:w-[6px] ml-1 lg:ml-2"
                 />
               </Link>
             </div>
@@ -84,12 +84,12 @@ export default function LatestUpdates() {
               slides={slides.slice(1)}
             />
           </div>
-          <div className="w-1/2">
+          <div className="w-full md:w-[45%] lg:w-1/2">
             {/* Show only the first object */}
             {slides.slice(0, 1).map((item, index) => (
               <div
                 key={index}
-                className="group w-full h-full overflow-hidden block relative z-0"
+                className="group w-full aspect-4/3 md:aspect-auto md:h-full overflow-hidden block relative z-0"
               >
                 <Image
                   src={item?.image}

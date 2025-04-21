@@ -58,7 +58,7 @@ export default function IndelValues() {
                                             className="w-full h-full object-contain"
                                         />
                                     </div>
-                                    <div className="text-[18px] 2xl:text-[25px] 3xl:text-[30px] font-medium 3xl:mb-[15px] mb-[10px] text-[#17479E] leading-[1.2]">
+                                    <div className="text-[18px] 2xl:text-[25px] 3xl:text-[30px] font-medium 3xl:mb-[15px] mb-[10px] text-base1 leading-[1.2]">
                                         {item.title}
                                     </div>
                                     <p className="max-w-[350px]">{item.description}</p>

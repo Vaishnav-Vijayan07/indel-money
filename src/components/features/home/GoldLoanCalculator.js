@@ -132,7 +132,7 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
         </div>
 
         <div className="flex flex-wrap -mx-[10px] lg:-mx-[15px] 2xl:-mx-[20px]">
-          <div className="w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
+          <div className="w-full sm:w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -146,7 +146,7 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
               <GoldLoanForm />
             </motion.div>
           </div>
-          <div className="w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
+          <div className="w-full sm:w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}

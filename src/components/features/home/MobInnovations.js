@@ -18,7 +18,7 @@ function DownloadBx({ src, href, alt }) {
 export default function MobInnovations() {
   return (
     <section className="w-full py-[50px_80px] overflow-hidden relative z-0 ">
-      <div className="absolute -z-1 top-[68px] left-[170px] rotate-[-30deg]">
+      <div className="absolute -z-1 top-[68px] left-[40%] rotate-[-30deg]">
         <Image
           src="/images/innovations-1.png"
           alt="innovations"

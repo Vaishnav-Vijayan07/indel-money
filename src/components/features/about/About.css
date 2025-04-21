@@ -1,0 +1,57 @@
+.aboutSlide {
+  --swiper-pagination-bottom: 40px;
+  --swiper-pagination-color: #ffc1c1;
+  --swiper-pagination-bullet-width: 6px;
+  --swiper-pagination-bullet-height: 6px;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+}
+@media (min-width: 640px) {
+  .aboutSlide {
+    --swiper-pagination-color: #fff;
+    --swiper-pagination-bullet-inactive-color: #000;
+  }
+}
+@media (min-width: 1536px) {
+  .aboutSlide {
+    --swiper-pagination-bullet-width: 8px;
+    --swiper-pagination-bullet-height: 8px;
+    --swiper-pagination-bullet-horizontal-gap: 10px;
+  }
+}
+
+.aboutSlide .swiper-pagination {
+  text-align: start !important;
+  max-width: var(--container-x);
+  padding-left: var(--container-padding, 1rem);
+  padding-right: var(--container-padding, 1rem);
+  left: -5px;
+  right: 0;
+  margin: auto;
+}
+@media (min-width: 1536px) {
+  .aboutSlide .swiper-pagination {
+    left: -10px;
+  }
+}
+
+.aboutSlide
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  outline: 1px solid #ee3824;
+}
+@media (min-width: 640px) {
+  .aboutSlide
+    .swiper-pagination
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    outline: 3px solid #ee3824;
+  }
+}
+
+/* MOBACCOLADESSLIDE */
+.mobAccoladesSlide .swiper-pagination {
+  width: initial;
+  left: auto;
+  right: 60px;
+}

@@ -77,7 +77,7 @@ export default function Services() {
                                                         className="w-full h-full object-contain"
                                                     />
                                                 </div>
-                                                <div className="text-[18px] 2xl:text-[22px] 3xl:text-[30px] text-[#17479E] font-medium w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] pl-[20px] 3xl:pl-[30px] leading-[1.3]">
+                                                <div className="text-[18px] 2xl:text-[22px] 3xl:text-[30px] text-base1 font-medium w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] pl-[20px] 3xl:pl-[30px] leading-[1.3]">
                                                     {service.title}
                                                 </div>
                                             </div>

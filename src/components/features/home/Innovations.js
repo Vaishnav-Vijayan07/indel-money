@@ -9,7 +9,7 @@ export default function Innovations() {
       <div className="container">
         <div className="rounded-[36px] bg-[#CAE5F4] 2xl:px-[85px] lg:px-[45px] px-[30px] h-full w-full">
           <div className="flex flex-wrap relative  h-full w-full 2xl:py[60px] lg:py-[40px] py-[25px]">
-            <div className="w-full max-w-[calc(100%-220px)] lg:max-w-[calc(100%-300px)] xl:max-w-[calc(100%-320px)] 2xl:max-w-[calc(100%-376px)] 3xl:max-w-[calc(100%-400px)]">
+            <div className="w-full sm:max-w-[calc(100%-176px)] lg:max-w-[calc(100%-268px)] xl:max-w-[calc(100%-320px)] 2xl:max-w-[calc(100%-376px)] 3xl:max-w-[calc(100%-400px)]">
               <div className="flex flex-wrap items-center mb-[15px] lg:mb[20px] 2xl:mb[30px]">
                 <div className="w-full lg:w-[276px] 2xl:w-[376px] 3xl:w-[420px] lg:border-r-1 lg:border-r-[rgba(0,0,0,0.6)] h-full">
                   <div className="text-title1 max-w-9/10">
@@ -69,7 +69,7 @@ export default function Innovations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="w-full max-w-[220px] lg:max-w-[300px] xl:max-w-[320px] 2xl:max-w-[376px] 3xl:max-w-[400px] max-lg:hidden absolute bottom-0 right-0"
+              className="w-full sm:max-w-[176px] lg:max-w-[268px] xl:max-w-[320px] 2xl:max-w-[376px] 3xl:max-w-[400px] absolute bottom-0 right-0 max-sm:hidden"
             >
               <Image
                 src={"/images/app-1.png"}

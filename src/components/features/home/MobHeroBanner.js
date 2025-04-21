@@ -10,6 +10,8 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Link from "next/link";
 
+import "./Home.css";
+
 const slides = [
   {
     image: "/images/mob-MainSlide1.jpg",
@@ -45,13 +47,12 @@ export default function MobHeroBanner() {
         //   clickable: true,
         // }}
         pagination={false}
-        autoplay={false}
-        // autoplay={{
-        //   delay: 4000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
         loop={true}
-        className="heroSlide h-[calc(100vh-(var(--header-y)+var(--marquee-y)))]"
+        className="heroSlide h-[calc(100vh-(var(--header-y)))]"
       >
         {slides?.map((item, index) => (
           <SwiperSlide
@@ -59,19 +60,19 @@ export default function MobHeroBanner() {
             className="relative z-0 flex! items-end before:absolute before:inset-0 before:-z-1 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full py-[calc(var(--marquee-y)+65px)]"
           >
             <Image
-              src={item?.image}
+              src={item.image}
+              alt={item.alt}
               fill
-              alt={item?.alt}
               priority
-              className="-z-2"
+              className="-z-2 object-cover"
             />
             <div className="container">
               <div className="max-w-full">
-                <h1 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-6">
-                  <span className="text-base2 font-bold">{item?.title1}</span>{" "}
-                  {item?.title2}
+                <h1 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[20px]">
+                  <span className="text-base2 font-bold">{item.title1}</span>{" "}
+                  {item.title2}
                 </h1>
-                <Link href={item?.link} className="btn btn-base2 max-w-[130px]">
+                <Link href={item.link} className="btn btn-base2 max-w-[130px]">
                   KNOW MORE
                 </Link>
               </div>
@@ -96,7 +97,7 @@ export default function MobHeroBanner() {
           </div>
         </div>
         <div className="w-full h-[var(--marquee-y)] bg-base1 flex items-center">
-          <div className="container">
+          <div className="w-full max-w-[calc(100%-((100%-var(--container-x))/2))] pr-0 mr-0 ml-auto pl-[var(--container-padding)]">
             <Marquee speed={80} pauseOnHover={true} className="text-sm1 text-white">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy

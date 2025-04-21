@@ -39,7 +39,7 @@ function ImageBox({ item, className }) {
 
 export default function LifeAtIndel() {
   return (
-    <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px]">
+    <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px] overflow-hidden">
       <div className="container">
         <div className="flex flex-wrap items-center lg:-mx-[15px] xl:-mx-[20px] 3xl:-mx-[35px]">
           <motion.div
@@ -88,7 +88,7 @@ export default function LifeAtIndel() {
               <div>
                 <Link
                   href="/"
-                  className="btn btn-base2 min-w-[160px] lg:min-w-[180px] xl:min-w-[220px] 3xl:min-w-[280px]"
+                  className="btn btn-base2 min-w-[200px] lg:min-w-[180px] xl:min-w-[220px] 3xl:min-w-[280px]"
                 >
                   TAKE ME TO CAREERS PAGE
                 </Link>
@@ -96,7 +96,7 @@ export default function LifeAtIndel() {
               <div>
                 <Link
                   href="/"
-                  className="btn btn-base2 min-w-[100px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[180px]"
+                  className="btn btn-base2 min-w-[120px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[180px]"
                 >
                   VISIT GALLERY
                 </Link>
