@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import GoldLoanForm from "../../common/GoldLoanForm";
-import EmiForm from "../../common/EmiForm";
 
 const steps = [
   {
@@ -23,9 +21,9 @@ const steps = [
   },
 ];
 
-export default function GoldLoanCalculator({ hideTitle = false }) {
+export default function StepGoldLoan({ className, hideTitle = false }) {
   return (
-    <section className="w-full pt-[20px] md:pt-[30px] 2xl:pt-[60px] pb-[20px] md:pb-[30px] 2xl:pb-[100px]">
+    <section className={`${className} w-full pt-[20px] md:pt-[30px] 2xl:pt-[60px]`}>
       <div className="container">
         {!hideTitle && (
           <div className="text-title1 font-normal mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
@@ -33,7 +31,7 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
             <span className="font-bold text-base2">Gold Loan</span>{" "}
           </div>
         )}
-        <div className="flex justify-between mb-[20px] sm:mb-[30px] lg:mb-[40px] 2xl:mb-[60px]">
+        <div className="flex justify-between">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -129,37 +127,6 @@ export default function GoldLoanCalculator({ hideTitle = false }) {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="flex flex-wrap -mx-[10px] lg:-mx-[15px] 2xl:-mx-[20px]">
-          <div className="w-full sm:w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-full h-full bg-[#c0dbff] rounded-[15px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_20px] sm:p-[25px_30px] xl:p-[40px_45px] 2xl:p-[45px_55px] 3xl:p-[50px_65px]"
-            >
-              <div className="text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] leading-[1] font-medium mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
-                Gold Loan Calculator
-              </div>
-              <GoldLoanForm />
-            </motion.div>
-          </div>
-          <div className="w-full sm:w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-full h-full bg-[#fcdcdc] rounded-[15px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_20px] sm:p-[25px_30px] xl:p-[40px_45px] 2xl:p-[45px_55px] 3xl:p-[50px_65px]"
-            >
-              <div className="text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] leading-[1] font-medium mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
-                EMI Calculator
-              </div>
-              <EmiForm />
-            </motion.div>
-          </div>
         </div>
       </div>
     </section>
