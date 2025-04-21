@@ -23,12 +23,12 @@ export default function Indelhistory() {
           History of{" "}
           <span className="text-[#F30000] font-bold">Indel Money</span>
         </h2>
-        <div className="mb-[20px] lg:mb-[35px]">
+        <div className="mb-[20px] lg:mb-[35px] 2xl:mb-[60px]">
           <PageBreadcrumb />
         </div>
-        <div className="flex flex-wrap">
-          <div className="w-full lg:w-[350px] xl:w-[465px] 2xl:w-[535px] 3xl:w-[670px]">
-            <div className="w-full h-auto p-[25px] 2xl:p-[44px] rounded-[25px] shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
+        <div className="flex flex-wrap bg-white rounded-[15px] max-lg:shadow-[0_0_15px_rgba(0,0,0,0.15)] overflow-hidden max-lg:p-[20px]">
+          <div className="w-full lg:w-[350px] xl:w-[465px] 2xl:w-[535px] 3xl:w-[670px] max-lg:mb-[30px]">
+            <div className="w-full h-auto lg:p-[25px] 2xl:p-[44px] lg:rounded-[25px] lg:shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
               <div className="text-[20px] lg:text-[25px] xl:text-[30px] 2xl:text-[35px] 3xl:text-[40px] text-black font-medium mb-[10px]">
                 Our History
               </div>
@@ -60,9 +60,9 @@ export default function Indelhistory() {
               </p>
             </div>
           </div>
-          <div className="w-full lg:w-[calc(100%-350px)] xl:w-[calc(100%-465px)] 2xl:w-[calc(100%-535px)] 3xl:w-[calc(100%-670px)] pl-[40px]">
+          <div className="w-full lg:w-[calc(100%-350px)] xl:w-[calc(100%-465px)] 2xl:w-[calc(100%-535px)] 3xl:w-[calc(100%-670px)] lg:pl-[40px]">
             <div
-              className={`columns-3 gap-4 xl:gap-7 3xl:gap-10 max-lg:max-w-[80%] max-lg:mx-auto max-lg:mt-[20px] ${styles.itemsList}`}
+              className={`columns-3 gap-4 xl:gap-7 3xl:gap-10 ${styles.itemsList}`}
             >
               {historyImages.map((img, index) => (
                 <div
