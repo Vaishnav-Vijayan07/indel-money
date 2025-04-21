@@ -4,6 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../../../@/components/ui/accordion";
 import { cn } from "../../../lib/utils";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+
+import { FreeMode } from 'swiper/modules';
 
 const years = ["2024-2025", "2023-2024", "2022-2023", "2021-2022"];
 
@@ -35,7 +41,34 @@ export default function StockExchange() {
 
     return (
         <section>
-            <div className="flex space-x-2 mb-4">
+            <div className="sm:hidden block">
+                <Swiper
+                    slidesPerView="auto"
+                    spaceBetween={10}
+                    freeMode={true}
+                    modules={[FreeMode]}
+                    className="mb-4 px-2"
+                >
+                    {years.map((year) => (
+                        <SwiperSlide key={year} className="!w-auto">
+                            <button
+                                onClick={() => {
+                                    setActiveYear(year);
+                                    handleAccordionToggle(year);
+                                }}
+                                className={cn(
+                                    "text-[12px] sm:text-[8px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] px-[15px] xl:px-[20px] py-[8px] 3xl:px-[25px] 3xl:py-[11px] rounded-full font-bold transition-all text-white cursor-pointer whitespace-nowrap",
+                                    activeYear === year ? "bg-[#17479E]" : "bg-[#85B6CF]"
+                                )}
+                            >
+                                {year}
+                            </button>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+
+            </div>
+            <div className="hidden sm:flex space-x-2 mb-4">
                 {years.map((year) => (
                     <button
                         key={year}
@@ -44,7 +77,7 @@ export default function StockExchange() {
                             handleAccordionToggle(year);
                         }}
                         className={cn(
-                            "text-[8px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] px-[15px] xl:px-[20px] py-[8px] 3xl:px-[25px] 3xl:py-[11px] rounded-full font-bold transition-all text-white cursor-pointer",
+                            "text-[12px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] px-[15px] xl:px-[20px] py-[8px] 3xl:px-[25px] 3xl:py-[11px] rounded-full font-bold transition-all text-white cursor-pointer",
                             activeYear === year
                                 ? "bg-[#17479E]"
                                 : "bg-[#85B6CF]"
@@ -62,16 +95,16 @@ export default function StockExchange() {
                         <AccordionContent>
                             {/* Board Meeting Section */}
                             <div className="mb-[20px] xl:mb-[25px]">
-                                <div className="text-[18px] lg:text-[26px] xl:text-[28px] 2xl:text-[35px] 3xl:text-[42px] font-medium text-black mb-[20px] xl:mb-[25px]">
+                                <div className="text-[18px] lg:text-[26px] xl:text-[28px] 2xl:text-[35px] 3xl:text-[42px] font-normal sm:font-medium text-black mb-[20px] xl:mb-[25px]">
                                     1. Board Meeting {year}
                                 </div>
                                 <div className="overflow-auto w-full">
                                     <table className="w-full border-collapse rounded-[20px] px-[55px] 3xl:px-[76px] bg-[#D7E9FF] overflow-hidden">
                                         <thead>
                                             <tr className="bg-[#CDE2FF] text-left text-gray-800">
-                                                <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">Meeting Date</th>
-                                                <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">Intimation</th>
-                                                <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] whitespace-nowrap">Outcome</th>
+                                                <th className="text-[12px] sm:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] break-spaces sm:whitespace-nowrap">Meeting Date</th>
+                                                <th className="text-[12px] sm:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] break-spaces sm:whitespace-nowrap">Intimation</th>
+                                                <th className="text-[12px] sm:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] break-spaces sm:whitespace-nowrap">Outcome</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -123,16 +156,16 @@ export default function StockExchange() {
 
                             {/* Other Intimations Section */}
                             <div className="mb-[20px] xl:mb-[25px]">
-                                <div className="text-[18px] lg:text-[28px] xl:text-[30px] 2xl:text-[35px] 3xl:text-[42px] font-medium text-black mb-[20px] xl:mb-[25px]">
+                                <div className="text-[18px] lg:text-[28px] xl:text-[30px] 2xl:text-[35px] 3xl:text-[42px] font-normal sm:font-medium text-black mb-[20px] xl:mb-[25px]">
                                     2. Other Intimations Filed With BSE
                                 </div>
                                 <div className="overflow-auto w-full">
                                     <table className="w-full border-collapse rounded-[20px] px-[55px] 3xl:px-[76px] bg-[#CDE2FF] overflow-hidden">
                                         <thead>
                                             <tr className="bg-[#CDE2FF] text-left text-gray-800">
-                                                <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">Monthly</th>
-                                                <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">Record Date Intimation</th>
-                                                <th className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] whitespace-nowrap">Interest Payment Confirmation</th>
+                                                <th className="text-[12px] sm:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] break-spaces sm:whitespace-nowrap">Monthly</th>
+                                                <th className="text-[12px] sm:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] border-r border-r-[rgba(32,35,102,0.12)] break-spaces sm:whitespace-nowrap">Record Date Intimation</th>
+                                                <th className="text-[12px] sm:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold py-[12px] 3xl:py-[18px] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] bg-[#CDE2FF] break-spaces sm:whitespace-nowrap">Interest Payment Confirmation</th>
                                             </tr>
                                         </thead>
                                         <tbody>

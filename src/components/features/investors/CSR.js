@@ -31,7 +31,7 @@ export default function CSR() {
                 <h2 className="text-[28px] lg:text-[35px] xl:text-[45px] 2xl:text-[50px] 3xl:text-[68px] text-black font-regular mb-[5px]">
                     <span className="text-[#F30000] font-bold">Investors</span>
                 </h2>
-                <div className='breadcrumb flex flex-wrap mb-[35px]'>
+                <div className='breadcrumb hidden sm:flex flex-wrap mb-[10px] md:mb-[35px]'>
                     <Link href="/" className="block w-fit text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#383838] mr-[25px] relative 
                     before:absolute before:right-[-12px] before:top-1/2 before:-translate-y-1/2 before:rotate-135 
                     before:border-l-[6px] 3xl:before:border-l-[8px] before:border-b-[6px] 3xl:before:border-b-[8px] before:border-l-[#17479E] before:border-b-transparent 
@@ -58,10 +58,10 @@ export default function CSR() {
                 </div>
 
                 <div className="flex flex-wrap">
-                    <div className="w-[270px] xl:w-[330px] 2xl:w-[400px] 3xl:w-[510px]">
+                    <div className="w-full md:w-[270px] xl:w-[330px] 2xl:w-[400px] 3xl:w-[510px]">
                         <Sidebar />
                     </div>
-                    <div className="w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
+                    <div className="w-full md:w-[calc(100%-270px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
                         <div className="text-black text-title1 font-medium mb-[15px] 2xl:mb-[20px] 3xlmb-[30px]">CSR</div>
                         {/* Board Meeting Section */}
                         <div className="mb-[20px] xl:mb-[25px]">
