@@ -1,8 +1,8 @@
-"use client"
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import Image from 'next/image';
+"use client";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import Image from "next/image";
 
 const slides = [
   {
@@ -37,32 +37,14 @@ const slides = [
   },
 ];
 
-export default function DifferentShadesIndelSlide() {
-  return (
-    <section className="w-full block py-[20px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] overflow-hidden">
-      <div className="container">
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={0}
-          className="differentShadesSlide overflow-visible!"
-        >
-          {slides?.map((item, index) => (
-            <SwiperSlide key={index} className={`${index === 0 ? "max-w-[240px] sm:max-w-[276px] md:max-w-[320px] lg:max-w-[376px] xl:max-w-[453px] 2xl:max-w-[568px] 3xl:max-w-[668px]" : "max-w-[85px] sm:max-w-[79px] md:max-w-[100px] lg:max-w-[115px] xl:max-w-[135px] 2xl:max-w-[156px] 3xl:max-w-[205px] lg:odd:translate-y-[20px] xl:odd:translate-y-[25px] 2xl:odd:translate-y-[30px] 3xl:odd:translate-y-[40px] lg:even:-translate-y-[20px] xl:even:-translate-y-[25px] 2xl:even:-translate-y-[30px] 3xl:even:-translate-y-[40px]"} h-auto! mr-[4px] lg:mr-[10px] xl:mr-[20px] 2xl:mr-[30px] 3xl:mr-[40px] transition-all duration-300  `}>
-              <ShadeIndelBox item={item} index={index} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </section>
-  )
-}
-
 function ShadeIndelBox({ item, index }) {
   const isActive = index === 0;
   return (
     <div
       className={`
-              ${isActive ? "bg-[#dceafb]" : "bg-black"} group w-full h-[276px] sm:h-[320px] lg:h-[368px] xl:h-[420px] 2xl:h-[576px] 3xl:h-[660px] rounded-[10px] lg:rounded-[15px] 2xl:rounded-[20px] 3xl:rounded-[36px] overflow-hidden relative z-0 transition-all duration-300
+              ${
+                isActive ? "bg-[#dceafb]" : "bg-black"
+              } group w-full h-[276px] sm:h-[320px] lg:h-[368px] xl:h-[420px] 2xl:h-[576px] 3xl:h-[660px] rounded-[10px] lg:rounded-[15px] 2xl:rounded-[20px] 3xl:rounded-[36px] overflow-hidden relative z-0 transition-all duration-300
               `}
     >
       <Image
@@ -71,7 +53,9 @@ function ShadeIndelBox({ item, index }) {
         fill
         style={{ objectFit: "cover" }}
         className={`
-          ${isActive ? "opacity-100" : "opacity-50"} transition-transform duration-300 group-hover:scale-105`}
+          ${
+            isActive ? "opacity-100" : "opacity-50"
+          } transition-transform duration-300 group-hover:scale-105`}
       />
       {isActive ? (
         <div className="w-full h-auto bg-gradient-to-r to-base1/0 from-base2/60 p-[10px_15px] lg:p-[15px_20px] xl:p-[20px_40px] 2xl:p-[25px_60px] 3xl:p-[30px_70px] absolute z-1 left-0 bottom-0 right-0 lg:mb-[15px] xl:mb-[30px] 2xl:mb-[35px] 3xl:mb-[40px]">
@@ -86,7 +70,94 @@ function ShadeIndelBox({ item, index }) {
           </div>
         </div>
       )}
-    </div >
-  )
+    </div>
+  );
 }
 
+export default function DifferentShadesIndelSlide() {
+  return (
+    <section className="w-full block py-[20px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] overflow-hidden">
+      <div className="container">
+        <Swiper
+          slidesPerView={"auto"}
+          spaceBetween={0}
+          className="differentShadesSlide overflow-visible! "
+        >
+          {slides?.map((item, index) => (
+            <SwiperSlide
+              key={index}
+              className={`${
+                index === 0
+                  ? "max-w-[240px] sm:max-w-[276px] md:max-w-[320px] lg:max-w-[376px] xl:max-w-[453px] 2xl:max-w-[568px] 3xl:max-w-[668px]"
+                  : "max-w-[85px] sm:max-w-[79px] md:max-w-[100px] lg:max-w-[115px] xl:max-w-[135px] 2xl:max-w-[156px] 3xl:max-w-[205px] lg:odd:translate-y-[20px] xl:odd:translate-y-[25px] 2xl:odd:translate-y-[30px] 3xl:odd:translate-y-[40px] lg:even:-translate-y-[20px] xl:even:-translate-y-[25px] 2xl:even:-translate-y-[30px] 3xl:even:-translate-y-[40px]"
+              } h-auto! mr-[4px] lg:mr-[10px] xl:mr-[20px] 2xl:mr-[30px] 3xl:mr-[40px] transition-all duration-300  `}
+            >
+              <ShadeIndelBox item={item} index={index} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="w-full mt-[20px] sm:mt-[40px] lg:mt-[60px] 2xl:mt-[80px] 3xl:mt-[80px] [&_p]:text-sm1 [&_p]:mb-[10px] sm:[&_p]:mb-[15px] lg:[&_p]:mb-[20px] [&_img]:mb-[10px] sm:[&_img]:mb-[15px] lg:[&_img]:mb-[20px]">
+          <Image
+            src="/images/shadeIndel-disc-1.png"
+            alt="indel"
+            width={260}
+            height={100}
+            className="max-w-[120px] lg:max-w-[176px] 2xl:max-w-[220px] 3xl:max-w-[268px]"
+          />
+          <p>
+            Indel Automotive Private Limited, the automotive division of our
+            organization, stands as one of India&apos;s foremost automotive
+            dealership conglomerates. With a strong legacy of excellence and
+            customer-centric values, we have established ourselves as a trusted
+            name in the automotive industry. Over the years, we have forged
+            strategic partnerships with some of the world&apos;s most renowned
+            automotive manufacturers, enabling us to deliver cutting-edge
+            vehicles and exceptional after-sales services to our customers.
+          </p>
+          <Image
+            src="/images/shadeIndel-disc-2.jpg"
+            alt="indel"
+            width={420}
+            height={276}
+            className="max-w-[160px] sm:max-w-[220px] lg:max-w-[276px] 2xl:max-w-[376px] 3xl:max-w-[468px] inline m-[0_20px_10px_0] sm:m-[0_40px_10px_0]"
+          />
+          <Image
+            src="/images/shadeIndel-disc-3.jpg"
+            alt="indel"
+            width={420}
+            height={276}
+            className="max-w-[160px] sm:max-w-[220px] lg:max-w-[276px] 2xl:max-w-[376px] 3xl:max-w-[468px] inline m-[0_20px_10px_0] sm:m-[0_40px_10px_0]"
+          />
+          <p>
+            Our extensive network spans multiple cities across the country,
+            featuring state-of-the-art showrooms and service centers designed to
+            provide a seamless and premium experience. Each of our showrooms is
+            equipped with modern facilities and staffed by highly trained
+            professionals who are dedicated to assisting customers in finding
+            the perfect vehicle to meet their needs. Our service centers, on the
+            other hand, are equipped with advanced tools and technologies to
+            ensure that every vehicle we sell receives the highest standard of
+            maintenance and care. The Indel Automotive group comprises several
+            distinguished brands, each representing a legacy of innovation,
+            performance, and reliability. These include **KERALA VOLVO**, where
+            we offer the luxury and sophistication of Volvo vehicles; **KAIRALI
+            FORD**, delivering the rugged durability and innovation of Ford
+            automobiles; **INDEL YAMAHA**, bringing the thrill and precision of
+            Yamaha motorcycles; **INDEL HONDA**, showcasing the efficiency and
+            reliability of Honda vehicles; and **INDEL SUZUKI**, providing the
+            versatility and affordability of Suzuki cars and two-wheelers.
+            <br />
+            At Indel Automotive, we are committed to delivering more than just
+            vehicles; we aim to create lasting relationships with our customers
+            by offering unparalleled service, transparency, and trust. Whether
+            you are looking to purchase a new vehicle or maintain an existing
+            one, our team is here to ensure that your automotive journey is
+            smooth, enjoyable, and rewarding. With a focus on innovation,
+            customer satisfaction, and sustainable growth, we continue to drive
+            forward as a leader in India&apos;s automotive landscape.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,16 +1,19 @@
-
-
 import DifferentShadesIndelBanner from "@/components/features/about/DifferentShadesIndelBanner";
 import DifferentShadesIndelSlide from "@/components/features/about/DifferentShadesIndelSlide";
-import DifferentShadesIndelInfo from "@/components/features/about/DifferentShadesIndelInfo";
 
+import MobDifferentShadesIndelSlide from "@/components/features/about/MobDifferentShadesIndelSlide";
 
 export default function DifferentShadesIndel() {
   return (
     <>
       <DifferentShadesIndelBanner />
-      <DifferentShadesIndelSlide />
-      <DifferentShadesIndelInfo />
+
+      <div className="hidden sm:block">
+        <DifferentShadesIndelSlide />
+      </div>
+      <div className="block sm:hidden">
+        <MobDifferentShadesIndelSlide />
+      </div>
     </>
-  )
+  );
 }

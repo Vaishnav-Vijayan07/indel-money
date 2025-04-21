@@ -1,7 +1,7 @@
-import React from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../history/history.module.css";
+import styles from "../history/History.module.css";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 
 const historyImages = [
@@ -26,7 +26,7 @@ export default function Indelhistory() {
         <div className="mb-[20px] lg:mb-[35px] 2xl:mb-[60px]">
           <PageBreadcrumb />
         </div>
-        <div className="flex flex-wrap bg-white rounded-[15px] max-lg:shadow-[0_0_15px_rgba(0,0,0,0.15)] overflow-hidden max-lg:p-[20px]">
+        <div className="flex flex-wrap bg-white rounded-[15px] max-lg:shadow-[0_0_15px_rgba(0,0,0,0.15)] max-lg:p-[20px]">
           <div className="w-full lg:w-[350px] xl:w-[465px] 2xl:w-[535px] 3xl:w-[670px] max-lg:mb-[30px]">
             <div className="w-full h-auto lg:p-[25px] 2xl:p-[44px] lg:rounded-[25px] lg:shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
               <div className="text-[20px] lg:text-[25px] xl:text-[30px] 2xl:text-[35px] 3xl:text-[40px] text-black font-medium mb-[10px]">
@@ -67,7 +67,7 @@ export default function Indelhistory() {
               {historyImages.map((img, index) => (
                 <div
                   key={index}
-                  className={`mb-[15px] xl:mb-[25px] 3xl:mb-[30px] break-inside-avoid overflow-hidden rounded-[15px] 3xl:rounded-[20px] ${styles.item}`}
+                  className={`mb-[10px] lg:mb-[15px] xl:mb-[25px] 3xl:mb-[30px] break-inside-avoid overflow-hidden rounded-[15px] 3xl:rounded-[20px] ${styles.item}`}
                 >
                   <Image
                     src={img.image}
