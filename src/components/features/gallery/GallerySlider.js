@@ -48,6 +48,7 @@ const GallSliderBx = ({ item }) => {
     if (hovered) {
       interval = setInterval(() => {
         setCurrentImage((prev) => (prev + 1) % item.images.length);
+        
       }, 1000); // Change image every 1 second
     } else {
       setCurrentImage(0); // Reset to first image when not hovered
