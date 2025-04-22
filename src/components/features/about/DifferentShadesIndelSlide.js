@@ -59,13 +59,13 @@ function ShadeIndelBox({ item, index }) {
       />
       {isActive ? (
         <div className="w-full h-auto bg-gradient-to-r to-base1/0 from-base2/60 p-[10px_15px] lg:p-[15px_20px] xl:p-[20px_40px] 2xl:p-[25px_60px] 3xl:p-[30px_70px] absolute z-1 left-0 bottom-0 right-0 lg:mb-[15px] xl:mb-[30px] 2xl:mb-[35px] 3xl:mb-[40px]">
-          <div className="text-[18px] sm:text-[24px] md:text-[30px] lg:text-[34px] xl:text-[38px] 2xl:text-[52px] 3xl:text-[60px] font-medium text-white uppercase line-clamp-1 leading-[1] transition-all duration-300">
+          <div className="text-[18px] sm:text-[24px] md:text-[30px] lg:text-[34px] xl:text-[38px] 2xl:text-[52px] 3xl:text-[60px] font-medium text-white uppercase line-clamp-1 leading-none transition-all duration-300">
             {item?.title}
           </div>
         </div>
       ) : (
         <div className="w-full h-full bg-gradient-to-b to-base1/25 from-base2/25 px-[15px] lg:px-[20px] xl:px-[30px] 2xl:px-[40px] 3xl:px-[60px] absolute z-1 left-0 bottom-0 right-0 [writing-mode:vertical-lr] rotate-[180deg] flex items-center">
-          <div className="text-[14px] sm:text-[16px] md:text-[20px] lg:text-[26px] xl:text-[30px] 2xl:text-[40px] 3xl:text-[48px] font-medium text-white capitalize leading-[1] whitespace-nowrap text-ellipsis overflow-hidden transition-all duration-300">
+          <div className="text-[14px] sm:text-[16px] md:text-[20px] lg:text-[26px] xl:text-[30px] 2xl:text-[40px] 3xl:text-[48px] font-medium text-white capitalize leading-none whitespace-nowrap text-ellipsis overflow-hidden transition-all duration-300">
             {item?.title}
           </div>
         </div>

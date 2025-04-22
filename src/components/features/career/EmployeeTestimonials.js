@@ -145,14 +145,14 @@ function EmployeeTestimonialsBox({ item }) {
         <div className="flex flex-wrap">
           <div className="w-full h-[20px] lg:h-[30px] 2xl:h-[40px] flex">
             <div className="w-auto h-[20px] lg:h-[30px] 2xl:h-[40px] bg-base1 rounded-[0_10px_0_0] lg:rounded-[0_15px_0_0] 2xl:rounded-[0_20px_0_0] inline-flex items-end pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]">
-              <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-[1] font-medium text-white capitalize line-clamp-1">
+              <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-none font-medium text-white capitalize line-clamp-1">
                 {item.title}
               </div>
             </div>
           </div>
           <div className="w-full h-[20px] lg:h-[30px] 2xl:h-[40px] flex">
             <div className="w-auto h-[20px] lg:h-[30px] 2xl:h-[40px] bg-base1 rounded-[0_10px_10px_0] lg:rounded-[0_15px_15px_0] 2xl:rounded-[0_20px_20px_0] inline-flex items-center pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]">
-              <div className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-medium text-white capitalize line-clamp-1">
+              <div className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-none font-medium text-white capitalize line-clamp-1">
                 {item.designation}
               </div>
             </div>

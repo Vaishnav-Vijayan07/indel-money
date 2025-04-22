@@ -144,10 +144,10 @@ const WordTestimonialCard = ({ item }) => {
             />
           </div>
           <div className="flex flex-col">
-            <div className="text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[20px] leading-[1] font-bold text-[#004F83] capitalize line-clamp-1 mb-4px lg:mb-[6px] 2xl:mb-[8px]">
+            <div className="text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[20px] leading-none font-bold text-[#004F83] capitalize line-clamp-1 mb-4px lg:mb-[6px] 2xl:mb-[8px]">
               {item.title}
             </div>
-            <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-[1] font-normal text-[#121212] capitalize line-clamp-1">
+            <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-none font-normal text-[#121212] capitalize line-clamp-1">
               {item.designation}
             </div>
           </div>

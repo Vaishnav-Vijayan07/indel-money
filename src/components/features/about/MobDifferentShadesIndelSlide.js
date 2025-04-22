@@ -49,7 +49,7 @@ function ShadeIndelBox({ item, index }) {
         <div className="w-50px h-[30px] mx-auto relative z-0 mb-[10px]">
           <Image src={item?.src} alt={item?.alt} fill className="mx-auto" />
         </div>
-        <div className="text-[14px] leading-[1] font-medium capitalize text-[#1e1e1e] text-center overflow-hidden transition-all duration-300 block">
+        <div className="text-[14px] leading-none font-medium capitalize text-[#1e1e1e] text-center overflow-hidden transition-all duration-300 block">
           {item?.title}
         </div>
       </div>

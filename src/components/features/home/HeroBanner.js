@@ -1,6 +1,6 @@
-import EnquiryForm from "../../common/EnquiryForm"
 import HomeSlider from "../../features/home/HomeSlider";
 import HomeMarquee from "../../features/home/HomeMarquee";
+import EnquiryForm from "../../common/EnquiryForm";
 
 export default function HeroBanner() {
 

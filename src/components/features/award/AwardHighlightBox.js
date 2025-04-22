@@ -70,7 +70,7 @@ export default function AwardHighlightBox({ variant = "default" }) {
             <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
               <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-276px)] 3xl:w-[calc(100%-376px)] 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">
                 {variant === "employeeTestimonials" && (
-                  <div className="text-title1 font-bold leading-[1] mb-[5px] lg:mb-[10px] text-[#f30000]">
+                  <div className="text-title1 font-bold leading-none mb-[5px] lg:mb-[10px] text-[#f30000]">
                     Awards
                   </div>
                 )}

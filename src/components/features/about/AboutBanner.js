@@ -53,7 +53,7 @@ export default function AboutBanner() {
             />
             <div className="absolute bottom-[80px] sm:bottom-1/2 left-1/2 transform -translate-x-1/2 sm:translate-y-1/2 container">
               <div className="max-w-[350px] lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[550px] 3xl:max-w-[750px]">
-                <div className="text-[12px] sm:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-white sm:text-base1 font-normal leading-[1] uppercase mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
+                <div className="text-[12px] sm:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-white sm:text-base1 font-normal leading-none uppercase mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
                   ABOUT INDEL
                 </div>
                 <h1 className="text-title2 capitalize text-white sm:text-black lg:-ml-[2px] 2xl:-ml-[4px] mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">

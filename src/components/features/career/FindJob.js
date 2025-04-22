@@ -167,7 +167,7 @@ function JobLocationBox({ item }) {
                 className="group-hover:scale-105 transition-transform duration-300"
             />
             <div
-                className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] leading-[1] whitespace-nowrap text-ellipsis overflow-hidden font-medium text-white bg-gradient-to-r to-white/0 from-[#f30000]/90 absolute z-1 left-0 bottom-0 right-0 mb-[5px] lg:mb-[10px] xl:mb-[15px] 2xl:mb-[20px] 3xl:mb-[24px] p-[5px] lg:p-[4px_10px] xl:p-[6px_12px] 2xl:p-[8px_16px] 3xl:p-[8px_18px]"
+                className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] leading-none whitespace-nowrap text-ellipsis overflow-hidden font-medium text-white bg-gradient-to-r to-white/0 from-[#f30000]/90 absolute z-1 left-0 bottom-0 right-0 mb-[5px] lg:mb-[10px] xl:mb-[15px] 2xl:mb-[20px] 3xl:mb-[24px] p-[5px] lg:p-[4px_10px] xl:p-[6px_12px] 2xl:p-[8px_16px] 3xl:p-[8px_18px]"
             >
                 {item.title}
             </div>
@@ -189,7 +189,7 @@ export default function FindJob() {
                     <div>
                         <Link
                             href={"/career/active-jobs"}
-                            className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-white h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[54px] flex items-center bg-base2 rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
+                            className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-bold text-white h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[54px] flex items-center bg-base2 rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
                         >
                             <span
                                 className="px-[5px] md:px-[10px] lg:px-[15px] 2xl:px-[20px]">

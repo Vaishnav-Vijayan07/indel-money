@@ -74,7 +74,7 @@ export default function MobAccolades() {
                   </div>
                   <Link
                     href={item.href}
-                    className="group text-[12px] leading-[1] font-medium capitalize text-[#100f0f] flex items-center mt-[15px] hover:text-base1"
+                    className="group text-[12px] leading-none font-medium capitalize text-[#100f0f] flex items-center mt-[15px] hover:text-base1"
                   >
                     view all
                     <Image

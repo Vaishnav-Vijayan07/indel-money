@@ -78,7 +78,7 @@ export default function MobHeroBanner() {
         ))}
       </Swiper>
       <MobHomeMarquee />
-      {/* <EnquiryForm /> */}
+      <EnquiryForm />
     </section>
   );
 }

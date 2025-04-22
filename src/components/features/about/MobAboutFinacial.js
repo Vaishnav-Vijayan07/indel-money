@@ -5,7 +5,7 @@ import CountUp from "react-countup";
 function MobCountBox({ count, title }) {
   return (
     <div>
-      <div className="text-[22px] font-bold leading-[1] line-clamp-1 text-white mb-[6px]">
+      <div className="text-[22px] font-bold leading-none line-clamp-1 text-white mb-[6px]">
         <span className="relative z-0">
           <span className="text-transparent">{count}</span>
           <CountUp
@@ -17,7 +17,7 @@ function MobCountBox({ count, title }) {
         </span>
         +
       </div>
-      <div className="text-[12px] leading-[1] font-medium line-clamp-1 text-white max-w-100% bg-base1 rounded-[32px] p-[8px_10px]">
+      <div className="text-[12px] leading-none font-medium line-clamp-1 text-white max-w-100% bg-base1 rounded-[32px] p-[8px_10px]">
         <span className="w-[10px] h-[10px] rounded-full bg-base2 mr-[4px] 4xs:mr-[8px] inline-block"></span>
         {title}
       </div>
@@ -47,7 +47,7 @@ export default function MobAboutFinacial() {
             </div>
             <div className="w-1/2">
               <div className="w-full h-[170px] 4xs:h-[175px] overflow-hidden rounded-[24px] bg-white p-[18px_12px]">
-                <div className="text-[22px] 4sx:text-[26px] font-bold leading-[1] line-clamp-1 text-black mb-[10px]">
+                <div className="text-[22px] 4sx:text-[26px] font-bold leading-none line-clamp-1 text-black mb-[10px]">
                   <span className="relative z-0">
                     <span className="text-transparent">{1}</span>
                     <CountUp

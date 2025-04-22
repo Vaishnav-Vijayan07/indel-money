@@ -42,10 +42,10 @@ export default function MobStepGoldLoan({className}) {
                   />
                 </div>
                 <div className="w-[calc(100%-80px)]">
-                  <div className="text-[13px] font-normal leading-[1] line-clamp-1 text-white text-center capitalize mb-[5px] @md:mb-[10px] bg-gradient-to-tl from-base2 to-base1 rounded-[15px] inline-block p-[8px_15px]">
+                  <div className="text-[13px] font-normal leading-none line-clamp-1 text-white text-center capitalize mb-[5px] @md:mb-[10px] bg-gradient-to-tl from-base2 to-base1 rounded-[15px] inline-block p-[8px_15px]">
                     {item.title}
                   </div>
-                  <div className="text-[14px] font-medium leading-[1] line-clamp-3 text-[#002362]">
+                  <div className="text-[14px] font-medium leading-none line-clamp-3 text-[#002362]">
                     {item.description}
                   </div>
                 </div>

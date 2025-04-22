@@ -69,8 +69,8 @@ export default function MobYearsInception() {
   return (
     <section className="w-full block bg-[#003595]">
       <div className="container">
-        <div className="text-[24px] leading-[1] font-medium text-white flex items-center py-[30px]">
-          <span className="text-[48px] 4xs:text-[72px] xs:text-[90px] leading-[1] font-bold text-base2 mr-[25px]">
+        <div className="text-[24px] leading-none font-medium text-white flex items-center py-[30px]">
+          <span className="text-[48px] 4xs:text-[72px] xs:text-[90px] leading-none font-bold text-base2 mr-[25px]">
             38
           </span>
           Years Since Inception

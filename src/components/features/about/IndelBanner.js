@@ -80,7 +80,7 @@ export default function IndelBannerSlider() {
                     </picture>
                     <div className="absolute sm:top-1/2 sm:bottom-auto bottom-[25px] sm:left-1/2 left-0 transform sm:-translate-x-1/2 sm:-translate-y-1/2 container sm:mb-0 mb-[45px]">
                         <div className="max-w-[350px] lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[550px] 3xl:max-w-[750px]">
-                            <div className='text-[14px] lg:text-[18px] 2xl:text-[20px] text-white font-[400] mb-[20px] leading-[1] uppercase sm:hidden block'>{item?.mainTitle}</div>
+                            <div className='text-[14px] lg:text-[18px] 2xl:text-[20px] text-white font-[400] mb-[20px] leading-none uppercase sm:hidden block'>{item?.mainTitle}</div>
                             <h1 className="text-[28px] sm:text-[32px] lg:text-[38px] xl:text-[46px] 2xl:text-[52px] 3xl:text-[68px] leading-[1.2] capitalize font-normal text-white sm:mb-4 last:pointer-events-none">
                                 {item?.title1}
                                 <span className="text-base2 font-bold"> {item?.title2} </span>

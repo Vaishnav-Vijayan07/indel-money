@@ -92,7 +92,9 @@ export default function Home() {
       </div>
 
       {/* Trusted investment contents*/}
-      <TrustedInvestment />
+      <div className="hidden sm:block">
+        <TrustedInvestment />
+      </div>
 
       {/* Innovations*/}
       <div className="hidden sm:block">
@@ -103,7 +105,9 @@ export default function Home() {
       </div>
 
       {/* faq contents */}
-      <FAQ />
+      <div className="hidden sm:block">
+        <FAQ />
+      </div>
     </>
   );
 }

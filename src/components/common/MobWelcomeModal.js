@@ -67,7 +67,7 @@ function WelcomeBox({ item, index }) {
         />
       </div>
       <div className="w-[calc(100%-100px)] pl-[10px]">
-        <div className="text-[14px] leading-[1] line-clamp-1 font-bold text-base1 mb-[5px] transition-all duration-300">
+        <div className="text-[14px] leading-none line-clamp-1 font-bold text-base1 mb-[5px] transition-all duration-300">
           {item.title}
         </div>
         <div className="text-[13px] leading-[1.3] line-clamp-3 font-normal text-black mb-[20px] transition-all duration-300">
@@ -155,10 +155,10 @@ export default function MobWelcomeModal() {
               />
             </div>
             <div>
-              <AlertDialogTitle className="text-[20px] text-base2 leading-[1] font-bold mt-[2px] mb-[4px]">
+              <AlertDialogTitle className="text-[20px] text-base2 leading-none font-bold mt-[2px] mb-[4px]">
                 Welcome!
               </AlertDialogTitle>
-              <div className="text-[14px] leading-[1] font-normal text-[#1e1e1e]">
+              <div className="text-[14px] leading-none font-normal text-[#1e1e1e]">
                 What Brings You Here Today?
               </div>
             </div>
