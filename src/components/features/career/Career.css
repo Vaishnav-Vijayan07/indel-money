@@ -64,3 +64,7 @@
   .swiper-pagination-bullet.swiper-pagination-bullet-active {
   outline: 3px solid #ee3824;
 }
+
+.mobBenefitsSlide{
+  padding-bottom: 20px;
+}
