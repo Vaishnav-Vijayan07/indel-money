@@ -1,3 +1,7 @@
+
+"use client";
+import { useMediaQuery } from "@react-hook/media-query";
+
 import React from "react";
 // DESKTOP COMPONENTS
 import HeroBanner from "../components/features/home/HeroBanner";
@@ -25,15 +29,11 @@ import MobWelcomeModal from "../components/common/MobWelcomeModal";
 const FAQS = React.lazy(() => import("../components/features/home/FAQ"));
 
 export default function Home() {
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   return (
     <>
       {/* welcome contents*/}
-      <div className="hidden sm:block">
-        <WelcomeModal />
-      </div>
-      <div className="block sm:hidden">
-        <MobWelcomeModal />
-      </div>
+      {isMobile ? <MobWelcomeModal /> : <WelcomeModal />}
 
       {/* banner section contents*/}
       <div className="hidden sm:block">
