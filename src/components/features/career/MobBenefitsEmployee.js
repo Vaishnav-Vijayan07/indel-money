@@ -63,6 +63,7 @@ export default function BenefitsEmployee() {
           modules={[Autoplay, Pagination]}
           slidesPerView={2}
           spaceBetween={6}
+          
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,
