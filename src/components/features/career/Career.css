@@ -1,11 +1,17 @@
 .editor p,
 .editor li {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   font-weight: 400;
-  color: #000;
+  color: #ffffff;
 }
 
+@media (min-width: 640px) {
+  .editor p,
+  .editor li {
+    color: #000;
+  }
+}
 @media (min-width: 1024px) {
   .editor p,
   .editor li {

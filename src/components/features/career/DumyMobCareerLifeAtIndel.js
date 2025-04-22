@@ -9,7 +9,7 @@ const careerLifeAtIndelImages = [
         alt: "careerLifeAtIndel",
     },
     {
-        id: 1, 
+        id: 1,
         src: "/images/careerLifeAtIndel-2.jpg",
         alt: "careerLifeAtIndel",
     },
@@ -46,32 +46,11 @@ function ImageBox({ item }) {
     );
 }
 
-export default function CareerLifeAtIndel() {
+export default function MobCareerLifeAtIndel() {
 
     return (
-        <section className="w-full max-sm:hidden block py-[20px_20px] lg:py-[40px_30px] 2xl:py-[60px_40px] 3xl:py-[80px_50px] relative z-0">
-            <div className="container">
-                <div className="flex items-center justify-between mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
-                    <div className="lg:max-w-[320px] xl:max-w-[376px] 2xl:max-w-[468px] 3xl:max-w-[576px]">
-                        <div className="text-title1 font-bold mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
-                            Life at
-                            <span className="font-bold text-base2">
-                                {""}   Indel
-                            </span>
-                        </div>
-                        <div className="text-sm1 ">Indel is more than just a workplace; it&apos;s a community where innovation thrives, and individuals flourish. Here, you&apos;ll experience:</div>
-                    </div>
-                    <div>
-                        <Link
-                            href={"/"}
-                            className="btn btn-base2 min-w-[120px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[140px] 3xl:min-w-[180px]"
-                        >
-                            VISIT GALLERY
-                        </Link>
-                    </div>
-                </div>
-            </div>
-            <div className="max-w-[var(--container-x)] mx-auto pl-[var(--container-padding)] pr-[var(--container-padding)] lg:max-w-[calc(100%-((100%-var(--container-x))/2))] lg:pr-0 lg:mr-0">
+        <section className="w-full max-sm:block hidden bg-[#f8e8ea] relative z-0">
+            <div className="">
                 <div className="flex flex-wrap">
                     <div className="w-full lg:w-[376px] xl:w-[420px] 2xl:w-[520px] 3xl:w-[676px] mb-[15px] lg:mb-0">
                         <div className="w-full h-full p-[20px_15px] lg:p-[30px_20px] xl:p-[40px_30px] 2xl:p-[60px_40px] 3xl:p-[80px_60px] rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] bg-linear-to-b from-transparent to-white relative z-0 overflow-hidden after:content-[''] after:absolute after:-z-1 after:inset-0 after:opacity-50 after:block after:bg-linear-to-b after:from-base1 after:to-base2 after:pointer-events-none flex items-center">
@@ -83,6 +62,15 @@ export default function CareerLifeAtIndel() {
                                 className="opacity-5 pointer-events-none"
                             />
                             <div className="editor">
+                                <div className="lg:max-w-[320px] xl:max-w-[376px] 2xl:max-w-[468px] 3xl:max-w-[576px]">
+                                    <div className="text-title1 font-bold mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
+                                        Life at
+                                        <span className="font-bold text-base2">
+                                            {""}   Indel
+                                        </span>
+                                    </div>
+                                    <div className="text-sm1 ">Indel is more than just a workplace; it&apos;s a community where innovation thrives, and individuals flourish. Here, you&apos;ll experience:</div>
+                                </div>
                                 <ul>
                                     <li>
                                         <b>A Culture of Excellence: </b>Immerse yourself in a culture that values hard work, creativity, and a relentless pursuit of excellence.
@@ -104,6 +92,14 @@ export default function CareerLifeAtIndel() {
                                     </li>
                                 </ul>
                                 <p>Join the Indel family and experience a fulfilling and rewarding career journey.</p>
+                                <div>
+                                    <Link
+                                        href={"/"}
+                                        className="btn btn-base2 min-w-[120px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[140px] 3xl:min-w-[180px]"
+                                    >
+                                        VISIT GALLERY
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
