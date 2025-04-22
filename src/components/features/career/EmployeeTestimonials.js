@@ -222,26 +222,24 @@ export default function EmployeeTestimonials() {
                 <div
                   key={index}
                   className={`group w-[40px] lg:w-[60px] 2xl:w-[80px] 3xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[2px] lg:border-[3px] 2xl:border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 
-                                        ${
-                                          index === activeIndex
-                                            ? "border-base2 scale-100"
-                                            : "border-white"
-                                        }
-                                        ${
-                                          index === 0
-                                            ? "top-[2%] left-[15%] scale-75"
-                                            : index === 1
-                                            ? "top-[5%] left-[60%] scale-75"
-                                            : index === 2
-                                            ? "top-[30%] left-[1%] scale-50"
-                                            : index === 3
-                                            ? "top-[42%] left-[30%] scale-55"
-                                            : index === 4
-                                            ? "top-[36%] left-[68%] scale-60"
-                                            : index === 5
-                                            ? "top-[74%] left-[56%] scale-60"
-                                            : "top-[84%] left-[20%] scale-85"
-                                        }`}
+                                        ${index === activeIndex
+                      ? "border-base2 scale-100"
+                      : "border-white"
+                    }
+                                        ${index === 0
+                      ? "top-[2%] left-[15%] scale-75"
+                      : index === 1
+                        ? "top-[5%] left-[60%] scale-75"
+                        : index === 2
+                          ? "top-[30%] left-[1%] scale-50"
+                          : index === 3
+                            ? "top-[42%] left-[30%] scale-55"
+                            : index === 4
+                              ? "top-[36%] left-[68%] scale-60"
+                              : index === 5
+                                ? "top-[74%] left-[56%] scale-60"
+                                : "top-[84%] left-[20%] scale-85"
+                    }`}
                   onClick={() => handleImageClick(index)}
                 >
                   <Image
@@ -292,8 +290,8 @@ export default function EmployeeTestimonials() {
                 clickable: true,
               }}
               autoplay={{
-                  delay: 4000,
-                  disableOnInteraction: false
+                delay: 4000,
+                disableOnInteraction: false
               }}
               slidesPerView={1}
               spaceBetween={0}

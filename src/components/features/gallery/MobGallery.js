@@ -141,7 +141,7 @@ export default function MobGallery() {
                                 </div>
                             );
                         })}
-                        <Pagination className="justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
+                        <Pagination className="justify-start sm:justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
                             <PaginationContent>
                                 <PaginationItem>
                                     <PaginationPrevious href="#" />

@@ -52,7 +52,7 @@ const contactDetails = [
                   South Kalamassery, Ernakulam, Kerala 682033`,
         phone: "0484 6919999",
         email: "ed.ceo@indelmoney.com",
-      },
+    },
 ];
 
 export default function contact() {
@@ -64,7 +64,7 @@ export default function contact() {
                 <h2 className="text-[28px] lg:text-[35px] xl:text-[45px] 2xl:text-[50px] 3xl:text-[68px] text-black font-regular mb-[5px]">
                     <span className="text-[#F30000] font-bold">Investors</span>
                 </h2>
-                <div className='breadcrumb flex flex-wrap mb-[35px]'>
+                <div className='breadcrumb hidden sm:flex flex-wrap mb-[10px] md:mb-[35px]'>
                     <Link href="/" className="block w-fit text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#383838] mr-[25px] relative 
                     before:absolute before:right-[-12px] before:top-1/2 before:-translate-y-1/2 before:rotate-135 
                     before:border-l-[6px] 3xl:before:border-l-[8px] before:border-b-[6px] 3xl:before:border-b-[8px] before:border-l-[#17479E] before:border-b-transparent 
@@ -83,16 +83,16 @@ export default function contact() {
                 </div>
 
                 <div className="flex flex-wrap">
-                    <div className="w-[270px] xl:w-[330px] 2xl:w-[400px] 3xl:w-[510px]">
+                    <div className="w-full md:w-[270px] xl:w-[330px] 2xl:w-[400px] 3xl:w-[510px]">
                         <Sidebar />
                     </div>
-                    <div className="w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
+                    <div className="w-full md:w-[calc(100%-270px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
                         <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">Investors Contact</div>
 
-                        <div className="flex flex-wrap w-full m-[-8px] 2xl:m-[-15px] 3xl:m-[-20px]">
+                        <div className="flex flex-wrap w-full sm:m-[-8px] 2xl:m-[-15px] 3xl:m-[-20px]">
                             {contactDetails.map((contact, index) => (
-                                <div key={index} className="w-[calc(100%/2)] p-[8px] 2xl:p-[-15px] 3xl:p-[20px]">
-                                    <div className="w-full h-full bg-[#E5ECF5] px-[25px] py-[15px] 3xl:px-[35px] 3xl:py-[25px] rounded-[15px]">
+                                <div key={index} className="w-full sm:w-[calc(100%/2)] p-[8px_0px] sm:p-[8px] 2xl:p-[-15px] 3xl:p-[20px]">
+                                    <div className="w-full h-full bg-[linear-gradient(90deg,rgba(23,71,158,0.4)_0%,rgba(238,56,36,0.4)_100%)]  sm:bg-[linear-gradient(90deg,_#E5ECF5_0%,_#E5ECF5_100%)] px-[25px] py-[15px] 3xl:px-[35px] 3xl:py-[25px] rounded-[16px]">
                                         <div className="border-b border-dashed border-[#17479E]">
                                             <div className="text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px] font-bold text-base1 pb-[15px] leading-[1.3] max-w-[75%]">
                                                 {contact.title}
@@ -120,13 +120,13 @@ export default function contact() {
                                                             height={24}
                                                             className="w-[10px] h-[10px] 3xl:w-[20px] 3xl:h-[20px]"
                                                         />
-                                                        <span className="pl-[10px]">{contact.phone}</span>
+                                                        <span className="pl-[10px] break-all">{contact.phone}</span>
                                                     </Link>
                                                 </li>
                                                 <li>
                                                     <Link
                                                         href={`mailto:${contact.email}`}
-                                                        className="w-fit text-[12px] 2xl:text-[16px] 3xl:text-[20px] text-[#383838] font-medium flex items-center duration-100 hover:text-base2"
+                                                        className="w-fit break-all text-[12px] 2xl:text-[16px] 3xl:text-[20px] text-[#383838] font-medium flex items-center duration-100 hover:text-base2"
                                                     >
                                                         <Image
                                                             src="/images/mail.svg"
