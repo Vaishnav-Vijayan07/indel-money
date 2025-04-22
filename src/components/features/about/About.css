@@ -55,3 +55,15 @@
   left: auto;
   right: 60px;
 }
+
+@media (max-width: 386px) {
+  .mobAccoladesSlide .swiper-pagination {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+
+.lifeIndelSlide .swiper-wrapper {
+  transform: none !important;
+}

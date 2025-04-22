@@ -4,9 +4,9 @@ import Link from "next/link";
 const mobInvestorsBxStyle =
   "w-full h-full min-h-[115px] rounded-[6px] p-[15px_15px] bg-linear-to-r from-base1 to-[#93BFFA]";
 const mobInvestorsBxTextSmStyle =
-  "text-[14px] leading-[1] font-medium text-white my-[8px]";
+  "text-[12px] 4xs:text-[14px] leading-[1] font-medium text-white my-[8px]";
 const mobInvestorsBxTextStyle =
-  "text-[20px] leading-[1.2] font-bold text-white my-[8px]";
+  "text-[16px] 4xs:text-[20px] leading-[1.2] font-bold text-white my-[8px]";
 
 export default function MobInvestors() {
   return (

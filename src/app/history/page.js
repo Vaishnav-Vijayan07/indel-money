@@ -1,16 +1,20 @@
- 
 import Indelhistory from "../../components/features/history/Indelhistory";
-import Yearsinception from "../../components/features/history/yearsInception";
+import YearsInception from "../../components/features/history/YearsInception";
+import MobYearsInception from "../../components/features/history/MobYearsInception";
 
 export default function History() {
-    return (
-        <>
-            {/* History section */}
-            <Indelhistory />
+  return (
+    <>
+      {/* History section */}
+      <Indelhistory />
 
-            {/* Yearsinception section */}
-            
-            <Yearsinception/>
-        </>
-    );
+      {/* Yearsinception section */}
+      <div className="hidden sm:block">
+        <YearsInception />
+      </div>
+      <div className="block sm:hidden">
+        <MobYearsInception />
+      </div>
+    </>
+  );
 }

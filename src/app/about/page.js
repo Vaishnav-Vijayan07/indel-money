@@ -2,10 +2,10 @@ import AboutBanner from "../../components/features/about/AboutBanner";
 import AboutFinacial from "../../components/features/about/AboutFinacial";
 import AboutSupermarket from "../../components/features/about/AboutSupermarket";
 import AboutMessage from "../../components/features/about/AboutMessage";
-import Accolades from "../../components/features/about/accolades";
+import Accolades from "../../components/features/about/Accolades";
 import Indelvalues from "../../components/features/about/Indelvalues";
 import Investors from "../../components/features/about/Investors";
-import Lifeindel from "../../components/features/about/lifeIndel";
+import LifeIndel from "../../components/features/about/LifeIndel";
 
 // MOBILE_VERSION
 import MobAboutFinacial from "../../components/features/about/MobAboutFinacial";
@@ -14,6 +14,7 @@ import MobAboutMessage from "../../components/features/about/MobAboutMessage";
 import MobAccolades from "../../components/features/about/MobAccolades";
 import MobIndelvalues from "../../components/features/about/MobIndelvalues";
 import MobInvestors from "../../components/features/about/MobInvestors";
+import MobLifeIndel from "../../components/features/about/MobLifeIndel";
 
 export default function About() {
   return (
@@ -70,7 +71,12 @@ export default function About() {
       </div>
 
       {/* LifeAtIndel section */}
-      <Lifeindel />
+      <div className="hidden sm:block">
+        <LifeIndel />
+      </div>
+      <div className="block sm:hidden">
+        <MobLifeIndel />
+      </div>
     </>
   );
 }
