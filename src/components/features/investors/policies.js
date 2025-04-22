@@ -2,6 +2,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "../investors/sidebar";
+import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from "@/components/ui/pagination";
 
 const policies = [
     { name: "Risk Management Policy", link: "/pdfs/2023-24.pdf" },
@@ -64,15 +73,13 @@ export default function Policies() {
                             {policies.map((policies, index) => (
                                 <div
                                     key={index}
-                                    className="flex items-center justify-between py-[10px] sm:py-[25px] px-[10px] sm:px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] min-h-[55px] sm:min-h-[85px] 2xl:min-h-[100px] 3xl:min-h-[140px] rounded-2xl bg-gradient-to-r from-[rgba(23,71,158,0.40)] to-[rgba(238,56,36,0.40)] "
-                                >
+                                    className="flex items-center justify-between py-[10px] sm:py-[25px] px-[10px] sm:px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] min-h-[55px] sm:min-h-[85px] 2xl:min-h-[100px] 3xl:min-h-[140px] rounded-2xl bg-gradient-to-r from-[rgba(23,71,158,0.40)] to-[rgba(238,56,36,0.40)] ">
                                     <h3 className="text-[13px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-medium sm:font-bold text-black max-w-[260px]">{`${policies.name}`}</h3>
                                     <Link
                                         href={policies.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center space-x-2 md:max-lg:mt-[10px]"
-                                    >
+                                        className="flex items-center space-x-2 md:max-lg:mt-[10px]">
                                         <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black whitespace-nowrap sm:block hidden">View PDF</span>
                                         <div className="w-[20px] h-[20px] xl:w-[30px] xl:h-[30px] 3xl:w-[40px] 3xl:h-[40px] bg-red-500 rounded-full flex items-center justify-center">
                                             <Image
@@ -80,14 +87,38 @@ export default function Policies() {
                                                 alt="PDF Icon"
                                                 width={24}
                                                 height={24}
-                                                className="w-[10px] h-[10px] xl:w-[15px] xl:h-[15px] 2xl:w-[20px] 2xl:h-[20px] 3xl:w-[24px] 3xl:h-[24px]"
-                                            />
+                                                className="w-[10px] h-[10px] xl:w-[15px] xl:h-[15px] 2xl:w-[20px] 2xl:h-[20px] 3xl:w-[24px] 3xl:h-[24px]" />
                                         </div>
                                     </Link>
                                 </div>
                             ))}
                         </div>
-
+                        <div className="w-full sm:block hidden">
+                            <Pagination className="justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
+                                <PaginationContent>
+                                    <PaginationItem>
+                                        <PaginationPrevious href="#" />
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#" isActive>
+                                            01
+                                        </PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">02</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationLink href="#">03</PaginationLink>
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationEllipsis />
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext href="#" />
+                                    </PaginationItem>
+                                </PaginationContent>
+                            </Pagination>
+                        </div>
                     </div>
                 </div>
             </div>

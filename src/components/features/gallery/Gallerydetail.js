@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
-
 import LightGallery from "lightgallery/react";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
@@ -29,7 +28,7 @@ function ImageBox({ item, className }) {
           elementClassNames="w-full h-full"
         >
           <a href={item.images[0]} className="w-full h-full relative z-0 block">
-            <Image
+            <Image 
               src={item.images[0]}
               alt="Gallery Image"
               fill

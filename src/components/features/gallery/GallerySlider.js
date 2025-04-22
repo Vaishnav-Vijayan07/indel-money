@@ -138,7 +138,7 @@ export default function GallerySlider({ className }) {
             768: { slidesPerView: 3, spaceBetween: 20 },
             1024: { slidesPerView: 3.8, spaceBetween: 30 },
           }}
-          className={`LoanSlider mb-[15px] lg:mb-[20px] xl:mb-[30px] ${className}`}
+          className={`GallerySlider mb-[15px] lg:mb-[20px] xl:mb-[30px] ${className}`}
         >
           {data?.map((item, index) => {
             // Define dynamic classes for even/odd slides
