@@ -20,7 +20,7 @@ const slides = [
 export default function AboutVSlider() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
-        <div className="w-full 3xl:px-[110px] px-[70px]">
+        <div className="w-full 3xl:px-[110px] lg:px-[70px] px-[20px]">
             <div className="relative w-full">
                 {/* Custom Navigation Buttons */}
                 <button className="custom-prev absolute top-1/2 xl:left-[-80px] md:left-[-50px] left-[-40px] transform -translate-y-1/2 2xl:w-[40px] 2xl:h-[40px] w-[35px] h-[35px] flex items-center justify-center text-white rounded-full shadow-md transition-all duration-300 cursor-pointer rotate-180 opacity-100 swiper-button-disabled:opacity-50">
@@ -107,8 +107,8 @@ export default function AboutVSlider() {
                                 />
                             </div>
                         </div>
-                        <div className="3xl:w-[calc(100%-250px)] 2xl:w-[calc(100%-200px)] w-[calc(100%-150px)]  2xl:pl-[55px] md:pl-[35px] pl-[25px] text-justify">
-                            <div className="3xl:text-[32px] xl:text-[20px]  text-[14px] text-black mb-[15px]">Indel Money Limited is bestowed as <span className="block font-medium text-black"> GREAT PLACE TO WORK</span></div>
+                        <div className="3xl:w-[calc(100%-250px)] 2xl:w-[calc(100%-200px)] w-[calc(100%-150px)] 2xl:pl-[55px] md:pl-[35px] pl-[25px] text-justify">
+                            <div className="3xl:text-[32px] xl:text-[20px] text-[14px] text-black mb-[15px]">Indel Money Limited is bestowed as <span className="block font-medium text-black"> GREAT PLACE TO WORK</span></div>
                             <p className="3xltext-[18px] 2xl:text-[16px]  text-[12px] text-[#343434] leading-[1.4]">Each year, over 10,000 organizations from more than 60 countries collaborate with Great Place to Work® Institute to assess, benchmark, and plan actions that strengthen their workplace culture. While numerous variations of Lorem Ipsum are available, most have been altered or contain random, non-contextual text. Our Lorem Ipsum generator, however, creates high-quality, meaningful content by combining a dictionary of over 200 Latin words with model sentence structures. This ensures the generated text is free from repetition, humor, or irrelevant words, providing a more authentic and usable placeholder for your projects.</p>
                             <Link href="#" className="3xl:text-[18px] lg:text-[16px] text-[14px] text-white 2xl:h-[50px] h-[40px] w-full overflow-hidden rounded-[50px] bg-base2 max-w-[150px] flex items-center justify-center 2xl:mt-[40px] mt-[20px] lg:ml-auto transition-all duration-300 hover:bg-base1">
                                 VIEW ALL

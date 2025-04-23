@@ -1,0 +1,87 @@
+.editor p,
+.editor li {
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .editor p,
+  .editor li {
+    color: #000;
+  }
+}
+@media (min-width: 1024px) {
+  .editor p,
+  .editor li {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .editor p,
+  .editor li {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .editor p,
+  .editor li {
+    font-size: 18px;
+  }
+}
+
+.editor ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.careerBannerSlide {
+  --swiper-pagination-bottom: 40px;
+  --swiper-pagination-color: #fff;
+  --swiper-pagination-bullet-width: 8px;
+  --swiper-pagination-bullet-height: 8px;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 10px;
+}
+
+.careerBannerSlide .swiper-pagination {
+  text-align: start !important;
+  max-width: var(--container-x);
+  padding-left: var(--container-padding, 1rem);
+  padding-right: var(--container-padding, 1rem);
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.careerBannerSlide
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  outline: 3px solid #ee3824;
+}
+
+.swiper.mobBenefitsSlide {
+  padding-bottom: 40px;
+  overflow: visible;
+}
+
+.swiper.mobBenefitsSlide .swiper-slide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.swiper.mobBenefitsSlide
+  .swiper-slide.swiper-slide-visible.swiper-slide-fully-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+/* .mobAwardSlide .swiper-slide-active{
+
+} */

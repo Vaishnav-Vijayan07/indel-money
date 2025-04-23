@@ -1,4 +1,5 @@
 import AsideMenu from "@/components/common/AsideMenu";
+import MobAsideMenu from "@/components/common/MobAsideMenu";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import Image from "next/image";
 
@@ -10,16 +11,16 @@ const navigationItems = [
   {
     title: "Rating Agencies",
     href: "/",
-    // sub_menu: [
-    //     {
-    //         title: "Contact Form",
-    //         href: "/investors/contact",
-    //     },
-    //     {
-    //         title: "FAQ",
-    //         href: "/investors/faq",
-    //     },
-    // ]
+    sub_menu: [
+      {
+        title: "Contact Form",
+        href: "/investors/contact",
+      },
+      {
+        title: "FAQ",
+        href: "/partners",
+      },
+    ],
   },
   {
     title: "Credit Bureau",
@@ -94,7 +95,21 @@ const partners = [
   },
 ];
 
-export default function PartnersPage() {
+function PartnerLogo({ item }) {
+  return (
+    <div className="w-full h-full aspect-5/3 flex justify-center items-center border-[1px] border-solid border-[rgba(0,0,0,0.2)] rounded-[10px] 4xs:rounded-[16px] p-[6px] 3xs:p-[10px] sm:p-[15px] lg:p-[20px] 2xl:p-[25px] transition-border hover:border-base2">
+      <Image
+        src={item.src}
+        alt={item.alt}
+        width="200"
+        height="100"
+        className="w-full h-auto object-contain"
+      />
+    </div>
+  );
+}
+
+export default function Partners() {
   return (
     <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[50px]">
       <div className="container">
@@ -102,30 +117,32 @@ export default function PartnersPage() {
           <div className="text-title1 font-bold text-base2">Partners</div>
           <PageBreadcrumb />
         </div>
-        <div className="flex flex-wrap -mx-[10px] lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[30px] 3xl:-mx-[35px]">
-          <div className="w-[240px] lg:w-[320px] xl:w-[420px] 2xl:w-[476px] 3xl:w-[576px] px-[10px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px] 3xl:px-[35px]">
-            <AsideMenu navigationItems={navigationItems} />
+        <div className="flex flex-wrap -mx-[10px] lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[30px] 3xl:-mx-[35px] gap-y-[25px]">
+          <div className="w-full sm:w-[220px] lg:w-[320px] xl:w-[420px] 2xl:w-[476px] 3xl:w-[576px] px-[10px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px] 3xl:px-[35px]">
+            <div className="hidden sm:block">
+              <AsideMenu navigationItems={navigationItems} />
+            </div>
+            <div className="block sm:hidden">
+              <MobAsideMenu navigationItems={navigationItems} />
+            </div>
           </div>
-          <div className="w-[calc(100%-240px)] lg:w-[calc(100%-320px)] xl:w-[calc(100%-420px)] 2xl:w-[calc(100%-476px)] 3xl:w-[calc(100%-576px)] px-[10px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px] 3xl:px-[35px]">
-            <div className="text-title1 font-medium mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">Debt Partners</div>
-            <div className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
+          <div className="w-full sm:w-[calc(100%-220px)] lg:w-[calc(100%-320px)] xl:w-[calc(100%-420px)] 2xl:w-[calc(100%-476px)] 3xl:w-[calc(100%-576px)] px-[10px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px] 3xl:px-[35px]">
+            <div className="text-title1 font-medium mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">
+              Debt Partners
+            </div>
+            <div className="flex flex-wrap -mx-[2px] 4xs:-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
               {partners?.map((item, index) => (
-                <PartnerLogo key={index} item={item} />
+                <div
+                  key={index}
+                  className="w-1/4 sm:w-1/3 md:w-1/4 p-[4px_2px] 4xs:p-[6px_4px] lg:p-[10px_6px] 2xl:p-[15px_10px]"
+                >
+                  <PartnerLogo item={item} />
+                </div>
               ))}
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function PartnerLogo({ item }) {
-  return (
-    <div className="w-1/3 sm:w-1/3 md:w-1/4 p-[6px_4px] lg:p-[10px_6px] 2xl:p-[15px_10px]">
-      <div className="w-full h-full aspect-5/3 flex justify-center items-center border-[1px] border-solid border-[rgba(0,0,0,0.2)] rounded-[10px] lg:rounded-[16px] p-[15px] lg:p-[20px] 2xl:p-[25px] transition-border hover:border-base2">
-        <Image src={item.src} alt={item.alt} width="200" height="100" className="w-full h-auto object-contain" />
-      </div>
-    </div>
   );
 }

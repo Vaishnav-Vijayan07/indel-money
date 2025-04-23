@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./Career.module.css";
+import "./Career.css";
 
 const careerLifeAtIndelImages = [
     {
@@ -9,7 +9,7 @@ const careerLifeAtIndelImages = [
         alt: "careerLifeAtIndel",
     },
     {
-        id: 1,
+        id: 1, 
         src: "/images/careerLifeAtIndel-2.jpg",
         alt: "careerLifeAtIndel",
     },
@@ -49,7 +49,7 @@ function ImageBox({ item }) {
 export default function CareerLifeAtIndel() {
 
     return (
-        <section className="w-full block py-[20px_20px] lg:py-[40px_30px] 2xl:py-[60px_40px] 3xl:py-[80px_50px] relative z-0">
+        <section className="w-full max-sm:hidden block py-[20px_20px] lg:py-[40px_30px] 2xl:py-[60px_40px] 3xl:py-[80px_50px] relative z-0">
             <div className="container">
                 <div className="flex items-center justify-between mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
                     <div className="lg:max-w-[320px] xl:max-w-[376px] 2xl:max-w-[468px] 3xl:max-w-[576px]">
@@ -59,7 +59,7 @@ export default function CareerLifeAtIndel() {
                                 {""}   Indel
                             </span>
                         </div>
-                        <div className="text-sm-1 ">Indel is more than just a workplace; it&apos;s a community where innovation thrives, and individuals flourish. Here, you&apos;ll experience:</div>
+                        <div className="text-sm1 ">Indel is more than just a workplace; it&apos;s a community where innovation thrives, and individuals flourish. Here, you&apos;ll experience:</div>
                     </div>
                     <div>
                         <Link
@@ -82,7 +82,7 @@ export default function CareerLifeAtIndel() {
                                 sizes="676px"
                                 className="opacity-5 pointer-events-none"
                             />
-                            <div className={styles.editor}>
+                            <div className="editor">
                                 <ul>
                                     <li>
                                         <b>A Culture of Excellence: </b>Immerse yourself in a culture that values hard work, creativity, and a relentless pursuit of excellence.

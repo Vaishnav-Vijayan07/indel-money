@@ -9,6 +9,7 @@ import { useState } from "react";
 import AwardHighlightBox from "../award/AwardHighlightBox";
 import EmployeeTestimonialsVideoBox from "@/components/common/EmployeeTestimonialsVideoBox";
 import { motion } from "framer-motion";
+import MobAwardHighlight from "./MobAwardHighlight";
 
 const employeeTestimonials = [
   {
@@ -145,14 +146,14 @@ function EmployeeTestimonialsBox({ item }) {
         <div className="flex flex-wrap">
           <div className="w-full h-[20px] lg:h-[30px] 2xl:h-[40px] flex">
             <div className="w-auto h-[20px] lg:h-[30px] 2xl:h-[40px] bg-base1 rounded-[0_10px_0_0] lg:rounded-[0_15px_0_0] 2xl:rounded-[0_20px_0_0] inline-flex items-end pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]">
-              <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-[1] font-medium text-white capitalize line-clamp-1">
+              <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-none font-medium text-white capitalize line-clamp-1">
                 {item.title}
               </div>
             </div>
           </div>
           <div className="w-full h-[20px] lg:h-[30px] 2xl:h-[40px] flex">
             <div className="w-auto h-[20px] lg:h-[30px] 2xl:h-[40px] bg-base1 rounded-[0_10px_10px_0] lg:rounded-[0_15px_15px_0] 2xl:rounded-[0_20px_20px_0] inline-flex items-center pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]">
-              <div className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-medium text-white capitalize line-clamp-1">
+              <div className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-none font-medium text-white capitalize line-clamp-1">
                 {item.designation}
               </div>
             </div>
@@ -177,7 +178,12 @@ export default function EmployeeTestimonials() {
     <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] relative z-0 after:content-[''] after:w-full after:h-[75%] after:absolute after:-z-1 after:inset-0 after:block after:bg-gradient-to-r after:to-[#fde7e7] after:from-transparent after:m-auto">
       <div className="mb-[20px] sm:mb-[40px] lg:mb-[60px] 2xl:mb-[80px]">
         <div className="container">
-          <AwardHighlightBox variant={"employeeTestimonials"} />
+          <div className="sm:block hidden">
+            <AwardHighlightBox variant={"employeeTestimonials"} />
+          </div>
+          <div className="sm:hidden block">
+            <MobAwardHighlight />
+          </div>
         </div>
       </div>
       <div className="container mb-[30px] lg:mb-[40px] 2xl:mb-[60px] 3xl:mb-[80px]">
@@ -272,7 +278,7 @@ export default function EmployeeTestimonials() {
             </div>
             <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
               <div className="flex-1">
-                <div className="text-sm-1">
+                <div className="text-sm1">
                   Avarage tenure is Lorem ipsum dolor sit amet, consectetur
                   adipiscing elit. Sed volutpat commodo elementum.{" "}
                 </div>
@@ -292,8 +298,8 @@ export default function EmployeeTestimonials() {
                 clickable: true,
               }}
               autoplay={{
-                  delay: 4000,
-                  disableOnInteraction: false
+                delay: 4000,
+                disableOnInteraction: false,
               }}
               slidesPerView={1}
               spaceBetween={0}

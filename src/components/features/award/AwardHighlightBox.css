@@ -13,5 +13,13 @@
   left: 0;
   right: 0;
   margin: auto;
+  width: fit-content;
+  bottom: 20px;
 }
 
+@media (min-width: 640px) {
+  .awardSlide .swiper-pagination {
+    width: 100%;
+    bottom: 0;
+  }
+}

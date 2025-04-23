@@ -82,7 +82,7 @@ export default function FAQ() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="border-b last:border-none 2xl:pt-[15px] pt-[10px] pb-[5px] 2xl:pb-[10px]"
+                  className="border-b last:border-none pt-[10px] pb-[5px] 2xl:pb-[10px] 2xl:pt-[15px] 3xl:pb-[15px] 3xl:pt-[20px]"
                 >
                   <button
                     className="flex justify-between w-full items-center font-medium text-left text-black 2xl:text-[1.25rem] xl:text[1rem] text-[0.8rem] cursor-pointer hover:no-underline  transition-all duration-300 pb-[10px]"
@@ -104,7 +104,7 @@ export default function FAQ() {
                     )}
                   </button>
                   {openIndex === index && (
-                    <div className="text-sm-1 pb-[10px] transition-all duration-300">
+                    <div className="text-sm1 pb-[10px] transition-all duration-300">
                       {faq.answer}
                     </div>
                   )}

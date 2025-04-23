@@ -79,6 +79,30 @@ export default function CareerForm() {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
+                <div className="max-sm:flex items-center hidden p-[10px] bg-white bg-custom-svg mb-[20px]">
+                    <div className="w-[110px]">
+                        <div className="flex items-center">
+                            <label className="text-[14px] leading-[1] font-normal w-[110px] h-[40px] flex items-center p-[10px_15px] bg-[#17479E] rounded-[10px] cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
+                                <Image
+                                className="filter-[brightness(0)_saturate(100%)_invert(100%)_sepia(100%)_saturate(0%)_hue-rotate(137deg)_brightness(107%)_contrast(101%)]"
+                                    src="/images/icon-upload.svg"
+                                    alt="icon-upload"
+                                    width={26}
+                                    height={21}
+                                />
+                                <span className="font-medium ml-[4px] lg:ml-[6px] 3xl:ml-[8px] text-white">Choose</span>
+                                <input
+                                    type="file"
+                                    name="fileUpload"
+                                    accept="image/*,.pdf"
+                                    className="hidden"
+                                    onChange={handleFileChange}
+                                />
+                            </label>
+                        </div>
+                    </div>
+                    <div className="text-sm1 pl-[15px] text-black text-[13px]">Upload Your Resume ; we&apos;ll connect when the right role opens up.</div>
+                </div>
                 <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
                     <FormField
                         control={form.control}
@@ -93,7 +117,7 @@ export default function CareerForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
+                <div className="w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
                     <FormField
                         control={form.control}
                         name="phoneNumber"
@@ -107,7 +131,7 @@ export default function CareerForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
+                <div className="w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
                     <FormField
                         control={form.control}
                         name="emailAddress"
@@ -142,7 +166,7 @@ export default function CareerForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
+                <div className="w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
                     <FormField
                         control={form.control}
                         name="referredName"
@@ -156,7 +180,7 @@ export default function CareerForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
+                <div className="w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
                     <FormField
                         control={form.control}
                         name="referralCode"
@@ -205,7 +229,7 @@ export default function CareerForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
+                <div className="w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
                     <FormField
                         control={form.control}
                         name="currentSalary"
@@ -219,7 +243,7 @@ export default function CareerForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px] mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
+                <div className="w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px] mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
                     <FormField
                         control={form.control}
                         name="expectedSalary"
@@ -233,9 +257,9 @@ export default function CareerForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-[calc(100%-100px)] lg:w-[calc(100%-120px)] xl:w-[calc(100%-140px)] 2xl:w-[calc(100%-180px)] 3xl:w-[calc(100%-200px)] px-[4px] lg:px-[6px] 2xl:px-[10px] mb-[10px] lg:mb-0">
+                <div className="max-sm:hidden w-full md:w-[calc(100%-100px)] lg:w-[calc(100%-120px)] xl:w-[calc(100%-140px)] 2xl:w-[calc(100%-180px)] 3xl:w-[calc(100%-200px)] px-[4px] lg:px-[6px] 2xl:px-[10px] mb-[10px] lg:mb-0">
                     <div className="flex items-center">
-                        <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-normal text-[#373737] w-[100px] lg:w-[100px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[6px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
+                        <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[100px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[6px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
                             <Image
                                 src="/images/icon-upload.svg"
                                 alt="icon-upload"
@@ -251,7 +275,7 @@ export default function CareerForm() {
                                 onChange={handleFileChange}
                             />
                         </label>
-                        <span className="text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-normal text-[#373737] whitespace-nowrap text-ellipsis overflow-hidden flex-1 ml-[4px] lg:ml-[6px] 2xl:ml-[8px]">{selectedFile ? selectedFile.name : "No file chosen"}</span>
+                        <span className="text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] whitespace-nowrap text-ellipsis overflow-hidden flex-1 ml-[4px] lg:ml-[6px] 2xl:ml-[8px]">{selectedFile ? selectedFile.name : "No file chosen"}</span>
                     </div>
                 </div>
                 <div className="w-full md:w-[100px] lg:w-[120px] xl:w-[140px] 2xl:w-[180px] 3xl:w-[200px] px-[4px] lg:px-[6px] 2xl:px-[10px]">

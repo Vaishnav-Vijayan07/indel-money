@@ -6,6 +6,10 @@ import WhoDoServe from "@/components/features/msmeloan/WhoDoServe";
 import MsmePresence from "@/components/features/msmeloan/MsmePresence";
 import GrownWithMsme from "@/components/features/msmeloan/GrownWithMsme";
 
+// Mobile view
+
+import MobWhoDoServe from "@/components/features/msmeloan/MobWhoDoServe";
+
 export default function MsmeLoan() {
   return (
     <>
@@ -19,7 +23,13 @@ export default function MsmeLoan() {
       <WhyMsme />
 
       {/* WhoDoServe contents*/}
-      <WhoDoServe />
+      <div className="hidden sm:block">
+        <WhoDoServe />
+      </div>
+      {/* WhoDoServe Mobile contents*/}
+      <div className="block sm:hidden">
+        <MobWhoDoServe />
+      </div>
 
       {/* MsmePresence contents*/}
       <MsmePresence />

@@ -30,7 +30,7 @@ export default function OtherGoldLoan() {
     ];
 
     return (
-        <section className="relative z-1 w-full pb-[30px] xl:pb-[40px] 2xl:pb-[90px]">
+        <section className="relative z-1 w-full pb-[40px] xl:pb-[40px] 2xl:pb-[90px]">
             <div className="container">
                 <div className="relative z-1 flex flex-wrap -my-[25px] -mx-[10px] lg:-mx-[15px] 2xl:-mx-[20px] 3xl:-mx-[30px]">
                     {slides?.map((item, index) => (

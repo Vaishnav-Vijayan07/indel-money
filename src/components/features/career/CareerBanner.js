@@ -7,6 +7,8 @@ import 'swiper/css/effect-fade';
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import Image from 'next/image';
 
+import "./Career.css";
+
 const slides = [
   {
     src: "/images/banner-career-1.jpg",
@@ -47,7 +49,7 @@ export default function CareerBanner() {
       >
         {slides?.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="w-full h-[276px] lg:h-[376px] xl:h-[420px] 2xl:h-[476px] 3xl:h-[568px] relative z-0 py-[30px] lg:py-[40px] 2xl:py-[50px] flex items-center">
+            <div className="w-full h-[565px] lg:h-[376px] xl:h-[420px] 2xl:h-[476px] 3xl:h-[568px] relative z-0 py-[30px] lg:py-[40px] 2xl:py-[50px] flex items-center">
               <Image
                 src={item?.src}
                 alt={item?.alt}

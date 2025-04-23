@@ -50,7 +50,7 @@ function FloatingCalculator() {
                 Make Your{" "}
                 <span className="text-base2 font-bold">&nbsp;Move</span>
               </AlertDialogTitle>
-              <div className="text-sm-1">
+              <div className="text-sm1">
                 Upload Your Resume ; we&apos;ll connect when the right role
                 opens up.
               </div>
@@ -78,7 +78,7 @@ function FloatingSearch() {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <div className="w-full min-w-[276px] sm:min-w-[360px] md:min-w-[376px] lg:min-w-[420px] xl:min-w-[468px] 2xl:min-w-[576px] 3xl:min-w-[668px] mx-auto bg-[#dceafb] rounded-[15px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_20px] lg:p-[20px_20px] xl:p-[20px_30px] 2xl:p-[30px_40px] 3xl:p-[40px_60px] relative z-0">
-          <AlertDialogCancel className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-[1] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] xl:top-[20px] 2xl:top-[25px] 3xl:top-[30px] right-[15px] xl:right-[20px] 2xl:right-[25px] 3xl:right-[30px] transition-color cursor-pointer hover:text-base2 items-center">
+          <AlertDialogCancel className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-none focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] xl:top-[20px] 2xl:top-[25px] 3xl:top-[30px] right-[15px] xl:right-[20px] 2xl:right-[25px] 3xl:right-[30px] transition-color cursor-pointer hover:text-base2 items-center">
             Close
             <Image
               src="/images/modal-cancel.svg"
@@ -123,7 +123,7 @@ function FloatingSearch() {
 
 export default function FloatingButton() {
   return (
-    <div className="flex flex-wrap flex-col gap-[4px] lg:gap-[6px] 2xl:gap-[10px] fixed z-4 top-[50%] right-[40px] translate-y-[-50%]">
+    <div className="hidden flex-wrap flex-col gap-[4px] lg:gap-[6px] 2xl:gap-[10px] fixed z-4 top-[50%] right-[40px] translate-y-[-50%]">
       <div>
         <Link
           href={"/"}

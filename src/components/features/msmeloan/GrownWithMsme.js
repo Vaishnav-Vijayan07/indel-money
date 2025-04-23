@@ -35,20 +35,20 @@ export default function FAQ() {
     };
 
     return (
-        <section className="w-full py-[40px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[90px]">
+        <section className="w-full py-[30px] sm:py-[40px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[90px] sm:bg-none bg-[#F0FAFF]">
             <div className="container">
                 <div className="flex flex-wrap lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[30px]">
-                    <div className="w-full lg:w-[40%] 2xl:w-[35%] lg:border-r lg:border-r-[rgba(23,71,158,0.26)] pb-[30px] lg:pb-[0] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]">
+                    <div className="w-full lg:w-[40%] 2xl:w-[35%] lg:border-r lg:border-r-[rgba(23,71,158,0.26)] pb-[30px] lg:pb-[0] lg:px-[15px] xl:px-[20px] 2xl:px-[30px] sm:block hidden">
                         <div className="w-full">
                             <h2 className="text-title1 mb-[20px] 2xl:mb-[30px]">
-                            Grow with  
+                                Grow with
                                 <span className="text-base2 font-bold">&nbsp;MSME loan</span>
                             </h2>
-                            <div className="text-sm-1">
-                            We at Indel Money understand the necessity for growth of small business units and their productive impact on the economy. We are committed to providing requisite timely financial assistance to the sector through our MSME product suits.
-Indel Money believes in market linkage and provide ‘Go to Market Initiative’ application services to get connected with the suppliers, retailers, buyers and sellers for their products.
-The major hurdle faced by the sector to progress and survive is inadequate working capital. Less than optimum book of accounts and banking habits also makes it difficult to access financial support. Indel Money analyses the cash flow through spending time and understanding individual business dynamics and guides you to properly deploy funds in income generating activities.
-Our dedicated officers are well equipped to understand the business cash flows through real time personal discussions and market reference. Any entrepreneur intending to expand to another unit or to add a new line of business can avail our expertise services including straight term loans, structured moratorium based loans, short term daily collection loans, supply chain financing, high value loan against property and more.
+                            <div className="text-sm1">
+                                We at Indel Money understand the necessity for growth of small business units and their productive impact on the economy. We are committed to providing requisite timely financial assistance to the sector through our MSME product suits.
+                                Indel Money believes in market linkage and provide ‘Go to Market Initiative’ application services to get connected with the suppliers, retailers, buyers and sellers for their products.
+                                The major hurdle faced by the sector to progress and survive is inadequate working capital. Less than optimum book of accounts and banking habits also makes it difficult to access financial support. Indel Money analyses the cash flow through spending time and understanding individual business dynamics and guides you to properly deploy funds in income generating activities.
+                                Our dedicated officers are well equipped to understand the business cash flows through real time personal discussions and market reference. Any entrepreneur intending to expand to another unit or to add a new line of business can avail our expertise services including straight term loans, structured moratorium based loans, short term daily collection loans, supply chain financing, high value loan against property and more.
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@ Our dedicated officers are well equipped to understand the business cash flows t
                             <div className="font-bold text-black mb-2 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">FAQ</div>
                             <div className="flex items-center justify-between mb-5 pb-[20px] border-b-1 border-[rgba(0,0,0,0.68)]">
                                 <div className="text-black text-title1">Frequently asked <span className="text-base2 font-bold">&nbsp;Questions</span></div>
-                               
+
                             </div>
 
                             {faqs.map((faq, index) => (

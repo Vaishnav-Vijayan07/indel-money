@@ -7,13 +7,13 @@ export default function TrustedInvestment() {
   return (
     <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px]">
       <div className="container">
-        <div className="flex flex-wrap md:-mx-[15px] lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[30px]">
+        <div className="flex flex-wrap flex-col-reverse md:flex-row md:-mx-[15px] lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[30px]">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="w-full md:w-[45%] 2xl:w-[40%] mb-[15px] lg:mb-0 md:px-[15px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]"
+            className="w-full md:w-[45%] 2xl:w-[40%] mt-[15px] md:mt-0 md:px-[15px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]"
           >
             <div className="group w-full h-full 2xl:rounded-[36px] xl:rounded-[30px] md:rounded-[30px] rounded-[18px] overflow-hidden">
               <Image
@@ -35,7 +35,7 @@ export default function TrustedInvestment() {
             <h2 className="text-title1 mb-[15px] 2xl:mb-[20px]">
               Your Trusted <br></br> Investment Opportunity
             </h2>
-            <div className="text-sm-1 mb-[15px] xl:mb-[20px] 2xl:mb-[30px]">
+            <div className="text-sm1 mb-[15px] xl:mb-[20px] 2xl:mb-[30px]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley
@@ -58,7 +58,7 @@ export default function TrustedInvestment() {
               <div>
                 <Link
                   href="/"
-                  className="btn btn-base2 min-w-[120px] lg:min-w-[140px] xl:min-w-[150px] 2xl:min-w-[227px]"
+                  className="btn btn-base2 min-w-[140px] lg:min-w-[140px] xl:min-w-[150px] 2xl:min-w-[227px]"
                 >
                   INVESTORS REPORT
                 </Link>

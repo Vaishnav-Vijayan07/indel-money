@@ -1,6 +1,8 @@
 import BlogCard from "@/components/common/BlogCard";
+import MobBlogListCard from "@/components/features/blog/MobBlogListCard";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import LatestUpdates from "@/components/features/home/LatestUpdates";
+import MobLatestUpdates from "@/components/features/blog/MobLatestUpdates";
 import {
     Pagination,
     PaginationContent,
@@ -19,7 +21,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -29,7 +31,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -39,7 +41,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -49,7 +51,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -59,7 +61,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -69,7 +71,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -79,7 +81,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -89,7 +91,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -99,7 +101,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -109,7 +111,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -119,7 +121,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
     {
@@ -129,7 +131,7 @@ const blogs = [
         date: "24 SEPTEMBER 2024:",
         title:
             "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-        discription:
+        description:
             "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
     },
 ];
@@ -137,31 +139,43 @@ const blogs = [
 export default function Blog() {
     return (
         <>
-            <section className="w-full block py-[20px] lg:py-[30px] 2xl:py-[50px]">
+            <section className="w-full block pt-[30px] sm:py-[20px] lg:py-[30px] 2xl:py-[50px]">
                 <div className="container">
-                    <div className="w-full mb-[20px] lg:mb-[15px] 2xl:mb-[20px]">
+                    <div className="w-full mb-[25px] sm:mb-[20px] lg:mb-[15px] 2xl:mb-[20px]">
                         <div className="text-title1 font-bold text-base2">Blogs</div>
-                        <PageBreadcrumb />
+                        <div className="sm:block hidden">
+                            <PageBreadcrumb />
+                        </div>
                     </div>
                 </div>
             </section>
-            <LatestUpdates />
-            <section className="p-[30px_0_20px_0] 2xl:p-[40px_0_60px_0]">
+            <div className="sm:hidden block">
+                <MobLatestUpdates />
+            </div>
+            <div className="sm:block hidden">
+                <LatestUpdates />
+            </div>
+            <section className="p-[30px_0_20px_0] 2xl:p-[40px_0_60px_0] relative z-0 before:content-[''] before:absolute before:top-0 before:bottom-[15%] before:w-full before:h-[60%] before:bg-gradient-to-r before:from-[rgba(243,0,0,0.00)] before:to-[rgba(235,2,8,0.10)] before:my-auto before:pointer-events-none sm:before:block before:hidden">
                 <div className="container">
                     <div className="text-sm sm:text-lg md:text-xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl text-black font-medium mb-[15px]">
                         All Blogs
                     </div>
-                    <div className="flex flex-wrap -mx-[4px] lg:-mx-[15px] border-b border-b-[rgb(0,0,0,18%)] 2xl:-mx-[35px] sm:pb-[20px] 2xl:pb-[50px] 2xl:mb-[40px] sm:mb-[20px] relative z-0 before:content-[''] before:absolute before:top-0 before:bottom-0 before:block before:w-full before:h-[82%] before:bg-gradient-to-r before:from-[rgba(243,0,0,0.00)] before:to-[rgba(235,2,8,0.10)] before:my-auto before:pointer-events-none">
+                    <div className="flex flex-wrap -mx-[4px] lg:-mx-[15px] sm:border-b sm:border-b-[rgb(0,0,0,18%)] 2xl:-mx-[35px] sm:pb-[20px] 2xl:pb-[50px] 2xl:mb-[40px] sm:mb-[20px] ">
                         {blogs?.map((item, index) => (
                             <div
                                 key={index}
                                 className="w-full md:w-1/2 p-[6px_4px] lg:p-[10px_15px] 2xl:p-[30px_35px]"
                             >
-                                <BlogCard item={item} />
+                                <div className="sm:hidden block">
+                                    <MobBlogListCard item={item} />
+                                </div>
+                                <div className="sm:block hidden">
+                                    <BlogCard item={item} />
+                                </div>
                             </div>
                         ))}
                     </div>
-                    <Pagination className="justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
+                    <Pagination className="justify-start sm:justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
                         <PaginationContent>
                             <PaginationItem>
                                 <PaginationPrevious href="#" />

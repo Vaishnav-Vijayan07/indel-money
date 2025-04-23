@@ -6,13 +6,15 @@ import "swiper/css/pagination";
 import Image from "next/image";
 import Link from "next/link";
 
+import "./Home.css";
+
 const slides = [
   {
     image: "/images/awards-img-1.jpg",
     alt: "Life at Indel Image 1",
     title: "Indel Money Limited is bestowed as",
     title2: "GREAT PLACE TO WORK",
-    discription:
+    description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute...",
     href: "/",
   },
@@ -21,7 +23,7 @@ const slides = [
     alt: "Life at Indel Image 2",
     title: "Indel Money Limited is bestowed as",
     title2: "GREAT PLACE TO WORK",
-    discription:
+    description:
       "We are committed to financial excellence and providing reliable services for our customers.",
     href: "/",
   },
@@ -30,7 +32,7 @@ const slides = [
     alt: "Life at Indel Image 3",
     title: "Indel Money Limited is bestowed as",
     title2: "GREAT PLACE TO WORK",
-    discription:
+    description:
       "With a legacy of trust and innovation, we empower individuals and businesses alike.",
     href: "/",
   },
@@ -65,8 +67,8 @@ export default function LifeIndelSlider() {
                     &apos;
                   </span>
                 </h5>
-                <div className="w-full mb-[10px] xl:mb-[15px] 3xl:mb-[20px] text-sm-1 line-clamp-4">
-                  {item.discription}
+                <div className="w-full mb-[10px] xl:mb-[15px] 3xl:mb-[20px] text-sm1 line-clamp-4">
+                  {item.description}
                 </div>
               </div>
               <div className="3xl:w-[200px] xl:w-[150px] lg:w-[100px] w-[100px]">

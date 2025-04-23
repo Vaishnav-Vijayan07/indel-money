@@ -38,9 +38,9 @@ const formSchema = z.object({
 });
 
 const labelStyle =
-  "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-normal text-black";
+  "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-none font-normal text-black";
 const toggleBtnStyle =
-  "text-[10px] lg:text-[12px] 2xl:text-[14px] text-center leading-[1.2] font-normal text-white w-[40px] lg:w-[50px] 2xl:w-[54px] h-[20px] lg:h-[22px] 2xl:h-[26px] rounded-[4px] lg:rounded-[6px] flex items-center justify-center cursor-pointer transition-colors duration-300";
+  "text-[10px] lg:text-[12px] 2xl:text-[14px] text-center leading-[1.2] font-normal text-white w-[40px] lg:w-[45px] 2xl:w-[54px] h-[20px] lg:h-[20px] 2xl:h-[26px] rounded-[4px] lg:rounded-[6px] flex items-center justify-center cursor-pointer transition-colors duration-300";
 
 export default function GoldLoanForm() {
   // Define form
@@ -178,10 +178,10 @@ export default function GoldLoanForm() {
                     alt="refresh"
                     width={16}
                     height={16}
-                    className="w-[6px] lg:w-[10px] 2xl:w-[15px] aspect-square absolute z-1 top-0 bottom-0 right-[10px] lg:right-[12px] 2xl:right-[15px] m-auto cursor-pointer hover:scale-95 transition-transform duration-300"
+                    className="w-[10px] sm:w-[10px] 2xl:w-[15px] aspect-square absolute z-1 top-0 bottom-0 right-[10px] lg:right-[12px] 2xl:right-[15px] m-auto cursor-pointer hover:scale-95 transition-transform duration-300"
                   />
                 </div>
-                <FormDescription className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-normal text-[#3c3c3c]">
+                <FormDescription className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-none font-normal text-[#3c3c3c]">
                   Rate Calculated @ 5798 / Gm
                 </FormDescription>
                 <FormMessage />
@@ -191,7 +191,7 @@ export default function GoldLoanForm() {
         </div>
         <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px] mt-[15px] lg:mt-[20px] 2xl:mt-[30px]">
           <Button
-            className="btn btn-base2 max-w-[100px] lg:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[160px uppercase ml-auto"
+            className="btn btn-base2 max-w-[105px] lg:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[160px uppercase ml-auto"
             type="submit"
           >
             apply now
