@@ -52,22 +52,21 @@ const benefitsEmployee = [
 
 export default function BenefitsEmployee() {
   return (
-    <section className="w-full block py-[30px]">
+    <section className="w-full block py-[30px_0] overflow-hidden">
       <div className="container">
-        <div className="text-title1 font-medium capitalize mb-[10px]">
+        <div className="text-title1 font-medium capitalize mb-[15px]">
           Benefits of being an
           <span className="text-base2 font-bold">&nbsp;indel employee</span>
         </div>
-
         <Swiper
           modules={[Autoplay, Pagination]}
           slidesPerView={2}
           spaceBetween={6}
-          
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,
           }}
+          watchSlidesProgress={true}
           pagination={{
             clickable: false,
           }}
@@ -91,16 +90,16 @@ export default function BenefitsEmployee() {
                 <div
                   className={`
                     ${index % 2 === 0 ? "bg-base1" : "bg-[#d6071e]"} 
-                    w-full h-[50px] p-[10px_15px] flex items-center`}
+                    w-full h-[50px] p-[10px_10px_10px_15px] flex items-center`}
                 >
                   <Image
                     src={item.src}
                     alt={item.alt}
-                    width={30}
-                    height={30}
+                    width={25}
+                    height={25}
                     className="aspect-square"
                   />
-                  <div className="text-[14px] font-medium leading-none line-clamp-1 text-white pl-[10px]">
+                  <div className="text-[14px] font-medium leading-none line-clamp-2 text-white pl-[10px]">
                     {item.title}
                   </div>
                 </div>

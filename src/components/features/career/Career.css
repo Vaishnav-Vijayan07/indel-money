@@ -65,7 +65,23 @@
   outline: 3px solid #ee3824;
 }
 
-.mobBenefitsSlide{
-  padding-bottom: 20px;
-  overflow: hidden;
+.swiper.mobBenefitsSlide {
+  padding-bottom: 40px;
+  overflow: visible;
 }
+
+.swiper.mobBenefitsSlide .swiper-slide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.swiper.mobBenefitsSlide
+  .swiper-slide.swiper-slide-visible.swiper-slide-fully-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+/* .mobAwardSlide .swiper-slide-active{
+
+} */

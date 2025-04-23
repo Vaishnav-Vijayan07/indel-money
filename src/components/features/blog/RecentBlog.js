@@ -11,7 +11,7 @@ const blogs = [
         alt: "news-1",
         date: "24 SEPTEMBER 2024:",
         title: "Lorem Ipsum is simply dummy text of the printing and typesetting.",
-        discription: "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie.",
+        description: "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie.",
     },
     {
         href: "/blog-detail",
@@ -19,7 +19,7 @@ const blogs = [
         alt: "news-1",
         date: "24 SEPTEMBER 2024:",
         title: "Lorem Ipsum is simply dummy text of the printing and typesetting.",
-        discription: "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie.",
+        description: "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie.",
     },
 ];
 

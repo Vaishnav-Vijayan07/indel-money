@@ -24,7 +24,7 @@ const testimonialData = [
     thumbnail: "/images/employeeTestimonialsVideo-1.jpg",
     src: "/images/employeeTestimonialsVideo-1.jpg",
     user_image: "/images/testimonial-profile-image-2.jpg",
-    discription:
+    description:
       "Team Indel Money is like my second home. I feel honored and valued as a member in this environment that holds inclusiveness at its core. My company understands my life roles as a professional and also as a mother. My peers and the company always extend their helping hands whenever I face an emergency situation. The vibrant atmosphere and culture in the office binds everyone together and experience a feeling of togetherness.",
     title: "Sreerajitha",
     designation: "Branch Manager, Indel Money South Kalamassery",
@@ -50,7 +50,7 @@ const testimonialData = [
     thumbnail: "/images/employeeTestimonialsVideo-3.jpg",
     src: "/images/employeeTestimonialsVideo-3.jpg",
     user_image: "/images/testimonial-profile-image-1.jpg",
-    discription:
+    description:
       "I manage to contribute to the company and still have time for my family. The management team makes sure that the suggestions and opinions of the employees are valued and included in the planning process of the organisation. I am proud to work for Indel Money.",
     title: "Preetha S",
     designation: "Sr. Branch Manager",
@@ -60,7 +60,7 @@ const testimonialData = [
     thumbnail: "/images/employeeTestimonialsVideo-1.jpg",
     src: "/images/employeeTestimonialsVideo-1.jpg",
     user_image: "/images/testimonial-profile-image-2.jpg",
-    discription:
+    description:
       "Team Indel Money is like my second home. I feel honored and valued as a member in this environment that holds inclusiveness at its core. My company understands my life roles as a professional and also as a mother. My peers and the company always extend their helping hands whenever I face an emergency situation. The vibrant atmosphere and culture in the office binds everyone together and experience a feeling of togetherness.",
     title: "Sreerajitha",
     designation: "Branch Manager, Indel Money South Kalamassery",
@@ -70,7 +70,7 @@ const testimonialData = [
     thumbnail: "/images/employeeTestimonialsVideo-3.jpg",
     src: "/images/employeeTestimonialsVideo-3.jpg",
     user_image: "/images/testimonial-profile-image-1.jpg",
-    discription:
+    description:
       "I manage to contribute to the company and still have time for my family. The management team makes sure that the suggestions and opinions of the employees are valued and included in the planning process of the organisation. I am proud to work for Indel Money.",
     title: "Preetha S",
     designation: "Sr. Branch Manager",
@@ -138,7 +138,7 @@ const WordTestimonialCard = ({ item }) => {
         </div>
         <div className="flex items-center h-[70%] 2xl:h-[80%]">
           <div className="text-[13px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#121212] font-normal line-clamp-6 m-[25px_0_45px] sm:m-[0]">
-            {item.discription}
+            {item.description}
           </div>
         </div>
         <div className="flex items-center gap-[5px] lg:gap-[10px] 2xl:gap-[20px] p-[10px_15px_20px] lg:p-[15px_20px] 2xl:p-[20px_30px] absolute z-1 bottom-0 left-0 right-0">

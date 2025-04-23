@@ -1,115 +1,133 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
+
 import Image from "next/image";
-import "./AwardHighlightBox.css";
+import { useState } from "react";
 
 const slides = [
   {
-    image: "/images/awards-img-1.jpg",
-    alt: "Life at Indel Image 1",
-    title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
+    image: "/images/mob-awards-img-1.jpg",
+    alt: "awards 1",
+    title: "Indel Premier League",
     description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
   {
-    image: "/images/awards-img-1.jpg",
-    alt: "Life at Indel Image 2",
-    title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
+    image: "/images/mob-awards-img-2.jpg",
+    alt: "awards 2",
+    title: "Indel Element",
     description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
   {
-    image: "/images/awards-img-1.jpg",
-    alt: "Life at Indel Image 3",
-    title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
+    image: "/images/mob-awards-img-3.jpg",
+    alt: "awards 3",
+    title: "CHRISTMAS  2023",
     description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
   {
-    image: "/images/awards-img-1.jpg",
-    alt: "Life at Indel Image 3",
-    title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
+    image: "/images/mob-awards-img-1.jpg",
+    alt: "awards 3",
+    title: "Indel Premier League",
     description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
   {
-    image: "/images/awards-img-1.jpg",
-    alt: "Life at Indel Image 3",
-    title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
+    image: "/images/mob-awards-img-2.jpg",
+    alt: "awards 3",
+    title: "Indel Premier League",
+    description:
+      "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+    href: "/",
+  },
+  {
+    image: "/images/mob-awards-img-3.jpg",
+    alt: "awards 3",
+    title: "CHRISTMAS  2023",
     description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
 ];
 
-export default function AwardHighlightBox({ variant = "default" }) {
+export default function MobAwardHighlight() {
+  const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <div className="relative z-0 w-full h-full block rounded-[35px] sm:bg-[#B7D0FF] bg-[#fff] sm:shadow-none  shadow-[0_0_15px_0_rgba(0,0,0,0.10)] p-[15px_20px] sm:p-[30px_30px] lg:p-[30px] 2xl:p-[40px_30px_40px_40px] 3xl:p-[80px_50px_50px_70px]">
+    <div className="w-full h-auto bg-white rounded-[24px] shadow-[0_0_15px_0_rgba(0,0,0,0.1)] p-[18px]">
+      <div className="text-title1 text-center font-bold text-base1 mb-[15px]">
+        Our Achievements
+      </div>
+      <div className="text-[14px] font-normal leading-[1.2] text-center text-[#1e1e1e] mb-[10px] [&>span]:font-bold [&>span]:text-base2 [&>span]:block">
+        Indel Money Limited is bestowed as
+        <span>&apos;GREAT PLACE TO WORK&apos;</span>
+      </div>
       <Swiper
-        modules={[Pagination]}
-        slidesPerView={1}
+        modules={[Autoplay, Pagination]}
+        slidesPerView={"auto"}
+        loop={true}
         spaceBetween={10}
-        autoplay={false}
-        pagination={{ clickable: true }}
-        className={"awardSlide"}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        centeredSlides={true}
+        watchSlidesProgress={true}
+        pagination={{
+          clickable: false,
+        }}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+        className="pb-[40px]! overflow-visible! mobAwardSlide"
+        style={{
+          "--swiper-pagination-bullet-size": "6px",
+          "--swiper-pagination-bullet-inactive-color": "#d9d9d9",
+          "--swiper-pagination-color": "#17479e",
+          "--swiper-pagination-bullet-inactive-opacity": "1",
+        }}
       >
-        {slides.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
-              <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-276px)] 3xl:w-[calc(100%-376px)] 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">
-                {variant === "employeeTestimonials" && (
-                  <div className="text-title1 font-bold leading-none mb-[5px] lg:mb-[10px] text-[#f30000]">
-                    Awards
+        {slides?.map((item, index) => (
+          <SwiperSlide key={index} className="w-[175px]!">
+            <div className="w-full h-auto block rounded-[8px] overflow-hidden">
+              <div className="w-full h-[165px] aspect-[175px/165px] overflow-hidden rounded-[8px] relative z-0 after:content-[''] after:w-full after:h-[80%] after:block after:absolute after:-z-1 after:inset-0 after:top-auto after:bg-linear-to-t after:from-base1 after:to-base2/0">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="175px"
+                  className="-z-2 object-cover"
+                />
+                <div className="absolute z-1 inset-0 top-auto p-[10px]">
+                  <div className="text-[13px] leading-none font-black capitalize text-white">
+                    {item.title}
                   </div>
-                )}
-                <h5 className="sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[40px] text-black font-normal mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
-                  {item.title}
-                  <span className="block text-[#EB0208] uppercase font-bold">
-                    &nbsp;&apos;
-                    {item.title2}
-                    &apos;
-                  </span>
-                </h5>
-                <div className="w-full mb-[20px] lg:mb-[40px] 2xl:mb-[60px] text-[12px] lg:text-[13px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] line-clamp-8">
-                  {item.description}
+                  <span className="w-[60px] h-[1px] bg-white my-[5px] block"></span>
+                  <div className="text-[12px] leading-[1.2] font-normal line-clamp-2 text-white ">
+                    {item.description}
+                  </div>
                 </div>
               </div>
-              <div className="w-[150px] lg:w-[180px] xl:w-[220px] 2xl:w-[276px] 3xl:w-[376px]">
-                <div className="group w-full h-full rounded-[24px] overflow-hidden">
+              {index === activeIndex && (
+                <div className="w-full max-w-[95%] h-[60px] mx-auto overflow-hidden rounded-b-[24px] relative z-0">
                   <Image
-                    src={item.image}
+                    src="/images/mob-awards-delmt.jpg"
                     alt={item.alt}
-                    width={370}
-                    height={465}
-                    className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
+                    fill
+                    sizes="175px"
+                    className="object-cover object-top"
                   />
                 </div>
-              </div>
+              )}
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="absolute z-1 left-0 bottom-0 w-[20%] h-full pointer-events-none">
-        <Image
-          src={"/images/award-highlightbox-bg.png"}
-          alt={"bg"}
-          width={360}
-          height={460}
-          className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
-        />
-      </div>
     </div>
   );
 }
