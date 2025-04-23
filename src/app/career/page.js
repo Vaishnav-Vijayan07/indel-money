@@ -9,7 +9,7 @@ import MobBenefitsEmployee from "@/components/features/career/MobBenefitsEmploye
 
 export default function Career() {
   return (
-    <>
+    <div className="w-full h-auto bg-linear-to-b from-base1/10 to-base2/10">
       <CareerBanner />
       <FindJob />
       <MakeYourMove />
@@ -22,6 +22,6 @@ export default function Career() {
         <MobBenefitsEmployee />
       </div>
       <EmployeeTestimonials />
-    </>
+    </div>
   );
 }

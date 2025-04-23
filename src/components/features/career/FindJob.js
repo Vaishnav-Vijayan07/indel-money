@@ -209,7 +209,7 @@ export default function FindJob() {
                     <div
                         className="w-full h-auto block sm:mb-[20px] lg:mb-[30px] 2xl:mb-[40px]"
                     >
-                        <div className="max-sm:flex hidden max-sm:p-[25px_0_20px]">
+                        <div className="max-sm:flex hidden max-sm:p-[0px_0_20px]">
                             <div className="text-title1 font-bold">
                                 Find Your
                                 <span className="font-bold text-base2">
@@ -223,7 +223,7 @@ export default function FindJob() {
                         className="flex flex-wrap"
                     >
                         <div className="w-full lg:w-[calc(100%-368px)] xl:w-[calc(100%-468px)] 2xl:w-[calc(100%-576px)] 3xl:w-[calc(100%-700px)] mb-[15px] lg-mb-0">
-                            <ScrollArea className="w-full h-[290px] sm:h-[270px] lg:h-[276px] xl:h-[340px] 2xl:h-[430px] 3xl:h-[540px]">
+                            <ScrollArea className="w-full h-[265px] sm:h-[270px] lg:h-[276px] xl:h-[340px] 2xl:h-[430px] 3xl:h-[540px]">
                                 <div className="flex flex-wrap -mx-[2px] sm:-mx-[4px] lg:-mx-[8px] 2xl:-mx-[12px]">
                                     {jobLocations?.map((item, index) => (
                                         <div key={index} className="w-1/4 p-[2px] sm:p-[0_4px_8px] lg:p-[0_8px_16px] 2xl:p-[0_12px_24px]">
@@ -234,7 +234,7 @@ export default function FindJob() {
                                 {/* <ScrollBar className="right-[calc(100%+15px)]!" /> */}
                             </ScrollArea>
                         </div>
-                        <div className="w-full lg:w-[368px] xl:w-[468px] 2xl:w-[576px] 3xl:w-[700px] lg:pl-[20px] 2xl:pl-[30px]">
+                        <div className="w-full lg:w-[368px] xl:w-[468px] 2xl:w-[576px] 3xl:w-[700px] lg:pl-[20px] 2xl:pl-[30px] max-sm:hidden block">
                             <JobResultBoxSlide jobResults={jobResults} />
                         </div>
                     </div>

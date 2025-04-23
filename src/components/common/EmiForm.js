@@ -29,23 +29,23 @@ export default function EmiForm() {
           <Slider defaultValue={[69]} max={70} step={[12]} />
         </div>
         <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
-          <div className="flex items-center xl:justify-between gap-x-[10px] 2xl:gap-x-[20px] 3xl:gap-x-[30px]">
-            <div>
-              <div className={`${labelStyle} mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`} title="Loan EMI">
+          <div className="flex items-center xl:justify-between gap-x-[20px] sm:gap-x-[10px] 2xl:gap-x-[20px] 3xl:gap-x-[30px]">
+            <div className="max-sm:w-1/3">
+              <div className={`${labelStyle} max-sm:text-[8px] max-sm:line-clamp-none mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`} title="Loan EMI">
                 Loan EMI
               </div>
               <div className={resultStyle}>₹2500</div>
             </div>
-            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[46px] 3xl:h-[52px] bg-[#6497db] hidden sm:block"></div>
-            <div>
-              <div className={`${labelStyle} mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`} title="Total Interest Payable">
+            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[46px] 3xl:h-[52px] bg-[#6497db]"></div>
+            <div className="max-sm:w-1/3">
+              <div className={`${labelStyle} max-sm:text-[8px] max-sm:line-clamp-none mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`} title="Total Interest Payable">
                 Total Interest Payable
               </div>
               <div className={resultStyle}>₹1500</div>
             </div>
-            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[46px] 3xl:h-[52px] bg-[#6497db] hidden sm:block"></div>
-            <div>
-              <div className={`${labelStyle} mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`} title="Total Payment (Principal + Interest)">
+            <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[46px] 3xl:h-[52px] bg-[#6497db]"></div>
+            <div className="max-sm:w-1/3">
+              <div className={`${labelStyle} max-sm:text-[8px] max-sm:line-clamp-none mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`} title="Total Payment (Principal + Interest)">
                 Total Payment (Principal + Interest)
               </div>
               <div className={resultStyle}>₹4000</div>

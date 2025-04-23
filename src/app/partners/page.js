@@ -5,48 +5,59 @@ import Image from "next/image";
 
 const navigationItems = [
   {
+    id: 1,
     title: "Debt partners",
     href: "/partners",
   },
   {
+    id: 2,
     title: "Rating Agencies",
     href: "/",
     sub_menu: [
       {
+        id: 1,
         title: "Contact Form",
         href: "/investors/contact",
       },
       {
+        id: 2,
         title: "FAQ",
         href: "/partners",
       },
     ],
   },
   {
+    id: 3,
     title: "Credit Bureau",
     href: "/",
   },
   {
+    id: 4,
     title: "Auditors",
     href: "/",
   },
   {
+    id: 5,
     title: "Self-regulatory association",
     href: "/",
   },
   {
+    id: 6,
     title: "Tech partners",
     href: "/",
   },
   {
+    id: 7,
     title: "Trustee ships",
     href: "/",
   },
   {
+    id: 8,
     title: "Strategic consultant",
     href: "/",
   },
   {
+    id: 9,
     title: "Business Partners",
     href: "/",
   },

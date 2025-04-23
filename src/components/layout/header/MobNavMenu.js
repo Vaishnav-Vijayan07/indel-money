@@ -23,10 +23,9 @@ export default function MobNavMenu() {
       </SheetTrigger>
       <SheetContent className="bg-white">
         <SheetHeader>
-          <SheetTitle>Are you absolutely sure?</SheetTitle>
+          <SheetTitle>Under construction?</SheetTitle>
           <SheetDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            Design under construction
           </SheetDescription>
         </SheetHeader>
       </SheetContent>

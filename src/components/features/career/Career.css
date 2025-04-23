@@ -85,3 +85,86 @@
 /* .mobAwardSlide .swiper-slide-active{
 
 } */
+.text-editor h1,
+.text-editor h2,
+.text-editor h3,
+.text-editor h4,
+.text-editor h5,
+.text-editor h6 {
+  line-height: 1.2;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 15px;
+}
+.text-editor h4 {
+  font-size: 14px;
+}
+
+.text-editor p,
+.text-editor li {
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: black;
+}
+.text-editor ul {
+  list-style-type: disc;
+  margin-left: 15px;
+}
+.text-editor ul > li {
+  margin-block: 5px;
+}
+@media (min-width: 640px) {
+  .text-editor h1,
+  .text-editor h2,
+  .text-editor h3,
+  .text-editor h4,
+  .text-editor h5,
+  .text-editor h6 {
+    margin-bottom: 20px;
+  }
+  .text-editor h4 {
+    font-size: 16px;
+  }
+  .text-editor p,
+  .text-editor li {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1024px) {
+  .text-editor h1,
+  .text-editor h2,
+  .text-editor h3,
+  .text-editor h4,
+  .text-editor h5,
+  .text-editor h6 {
+    margin-bottom: 25px;
+  }
+  .text-editor h4 {
+    font-size: 20px;
+  }
+  .text-editor p,
+  .text-editor li {
+    font-size: 16px;
+  }
+  .text-editor ul > li {
+    margin-block: 10px;
+  }
+}
+@media (min-width: 1536px) {
+  .text-editor h1,
+  .text-editor h2,
+  .text-editor h3,
+  .text-editor h4,
+  .text-editor h5,
+  .text-editor h6 {
+    margin-bottom: 30px;
+  }
+  .text-editor h4 {
+    font-size: 24px;
+  }
+  .text-editor p,
+  .text-editor li {
+    font-size: 18px;
+  }
+}

@@ -14,7 +14,7 @@ export default function MobStepGoldLoan() {
             <TabsTrigger value="goldloan" className={`${TabsTriggerStyle} before:left-full`}>
               Gold Loan Calculator
             </TabsTrigger>
-            <TabsTrigger value="emicalculator" className={`${TabsTriggerStyle} before:right-full before:scale-x-[-1]`}>
+            <TabsTrigger value="emicalculator" className={`${TabsTriggerStyle} before:right-full before:scale-x-[-1] data-[state=active]:bg-[#fcdcdc] before:shadow-[-5px_5px_0_0_rgba(252,220,220,1)]`}>
               EMI Calculator
             </TabsTrigger>
           </TabsList>
@@ -24,7 +24,7 @@ export default function MobStepGoldLoan() {
             </div>
           </TabsContent>
           <TabsContent value="emicalculator">
-            <div className="w-full h-auto p-[30px_25px] bg-[#c0dbff] rounded-[20px_0_20px_20px]">
+            <div className="w-full h-auto p-[30px_25px] bg-[#fcdcdc] rounded-[20px_0_20px_20px]">
               <EmiForm />
             </div>
           </TabsContent>
