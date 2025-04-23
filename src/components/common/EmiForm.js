@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
 const labelStyle =
-  "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-[1] font-normal text-black line-clamp-1";
+  "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-none font-normal text-black line-clamp-1";
 const resultStyle =
-  "text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[20px] leading-[1] font-bold text-black line-clamp-1";
+  "text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[20px] leading-none font-bold text-black line-clamp-1";
 
 export default function EmiForm() {
   // Handle form submission

@@ -95,7 +95,7 @@ export default function WelcomeModal() {
         <div className="w-full sm:min-w-[608px] md:min-w-[736px] lg:min-w-[864px] xl:min-w-[1088px] 2xl:min-w-[1312px] 3xl:min-w-[1664px] mx-auto bg-white rounded-[15px] lg:rounded-[36px] py-[20px] lg:py-[30px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[70px] px-[15px] lg:px-[40px] xl:px-[45px] 2xl:px-[50px] 3xl:px-[60px] relative z-0">
           <AlertDialogCancel
             onClick={handleClose}
-            className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-[1] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] lg:top-[40px] xl:top-[45px] 2xl:top-[50px] 3xl:top-[60px] right-[15px] lg:right-[40px] xl:right-[45px] 2xl:right-[50px] 3xl:right-[60px] transition-color cursor-pointer hover:text-base2 items-center"
+            className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-none focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] lg:top-[40px] xl:top-[45px] 2xl:top-[50px] 3xl:top-[60px] right-[15px] lg:right-[40px] xl:right-[45px] 2xl:right-[50px] 3xl:right-[60px] transition-color cursor-pointer hover:text-base2 items-center"
           >
             Close
             <Image
@@ -116,10 +116,10 @@ export default function WelcomeModal() {
               />
             </div>
             <div>
-              <AlertDialogTitle className="text-[18px] sm:text-[24px] md:text-[30px] lg:text-[38px] xl:text-[44px] 2xl:text-[56px] 3xl:text-[64px] text-base2 leading-[1] font-bold mt-[2px] 2xl:mt-[4px] mb-[4px] 2xl:mb-[6px]">
+              <AlertDialogTitle className="text-[18px] sm:text-[24px] md:text-[30px] lg:text-[38px] xl:text-[44px] 2xl:text-[56px] 3xl:text-[64px] text-base2 leading-none font-bold mt-[2px] 2xl:mt-[4px] mb-[4px] 2xl:mb-[6px]">
                 Welcome!
               </AlertDialogTitle>
-              <div className="text-[14px] sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[36px] text-[#1e1e1e] leading-[1] font-normal">
+              <div className="text-[14px] sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[36px] text-[#1e1e1e] leading-none font-normal">
                 What Brings You Here Today?
               </div>
             </div>
@@ -195,7 +195,7 @@ function WelcomeBox({ item, index }) {
             isActive
               ? "text-[14px] lg:text-[18px] xl:text-[19px] 2xl:text-[24px] 3xl:text-[30px]"
               : "text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[17px] 2xl:text-[20px] 3xl:text-[22px]"
-          } font-bold text-base1 line-clamp-1 leading-[1] mb-[5px] lg:mb-[10px] 3xl:mb-[15px] transition-all duration-300`}
+          } font-bold text-base1 line-clamp-1 leading-none mb-[5px] lg:mb-[10px] 3xl:mb-[15px] transition-all duration-300`}
         >
           {item?.title}
         </div>

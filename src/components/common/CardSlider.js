@@ -4,6 +4,10 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
+// import "../features/gallery/gallery.module.css";
+import "./gallery.css";
+
+
 
 const slides = [
     { src: '/images/gallSlide01.jpg', title: '0nam 2024', description: 'There are many variations of passages of Lorem Ipsum available There are many variations of passages' },
@@ -19,9 +23,9 @@ export default function CardSlider() {
     return (
         <div className="w-full flex justify-center items-center py-10">
             <style>{`
-          .GallRoundSlide:not(.swiper-slide-active) .SwiprCntn{
-                opacity: 0;
-          }`}</style>
+            .GallRoundSlide:not(.swiper-slide-active) .SwiprCntn{
+                    opacity: 0;
+            }`}</style>
             <Swiper
                 effect={'coverflow'}
                 grabCursor={true}
@@ -89,8 +93,8 @@ export default function CardSlider() {
                         },
                     },
                 }}
-                modules={[EffectCoverflow, Navigation,    ]}
-                className="w-full max-w-full"
+                modules={[EffectCoverflow, Navigation,]}
+                className="w-full max-w-full CardSlider"
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={index} className="w-full h-full GallRoundSlide not-[:where(.swiper-slide-visible)]:opacity-0 not-[:has(.swiper-slide-active)]:[.SwiprCntn]:opacity-0">
@@ -111,6 +115,12 @@ export default function CardSlider() {
                         )}
                     </SwiperSlide>
                 ))}
+                {/* <div className="swiper-button-prev">
+                    <img src="/images/prev-btn.svg" alt="Previous" />
+                </div>
+                <div className="swiper-button-next">
+                    <img src="/images/next-btn.svg" alt="Next" />
+                </div> */}
             </Swiper>
         </div>
     );

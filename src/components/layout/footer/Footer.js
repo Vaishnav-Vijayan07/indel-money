@@ -213,7 +213,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="w-full h-auto block sm:mb-[15px] xl:mb-[20px]">
-              <h4 className="text-[14px] lg:text-[16px] 3xl:text-[18px] leading-[1] font-medium text-black mb-[15px] 3xl:mb-[20px]">
+              <h4 className="text-[14px] lg:text-[16px] 3xl:text-[18px] leading-none font-medium text-black mb-[15px] 3xl:mb-[20px]">
                 Subscribe News letter
               </h4>
               <PlaceholdersAndVanishInputDemo />
@@ -320,7 +320,7 @@ export default function Footer() {
         </div>
         <div className="w-full h-auto flex items-center justify-between">
           <div className="text-footer2">
-            © {currentYear} Indel Money. All Rights Reserved
+            © {currentYear} Indel Money.<br className="block sm:hidden" /> All Rights Reserved
           </div>
           <div className="text-footer2 hidden md:block">CIN: U65990MH1986PLC040897</div>
           <div className="text-footer2 flex whitespace-nowrap gap-1">

@@ -38,7 +38,7 @@ const formSchema = z.object({
 });
 
 const labelStyle =
-  "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-normal text-black";
+  "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-none font-normal text-black";
 const toggleBtnStyle =
   "text-[10px] lg:text-[12px] 2xl:text-[14px] text-center leading-[1.2] font-normal text-white w-[40px] lg:w-[45px] 2xl:w-[54px] h-[20px] lg:h-[20px] 2xl:h-[26px] rounded-[4px] lg:rounded-[6px] flex items-center justify-center cursor-pointer transition-colors duration-300";
 
@@ -181,7 +181,7 @@ export default function GoldLoanForm() {
                     className="w-[10px] sm:w-[10px] 2xl:w-[15px] aspect-square absolute z-1 top-0 bottom-0 right-[10px] lg:right-[12px] 2xl:right-[15px] m-auto cursor-pointer hover:scale-95 transition-transform duration-300"
                   />
                 </div>
-                <FormDescription className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-normal text-[#3c3c3c]">
+                <FormDescription className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-none font-normal text-[#3c3c3c]">
                   Rate Calculated @ 5798 / Gm
                 </FormDescription>
                 <FormMessage />

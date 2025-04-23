@@ -21,7 +21,7 @@ const events = [
     alt: "news-1",
     date: "24 SEPTEMBER 2024:",
     title: "Lorem Ipsum is simply dummy text of the printing and typesetting",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus  ",
   },
   {
@@ -30,7 +30,7 @@ const events = [
     alt: "news-1",
     date: "24 SEPTEMBER 2024:",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus ",
   },
   {
@@ -39,7 +39,7 @@ const events = [
     alt: "news-1",
     date: "24 SEPTEMBER 2024:",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus ",
   },
 ];
@@ -93,7 +93,7 @@ export default function IndelMoneyCars() {
                         {item?.title}
                       </div>
                       <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-12">
-                        {item?.description || item?.discription}
+                        {item?.description || item?.description}
                       </div>
                     </div>
                   </Link>

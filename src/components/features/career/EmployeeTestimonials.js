@@ -9,6 +9,7 @@ import { useState } from "react";
 import AwardHighlightBox from "../award/AwardHighlightBox";
 import EmployeeTestimonialsVideoBox from "@/components/common/EmployeeTestimonialsVideoBox";
 import { motion } from "framer-motion";
+import MobAwardHighlight from "./MobAwardHighlight";
 
 const employeeTestimonials = [
   {
@@ -177,7 +178,12 @@ export default function EmployeeTestimonials() {
     <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] relative z-0 after:content-[''] after:w-full max-sm:after:h-[100%] after:h-[75%] after:absolute after:-z-1 after:inset-0 after:block after:bg-gradient-to-r after:to-[#fde7e7] after:from-transparent after:m-auto">
       <div className="mb-[40px] lg:mb-[60px] 2xl:mb-[80px]">
         <div className="container">
-          <AwardHighlightBox variant={"employeeTestimonials"} />
+          <div className="sm:block hidden">
+            <AwardHighlightBox variant={"employeeTestimonials"} />
+          </div>
+          <div className="sm:hidden block">
+            <MobAwardHighlight />
+          </div>
         </div>
       </div>
       <div className="container sm:mb-[40px] 2xl:mb-[60px] 3xl:mb-[80px]">

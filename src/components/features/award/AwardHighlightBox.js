@@ -12,7 +12,7 @@ const slides = [
     alt: "Life at Indel Image 1",
     title: "Indel Money Limited is bestowed as",
     title2: "GREAT PLACE TO WORK",
-    discription:
+    description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
@@ -21,7 +21,7 @@ const slides = [
     alt: "Life at Indel Image 2",
     title: "Indel Money Limited is bestowed as",
     title2: "GREAT PLACE TO WORK",
-    discription:
+    description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
@@ -30,7 +30,7 @@ const slides = [
     alt: "Life at Indel Image 3",
     title: "Indel Money Limited is bestowed as",
     title2: "GREAT PLACE TO WORK",
-    discription:
+    description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
@@ -39,7 +39,7 @@ const slides = [
     alt: "Life at Indel Image 3",
     title: "Indel Money Limited is bestowed as",
     title2: "GREAT PLACE TO WORK",
-    discription:
+    description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
@@ -48,7 +48,7 @@ const slides = [
     alt: "Life at Indel Image 3",
     title: "Indel Money Limited is bestowed as",
     title2: "GREAT PLACE TO WORK",
-    discription:
+    description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
     href: "/",
   },
@@ -70,7 +70,7 @@ export default function AwardHighlightBox({ variant = "default" }) {
             <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
               <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-276px)] 3xl:w-[calc(100%-376px)] 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">
                 {variant === "employeeTestimonials" && (
-                  <div className="text-title1 font-bold leading-[1] mb-[5px] lg:mb-[10px] text-[#f30000]">
+                  <div className="text-title1 font-bold leading-none mb-[5px] lg:mb-[10px] text-[#f30000]">
                     Awards
                   </div>
                 )}
@@ -83,7 +83,7 @@ export default function AwardHighlightBox({ variant = "default" }) {
                   </span>
                 </h5>
                 <div className="w-full mb-[20px] lg:mb-[40px] 2xl:mb-[60px] text-[12px] lg:text-[13px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] line-clamp-8">
-                  {item.discription}
+                  {item.description}
                 </div>
               </div>
               <div className="w-[150px] lg:w-[180px] xl:w-[220px] 2xl:w-[276px] 3xl:w-[376px]">

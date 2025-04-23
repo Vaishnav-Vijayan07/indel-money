@@ -13,7 +13,7 @@ const slides = [
         alt: "Life at Indel Image 1",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
-        discription: "1 Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. ",
+        description: "1 Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. ",
         href: "/",
     },
     {
@@ -21,7 +21,7 @@ const slides = [
         alt: "Life at Indel Image 2",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
-        discription: "2 Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. ",
+        description: "2 Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. ",
         href: "/",
     },
     {
@@ -29,7 +29,7 @@ const slides = [
         alt: "Life at Indel Image 3",
         title: "Indel Money Limited is bestowed as",
         title2: "GREAT PLACE TO WORK",
-        discription: "3 Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. ",
+        description: "3 Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute for assessment, benchmarking, and planning actions to strengthen their workplace culture. ",
         href: "/",
     },
 ];
@@ -55,7 +55,7 @@ export default function MobAwardHighlightBox({ variant = "default" }) {
                         <div className="w-full flex flex-wrap flex-col">
                             <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-276px)] 3xl:w-[calc(100%-376px)] 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">
                                 {variant === "employeeTestimonials" && (
-                                    <div className="text-title1 font-bold leading-[1] mb-[5px] lg:mb-[10px] text-[#f30000]">
+                                    <div className="text-title1 font-bold leading-none mb-[5px] lg:mb-[10px] text-[#f30000]">
                                         Awards
                                     </div>
                                 )}
@@ -82,7 +82,7 @@ export default function MobAwardHighlightBox({ variant = "default" }) {
                 ))}
             </Swiper>
             <div className="w-full text-[12px] text-black line-clamp-5 rounded-[10px] bg-white shadow-[0_0_15px_0_rgba(0,0,0,0.10)] overflow-hidden p-[25px]">
-                {slides[activeIndex]?.discription}
+                {slides[activeIndex]?.description}
             </div>
         </div>
     );

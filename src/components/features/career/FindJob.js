@@ -189,7 +189,7 @@ export default function FindJob() {
                     <div className="max-sm:hidden block">
                         <Link
                             href={"/career/active-jobs"}
-                            className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-white h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[54px] flex items-center bg-base2 rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
+                            className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-bold text-white h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[54px] flex items-center bg-base2 rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
                         >
                             <span
                                 className="px-[5px] md:px-[10px] lg:px-[15px] 2xl:px-[20px]">
@@ -223,7 +223,7 @@ export default function FindJob() {
                         className="flex flex-wrap"
                     >
                         <div className="w-full lg:w-[calc(100%-368px)] xl:w-[calc(100%-468px)] 2xl:w-[calc(100%-576px)] 3xl:w-[calc(100%-700px)] mb-[15px] lg-mb-0">
-                            <ScrollArea className="w-full h-[290px] sm:h-[270px] lg:h-[276px] xl:h-[340px] 2xl:h-[430px] 3xl:h-[540px]">
+                            <ScrollArea className="w-full h-[265px] sm:h-[270px] lg:h-[276px] xl:h-[340px] 2xl:h-[430px] 3xl:h-[540px]">
                                 <div className="flex flex-wrap -mx-[2px] sm:-mx-[4px] lg:-mx-[8px] 2xl:-mx-[12px]">
                                     {jobLocations?.map((item, index) => (
                                         <div key={index} className="w-1/4 p-[2px] sm:p-[0_4px_8px] lg:p-[0_8px_16px] 2xl:p-[0_12px_24px]">

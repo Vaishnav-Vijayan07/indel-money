@@ -52,7 +52,7 @@ export default function FindJobForm({ variant = 'default' }) {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className={`${variant === "activeJobs" ? "bg-[#cae5f4]" : "bg-base1"} w-full flex flex-wrap items-center rounded-[20px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_15px] sm:p-[15px_10px] lg:p-[20px_10px] 2xl:p-[25px_10px]`}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className={`${variant === "activeJobs" ? "bg-base1 sm:bg-[#cae5f4]" : "bg-base1"} w-full flex flex-wrap items-center rounded-[20px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_15px] sm:p-[15px_10px] lg:p-[20px_10px] 2xl:p-[25px_10px]`}>
                 <div
                     className="w-full lg:w-[80px] xl:w-[140px] 2xl:w-[160px] 3xl:w-[220px] px-[5px] lg:px-[10px] 2xl:px-[15px] mb-[10px] lg:mb-0 max-sm:hidden">
                     <div

@@ -318,7 +318,7 @@ export default function BranchLocationMap() {
               onClick={() => handleBranchClick(branch)}
             >
               <div className="flex items-center justify-between mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
-                <h3 className="text-[14px] lg:text-[16px] 2xl:text-[18px] leading-[1] line-clamp-1 text-white font-bold">
+                <h3 className="text-[14px] lg:text-[16px] 2xl:text-[18px] leading-none line-clamp-1 text-white font-bold">
                   {branch.name}
                 </h3>
                 <a
