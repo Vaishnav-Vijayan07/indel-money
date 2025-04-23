@@ -61,7 +61,7 @@ export default function MobLifeIndel() {
                           }deg)`,
                     opacity: index === currentIndex ? 1 : 1,
                     zIndex:
-                      index === currentIndex ? 2
+                      index === currentIndex ? 9
                        : images.length - index,
                     transition: "transform 0.5s ease, opacity 1s ease",
                   }}
