@@ -209,7 +209,7 @@ export default function FindJob() {
                     <div
                         className="w-full h-auto block sm:mb-[20px] lg:mb-[30px] 2xl:mb-[40px]"
                     >
-                        <div className="max-sm:flex hidden max-sm:p-[25px_0_20px]">
+                        <div className="max-sm:flex hidden max-sm:p-[0px_0_20px]">
                             <div className="text-title1 font-bold">
                                 Find Your
                                 <span className="font-bold text-base2">
@@ -234,7 +234,7 @@ export default function FindJob() {
                                 {/* <ScrollBar className="right-[calc(100%+15px)]!" /> */}
                             </ScrollArea>
                         </div>
-                        <div className="w-full lg:w-[368px] xl:w-[468px] 2xl:w-[576px] 3xl:w-[700px] lg:pl-[20px] 2xl:pl-[30px]">
+                        <div className="w-full lg:w-[368px] xl:w-[468px] 2xl:w-[576px] 3xl:w-[700px] lg:pl-[20px] 2xl:pl-[30px] max-sm:hidden block">
                             <JobResultBoxSlide jobResults={jobResults} />
                         </div>
                     </div>

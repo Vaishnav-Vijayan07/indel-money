@@ -48,7 +48,7 @@ export default function AboutBanner() {
               src={item?.image}
               alt={item?.alt}
               fill
-              priority
+              priority 
               className="-z-2 object-cover"
             />
             <div className="absolute bottom-[80px] sm:bottom-1/2 left-1/2 transform -translate-x-1/2 sm:translate-y-1/2 container">

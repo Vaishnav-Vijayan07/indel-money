@@ -15,7 +15,7 @@ export default function EmployeeTestimonialsVideoBox({ className, item }) {
       <LightGallery
         speed={300}
         plugins={[lgThumbnail, lgZoom, lgVideo]}
-        download={false}
+        download={false} 
         elementClassNames="w-full"
       >
         <a

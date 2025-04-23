@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay } from 'swiper/modules';
 import "swiper/css";
 import "./Career.css";
 
@@ -76,7 +76,7 @@ export default function MobCareerLifeAtIndel() {
                                         experience:
                                     </div>
                                 </div>
-                                <ul className="!mb-[10px]">
+                                <ul className="!mb-[10px] !pl-[17px]">
                                     <li>
                                         <b>A Culture of Excellence: </b>Immerse yourself in a culture
                                         that values hard work, creativity, and a relentless pursuit of
@@ -114,9 +114,15 @@ export default function MobCareerLifeAtIndel() {
                             </div>
                             <div className="w-full mb-[30px]">
                                 <Swiper
-                                    modules={[Navigation, Pagination]}
+                                    modules={[Autoplay]}
                                     spaceBetween={8}
                                     slidesPerView={2.5}
+                                    autoplay={{
+                                        delay: 3000, 
+                                        speed: 2000,
+                                        disableOnInteraction: false, 
+                                    }}
+                                    loop={true}
                                     className="mobCareerSlider w-full"
                                 >
                                     {careerLifeAtIndelImages.map((item) => (
@@ -134,7 +140,7 @@ export default function MobCareerLifeAtIndel() {
                             <div>
                                 <Link
                                     href={"/"}
-                                    className="btn btn-base2 min-w-[120px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[140px] 3xl:min-w-[180px]"
+                                    className="btn btn-base1 min-w-[140px] w-fit text-[14px]"
                                 >
                                     VISIT GALLERY
                                 </Link>
