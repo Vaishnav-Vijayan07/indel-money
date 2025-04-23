@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import Image from "next/image";
 
 export function PlaceholdersAndVanishInput({
@@ -172,13 +172,13 @@ export function PlaceholdersAndVanishInput({
     return (
         (<form
             className={cn(
-                "w-full relative bg-white h-[50px] rounded-[7px] overflow-hidden transition duration-300",
+                "w-full relative z-1 bg-white h-[35px] lg:h-[40px] 2xlh-[50px] rounded-[7px] overflow-hidden transition duration-300",
                 value && "bg-gray-50"
             )}
             onSubmit={handleSubmit}>
             <canvas
                 className={cn(
-                    "absolute pointer-events-none text-black transform scale-50 top-[20%] left-2 sm:left-5 origin-top-left filter invert dark:invert-0 pr-20",
+                    "absolute pointer-events-none text-black transform scale-50 top-[20%] left-[15px] sm:left-5 origin-top-left filter invert dark:invert-0 pr-20",
                     !animating ? "opacity-0" : "opacity-100"
                 )}
                 ref={canvasRef} />
@@ -194,18 +194,19 @@ export function PlaceholdersAndVanishInput({
                 value={value}
                 type={type}
                 className={cn(
-                    "text-[12px] lg:text-[14px] 3xl:text-[16px] w-full relative z-50 border-none bg-transparent text-black h-full focus:outline-none focus:ring-0 pl-2 sm:pl-4 lg:pl-5 pr-20",
+                    "text-[12px] lg:text-[14px] 3xl:text-[16px] w-full relative z-50 border-none bg-transparent text-black h-full focus:outline-none focus:ring-0 pl-[15px] sm:pl-4 lg:pl-5 pr-20",
                     animating && "text-transparent dark:text-transparent"
                 )} />
             <button
                 disabled={!value}
                 type="submit"
-                className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-10 w-10 disabled:opacity-50 bg-white transition duration-200 flex items-center justify-center cursor-pointer">
+                className="w-[35px] lg:w-[40px] 2xlw-[50px] aspect-square absolute right-2 top-1/2 z-50 -translate-y-1/2 disabled:opacity-50 bg-white transition duration-200 flex items-center justify-center cursor-pointer">
                 <Image
                 src="/images/icon-subscribe.svg"
+                alt="subsribe"
                 width={22}
                 height={21}
-                alt="subsribe"
+                className="w-[15px] sm:w-[20px]"
                 />
             </button>
             <div
@@ -230,7 +231,7 @@ export function PlaceholdersAndVanishInput({
                                 duration: 0.3,
                                 ease: "linear",
                             }}
-                            className="text-[12px] lg:text-[14px] 3xl:text-[16px] dark:text-zinc-500 sm:text-base font-normal text-black/5 pl-2 sm:pl-4 lg:pl-5 text-left w-[calc(100%-2rem)] truncate">
+                            className="text-[12px] lg:text-[14px] 3xl:text-[16px] dark:text-zinc-500 font-normal text-black/5 pl-[15px] sm:pl-4 lg:pl-5 text-left w-[calc(100%-2rem)] truncate">
                             {placeholders[currentPlaceholder]}
                         </motion.p>
                     )}

@@ -30,11 +30,11 @@ export default function OtherGoldLoan() {
     ];
 
     return (
-        <section className="relative z-1 w-full pb-[30px] xl:pb-[40px] 2xl:pb-[90px]">
+        <section className="relative z-1 w-full pb-[40px] xl:pb-[40px] 2xl:pb-[90px]">
             <div className="container">
-                <div className="relative z-1 flex flex-wrap -my-[25px] -mx-[15px] 2xl:-mx-[20px] 3xl:-mx-[30px]">
+                <div className="relative z-1 flex flex-wrap -my-[25px] -mx-[10px] lg:-mx-[15px] 2xl:-mx-[20px] 3xl:-mx-[30px]">
                     {slides?.map((item, index) => (
-                        <div key={index} className="w-1/2 py-[15px] 2xl:py-[25px] px-[15px] 2xl:px-[20px] 3xl:px-[30px]">
+                        <div key={index} className="w-full md:w-1/2 py-[15px] 2xl:py-[25px] px-[10px] lg:px-[15px] 2xl:px-[20px] 3xl:px-[30px]">
                             <ServiceCard item={item} />
                         </div>
                     ))}
@@ -48,7 +48,7 @@ export default function OtherGoldLoan() {
 function ServiceCard({ item }) {
     return (
         <div className="group w-full h-full flex gap-[10px] xl:gap-[20px] 2xl:gap-[25px] 3xl:gap-[30px]">
-            <Link href="/" className="group w-[180px] lg:w-[220px] xl:w-[255px] 3xl:w-[400px] overflow-hidden rounded-[20px]">
+            <Link href="/" className="group w-[160px] lg:w-[200px] xl:w-[255px] 3xl:w-[400px] overflow-hidden rounded-[20px]">
                 <Image
                     src={item?.image}
                     width={400}
@@ -57,7 +57,7 @@ function ServiceCard({ item }) {
                     className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
                 />
             </Link>
-            <div className="flex flex-wrap content-between w-[calc(100%-180px)] lg:w-[calc(100%-220px)] xl:w-[calc(100%-255px)] 3xl:w-[calc(100%-400px)] py-1 3xl:py-2">
+            <div className="flex flex-wrap content-between w-[calc(100%-160px)] lg:w-[calc(100%-200px)] xl:w-[calc(100%-255px)] 3xl:w-[calc(100%-400px)] py-1 3xl:py-2">
                 <div className="w-full">
                     <div className="text-[13px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-[1.3] text-base1 font-medium line-clamp-2 mb-1 3xl:mb-3">
                         {item?.title}
@@ -68,7 +68,7 @@ function ServiceCard({ item }) {
                 </div>
                 {/* LEARN MORE Link */}
                 <div>
-                    <Link href="/" className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center hover:text-base2 transition-color duration-300">
+                    <Link href="/" className="text-[10px] lg:text-[11px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center mt-2 2xl:mt-3 hover:text-base2 transition-color duration-300">
                         LEARN MORE
                         <Image
                             src="/images/icon-right.svg"

@@ -36,11 +36,11 @@ export default function IndelRemit() {
     ];
 
     return (
-        <section className="relative z-1 w-full pb-[30px] xl:pb-[40px] 2xl:pb-[90px]">
+        <section className="relative z-1 w-full pt-[25 px] lg:pt-[40px] 2xl:pt-[30px] pb-[30px] xl:pb-[40px] 2xl:pb-[90px]">
             <div className="container">
 
-                <div className="w-full bg-[#CAE5F4] flex flex-wrap rounded-[36px] overflow-hidden">
-                    <div className="group w-[600px] 2xl:w-[700px] overflow-hidden">
+                <div className="relative w-full bg-[#CAE5F4] flex flex-wrap rounded-[36px] overflow-hidden lg:flex-row flex-col-reverse">
+                    <div className="group h-full lg:h-auto w-full lg:w-[400px] xl:w-[470px] 2xl:w-[700px] overflow-hidden z-1">
                         <Image
                             src="/images/remit01.jpg"
                             alt="money-deal"
@@ -48,26 +48,26 @@ export default function IndelRemit() {
                             height={475}
                             className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]" />
                     </div>
-                    <div className="flex flex-wrap content-between w-[calc(100%-600px)] 2xl:w-[calc(100%-700px)] p-[50px]">
+                    <div className="flex flex-wrap content-between w-full lg:w-[calc(100%-400px)] xl:w-[calc(100%-470px)] 2xl:w-[calc(100%-700px)] p-[25px] xl:p-[30px] 2xl:p-[40px] 3xl:p-[55px]">
                         <div className="w-full">
-                            <div className="w-full font-bold leading-none text-base1 text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] xl:text-[40px] mb-[15px]">
+                            <div className="w-full font-bold leading-none text-base1 text-[20px] lg:text-[24px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] mb-[15px]">
                                 INDEL REMIT
                             </div>
-                            <p className="text-sm-1 line-clamp-4 mb-[35px]">
+                            <p className="text-sm1 line-clamp-4 mb-[20px] xl:mb-[25px] 2xl:mb-[35px]">
                                 There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
                             </p>
-                            <p className="text-sm-1 line-clamp-5">
+                            <p className="text-sm1 line-clamp-5">
                                 All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
                             </p>
                         </div>
-                        <Link href="/" className="w-full text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center hover:text-base2 transition-color duration-300">
+                        <Link href="/" className="group w-full text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center leading-none hover:text-base2 transition-color duration-300 mt-[20px]">
                             LEARN MORE
                             <Image
                                 src="/images/icon-right.svg"
                                 width={7}
                                 height={13}
                                 alt="right"
-                                className="ml-1 lg:ml-2"
+                                className="ml-1 lg:ml-2 group-hover:ml-[15px] duration-600"
                             />
                         </Link>
                     </div>
@@ -90,7 +90,7 @@ function ValueBox({ item }) {
                         className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"
                     />
                 </div>
-                <div className="text-sm-1 w-[calc(100%-20px)] 2xl:w-[calc(100%-25px)] pl-[15px]">
+                <div className="text-sm1 w-[calc(100%-20px)] 2xl:w-[calc(100%-25px)] pl-[15px]">
                     {item.benefit}
                 </div>
             </div>
