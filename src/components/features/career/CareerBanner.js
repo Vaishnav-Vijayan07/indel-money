@@ -1,11 +1,11 @@
-"use client"
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+"use client";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
-import Image from 'next/image';
+import Image from "next/image";
 
 import "./Career.css";
 
@@ -36,7 +36,7 @@ export default function CareerBanner() {
   return (
     <section className="w-full block">
       <Swiper
-        effect={'fade'}
+        effect={"fade"}
         modules={[EffectFade, Pagination, Autoplay]}
         navigation={false}
         pagination={{
@@ -54,23 +54,23 @@ export default function CareerBanner() {
                 src={item?.src}
                 alt={item?.alt}
                 fill
-                style={{ objectFit: "cover" }}
-                className="-z-1"
+                sizes="1200px"
+                className="-z-1 object-cover"
               />
               <div className="container">
                 <div className="max-sm:mb-[90px] max-sm:text-[28px] text-title2 font-bold text-white w-full lg:max-w-[420px] xl:max-w-[476px] 2xl:max-w-[576px] 3xl:max-w-[740px] mb-[4px] lg:mb-[6px] 2xl:mb-[10px]">
                   {item?.title
                     ? (() => {
-                      const words = item.title.split(" ");
-                      const lastWord = words[words.length - 1];
-                      const precedingWords = words.slice(0, -1).join(" ");
-                      return (
-                        <>
-                          {precedingWords}{" "}
-                          <span className="text-base2">{lastWord}</span>
-                        </>
-                      );
-                    })()
+                        const words = item.title.split(" ");
+                        const lastWord = words[words.length - 1];
+                        const precedingWords = words.slice(0, -1).join(" ");
+                        return (
+                          <>
+                            {precedingWords}{" "}
+                            <span className="text-base2">{lastWord}</span>
+                          </>
+                        );
+                      })()
                     : null}
                 </div>
                 <div className="w-full max-sm:hidden block">
@@ -82,5 +82,5 @@ export default function CareerBanner() {
         ))}
       </Swiper>
     </section>
-  )
+  );
 }

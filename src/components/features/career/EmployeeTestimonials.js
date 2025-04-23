@@ -175,7 +175,7 @@ export default function EmployeeTestimonials() {
   };
 
   return (
-    <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] relative z-0 after:content-[''] after:w-full max-sm:after:h-[100%] after:h-[75%] after:absolute after:-z-1 after:inset-0 after:block after:bg-gradient-to-r after:to-[#fde7e7] after:from-transparent after:m-auto">
+    <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] overflow-hidden relative z-0 after:content-[''] after:w-full max-sm:after:h-[100%] after:h-[75%] after:absolute after:-z-1 after:inset-0 after:block after:bg-gradient-to-r after:to-[#fde7e7] after:from-transparent after:m-auto">
       <div className="mb-[40px] lg:mb-[60px] 2xl:mb-[80px]">
         <div className="container">
           <div className="sm:block hidden">
@@ -213,7 +213,7 @@ export default function EmployeeTestimonials() {
             </div>
           </div>
           <div className="w-full md:w-[268px] lg:w-[368px] xl:w-[520px] 2xl:w-[676px] 3xl:w-[820px] mb-[20px] lg:mb-0 select-none">
-            <div className="w-[220px] md:w-[220px] lg:w-[340px] xl:w-[476px] 2xl:w-[576px] 3xl:w-[720px] h-auto aspect-square block m-auto relative z-0">
+            <div className="w-[220px] 4xs:w-[320px] md:w-[220px] lg:w-[340px] xl:w-[476px] 2xl:w-[576px] 3xl:w-[720px] h-auto aspect-square block m-auto relative z-0">
               <Image
                 src={"/images/employeeTestimonials-logo.svg"}
                 alt="employeeTestimonials-logo"
@@ -251,7 +251,7 @@ export default function EmployeeTestimonials() {
               {employeeTestimonials?.slice(0, 7).map((item, index) => (
                 <div
                   key={index}
-                  className={`group w-[40px] lg:w-[60px] 2xl:w-[80px] 3xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[2px] lg:border-[3px] 2xl:border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 
+                  className={`group w-[40px] 4xs:w-[50px] sm:w-[40px] lg:w-[60px] 2xl:w-[80px] 3xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[2px] lg:border-[3px] 2xl:border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 
                                         ${index === activeIndex
                       ? "border-base2 scale-100"
                       : "border-white"
