@@ -10,7 +10,7 @@ const images = [
   "/images/lifeImage1.webp",
 ];
 
-export default function MobLifeIndel() {
+export default function MobLifeIndelInfo() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -60,9 +60,7 @@ export default function MobLifeIndel() {
                             translateValue + offset
                           }deg)`,
                     opacity: index === currentIndex ? 1 : 1,
-                    zIndex:
-                      index === currentIndex ? 9
-                       : images.length - index,
+                    zIndex: index === currentIndex ? 9 : images.length - index,
                     transition: "transform 0.5s ease, opacity 1s ease",
                   }}
                 >

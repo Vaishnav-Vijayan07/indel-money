@@ -7,7 +7,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import Image from 'next/image';
-import Link from 'next/link';
 import "./IndelValue.css";
 
 const slides = [
@@ -49,7 +48,7 @@ const slides = [
     }
 ];
 
-export default function IndelBannerSlider() {
+export default function MobIndelValueBanner() {
     return (
         <Swiper
             effect={'fade'}

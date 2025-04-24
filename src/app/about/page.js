@@ -5,7 +5,7 @@ import AboutMessage from "../../components/features/about/AboutMessage";
 import Accolades from "../../components/features/about/Accolades";
 import IndelValuesInfo from "../../components/features/about/IndelValuesInfo";
 import InvestorsInfo from "../../components/features/about/InvestorsInfo";
-import LifeIndel from "../../components/features/about/LifeIndel";
+import LifeIndelInfo from "../../components/features/about/LifeIndelInfo";
 
 // MOBILE_VERSION
 import MobAboutFinacial from "../../components/features/about/MobAboutFinacial";
@@ -14,7 +14,7 @@ import MobAboutMessage from "../../components/features/about/MobAboutMessage";
 import MobAccolades from "../../components/features/about/MobAccolades";
 import MobIndelvaluesInfo from "../../components/features/about/MobIndelValuesInfo";
 import MobInvestorsInfo from "../../components/features/about/MobInvestorsInfo";
-import MobLifeIndel from "../../components/features/about/MobLifeIndel";
+import MobLifeIndelInfo from "../../components/features/about/MobLifeIndelInfo";
 
 export default function About() {
   return (
@@ -72,10 +72,10 @@ export default function About() {
 
       {/* LifeAtIndel section */}
       <div className="hidden sm:block">
-        <LifeIndel />
+        <LifeIndelInfo />
       </div>
       <div className="block sm:hidden">
-        <MobLifeIndel />
+        <MobLifeIndelInfo />
       </div>
     </>
   );
