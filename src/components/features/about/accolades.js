@@ -1,4 +1,3 @@
-
 import AccoladesSlider from "./AccoladesSlider";
 
 export default function Accolades() {

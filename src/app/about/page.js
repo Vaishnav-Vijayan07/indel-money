@@ -3,17 +3,17 @@ import AboutFinacial from "../../components/features/about/AboutFinacial";
 import AboutSupermarket from "../../components/features/about/AboutSupermarket";
 import AboutMessage from "../../components/features/about/AboutMessage";
 import Accolades from "../../components/features/about/Accolades";
-import Indelvalues from "../../components/features/about/Indelvalues";
-import Investors from "../../components/features/about/Investors";
-import LifeIndel from "../../components/features/about/lifeIndel";
+import IndelValuesInfo from "../../components/features/about/IndelValuesInfo";
+import InvestorsInfo from "../../components/features/about/InvestorsInfo";
+import LifeIndel from "../../components/features/about/LifeIndel";
 
 // MOBILE_VERSION
 import MobAboutFinacial from "../../components/features/about/MobAboutFinacial";
 import MobAboutSupermarket from "../../components/features/about/MobAboutSupermarket";
 import MobAboutMessage from "../../components/features/about/MobAboutMessage";
 import MobAccolades from "../../components/features/about/MobAccolades";
-import MobIndelvalues from "../../components/features/about/MobIndelvalues";
-import MobInvestors from "../../components/features/about/MobInvestors";
+import MobIndelvaluesInfo from "../../components/features/about/MobIndelValuesInfo";
+import MobInvestorsInfo from "../../components/features/about/MobInvestorsInfo";
 import MobLifeIndel from "../../components/features/about/MobLifeIndel";
 
 export default function About() {
@@ -56,18 +56,18 @@ export default function About() {
 
       {/* Indelvalues section */}
       <div className="hidden sm:block">
-        <Indelvalues />
+        <IndelValuesInfo />
       </div>
       <div className="block sm:hidden">
-        <MobIndelvalues />
+        <MobIndelvaluesInfo />
       </div>
 
       {/* Investors section */}
       <div className="hidden sm:block">
-        <Investors />
+        <InvestorsInfo />
       </div>
       <div className="block sm:hidden">
-        <MobInvestors />
+        <MobInvestorsInfo />
       </div>
 
       {/* LifeAtIndel section */}

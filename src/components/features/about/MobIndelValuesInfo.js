@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const data = [
   {
@@ -46,7 +45,7 @@ const data = [
   },
 ];
 
-export default function MobIndelValues() {
+export default function MobIndelValuesInfo() {
   return (
     <section className="w-full py-[0_30px]">
       <div className="container">

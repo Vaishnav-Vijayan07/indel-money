@@ -1,45 +1,45 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function IndelValues() {
-    const cardData = [
-        {
-            id: 1,
-            icon: "/images/icon-indel-1.png",
-            title: "Indel Values",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 2,
-            icon: "/images/icon-indel-2.png",
-            title: "Board of directors",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 3,
-            icon: "/images/icon-indel-3.png",
-            title: "Management Team",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 4,
-            icon: "/images/icon-indel-4.png",
-            title: "Partners",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 5,
-            icon: "/images/icon-indel-5.png",
-            title: "Different shades of indel",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 6,
-            icon: "/images/icon-indel-6.png",
-            title: "Our Approach to proposition",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        }
-    ];
+const cardData = [
+    {
+        id: 1,
+        icon: "/images/icon-indel-1.png",
+        title: "Indel Values",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 2,
+        icon: "/images/icon-indel-2.png",
+        title: "Board of directors",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 3,
+        icon: "/images/icon-indel-3.png",
+        title: "Management Team",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 4,
+        icon: "/images/icon-indel-4.png",
+        title: "Partners",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 5,
+        icon: "/images/icon-indel-5.png",
+        title: "Different shades of indel",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 6,
+        icon: "/images/icon-indel-6.png",
+        title: "Our Approach to proposition",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    }
+];
+export default function IndelValuesInfo() {
     return (
         <section className="w-full 3xl:py-[90px] 2xl:py-[50px] py-[40px]">
             <div className="container"> 

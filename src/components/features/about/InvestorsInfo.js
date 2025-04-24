@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Investors() {
+export default function InvestorsInfo() {
   return (
     <section className="w-full 3xl:py-[90px] xl:py-[80px] py-[40px] bg-gradient-to-r from-transparent to-[#17479E]/15">
       <div className="container">
@@ -19,8 +19,8 @@ export default function Investors() {
                 one of the more obscure Latin words, consectetur, from a Lorem
                 Ipsum passage, and going through the cites of the word in
                 classical literature, discovered the undoubtable source. Lorem
-                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-                Bonorum et Malorum"
+                Ipsum comes from sections 1.10.32 and 1.10.33 of &apos;de Finibus
+                Bonorum et Malorum&apos;
               </p>
               <Link
                 href="/"
@@ -47,10 +47,9 @@ export default function Investors() {
                   <div className="rounded-[30px] overflow-hidden w-full h-full group">
                     <Image
                       src={"/images/investors1.webp"}
+                      alt="Investor Image"
                       width={510}
                       height={310}
-                      alt="Investor Image"
-                      priority
                       className="w-full h-full object-cover duration-300 transition-transform group-hover:scale-110"
                     />
                   </div>
@@ -100,10 +99,9 @@ export default function Investors() {
                 <div className="rounded-[30px] overflow-hidden w-full h-full group">
                   <Image
                     src={"/images/investors2.webp"}
+                    alt="Investor Image"
                     width={400}
                     height={515}
-                    alt="Investor Image"
-                    priority
                     className="w-full h-full object-cover duration-300 transition-transform group-hover:scale-110"
                   />
                 </div>

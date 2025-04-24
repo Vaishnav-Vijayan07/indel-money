@@ -17,7 +17,7 @@ const slides = [
 ];
 
 
-export default function AboutVSlider() {
+export default function AccoladesSlider() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
         <div className="w-full 3xl:px-[110px] lg:px-[70px] px-[20px]">
@@ -103,7 +103,7 @@ export default function AboutVSlider() {
                                     height={360}
                                     alt={'achievementimage'}
                                     priority
-                                    className="w-full  object-cover"
+                                    className="w-full object-cover"
                                 />
                             </div>
                         </div>
