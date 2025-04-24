@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import Image from 'next/image';
+
 import "./IndelValue.css";
 
 const slides = [
