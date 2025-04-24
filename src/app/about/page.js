@@ -5,7 +5,7 @@ import AboutMessage from "../../components/features/about/AboutMessage";
 import Accolades from "../../components/features/about/Accolades";
 import Indelvalues from "../../components/features/about/Indelvalues";
 import Investors from "../../components/features/about/Investors";
-import LifeIndel from "../../components/features/about/LifeIndel";
+import LifeIndel from "../../components/features/about/lifeIndel";
 
 // MOBILE_VERSION
 import MobAboutFinacial from "../../components/features/about/MobAboutFinacial";
