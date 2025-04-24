@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Sidebar from "../investors/sidebar";
-import Disclosure from "../investors/disclosure";
+import Sidebar from "./Sidebar";
+import Disclosure from "./Disclosure";
 
 const pdfItems = [
     { title: "Code of Conduct for Independent Directors", link: "#" },
@@ -11,7 +11,7 @@ const pdfItems = [
     { title: "Shareholding Pattern", link: "#" },
 ];
 
-export default function Contact() {
+export default function GoverenanceInfo() {
     return (
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">

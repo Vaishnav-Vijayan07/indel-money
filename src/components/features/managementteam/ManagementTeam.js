@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/custom-alert-dialog";
 // import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import "./Mnagement.css";
+import "./Management.css";
 import "./management.config.js";
 
 

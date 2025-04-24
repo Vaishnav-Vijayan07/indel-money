@@ -13,7 +13,7 @@ const schemes = [
     { name: "Ombudsman-Scheme", link: "/pdfs/2023-24.pdf" },
 ];
 
-export default function Schemes() {
+export default function Ombudsman() {
     return (
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">

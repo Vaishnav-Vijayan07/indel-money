@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Sidebar from "../investors/sidebar";
+import Sidebar from "./Sidebar";
 import {
     Pagination,
     PaginationContent,

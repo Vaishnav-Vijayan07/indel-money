@@ -1,5 +1,5 @@
 import React from "react";
-import Contact from "../../../components/features/investors/contact"; 
+import Contact from "../../../components/features/investors/Contact"; 
  
 
 export default function contact() {
