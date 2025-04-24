@@ -3,18 +3,18 @@ import AboutFinacial from "../../components/features/about/AboutFinacial";
 import AboutSupermarket from "../../components/features/about/AboutSupermarket";
 import AboutMessage from "../../components/features/about/AboutMessage";
 import Accolades from "../../components/features/about/Accolades";
-import IndelValuesInfo from "../../components/features/about/IndelValuesInfo";
-import InvestorsInfo from "../../components/features/about/InvestorsInfo";
-import LifeIndelInfo from "../../components/features/about/LifeIndelInfo";
+import Indelvalues from "../../components/features/about/Indelvalues";
+import Investors from "../../components/features/about/Investors";
+import LifeIndel from "../../components/features/about/lifeIndel";
 
 // MOBILE_VERSION
 import MobAboutFinacial from "../../components/features/about/MobAboutFinacial";
 import MobAboutSupermarket from "../../components/features/about/MobAboutSupermarket";
 import MobAboutMessage from "../../components/features/about/MobAboutMessage";
 import MobAccolades from "../../components/features/about/MobAccolades";
-import MobIndelvaluesInfo from "../../components/features/about/MobIndelValuesInfo";
-import MobInvestorsInfo from "../../components/features/about/MobInvestorsInfo";
-import MobLifeIndelInfo from "../../components/features/about/MobLifeIndelInfo";
+import MobIndelvalues from "../../components/features/about/MobIndelvalues";
+import MobInvestors from "../../components/features/about/MobInvestors";
+import MobLifeIndel from "../../components/features/about/MobLifeIndel";
 
 export default function About() {
   return (
@@ -56,26 +56,26 @@ export default function About() {
 
       {/* Indelvalues section */}
       <div className="hidden sm:block">
-        <IndelValuesInfo />
+        <Indelvalues />
       </div>
       <div className="block sm:hidden">
-        <MobIndelvaluesInfo />
+        <MobIndelvalues />
       </div>
 
       {/* Investors section */}
       <div className="hidden sm:block">
-        <InvestorsInfo />
+        <Investors />
       </div>
       <div className="block sm:hidden">
-        <MobInvestorsInfo />
+        <MobInvestors />
       </div>
 
       {/* LifeAtIndel section */}
       <div className="hidden sm:block">
-        <LifeIndelInfo />
+        <LifeIndel />
       </div>
       <div className="block sm:hidden">
-        <MobLifeIndelInfo />
+        <MobLifeIndel />
       </div>
     </>
   );
