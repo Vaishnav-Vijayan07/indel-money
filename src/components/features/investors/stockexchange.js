@@ -1,8 +1,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Sidebar from "../investors/sidebar";
-import Stocks from "../investors/stocks";
+import Sidebar from "./Sidebar";
+import Stocks from "./Stocks";
 
 
 

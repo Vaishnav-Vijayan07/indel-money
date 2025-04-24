@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Sidebar from "../investors/sidebar";
+import Sidebar from "./Sidebar";
 
 const Corporate = [
     { Name: "Mr. S Ganesh", directorship: "Independent", Designation: "Chairman" },
@@ -22,7 +22,7 @@ const Plan = [
 ];
 
 
-export default function CSR() {
+export default function CsrInfo() {
 
 
     return (

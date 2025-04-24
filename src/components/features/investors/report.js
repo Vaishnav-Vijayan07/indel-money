@@ -1,9 +1,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Sidebar from "../investors/sidebar";
-import Annualreport from "../investors/annualreport";
-import Annualreturns from "../investors/annualreturns";
+import Sidebar from "./Sidebar";
+import Annualreport from "./AnnualReport";
+import Annualreturns from "./AnnualReturns";
 
 export default function Scheme() {
 

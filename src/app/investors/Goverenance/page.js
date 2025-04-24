@@ -1,12 +1,11 @@
-import React from "react";
-import Goverenance from "../../../components/features/investors/Governance"; 
+
+import GoverenanceInfo from "../../../components/features/investors/GoverenanceInfo"; 
  
 
-export default function goverenance() {
+export default function Goverenance() {
   return (
     <>
-      {/* contact*/}
-      <Goverenance /> 
+      <GoverenanceInfo /> 
     </>
 
   );

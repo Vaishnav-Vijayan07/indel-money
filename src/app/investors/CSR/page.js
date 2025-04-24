@@ -1,12 +1,11 @@
-import React from "react";
-import CSR from "../../../components/features/investors/CSR"; 
+
+import CsrInfo from "../../../components/features/investors/CsrInfo"; 
  
 
-export default function Csr() {
+export default function CSR() {
   return (
     <>
-      {/* contact*/}
-      <CSR /> 
+      <CsrInfo /> 
     </>
 
   );
