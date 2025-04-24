@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function InvestorsInfo() {
   return (
-    <section className="w-full 3xl:py-[90px] xl:py-[80px] py-[40px] bg-gradient-to-r from-transparent to-[#17479E]/15">
+    <section className="w-full 3xl:py-[90px] xl:py-[80px] py-[40px] bg-gradient-to-r from-transparent to-base1/15">
       <div className="container">
         <div className="flex flex-wrap ">
           <div className="w-full lg:w-[calc(100%-550px)]  xl:w-[calc(100%-600px)] 2xl:w-[calc(100%-740px)] 3xl:w-[calc(100%-940px)] flex items-center max-lg:mb-[20px]">

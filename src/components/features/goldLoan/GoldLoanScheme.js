@@ -64,7 +64,7 @@ export default function Scheme() {
                                     <div
                                         className={`w-full h-[40px] 2xl:h-[50px] text-[12px] 2xl:text-[18px] 3xl:text-[20px] px-[10px] font-bold flex items-center justify-center rounded-[100px] cursor-pointer transition-all duration-300
                                         ${activeIndex === index
-                                                ? "bg-[#17479E] text-white thumbActive"
+                                                ? "bg-base1 text-white thumbActive"
                                                 : "bg-[#CFDFFE] text-black"
                                             }`}
                                     >

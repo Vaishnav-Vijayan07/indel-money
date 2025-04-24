@@ -63,7 +63,7 @@ export default function IndelValuesInfo() {
                                     </div>
                                     <p className="max-w-[350px]">{item.description}</p>
                                 </div>
-                                <Link href="/" className="w-full 2xl:h-[70px] xl:h-[60px] h-[50px] relative text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-bold uppercase bg-[#B7D0FF] flex items-center justify-center transition-all hover:bg-[#17479E] hover:text-white">
+                                <Link href="/" className="w-full 2xl:h-[70px] xl:h-[60px] h-[50px] relative text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-bold uppercase bg-[#B7D0FF] flex items-center justify-center transition-all hover:bg-base1 hover:text-white">
                                     <span className="relative before:absolute before:right-[-12px] before:top-1/2 before:-translate-y-1/2 before:rotate-135 before:border-l-[8px] before:border-b-[8px] before:border-l-[#EE3824] before:border-b-transparent before:content-['']">
                                         LEARN MORE
                                     </span>

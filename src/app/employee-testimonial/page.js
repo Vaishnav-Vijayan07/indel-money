@@ -91,7 +91,7 @@ const TestimonialFilters = ({ activeFilter, onFilterChange }) => {
           key={key}
           onClick={() => onFilterChange(key)}
           className={`2xl:p-[10px_20px] p-[10px_15px] 3xl:text-[20px] xl:text-[14px] text-[12px] font-bold text-white rounded-[100px] select-none transition-all duration-500 ${activeFilter === key
-              ? "bg-[#17479E]"
+              ? "bg-base1"
               : "bg-[#85B6CF] hover:bg-base2 cursor-pointer"
             }`}
         >

@@ -17,7 +17,7 @@ export default function LoanCard({ item, className }) {
                     />
                 </div>
                 <div className="w-full sm:pt-0">
-                    <h5 className="text-[16px] sm:text-[18px] xl:text-[20px] 2xl:text-[22px] 3xl:text-[30px] text-[#17479E] font-bold mb-[10px] sm:mb-[2px] line-clamp-1">
+                    <h5 className="text-[16px] sm:text-[18px] xl:text-[20px] 2xl:text-[22px] 3xl:text-[30px] text-base1 font-bold mb-[10px] sm:mb-[2px] line-clamp-1">
                         {item?.title || "Default Title"}
                     </h5>
                     {item?.title2 && (

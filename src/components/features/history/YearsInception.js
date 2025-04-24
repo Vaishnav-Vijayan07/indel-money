@@ -74,7 +74,7 @@ export default function YearsInception() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-[calc(100%-220px)] xl:w-[calc(100%-300px)] 2xl:w-[calc(100%-350px)] 3xl:w-[calc(100%-420px)] bg-[#17479E] pr-[30px] 2xl:pr-[60px] pl-[30px] lg:pl-[60px] 3xl:pl-[130px] pt-[40px] lg:pt-[50px] 3xl:pt-[70px]">
+          <div className="w-full lg:w-[calc(100%-220px)] xl:w-[calc(100%-300px)] 2xl:w-[calc(100%-350px)] 3xl:w-[calc(100%-420px)] bg-base1 pr-[30px] 2xl:pr-[60px] pl-[30px] lg:pl-[60px] 3xl:pl-[130px] pt-[40px] lg:pt-[50px] 3xl:pt-[70px]">
             <div className="flex flex-wrap w-full justify-between">
               <div className="relative flex justify-center max-w-[525px] 3xl:max-w-[760px] w-[calc(100%-120px)] 3xl:w-[calc(100%-200px)]">
                 <div className="relative z-1 w-[75px] 2xl:w-[110px] 3xl:w-[120px]">

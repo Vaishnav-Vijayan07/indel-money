@@ -190,7 +190,7 @@ function TeamModal({ item }) {
                 </div>
                 <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-250px)] xl:w-[calc(100%-270px)] 2xl:w-[calc(100%-385px)] pt-[20px] sm:pt-[0] sm:pl-[20px] lg:pl-[30px] 3xl:pl-[50px]">
                     <div className="relative max-w-[450px] bg-gradient-to-r from-[rgba(238,56,36,0.20)] via-[rgba(58,69,138,0.10)] to-[rgba(23,71,158,0.00)] sm:bg-gradient-to-r sm:from-[rgba(238,56,36,0.20)] sm:via-[rgba(58,69,138,0.10)] sm:to-[rgba(23,71,158,0.00)] px-[25px] py-1 hidden sm:block">
-                        <div className="absolute left-0 bottom-0 w-[7px] h-full rounded-[10px] bg-gradient-to-b from-[#EE3824] to-[#17479E]"></div>
+                        <div className="absolute left-0 bottom-0 w-[7px] h-full rounded-[10px] bg-gradient-to-b from-[#EE3824] to-base1"></div>
                         <h2 className="text-[18px] xl:text-[22px] 2xl:text-[28px] 3xl:text-[35px] font-bold flex items-center text-#000">
                             {item.title}
                         </h2>
