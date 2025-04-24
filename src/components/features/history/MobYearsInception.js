@@ -6,7 +6,8 @@ import { Pagination, Autoplay, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import styles from "../history/History.module.css";
+
+import "./History.css";
 
 const slides = [
   {
@@ -162,7 +163,7 @@ export default function MobYearsInception() {
                     <div
                       key={index}
                       ref={(el) => (dotsRef.current[index] = el)}
-                      className={`${styles.dotTimeline} ${
+                      className={`${"dotTimeline"} ${
                         index === activeDotIndex ? "active" : ""
                       }`}
                     ></div>
@@ -170,14 +171,14 @@ export default function MobYearsInception() {
                 })}
 
                 <div
-                  className={styles.movingArrowsIndicator}
+                  className={"movingArrowsIndicator"}
                   style={{
                     transform: `translateY(${arrowPos}px) translateX(-50%)`,
                     transition: "transform 0.8s ease",
                   }}
                 >
-                  <div className={styles.arrowUp} />
-                  <div className={styles.arrowDown} />
+                  <div className={"arrowUp"} />
+                  <div className={"arrowDown"} />
                 </div>
               </div>
 
