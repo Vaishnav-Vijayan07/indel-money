@@ -1,80 +1,98 @@
 import Image from "next/image";
-import Link from "next/link";
+
+const slides = [
+  {
+    href: "/",
+    image: "/images/presnc01.svg",
+    alt: "presence-1",
+    title: "Food processing",
+  },
+  {
+    href: "/",
+    image: "/images/presnc02.svg",
+    alt: "presence-2",
+    title: "Agricultural inputs",
+  },
+  {
+    href: "/",
+    image: "/images/presnc03.svg",
+    alt: "presence-3",
+    title: "Chemicals & pharmaceuticals",
+  },
+  {
+    href: "/",
+    image: "/images/presnc04.svg",
+    alt: "presence-4",
+    title: "Meat products",
+  },
+  {
+    href: "/",
+    image: "/images/presnc05.svg",
+    alt: "presence-5",
+    title: "Bioengineering",
+  },
+  {
+    href: "/",
+    image: "/images/presnc06.svg",
+    alt: "presence-6",
+    title: "Sports goods",
+  },
+  {
+    href: "/",
+    image: "/images/presnc0.svg",
+    alt: "presence-7",
+    title: "Plastics products",
+  },
+  {
+    href: "/",
+    image: "/images/presnc08.svg",
+    alt: "presence-8",
+    title: "Computer software, etc",
+  },
+  {
+    href: "/",
+    image: "/images/presnc09.svg",
+    alt: "presence-9",
+    title: "Electro-medical Equipment",
+  },
+  {
+    href: "/",
+    image: "/images/presnc010.svg",
+    alt: "presence-10",
+    title: "Textiles & Garments",
+  },
+  {
+    href: "/",
+    image: "/images/presnc011.svg",
+    alt: "presence-11",
+    title: "Leather & Leather goods",
+  },
+];
+
+function PresenceBox({ item }) {
+  return (
+    <div className="group w-full h-auto flex flex-wrap justify-center">
+      <div className="w-[42px] sm:w-[50px] 2xl:w-[65px] 3xl:w-[72px] h-[42px] sm:h-[50px] 2xl:h-[65px] 3xl:h-[72px] bg-base2 border-4 border-[#93BFFA] rounded-full flex items-center justify-center overflow-hidden p-[7px] 2xl:p-[12px] mb-[10px] 2xl:mb-[20px]">
+        <Image
+          src={item.image}
+          alt={item.alt}
+          width={42}
+          height={42}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+      <div className="text-[13px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[20px] leading-normal text-center font-medium capitalize text-base1 w-full">
+        {item.title}
+      </div>
+    </div>
+  );
+}
 
 export default function MsmePresence() {
-  const slides = [
-    {
-      href: "/",
-      image: "/images/presnc01.svg",
-      alt: "presence-1",
-      title: "Food processing",
-    },
-    {
-      href: "/",
-      image: "/images/presnc02.svg",
-      alt: "presence-2",
-      title: "Agricultural inputs",
-    },
-    {
-      href: "/",
-      image: "/images/presnc03.svg",
-      alt: "presence-3",
-      title: "Chemicals & pharmaceuticals",
-    },
-    {
-      href: "/",
-      image: "/images/presnc04.svg",
-      alt: "presence-4",
-      title: "Meat products",
-    },
-    {
-      href: "/",
-      image: "/images/presnc05.svg",
-      alt: "presence-5",
-      title: "Bioengineering",
-    },
-    {
-      href: "/",
-      image: "/images/presnc06.svg",
-      alt: "presence-6",
-      title: "Sports goods",
-    },
-    {
-      href: "/",
-      image: "/images/presnc0.svg",
-      alt: "presence-7",
-      title: "Plastics products",
-    },
-    {
-      href: "/",
-      image: "/images/presnc08.svg",
-      alt: "presence-8",
-      title: "Computer software, etc",
-    },
-    {
-      href: "/",
-      image: "/images/presnc09.svg",
-      alt: "presence-9",
-      title: "Electro-medical Equipment",
-    },
-    {
-      href: "/",
-      image: "/images/presnc010.svg",
-      alt: "presence-10",
-      title: "Textiles & Garments",
-    },
-    {
-      href: "/",
-      image: "/images/presnc011.svg",
-      alt: "presence-11",
-      title: "Leather & Leather goods",
-    },
-  ];
-
   return (
     <section className="w-full py-[30px] pt-[10px] sm:py-[40px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[90px] sm:bg-[rgba(192,219,255,0.50)]">
       <div className="container relative">
-        <div className="w-full max-w-[410px] h-fit absolute left-0 right-0 bottom-0 top-0 m-auto pointer-events-none sm:hidden flex aspect-410/375">
+        <div className="w-full h-auto max-w-[410px] absolute inset-0 m-auto pointer-events-none sm:hidden flex aspect-410/375">
           <Image
             src="/images/whoServeMobBg.png"
             alt="value-image"
@@ -108,38 +126,19 @@ export default function MsmePresence() {
             </div>
           </div>
           <div className="w-full lg:w-[55%] 2xl:w-[60%] md:px-[15px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]">
-            <div className="w-full flex flex-wrap -m-[10px] 2xl:-m-[15px] 3xl:-m-[20px]">
-              <PresenceBox slides={slides} />
+            <div className="flex flex-wrap -m-[10px] 2xl:-m-[15px] 3xl:-m-[20px]">
+              {slides.map((item, index) => (
+                <div
+                  key={index}
+                  className="w-1/2 4xs:w-1/3 md:w-1/4 p-[10px] 2xl:p-[15px] 3xl:p-[20px]"
+                >
+                  <PresenceBox item={item} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-export function PresenceBox({ slides }) {
-  return (
-    <>
-      {slides.map((item, index) => (
-        <div
-          key={index}
-          className="w-1/2 4xs:w-1/3 md:w-1/4 h-fit flex flex-wrap justify-center p-[7px] 2xl:p-[15px] 3xl:p-[20px]"
-        >
-          <div className="w-[42px] sm:w-[50px] 2xl:w-[65px] 3xl:w-[72px] h-[42px] sm:h-[50px] 2xl:h-[65px] 3xl:h-[72px] bg-base2 border-4 border-[#93BFFA] rounded-full flex items-center justify-center overflow-hidden p-[7px] 2xl:p-[12px] mb-[10px] 2xl:mb-[20px]">
-            <Image
-              src={item.image}
-              alt={item.alt}
-              width={42}
-              height={42}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div className="text-[13px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[20px] text-center font-medium text-base1 capitalize w-full">
-            {item.title}
-          </div>
-        </div>
-      ))}
-    </>
   );
 }

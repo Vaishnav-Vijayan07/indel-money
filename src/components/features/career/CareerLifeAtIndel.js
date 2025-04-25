@@ -49,7 +49,7 @@ function ImageBox({ item }) {
 export default function CareerLifeAtIndel() {
 
     return (
-        <section className="w-full max-sm:hidden block py-[20px_20px] lg:py-[40px_30px] 2xl:py-[60px_40px] 3xl:py-[80px_50px] relative z-0">
+        <section className="w-full block py-[20px_20px] lg:py-[40px_30px] 2xl:py-[60px_40px] 3xl:py-[80px_50px] relative z-0">
             <div className="container">
                 <div className="flex items-center justify-between mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
                     <div className="lg:max-w-[320px] xl:max-w-[376px] 2xl:max-w-[468px] 3xl:max-w-[576px]">
