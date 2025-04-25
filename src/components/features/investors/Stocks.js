@@ -58,7 +58,7 @@ export default function StockExchange() {
                                 }}
                                 className={cn(
                                     "text-[12px] sm:text-[8px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] px-[15px] xl:px-[20px] py-[8px] 3xl:px-[25px] 3xl:py-[11px] rounded-full font-bold transition-all text-white cursor-pointer whitespace-nowrap",
-                                    activeYear === year ? "bg-[#17479E]" : "bg-[#85B6CF]"
+                                    activeYear === year ? "bg-base1" : "bg-[#85B6CF]"
                                 )}
                             >
                                 {year}
@@ -79,7 +79,7 @@ export default function StockExchange() {
                         className={cn(
                             "text-[12px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] px-[15px] xl:px-[20px] py-[8px] 3xl:px-[25px] 3xl:py-[11px] rounded-full font-bold transition-all text-white cursor-pointer",
                             activeYear === year
-                                ? "bg-[#17479E]"
+                                ? "bg-base1"
                                 : "bg-[#85B6CF]"
                         )}
                     >
