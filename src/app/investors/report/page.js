@@ -1,5 +1,5 @@
 import React from "react";
-import Report from "../../../components/features/investors/report"; 
+import Report from "../../../components/features/investors/Report"; 
 
 export default function report() {
   return (

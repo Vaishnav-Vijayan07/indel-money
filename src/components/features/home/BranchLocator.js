@@ -23,7 +23,7 @@ export default function BranchLocator({ variant = "default" }) {
          variant === "branch"
            ? "pt-[30px] sm:pt-[40px] pb-[0px] 2xl:pt-[30px] 2xl:pb-[90px] 3xl:pt-[50px] 3xl:pb-[120px]"
            : ""
-       }F
+       } 
        w-full block`}
     >
       <div className="sm:py-0">

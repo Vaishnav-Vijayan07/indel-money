@@ -12,10 +12,10 @@ export default function Sidebar() {
         { name: "Policies", link: "/investors/policy" },
         { name: "Quarterly Results", link: "/quarterly-results" },
         { name: "Stock Exchange Filing", link: "/investors/stockexchange" },
-        { name: "Corporate Governance", link: "/investors/Goverenance" },
+        { name: "Corporate Governance", link: "/investors/goverenance" },
         { name: "Credit Rating", link: "/credit-rating" },
         { name: "Key Managerial Personnel", link: "/key-managerial-personnel" },
-        { name: "CSR", link: "/investors/CSR" },
+        { name: "CSR", link: "/investors/csr" },
     ];
 
     const pathname = usePathname();  

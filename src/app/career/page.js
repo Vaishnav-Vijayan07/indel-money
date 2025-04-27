@@ -13,8 +13,12 @@ export default function Career() {
       <CareerBanner />
       <FindJob />
       <MakeYourMove />
-      <CareerLifeAtIndel />
-      <MobCareerLifeAtIndel />
+      <div className="hidden sm:block">
+        <CareerLifeAtIndel />
+      </div>
+      <div className="block sm:hidden">
+        <MobCareerLifeAtIndel />
+      </div>
       <div className="hidden sm:block">
         <BenefitsEmployee />
       </div>

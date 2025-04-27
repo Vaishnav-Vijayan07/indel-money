@@ -8,7 +8,7 @@ const mobInvestorsBxTextSmStyle =
 const mobInvestorsBxTextStyle =
   "text-[16px] 4xs:text-[20px] leading-[1.2] font-bold text-white my-[8px]";
 
-export default function MobInvestors() {
+export default function MobInvestorsInfo() {
   return (
     <section className="w-full py-[30px] bg-[#d4e7ff]">
       <div className="container">
@@ -16,14 +16,16 @@ export default function MobInvestors() {
           investors
         </div>
         <div className="flex [--delmt-x:10px] mb-[10px]">
-          <div className="w-[calc((100%/3)+var(--delmt-x))] ">
+          <div className="w-[calc((100%/3)+var(--delmt-x))]">
             <div className={mobInvestorsBxStyle}>
               <div className={mobInvestorsBxTextSmStyle}>Listed in</div>
               <div className={mobInvestorsBxTextStyle}>NSE/BSE</div>
             </div>
           </div>
           <div className="w-[calc((100%/3)+var(--delmt-x))] -ml-[var(--delmt-x)]">
-            <div className={`${mobInvestorsBxStyle} from-base2 to-[#D7C6DC]`}>
+            <div
+              className={`${mobInvestorsBxStyle} bg-gradient-to-r from-base2 to-[#D7C6DC]`}
+            >
               <div className={mobInvestorsBxTextSmStyle}>Listed in</div>
               <div className={mobInvestorsBxTextStyle}>Stock Market</div>
             </div>

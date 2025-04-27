@@ -7,8 +7,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import Image from 'next/image';
-import Link from 'next/link';
-import "./indelvalue.css";
+
+import "./IndelValue.css";
 
 const slides = [
     {
@@ -49,7 +49,7 @@ const slides = [
     }
 ];
 
-export default function IndelBannerSlider() {
+export default function MobIndelValueBanner() {
     return (
         <Swiper
             effect={'fade'}
@@ -63,10 +63,9 @@ export default function IndelBannerSlider() {
             className="IndelvalueSlider lg:h-[570px] sm:h-[350px] h-[550px]"
         >
             {slides?.map((item, index) => (
-                <SwiperSlide className="relative z-0">
+                <SwiperSlide key={index} className="relative z-0">
                     <div className="absolute inset-0 sm:bg-gradient-to-r sm:from-[rgba(0,0,0,0.50)] sm:to-[rgba(102,102,102,0.00)] bg-gradient-to-t from-black to-[rgba(0,0,0,0) z-0"></div>
-                    <Image src={item?.image} width={1920} height={570} alt={item?.alt || "Slide Image"} priority className="w-full h-full object-cover"
-
+                    <Image src={item?.image} width={1920} height={570} alt={item?.alt || "Slide Image"} priority={true} className="w-full h-full object-cover"
                     />
                     <picture className="block w-full h-full">
                         <source media="(min-width: 640px)" srcSet={item?.image2} />
@@ -75,7 +74,7 @@ export default function IndelBannerSlider() {
                             width={640}
                             height={500}
                             alt={item?.alt || "Slide Image"}
-                            priority className="w-full h-full object-cover"
+                            className="w-full h-full object-cover"
                         />
                     </picture>
                     <div className="absolute sm:top-1/2 sm:bottom-auto bottom-[25px] sm:left-1/2 left-0 transform sm:-translate-x-1/2 sm:-translate-y-1/2 container sm:mb-0 mb-[45px]">
@@ -89,11 +88,9 @@ export default function IndelBannerSlider() {
                             <div className='breadcrumb flex-wrap sm:flex hidden'>
                                 <PageBreadcrumb variant="white" />
                             </div>
-
                         </div>
                     </div>
                 </SwiperSlide>
-
             ))}
         </Swiper>
     );

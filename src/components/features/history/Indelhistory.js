@@ -1,7 +1,6 @@
 
 import Image from "next/image";
-import Link from "next/link";
-import styles from "../history/History.module.css";
+import "./History.css";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 
 const historyImages = [
@@ -62,12 +61,12 @@ export default function Indelhistory() {
           </div>
           <div className="w-full lg:w-[calc(100%-350px)] xl:w-[calc(100%-465px)] 2xl:w-[calc(100%-535px)] 3xl:w-[calc(100%-670px)] lg:pl-[40px]">
             <div
-              className={`columns-3 gap-4 xl:gap-7 3xl:gap-10 ${styles.itemsList}`}
+              className="itemsList columns-3 gap-4 xl:gap-7 3xl:gap-10"
             >
               {historyImages.map((img, index) => (
                 <div
                   key={index}
-                  className={`mb-[10px] lg:mb-[15px] xl:mb-[25px] 3xl:mb-[30px] break-inside-avoid overflow-hidden rounded-[15px] 3xl:rounded-[20px] ${styles.item}`}
+                  className="item mb-[10px] lg:mb-[15px] xl:mb-[25px] 3xl:mb-[30px] break-inside-avoid overflow-hidden rounded-[15px] 3xl:rounded-[20px]"
                 >
                   <Image
                     src={img.image}

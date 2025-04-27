@@ -1,45 +1,45 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function IndelValues() {
-    const cardData = [
-        {
-            id: 1,
-            icon: "/images/icon-indel-1.png",
-            title: "Indel Values",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 2,
-            icon: "/images/icon-indel-2.png",
-            title: "Board of directors",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 3,
-            icon: "/images/icon-indel-3.png",
-            title: "Management Team",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 4,
-            icon: "/images/icon-indel-4.png",
-            title: "Partners",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 5,
-            icon: "/images/icon-indel-5.png",
-            title: "Different shades of indel",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        },
-        {
-            id: 6,
-            icon: "/images/icon-indel-6.png",
-            title: "Our Approach to proposition",
-            description: "There are many variations of passages of Lorem Ipsum available, but the majority."
-        }
-    ];
+const cardData = [
+    {
+        id: 1,
+        icon: "/images/icon-indel-1.png",
+        title: "Indel Values",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 2,
+        icon: "/images/icon-indel-2.png",
+        title: "Board of directors",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 3,
+        icon: "/images/icon-indel-3.png",
+        title: "Management Team",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 4,
+        icon: "/images/icon-indel-4.png",
+        title: "Partners",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 5,
+        icon: "/images/icon-indel-5.png",
+        title: "Different shades of indel",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    },
+    {
+        id: 6,
+        icon: "/images/icon-indel-6.png",
+        title: "Our Approach to proposition",
+        description: "There are many variations of passages of Lorem Ipsum available, but the majority."
+    }
+];
+export default function IndelValuesInfo() {
     return (
         <section className="w-full 3xl:py-[90px] 2xl:py-[50px] py-[40px]">
             <div className="container"> 
@@ -63,7 +63,7 @@ export default function IndelValues() {
                                     </div>
                                     <p className="max-w-[350px]">{item.description}</p>
                                 </div>
-                                <Link href="/" className="w-full 2xl:h-[70px] xl:h-[60px] h-[50px] relative text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-bold uppercase bg-[#B7D0FF] flex items-center justify-center transition-all hover:bg-[#17479E] hover:text-white">
+                                <Link href="/" className="w-full 2xl:h-[70px] xl:h-[60px] h-[50px] relative text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-bold uppercase bg-[#B7D0FF] flex items-center justify-center transition-all hover:bg-base1 hover:text-white">
                                     <span className="relative before:absolute before:right-[-12px] before:top-1/2 before:-translate-y-1/2 before:rotate-135 before:border-l-[8px] before:border-b-[8px] before:border-l-[#EE3824] before:border-b-transparent before:content-['']">
                                         LEARN MORE
                                     </span>

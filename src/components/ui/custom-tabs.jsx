@@ -37,11 +37,11 @@ function TabsTrigger({ className, ...props }) {
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "text-[#17479E] bg-none inline-flex text-sm xl:text-xs w-1/3 xl:w-1/3 items-center justify-center gap-1.5 border border-transparent sm:mx-0 mx-[5px] px-2 py-1 font-medium transition-[color,box-shadow] focus-visible:ring-2 focus-visible:ring-[#17479E] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm",
-        "bg-[#C0DBFF] sm:bg-[#0000] sm:aria-selected:bg-gradient-to-r sm:aria-selected:from-[#17479E] sm:aria-selected:to-[#C63B3B] aria-selected:bg-[#17479E] aria-selected:text-white",
+        "text-base1 bg-none inline-flex text-sm xl:text-xs w-1/3 xl:w-1/3 items-center justify-center gap-1.5 border border-transparent sm:mx-0 mx-[5px] px-2 py-1 font-medium transition-[color,box-shadow] focus-visible:ring-2 focus-visible:ring-[#17479E] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm",
+        "bg-[#C0DBFF] sm:bg-[#0000] sm:aria-selected:bg-gradient-to-r sm:aria-selected:from-base1 sm:aria-selected:to-[#C63B3B] aria-selected:bg-base1 aria-selected:text-white",
         "whitespace-inherit",
         "rounded-md", // default
-        "sm:aria-selected:bg-gradient-to-r aria-selected:from-[#17479E] aria-selected:to-[#17479E]",
+        "sm:aria-selected:bg-gradient-to-r aria-selected:from-base1 aria-selected:to-base1",
         className
       )}
       {...props}

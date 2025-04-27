@@ -1,8 +1,6 @@
 import PageBreadcrumb from "@/components/common/PageBreadcrumb"
-import Image from "next/image";
-import Link from "next/link";
 
-export default function InnerBanner() {
+export default function IndelValueBanner() {
     return (
         <section className="relative w-full overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.50)] to-[rgba(102,102,102,0.00)] z-1"></div>
