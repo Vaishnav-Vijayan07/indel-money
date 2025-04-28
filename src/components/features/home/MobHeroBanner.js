@@ -1,5 +1,5 @@
 "use client";
-import EnquiryForm from "../../common/EnquiryForm";
+import HeroBannerEnquiry from "./HeroBannerEnquiry";
 import Image from "next/image";
 import MobHomeMarquee from "../../features/home/MobHomeMarquee";
 
@@ -60,6 +60,7 @@ export default function MobHeroBanner() {
               src={item.image}
               alt={item.alt}
               fill
+              sizes="100vw"
               priority
               className="-z-2 object-cover"
             />
@@ -78,7 +79,7 @@ export default function MobHeroBanner() {
         ))}
       </Swiper>
       <MobHomeMarquee />
-      <EnquiryForm />
+      <HeroBannerEnquiry />
     </section>
   );
 }

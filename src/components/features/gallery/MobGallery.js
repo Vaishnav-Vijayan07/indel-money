@@ -8,7 +8,7 @@ import {
   TabsTrigger,
   TabsContent,
 } from "@/components/ui/custom-tabs";
-import MobGallCardSlider from "@/components/common/MobGallCardSlider";
+import MobGallCardSlider from "@/components/features/gallery/MobGallCardSlider";
 import {
   Pagination,
   PaginationContent,
@@ -143,7 +143,55 @@ export default function MobGallery() {
             {slides?.map((group, index) => {
               const gallClass =
                 index % 2 === 0 ? "flex-col" : "flex-col-reverse";
-
+              return (
+                <div
+                  key={index}
+                  className={`${gallClass} w-full mb-[8px] 3xs:h-[170px] h-[150px] flex flex-wrap`}
+                >
+                  <div className="flex flex-wrap w-full h-full">
+                    {group.slice(0, 1).map((item, i) => (
+                      <div key={i} className="w-full mb-4 h-full">
+                        <GalleryItem item={item} width={380} height={150} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+            <Pagination className="justify-start sm:justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious href="#" />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#" isActive>
+                    01
+                  </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">02</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">03</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext href="#" />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
+        </TabsContent>
+        <TabsContent value="photo">
+          <div className="w-full pb-[20px]">
+            <MobGallCardSlider />
+          </div>
+          <div className="container mx-auto flex flex-wrap">
+            {slides?.map((group, index) => {
+              const gallClass =
+                index % 2 === 0 ? "flex-col" : "flex-col-reverse";
               return (
                 <div
                   key={index}

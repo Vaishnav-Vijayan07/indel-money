@@ -106,18 +106,26 @@ function TeamBox({ item }) {
               className="relative w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.05]"
             />
           </div>
-          <div className="mt-[20px]">
+          <div className="mt-[15px]">
             <div className="text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-none font-bold sm:font-medium text-center sm:text-left text-black mb-[5px]">
               {item.title}
             </div>
-            <div className="text-sm1 sm:text-left text-center">
-              {item.post}
-            </div>
+            <div className="text-sm1 sm:text-left text-center">{item.post}</div>
           </div>
         </div>
       </AlertDialogTrigger>
-      <AlertDialogContent className="max-w-none w-full">
-        <AlertDialogHeader>
+      <AlertDialogContent className="w-full max-w-[calc(var(--container-x)-(var(--container-padding)*2))] mx-auto">
+        <AlertDialogCancel className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] focus:outline-0 flex items-center gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-2 top-[15px] xl:top-[20px] 2xl:top-[25px] 3xl:top-[30px] right-[15px] xl:right-[20px] 2xl:right-[25px] 3xl:right-[30px] transition-color cursor-pointer hover:text-base2">
+          Close
+          <Image
+            src="/images/modal-cancel.svg"
+            alt="modal-cancel"
+            width={20}
+            height={20}
+          />
+        </AlertDialogCancel>
+        <TeamModal item={item} />
+        {/* <AlertDialogHeader>
           <AlertDialogDescription className="relative w-fit m-auto">
             <AlertDialogCancel className="flex items-center absolute z-99 top-[10px] right-[22px] lg:right-[10%] p-2 rounded-full hover:bg-gray-200 transition-colors focus-visible:outline-none">
               <div className="text-[#313131] text-center text-[18px] not-italic font-normal leading-[30px] hidden lg:block">
@@ -140,7 +148,7 @@ function TeamBox({ item }) {
             </AlertDialogCancel>
             <TeamModal item={item} />
           </AlertDialogDescription>
-        </AlertDialogHeader>
+        </AlertDialogHeader> */}
       </AlertDialogContent>
     </AlertDialog>
   );
@@ -148,60 +156,58 @@ function TeamBox({ item }) {
 
 function TeamModal({ item }) {
   return (
-    <div className="container">
-      <div className="relative z-[1] w-full flex flex-wrap bg-white rounded-[10px] sm:rounded-[36px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:px-[20px] xl:px-[35px] 2xl:px-[55px] 3xl:px-[75px] sm:py-[25px]  pb-[60px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[80px]  p-0">
-        <div className="group w-full sm:w-[150px] lg:w-[250px] xl:w-[270px] 2xl:w-[385px] flex sm:justify-center items-end sm:items-center bg-gradient-to-t from-[rgba(238,56,36,0.40)] via-[rgba(23,71,158,0.25)] to-[rgba(23,71,158,0.10)] sm:bg-gradient-to-b sm:from-[#EFEFEF] sm:to-[#AFDBF6] rounded-[10px] sm:rounded-[20px] p-[15px] pb-0 sm:p-0 overflow-hidden">
-          <div className="group h-auto sm:w-full w-[135px] flex justify-center items-center">
-            <Image
-              src={item.image}
-              alt={item.alt}
-              layout="responsive"
-              width={100}
-              height={100}
-              className="rounded-lg object-cover transition-transform duration-300 group-hover:scale-[1.05]"
-            />
-          </div>
-          <div className="w-[calc(100%-105px)] xs:w-[calc(100%-135px)] pl-[15px] pb-[15px] block sm:hidden">
-            <h2 className="text-[18px] xl:text-[22px] 2xl:text-[28px] 3xl:text-[35px] font-bold flex items-center text-#000">
-              {item.title}
-            </h2>
-            <p className="text-gray-600 mt-[5px]">{item.post}</p>
-          </div>
+    <div className="w-full h-auto relative z-0 flex flex-wrap bg-white rounded-[10px] sm:rounded-[36px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:px-[20px] xl:px-[35px] 2xl:px-[55px] 3xl:px-[75px] sm:py-[25px] pb-[60px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[80px] p-0">
+      <div className="group w-full sm:w-[150px] lg:w-[250px] xl:w-[270px] 2xl:w-[385px] flex sm:justify-center items-end sm:items-center bg-gradient-to-t from-[rgba(238,56,36,0.40)] via-[rgba(23,71,158,0.25)] to-[rgba(23,71,158,0.10)] sm:bg-gradient-to-b sm:from-[#EFEFEF] sm:to-[#AFDBF6] rounded-[10px] sm:rounded-[20px] p-[15px] pb-0 sm:p-0 overflow-hidden">
+        <div className="group h-auto sm:w-full w-[135px] flex justify-center items-center">
+          <Image
+            src={item.image}
+            alt={item.alt}
+            layout="responsive"
+            width={100}
+            height={100}
+            className="rounded-lg object-cover transition-transform duration-300 group-hover:scale-[1.05]"
+          />
         </div>
-        <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-250px)] xl:w-[calc(100%-270px)] 2xl:w-[calc(100%-385px)] pt-[20px] sm:pt-[0] sm:pl-[20px] lg:pl-[30px] 3xl:pl-[50px]">
-          <div className="relative max-w-[450px] bg-gradient-to-r from-[rgba(238,56,36,0.20)] via-[rgba(58,69,138,0.10)] to-[rgba(23,71,158,0.00)] sm:bg-gradient-to-r sm:from-[rgba(238,56,36,0.20)] sm:via-[rgba(58,69,138,0.10)] sm:to-[rgba(23,71,158,0.00)] px-[25px] py-1 hidden sm:block">
-            <div className="absolute left-0 bottom-0 w-[7px] h-full rounded-[10px] bg-gradient-to-b from-[#EE3824] to-base1"></div>
-            <h2 className="text-[18px] xl:text-[22px] 2xl:text-[28px] 3xl:text-[35px] font-bold flex items-center text-#000">
-              {item.title}
-            </h2>
-            <p className="text-gray-600 mt-[5px]">{item.post}</p>
-          </div>
+        <div className="w-[calc(100%-105px)] xs:w-[calc(100%-135px)] pl-[15px] pb-[15px] block sm:hidden">
+          <h2 className="text-[18px] xl:text-[22px] 2xl:text-[28px] 3xl:text-[35px] font-bold flex items-center text-#000">
+            {item.title}
+          </h2>
+          <p className="text-gray-600 mt-[5px]">{item.post}</p>
+        </div>
+      </div>
+      <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-250px)] xl:w-[calc(100%-270px)] 2xl:w-[calc(100%-385px)] pt-[20px] sm:pt-[0] sm:pl-[20px] lg:pl-[30px] 3xl:pl-[50px]">
+        <div className="relative max-w-[450px] bg-gradient-to-r from-[rgba(238,56,36,0.20)] via-[rgba(58,69,138,0.10)] to-[rgba(23,71,158,0.00)] sm:bg-gradient-to-r sm:from-[rgba(238,56,36,0.20)] sm:via-[rgba(58,69,138,0.10)] sm:to-[rgba(23,71,158,0.00)] px-[25px] py-1 hidden sm:block">
+          <div className="absolute left-0 bottom-0 w-[7px] h-full rounded-[10px] bg-gradient-to-b from-[#EE3824] to-base1"></div>
+          <h2 className="text-[18px] xl:text-[22px] 2xl:text-[28px] 3xl:text-[35px] font-bold flex items-center text-#000">
+            {item.title}
+          </h2>
+          <p className="text-gray-600 mt-[5px]">{item.post}</p>
+        </div>
 
-          <div
-            className="w-full hidden lg:block h-[200px] xl:h-[220px] 2xl:h-[335px] scrollbar-custom overflow-y-auto mt-[20px] 2xl:mt-[35px] [&::-webkit-scrollbar]:w-[4px]
+        <div
+          className="w-full hidden lg:block h-[200px] xl:h-[220px] 2xl:h-[335px] scrollbar-custom overflow-y-auto mt-[20px] 2xl:mt-[35px] [&::-webkit-scrollbar]:w-[4px]
                           [&::-webkit-scrollbar-thumb]:bg-[#EE3824]
                           [&::-webkit-scrollbar-thumb]:rounded-full
                           [&::-webkit-scrollbar-track]:bg-[rgba(23,71,158,0.60)]
                           [&::-webkit-scrollbar-track]:rounded-full
                           scroll-smooth"
-          >
-            <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">
-              {item.desciption}
-            </div>
+        >
+          <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">
+            {item.desciption}
           </div>
         </div>
-        <div
-          className="w-full lg:hidden h-[340px] sm:h-[220px] overflow-y-auto mt-[20px] sm:p-0 mr-[20px] pt-0 p-[15px]
+      </div>
+      <div
+        className="w-full lg:hidden h-[340px] sm:h-[220px] overflow-y-auto mt-[20px] sm:p-0 mr-[20px] pt-0 p-[15px]
                       [&::-webkit-scrollbar]:w-[6px]
                       [&::-webkit-scrollbar-thumb]:bg-[#EE3824]
                       [&::-webkit-scrollbar-thumb]:rounded-full
                       [&::-webkit-scrollbar-track]:bg-[rgba(23,71,158,0.60)]
                       [&::-webkit-scrollbar-track]:rounded-full
                       scroll-smooth"
-        >
-          <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">
-            {item.desciption}
-          </div>
+      >
+        <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">
+          {item.desciption}
         </div>
       </div>
     </div>
@@ -213,7 +219,7 @@ export default function ManagementTeam() {
     <section className="w-full block relative py-[30px] lg:py-[40px] xl:py-[70px]">
       <div className="absolute bottom-[12%] left-0 w-full h-[75%] md:h-[66%] xl:h-[60%] bg-gradient-to-r from-[rgba(243,0,0,0)] to-[rgba(235,2,8,0.10)] z-0 hidden sm:block"></div>
       <div className="container">
-        <div className="w-full flex flex-wrap mb-[60px]">
+        <div className="w-full flex flex-wrap mb-[30px] lg:mb-[40px] 2xl:mb-[60px]">
           <div className="w-full md:w-[45%] 2xl:w-[40%]">
             <h2 className="text-title1 mb-[15px] 2xl:mb-[20px]">
               <span className="text-base2 font-bold">Indely</span>
