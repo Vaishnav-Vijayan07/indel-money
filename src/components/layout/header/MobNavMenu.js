@@ -5,8 +5,9 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@/components/ui/custom-sheet";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function MobNavMenu() {
   return (
@@ -22,10 +23,26 @@ export default function MobNavMenu() {
         </div>
       </SheetTrigger>
       <SheetContent className="bg-white">
-        <SheetHeader>
-          <SheetTitle>Under construction?</SheetTitle>
+        <SheetHeader className="p-0">
+          <SheetTitle className="hidden">Indel Money</SheetTitle>
           <SheetDescription>
-            Design under construction
+            <div className="w-full h-[var(--header-y)] bg-white shadow-sm p-[15px]">
+              <div className="flex justify-between items-center">
+                <div className="w-[60px] 4xs:w-[80px]">
+                  <Link
+                    href="/"
+                    className="block transition-transform duration-300 hover:scale-105"
+                  >
+                    <Image
+                      src="/icons/logo_sm.svg"
+                      alt="Logo"
+                      width={145}
+                      height={75}
+                    />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </SheetDescription>
         </SheetHeader>
       </SheetContent>

@@ -47,7 +47,7 @@ export default function HomeSlider() {
         disableOnInteraction: false,
       }}
       loop={true}
-      className="heroSlide h-[calc(100vh-(var(--header-y)+var(--marquee-y)))]"
+      className="heroSlide h-[calc(90vh-(var(--header-y)+var(--marquee-y)))] sm:h-[calc(100vh-(var(--header-y)+var(--marquee-y)))]"
     >
       {slides?.map((item, index) => (
         <SwiperSlide

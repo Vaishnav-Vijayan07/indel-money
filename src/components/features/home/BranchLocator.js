@@ -26,7 +26,7 @@ export default function BranchLocator({ variant = "default" }) {
        } 
        w-full block`}
     >
-      <div className="sm:py-0">
+      <div>
         <div className="container">
           <div className="mb-[35px] sm:mb-[20px] lg:mb-30px flex flex-col lg:flex-row items-start xl:items-start justify-between flex-wrap">
             <motion.div

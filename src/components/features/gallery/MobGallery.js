@@ -57,7 +57,7 @@ const data = [
 ];
 
 const btnStyle =
-  "text-[12px] leading-none font-medium text-white w-full max-w-[110px] h-[30px] rounded-[15px] overflow-hidden p-[8px_10px] aria-selected:font-bold aria-selected:text-white";
+  "text-[12px] leading-none font-medium text-white w-full max-w-[80px] 4xs:max-w-[110px] h-[30px] rounded-[15px] overflow-hidden p-[6px_6px] 4xs:p-[8px_10px] aria-selected:font-bold aria-selected:text-white";
 
 export default function MobGallery() {
   const slides = Array.from({ length: Math.ceil(data.length / 3) }, (_, i) =>
@@ -100,7 +100,7 @@ export default function MobGallery() {
             />
           ))}
         </div>
-        <div className="w-full h-[100%] absolute z-0 left-0 bottom-0 transition-all duration-500 ease-in-out flex flex-wrap items-end bg-gradient-to-b from-transparent via-[#80000080] to-[#0047AB] px-[20px] py-[30px]">
+        <div className="w-full h-[100%] absolute z-0 left-0 bottom-0 transition-all duration-500 ease-in-out flex flex-wrap items-end bg-gradient-to-b from-transparent via-[#80000080] to-[#0047AB] p-[15px_20px] 4xs:p-[20px_30px]">
           <div className="w-full h-fit">
             <div className="relative text-white font-semibold text-[17px] leading-[1.1] uppercase pb-[6px] 2xl:pb-[10px] 3xl:pb-[15px] mb-[8px] 2xl:mb-[10px] 3xl:mb-[15px] after:content-[''] after:w-[17%] 2xl:after:w-[23%] after:h-[1px] after:bg-white after:absolute after:left-0 after:bottom-0 line-clamp-2">
               {item.title}
@@ -123,7 +123,7 @@ export default function MobGallery() {
       </div>
       <Tabs defaultValue="all" className="w-full gallTab">
         <div className="container">
-          <TabsList className="w-full h-auto flex m-auto justify-center mb-[20px] rounded-[20px] bg-white shadow-[0_0_25px_0_rgba(0,0,0,0.10)] p-[15px_10px]">
+          <TabsList className="w-full h-auto flex m-auto justify-center mb-[20px] rounded-[20px] bg-white shadow-[0_0_25px_0_rgba(0,0,0,0.10)] p-[15px_5px] 4xs:p-[15px_10px]">
             <TabsTrigger value="all" className={btnStyle}>
               All Gallery
             </TabsTrigger>

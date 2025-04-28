@@ -48,7 +48,7 @@ const GallSliderBx = ({ item }) => {
     if (hovered) {
       interval = setInterval(() => {
         setCurrentImage((prev) => (prev + 1) % item.images.length);
-        
+
       }, 1000); // Change image every 1 second
     } else {
       setCurrentImage(0); // Reset to first image when not hovered
@@ -94,9 +94,9 @@ export default function GallerySlider({ className }) {
   return (
     <section className="w-full pb-[30px] xl:pb-[60px] 3xl:pb-[100px]">
       <div className="container w-full">
-        <div className="w-full flex flex-wrap justify-between items-center sm:mb-[30px] 2xl:mb-[40px] 3xl:mb-[70px]">
+        <div className="w-full flex flex-wrap justify-between items-center mb-[15px] sm:mb-[30px] 2xl:mb-[40px] 3xl:mb-[70px]">
           <div className="w-full sm:w-[40%] md:w-[30%] xl:w-[27%] 2xl:w-[30%]">
-            <h2 className="text-[20px] md:[22px] lg:[26px] xl:text-[30px] 2xl:text-[35px] font-medium text-[#020202] leading-normal">
+            <h2 className="text-[20px] md:text-[22px] lg:text-[26px] xl:text-[30px] 2xl:text-[35px] font-medium leading-normal text-[#020202]">
               View More Galleries
             </h2>
           </div>
@@ -134,8 +134,8 @@ export default function GallerySlider({ className }) {
           pagination={{ clickable: true }}
           slidesPerView={1.5}
           breakpoints={{
-            420: { slidesPerView: 2.3 },
-            640: { slidesPerView: 3 },
+            420: { slidesPerView: 2.3, spaceBetween:10 },
+            640: { slidesPerView: 3, spaceBetween:10 },
             768: { slidesPerView: 3, spaceBetween: 20 },
             1024: { slidesPerView: 3.8, spaceBetween: 30 },
           }}

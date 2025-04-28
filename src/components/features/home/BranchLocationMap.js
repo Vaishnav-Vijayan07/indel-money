@@ -287,7 +287,7 @@ export default function BranchLocationMap() {
   if (!isMounted) return <div>Loading map...</div>;
 
   return (
-    <div className="w-full h-auto sm:h-[510px] 2xl:h-[670px] relative z-1 flex flex-wrap rounded-[10px] sm:rounded-[16px] overflow-hidden">
+    <div className="w-full h-[376px] sm:h-[510px] 2xl:h-[670px] relative z-1 flex flex-wrap rounded-[10px] sm:rounded-[16px] overflow-hidden">
       <div className="w-full sm:w-[calc(100%-220px)] lg:w-[calc(100%-260px)] xl:w-[calc(100%-320px)] 2xl:w-[calc(100%-420px)] max-sm:h-[620px] h-full relative z-0">
         <MapContainer
           center={mapCenter}

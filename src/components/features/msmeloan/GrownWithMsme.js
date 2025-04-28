@@ -111,7 +111,7 @@ export default function FAQ() {
                     )}
                   </button>
                   {openIndex === index && (
-                    <div className="font-normal 2xl:text-[18px] xl:text-[16px] text-[14px] pb-[10px] transition-all duration-300">
+                    <div className="text-sm1 pb-[10px] transition-all duration-300">
                       {faq.answer}
                     </div>
                   )}

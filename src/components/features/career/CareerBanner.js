@@ -42,7 +42,10 @@ export default function CareerBanner() {
         pagination={{
           clickable: true,
         }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false
+        }}
         slidesPerView={1}
         spaceBetween={0}
         className="careerBannerSlide"
@@ -61,16 +64,16 @@ export default function CareerBanner() {
                 <div className="max-sm:mb-[90px] max-sm:text-[28px] text-title2 font-bold text-white w-full lg:max-w-[420px] xl:max-w-[476px] 2xl:max-w-[576px] 3xl:max-w-[740px] mb-[4px] lg:mb-[6px] 2xl:mb-[10px]">
                   {item?.title
                     ? (() => {
-                        const words = item.title.split(" ");
-                        const lastWord = words[words.length - 1];
-                        const precedingWords = words.slice(0, -1).join(" ");
-                        return (
-                          <>
-                            {precedingWords}{" "}
-                            <span className="text-base2">{lastWord}</span>
-                          </>
-                        );
-                      })()
+                      const words = item.title.split(" ");
+                      const lastWord = words[words.length - 1];
+                      const precedingWords = words.slice(0, -1).join(" ");
+                      return (
+                        <>
+                          {precedingWords}{" "}
+                          <span className="text-base2">{lastWord}</span>
+                        </>
+                      );
+                    })()
                     : null}
                 </div>
                 <div className="w-full max-sm:hidden block">

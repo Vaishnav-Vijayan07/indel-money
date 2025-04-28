@@ -4,9 +4,11 @@ import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import LightGallery from "lightgallery/react";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
+import lgVideo from "lightgallery/plugins/video";
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
+import "lightgallery/css/lg-video.css";
 
 const data = [
   { images: ["/images/gallDet01.jpg"] },
@@ -46,7 +48,7 @@ export default function GalleryDetail() {
   return (
     <section className="w-full pt-[40px] pb-[25px] xl:pb-[40px] 3xl:pb-[80px]">
       <div className="container mx-auto">
-        <div className="w-full pb-[20px] lg:pb-[40px] 2xl:pb-[60px]">
+        <div className="w-full sm:pb-[20px] lg:pb-[40px] 2xl:pb-[60px]">
           <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px] sm:flex sm:flex-wrap">
             Onam Celebrations 2024 for
             <span className="sm:block hidden"> &nbsp;LIFE@INDEL </span>
@@ -68,7 +70,34 @@ export default function GalleryDetail() {
                 <ImageBox item={data[1]} className="h-1/2" />
               </div>
               <div className="w-1/2 h-full">
-                <ImageBox item={data[2]} className="h-full" />
+                {/* <ImageBox item={data[2]} className="h-full" /> */}
+                <div className={`w-full h-full p-1 sm:p-2`}>
+                  <div className="group w-full h-full rounded-[3px] sm:rounded-[15px] block overflow-hidden relative z-0">
+                    <LightGallery
+                      speed={300}
+                      plugins={[lgThumbnail, lgZoom, lgVideo]}
+                      download={false}
+                      elementClassNames="w-full"
+                    >
+                      <a
+                        data-src="//www.youtube.com/watch?v=EIUJfXk3_3w"
+                        data-poster="/images/gallDet01.jpg"
+                        data-lg-size="1280-720"
+                      >
+                        <Image
+                          src="/images/gallDet01.jpg"
+                          alt="Gallery Video"
+                          fill
+                          sizes="520px"
+                          className="group-hover:scale-105 object-cover transition-transform duration-300"
+                        />
+                      </a>
+                    </LightGallery>
+                    <div className="w-[30px] lg:w-[35px] 2xl:w-[48px] aspect-square absolute z-1 inset-0 m-auto pointer-events-none">
+                      <Image src={"/images/icon-play.svg"} alt={"play"} fill sizes="48px" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
