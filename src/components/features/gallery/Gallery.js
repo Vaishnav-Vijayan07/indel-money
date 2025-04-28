@@ -8,7 +8,7 @@ import {
   TabsTrigger,
   TabsContent,
 } from "@/components/ui/custom-tabs";
-import CardSlider from "@/components/common/CardSlider";
+import CardSlider from "@/components/features/gallery/CardSlider";
 import {
   Pagination,
   PaginationContent,
@@ -57,7 +57,7 @@ const data = [
 ];
 
 const btnStyle =
-  "text-[14px] sm:text-[16px] lg:text-[18px] 2xl:text-[20px] leading uppercase text-base1 rounded-[30px] overflow-hidden w-1/2 sm:w-1/3 px-[30px] 2xl:px-[35px] 3xl:px-[50px] py-[12px] 2xl:py-[15px] 3xl:py-[20px] h-fit aria-selected:text-[#fff] cursor-pointer";
+  "text-[14px] sm:text-[16px] lg:text-[18px] 2xl:text-[20px] leading uppercase text-base1 rounded-[30px] overflow-hidden w-1/2 sm:w-1/3 px-[30px] 2xl:px-[35px] 3xl:px-[50px] py-[12px] 2xl:py-[15px] 3xl:py-[20px] h-fit aria-selected:text-white cursor-pointer";
 
 export default function Gallery() {
   const slides = Array.from({ length: Math.ceil(data.length / 3) }, (_, i) =>
@@ -114,7 +114,7 @@ export default function Gallery() {
 
   return (
     <section className="w-full pt-[40px] pb-[40px] xl:pb-[60px] 3xl:pb-[100px]">
-      <div className="container mx-auto">
+      <div className="container">
         <div className="w-full flex flex-wrap items-center mb-[40px] 2xl:mb-[50px] 3xl:mb-[65px] py-[10px] 2xl:py-[15px] px-[30px] 2xl:px-[40px] 3xl:px-[60px] rounded-l-[20px] border-l-2 border-[#17479E] bg-gradient-to-r from-[rgba(238,56,36,0.30)] to-[rgba(23,71,158,0.00)]">
           <div className="w-full md:w-[30%] xl:w-[20%] 2xl:w-[26%]">
             <h2 className="text-title1">
@@ -133,7 +133,7 @@ export default function Gallery() {
           </div>
         </div>
         <Tabs defaultValue="all" className="w-full gallTab">
-          <div className="w-full h-fit lg:max-w-[85%] xl:max-w-[75%] m-auto flex justify-center mb-[40px] xl:mb-[60px] 3xl:mb-[100px] rounded-[50px] bg-white shadow-[0px_0px_25px_0px_rgba(0,0,0,0.10)] p-[15px] 2xl:p-[25px]">
+          <div className="w-full h-fit lg:max-w-[85%] xl:max-w-[75%] m-auto flex justify-center mb-[20px] xl:mb-[40px] 3xl:mb-[80px] rounded-[50px] bg-white shadow-[0_0_25px_0_rgba(0,0,0,0.10)] p-[15px] 2xl:p-[25px]">
             <TabsList className="flex flex-wrap h-fit w-full lg:max-w-[90%] xl:max-w-[70%] m-auto">
               <TabsTrigger value="all" className={btnStyle}>
                 All Gallery

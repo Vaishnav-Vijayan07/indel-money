@@ -4,9 +4,9 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
-// import "../features/gallery/gallery.module.css";
 import "./gallery.css";
 import Image from "next/image";
+import { useState } from "react";
 
 const slides = [
   {
@@ -54,13 +54,19 @@ const slides = [
 ];
 
 export default function CardSlider() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSlideChange = (swiper) => {
+    setActiveIndex(swiper.activeIndex);
+  };
   return (
     <div className="w-full flex justify-center items-center py-10">
       <style>{`
-            .GallRoundSlide:not(.swiper-slide-active) .SwiprCntn{
+            .CardSlider .swiper-slide:not(.swiper-slide-active) .card-box-content{
                     opacity: 0;
             }`}</style>
       <Swiper
+        onSlideChange={handleSlideChange}
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
@@ -104,6 +110,17 @@ export default function CardSlider() {
               slideShadows: false,
             },
           },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 20,
+            coverflowEffect: {
+              rotate: -5,
+              stretch: 0,
+              depth: 80,
+              modifier: 1,
+              slideShadows: false,
+            },
+          },
           1536: {
             slidesPerView: 5,
             spaceBetween: 40,
@@ -133,27 +150,28 @@ export default function CardSlider() {
         {slides.map((slide, index) => (
           <SwiperSlide
             key={index}
-            className="w-full h-full GallRoundSlide not-[:where(.swiper-slide-visible)]:opacity-0 not-[:has(.swiper-slide-active)]:[.SwiprCntn]:opacity-0"
+            className="w-full h-full not-[:where(.swiper-slide-visible)]:opacity-0 not-[:has(.swiper-slide-active)]:[.SwiprCntn]:opacity-0"
           >
-            {({ isActive }) => (
-              <div className="relative w-full h-[370px] lg:h-[350px] xl:h-[400px] 2xl:h-[400px] 3xl:h-[518px] rounded-[38px] overflow-hidden shadow-lg">
-                <Image
-                  src={slide.src}
-                  alt={`Slide ${index}`}
-                  fill
-                  sizes="112px"
-                  className="object-cover"
-                />
-                <div className="SwiprCntn absolute bottom-0 left-0 right-0 text-white text-center py-[65px] px-[25px] bg-gradient-to-b from-[rgba(143,0,0,0)] to-base1 z-1 pointer-events-none">
-                  <h3 className="font-black text-[18px] lg:text-[18px] xl:text-[20px] 2xl:text-[18px] 3xl:text-[25px] text-[#fff] uppercase mb-[15px] pb-[15px] relative before:content-[''] before:absolute before:bottom-0 before:m-auto before:w-[30%] before:h-[1px] before:right-0 before:left-0 before:bg-white">
-                    {slide.title}
-                  </h3>
-                  <p className="font-normal text-[14px] lg:text-[14px] xl:text-[16px] 2xl:text-[14px] 3xl:text-[18px] text-[#fff]">
-                    {slide.description}
-                  </p>
-                </div>
+            <div className="relative w-full h-[370px] lg:h-[350px] xl:h-[400px] 2xl:h-[400px] 3xl:h-[518px] rounded-[38px] overflow-hidden shadow-lg">
+              <Image
+                src={slide.src}
+                alt={`Slide ${index}`}
+                fill
+                sizes="518px"
+                className="object-cover"
+              />
+              <div
+                className="card-box-content absolute z-1 bottom-0 left-0 right-0 p-[30px_15px] lg:p-[30px_15px] 2xl:p-[65px_25px] pointer-events-none transition-all duration-300  bg-gradient-to-b from-[rgba(143,0,0,0)] to-base1"
+              >
+                <h3 className="text-[18px] lg:text-[18px] xl:text-[20px] 2xl:text-[18px] 3xl:text-[25px] uppercase font-black text-center text-white">
+                  {slide.title}
+                </h3>
+                <span className="w-full max-w-[120px] h-[1px] bg-white my-[8px] lg:my-[10px] 2xl:my-[14px] mx-auto block"></span>
+                <p className="text-[14px] sm:text-[12px] xl:text-[13px] 2xl:text-[14px] 3xl:text-[18px] font-normal leading-[1.3] text-center text-white">
+                  {slide.description}
+                </p>
               </div>
-            )}
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

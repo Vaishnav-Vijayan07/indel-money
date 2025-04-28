@@ -14,7 +14,7 @@ const historyImages = [
   { image: "/images/h8.webp", alt: "Image 8" },
 ];
 
-export default function Indelhistory() {
+export default function IndelHistory() {
   return (
     <section className="relative py-[30px] lg:py-[65px]">
       <div className="container">

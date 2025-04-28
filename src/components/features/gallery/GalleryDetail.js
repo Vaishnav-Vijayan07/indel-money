@@ -28,7 +28,7 @@ function ImageBox({ item, className }) {
           elementClassNames="w-full h-full"
         >
           <a href={item.images[0]} className="w-full h-full relative z-0 block">
-            <Image 
+            <Image
               src={item.images[0]}
               alt="Gallery Image"
               fill
@@ -50,7 +50,10 @@ export default function GalleryDetail() {
           <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px] sm:flex sm:flex-wrap">
             Onam Celebrations 2024 for
             <span className="sm:block hidden"> &nbsp;LIFE@INDEL </span>
-            <span className="text-base2 font-bold sm:hidden block"> &nbsp;LIFE@INDEL </span>
+            <span className="text-base2 font-bold sm:hidden block">
+              {" "}
+              &nbsp;LIFE@INDEL{" "}
+            </span>
           </h1>
           <div className="sm:block hidden">
             <PageBreadcrumb />
