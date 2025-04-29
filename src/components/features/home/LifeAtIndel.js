@@ -22,9 +22,7 @@ const images = [
 function ImageBox({ item, className }) {
   return (
     <div className={`${className} w-full p-1 sm:p-2`}>
-      <div
-        className={`${className} group w-full h-full xl:rounded-[35px] md:rounded-[28px] rounded-[20px] overflow-hidden`}
-      >
+      <div className={`${className} group w-full h-full xl:rounded-[35px] md:rounded-[28px] rounded-[20px] overflow-hidden`}>
         <Image
           src={item.src}
           width={276}
@@ -37,7 +35,7 @@ function ImageBox({ item, className }) {
   );
 }
 
-export default function LifeAtIndel() {
+export default function LifeAtIndel({ pageContent }) {
   return (
     <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px] overflow-hidden">
       <div className="container">
@@ -69,17 +67,18 @@ export default function LifeAtIndel() {
             transition={{ duration: 0.5 }}
             className="w-full lg:w-1/2 lg:px-[15px] xl:px-[20px] 3xl:px-[35px]"
           >
-            <h2 className="text-title1">
-              Life at
-              <span className="text-base2 font-bold">&nbsp;Indel</span>
-            </h2>
+            <h2
+              className="text-title1 [&>span]:text-base2 [&>span]:font-bold"
+              dangerouslySetInnerHTML={{ __html: pageContent?.life_section_title }}
+            />
             <div className="text-sm1 line-clamp-4 mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
+              {/* {{ Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley
               of type and scrambled it to make a type specimen book. It has
               survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged.
+              electronic typesetting, remaining essentially unchanged.}} */}
+              {pageContent?.life_section_description}
             </div>
             <div className="mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
               <LifeIndelSlider />
@@ -87,18 +86,22 @@ export default function LifeAtIndel() {
             <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 3xl:gap-[20px]">
               <div>
                 <Link
-                  href="/"
+                  // href="/"
+                  href={pageContent?.life_section_button_link_1}
                   className="btn btn-base2 min-w-[200px] lg:min-w-[180px] xl:min-w-[220px] 3xl:min-w-[280px]"
                 >
-                  TAKE ME TO CAREERS PAGE
+                  {/* TAKE ME TO CAREERS PAGE */}
+                  {pageContent?.life_section_button_name_1}
                 </Link>
               </div>
               <div>
                 <Link
-                  href="/"
+                  // href="/"
+                  href={pageContent?.life_section_button_link_2}
                   className="btn btn-base2 min-w-[120px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[180px]"
                 >
-                  VISIT GALLERY
+                  {/* VISIT GALLERY */}
+                  {pageContent?.life_section_button_name_2}
                 </Link>
               </div>
             </div>

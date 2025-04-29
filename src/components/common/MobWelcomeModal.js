@@ -20,8 +20,7 @@ const slides = [
     src: "/images/welcome-1.jpg",
     alt: "welcome-1",
     title: "Gold Loans",
-    description:
-      "Need quick financing? Get the best rates with our secure gold loans.",
+    description: "Need quick financing? Get the best rates with our secure gold loans.",
     link: "/",
     linkname: "Get a Gold Loan Today",
   },
@@ -29,8 +28,7 @@ const slides = [
     src: "/images/welcome-2.jpg",
     alt: "welcome-1",
     title: "Other Services",
-    description:
-      "We offer a range of services tailored to your needs. Let us guide you.",
+    description: "We offer a range of services tailored to your needs. Let us guide you.",
     link: "/",
     linkname: "Explore Our Services",
   },
@@ -38,8 +36,7 @@ const slides = [
     src: "/images/welcome-3.jpg",
     alt: "welcome-1",
     title: "Career Opportunities",
-    description:
-      "Looking for a new opportunity? Explore our open positions and start your journey with us.",
+    description: "Looking for a new opportunity? Explore our open positions and start your journey with us.",
     link: "/",
     linkname: "FIND YOUR DREAM JOB",
   },
@@ -47,8 +44,7 @@ const slides = [
     src: "/images/welcome-4.jpg",
     alt: "welcome-1",
     title: "Quick pay",
-    description:
-      "efficient payment solution designed to make transactions faster and easier.",
+    description: "efficient payment solution designed to make transactions faster and easier.",
     link: "/",
     linkname: "Make your payment",
   },
@@ -86,10 +82,7 @@ function WelcomeBox({ item, index }) {
             xmlns="http://www.w3.org/2000/svg"
             className="transition-transform duration-300 group-hover:translate-x-[2px]"
           >
-            <path
-              d="M6.5 6.5L0.125 12.9952V0.00480938L6.5 6.5Z"
-              fill="#EE3824"
-            />
+            <path d="M6.5 6.5L0.125 12.9952V0.00480938L6.5 6.5Z" fill="#EE3824" />
           </svg>
         </Link>
       </div>
@@ -98,7 +91,7 @@ function WelcomeBox({ item, index }) {
 }
 
 export default function MobWelcomeModal() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     // Check if the user has seen the modal before using localStorage
@@ -137,30 +130,17 @@ export default function MobWelcomeModal() {
             onClick={handleClose}
             className="focus:outline-0 flex gap-[4px] absolute z-0 top-[20px] right-[20px] transition-color cursor-pointer items-center"
           >
-            <Image
-              src="/images/icon-close.svg"
-              alt="icon-close"
-              width={10}
-              height={10}
-            />
+            <Image src="/images/icon-close.svg" alt="icon-close" width={10} height={10} />
           </AlertDialogCancel>
           <div className="flex flex-wrap gap-[30px] mb-[20px]">
             <div className="w-full max-w-[80px] h-auto inline-block">
-              <Image
-                src="/icons/logo_sm.svg"
-                alt="logo"
-                width={86}
-                height={44}
-                inert
-              />
+              <Image src="/icons/logo_sm.svg" alt="logo" width={86} height={44} inert />
             </div>
             <div>
               <AlertDialogTitle className="text-[20px] text-base2 leading-none font-bold mt-[2px] mb-[4px]">
                 Welcome!
               </AlertDialogTitle>
-              <div className="text-[14px] leading-none font-normal text-[#1e1e1e]">
-                What Brings You Here Today?
-              </div>
+              <div className="text-[14px] leading-none font-normal text-[#1e1e1e]">What Brings You Here Today?</div>
             </div>
           </div>
           <div className="flex flex-wrap -mx-[4px]">

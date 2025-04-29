@@ -4,14 +4,11 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 
 // Dynamically import BranchLocationMap with SSR disabled
-const BranchLocationMap = dynamic(
-  () => import("@/components/features/home/BranchLocationMap"),
-  {
-    ssr: false, // Ensures this only runs on the client
-  }
-);
+const BranchLocationMap = dynamic(() => import("@/components/features/home/BranchLocationMap"), {
+  ssr: false, // Ensures this only runs on the client
+});
 
-export default function BranchLocator({ variant = "default" }) {
+export default function BranchLocator({ variant = "default", pageContent }) {
   return (
     <section
       className={`${
@@ -19,11 +16,7 @@ export default function BranchLocator({ variant = "default" }) {
           ? "sm:bg-[#e6edf7] rounded-t-[10px] sm:py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px] max-sm:shadow-[0_0_150px_0_rgba(0,0,0,0.25)]"
           : ""
       }
-       ${
-         variant === "branch"
-           ? "pt-[30px] sm:pt-[40px] pb-[0px] 2xl:pt-[30px] 2xl:pb-[90px] 3xl:pt-[50px] 3xl:pb-[120px]"
-           : ""
-       }F
+       ${variant === "branch" ? "pt-[30px] sm:pt-[40px] pb-[0px] 2xl:pt-[30px] 2xl:pb-[90px] 3xl:pt-[50px] 3xl:pb-[120px]" : ""}F
        w-full block`}
     >
       <div className="sm:py-0">
@@ -34,11 +27,13 @@ export default function BranchLocator({ variant = "default" }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-title1 w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-668px)] xl:pr-[20px] 2xl:pr-[60px] 3xl:pr-[80px]"
-            >
-              Discover Gold Loan Options Near You with Our{" "}
-              <span className="text-base2 font-bold">Branch Locator</span>
-            </motion.div>
+              className="text-title1 w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-668px)] xl:pr-[20px] 2xl:pr-[60px] 3xl:pr-[80px]  [&>span]:text-base2 [&>span]:font-bold"
+              dangerouslySetInnerHTML={{ __html: pageContent?.branch_section_title }}
+            />
+            {/* Discover Gold Loan Options Near You with Our{" "} */}
+            {/* {pageContent?.branch_section_title} */}
+            {/* <span className="text-base2 font-bold">Branch Locator</span> */}
+            {/* </motion.div> */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -47,9 +42,10 @@ export default function BranchLocator({ variant = "default" }) {
               className="w-full lg:w-[468px] xl:w-[500px] 2xl:w-[600px] 3xl:w-[668px] mt-2 xl:mt-[15px] xl:text-right hidden sm:block"
             >
               <p className="text-[12px] lg:text-[12px] xl:text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#323232]">
-                Find the closest Indel Money branch using our locator tool and
+                {/* Find the closest Indel Money branch using our locator tool and
                 unlock gold loan opportunities in your vicinity. Let&apos;s work
-                together to meet your financial needs.
+                together to meet your financial needs. */}
+                {pageContent?.branch_section_description}
               </p>
             </motion.div>
           </div>

@@ -21,7 +21,7 @@ const steps = [
   },
 ];
 
-export default function MobStepGoldLoan({className}) {
+export default function MobStepGoldLoan({ className, loanSteps }) {
   return (
     <section className={`${className} w-full py-[20px_0]`}>
       <div className="container">
@@ -30,12 +30,12 @@ export default function MobStepGoldLoan({className}) {
           <span className="text-base2 font-bold">Gold Loan</span>
         </div>
         <div className="flex flex-wrap">
-          {steps?.map((item, index) => (
+          {loanSteps?.map((item, index) => (
             <div key={index} className="w-full py-[10px]">
               <div className="w-full h-auto rounded-[10px] bg-gradient-to-r from-base1/10 to-base2/10 border-dashed border-[1px] border-base1/80 p-[15px] flex gap-[20px] @md:gap-[25px] items-center">
                 <div className="w-[80px] h-[80px] relative z-0">
                   <Image
-                    src={item.image}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon_url}`}
                     alt={item.alt}
                     fill
                     className="aspect-square"
@@ -45,9 +45,7 @@ export default function MobStepGoldLoan({className}) {
                   <div className="text-[13px] font-normal leading-none line-clamp-1 text-white text-center capitalize mb-[5px] @md:mb-[10px] bg-gradient-to-tl from-base2 to-base1 rounded-[15px] inline-block p-[8px_15px]">
                     {item.title}
                   </div>
-                  <div className="text-[14px] font-medium leading-none line-clamp-3 text-[#002362]">
-                    {item.description}
-                  </div>
+                  <div className="text-[14px] font-medium leading-none line-clamp-3 text-[#002362]">{item.description}</div>
                 </div>
               </div>
             </div>

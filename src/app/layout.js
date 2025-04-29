@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "@/components/common/FloatingButton";
+import { ReduxProvider } from "@/lib/redux/provider";
 // import ModalPortalContainer from '@/components/common/ModalPortalContainer';
 
 // Define font with modern configuration
@@ -53,12 +54,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${amino.variable} font-amino min-h-screen flex flex-col antialiased`}
-      >
-        <Header />
-        <main className="flex-grow mt-[var(--header-y)]">{children}</main>
-        <Footer />
+      <body className={`${amino.variable} font-amino min-h-screen flex flex-col antialiased`}>
+        <ReduxProvider>
+          <Header />
+          <main className="flex-grow mt-[var(--header-y)]">{children}</main>
+          <Footer />
+        </ReduxProvider>
         {/* <ModalPortalContainer /> */}
         <FloatingButton />
       </body>

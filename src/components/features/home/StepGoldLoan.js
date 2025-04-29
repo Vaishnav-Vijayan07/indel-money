@@ -21,18 +21,19 @@ const steps = [
   },
 ];
 
-export default function StepGoldLoan({ className, hideTitle = false }) {
+export default function StepGoldLoan({ sectionTitle, loanSteps, className, hideTitle = false }) {
   return (
     <section className={`${className} w-full pt-[20px] md:pt-[30px] 2xl:pt-[60px]`}>
       <div className="container">
         {!hideTitle && (
           <div className="text-title1 font-normal mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
-            Our Easy Step{" "}
-            <span className="font-bold text-base2">Gold Loan</span>{" "}
+            {/* Our Easy Step{" "} */}
+            {sectionTitle}
+            {/* <span className="font-bold text-base2">Gold Loan</span>{" "} */}
           </div>
         )}
         <div className="flex justify-between">
-          {steps.map((step, index) => (
+          {loanSteps.map((step, index) => (
             <motion.div
               key={index}
               className="relative"
@@ -46,9 +47,7 @@ export default function StepGoldLoan({ className, hideTitle = false }) {
                 {index !== steps.length - 1 && (
                   <div
                     className={`absolute left-[110px] md:left-[130px] lg:left-[145px] xl:left-[180px] 2xl:left-[260px] 3xl:left-[265px] max-w-[110px] w-full md:max-w-[140px] lg:max-w-[160px] xl:max-w-[220px]  2xl:max-w-[260px] 3xl:max-w-[380px]   ${
-                      index % 2 === 1
-                        ? "rotate-x-[-180deg] top-1/4"
-                        : "top-[30px]"
+                      index % 2 === 1 ? "rotate-x-[-180deg] top-1/4" : "top-[30px]"
                     }`}
                   >
                     <Image
@@ -72,7 +71,7 @@ export default function StepGoldLoan({ className, hideTitle = false }) {
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                 >
                   <Image
-                    src={step.img}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${step.icon_url}`}
                     alt={step.title}
                     width={190}
                     height={190}
@@ -100,7 +99,6 @@ export default function StepGoldLoan({ className, hideTitle = false }) {
                       {step.title}
                     </motion.div>
 
-                    {/* Dashed Line Animation (Only if not last step) */}
                     {index !== steps.length - 1 && (
                       <motion.div
                         className="border border-black border-dashed top-[18px] 3xl:top-[30px] h-[1px] w-full absolute left-[calc((100%-55px))] md:left-[calc((100%-30px))] lg:left-[calc((100%-125px))] xl:left-[calc((100%-120px))] 2xl:left-[calc((100%-50px))] 3xl:left-[calc((100%-130px))] before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-[-1px] before:w-[10px] before:h-[10px] before:bg-base1 before:rounded-full"

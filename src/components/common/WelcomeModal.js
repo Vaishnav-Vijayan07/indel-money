@@ -144,7 +144,7 @@ function WelcomeBox({ item, index }) {
 }
 
 export default function WelcomeModal() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     // Check if the user has seen the modal before using localStorage
