@@ -21,7 +21,7 @@ export default function EnquiryModal({ isDialogOpen, onCancel }) {
             <AlertDialogTitle className="text-[18px] sm:text-[22px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[48px] text-black font-bold flex items-center mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
               Enquiry form
             </AlertDialogTitle>
-            <AlertDialogDescription className="hidden">
+            <AlertDialogDescription className="sr-only">
               This action cannot be undone.
             </AlertDialogDescription>
             <EnquiryForm />
