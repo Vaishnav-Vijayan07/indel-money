@@ -16,7 +16,7 @@ export default function BranchLocator({ variant = "default" }) {
     <section
       className={`${
         variant === "contact"
-          ? "sm:bg-[#e6edf7] rounded-t-[10px] sm:py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px] max-sm:shadow-[0_0_150px_0_rgba(0,0,0,0.25)]"
+          ? "sm:bg-[#e6edf7] rounded-t-[10px] py-[20px_0] sm:py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px] max-sm:shadow-[0_0_150px_0_rgba(0,0,0,0.25)]"
           : ""
       }
        ${
@@ -28,7 +28,13 @@ export default function BranchLocator({ variant = "default" }) {
     >
       <div>
         <div className="container">
-          <div className="mb-[35px] sm:mb-[20px] lg:mb-30px flex flex-col lg:flex-row items-start xl:items-start justify-between flex-wrap">
+          <div
+            className={`flex flex-col lg:flex-row items-start xl:items-start justify-between flex-wrap ${
+              variant === "contact"
+                ? "mb-[15px] sm:mb-[20px] lg:mb-30px"
+                : "mb-[35px] sm:mb-[20px] lg:mb-30px"
+            }`}
+          >
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
