@@ -145,7 +145,7 @@ export default function LatestUpdates() {
                 clickable: true,
               }}
               modules={[Pagination, Autoplay]}
-              className="blogSlide"
+              className="blogSlide h-full"
               style={{
                 "--swiper-pagination-bottom": "10px",
                 "--swiper-pagination-bullet-size": "5px",
@@ -158,7 +158,7 @@ export default function LatestUpdates() {
                 <SwiperSlide key={index}>
                   <div
                     key={index}
-                    className="group w-full aspect-4/3 md:aspect-auto md:h-[586px] overflow-hidden block relative z-0"
+                    className="group w-full h-[368px] sm:h-[420px] md:h-[490px] lg:h-[530px] xl:h-[586px] 2xl:h-[701px] 3xl:h-[854px] overflow-hidden block relative z-0"
                   >
                     <Image
                       src={item?.image}
