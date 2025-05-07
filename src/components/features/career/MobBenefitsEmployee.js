@@ -86,7 +86,8 @@ export default function BenefitsEmployee() {
         >
           {benefitsEmployee?.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="w-full h-full min-h-[150px] block rounded-[10px] bg-white shadow-[0_0_15px_0_rgba(0,0,0,0.1)] overflow-hidden hover:-translate-y-[5px] transition-all duration-300">
+              <div className="w-full h-full min-h-[150px] block rounded-[10px] bg-white
+               shadow-[0_0_15px_0_rgba(0,0,0,0.1)] overflow-hidden hover:-translate-y-[5px] transition-all duration-300">
                 <div
                   className={`
                     ${index % 2 === 0 ? "bg-base1" : "bg-[#d6071e]"} 

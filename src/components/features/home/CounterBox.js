@@ -9,7 +9,7 @@ const CounterBox = ({ end, suffix, text, showDivider }) => {
     return (
         <motion.div
             className={`lg:w-[calc(100%/4)] md:w-[calc(100%/3)] max-lg:p-2 sm:w-[calc(100%/2)]  relative ${showDivider
-                ? "before:content-[''] before:absolute before:top-0 before:m-auto before:bottom-0 before:right-0 before:w-[4px] before:h-[60px] before:bg-gradient-to-r before:from-[#17479E] before:to-[#EE3824] before:rounded-full max-lg:before:hidden"
+                ? "before:content-[''] before:absolute before:top-0 before:m-auto before:bottom-0 before:right-0 before:w-[4px] before:h-[60px] before:bg-gradient-to-r before:from-base1 before:to-[#EE3824] before:rounded-full max-lg:before:hidden"
                 : ""
                 }`}
             initial={{ opacity: 0, y: 20 }}

@@ -125,11 +125,30 @@ const employeeTestimonialsVideo = [
 const stylesBox =
   "w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full";
 
-function EmployeeTestimonialsBox({ item }) {
+function EmployeeTestimonialsBox({ item, index }) {
+  const [expanded, setExpanded] = useState({});
+
+  const toggleReadMore = (index) => {
+    setExpanded((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
+  const isExpanded = expanded[index];
+  const preview = item.description.slice(0, 340) + "...";
+
   return (
     <div className="w-full h-auto block max-sm:flex max-sm:flex-col-reverse">
-      <div className="w-full h-[140px] lg:h-[150px] xl:h-[250px] 2xl:h-[268px] 3xl:h-[276px] text-[12px] lg:text-[12px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-normal text-black line-clamp-7 py-[15px] lg:py-[20px] xl:py-[40px] 2xl:py-[60px">
-        {item.description}
+      <div className="w-full h-auto text-[12px] lg:text-[12px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-normal text-black py-[15px_10px] lg:py-[20px_15px] xl:py-[40px_20px] 2xl:py-[60px_40px]">
+        {/* {item.description} */}
+        {isExpanded ? item.description : preview}
+        <div
+          onClick={() => toggleReadMore(index)}
+          className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px]"
+        >
+          {isExpanded ? "Show Less" : "Read More"}
+        </div>
       </div>
       <div className="max-w-[90%] flex">
         <div className="w-[45px] lg:w-[60px] 2xl:w-[80px] h-[45px] lg:h-[60px] 2xl:h-[80px] flex items-center justify-center min-sm:bg-base1 rounded-[10px_0_0_10px] lg:rounded-[15px_0_0_15px] 2xl:rounded-[20px_0_0_20px]">
@@ -323,7 +342,8 @@ export default function EmployeeTestimonials() {
                 }}
                 autoplay={{
                   delay: 4000,
-                  disableOnInteraction: false
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
                 }}
                 slidesPerView={1}
                 spaceBetween={0}
@@ -342,7 +362,7 @@ export default function EmployeeTestimonials() {
               >
                 {employeeTestimonials?.map((item, index) => (
                   <SwiperSlide key={index}>
-                    <EmployeeTestimonialsBox item={item} />
+                    <EmployeeTestimonialsBox index={index} item={item} />
                   </SwiperSlide>
                 ))}
               </Swiper>

@@ -1,5 +1,5 @@
 "use client";
-import EnquiryForm from "../../common/EnquiryForm";
+import HeroBannerEnquiry from "./HeroBannerEnquiry";
 import Image from "next/image";
 import MobHomeMarquee from "../../features/home/MobHomeMarquee";
 
@@ -49,23 +49,24 @@ export default function MobHeroBanner() {
           disableOnInteraction: false,
         }}
         loop={true}
-        className="heroSlide h-[calc(100vh-(var(--header-y)))]"
+        className="heroSlide h-[calc(95vh-(var(--header-y)))] sm:h-[calc(100vh-(var(--header-y)))]"
       >
         {slides?.map((item, index) => (
           <SwiperSlide
             key={index}
-            className="relative z-0 flex! items-end before:absolute before:inset-0 before:-z-1 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full py-[calc(var(--marquee-y)+65px)]"
+            className="relative z-0 flex! items-end before:absolute before:inset-0 before:-z-1 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full py-[calc(var(--marquee-y)+50px)]"
           >
             <Image
               src={item.image}
               alt={item.alt}
               fill
+              sizes="100vw"
               priority
               className="-z-2 object-cover"
             />
             <div className="container">
               <div className="max-w-full">
-                <h1 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[20px]">
+                <h1 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[10px] 4xs:mb-[15px]">
                   <span className="text-base2 font-bold">{item.title1}</span>{" "}
                   {item.title2}
                 </h1>
@@ -78,7 +79,7 @@ export default function MobHeroBanner() {
         ))}
       </Swiper>
       <MobHomeMarquee />
-      <EnquiryForm />
+      <HeroBannerEnquiry />
     </section>
   );
 }

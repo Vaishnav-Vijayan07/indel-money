@@ -23,7 +23,7 @@ export default function Annualreport() {
                         className="flex items-center flex-wrap justify-between py-[10px] 4xs:py-[15px] sm:py-[25px] px-[10px] 4xs:px-[12px] sm:px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] rounded-2xl bg-gradient-to-r from-blue-300 to-red-300 shadow-md">
                         {/* <h3 className="text-[13px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold text-black">Annual Report  <span>{report.year}</span> </h3> */}
                         <h3 className="text-[13px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] sm:font-bold font-medium text-blacksm:block flex flex-wrap sm:w-fit 4xs:w-[calc(100%-36px)] w-[calc(100%-28px)]">
-                            Annual Report <span className="sm:ml-[3px] sm:text-black text-[#17479E] sm:w-fit w-full" >{report.year}</span>
+                            Annual Report <span className="sm:ml-[3px] sm:text-black text-base1 sm:w-fit w-full" >{report.year}</span>
                         </h3>
                         <Link
                             href={report.link}
