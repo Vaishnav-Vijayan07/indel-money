@@ -87,7 +87,7 @@ export default function LifeAtIndel({ pageContent }) {
               <div>
                 <Link
                   // href="/"
-                  href={pageContent?.life_section_button_link_1}
+                  href={pageContent?.life_section_button_link_1 || "#"}
                   className="btn btn-base2 min-w-[200px] lg:min-w-[180px] xl:min-w-[220px] 3xl:min-w-[280px]"
                 >
                   {/* TAKE ME TO CAREERS PAGE */}
@@ -97,7 +97,7 @@ export default function LifeAtIndel({ pageContent }) {
               <div>
                 <Link
                   // href="/"
-                  href={pageContent?.life_section_button_link_2}
+                  href={pageContent?.life_section_button_link_2 || "#"}
                   className="btn btn-base2 min-w-[120px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[180px]"
                 >
                   {/* VISIT GALLERY */}

@@ -16,15 +16,33 @@ import MobIndelvalues from "../../components/features/about/MobIndelValueBanner"
 import MobInvestors from "../../components/features/about/MobInvestorsInfo";
 import MobLifeIndel from "../../components/features/about/MobLifeIndelInfo";
 
-export default function About() {
+async function fetchAboutData() {
+  try {
+    const response = await fetch("http://localhost:7700/api/web/about", {
+      cache: "no-store", // Ensure fresh data
+    });
+    const result = await response.json();
+
+    if (result.status === "success") {
+      return { data: result.data, error: null };
+    }
+    return { data: null, error: result.message };
+  } catch (error) {
+    return { data: null, error: "Failed to about data" };
+  }
+}
+
+export default async function About() {
+  const { data, error } = await fetchAboutData();
+
   return (
     <>
       {/* Banner section */}
-      <AboutBanner />
+      <AboutBanner banners={data?.aboutBanner} />
 
       {/* Financial Partner section */}
       <div className="hidden sm:block">
-        <AboutFinacial />
+        <AboutFinacial statsData={data?.statsData} />
       </div>
       <div className="block sm:hidden">
         <MobAboutFinacial />
@@ -32,50 +50,91 @@ export default function About() {
 
       {/* Financial Supermarket section */}
       <div className="hidden sm:block">
-        <AboutSupermarket />
+        <AboutSupermarket
+          serviceImages={data?.serviceImages}
+          sub_title={data?.aboutContent?.sub_title}
+          description={data?.aboutContent?.service_description}
+          title={data?.aboutContent?.service_title}
+        />
       </div>
       <div className="block sm:hidden">
-        <MobAboutSupermarket />
+        <MobAboutSupermarket serviceImages={data?.serviceImages} />
       </div>
 
       {/* Message section */}
       <div className="hidden sm:block">
-        <AboutMessage />
+        <AboutMessage messages={data?.teamMessages} />
       </div>
       <div className="block sm:hidden">
-        <MobAboutMessage />
+        <MobAboutMessage messages={data?.teamMessages} />
       </div>
 
       {/* Accolades section */}
       <div className="hidden sm:block">
-        <Accolades />
+        <Accolades accolades={data?.accolades} />
       </div>
       <div className="block sm:hidden">
-        <MobAccolades />
+        <MobAccolades accolades={data?.accolades} />
       </div>
 
       {/* Indelvalues section */}
       <div className="hidden sm:block">
-        <Indelvalues />
+        <Indelvalues links={data?.quickLinks} />
       </div>
       <div className="block sm:hidden">
-        <MobIndelvalues />
+        <MobIndelvalues  />
       </div>
 
       {/* Investors section */}
       <div className="hidden sm:block">
-        <Investors />
+        <Investors
+          title={data?.aboutContent?.investors_title}
+          buttonTitle={data?.aboutContent?.investors_button_title}
+          buttonLink={data?.aboutContent?.investors_button_link}
+          image1={data?.aboutContent?.investors_image_1}
+          image2={data?.aboutContent?.investors_image_2}
+          card1Title={data?.aboutContent?.investors_card1_title}
+          card1SubTitle={data?.aboutContent?.investors_card1_sub_title}
+          card2Title={data?.aboutContent?.investors_card2_title}
+          card2SubTitle={data?.aboutContent?.investors_card2_sub_title}
+          card3Title={data?.aboutContent?.investors_card3_title}
+          card3SubTitle={data?.aboutContent?.investors_card3_sub_title}
+          description={data?.aboutContent?.description}
+        />
       </div>
       <div className="block sm:hidden">
-        <MobInvestors />
+        <MobInvestors
+          title={data?.aboutContent?.investors_title}
+          buttonTitle={data?.aboutContent?.investors_button_title}
+          buttonLink={data?.aboutContent?.investors_button_link}
+          card1Title={data?.aboutContent?.investors_card1_title}
+          card1SubTitle={data?.aboutContent?.investors_card1_sub_title}
+          card2Title={data?.aboutContent?.investors_card2_title}
+          card2SubTitle={data?.aboutContent?.investors_card2_sub_title}
+          card3Title={data?.aboutContent?.investors_card3_title}
+          card3SubTitle={data?.aboutContent?.investors_card3_sub_title}
+          description={data?.aboutContent?.description}
+        />
       </div>
 
       {/* LifeAtIndel section */}
       <div className="hidden sm:block">
-        <LifeIndel />
+        <LifeIndel
+          title={data?.aboutContent?.life_at_indel_title}
+          description={data?.aboutContent?.life_at_indel_description}
+          buttonText={data?.aboutContent?.life_at_indel_button_text}
+          buttonLink={data?.aboutContent?.life_at_indel_button_link}
+          lifeImages={data?.lifeAtIndelImages}
+        />
       </div>
       <div className="block sm:hidden">
-        <MobLifeIndel />
+        <MobLifeIndel
+          title={data?.aboutContent?.life_at_indel_title}
+          description={data?.aboutContent?.life_at_indel_description}
+          buttonText={data?.aboutContent?.life_at_indel_button_text}
+          buttonLink={data?.aboutContent?.life_at_indel_button_link}
+          lifeImages={data?.lifeAtIndelImages}
+        />
       </div>
     </>
   );
