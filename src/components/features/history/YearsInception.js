@@ -64,7 +64,7 @@ export default function YearsInception() {
   }, [activeIndex, slides.length]);
 
   return (
-    <section className="relative &:after:content[] after:absolute after:top-0 after:left-0 after:h-full after:lg:w-[50%] after:w-full after:bg-[#003596]">
+    <section className="w-full h-auto block bg-[#003596] overflow-hidden relative z-0 &:after:content[''] after:absolute after:top-0 after:left-0 after:h-full after:lg:w-[50%] after:w-full after:bg-[#003596]">
       <div className="container">
         <div className="flex flex-wrap relative z-1">
           <div className="w-full lg:w-[220px] xl:w-[300px] 2xl:w-[350px] 3xl:w-[420px] py-[40px] lg:py-[120px] flex items-end">

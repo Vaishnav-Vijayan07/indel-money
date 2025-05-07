@@ -287,7 +287,7 @@ export default function Footer() {
             </div>
             <div>
               <ContactBox
-                href="/branchlocator"
+                href="/branch-locator"
                 src="/images/icon-map.svg"
                 title="Branch Locator"
                 alt="location"

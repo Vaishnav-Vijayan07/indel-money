@@ -81,73 +81,14 @@ export default function MobLifeIndelInfo({ title, description, buttonText, butto
             </button>
           </div>
         </div>
-
-        {/* <div className="w-full h-[360px] relative z-0">
-          <Swiper
-            slidesPerView={"auto"}
-            autoplay={false}
-            grabCursor={true}
-            centeredSlides={true}
-            watchSlidesProgress={true}
-            spaceBetween={0}
-            modules={[Navigation]}
-            simulateTouch={false}
-            allowTouchMove={false}
-            navigation={{
-              nextEl: ".custom-next",
-              prevEl: ".custom-prev",
-            }}
-            className="h-[295px] mx-auto overflow-visible! lifeIndelSlide"
-          >
-            {lifeImages?.map((img, index) => (
-              <SwiperSlide
-                key={index}
-                className="w-[240px]! absolute! inset-0 mx-auto rounded-[5px]"
-                style={{
-                  transform: `translateX(${index * -4 + 10}px) rotateZ(${
-                    index === 0 ? 0 : -4 * index + -4
-                  }deg)`,
-                  zIndex: lifeImages?.length - index,
-                  transition: "transform 0.5s ease, opacity 1s ease",
-                  border: `translateX(${index * -4 + 10}px) rotateZ(${
-                    index === 0 ? 0 : -4 * index + -4
-                  }deg)`,
-                }}
-              >
-                <div className="w-full h-full relative z-0 overflow-hidden">
-                  <Image
-                    src={img}
-                    alt={`Slide ${index}`}
-                    fill
-                    sizes="240px"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          <div className="flex justify-between items-center rounded-[50px] p-[8px] 3xl:p-[15px] bg-custom-gradient absolute top-0 bottom-0 m-auto w-full h-fit">
-            <button className="custom-prev w-[40px] h-[40px] 3xl:w-[50px] 3xl:h-[50px] rounded-full bg-base1 text-white flex items-center justify-center shadow-xl z-20 transition-all duration-500 cursor-pointer hover:bg-base2 swiper-button-disabled:opacity-50 swiper-button-disabled:cursor-not-allowed">
-              <svg viewBox="0 0 19 15" className="w-[18px]">
-                <path
-                  d="M7.25 14.25L8.825 12.6187L4.83125 8.625H18.5V6.375H4.83125L8.825 2.38125L7.25 0.75L0.5 7.5L7.25 14.25Z"
-                  fill="white"
-                />
-              </svg>
-            </button>
-
-            <button className="custom-next w-[40px] h-[40px] 3xl:w-[50px] 3xl:h-[50px]  rounded-full bg-base1 text-white flex items-center justify-center shadow-xl z-20 transition-all duration-500 cursor-pointer hover:bg-base2 swiper-button-disabled :opacity-50 swiper-button-disabled :cursor-not-allowed">
-              <svg viewBox="0 0 19 15" className="w-[18px]">
-                <path
-                  d="M11.75 14.25L10.175 12.6187L14.1687 8.625H0.5V6.375H14.1687L10.175 2.38125L11.75 0.75L18.5 7.5L11.75 14.25Z"
-                  fill="white"
-                />
-              </svg>
-            </button>
-          </div>
-        </div> */}
-        <p>{description}</p>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry&apos;s standard dummy text
+          ever since the 1500s, when an unknown printer took a galley of type
+          and scrambled it to make a type specimen book. It has survived not
+          only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged.
+        </p>
         <Link
           href={buttonLink || "#"}
           className="group text-[12px] leading-none font-medium capitalize text-[#100f0f] flex items-center mt-[15px] hover:text-base1"

@@ -88,7 +88,7 @@ function FloatingSearch() {
             />
           </AlertDialogCancel>
           <div className="w-full h-auto block">
-            <AlertDialogTitle className="hidden">search</AlertDialogTitle>
+            <AlertDialogTitle className="sr-only">search</AlertDialogTitle>
             <Command className="w-full py-[20px]">
               <CommandInput placeholder="Type to search..." />
               <CommandList>

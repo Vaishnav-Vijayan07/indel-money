@@ -52,7 +52,7 @@ function ImageBox({ item, heightClass }) {
 
 export default function MobCareerLifeAtIndel() {
     return (
-        <section className="w-full max-sm:block hidden bg-[#f8e8ea] relative z-0">
+        <section className="w-full block bg-[#f8e8ea] relative z-0">
             <div className="w-full h-full p-[40px_0_35px_0] rounded-[15px] bg-linear-to-b from-transparent to-white relative z-0 overflow-hidden presented by xAI after:content-[''] after:absolute after:-z-1 after:inset-0 after:opacity-50 after:block after:bg-linear-to-b after:from-base1 after:to-base2 after:pointer-events-none">
                 <Image
                     src="/images/careerLifeAtIndel-bg.jpg"
@@ -69,8 +69,8 @@ export default function MobCareerLifeAtIndel() {
                                 <span className="font-bold text-base2"> Indel</span>
                             </div>
                             <div className="text-sm1 text-white mb-[15px]">
-                                Indel is more than just a workplace; it's a community where
-                                innovation thrives, and individuals flourish. Here, you'll
+                                Indel is more than just a workplace; it&apos;s a community where
+                                innovation thrives, and individuals flourish. Here, you&apos;ll
                                 experience:
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import HomeSlider from "../../features/home/HomeSlider";
 import HomeMarquee from "../../features/home/HomeMarquee";
-import EnquiryForm from "../../common/EnquiryForm";
+import HeroBannerEnquiry from "./HeroBannerEnquiry";
 
 export default function HeroBanner({ heroBanner, initialData }) {
   return (
@@ -11,7 +11,7 @@ export default function HeroBanner({ heroBanner, initialData }) {
         goldRateLabel={initialData?.pageContent?.gold_rate_label}
         goldRateIcon={initialData?.pageContent?.gold_rate_icon}
       />
-      <EnquiryForm />
+      <HeroBannerEnquiry />
     </section>
   );
 }

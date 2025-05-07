@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
@@ -58,10 +58,13 @@ export default function AwardHighlightBox({ variant = "default" }) {
   return (
     <div className="relative z-0 w-full h-full block rounded-[35px] sm:bg-[#B7D0FF] bg-[#fff] sm:shadow-none  shadow-[0_0_15px_0_rgba(0,0,0,0.10)] p-[15px_20px] sm:p-[30px_30px] lg:p-[30px] 2xl:p-[40px_30px_40px_40px] 3xl:p-[80px_50px_50px_70px]">
       <Swiper
-        modules={[Pagination]}
+        modules={[Autoplay, Pagination]}
         slidesPerView={1}
         spaceBetween={10}
-        autoplay={false}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
         pagination={{ clickable: true }}
         className={"awardSlide"}
       >

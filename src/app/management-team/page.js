@@ -1,5 +1,4 @@
-import React from "react";
-import ManagementTeam from "@/components/features/managementteam/ManagementTeam";
+import ManagementTeam from "@/components/features/management-team/ManagementTeam";
 
 async function fetchManagementData() {
   try {
