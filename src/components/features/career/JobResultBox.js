@@ -35,7 +35,22 @@ export default function JobResultBox({ item, variant = "default" }) {
               </Link>
             </div>
             <div>
-              <JobResultAlert />
+              {/* <JobResultAlert /> */}
+              <Link
+                href="/career/career-detail"
+                className="text-[12px] 4xs:text-[14px] sm:text-[10px] xl:text-[11px] 2xl:text-[12px] 3xl:text-[16px] leading-none font-bold text-white w-full max-4xs:max-w-[110px] h-[30px] 4xs:h-[35px] sm:h-[25px] lg:h-[25px] xl:h-[30px] 2xl:h-[35px] 3xl:h-[48px] flex items-center bg-base2 rounded-[10px] sm:rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[10px] sm:p-[4px] xl:p-[6px] 2xl:p-[8px] cursor-pointer transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
+              >
+                <span className="pr-[4px] sm:px-[2px] lg:px-[4px] 2xl:px-[6px]">
+                  Apply Now
+                </span>
+                <Image
+                  src="/images/icon-careerBtn.svg"
+                  alt="careerBtn"
+                  width={30}
+                  height={30}
+                  className="w-[20px] 4xs:w-[25px] sm:w-[15px] lg:w-[15px] xl:w-[20px] 2xl:w-[25px] 3xl:w-[30px] h-auto aspect-4/4 block"
+                />
+              </Link>
             </div>
           </div>
         </div>

@@ -88,8 +88,8 @@ function WelcomeBox({ item, index }) {
           src={item?.src}
           alt={item?.alt}
           fill
-          style={{ objectFit: "cover" }}
-          className="transition-transform duration-300 group-hover:scale-105"
+          sizes="386px"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
 
