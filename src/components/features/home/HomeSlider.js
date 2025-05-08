@@ -34,7 +34,7 @@ const slides = [
 ];
 
 export default function HomeSlider({ heroBanner }) {
-  console.log("logging ", process.env.NEXT_PUBLIC_BACKEND_URL);
+  
   
   return (
     <Swiper

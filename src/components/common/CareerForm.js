@@ -63,7 +63,7 @@ export default function CareerForm() {
 
   // Handle form submission
   function onSubmit(values) {
-    console.log("Form submitted:", values);
+    
   }
 
   const [selectedFile, setSelectedFile] = useState(null);

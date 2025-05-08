@@ -45,7 +45,7 @@ export default function FindJobForm({ variant = "default" }) {
 
   // Handle form submission
   function onSubmit(values) {
-    console.log("Form submitted:", values);
+    
   }
 
   return (

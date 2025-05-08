@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ContactForm from "@/components/common/ContactForm";
 
-export default function WriteIntel() {
+export default function WriteIntel({ formTitle, formSubtitle,contactImage }) {
   return (
     <section className="w-full block py-[30px_40px] lg:py-[40px_60px] 2xl:py-[60px_80px]">
       <div className="container">
@@ -9,7 +9,7 @@ export default function WriteIntel() {
           <div className="w-full sm:w-[320px] lg:w-[420px] xl:w-[476px] 2xl:w-[576px] 3xl:w-[700px] hidden sm:block">
             <div className="group w-full h-full aspect-[700/640] overflow-hidden relative z-0">
               <Image
-                src={"/images/contact-1.jpg"}
+                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${contactImage}`}
                 fill
                 alt={"contact"}
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -27,12 +27,9 @@ export default function WriteIntel() {
                     height={50}
                     className="w-[20px] 4xs:w-[30px] lg:w-[40px] 2xl:w-[50px] inline mr-[5px] lg:mr-[15px] 2xl:mr-[20px]"
                   />
-                  Write to{" "}
-                  <span className="text-base2 font-bold">&nbsp;Indel</span>
+                  <div className="[&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: formTitle }} />
                 </div>
-                <div className="text-sm1">
-                  Kindly fill up the form below to reach out to us.
-                </div>
+                <div className="text-sm1">{formSubtitle}</div>
               </div>
               <ContactForm />
             </div>

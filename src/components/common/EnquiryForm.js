@@ -51,7 +51,7 @@ export default function EnquiryForm() {
 
   // Handle form submission
   function onSubmit(values) {
-    console.log("Form submitted:", values);
+    
   }
 
   return (

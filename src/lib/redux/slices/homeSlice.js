@@ -24,7 +24,7 @@ const homeSlice = createSlice({
   initialState,
   reducers: {
     setHomeData(state, action) {
-      console.log("setHomeData", action.payload);
+      
       
       state.data = action.payload;
       state.error = null;

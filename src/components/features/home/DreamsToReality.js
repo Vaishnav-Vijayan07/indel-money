@@ -6,7 +6,7 @@ import CounterBox from "./CounterBox";
 import * as motion from "motion/react-client";
 
 export default function DreamsToReality({ initialData, statsData }) {
-  console.log("initialData", initialData);
+  
 
   // const counters = [
   //   { end: 30, suffix: "+", text: "Backed by years of  experience" },
