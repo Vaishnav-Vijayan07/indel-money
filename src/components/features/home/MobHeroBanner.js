@@ -11,6 +11,7 @@ import "swiper/css/effect-fade";
 import Link from "next/link";
 
 import "./Home.css";
+import EnquiryForm from "@/components/common/EnquiryForm";
 
 const slides = [
   {

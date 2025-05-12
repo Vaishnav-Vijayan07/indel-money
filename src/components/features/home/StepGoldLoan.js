@@ -33,7 +33,7 @@ export default function StepGoldLoan({ sectionTitle, loanSteps, className, hideT
           </div>
         )}
         <div className="flex justify-between">
-          {loanSteps.map((step, index) => (
+          {loanSteps?.map((step, index) => (
             <motion.div
               key={index}
               className="relative"

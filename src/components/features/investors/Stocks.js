@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../../../@/components/ui/accordion";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/custom-accordion";
 import { cn } from "../../../lib/utils";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
