@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function BlogCard({ item, className }) {
     return (
-        <Link href={item?.href} className={`${className ? className : ""} group w-full h-full flex flex-wrap py-[5px] xl:py-[10px] 3xl:py-[15px] gap-[10px] xl:gap-[20px] 2xl:gap-[25px] 3xl:gap-[30px]`}>
+        <Link href={item?.href || "/"}  className={`${className ? className : ""} group w-full h-full flex flex-wrap py-[5px] xl:py-[10px] 3xl:py-[15px] gap-[10px] xl:gap-[20px] 2xl:gap-[25px] 3xl:gap-[30px]`}>
             <div className="group w-[100%] h-[210px] sm:h-auto sm:w-[160px] lg:w-[180px] xl:w-[220px] 2xl:w-[240px] 3xl:w-[320px] overflow-hidden rounded-[20px] relative z-0">
                 <Image
                     src={item?.image}

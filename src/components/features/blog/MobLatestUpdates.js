@@ -89,7 +89,7 @@ export default function MobLatestUpdates() {
                       {item?.title}
                     </div>
                     <Link
-                      href={item?.href}
+                      href={item?.href || "/"} 
                       className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-bold text-white hover:text-base2 transition-color duration-300 uppercase flex items-center"
                     >
                       Read More
