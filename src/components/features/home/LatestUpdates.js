@@ -106,8 +106,8 @@ export default function LatestUpdates({ sliderItems, sliderTitle, sliderButtonTe
               ))}
             </Swiper>
           </div>
-        {/* </motion.div> */}
-</div>
+          {/* </motion.div> */}
+        </div>
       </div>
     </section>
   );
