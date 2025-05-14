@@ -16,8 +16,6 @@ function PartnersSection({ content, initialError, partners }) {
   const activePartners = data?.[activeDataKey] || [];
 
 
-  console.log(content.content)
-
   // Find the active navigation item based on the activeTab href
   const activeNavItem = React.useMemo(() => {
     return navigationItems.find((navItem) => navItem.href === activeTab) || navigationItems[0];
