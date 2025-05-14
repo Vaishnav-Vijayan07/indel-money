@@ -19,7 +19,9 @@ const BlogDetail = ({ data }) => {
         <div className="2xl:mb-[55px] md:mb-[20px] sm:mb-[10px] mb-[15px] sm:block hidden">
           <PageBreadcrumb />
         </div>
-        <div className={`${styles.ckCntWrap} border-b border-b-[rgb(0,0,0,18%)] 2xl:pb-[35px] xl:pb-[20px] md:pb-[20px] sm:pb-[10px] pb-[15px]`}>
+        <div
+          className={`${styles.ckCntWrap} border-b border-b-[rgb(0,0,0,18%)] 2xl:pb-[35px] xl:pb-[20px] md:pb-[20px] sm:pb-[10px] pb-[15px]`}
+        >
           <div className="w-full sm:hidden block">
             <h1>{data?.title}</h1>
             <PostDateDisplay date={data?.createdAt} className="!border-b-[rgb(0,0,0,0%)]" />
@@ -36,13 +38,15 @@ const BlogDetail = ({ data }) => {
             <PostDateDisplay date={data?.createdAt} />
           </div>
           {data?.image_description}
+          <br />
           <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${data?.second_image}`}
             alt={"bg"}
             width={360}
             height={460}
-            className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05] sm:block hidden"
+            className="w-full mt-4 h-full object-cover transition-transform duration-600 group-hover:scale-[1.05] sm:block hidden"
           />
+          <br/>
           {data?.second_image_description}
         </div>
       </div>
