@@ -18,7 +18,7 @@ import BlogItem from "@/components/blog/BlogItem";
 async function fetchBlogsData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs/`, {
-      cache: "force-cache",
+      cache: "reload",
     });
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
