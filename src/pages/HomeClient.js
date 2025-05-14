@@ -26,7 +26,7 @@ import MobInnovations from "../components/features/home/MobInnovations";
 import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
 export default function Home({ initialData, initialError }) {
-  console.log("initialData", initialData);
+  
 
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   return (

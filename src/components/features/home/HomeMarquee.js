@@ -2,7 +2,7 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
 export default function HomeMarquee({ announcementText, goldRateLabel, goldRateIcon }) {
-  console.log("HomeMarquee", announcementText, goldRateLabel, goldRateIcon);
+  
   
   return (
     <div className="w-full h-[var(--marquee-y)] flex flex-wrap items-center bg-[#b7d0ff]">

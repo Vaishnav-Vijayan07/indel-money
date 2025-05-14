@@ -6,7 +6,7 @@ import CounterBox from "./CounterBox";
 import * as motion from "motion/react-client";
 
 export default function DreamsToReality({ initialData, statsData }) {
-  console.log("initialData", initialData);
+  
 
   // const counters = [
   //   { end: 30, suffix: "+", text: "Backed by years of  experience" },
@@ -75,7 +75,7 @@ export default function DreamsToReality({ initialData, statsData }) {
 
             <p className="mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">{initialData?.about_description}</p>
             <Link
-              href={initialData?.about_button_url}
+              href={initialData?.about_button_url || "#"}
               className="group btn btn-base1 relative z-0 flex items-center mt-[15px] lg:mt-[20px] 2xl:mt-[30px] w-full max-w-[140px] xl:max-w-[160px] 2xl:max-w-[200px] 3xl:max-w-[220px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[65px] rounded-full bg-base1 text-white font-medium transition-all duration-300 overflow-hidden shadow-lg"
             >
               <span className="text-center relative z-10 w-[calc(100%-30px)] lg:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-48px)] transition-transform duration-300 group-hover:-translate-x-[-15px]">

@@ -11,11 +11,11 @@ export default function PlaceholdersAndVanishInputDemo() {
     ];
 
     const handleChange = (e) => {
-        console.log(e.target.value);
+        
     };
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log("submitted");
+        
     };
     return (<PlaceholdersAndVanishInput type={"email"} placeholders={placeholders} onChange={handleChange} onSubmit={onSubmit} />);
 }

@@ -2,7 +2,7 @@ import HomeClient from "../pages/HomeClient";
 
 async function fetchHomeData() {
   try {
-    const response = await fetch("http://localhost:3000/api/home", {
+    const response = await fetch("http://localhost:7700/api/web/home", {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

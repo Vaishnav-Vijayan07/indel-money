@@ -64,7 +64,7 @@ export default function TrustedInvestment({ pageContent }) {
             <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px] mt-[15px] xl:mt-[20px] 2xl:mt-[40px]">
               <div>
                 <Link
-                  href={pageContent?.investment_button_link}
+                  href={pageContent?.investment_button_link || "#"}
                   className="btn btn-base2 min-w-[140px] lg:min-w-[140px] xl:min-w-[150px] 2xl:min-w-[227px]"
                 >
                   {/* INVESTORS REPORT */}

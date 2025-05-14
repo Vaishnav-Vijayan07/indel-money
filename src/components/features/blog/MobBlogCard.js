@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function MobBlogCard({ item, className }) {
     return (
-        <Link href={item?.href} className={`${className ? className : ""} group w-full h-full flex gap-[10px] p-[10px] bg-white rounded-[10px] overflow-hidden`}>
+        <Link href={item?.href || "/"}  className={`${className ? className : ""} group w-full h-full flex gap-[10px] p-[10px] bg-white rounded-[10px] overflow-hidden`}>
             <div className="group w-[95px] 3xs:w-[113px] overflow-hidden rounded-[10px] relative z-0">
                 <Image
                     src={item?.image}

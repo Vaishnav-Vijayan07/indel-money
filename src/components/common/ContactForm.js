@@ -51,7 +51,7 @@ export default function ContactForm() {
 
   // Handle form submission
   function onSubmit(values) {
-    console.log("Form submitted:", values);
+    
   }
 
   return (

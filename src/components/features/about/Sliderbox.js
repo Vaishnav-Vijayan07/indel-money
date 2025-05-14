@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCoverflow } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/effect-coverflow";
@@ -13,7 +13,7 @@ const slides = [
     { image: "/images/spImg2.webp", alt: "Indel Money Banner 3" },
 ];
 
-export default function AboutSlider() {
+export default function AboutSlider({ serviceImages}) {
     return (
         <div className="flex justify-center items-center 3xl:h-[700px] 2xl:h-[650px] xl:h-[500px] lg:h-[450px] sm:h-[400px] h-[350px] w-full ">
             <Swiper
@@ -25,14 +25,14 @@ export default function AboutSlider() {
                 spaceBetween={15}
                 centeredSlides={true}
                 className="h-full w-full" >
-                {slides.map((item, index) => (
+                {slides?.map((item, index) => (
                     <SwiperSlide key={index} className="group flex justify-center items-center transition-all duration-300">
                         <div className="relative w-[75%] h-full m-auto rounded-3xl overflow-hidden transition-all duration-300 group-[.swiper-slide-active]:w-[100%]">
                             <Image
-                                src={item.image}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`}
                                 width={1920}
                                 height={1080}
-                                alt={item.alt}
+                                alt={"Item"}
                                 priority
                                 className="w-full h-full object-cover"
                             />

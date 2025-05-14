@@ -47,7 +47,7 @@ export default function Innovations({ pageContent }) {
                 Download our mobile application from:
               </div>
               <div className="flex flex-wrap gap-[4px] lg:gap-[6px] 2xl:gap-[8px]">
-                <Link href={pageContent?.ios_download_link}>
+                <Link href={pageContent?.ios_download_link || "#"}>
                   <Image
                     src={"/images/app-download-1.svg"}
                     alt="downloadImg"
@@ -56,7 +56,7 @@ export default function Innovations({ pageContent }) {
                     className="w-[80px] lg:w-[100px] xl:w-[120px] 2xl:w-[140px] 3xl:w-[180px] h-auto aspect-180/60"
                   />
                 </Link>
-                <Link href={pageContent?.android_download_link}>
+                <Link href={pageContent?.android_download_link || "#"}>
                   <Image
                     src={"/images/PlayStore.webp"}
                     alt="downloadImg"
