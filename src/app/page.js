@@ -91,7 +91,7 @@ export async function generateMetadata() {
       images: [
         {
           url: content?.meta_image
-            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content.meta_image}`
+            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content.image}`
             : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
           width: 1200,
           height: 630,
