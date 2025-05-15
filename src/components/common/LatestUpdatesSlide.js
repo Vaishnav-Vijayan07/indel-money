@@ -18,7 +18,7 @@ export default function LatestUpdatesSlide({ slides, className }) {
           key={index}
           className="h-[calc(420px/3)]! lg:h-[calc(440px/3)]! xl:h-[calc(468px/3)]! 2xl:h-[calc(576px/3)]! 3xl:h-[calc(700px/3)]!"
         >
-          <Link href={`/${item?.id}`}>
+          <Link href={`/${item?.slug}`}>
             <BlogCard className={className} item={item} />
           </Link>
         </SwiperSlide>
