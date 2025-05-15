@@ -5,7 +5,7 @@ import RecentBlog from "@/components/features/blog/RecentBlog";
 async function fetchBlogData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs/${slug}`, {
-      cache: "reload",
+      cache: "no-store",
     });
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -60,18 +60,18 @@ export async function generateMetadata({ params }) {
     description: data?.meta_description || data?.description || "Read our latest blog post.",
     keywords: data?.meta_keywords || "blog, post, news",
     openGraph: {
-      title: data?.title || "Blog Post | My Website",
+      title: data?.meta_title || "Blog Post | My Website",
       description: data?.meta_description || data?.description || "Read our latest blog post.",
       url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
       type: "article",
       images: [
         {
-          url: data?.meta_image
-            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.meta_image}`
+          url: `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.image}`
+            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.image}`
             : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: data?.title || "Blog Post",
+          alt: data?.image_alt || "Blog Post",
         },
       ],
     },
