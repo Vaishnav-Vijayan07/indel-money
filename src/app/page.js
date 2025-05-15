@@ -2,10 +2,10 @@ import BlogCard from "@/components/common/BlogCard";
 import MobBlogListCard from "@/components/features/blog/MobBlogListCard";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import LatestUpdates from "@/components/features/home/LatestUpdates";
-import MobLatestUpdates  from "@/components/features/blog/MobLatestUpdates";
+import MobLatestUpdates from "@/components/features/blog/MobLatestUpdates";
 import {
   Pagination,
-  PaginationContent, 
+  PaginationContent,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
@@ -14,36 +14,57 @@ import {
 } from "@/components/ui/pagination";
 import BlogItem from "@/components/blog/BlogItem";
 
-// Fetch blog data
-async function fetchBlogsData() {
+// Fetch blog data with pagination
+async function fetchBlogsData(page = 1, limit = 10) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs/`, {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs?page=${page}&limit=${limit}`,
+      {
+        cache: "no-store",
+      }
+    );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const result = await response.json();
 
-    console.log("API Response:", result); // Log the raw API response
+    console.log("API Response:", result);
 
     if (result.status === "success") {
-      const { content, sliderItems, blogs } = result.data || {};
-      if (!content || !sliderItems || !blogs) {
-        console.warn("Missing expected data fields:", { content, sliderItems, blogs });
+      const { content, sliderItems, blogs, pagination } = result.data || {};
+      if (!content || !sliderItems || !blogs || !pagination) {
+        console.warn("Missing expected data fields:", {
+          content,
+          sliderItems,
+          blogs,
+          pagination,
+        });
       }
       return {
         content,
         sliderData: sliderItems,
         blogs,
+        pagination: pagination || { currentPage: 1, totalPages: 1, totalItems: 0 },
         error: null,
       };
     }
     console.error("API returned unsuccessful status:", result.message);
-    return { content: null, sliderData: null, blogs: null, error: result.message };
+    return {
+      content: null,
+      sliderData: null,
+      blogs: null,
+      pagination: null,
+      error: result.message,
+    };
   } catch (error) {
     console.error("Fetch error:", error.message);
-    return { content: null, sliderData: null, blogs: null, error: "Failed to fetch blog data" };
+    return {
+      content: null,
+      sliderData: null,
+      blogs: null,
+      pagination: null,
+      error: "Failed to fetch blog data",
+    };
   }
 }
 
@@ -82,7 +103,7 @@ export async function generateMetadata() {
   return {
     title: content?.title || "Blog | My Website",
     description: content?.meta_description || "Read the latest blog posts and updates from our team.",
-    keywords: content?.meta_keywords || "blog, updates, news", // Changed meta_keywords to keywords
+    keywords: content?.meta_keywords || "blog, updates, news",
     openGraph: {
       title: content?.title || "Blog | My Website",
       description: content?.meta_description || "Read the latest blog posts and updates from our team.",
@@ -91,7 +112,7 @@ export async function generateMetadata() {
       images: [
         {
           url: content?.meta_image
-            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content.image}`
+            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content.meta_image}`
             : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
           width: 1200,
           height: 630,
@@ -112,11 +133,12 @@ export async function generateMetadata() {
   };
 }
 
-export default async function Blog() {
-  const { content, blogs, sliderData, error } = await fetchBlogsData();
+export default async function Blog({ searchParams }) {
+  const page = parseInt(searchParams?.page) || 1; // Get page from query params
+  const limit = 10; // Number of blogs per page
+  const { content, blogs, sliderData, pagination, error } = await fetchBlogsData(page, limit);
 
-  // Log data to verify what's being passed to components
-  console.log("Blog Page Data:", { content, blogs, sliderData, error });
+  console.log("Blog Page Data:", { content, blogs, sliderData, pagination, error });
 
   // Handle error state
   if (error) {
@@ -137,6 +159,75 @@ export default async function Blog() {
       </div>
     );
   }
+
+  // Generate pagination links
+  const renderPaginationItems = () => {
+    const { currentPage, totalPages } = pagination || { currentPage: 1, totalPages: 1 };
+    const items = [];
+
+    // Previous button
+    items.push(
+      <PaginationItem key="prev">
+        <PaginationPrevious
+          href={currentPage > 1 ? `/blog?page=${currentPage - 1}` : "#"}
+          className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
+        />
+      </PaginationItem>
+    );
+
+    // Page numbers
+    const maxPagesToShow = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+    let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
+    if (endPage - startPage + 1 < maxPagesToShow) {
+      startPage = Math.max(1, endPage - maxPagesToShow + 1);
+    }
+
+    if (startPage > 1) {
+      items.push(
+        <PaginationItem key={1}>
+          <PaginationLink href={`/blog?page=1`}>1</PaginationLink>
+        </PaginationItem>
+      );
+      if (startPage > 2) {
+        items.push(<PaginationEllipsis key="start-ellipsis" />);
+      }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      items.push(
+        <PaginationItem key={i}>
+          <PaginationLink href={`/blog?page=${i}`} isActive={i === currentPage}>
+            {i}
+          </PaginationLink>
+        </PaginationItem>
+      );
+    }
+
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        items.push(<PaginationEllipsis key="end-ellipsis" />);
+      }
+      items.push(
+        <PaginationItem key={totalPages}>
+          <PaginationLink href={`/blog?page=${totalPages}`}>{totalPages}</PaginationLink>
+        </PaginationItem>
+      );
+    }
+
+    // Next button
+    items.push(
+      <PaginationItem key="next">
+        <PaginationNext
+          href={currentPage < totalPages ? `/blog?page=${currentPage + 1}` : "#"}
+          className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
+        />
+      </PaginationItem>
+    );
+
+    return items;
+  };
 
   return (
     <>
@@ -168,36 +259,15 @@ export default async function Blog() {
           </div>
           <div className="flex flex-wrap -mx-[4px] lg:-mx-[15px] sm:border-b sm:border-b-[rgb(0,0,0,18%)] 2xl:-mx-[35px] sm:pb-[20px] 2xl:pb-[50px] 2xl:mb-[40px] sm:mb-[20px]">
             {blogs?.length > 0 ? (
-              blogs?.map((item, index) => (
-                <BlogItem index={index} key={index} item={item} />
+              blogs.map((item, index) => (
+                <BlogItem index={index} key={item.id || index} item={item} />
               ))
             ) : (
               <p>No blogs available.</p>
             )}
           </div>
           <Pagination className="justify-start sm:justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="#" />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#" isActive>
-                  1
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">2</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
-              </PaginationItem>
-            </PaginationContent>
+            <PaginationContent>{renderPaginationItems()}</PaginationContent>
           </Pagination>
         </div>
       </section>

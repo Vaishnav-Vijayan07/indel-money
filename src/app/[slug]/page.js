@@ -1,7 +1,7 @@
 import BlogDetail from "@/components/features/blog/BlogDetail";
 import RecentBlog from "@/components/features/blog/RecentBlog";
 
-// Fetch blog data
+// Fetch blog data for a specific post
 async function fetchBlogData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs/${slug}`, {
@@ -21,10 +21,33 @@ async function fetchBlogData(slug) {
   }
 }
 
+// Fetch recent blogs
+async function fetchRecentBlogs() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs?limit=3`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const result = await response.json();
+    if (result.status === "success") {
+      return { data: result.data?.blogs || [], error: null };
+    }
+    return { data: [], error: result.message };
+  } catch (error) {
+    console.error("Fetch error for recent blogs:", error.message);
+    return { data: [], error: "Failed to fetch recent blogs" };
+  }
+}
+
 // Generate dynamic metadata
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
+  const { slug } = params; // params is already an object, no need to await
   const { data, error } = await fetchBlogData(slug);
+
+  // Log for debugging
+  console.log("Metadata Data:", { data, error, slug });
 
   // Fallback metadata in case of error or missing data
   if (error || !data) {
@@ -52,6 +75,9 @@ export async function generateMetadata({ params }) {
         description: "Read our latest blog post.",
         images: [`${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`],
       },
+      alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
+      },
     };
   }
 
@@ -60,18 +86,18 @@ export async function generateMetadata({ params }) {
     description: data?.meta_description || data?.description || "Read our latest blog post.",
     keywords: data?.meta_keywords || "blog, post, news",
     openGraph: {
-      title: data?.meta_title || "Blog Post | My Website",
+      title: data?.meta_title || data?.title || "Blog Post | My Website",
       description: data?.meta_description || data?.description || "Read our latest blog post.",
       url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
       type: "article",
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.image}`
+          url: data?.image
             ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.image}`
             : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: data?.image_alt || "Blog Post",
+          alt: data?.image_alt || data?.title || "Blog Post",
         },
       ],
     },
@@ -92,23 +118,27 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Blog({ params }) {
-  const { slug } = await params;
-  const { data, error } = await fetchBlogData(slug);
+  const { slug } = params; // params is already an object, no need to await
+  const { data: blogData, error: blogError } = await fetchBlogData(slug);
+  const { data: recentBlogs, error: recentError } = await fetchRecentBlogs();
 
-  // Handle error state
-  if (error || !data) {
+  // Log for debugging
+  console.log("Blog Page Data:", { blogData, blogError, recentBlogs, recentError });
+
+  // Handle error state for blog data
+  if (blogError || !blogData) {
     return (
       <div className="container py-10">
         <h1>Error Loading Blog Post</h1>
-        <p>{error || "Blog post not found."}</p>
+        <p>{blogError || "Blog post not found."}</p>
       </div>
     );
   }
 
   return (
     <>
-      <BlogDetail data={data} />
-      <RecentBlog />
+      <BlogDetail data={blogData} />
+      <RecentBlog recentBlogs={recentBlogs?.slice(0, 10)} error={recentError} />
     </>
   );
 }
