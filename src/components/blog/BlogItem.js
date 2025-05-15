@@ -12,7 +12,7 @@ function BlogItem({ item, index }) {
         <MobBlogListCard item={item} />
       </div>
       <div className="sm:block hidden">
-        <Link href={`/${item?.slug}`}>
+        <Link href={`/blog/${item?.slug}`}>
           <BlogCard item={item} />
         </Link>
       </div>
