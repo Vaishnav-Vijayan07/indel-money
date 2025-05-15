@@ -103,7 +103,12 @@ export default async function Blog({ searchParams }) {
         </div>
       </section>
       <div className="sm:hidden block">
-        <MobLatestUpdates />
+        <MobLatestUpdates
+          sliderItems={sliderData || []}
+          sliderTitle={content?.slider_title || "Latest Updates"}
+          sliderButtonText={content?.slider_button_text || "View All"}
+          sliderButtonLink={content?.slider_button_link || "/blog"}
+        />
       </div>
       <div className="sm:block hidden">
         <LatestUpdates

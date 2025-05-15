@@ -18,7 +18,7 @@ export default function BlogCard({ item, className }) {
               ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` || item?.image
               : "/images/blog/1.jpg"
           }
-          alt={"image"}
+          alt={item?.image_alt}
           fill
           // sizes="320px"
           className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
