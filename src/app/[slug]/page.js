@@ -1,23 +1,5 @@
-import dynamic from "next/dynamic";
-import Link from "next/link";
-import { Suspense, memo } from "react";
-import BlogItem from "@/components/blog/BlogItem";
-import PageBreadcrumb from "@/components/common/PageBreadcrumb";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
-
-const LatestUpdates = dynamic(() => import("@/components/features/home/LatestUpdates"), {
-  loading: () => <div>Loading slider...</div>,
-});
-const MobLatestUpdates = dynamic(() => import("@/components/features/blog/MobLatestUpdates"), {
-  loading: () => <div>Loading mobile slider...</div>,
-});
+import BlogDetail from "@/components/features/blog/BlogDetail";
+import RecentBlog from "@/components/features/blog/RecentBlog";
 
 // Fetch blog data for a specific post
 async function fetchBlogData(slug) {
@@ -29,24 +11,10 @@ async function fetchBlogData(slug) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const result = await response.json();
-
     if (result.status === "success") {
-      const { content, sliderItems, blogs, pagination } = result.data || {};
-      return {
-        content,
-        sliderData: sliderItems,
-        blogs,
-        pagination: pagination || { currentPage: 1, totalPages: 1, totalItems: 0 },
-        error: null,
-      };
+      return { data: result.data, error: null };
     }
-    return {
-      content: null,
-      sliderData: null,
-      blogs: null,
-      pagination: null,
-      error: result.message,
-    };
+    return { data: null, error: result.message };
   } catch (error) {
     console.error("Fetch error for slug:", slug, error.message);
     return { data: null, error: "Failed to fetch blog data" };
