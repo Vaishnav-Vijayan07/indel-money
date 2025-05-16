@@ -10,6 +10,8 @@ import "swiper/css/pagination";
 import { formatPostDate } from "@/lib/utils";
 
 export default function LatestUpdates({ sliderItems, sliderTitle, sliderButtonText, sliderButtonLink }) {
+  console.log("sliderItems:", sliderItems);
+  
   return (
     <section className="w-full block">
       <div className="container">
@@ -71,7 +73,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle, sliderButtonTe
                 <SwiperSlide key={index}>
                   <div
                     key={index}
-                    className="group w-full h-[368px] sm:h-[420px] md:h-[490px] lg:h-[530px] xl:h-[586px] 2xl:h-[701px] 3xl:h-[854px] overflow-hidden block relative z-0"
+                    className="group w-full h-full overflow-hidden block relative z-0"
                   >
                     {/* <Image
                       src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
