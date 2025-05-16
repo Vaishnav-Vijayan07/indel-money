@@ -37,7 +37,9 @@ function BlogCard({ item, className, index }) {
           alt={item?.image_alt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 320px"
-          quality={75}
+          quality={25}
+          placeholder="blur" // Optional: Add a blur placeholder
+          blurDataURL="/placeholder.jpg" // Optional: Low-res placeholder
           priority={index === 0} // Prioritize first blog card image
           className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
         />
