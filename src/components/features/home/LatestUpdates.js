@@ -73,11 +73,19 @@ export default function LatestUpdates({ sliderItems, sliderTitle, sliderButtonTe
                     key={index}
                     className="group w-full h-[368px] sm:h-[420px] md:h-[490px] lg:h-[530px] xl:h-[586px] 2xl:h-[701px] 3xl:h-[854px] overflow-hidden block relative z-0"
                   >
+                    {/* <Image
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
+                      alt={item?.image}
+                      fill
+                      sizes="520px"
+                      className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
+                    /> */}
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
                       alt={item?.image}
                       fill
                       sizes="520px"
+                      priority={index === 0} // Prioritize first image
                       className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
                     />
                     <div className="w-full h-auto absolute inset-0 top-auto p-[15px_15px_30px] lg:p-[20px_20px_30px] xl:p-[30px_30px_40px] 3xl:p-[50px_50px_60px] bg-gradient-to-t from-black/60 to-transparent">

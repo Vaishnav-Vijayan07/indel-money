@@ -6,9 +6,7 @@ import MobLatestUpdatesSlide from "@/components/features/blog/MobLatestUpdatesSl
 import { motion } from "framer-motion";
 import { format } from "date-fns";
 
-
 export default function MobLatestUpdates({ sliderItems, sliderTitle, sliderButtonText, sliderButtonLink }) {
-
   return (
     <section className="w-full block">
       <div className="container">
@@ -37,16 +35,25 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, sliderButto
             {sliderItems?.slice(0, 1).map((item, index) => (
               <div key={index} className="group w-full h-full overflow-hidden block relative">
                 {console.log("item", `${process.env.NEXT_PUBLIC_BACKEND_URL}/${item?.image}`)}
-                <Image
+                {/* <Image
                   src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${item?.image}`}
                   alt={item?.image_alt}
                   fill
                   sizes="520px"
                   className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
+                /> */}
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${item?.image}`}
+                  alt={item?.image_alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
                 />
                 <div className="w-full h-full absolute inset-0 top-auto px-[25px] py-[30px] bg-gradient-to-b from-black/0 to-black flex flex-wrap items-end">
                   <div className="h-fit w-full">
-                    <div className="text-[12px] text-white line-clamp-1 mb-2">{format(new Date(item?.createdAt), "d MMMM yyyy")}</div>
+                    <div className="text-[12px] text-white line-clamp-1 mb-2">
+                      {format(new Date(item?.createdAt), "d MMMM yyyy")}
+                    </div>
                     <div className="text-[16px] leading-[1.2] text-white font-medium line-clamp-2 mb-4">{item?.title}</div>
                     <Link
                       href={item?.href || "/"}

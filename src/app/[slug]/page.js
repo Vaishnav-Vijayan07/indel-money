@@ -5,7 +5,7 @@ import RecentBlog from "@/components/features/blog/RecentBlog";
 async function fetchBlogData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs/${slug}`, {
-      cache: "no-store",
+      next: { revalidate: 60 },
     });
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
