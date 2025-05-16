@@ -1,5 +1,3 @@
-import BlogCard from "@/components/common/BlogCard";
-import MobBlogListCard from "@/components/features/blog/MobBlogListCard";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import LatestUpdates from "@/components/features/home/LatestUpdates";
 import MobLatestUpdates from "@/components/features/blog/MobLatestUpdates";

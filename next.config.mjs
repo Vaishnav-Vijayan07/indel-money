@@ -21,6 +21,10 @@ const nextConfig = {
         // port: "7700",
         // pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "crm.intersmarthosting.in",
+      },
     ],
   },
 };
