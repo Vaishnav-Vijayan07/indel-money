@@ -37,7 +37,8 @@ const BlogDetail = ({ data }) => {
             <h1>{data?.title}</h1>
             <PostDateDisplay date={data?.createdAt} />
           </div>
-          {data?.image_description}
+          <div dangerouslySetInnerHTML={{ __html: data?.image_description }} />
+          {/* {data?.image_description} */}
           <br />
           <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${data?.second_image}`}
@@ -46,8 +47,9 @@ const BlogDetail = ({ data }) => {
             height={460}
             className="w-full mt-4 h-full object-cover transition-transform duration-600 group-hover:scale-[1.05] sm:block hidden"
           />
-          <br/>
-          {data?.second_image_description}
+          <br />
+          <div dangerouslySetInnerHTML={{ __html: data?.second_image_description }} />
+          {/* {data?.second_image_description} */}
         </div>
       </div>
     </section>
