@@ -28,7 +28,7 @@ const BlogDetail = ({ data }) => {
           </div>
           <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${data?.image}`}
-            alt={"bg"}
+            alt={data.image_alt || "blog bg image"}
             width={360}
             height={460}
             className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
@@ -42,7 +42,7 @@ const BlogDetail = ({ data }) => {
           <br />
           <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${data?.second_image}`}
-            alt={"bg"}
+            alt={data.second_image_alt || "blog bg image"}
             width={360}
             height={460}
             className="w-full mt-4 h-full object-cover transition-transform duration-600 group-hover:scale-[1.05] sm:block hidden"
