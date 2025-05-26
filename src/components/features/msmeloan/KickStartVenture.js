@@ -1,140 +1,154 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function KickStartVenture() {
+export default function KickStartVenture({ title, sub_title, description, button_text, button_url, our_offering_title, our_offering_description, offerings }) {
   return (
     <section className="w-full py-[20px] md:py-[20px] xl:pt-[30px] 2xl:py-[50px] 3xl:py-[70px]">
       <div className="container">
         <div className="flex flex-wrap lg:-mx-[40px]">
           <div className="w-full lg:w-5/10 lg:px-[40px] relative before:content-[''] before:hidden lg:before:block before:absolute before:h-full before:w-[1px] before:top-[0] before:right-0 before:bg-[rgba(22,69,156,0.26)] before:opacity-25">
-            <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] font-medium 2xl:font-normal">
+            <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] font-medium 2xl:font-normal [&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: title ? title : "Kickstart your new venture <br></br> with our <span>MSME loan</span>" }} />
+
+            {/* <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] font-medium 2xl:font-normal [&>span]:text-base2 [&>span]:font-bold">
               Kickstart your new venture <br></br>
               with our
               <span className="text-base2 font-bold">&nbsp;MSME loan</span>
-            </h2>
+            </h2> */}
             <div className="w-full xl:w-[85%] 2xl:w-[100%]">
               <div className="text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px] sm:mb-[15px] xl:mb-[20px] text-[#1E1E1E] font-medium 2xl:font-normal leading-normal">
-                Our MSME loans are bespoke for aspiring and upcoming
-                entrepreneurs.
+                {sub_title ? sub_title : "Empowering MSMEs and Entrepreneurs with Tailored Financial Solutions"}
               </div>
               <div className="text-sm1 mb-[15px] xl:mb-[20px] sm:block hidden">
-                We are delighted to offer our premium services to Micro, Small,
-                and Medium Enterprises (MSMEs) as well as aspiring
-                entrepreneurs. Our tailored financial packages are designed to
-                meet the specific needs of your business, ensuring that you
-                receive the support necessary to help you grow and succeed.
-                Whether you are looking for working capital to manage day-to-day
-                operations, financing for the purchase of fixed assets to expand
-                your capabilities, or a combination of both, we have the perfect
-                solutions to match your goals. Our expert team will work closely
-                with you to understand your unique challenges and provide
-                personalized assistance that fosters your business&apos;s
-                growth, stability, and long-term success. Let us be your trusted
-                partner in turning your entrepreneurial vision into a reality.
+                {description ? description : "We are committed to empowering MSMEs and entrepreneurs with tailored financial solutions that drive growth and innovation. Our MSME loan offerings are designed to meet the unique needs of businesses, providing the necessary capital to fuel expansion, enhance operations, and achieve long-term success."}
               </div>
               <Link
-                href="/"
+                href={button_url ? button_url : "/msme-loans"}
                 className="btn btn-base2 w-fit min-w-[90px] lg:min-w-[110px] xl:min-w-[120px] 3xl:min-w-[180px]"
               >
-                GET A CALL
+                {button_text ? button_text : "Explore MSME Loans"}
               </Link>
             </div>
           </div>
           {/* only in Desktop view ie;above 640px */}
           <div className="w-full lg:w-5/10 lg:px-[40px] sm:p-0 p-[25px] sm:pt-[30px] lg:pt-0">
             <div className="text-base1 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] font-medium 2xl:font-normal leading-normal lg:pl-[30px]">
-              Our Offerings
+              {our_offering_title ? our_offering_title : "Our Offerings"}
             </div>
             <div className="text-sm1 mb-[15px] xl:mb-[20px] max-w-[90%] lg:pl-[30px]">
-              To be with you at the cornerstone of development of MSME segment,
-              we extend our product offerings to fulfil your needs:
+              {our_offering_description ? our_offering_description : "We offer a range of MSME loan products designed to meet the diverse needs of businesses, from working capital to equipment financing. Our offerings include:"}
             </div>
             <div className="flex flex-wrap justify-center -m-[5px] 2xl:-m-[7.5px] sm:px-0 px-[15px] sm:py-0 py-[20px]">
 
-                
-              <div className="w-full sm:w-[45%] xl:w-[40%] 2xl:w-1/3 p-[5px] 2xl:p-[7.5px] sm:pl-[30px]">
-                <div className="rounded-[10px] bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] flex flex-wrap sm:flex-col items-center sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[15px] xl:py-[20px] 2xl:py-[30px]">
-                  <div className="w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-[25px] xl:h-[30px] 2xl:h-[40px] 3xl:h-[45px] sm:mr-auto">
-                    <Image
-                      src="/images/offr-01.svg"
-                      alt="lifeintelImg"
-                      width={45}
-                      height={45}
-                      className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal sm:pt-[10px] 2xl:pt-[15px] sm:w-full w-[calc(100%-25px)] sm:pl-0 pl-[10px]">
-                    For CAPEX / working capital expenses
-                  </div>
-                </div>
-              </div>
-              <div className="w-full sm:w-[55%] xl:w-[60%] 2xl:w-2/3 p-[5px] 2xl:p-[7.5px] content-end">
-                <div className="rounded-[10px] h-fit bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[15px] xl:py-[20px] 2xl:py-[30px] flex items-center">
-                  <div className="w-[20px] xl:w-[26px] 2xl:w-[35px] 3xl:w-[40px]h-[20px] xl:h-[26px] 2xl:h-[35px] 3xl:h-[40px]">
-                    <Image
-                      src="/images/offr-02.svg"
-                      alt="lifeintelImg"
-                      width={45}
-                      height={45}
-                      className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-20px)] xl:w-[calc(100%-26px)] 2xl:w-[calc(100%-35px)] 3xl:w-[calc(100%-40px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
-                    For CAPEX / working capital expenses
-                  </div>
-                </div>
-              </div>
-              <div className="w-full sm:w-[60%] xl:w-[65%] 2xl:w-2/3 content-end">
-                <div className="p-[5px] 2xl:p-[7.5px]">
-                  <div className="rounded-[10px] h-fit bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[25px] 2xl:py-[30px] 3xl:py-[40px] flex items-center">
-                    <div className="w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-[25px] xl:h-[30px] 2xl:h-[40px] 3xl:h-[45px]">
-                      <Image
-                        src="/images/offr-03.svg"
-                        alt="lifeintelImg"
-                        width={45}
-                        height={45}
-                        className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
-                      Balance transfer from other NBFC’s to reduce interest /
-                      EMI burden
+              {
+                offerings?.[0] && (
+
+                  <div className="w-full sm:w-[45%] xl:w-[40%] 2xl:w-1/3 p-[5px] 2xl:p-[7.5px] sm:pl-[30px]">
+                    <div className="rounded-[10px] bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] flex flex-wrap sm:flex-col items-center sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[15px] xl:py-[20px] 2xl:py-[30px]">
+                      <div className="w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-[25px] xl:h-[30px] 2xl:h-[40px] 3xl:h-[45px] sm:mr-auto">
+                        <Image
+                          src={offerings[0].icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${offerings[0].icon}` : "/images/offr-01.svg"}
+                          alt="lifeintelImg"
+                          width={45}
+                          height={45}
+                          className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal sm:pt-[10px] 2xl:pt-[15px] sm:w-full w-[calc(100%-25px)] sm:pl-0 pl-[10px]">
+                        {offerings[0].title ? offerings[0].title : "Short-term working capital loans"}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="w-full p-[5px] 2xl:p-[7.5px] justify-items-end">
-                  <div className="rounded-[10px] w-full sm:w-fit h-fit bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[25px] 2xl:py-[30px] 3xl:py-[40px] flex items-center">
-                    <div className="w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-[25px] xl:h-[30px] 2xl:h-[40px] 3xl:h-[45px]">
-                      <Image
-                        src="/images/offr-05.svg"
-                        alt="lifeintelImg"
-                        width={45}
-                        height={45}
-                        className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
-                      />
+                )
+              }
+
+              {
+                offerings?.[1] && (
+
+                  <div className="w-full sm:w-[55%] xl:w-[60%] 2xl:w-2/3 p-[5px] 2xl:p-[7.5px] content-end">
+                    <div className="rounded-[10px] h-fit bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[15px] xl:py-[20px] 2xl:py-[30px] flex items-center">
+                      <div className="w-[20px] xl:w-[26px] 2xl:w-[35px] 3xl:w-[40px]h-[20px] xl:h-[26px] 2xl:h-[35px] 3xl:h-[40px]">
+                        <Image
+                          src={offerings[1].icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${offerings[1].icon}` : "/images/offr-02.svg"}
+                          alt="lifeintelImg"
+                          width={45}
+                          height={45}
+                          className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-20px)] xl:w-[calc(100%-26px)] 2xl:w-[calc(100%-35px)] 3xl:w-[calc(100%-40px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
+                        {offerings[1].title ? offerings[1].title : "Equipment financing and leasing"}
+                      </div>
                     </div>
-                    <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-35px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
-                      Business<br></br> expansion
+                  </div>
+                )
+              }
+
+              {
+                offerings?.[2] && (
+
+                  <div className="w-full sm:w-[60%] xl:w-[65%] 2xl:w-2/3 content-end">
+                    <div className="p-[5px] 2xl:p-[7.5px]">
+                      <div className="rounded-[10px] h-fit bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[25px] 2xl:py-[30px] 3xl:py-[40px] flex items-center">
+                        <div className="w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-[25px] xl:h-[30px] 2xl:h-[40px] 3xl:h-[45px]">
+                          <Image
+                            src={offerings[2].icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${offerings[2].icon}` : "/images/offr-03.svg"}
+                            alt="lifeintelImg"
+                            width={45}
+                            height={45}
+                            className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
+                          />
+                        </div>
+                        <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
+                          {offerings[2].title ? offerings[2].title : "Business expansion and growth financing"}
+                        </div>
+                      </div>
+                    </div>
+                    {
+                      offerings?.[3] && (
+
+                        <div className="w-full p-[5px] 2xl:p-[7.5px] justify-items-end">
+                          <div className="rounded-[10px] w-full sm:w-fit h-fit bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[25px] 2xl:py-[30px] 3xl:py-[40px] flex items-center">
+                            <div className="w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-[25px] xl:h-[30px] 2xl:h-[40px] 3xl:h-[45px]">
+                              <Image
+                                src={offerings[3].icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${offerings[3].icon}` : "/images/offr-05.svg"}
+                                alt="lifeintelImg"
+                                width={45}
+                                height={45}
+                                className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
+                              />
+                            </div>
+                            <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-35px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
+                              {offerings[3].title ? offerings[3].title : "Trade financing and export-import loans"}
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    }
+                  </div>
+                )
+              }
+
+              {
+                offerings?.[4] && (
+
+                  <div className="w-full sm:w-[40%] xl:w-[35%] 2xl:w-1/3 p-[5px] 2xl:p-[7.5px]">
+                    <div className="rounded-[10px] h-fit bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[40px] 2xl:py-[50px] 3xl:py-[60px]  flex items-center">
+                      <div className="w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-[25px] xl:h-[30px] 2xl:h-[40px] 3xl:h-[45px]">
+                        <Image
+                          src={offerings[4].icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${offerings[4].icon}` : "/images/offr-04.svg"}
+                          alt="lifeintelImg"
+                          width={45}
+                          height={45}
+                          className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
+                        {offerings[4].title ? offerings[4].title : "Personal loans and credit cards"}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="w-full sm:w-[40%] xl:w-[35%] 2xl:w-1/3 p-[5px] 2xl:p-[7.5px]">
-                <div className="rounded-[10px] h-fit bg-white sm:shadow-[0px_0px_50px_rgba(0,0,0,0.10)] sm:px-[10px] xl:px-[15px] 2xl:px-[20px] sm:py-[40px] 2xl:py-[50px] 3xl:py-[60px]  flex items-center">
-                  <div className="w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-[25px] xl:h-[30px] 2xl:h-[40px] 3xl:h-[45px]">
-                    <Image
-                      src="/images/offr-04.svg"
-                      alt="lifeintelImg"
-                      width={45}
-                      height={45}
-                      className="w-full h-auto object-cover transition-transform duration-600 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="text-sm1 text-[#151515] font-medium 2xl:font-normal w-[calc(100%-25px)] xl:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-45px)] pl-[10px] xl:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px]">
-                    Debt <br></br> consolidation
-                  </div>
-                </div>
-              </div>
+                )
+              }
             </div>
           </div>
         </div>

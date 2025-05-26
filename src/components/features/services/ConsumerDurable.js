@@ -3,15 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-export default function ConsumerDurable() {
+export default function ConsumerDurable({ page_title, loan_offer_title, loan_offer_description, loan_offer_button_text, loan_offer_button_link }) {
     return (
         <section className="w-full pt-[30px] 2xl:pt-[50px]  2xl:pb-[70px] md:pb-[40px] sm:pt-[30px] sm:pb-[30px] pb-[20px]">
             <div className="container">
                 <div className="w-full sm:pb-[20px] lg:pb-[40px] 2xl:pb-[60px]">
-                    <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px]">
-                        Consumer Durable
-                        <span className="text-base2 font-bold">&nbsp;Loans</span>
-                    </h1>
+                    <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px] [&>span]:text-base2  [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: page_title ? page_title : "Consumer Durable Loan" }} />
+
                     <div className="w-full sm:block hidden">
                         <PageBreadcrumb />
                     </div>
@@ -29,28 +27,27 @@ export default function ConsumerDurable() {
                         </div>
                     </div>
                     <div className="w-full md:w-[52%] 2xl:w-[54%] md:px-[15px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]">
-                        <h2 className="text-title1 mb-[15px] 2xl:mb-[20px]">
-                            Unlock the power of your
-                            <br></br> gold @
-                            <span className="text-base2 font-bold">&nbsp;NO cost (EMIs)</span>
+                        <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] font-bold" dangerouslySetInnerHTML={{
+                            __html: loan_offer_title ? loan_offer_title : "Unlock the power of your <br> gold @ <span className='text-base2 font-bold'>NO cost (EMIs)</span>"
+                        }} />
 
-                        </h2>
+
                         <div className="text-sm1">
-                            Now you can purchase consumer durables, electronic items, home appliances etc., of your choice through Indel Money’s no cost CD loans. Just walk-in to any of our branches and avail CD loans for your next purchase. We assure you the best loaning experience with no EMIs, flexible repayment loans, no processing fee, no down payments etc. Never be doubtful again about your purchase decisions!
+                            {loan_offer_description ? loan_offer_description : "Consumer Durable Loan is a type of loan that allows you to purchase consumer goods such as electronics, appliances, and furniture. It is designed to help you buy the products you need without having to pay for them upfront."}
                         </div>
                         <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px] mt-[15px] xl:mt-[30px] 2xl:mt-[40px]">
                             <div>
                                 <Link
-                                    href="tel:+9072588911"
+                                    href={loan_offer_button_link ? loan_offer_button_link : "tel:+9072588911"}
                                     className="btn btn-base2 min-w-[120px] lg:min-w-[140px] xl:min-w-[160px] 2xl:min-w-[190px]">
-                                    GET A CALL
+                                    {loan_offer_button_text ? loan_offer_button_text : "Call Now"}
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 
