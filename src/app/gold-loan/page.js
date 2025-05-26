@@ -16,12 +16,37 @@ import MobGoldLoanServices from "../../components/features/goldLoan/MobGoldLoanS
 import MobGoldLoanScheme from "../../components/features/goldLoan/MobGoldLoanScheme";
 import MobGoldLoanFaq from "../../components/features/goldLoan/MobGoldLoanFaq";
 
-export default function GoldLoan() {
+async function fetchGoldLoanData() {
+  try {
+    const response = await fetch("http://localhost:7700/api/web/gold-loan", {
+      cache: "no-store", // Ensure fresh data
+    });
+    const result = await response.json();
+    const goldloanData = result.data;
+
+    if (result.status === "success") {
+      return { contents: goldloanData.GoldloanContent, bannerIcons: goldloanData.GoldloanBannerFeatures, schemes: goldloanData.schemes, faqs: goldloanData.GoldLoanFaq, features: goldloanData.GoldLoanFeatures, error: null };
+    }
+    return { contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: result.message };
+  } catch (error) {
+    return { contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: "Failed to fetch service data" };
+  }
+}
+
+export default async function GoldLoan() {
+  const { contents, bannerIcons, schemes, faqs, features, error } = await fetchGoldLoanData();
+
+
   return (
     <>
       {/* Gold loan calculator contents*/}
       <div className="hidden sm:block">
-        <ServiceBanner />
+        <ServiceBanner
+          bannerIcons={bannerIcons}
+          title={contents?.page_title}
+          announcement_text={contents?.announcement_text}
+          gold_rate_text={contents?.gold_rate_text}
+        />
       </div>
       <div className="block sm:hidden">
         <MobServiceBanner />
@@ -29,10 +54,7 @@ export default function GoldLoan() {
 
       {/* Gold loan contents*/}
       <div className="hidden sm:block">
-        <StepGoldLoan
-          className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]"
-          hideTitle={true}
-        />
+        <StepGoldLoan className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]" hideTitle={true} />
       </div>
       <div className="block sm:hidden">
         <MobStepGoldLoan className="py-[30px_20px]" />
@@ -40,7 +62,15 @@ export default function GoldLoan() {
 
       {/* Gold loan steps */}
       <div className="hidden sm:block">
-        <GoldLoanCriteria />
+        <GoldLoanCriteria
+          title={contents?.gold_loan_step_title}
+          description={contents?.description}
+          idProofTitle={contents?.identity_proof_title}
+          identityProof={contents?.identity_proof_description}
+          addressProofTitle={contents?.address_proof}
+          addressProof={contents?.address_proof_description}
+          image={contents?.steps_image}
+        />
       </div>
       <div className="block sm:hidden">
         <MobGoldLoanCriteria />
@@ -56,7 +86,7 @@ export default function GoldLoan() {
 
       {/* instant hussle free */}
       <div className="hidden sm:block">
-        <InstantHasslefree />
+        <InstantHasslefree title={contents?.gold_loan_title}  description={contents?.gold_loan_description} />
       </div>
       <div className="block sm:hidden">
         <MobInstantHasslefree />
@@ -64,7 +94,7 @@ export default function GoldLoan() {
 
       {/* instant hussle free */}
       <div className="hidden sm:block">
-        <GoldLoanServices />
+        <GoldLoanServices features={features} />
       </div>
       <div className="block sm:hidden">
         <MobGoldLoanServices />
@@ -72,7 +102,7 @@ export default function GoldLoan() {
 
       {/* Scheme */}
       <div className="hidden sm:block">
-        <GoldLoanScheme />
+        <GoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
       </div>
       <div className="block sm:hidden">
         <MobGoldLoanScheme />
@@ -80,7 +110,7 @@ export default function GoldLoan() {
 
       {/* faq contents */}
       <div className="hidden sm:block">
-        <GoldLoanFaq />
+        <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
       </div>
       <div className="block sm:hidden">
         <MobGoldLoanFaq />

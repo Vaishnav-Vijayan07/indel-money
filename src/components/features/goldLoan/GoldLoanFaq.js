@@ -33,7 +33,7 @@ const faqs = [
   },
 ];
 
-export default function GoldLoanFaq() {
+export default function GoldLoanFaq({ faq_title, faqs }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAccordion = (index) => {
@@ -42,17 +42,14 @@ export default function GoldLoanFaq() {
   return (
     <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
       <div className="container">
-        <div className="text-black text-title1 font-normal mb-[20px]">
-          Frequently Asked{" "}
-          <span className="text-base2 font-bold">Questions</span>
-        </div>
+        <div className="text-black text-title1 font-normal mb-[20px] [&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: faq_title }} />
+
         <div className="w-full rounded-[24px] overflow-hidden bg-[#E7EFF9] py-[30px] 2xl:py-[40px]">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`px-[25px] xl:px-[45px] 3xl:px-[65px] py-[10px] ${
-                openIndex === index ? "bg-[#D7E9FF]" : "bg-[#E7EFF9]"
-              }`}
+              className={`px-[25px] xl:px-[45px] 3xl:px-[65px] py-[10px] ${openIndex === index ? "bg-[#D7E9FF]" : "bg-[#E7EFF9]"
+                }`}
             >
               <button
                 className="flex justify-between w-full items-center font-medium text-left text-black 2xl:text-[1.25rem] xl:text[1rem] text-[0.8rem] cursor-pointer hover:no-underline transition-all duration-300 pb-[10px]"

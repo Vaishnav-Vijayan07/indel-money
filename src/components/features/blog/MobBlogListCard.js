@@ -10,7 +10,7 @@ export default function MobBlogListCard({ item, className }) {
     >
       <div className="group w-[135px] 3xs:w-[165px] overflow-hidden rounded-[10px] relative z-0">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
+          src={item ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/${item?.image}` : "/images/default-image.png"}
           alt={item?.image_alt || "Image"}
           fill
           sizes="320px"
