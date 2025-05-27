@@ -25,7 +25,6 @@ export default async function Services() {
 
     const { contents, benfits, products, error } = await fetchData();
 
-    console.log(contents)
 
     return (
         <>
@@ -36,7 +35,7 @@ export default async function Services() {
             <ProductCovered products={products} title={contents?.covered_products_section_title} image={contents?.covered_products_section_image} criteriaTitle={contents?.eligibility_criteria_title} criteriaIcon={contents?.eligibility_criteria_icon} criteriaDescription={contents?.eligibility_criteria_description} criteriaNote={contents?.eligibility_criteria_note} />
 
             {/* ConsumerDurable contents */}
-            <FeatureBenefit benefits={benfits} title={contents?.feature_title} image={contents?.feature_image}  />
+            <FeatureBenefit benefits={benfits} title={contents?.feature_title} image={contents?.feature_image} />
 
             {/* Eligibility for mobile view contents */}
             <div className="block sm:hidden">

@@ -6,7 +6,7 @@ import CounterBox from "./CounterBox";
 import * as motion from "motion/react-client";
 
 export default function DreamsToReality({ initialData, statsData }) {
-  
+
 
   // const counters = [
   //   { end: 30, suffix: "+", text: "Backed by years of  experience" },
@@ -43,10 +43,8 @@ export default function DreamsToReality({ initialData, statsData }) {
             transition={{ duration: 0.8 }}
             className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-540px)] 3xl:w-[calc(100%-610px)] lg:pr-[40px] xl:pr-[70px] 2xl:pr-[120px] mb-4"
           >
-            <div className="text-[12px] lg:text-[12px] xl:text-[14px] 3xl:text-[18px] font-medium text-[#1e1e1e] ">
-              {/* Welcome to <span className="text-base4 ">INDEL MONEY</span> */}
-              {initialData?.about_super_title}
-            </div>
+            <div className="text-[12px] lg:text-[12px] xl:text-[14px] 3xl:text-[18px] font-medium text-[#1e1e1e] [&>span]:text-base4" dangerouslySetInnerHTML={{ __html: initialData?.about_super_title }} />
+            {/* Welcome to <span className="text-base4 ">INDEL MONEY</span> */}
             <div
               className="text-title1 font-medium mb-[10px] xl:mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold"
               dangerouslySetInnerHTML={{ __html: initialData?.about_title }}
@@ -56,12 +54,11 @@ export default function DreamsToReality({ initialData, statsData }) {
               We&apos;re With You Every Step Of The Way. */}
             {/* {initialData?.about_title}
             </div> */}
-            <div className="text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[24px] leading-none font-bold mb-[10px] xl:mb-[15px] 2xl:mb-[20px] text-base1">
+            <div className="text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[24px] leading-none font-bold mb-[10px] xl:mb-[15px] 2xl:mb-[20px] text-base1 [&>span]:font-normal [&>span]:text-[#343434]" dangerouslySetInnerHTML={{ __html: initialData?.about_sub_title }}/>
               {/* Indel Money :{" "}
               <span className="font-normal text-[#343434]">Overview</span> */}
-              {initialData?.about_subtitle}
-            </div>
-            {/* <p className="mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
+
+              {/* <p className="mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
               Indel Money is a comprehensive financial services provider dedicated to offering a diverse array of solutions to
               meet the unique needs of every individual and organization. Our wide range of services is designed to cater to
               high-net-worth individuals, business institutions, retail investors, and the general public alike, ensuring that
@@ -73,19 +70,19 @@ export default function DreamsToReality({ initialData, statsData }) {
               tailored to meet the specific goals and dreams of our clients.
             </p> */}
 
-            <p className="mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">{initialData?.about_description}</p>
-            <Link
-              href={initialData?.about_button_url || "#"}
-              className="group btn btn-base1 relative z-0 flex items-center mt-[15px] lg:mt-[20px] 2xl:mt-[30px] w-full max-w-[140px] xl:max-w-[160px] 2xl:max-w-[200px] 3xl:max-w-[220px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[65px] rounded-full bg-base1 text-white font-medium transition-all duration-300 overflow-hidden shadow-lg"
-            >
-              <span className="text-center relative z-10 w-[calc(100%-30px)] lg:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-48px)] transition-transform duration-300 group-hover:-translate-x-[-15px]">
-                {/* Our Story */}
-                {initialData?.about_button_name}
-              </span>
-              <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[40px] 3xl:w-[48px] 3xl:h-[48px] rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:text-white">
-                <Image src="/images/about-btn.svg" width={48} height={48} alt="about btn" />
-              </div>
-            </Link>
+              <p className="mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">{initialData?.about_description}</p>
+              <Link
+                href={initialData?.about_button_url || "#"}
+                className="group btn btn-base1 relative z-0 flex items-center mt-[15px] lg:mt-[20px] 2xl:mt-[30px] w-full max-w-[140px] xl:max-w-[160px] 2xl:max-w-[200px] 3xl:max-w-[220px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[65px] rounded-full bg-base1 text-white font-medium transition-all duration-300 overflow-hidden shadow-lg"
+              >
+                <span className="text-center relative z-10 w-[calc(100%-30px)] lg:w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-48px)] transition-transform duration-300 group-hover:-translate-x-[-15px]">
+                  {/* Our Story */}
+                  {initialData?.about_button_name}
+                </span>
+                <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[40px] 3xl:w-[48px] 3xl:h-[48px] rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:text-white">
+                  <Image src="/images/about-btn.svg" width={48} height={48} alt="about btn" />
+                </div>
+              </Link>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 50 }} // Starting state: hidden and shifted down

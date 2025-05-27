@@ -11,12 +11,12 @@ async function GET(page = 1, limit = 10) {
     }
     const result = await response.json();
 
-    console.log("API Response:", result);
+    
 
     if (result.status === "success") {
       const { content, sliderItems, blogs, pagination } = result.data || {};
       if (!content || !sliderItems || !blogs || !pagination) {
-        console.warn("Missing expected data fields:", {
+        
           content,
           sliderItems,
           blogs,
@@ -31,7 +31,7 @@ async function GET(page = 1, limit = 10) {
         error: null,
       };
     }
-    console.error("API returned unsuccessful status:", result.message);
+    
     return {
       content: null,
       sliderData: null,
@@ -40,7 +40,7 @@ async function GET(page = 1, limit = 10) {
       error: result.message,
     };
   } catch (error) {
-    console.error("Fetch error:", error.message);
+    
     return {
       content: null,
       sliderData: null,

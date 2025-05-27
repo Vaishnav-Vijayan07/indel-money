@@ -45,7 +45,7 @@ async function fetchBlogsData(page = 1, limit = 10) {
       error: result.message,
     };
   } catch (error) {
-    console.error("Fetch error:", error.message);
+    
     return {
       content: null,
       sliderData: null,

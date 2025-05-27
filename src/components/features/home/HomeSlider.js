@@ -59,9 +59,8 @@ export default function HomeSlider({ heroBanner }) {
           <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`} width={1920} height={1080} alt={item?.image_alt_text} priority className="w-full h-full object-cover" />
           <div className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className="w-full max-w-[320px] lg:max-w-[376px] xl:max-w-[400px] 2xl:max-w-[440px] 3xl:max-w-[576px]">
-              <h1 className="text-[28px] sm:text-[30px] lg:text-[28px] xl:text-[32px] 2xl:text-[44px] 3xl:text-[50px] leading-[1.2] capitalize font-medium text-white mb-6">
-                <span className="text-base2 font-bold">{item?.title}</span> {item?.title2}
-              </h1>
+              <h1 className="text-[28px] sm:text-[30px] lg:text-[28px] xl:text-[32px] 2xl:text-[44px] 3xl:text-[50px] leading-[1.2] capitalize font-medium text-white mb-6 [&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: initialData?.item.title }}/>
+           
               <Link
                 href={item?.button_link}
                 className="btn btn-base2 max-w-[130px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[160px]"

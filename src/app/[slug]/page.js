@@ -16,7 +16,7 @@ async function fetchBlogData(slug) {
     }
     return { data: null, error: result.message };
   } catch (error) {
-    console.error("Fetch error for slug:", slug, error.message);
+    
     return { data: null, error: "Failed to fetch blog data" };
   }
 }
@@ -36,7 +36,7 @@ async function fetchRecentBlogs() {
     }
     return { data: [], error: result.message };
   } catch (error) {
-    console.error("Fetch error for recent blogs:", error.message);
+    
     return { data: [], error: "Failed to fetch recent blogs" };
   }
 }
@@ -47,11 +47,11 @@ export async function generateMetadata({ params }) {
   const { data, error } = await fetchBlogData(slug);
 
   // Log for debugging
-  console.log("Metadata Data:", { data, error, slug });
+  
 
   // Fallback metadata in case of error or missing data
   if (error || !data) {
-    console.warn("Metadata fallback used for slug:", slug, "Error:", error);
+    
     return {
       title: "Blog Post | My Website",
       description: "Read our latest blog post.",
@@ -123,7 +123,7 @@ export default async function Blog({ params }) {
   const { data: recentBlogs, error: recentError } = await fetchRecentBlogs();
 
   // Log for debugging
-  console.log("Blog Page Data:", { blogData, blogError, recentBlogs, recentError });
+  
 
   // Handle error state for blog data
   if (blogError || !blogData) {
