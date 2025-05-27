@@ -5,6 +5,7 @@ import MobYearsInception from "../../components/features/history/MobYearsIncepti
 export default function History() {
   return (
     <>
+      {/* Yearsinception section */}
       <IndelHistory />
 
       {/* Yearsinception section */}
