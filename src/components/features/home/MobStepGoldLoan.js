@@ -36,7 +36,7 @@ export default function MobStepGoldLoan({ className, loanSteps }) {
                 <div className="w-[80px] h-[80px] relative z-0">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon_url}`}
-                    alt={item.alt}
+                    alt={"icon"}
                     fill
                     className="aspect-square"
                   />
