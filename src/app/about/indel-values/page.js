@@ -3,21 +3,41 @@ import MobIndelValueBanner from "@/components/features/about/MobIndelValueBanner
 import OurValues from "@/components/features/about/OurValues";
 import OurApproach from "@/components/features/about/OurApproach";
 
-export default function IndelValues() {
+async function fetchData() {
+  try {
+    const response = await fetch("http://localhost:7700/api/web/indel-values", {
+      cache: "no-store", // Ensure fresh data
+    });
+    const result = await response.json();
+    const indelValues = result.data
+
+    if (result.status === "success") {
+      return { contents: indelValues?.indelValueContent, values: indelValues?.indelValues, propositions: indelValues?.approachPropositions, error: null };
+    }
+    return { contents: null, values: null, propositions: null, error: result.message };
+  } catch (error) {
+    return { contents: null, values: null, propositions: null, error: "Failed to fetch history data" };
+  }
+}
+
+export default async function IndelValues() {
+
+  const { contents, values, propositions, error } = await fetchData();
+
   return (
     <>
       <div className="hidden sm:block">
-        <IndelValueBanner />
+        <IndelValueBanner image={contents?.image} title={contents?.page_title} />
       </div>
       <div className="block sm:hidden">
         <MobIndelValueBanner />
       </div>
 
       {/* ManagementTeam contents */}
-      <OurValues />
+      <OurValues values={values} />
 
       {/* OurApproach contents */}
-      <OurApproach />
+      <OurApproach propositions={propositions} title={contents?.approach_title} />
     </>
   );
 }

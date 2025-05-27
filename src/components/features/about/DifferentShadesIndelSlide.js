@@ -149,20 +149,18 @@ function ShadeIndelBox({ item, isActive }) {
   return (
     <div
       className={`
-              ${
-                isActive ? "bg-[#dceafb]" : "bg-black"
-              } group w-full h-[276px] sm:h-[320px] lg:h-[368px] xl:h-[420px] 2xl:h-[576px] 3xl:h-[660px] rounded-[10px] lg:rounded-[15px] 2xl:rounded-[20px] 3xl:rounded-[36px] overflow-hidden cursor-pointer relative z-0 transition-all duration-300
+              ${isActive ? "bg-[#dceafb]" : "bg-black"
+        } group w-full h-[276px] sm:h-[320px] lg:h-[368px] xl:h-[420px] 2xl:h-[576px] 3xl:h-[660px] rounded-[10px] lg:rounded-[15px] 2xl:rounded-[20px] 3xl:rounded-[36px] overflow-hidden cursor-pointer relative z-0 transition-all duration-300
               `}
     >
       <Image
-        src={item?.src}
-        alt={item?.alt}
+        src={item?.banner_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.banner_image}` : slides[0].src}
+        alt={item?.title}
         fill
         sizes="660px"
         style={{ objectFit: "cover" }}
         className={`
-          ${
-            isActive ? "opacity-100" : "opacity-50"
+          ${isActive ? "opacity-100" : "opacity-50"
           } transition-all duration-300 group-hover:scale-105`}
       />
       {isActive ? (
@@ -182,7 +180,7 @@ function ShadeIndelBox({ item, isActive }) {
   );
 }
 
-export default function DifferentShadesIndelSlide() {
+export default function DifferentShadesIndelSlide({ shades }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleSlideClick = (index) => {
@@ -196,31 +194,68 @@ export default function DifferentShadesIndelSlide() {
           spaceBetween={0}
           className="differentShadesSlide overflow-visible!"
         >
-          {slides?.map((item, index) => (
+          {shades?.map((item, index) => (
             <SwiperSlide
               key={index}
               onClick={() => handleSlideClick(index)}
-              className={`${
-                index === activeIndex
-                  ? "max-w-[240px] sm:max-w-[276px] md:max-w-[320px] lg:max-w-[376px] xl:max-w-[453px] 2xl:max-w-[568px] 3xl:max-w-[668px] transition-all duration-300"
-                  : "max-w-[85px] sm:max-w-[79px] md:max-w-[100px] lg:max-w-[115px] xl:max-w-[135px] 2xl:max-w-[156px] 3xl:max-w-[205px] lg:odd:translate-y-[20px] xl:odd:translate-y-[25px] 2xl:odd:translate-y-[30px] 3xl:odd:translate-y-[40px] lg:even:-translate-y-[20px] xl:even:-translate-y-[25px] 2xl:even:-translate-y-[30px] 3xl:even:-translate-y-[40px] transition-all duration-300"
-              } h-auto! mr-[4px] lg:mr-[10px] xl:mr-[20px] 2xl:mr-[30px] 3xl:mr-[40px] transition-all duration-300`}
+              className={`${index === activeIndex
+                ? "max-w-[240px] sm:max-w-[276px] md:max-w-[320px] lg:max-w-[376px] xl:max-w-[453px] 2xl:max-w-[568px] 3xl:max-w-[668px] transition-all duration-300"
+                : "max-w-[85px] sm:max-w-[79px] md:max-w-[100px] lg:max-w-[115px] xl:max-w-[135px] 2xl:max-w-[156px] 3xl:max-w-[205px] lg:odd:translate-y-[20px] xl:odd:translate-y-[25px] 2xl:odd:translate-y-[30px] 3xl:odd:translate-y-[40px] lg:even:-translate-y-[20px] xl:even:-translate-y-[25px] 2xl:even:-translate-y-[30px] 3xl:even:-translate-y-[40px] transition-all duration-300"
+                } h-auto! mr-[4px] lg:mr-[10px] xl:mr-[20px] 2xl:mr-[30px] 3xl:mr-[40px] transition-all duration-300`}
             >
               <ShadeIndelBox item={item} isActive={index === activeIndex} />
             </SwiperSlide>
           ))}
         </Swiper>
         <div className="w-full mt-[20px] sm:mt-[40px] lg:mt-[60px] 2xl:mt-[80px] 3xl:mt-[80px] [&_p]:text-sm1 [&_p]:mb-[10px] sm:[&_p]:mb-[15px] lg:[&_p]:mb-[20px] [&_img]:mb-[10px] sm:[&_img]:mb-[15px] lg:[&_img]:mb-[20px]">
-          {slideContents[activeIndex]?.logo && (
-            <Image
-              src={slideContents[activeIndex].logo.src}
-              alt={slideContents[activeIndex].logo.alt}
-              width={slideContents[activeIndex].logo.width}
-              height={slideContents[activeIndex].logo.height}
-              className={slideContents[activeIndex].logo.className}
-            />
-          )}
-          {slideContents[activeIndex]?.content || <p>Content not available</p>}
+
+          <Image
+            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${shades[activeIndex]?.brand_icon}`}
+            alt={"Indel Technology"}
+            width={260}
+            height={100}
+            className="max-w-[120px] lg:max-w-[176px] 2xl:max-w-[220px] 3xl:max-w-[268px]"
+          />
+          {/* {slideContents[activeIndex]?.content || <p>Content not available</p>} */}
+          {
+            <>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: shades[activeIndex]?.paragraph_1 || "<p>Content not available</p>",
+                }}
+              />
+              {
+                shades[activeIndex]?.image && (
+
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${shades[activeIndex]?.image}` || "/images/shadeIndel-disc-2.jpg"}
+                    alt="indel"
+                    width={420}
+                    height={276}
+                    className="max-w-[160px] sm:max-w-[220px] lg:max-w-[276px] 2xl:max-w-[376px] 3xl:max-w-[468px] inline m-[0_20px_10px_0] sm:m-[0_40px_10px_0]"
+                  />
+                )
+              }
+              {
+                shades[activeIndex]?.second_image && (
+
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${shades[activeIndex]?.second_image}` || "/images/shadeIndel-disc-3.jpg"}
+                    alt="indel"
+                    width={420}
+                    height={276}
+                    className="max-w-[160px] sm:max-w-[220px] lg:max-w-[276px] 2xl:max-w-[376px] 3xl:max-w-[468px] inline m-[0_20px_10px_0] sm:m-[0_40px_10px_0]"
+                  />
+                )
+              }
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: shades[activeIndex]?.paragraph_2 || "<p>Content not available</p>",
+                }}
+              />
+            </>
+          }
+
         </div>
         {/* <div className="w-full mt-[20px] sm:mt-[40px] lg:mt-[60px] 2xl:mt-[80px] 3xl:mt-[80px] [&_p]:text-sm1 [&_p]:mb-[10px] sm:[&_p]:mb-[15px] lg:[&_p]:mb-[20px] [&_img]:mb-[10px] sm:[&_img]:mb-[15px] lg:[&_img]:mb-[20px]">
           <Image
@@ -284,6 +319,6 @@ export default function DifferentShadesIndelSlide() {
           </p>
         </div> */}
       </div>
-    </section>
+    </section >
   );
 }

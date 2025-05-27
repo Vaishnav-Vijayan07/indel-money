@@ -1,6 +1,6 @@
 import PageBreadcrumb from "@/components/common/PageBreadcrumb"
 
-export default function IndelValueBanner() {
+export default function IndelValueBanner({ image, title }) {
     return (
         <section className="relative w-full overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.50)] to-[rgba(102,102,102,0.00)] z-1"></div>
@@ -20,10 +20,7 @@ export default function IndelValueBanner() {
             </div>
             <div className="container absolute inset-0 flex items-center justify-start p-4 md:p-6 lg:p-8 xl:p-10 text-white z-20 max-w-screen-lg mx-auto">
                 <div className="max-w-[655px] md:max-w-[755px] lg:max-w-[840px]">
-                    <h1 className="text-title1 text-white mb-[15px] 2xl:mb-[20px]">
-                        Our
-                        <span className="text-base2 font-bold">&nbsp;Values</span>
-                    </h1>
+                    <h1 className="text-title1 text-white mb-[15px] 2xl:mb-[20px] [&>span]:text-base2  [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: title }} />
                     <PageBreadcrumb variant="white" />
                 </div>
             </div>

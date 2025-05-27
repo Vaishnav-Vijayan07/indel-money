@@ -4,7 +4,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 
-export default function OurValues() {
+export default function OurValues({ propositions, title }) {
   const slides = [
     {
       image: "/images/apprch01.svg",
@@ -39,10 +39,12 @@ export default function OurValues() {
   return (
     <section className="w-full pb-[30px] xl:pb-[50px] 2xl:pb-[70px] 3xl:pb-[100px]">
       <div className="max-w-[var(--container-x)] lg:max-w-[calc(100%-(100%-var(--container-x))/2)] mx-auto lg:mr-[0] px-[var(--container-padding,1rem)] lg:pr-[0]">
-        <h1 className="text-title1 font-medium sm:font-normal text-[#1E1E1E] mb-[20px] sm:mb-[30px] 2xl:mb-[50px]">
+        {/* <h1 className="text-title1 font-medium sm:font-normal text-[#1E1E1E] mb-[20px] sm:mb-[30px] 2xl:mb-[50px]">
           Our Approach <br className="hidden sm:block"></br>
           <span className="text-base2 font-bold">Proposition</span>
-        </h1>
+        </h1> */}
+        <h1 className="text-title1 font-medium sm:font-normal text-[#1E1E1E] mb-[20px] sm:mb-[30px] 2xl:mb-[50px] [&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: title ? title : "Our Approach <br></br> <span>Proposition</span>" }} />
+
         <div className="w-full">
           <Swiper
             modules={[Autoplay]}
@@ -59,7 +61,7 @@ export default function OurValues() {
             }}
             className="!pb-[15px] !lg:pb-[20px] !xl:pb-[30px]"
           >
-            {slides?.map((item, index) => (
+            {propositions?.map((item, index) => (
               <SwiperSlide
                 key={index}
                 className={`${index % 2 === 0 ? "even-slide-gradient" : ""}`}
@@ -79,8 +81,8 @@ export function ValueBox({ item }) {
       <div className="flex items-center mb-[20px]">
         <div className="group w-[39px] sm:w-[35px] 2xl:w-[45px] h-[40px] 2xl:h-[50px]">
           <Image
-            src={item.image}
-            alt={item.alt}
+            src={item.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/apprch01.svg"}
+            alt={item.alt ? item.alt : "value-1"}
             width={45}
             height={50}
             className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"
