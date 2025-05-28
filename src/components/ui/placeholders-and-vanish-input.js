@@ -90,7 +90,7 @@ export function PlaceholdersAndVanishInput({
             }
         }
 
-        newDataRef.current = newData.map(({ x, y, color }) => ({
+        newDataRef.current = newData?.map(({ x, y, color }) => ({
             x,
             y,
             r: 1,

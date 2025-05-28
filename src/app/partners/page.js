@@ -19,5 +19,9 @@ async function fetchPartnersData() {
 export default async function Partners() {
   const { data, partners, error } = await fetchPartnersData();
 
+  if (!data || !partners) {
+    return <div>Failed to fetch partners data</div>;
+  }
+
   return <PartnersSection content={data} partners={partners} initialError={error} />;
 }

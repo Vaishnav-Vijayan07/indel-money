@@ -87,7 +87,7 @@ export default function Gallery() {
         onMouseLeave={() => setHovered(false)}
       >
         <div className="relative w-full h-full">
-          {item.images.map((img, index) => (
+          {item.images?.map((img, index) => (
             <Image
               key={index}
               src={img}
@@ -161,14 +161,14 @@ export default function Gallery() {
                     className={`${gallClass} w-full lg:w-1/2 mb-2 h-[400px] md:h-[468px] xl:h-[545px] 2xl:h-[640px] 3xl:h-[815px] flex flex-wrap`}
                   >
                     <div className="flex flex-wrap w-full p-2 h-[40%] md:h-[50%] xl:h-[42%]">
-                      {group.slice(0, 1).map((item, i) => (
+                      {group.slice(0, 1)?.map((item, i) => (
                         <div key={i} className="w-full mb-4 h-full">
                           <GalleryItem item={item} width={800} height={335} />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-wrap w-full h-[60%] md:h-[50%] xl:h-[58%]">
-                      {group.slice(1, 3).map((item, i) => (
+                      {group.slice(1, 3)?.map((item, i) => (
                         <div key={i} className="w-1/2 p-2 h-full">
                           <GalleryItem item={item} width={380} height={445} />
                         </div>
@@ -215,14 +215,14 @@ export default function Gallery() {
                     className={`${gallClass} w-full lg:w-1/2 mb-6 h-[815px] flex flex-wrap`}
                   >
                     <div className="flex flex-wrap w-full p-2 h-[42%]">
-                      {group.slice(0, 1).map((item, i) => (
+                      {group.slice(0, 1)?.map((item, i) => (
                         <div key={i} className="w-full mb-4 h-full">
                           <GalleryItem item={item} width={800} height={335} />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-wrap w-full h-[58%]">
-                      {group.slice(1, 3).map((item, i) => (
+                      {group.slice(1, 3)?.map((item, i) => (
                         <div key={i} className="w-1/2 p-2 h-full">
                           <GalleryItem item={item} width={380} height={445} />
                         </div>
@@ -269,14 +269,14 @@ export default function Gallery() {
                     className={`${gallClass} w-full lg:w-1/2 mb-6 h-[815px] flex flex-wrap`}
                   >
                     <div className="flex flex-wrap w-full p-2 h-[42%]">
-                      {group.slice(0, 1).map((item, i) => (
+                      {group.slice(0, 1)?.map((item, i) => (
                         <div key={i} className="w-full mb-4 h-full">
                           <GalleryItem item={item} width={800} height={335} />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-wrap w-full h-[58%]">
-                      {group.slice(1, 3).map((item, i) => (
+                      {group.slice(1, 3)?.map((item, i) => (
                         <div key={i} className="w-1/2 p-2 h-full">
                           <GalleryItem item={item} width={380} height={445} />
                         </div>

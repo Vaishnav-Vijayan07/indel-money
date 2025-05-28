@@ -50,7 +50,7 @@ function FaqAccordion({ items }) {
       defaultValue="item-1"
       className="w-full"
     >
-      {items.map((item) => (
+      {items?.map((item) => (
         <AccordionItem
           key={item.id}
           value={`item-${item.id}`}

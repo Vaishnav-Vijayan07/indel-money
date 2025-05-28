@@ -24,6 +24,10 @@ async function fetchContactsData() {
 export default async function Contact() {
   const { contents, faqs, officeContacts } = await fetchContactsData();
 
+  if (!contents || !faqs || !officeContacts) {
+    return <div>Failed to fetch contact data</div>;
+  }
+
   return (
     <>
       <ContactBanner trollFreeNum={contents?.troll_free_num} contactTitle={contents?.title} contactDesc={contents?.description} />

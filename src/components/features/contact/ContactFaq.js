@@ -62,7 +62,7 @@ export default function ContactFaq({ faqs, officeContacts, faqTitle, faqSuperTit
             </div>
             <div
               className="text-title1 mb-[15px] lg:mb-[20px] 2xl:mb-[25px] [&>span]:text-base2 [&>span]:font-bold"
-              dangerouslySetInnerHTML={{ __html: faqSuperTitle }}
+              dangerouslySetInnerHTML={{ __html: faqSuperTitle ? faqSuperTitle : "" }}
             />
             <FaqAccordion items={faqs} />
           </div>

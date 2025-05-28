@@ -86,7 +86,7 @@ export default function FAQ({ faqs }) {
                 </div>
               </div>
 
-              {faqs.map((faq, index) => (
+              {faqs?.map((faq, index) => (
                 <div
                   key={index}
                   className="border-b border-[rgba(0,0,0,0.26)] 2xl:pt-[15px] pt-[10px] pb-[5px] 2xl:pb-[10px]"

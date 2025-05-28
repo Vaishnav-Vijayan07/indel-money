@@ -19,6 +19,10 @@ async function fetchManagementData() {
 export default async function ManagementTeamPage() {
   const { data, error } = await fetchManagementData();
 
+  if (!data) {
+    return <div>Failed to fetch management data</div>;
+  }
+
   return (
     <>
       <ManagementTeam pageContent={data?.content} teams={data?.teams} />

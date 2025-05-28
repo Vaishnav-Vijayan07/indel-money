@@ -194,7 +194,7 @@ function MapController({ selectedBranch }) {
 
   return (
     <>
-      {branchLocations.map((branch) => (
+      {branchLocations?.map((branch) => (
         <Marker
           key={branch.id}
           position={branch.coordinates}
@@ -307,7 +307,7 @@ export default function BranchLocationMap() {
           20 Branches Near You
         </h2>
         <div className="max-sm:p-[20px] overflow-y-auto max-h-[280px] sm:max-h-[calc(100%-49px)] lg:max-h-[calc(100%-49px)] 2xl:max-h-[calc(100%-65px)]">
-          {branchLocations.map((branch) => (
+          {branchLocations?.map((branch) => (
             <div
               key={branch.id}
               className={`max-sm:bg-[#7E94BC]/50 max-sm:rounded-[10px] max-sm:mb-[12px] last:mb-0 p-[15px_10px] sm:p-[10px_10px] lg:p-[20px_15px] 2xl:p-[20px_30px] cursor-pointer sm:border-b-[1px] border-solid border-white/10 loclist ${

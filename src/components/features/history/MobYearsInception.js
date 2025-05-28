@@ -109,7 +109,7 @@ export default function MobYearsInception() {
                   className="h-[400px]"
                   onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                 >
-                  {slides.map((item, index) => (
+                  {slides?.map((item, index) => (
                     <SwiperSlide key={index}>
                       <div className="flex flex-wrap h-full">
                         <div className="w-[30px] 4xs:w-[40px] relative h-full">

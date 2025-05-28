@@ -41,7 +41,7 @@ export default function ServiceBanner({ bannerIcons, title, announcement_text, g
             </h1> */}
             <h1
               className="text-[32px] sm:text-[32px] md:text-[40px] lg:text-[44px] xl:text-[60px] 2xl:text-[84px] 3xl:text-[96px] font-normal leading-none text-white mb-[10px] lg:mb-[15px] [&>span]:text-base2 [&>span]:font-bold"
-              dangerouslySetInnerHTML={{ __html: title }}
+              dangerouslySetInnerHTML={{ __html: title ? title : "" }}
             />
 
             <PageBreadcrumb variant="white" />

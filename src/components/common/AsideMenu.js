@@ -74,7 +74,7 @@ export default function AsideMenu({ navigationItems }) {
 
               {item.sub_menu && openMenuIndex === item.id && (
                 <ul className="submenu pl-4 lg:pl-6 xl:pl-8">
-                  {item.sub_menu.map((subItem, subIndex) => {
+                  {item.sub_menu?.map((subItem, subIndex) => {
                     return (
                       <li key={subItem.id} className="submenu-item">
                         <Link

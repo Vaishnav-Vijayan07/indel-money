@@ -88,7 +88,7 @@ export default function MobGoldLoanScheme() {
           Scheme
         </div>
         <div className="flex flex-wrap gap-[4px] 4xs:gap-[8px] xs:gap-[10px]">
-          {loanTypes.map((item, index) => (
+          {loanTypes?.map((item, index) => (
             <div key={index}>
               <div
                 className={`${

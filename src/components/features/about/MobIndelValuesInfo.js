@@ -50,7 +50,7 @@ export default function MobIndelValuesInfo() {
     <section className="w-full py-[0_30px]">
       <div className="container">
         <div className="flex flex-wrap -mx-[2px] 4xs:-mx-[6px]">
-          {data.map((item) => (
+          {data?.map((item) => (
             <div key={item.id} className="w-1/3 p-[2px] 4xs:p-[6px]">
               <div className="w-full h-full bg-white rounded-[10px] overflow-hidden shadow-[0_0_50px_0_rgba(0,0,0,0.10)] block p-[5px] 4xs:p-[10px]">
                 <div>

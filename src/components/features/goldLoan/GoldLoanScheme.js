@@ -38,7 +38,7 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
                                 1280: { slidesPerView: 6, spaceBetween: 15 },
                             }}
                         >
-                            {schemes.map((type, index) => (
+                            {schemes?.map((type, index) => (
                                 <SwiperSlide key={index}>
                                     <div
                                         className={`w-full h-[40px] 2xl:h-[50px] 3xl:h-[60px] text-[12px] 2xl:text-[18px] 3xl:text-[20px] px-[10px] font-bold flex items-center justify-center rounded-[100px] cursor-pointer transition-all duration-300
@@ -65,10 +65,10 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
                         modules={[Navigation, Thumbs]}
                         className="w-full"
                     >
-                        {schemeDetails.map((detailsArray, idx) => (
+                        {schemeDetails?.map((detailsArray, idx) => (
                             <SwiperSlide key={idx}>
                                 <div className="flex flex-wrap m-[-8px] 3xl:m-[-12px] py-[15px]">
-                                    {detailsArray.map((detail, detailIndex) => (
+                                    {detailsArray?.map((detail, detailIndex) => (
                                         <div className="w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] p-[8px] 3xl:p-[12px]" key={detail.id || detailIndex}>
                                             <div className="w-full h-full shadow-[0_0_10px_rgba(0,0,0,0.20)] text-center rounded-[15px] 3xl:rounded-[25px] overflow-hidden">
                                                 <div className="bg-[#CDE2FF] w-full min-h-[50px] 2xl:min-h-[55px] 3xl:min-h-[73px] flex items-center justify-center text-[12px] 2xl:text-[18px] 3xl:text-[24px] text-[#1F1B1B] font-medium">

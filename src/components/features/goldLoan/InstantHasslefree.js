@@ -80,7 +80,7 @@ export default function InstantHasslefree({ title, description }) {
             </p>
             <div className="w-full bg-white rounded-[24px] p-[20px] 2xl:p-[25px] mt-[10px] lg:mt-[15px] 2xl:mt-[25px]">
               <ul className="flex flex-wrap">
-                {features.map((feature, index) => (
+                {features?.map((feature, index) => (
                   <li
                     key={index}
                     className={`${index % 2 === 0

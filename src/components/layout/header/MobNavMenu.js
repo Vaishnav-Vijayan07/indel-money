@@ -131,7 +131,7 @@ function DropdownMenu({ items }) {
   const pathname = usePathname();
   return (
     <ul className="flex flex-col py-[5px]">
-      {items.map((item, index) => (
+      {items?.map((item, index) => (
         <li key={index}>
           <Link href={item.link}>
             <div

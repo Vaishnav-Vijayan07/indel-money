@@ -25,6 +25,10 @@ export default async function Services() {
 
     const { contents, benfits, products, error } = await fetchData();
 
+    if (!contents || !benfits || !products) {
+        return <div>Failed to data</div>
+    }
+
 
     return (
         <>

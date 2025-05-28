@@ -49,12 +49,12 @@ export default function LifeAtIndel({ pageContent }) {
           >
             <div className="flex flex-wrap">
               <div className="w-4/10">
-                {images.slice(0, 2).map((item, index) => (
+                {images.slice(0, 2)?.map((item, index) => (
                   <ImageBox key={index} item={item} className="h-1/2" />
                 ))}
               </div>
               <div className="w-6/10">
-                {images.slice(2, 3).map((item, index) => (
+                {images.slice(2, 3)?.map((item, index) => (
                   <ImageBox key={index} item={item} className="h-full" />
                 ))}
               </div>
@@ -69,7 +69,7 @@ export default function LifeAtIndel({ pageContent }) {
           >
             <h2
               className="text-title1 [&>span]:text-base2 [&>span]:font-bold"
-              dangerouslySetInnerHTML={{ __html: pageContent?.life_section_title }}
+              dangerouslySetInnerHTML={{ __html: pageContent?.life_section_title ? pageContent?.life_section_title : "" }}
             />
             <div className="text-sm1 line-clamp-4 mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
               {/* {{ Lorem Ipsum is simply dummy text of the printing and typesetting

@@ -71,7 +71,7 @@ const IndelMoneyCarsGallery = () => {
                 loop={true}
                 className="w-full rounded-[20px] md:rounded-[35px]"
             >
-                {slides.map((slide, index) => (
+                {slides?.map((slide, index) => (
                     <SwiperSlide key={index} className="">
                         <div className="relative z-0 w-[90%] h-[380px] md:h-[400px] 2xl:h-[690px] xl:h-[480px] mx-auto overflow-hidden rounded-[20px] md:rounded-[35px]">
                             <div className="group w-full h-full overflow-hidden">

@@ -208,7 +208,7 @@ const TimelineSlide = () => {
                     <div className="md:w-[75px]">
                         <div className="md:w-1/3 relative flex flex-col items-end h-full">
                             <div className="h-full flex flex-col justify-between">
-                                {years.map((year, index) => (
+                                {years?.map((year, index) => (
                                     <div
                                         key={index}
                                         className={`text-sm font-semibold cursor-pointer transition-colors duration-300 ${year === activeYear ? 'text-white' : 'text-blue-300'}`}

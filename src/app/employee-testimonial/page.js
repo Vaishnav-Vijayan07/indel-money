@@ -86,7 +86,7 @@ const TestimonialFilters = ({ activeFilter, onFilterChange }) => {
   ];
   return (
     <div className="flex flex-wrap 2xl:gap-[12px] gap-[8px] max-xl:mt-[20px] justify-center xl:justify-end">
-      {filterOptions.map(({ key, label }) => (
+      {filterOptions?.map(({ key, label }) => (
         <button
           key={key}
           onClick={() => onFilterChange(key)}
@@ -195,7 +195,7 @@ export default function Testimonial() {
         </div>
         <div className="flex flex-wrap -mx-[4px] lg:-mx-[10px] 2xl:-mx-[22px]">
           {filteredTestimonials.length > 0 ? (
-            filteredTestimonials.map((testimonial, index) =>
+            filteredTestimonials?.map((testimonial, index) =>
               testimonial.hasVideo ? (
                 <VideoTestimonialCard
                   key={`video-${testimonial.name}-${index}`}

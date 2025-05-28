@@ -127,7 +127,7 @@ export default function MsmePresence() {
           </div>
           <div className="w-full lg:w-[55%] 2xl:w-[60%] md:px-[15px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]">
             <div className="flex flex-wrap -m-[10px] 2xl:-m-[15px] 3xl:-m-[20px]">
-              {slides.map((item, index) => (
+              {slides?.map((item, index) => (
                 <div
                   key={index}
                   className="w-1/2 4xs:w-1/3 md:w-1/4 p-[10px] 2xl:p-[15px] 3xl:p-[20px]"

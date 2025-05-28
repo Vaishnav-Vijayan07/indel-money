@@ -224,7 +224,7 @@ export default function Footer() {
           </div>
           <div className="w-full lg:w-7/10 py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
             <div className="w-full h-auto columns-2 sm:columns-4">
-              {navigations.map((item, index) => (
+              {navigations?.map((item, index) => (
                 <div
                   key={index}
                   className={`${
@@ -238,7 +238,7 @@ export default function Footer() {
                     <span className="w-4/10 h-[4px] bg-base1"></span>
                     <span className="w-6/10 h-[4px] bg-base2"></span>
                   </div>
-                  {item.links.map((link, linkIndex) => (
+                  {item.links?.map((link, linkIndex) => (
                     <div
                       key={linkIndex}
                       className="w-full mb-[10px] 2xl:mb-[15px]"
@@ -306,7 +306,7 @@ export default function Footer() {
         <div className="w-full h-auto pb-[15px] mb-[15px] border-b-[1px] border-solid border-black/20 flex flex-wrap sm:hidden">
           {navigations
             .find((item) => item.title === "Policies")
-            .links.map((link, linkIndex) => (
+            .links?.map((link, linkIndex) => (
               <div key={linkIndex} className="flex items-center mb-[10px] 2xl:mb-[15px]">
                 <Link
                   href={link.href}

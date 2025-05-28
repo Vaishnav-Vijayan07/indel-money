@@ -43,7 +43,7 @@ export default function DreamsToReality({ initialData, statsData }) {
             transition={{ duration: 0.8 }}
             className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-540px)] 3xl:w-[calc(100%-610px)] lg:pr-[40px] xl:pr-[70px] 2xl:pr-[120px] mb-4"
           >
-            <div className="text-[12px] lg:text-[12px] xl:text-[14px] 3xl:text-[18px] font-medium text-[#1e1e1e] [&>span]:text-base4" dangerouslySetInnerHTML={{ __html: initialData?.about_super_title }} />
+            <div className="text-[12px] lg:text-[12px] xl:text-[14px] 3xl:text-[18px] font-medium text-[#1e1e1e] [&>span]:text-base4" dangerouslySetInnerHTML={{ __html: initialData?.about_super_title ? initialData?.about_super_title : "" }} />
             {/* Welcome to <span className="text-base4 ">INDEL MONEY</span> */}
             <div
               className="text-title1 font-medium mb-[10px] xl:mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold"
@@ -54,7 +54,7 @@ export default function DreamsToReality({ initialData, statsData }) {
               We&apos;re With You Every Step Of The Way. */}
             {/* {initialData?.about_title}
             </div> */}
-            <div className="text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[24px] leading-none font-bold mb-[10px] xl:mb-[15px] 2xl:mb-[20px] text-base1 [&>span]:font-normal [&>span]:text-[#343434]" dangerouslySetInnerHTML={{ __html: initialData?.about_sub_title }}/>
+            <div className="text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[24px] leading-none font-bold mb-[10px] xl:mb-[15px] 2xl:mb-[20px] text-base1 [&>span]:font-normal [&>span]:text-[#343434]" dangerouslySetInnerHTML={{ __html: initialData?.about_sub_title ? initialData?.about_sub_title : "" }}/>
               {/* Indel Money :{" "}
               <span className="font-normal text-[#343434]">Overview</span> */}
 

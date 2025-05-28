@@ -21,7 +21,10 @@ async function fetchHistoryData() {
 export default async function History() {
   const { contents, images, inceptions, error } = await fetchHistoryData();
 
-  console.log(inceptions)
+  if(!contents || !images || !inceptions) {
+    return <div>Failed to fetch history data</div>;
+  }
+
 
   return (
     <>

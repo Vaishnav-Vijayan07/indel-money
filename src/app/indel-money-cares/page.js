@@ -69,7 +69,7 @@ export default function IndelMoneyCars() {
           </h2>
           <div className="flex flex-wrap">
             <div className="md:w-1/2 2xl:pr-[50px] md:pr-[30px] mb-[20px]">
-              {events?.slice(0, 1).map((item, index) => (
+              {events?.slice(0, 1)?.map((item, index) => (
                 <div key={index} className="w-full">
                   <Link
                     href={item?.href || "/"} 
@@ -101,7 +101,7 @@ export default function IndelMoneyCars() {
               ))}
             </div>
             <div className="md:w-1/2">
-              {events.slice(1, 3).map((item, index) => (
+              {events.slice(1, 3)?.map((item, index) => (
                 <div
                   key={index}
                   className="w-full 3xl:mb-[60px] xl:mb-[30px] mb-[20px] last:mb-0"

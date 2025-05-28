@@ -31,6 +31,10 @@ export default async function MsmeLoan() {
 
   const { contents, offerings, faqs, error } = await fetchData();
 
+  if (!contents || !offerings || !faqs) {
+    return <div>Failed to fetch MSME data</div>;
+  }
+
 
   return (
     <>

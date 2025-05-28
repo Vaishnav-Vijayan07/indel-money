@@ -129,7 +129,7 @@ function DropdownMenu({ items }) {
   const pathname = usePathname();
   return (
     <ul className="flex flex-col p-[5px] 3xl:p-[10px] w-[180px] lg:w-[200px] 2xl:w-[240px]">
-      {items.map((item, index) => (
+      {items?.map((item, index) => (
         <li key={index}>
           <Link href={item.link} legacyBehavior passHref>
             <MenubarItem>
@@ -152,7 +152,7 @@ function MegaMenu({ items }) {
   const pathname = usePathname();
   return (
     <ul className="grid md:grid-cols-2 p-[10px] 3xl:p-[15px] w-[360px] lg:w-[420px] 2xl:w-[576px] 3xl:w-[600px]">
-      {items.map((item, index) => (
+      {items?.map((item, index) => (
         <li key={index}>
           <Link href={item.link} legacyBehavior passHref>
             <MenubarItem className="p-0">

@@ -9,7 +9,7 @@ function LinkBox({ href, src, title, alt, items }) {
       </span>
       <p className="text-[14px] sm:text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-bold text-white sm:text-[#1b1b1b] ml-[6px] lg:ml-[10px] 3xl:ml-[14px]">
         {Array.isArray(items) ? (
-          items.map((number, idx) => (
+          items?.map((number, idx) => (
             <span key={`phone-${idx}`}>
               <a href={`tel:${number}`} aria-label={number} className="hover:text-base2 transition-color duration-300">
                 {number}

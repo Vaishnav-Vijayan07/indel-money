@@ -50,7 +50,7 @@ export default function MobAwardHighlightBox({ variant = "default" }) {
                 className="awardSlide !pb-[60px]"
                 onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             >
-                {slides.map((item, index) => (
+                {slides?.map((item, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full flex flex-wrap flex-col">
                             <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-276px)] 3xl:w-[calc(100%-376px)] 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">

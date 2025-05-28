@@ -23,7 +23,7 @@ export default function Sidebar() {
     return (
         <aside className="w-full md:bg-[#B7D0FF] md:rounded-[25px] overflow-hidden h-full">
             <ul className="py-[15px] sm:py-[25px] 3xl:py-[30px] md:block flex flex-wrap sm:m-0 -m-[5px]">
-                {menuItems.map((item, index) => {
+                {menuItems?.map((item, index) => {
                     const isActive = pathname === item.link;  
                     return (
                         <li key={index} className="group md:p-0 p-[5px] md:w-full w-fit md:min-w-full ">

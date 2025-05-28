@@ -51,7 +51,7 @@ export default function LifeIndelSlider() {
       pagination={{ clickable: true }}
       className="lifeSlide"
     >
-      {slides.map((item, index) => (
+      {slides?.map((item, index) => (
         <SwiperSlide key={index}>
           <Link
             href={item.href}

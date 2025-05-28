@@ -106,7 +106,7 @@ export default function CsrInfo() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {Plan.map((Plan, index) => (
+                                        {Plan?.map((Plan, index) => (
                                             <tr key={index} className="bg-[#E7EFF6] border-t border-[#E5F0FA]">
                                                 <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">{Plan.Year}</td>
                                                 <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">
@@ -150,7 +150,7 @@ export default function CsrInfo() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {Plan.map((Plan, index) => (
+                                        {Plan?.map((Plan, index) => (
                                             <tr key={index} className="bg-[#E7EFF6] border-t border-[#E5F0FA]">
                                                 <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">{Plan.Year}</td>
                                                 <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-normal sm:whitespace-nowrap">

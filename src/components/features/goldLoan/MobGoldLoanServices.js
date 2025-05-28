@@ -59,7 +59,7 @@ export default function MobGoldLoanServices() {
             className=""
           >
             <>
-              {goldloanServices.map((item, index) => (
+              {goldloanServices?.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div className="w-full h-[160px] block bg-[#d4e6ff] p-[20px] rounded-[16px]">
                     <div className="flex items-center mb-[15px]">

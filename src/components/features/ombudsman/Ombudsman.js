@@ -42,7 +42,7 @@ export default function Ombudsman() {
 
                 <div className="w-full relative">
                     <div className="grid grid-cols-1 4xs:grid-cols-2 md:grid-cols-3 gap-2 xl:gap-4 3xl:gap-6">
-                        {schemes.map((scheme, index) => (
+                        {schemes?.map((scheme, index) => (
                             <div
                                 key={index}
                                 className="flex flex-wrap sm:flex-nowrap items-center justify-between py-[10px] sm:py-[25px] px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] min-h-[75px] sm:min-h-[85px] 2xl:min-h-[100px] 3xl:min-h-[140px] rounded-2xl bg-gradient-to-r from-[rgba(23,71,158,0.40)] to-[rgba(238,56,36,0.40)]"

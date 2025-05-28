@@ -37,7 +37,7 @@ function PartnersSection({ content, initialError, partners }) {
             <div className="hidden sm:block">
               <aside className="w-full h-full bg-base3 py-[10px] lg:py-[15px] 2xl:py-[20px] 3xl:py-[25px] rounded-[10px] lg:rounded-[15px] 2xl:rounded-[20px] 3xl:rounded-[24px]">
                 <ol>
-                  {navigationItems.map((navItem, index) => (
+                  {navigationItems?.map((navItem, index) => (
                     <li key={index} onClick={() => handleClick(navItem?.href)} className="w-full h-auto relative z-0 cursor-pointer">
                       <div
                         className={`${
@@ -69,7 +69,7 @@ function PartnersSection({ content, initialError, partners }) {
 
               <aside className="w-full h-auto bg-base3 p-[15px_10px] rounded-[20px]">
                 <ol className="flex flex-wrap -mx-[2px]">
-                  {navigationItems.map((navItem, index) => (
+                  {navigationItems?.map((navItem, index) => (
                     <li key={index} onClick={() => handleClick(navItem.href)} className="p-[2px_2px] 4xs:p-[4px_2px]">
                       <div className="w-full h-auto relative z-0">
                         <div
@@ -109,7 +109,7 @@ function PartnersSection({ content, initialError, partners }) {
             {/* Items for Active Tab */}
             <div className="flex flex-wrap -mx-[2px] 4xs:-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
               {activePartners?.length > 0 ? (
-                activePartners.map((item, index) => (
+                activePartners?.map((item, index) => (
                   <div key={index} className="w-1/4 sm:w-1/3 md:w-1/4 p-[4px_2px] 4xs:p-[6px_4px] lg:p-[10px_6px] 2xl:p-[15px_10px]">
                     <PartnerLogo image={item?.image} name={item?.name} />
                   </div>

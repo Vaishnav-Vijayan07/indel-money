@@ -64,7 +64,7 @@ const GallSliderBx = ({ item }) => {
       onMouseLeave={() => setHovered(false)}
     >
       <div className="relative w-full h-full">
-        {item.images.map((img, index) => (
+        {item.images?.map((img, index) => (
           <Image
             key={index}
             src={img}

@@ -36,6 +36,10 @@ async function fetchGoldLoanData() {
 export default async function GoldLoan() {
   const { contents, bannerIcons, schemes, faqs, features, error } = await fetchGoldLoanData();
 
+  if (!contents || !bannerIcons || !schemes || !faqs || !features) {
+    return <div>Failed to fetch Gold Loan data</div>;
+  }
+
 
   return (
     <>

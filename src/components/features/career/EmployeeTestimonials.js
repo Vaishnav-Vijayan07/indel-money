@@ -267,7 +267,7 @@ export default function EmployeeTestimonials() {
                 <div className={`${stylesBox} bg-[#ffb1b1]`}></div>
               </div>
 
-              {employeeTestimonials?.slice(0, 7).map((item, index) => (
+              {employeeTestimonials?.slice(0, 7)?.map((item, index) => (
                 <div
                   key={index}
                   className={`group w-[40px] 4xs:w-[50px] sm:w-[40px] lg:w-[60px] 2xl:w-[80px] 3xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[2px] lg:border-[3px] 2xl:border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 

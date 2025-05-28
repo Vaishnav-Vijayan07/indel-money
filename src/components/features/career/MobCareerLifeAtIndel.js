@@ -124,7 +124,7 @@ export default function MobCareerLifeAtIndel() {
                         loop={true}
                         className="mobCareerSlider w-full"
                     >
-                        {careerLifeAtIndelImages.map((item) => (
+                        {careerLifeAtIndelImages?.map((item) => (
                             <SwiperSlide key={item.id}>
                                 <div className="p-[4px] lg:p-[6px] 2xl:p-[10px]">
                                     <ImageBox

@@ -43,7 +43,7 @@ export default function StockExchange() {
     <section>
       <div className="sm:hidden block">
         <Swiper slidesPerView="auto" spaceBetween={10} freeMode={true} modules={[FreeMode]} className="mb-4 px-2">
-          {years.map((year) => (
+          {years?.map((year) => (
             <SwiperSlide key={year} className="!w-auto">
               <button
                 onClick={() => {
@@ -62,7 +62,7 @@ export default function StockExchange() {
         </Swiper>
       </div>
       <div className="hidden sm:flex space-x-2 mb-4">
-        {years.map((year) => (
+        {years?.map((year) => (
           <button
             key={year}
             onClick={() => {
@@ -80,7 +80,7 @@ export default function StockExchange() {
       </div>
 
       <Accordion type="single" collapsible value={openAccordion}>
-        {years.map((year) => (
+        {years?.map((year) => (
           <AccordionItem key={year} value={year} className="border-0">
             <AccordionTrigger className="hidden border-0">{year}</AccordionTrigger>
             <AccordionContent>
@@ -105,7 +105,7 @@ export default function StockExchange() {
                       </tr>
                     </thead>
                     <tbody>
-                      {stocksData.map((stock, index) => (
+                      {stocksData?.map((stock, index) => (
                         <tr key={index} className="bg-[#E7EFF6] border-t border-[#E5F0FA]">
                           <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px]  3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">
                             {stock.Date}
@@ -172,7 +172,7 @@ export default function StockExchange() {
                       </tr>
                     </thead>
                     <tbody>
-                      {IntimationsData.map((intimation, index) => (
+                      {IntimationsData?.map((intimation, index) => (
                         <tr key={index} className="bg-[#E7EFF6] border-t border-[#E5F0FA]">
                           <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] font-medium pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">
                             {intimation.month}

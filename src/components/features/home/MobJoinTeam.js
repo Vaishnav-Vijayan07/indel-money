@@ -149,7 +149,7 @@ export default function MobJoinTeam() {
               "--swiper-pagination-color": "#17479E",
             }}
           >
-            {awards.map((item, index) => (
+            {awards?.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="w-full block">
                   <div className="text-[14px] text-[#1e1e1e] font-normal text-center mb-[15px] @sm:mb-[20px]">

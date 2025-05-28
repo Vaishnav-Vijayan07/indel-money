@@ -120,7 +120,7 @@ export default async function Blog({ searchParams }) {
           </div>
           <div className="flex flex-wrap -mx-[4px] lg:-mx-[15px] sm:border-b sm:border-b-[rgb(0,0,0,18%)] 2xl:-mx-[35px] sm:pb-[20px] 2xl:pb-[50px] 2xl:mb-[40px] sm:mb-[20px]">
             {blogs?.length > 0 ? (
-              blogs.map((item, index) => <BlogItem index={index} key={item.id || index} item={item} />)
+              blogs?.map((item, index) => <BlogItem index={index} key={item.id || index} item={item} />)
             ) : (
               <p>No blogs available.</p>
             )}

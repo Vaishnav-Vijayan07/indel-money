@@ -75,7 +75,7 @@ export default function LoanSlider() {
       }}
       className="LoanSlider !pb-[25px] !sm:pb-[20px] !lg:pb-[20px] !xl:pb-[30px]"
     >
-      {slides.map((item, index) => (
+      {slides?.map((item, index) => (
         <SwiperSlide key={index}>
           <LoanCardBx item={item} />
         </SwiperSlide>

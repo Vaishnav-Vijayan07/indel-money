@@ -90,7 +90,7 @@ export default function contact() {
                         <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">Investors Contact</div>
 
                         <div className="flex flex-wrap w-full sm:m-[-8px] 2xl:m-[-15px] 3xl:m-[-20px]">
-                            {contactDetails.map((contact, index) => (
+                            {contactDetails?.map((contact, index) => (
                                 <div key={index} className="w-full sm:w-[calc(100%/2)] p-[8px_0px] sm:p-[8px] 2xl:p-[-15px] 3xl:p-[20px]">
                                     <div className="w-full h-full bg-[linear-gradient(90deg,rgba(23,71,158,0.4)_0%,rgba(238,56,36,0.4)_100%)]  sm:bg-[linear-gradient(90deg,_#E5ECF5_0%,_#E5ECF5_100%)] px-[25px] py-[15px] 3xl:px-[35px] 3xl:py-[25px] rounded-[16px]">
                                         <div className="border-b border-dashed border-[#17479E]">

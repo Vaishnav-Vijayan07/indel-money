@@ -147,7 +147,7 @@ export default function CardSlider() {
         modules={[EffectCoverflow, Navigation]}
         className="w-full max-w-full CardSlider"
       >
-        {slides.map((slide, index) => (
+        {slides?.map((slide, index) => (
           <SwiperSlide
             key={index}
             className="w-full h-full not-[:where(.swiper-slide-visible)]:opacity-0 not-[:has(.swiper-slide-active)]:[.SwiprCntn]:opacity-0"

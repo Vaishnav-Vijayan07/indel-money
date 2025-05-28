@@ -24,6 +24,10 @@ export default async function IndelValues() {
 
   const { contents, values, propositions, error } = await fetchData();
 
+  if (!contents || !values || !propositions) {
+    return <div>Failed to fetch Indel Values data</div>;
+  }
+
   return (
     <>
       <div className="hidden sm:block">

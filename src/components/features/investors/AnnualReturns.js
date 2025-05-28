@@ -23,7 +23,7 @@ export default function AnnualReturns() {
 
 
                     <tbody>
-                        {reports.map((report, index) => (
+                        {reports?.map((report, index) => (
                             <tr key={index} className="sm:bg-[#D7E9FF] sm:border-t sm:border-[#E5F0FA]">
                                 <td className="text-[13px] sm:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] sm:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] w-[50%] sm:w-[65%]">{report.year}</td>
                                 <td className="text-[13px] sm:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] sm:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px]">

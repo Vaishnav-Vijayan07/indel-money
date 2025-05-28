@@ -111,7 +111,7 @@ export default function CareerLifeAtIndel() {
                         <div className="flex flex-wrap -mx-[4px] lg:mx-0 lg:-my-[6px] 2xl:-my-[10px]">
                             {/* First div: items 0,1 */}
                             <div className="w-[30%]">
-                                {careerLifeAtIndelImages?.slice(0, 2).map((item, index) => (
+                                {careerLifeAtIndelImages?.slice(0, 2)?.map((item, index) => (
                                     <div
                                         key={item.id}
                                         className="w-full h-[176px] lg:h-[220px] 2xl:h-[240px] 3xl:h-[320px] [&:nth-child(2)]:h-[180px] lg:[&:nth-child(2)]:h-[240px] 2xl:[&:nth-child(2)]:h-[320px] 3xl:[&:nth-child(2)]:h-[360px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
@@ -123,7 +123,7 @@ export default function CareerLifeAtIndel() {
 
                             {/* Second div: items 2,3 */}
                             <div className="w-[35%]">
-                                {careerLifeAtIndelImages?.slice(2, 4).map((item, index) => (
+                                {careerLifeAtIndelImages?.slice(2, 4)?.map((item, index) => (
                                     <div
                                         key={item.id}
                                         className="w-full h-[135px] lg:h-[160px] 2xl:h-[200px] 3xl:h-[240px] [&:nth-child(2)]:h-[220px] lg:[&:nth-child(2)]:h-[300px] 2xl:[&:nth-child(2)]:h-[360px] 3xl:[&:nth-child(2)]:h-[440px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
@@ -146,7 +146,7 @@ export default function CareerLifeAtIndel() {
                             )}
 
                             {/* Items > 4: separate divs */}
-                            {careerLifeAtIndelImages?.slice(5).map((item) => (
+                            {careerLifeAtIndelImages?.slice(5)?.map((item) => (
                                 <div key={item.id} className="w-[25%]">
                                     <div className="w-full h-[120px] lg:h-[180px] 2xl:h-[200px] 3xl:h-[240px] p-[4px] lg:p-[6px] 2xl:p-[10px]">
                                         <ImageBox item={item} />

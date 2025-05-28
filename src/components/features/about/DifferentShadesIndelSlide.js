@@ -154,7 +154,7 @@ function ShadeIndelBox({ item, isActive }) {
               `}
     >
       <Image
-        src={item?.banner_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.banner_image}` : slides[0].src}
+        src={item?.banner_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.banner_image}` : "/images/shadeIndel-disc-1.png"}
         alt={item?.title}
         fill
         sizes="660px"
@@ -210,7 +210,7 @@ export default function DifferentShadesIndelSlide({ shades }) {
         <div className="w-full mt-[20px] sm:mt-[40px] lg:mt-[60px] 2xl:mt-[80px] 3xl:mt-[80px] [&_p]:text-sm1 [&_p]:mb-[10px] sm:[&_p]:mb-[15px] lg:[&_p]:mb-[20px] [&_img]:mb-[10px] sm:[&_img]:mb-[15px] lg:[&_img]:mb-[20px]">
 
           <Image
-            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${shades[activeIndex]?.brand_icon}`}
+            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${shades[activeIndex]?.brand_icon}` ||  "/images/shadeIndel-disc-1.png"}
             alt={"Indel Technology"}
             width={260}
             height={100}

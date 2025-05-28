@@ -68,7 +68,7 @@ export default function AwardHighlightBox({ variant = "default" }) {
         pagination={{ clickable: true }}
         className={"awardSlide"}
       >
-        {slides.map((item, index) => (
+        {slides?.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
               <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-276px)] 3xl:w-[calc(100%-376px)] 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">

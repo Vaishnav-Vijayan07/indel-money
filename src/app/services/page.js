@@ -23,6 +23,10 @@ async function fetchManagementData() {
 export default async function Services() {
   const { serviceContent, services, error } = await fetchManagementData();
 
+  if (!serviceContent || !services) {
+    return <div>Failed to fetch about data</div>
+  }
+
   return (
     <div className="relative">
       <div className="absolute bottom-[7%] left-0 w-full h-[65%] md:h-[55%] xl:h-[59%] bg-gradient-to-r from-[rgba(243,0,0,0)] to-[rgba(235,2,8,0.10)] z-0 sm:block hidden"></div>
@@ -42,7 +46,7 @@ export default async function Services() {
         remit_section_title={serviceContent?.remit_section_title}
         image={serviceContent?.image}
         remit_section_button_link={serviceContent?.remit_section_button_link}
-        remit_section_button_title = {serviceContent?.remit_section_button_title}
+        remit_section_button_title={serviceContent?.remit_section_button_title}
       />
     </div>
   );

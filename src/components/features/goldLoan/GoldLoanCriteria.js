@@ -14,7 +14,7 @@ export default function GoldLoanCriteria({ title, description, identityProof, ad
             <div className="lg:pr-[60px]">
               <div
                 className="text-black text-title1 font-normal mb-[20px] 2xlmb-[30px] 3xl:mb-[40px] [&>span]:text-base2 [&>span]:font-bold"
-                dangerouslySetInnerHTML={{ __html: title }}
+                dangerouslySetInnerHTML={{ __html: title ? title : "" }}
               />
               <div className="mb-[10px]">
                 <div className={titleStyle}>Eligibility</div>
@@ -30,7 +30,7 @@ export default function GoldLoanCriteria({ title, description, identityProof, ad
                     <div className={titleStyle2}>{identityProofTitle ? identityProofTitle : "Identity Proof:"}</div>
                     <ul>
                       {identityProof ? (
-                        identityProof.split(",").map((item, index) => (
+                        identityProof.split(",")?.map((item, index) => (
                           <li key={index} className={listStyle}>
                             {item.trim()}
                           </li>
@@ -52,7 +52,7 @@ export default function GoldLoanCriteria({ title, description, identityProof, ad
                     <div className={titleStyle2}>{addressProofTitle ? addressProofTitle : "Address Proof:"}</div>
                     <ul>
                       {addressProof ? (
-                        addressProof.split(",").map((item, index) => (
+                        addressProof.split(",")?.map((item, index) => (
                           <li key={index} className={listStyle}>
                             {item.trim()}
                           </li>

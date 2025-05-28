@@ -25,7 +25,7 @@ export default function AboutMessage({ messages }) {
   return (
     <section className="py-[80px]">
       <div className="container">
-        {messages.map((item, index) => (
+        {messages?.map((item, index) => (
           <div
             key={index}
             className={`flex flex-wrap w-full h-full rounded-[30px] overflow-hidden mb-[30px]
@@ -54,7 +54,7 @@ export default function AboutMessage({ messages }) {
                 index % 2 === 0 ? "3xl:pl-[60px] 2xl:pl-[50px] pl-[30px]" : "3xl:pr-[60px] 2xl:pr-[50px] pr-[30px] text-right"
               } 3xl:py-[50px] py-[30px]`}
             >
-              <div className="text-title1 mb-[25px]" dangerouslySetInnerHTML={{ __html: item.title }}></div>
+              <div className="text-title1 mb-[25px]" dangerouslySetInnerHTML={{ __html: item.title ? item.title : "" }}></div>
               <p>{item.description}</p>
               <div className="mt-[30px]">
                 <div className="text-[16px] xl:text-[18px] 3xl:text-[24px] text-[#0B0B0B] font-medium mb-[5px]">{item.full_name}</div>

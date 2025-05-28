@@ -17,7 +17,7 @@ export default function Annualreport() {
         <section className="pb-[25px] 3xl:pb-[50px]">
             <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">Annual Report</div>
             <div className="grid grid-cols-2 md:grid-cols-2 gap-2 xl:gap-4 3xl:gap-6">
-                {reports.map((report, index) => (
+                {reports?.map((report, index) => (
                     <div
                         key={index}
                         className="flex items-center flex-wrap justify-between py-[10px] 4xs:py-[15px] sm:py-[25px] px-[10px] 4xs:px-[12px] sm:px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] rounded-2xl bg-gradient-to-r from-blue-300 to-red-300 shadow-md">

@@ -38,7 +38,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
               className="text-title1 w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-668px)] xl:pr-[20px] 2xl:pr-[60px] 3xl:pr-[80px]  [&>span]:text-base2 [&>span]:font-bold"
-              dangerouslySetInnerHTML={{ __html: pageContent?.branch_section_title }}
+              dangerouslySetInnerHTML={{ __html: pageContent?.branch_section_title  ? pageContent?.branch_section_title : "" }}
             />
             {/* Discover Gold Loan Options Near You with Our{" "} */}
             {/* {pageContent?.branch_section_title} */}

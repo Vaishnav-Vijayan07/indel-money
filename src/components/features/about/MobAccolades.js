@@ -62,7 +62,7 @@ export default function MobAccolades({ accolades }) {
                 <div className="w-full 4xs:w-[calc(100%-135px)] pr-[10px] 4xs:pr-[20px] mb-[15px] 4xs:mb-0">
                   <div
                     className="text-[18px] leading-[1.2] font-normal text-[#1e1e1e] mb-[15px] [&>span]:text-base2 [&>span]:font-bold"
-                    dangerouslySetInnerHTML={{ __html: item.title }}
+                    dangerouslySetInnerHTML={{ __html: item.title ? item.title : "" }}
                   />
 
                   <div className="text-[12px] leading-[1.3] font-normal text-black">{item.description}</div>

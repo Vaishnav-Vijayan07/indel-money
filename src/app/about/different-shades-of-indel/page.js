@@ -24,6 +24,10 @@ export default async function DifferentShadesIndel() {
 
   const { contents, values, error } = await fetchData();
 
+  if (!contents || !values) {
+    return <div>Failed to fetch Different Shades of Indel data</div>;
+  }
+
   return (
     <>
       <DifferentShadesIndelBanner title={contents?.page_title} />

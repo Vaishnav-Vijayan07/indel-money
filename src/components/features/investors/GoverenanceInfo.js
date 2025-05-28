@@ -50,7 +50,7 @@ export default function GoverenanceInfo() {
                         </div>
 
                         <div className="grid grid-cols-1 4xs:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-2 xl:gap-4 3xl:gap-6">
-                            {pdfItems.map((item, index) => (
+                            {pdfItems?.map((item, index) => (
                                 <div
                                     key={index}
                                     className="py-[15px] sm:py-[25px] px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] rounded-2xl bg-gradient-to-r from-[rgba(23,71,158,0.40)] to-[rgba(238,56,36,0.40)] shadow-md min-h-[100px] 2xl:min-h-[120px] 3xl:min-h-[150px]"

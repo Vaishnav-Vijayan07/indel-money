@@ -35,6 +35,10 @@ async function fetchAboutData() {
 export default async function About() {
   const { data, error } = await fetchAboutData();
 
+  if(!data) {
+    return <div>Failed to fetch about data</div>
+  }
+
   return (
     <>
       {/* Banner section */}
