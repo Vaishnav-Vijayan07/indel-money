@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import LatestUpdatesSlide from "@/components/common/LatestUpdatesSlide";
+import LatestUpdatesSlide from "../../common/LatestUpdatesSlide";
 
 
 

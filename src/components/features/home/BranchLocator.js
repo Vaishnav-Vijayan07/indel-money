@@ -1,5 +1,6 @@
-import BranchForm from '@/components/common/BranchForm';
-import BranchLocationMap from '@/components/common/BranchLocationMap';
+import SearchForm from "../../common/BranchForm";
+import BranchLocationMap from "../../common/BranchLocationMap";
+
 
 export default function BranchLocator() {
   return (
@@ -21,7 +22,7 @@ export default function BranchLocator() {
       </div>
       <div className='SearchForm'>
         <div className='container'>
-          <BranchForm />
+          <SearchForm />
         </div>
       </div>
       <div className="BranchMap pb-[45px]xl:pb-[60px] 2xl:pb-[90px] relative z-0 before:content-[''] before:block before:w-full before:h-[calc(100%-95px)] before:bg-gradient-to-r before:from-[rgba(243,0,0,0)] before:to-[rgba(235,2,8,0.10)] before:absolute before:bottom-0 before:left-0 before:-z-1 before:pointer-events-none before:rotate-180">

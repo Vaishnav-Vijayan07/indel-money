@@ -9,9 +9,9 @@ import {
     SelectLabel,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
+} from "../ui/select";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 
 export default function SearchForm() {
 

@@ -1,5 +1,5 @@
 import React from "react";
-import HeroBanner from "@/components/features/home/HeroBanner";
+import HeroBanner from "../components/features/home/HeroBanner";
 import DreamsToReality from "../components/features/home/DreamsToReality";
 import GoldLoanCalculator from "../components/features/home/GoldLoanCalculator";
 import LifeAtIndel from "../components/features/home/LifeAtIndel";
