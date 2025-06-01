@@ -6,13 +6,18 @@ import FindJob from "@/components/features/career/FindJob";
 import MakeYourMove from "@/components/features/career/MakeYourMove";
 import BenefitsEmployee from "@/components/features/career/BenefitsEmployee";
 import MobBenefitsEmployee from "@/components/features/career/MobBenefitsEmployee";
+import { fetchData } from "@/lib/fetchCalls/fetchCareerPageData";
 
-export default function Career() {
+export default async function Career() {
+
+  const { contents, banners, benefits, awards, testimonials, states, jobs, error } = await fetchData()
+
+
   return (
     <div className="w-full h-auto bg-linear-to-b from-base1/10 to-base2/10">
-      <CareerBanner />
-      <FindJob />
-      <MakeYourMove />
+      <CareerBanner banners={banners} />
+      <FindJob states={states} jobs={jobs} find_job_title={contents.find_job_title} find_job_button_name={contents.find_job_button_name} find_job_button_link={contents.find_job_button_link} />
+      <MakeYourMove make_your_move_title={contents.make_your_move_title} make_your_move_description={contents.make_your_move_description} make_your_move_image={contents.make_your_move_image} image_alt={contents.image_alt} />
       <div className="hidden sm:block">
         <CareerLifeAtIndel />
       </div>
@@ -20,12 +25,12 @@ export default function Career() {
         <MobCareerLifeAtIndel />
       </div>
       <div className="hidden sm:block">
-        <BenefitsEmployee />
+        <BenefitsEmployee benefits={benefits} benefits_title={contents.benefits_title} />
       </div>
       <div className="block sm:hidden">
         <MobBenefitsEmployee />
       </div>
-      <EmployeeTestimonials />
+      <EmployeeTestimonials testimonials={testimonials} awards={awards} testimonial_button_link={contents.testimonial_button_link} testimonial_button_name={contents.testimonial_button_name} testimonial_description={contents.testimonial_description} testimonial_title={contents.testimonial_title} />
     </div>
   );
 }

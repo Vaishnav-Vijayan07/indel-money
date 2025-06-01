@@ -14,16 +14,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { useRouter, useSearchParams, usePathname } from 'next/navigation'
+import api from "@/lib/api/axios";
+import { useEffect, useState } from "react";
 
 // Schema Validation
 const formSchema = z.object({
-  yourState: z.string().nonempty({
+  state: z.string().nonempty({
     message: "Please select a state.",
   }),
-  preferredLocation: z.string().nonempty({
+  location: z.string().nonempty({
     message: "Please select a location.",
   }),
-  preferredRole: z.string().nonempty({
+  role: z.string().nonempty({
     message: "Please select a role.",
   }),
 });
@@ -31,36 +34,54 @@ const formSchema = z.object({
 const gridStyle =
   "w-full lg:w-[calc((100%-80px)/4)] xl:w-[calc((100%-140px)/4)] 2xl:w-[calc((100%-160px)/4)] 3xl:w-[calc((100%-220px)/4)] px-[5px] lg:px-[10px] 2xl:px-[15px] mb-[10px] lg:mb-0";
 
-export default function FindJobForm({ variant = "default" }) {
+export default function FindJobForm({ variant = "default", handleSubmit }) {
+
+  const [dropdowns, setDropdowns] = useState({
+    states: [],
+    locations: [],
+    roles: [],
+  })
+
+  const fetchDropdowns = async () => {
+    try {
+      const { data } = await api.get("/career/jobs/dropdowns");
+      setDropdowns(data.data);
+    } catch (error) {
+      console.error("Error fetching dropdowns:", error);
+    }
+  };
+
   // Define form
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      yourName: "",
-      contactNumber: "",
-      emailAddress: "",
-      serviceType: "",
+      state: "",
+      location: "",
+      role: "",
     },
   });
 
   // Handle form submission
   function onSubmit(values) {
-    
+    const { state, location, role } = values;
+    handleSubmit(state, role, location)
   }
+
+  useEffect(() => {
+    fetchDropdowns()
+  }, [])
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={`${
-          variant === "activeJobs" ? "bg-base1 sm:bg-[#cae5f4]" : "bg-base1"
-        } w-full flex flex-wrap items-center rounded-[20px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_15px] sm:p-[15px_10px] lg:p-[20px_10px] 2xl:p-[25px_10px]`}
+        className={`${variant === "activeJobs" ? "bg-base1 sm:bg-[#cae5f4]" : "bg-base1"
+          } w-full flex flex-wrap items-center rounded-[20px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_15px] sm:p-[15px_10px] lg:p-[20px_10px] 2xl:p-[25px_10px]`}
       >
         <div className="w-full lg:w-[80px] xl:w-[140px] 2xl:w-[160px] 3xl:w-[220px] px-[5px] lg:px-[10px] 2xl:px-[15px] mb-[10px] lg:mb-0 max-sm:hidden">
           <div
-            className={`${
-              variant === "activeJobs" ? "text-[#4b4b4b]" : "text-white"
-            } text-[14px] sm:text-[16px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px] 3xl:text-[28px] font-bold`}
+            className={`${variant === "activeJobs" ? "text-[#4b4b4b]" : "text-white"
+              } text-[14px] sm:text-[16px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px] 3xl:text-[28px] font-bold`}
           >
             Filter
           </div>
@@ -69,7 +90,7 @@ export default function FindJobForm({ variant = "default" }) {
           {/* Select Service Field */}
           <FormField
             control={form.control}
-            name="yourState"
+            name="state"
             render={({ field }) => (
               <FormItem>
                 <Select
@@ -80,11 +101,11 @@ export default function FindJobForm({ variant = "default" }) {
                     <SelectValue placeholder="-- Select your state --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
-                    <SelectItem value="gold-loan">Gold Loan</SelectItem>
-                    <SelectItem value="other-loans">Other Loans</SelectItem>
-                    <SelectItem value="doorstep-gold-loan">
-                      Door Step Gold Loan
-                    </SelectItem>
+                    {dropdowns.states.map((state) => (
+                      <SelectItem key={String(state?.value)} value={String(state?.value)}>
+                        {state?.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -96,7 +117,7 @@ export default function FindJobForm({ variant = "default" }) {
           {/* Select Service Field */}
           <FormField
             control={form.control}
-            name="preferredLocation"
+            name="location"
             render={({ field }) => (
               <FormItem>
                 <Select
@@ -107,11 +128,11 @@ export default function FindJobForm({ variant = "default" }) {
                     <SelectValue placeholder="-- Select your preferred location --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
-                    <SelectItem value="gold-loan">Gold Loan</SelectItem>
-                    <SelectItem value="other-loans">Other Loans</SelectItem>
-                    <SelectItem value="doorstep-gold-loan">
-                      Door Step Gold Loan
-                    </SelectItem>
+                    {dropdowns.locations.map((location) => (
+                      <SelectItem key={location?.value} value={String(location?.value)}>
+                        {location?.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -123,7 +144,7 @@ export default function FindJobForm({ variant = "default" }) {
           {/* Select Service Field */}
           <FormField
             control={form.control}
-            name="preferredRole"
+            name="role"
             render={({ field }) => (
               <FormItem>
                 <Select
@@ -134,11 +155,11 @@ export default function FindJobForm({ variant = "default" }) {
                     <SelectValue placeholder="-- Select your preferred role --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
-                    <SelectItem value="gold-loan">Gold Loan</SelectItem>
-                    <SelectItem value="other-loans">Other Loans</SelectItem>
-                    <SelectItem value="doorstep-gold-loan">
-                      Door Step Gold Loan
-                    </SelectItem>
+                    {dropdowns.roles.map((role) => (
+                      <SelectItem key={role?.value} value={String(role?.value)}>
+                        {role?.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />

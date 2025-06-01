@@ -136,13 +136,13 @@ function EmployeeTestimonialsBox({ item, index }) {
   };
 
   const isExpanded = expanded[index];
-  const preview = item.description.slice(0, 340) + "...";
+  const preview = item.testimonial.slice(0, 340) + "...";
 
   return (
     <div className="w-full h-auto block max-sm:flex max-sm:flex-col-reverse">
       <div className="w-full h-auto text-[12px] lg:text-[12px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-normal text-black py-[15px_10px] lg:py-[20px_15px] xl:py-[40px_20px] 2xl:py-[60px_40px]">
         {/* {item.description} */}
-        {isExpanded ? item.description : preview}
+        {isExpanded ? item.testimonial : preview}
         <div
           onClick={() => toggleReadMore(index)}
           className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px]"
@@ -154,8 +154,8 @@ function EmployeeTestimonialsBox({ item, index }) {
         <div className="w-[45px] lg:w-[60px] 2xl:w-[80px] h-[45px] lg:h-[60px] 2xl:h-[80px] flex items-center justify-center min-sm:bg-base1 rounded-[10px_0_0_10px] lg:rounded-[15px_0_0_15px] 2xl:rounded-[20px_0_0_20px]">
           <div className="group w-[45px] lg:w-[40px] 2xl:w-[60px] h-[45px] lg:h-[40px] 2xl:h-[60px] rounded-full overflow-hidden border-white border-1 border-solid max-sm:border-[#EE3824] relative z-0">
             <Image
-              src={item.src}
-              alt={item.title}
+              src={item?.avatar ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.avatar}` : "/images/employeeTestimonials-1.jpg"}
+              alt={item?.image_alt ? item?.image_alt : "Employee Testimonials"}
               fill
               sizes="60px"
               className="group-hover:scale-105 object-cover transition-transform duration-300"
@@ -166,7 +166,7 @@ function EmployeeTestimonialsBox({ item, index }) {
           <div className="w-full h-[20px] lg:h-[30px] 2xl:h-[40px] flex">
             <div className="w-auto h-[20px] lg:h-[30px] 2xl:h-[40px] min-sm:bg-base1 rounded-[0_10px_0_0] lg:rounded-[0_15px_0_0] 2xl:rounded-[0_20px_0_0] inline-flex items-end pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]">
               <div className="text-[14px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-[1] font-medium text-white max-sm:text-[#4D4D4D] capitalize line-clamp-1">
-                {item.title}
+                {item.name}
               </div>
             </div>
           </div>
@@ -183,7 +183,7 @@ function EmployeeTestimonialsBox({ item, index }) {
   );
 }
 
-export default function EmployeeTestimonials() {
+export default function EmployeeTestimonials({ awards, testimonial_title, testimonial_description, testimonial_button_name, testimonial_button_link, testimonials }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState(0);
 
@@ -198,7 +198,7 @@ export default function EmployeeTestimonials() {
       <div className="mb-[40px] lg:mb-[60px] 2xl:mb-[80px]">
         <div className="container">
           <div className="sm:block hidden">
-            <AwardHighlightBox variant={"employeeTestimonials"} />
+            <AwardHighlightBox variant={"employeeTestimonials"} items={awards} />
           </div>
           <div className="sm:hidden block">
             <MobAwardHighlight />
@@ -209,10 +209,8 @@ export default function EmployeeTestimonials() {
         <div className="flex flex-wrap items-center">
           <div className="max-sm:block hidden w-full mb-[20px]">
             <div className="w-full mb-[10px] flex flex-wrap gap-[10px]">
-              <div className="text-title1">
-                Employee
-                <span className="font-bold text-base2">&nbsp;Testimonials</span>
-              </div>
+              <div className="text-title1 [&>span]:font-bold [&>span]:text-base2" dangerouslySetInnerHTML={{ __html: testimonial_title ? testimonial_title : "<span>Employee &nbsp;Testimonials</span>" }} />
+
               <div className="w-[30px] lg:w-[50px] 2xl:w-[60px] 3xl:w-[80px] h-auto aspect-4/4 relative z-0">
                 <Image
                   src="/images/employeeTestimonials-delmt-1.svg"
@@ -225,8 +223,7 @@ export default function EmployeeTestimonials() {
             <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
               <div className="flex-1">
                 <div className="text-sm1">
-                  Avarage tenure is Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit. Sed volutpat commodo elementum.{" "}
+                  {testimonial_description ? testimonial_description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae."}
                 </div>
               </div>
             </div>
@@ -267,7 +264,7 @@ export default function EmployeeTestimonials() {
                 <div className={`${stylesBox} bg-[#ffb1b1]`}></div>
               </div>
 
-              {employeeTestimonials?.slice(0, 7)?.map((item, index) => (
+              {testimonials?.slice(0, 7)?.map((item, index) => (
                 <div
                   key={index}
                   className={`group w-[40px] 4xs:w-[50px] sm:w-[40px] lg:w-[60px] 2xl:w-[80px] 3xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[2px] lg:border-[3px] 2xl:border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 
@@ -292,8 +289,8 @@ export default function EmployeeTestimonials() {
                   onClick={() => handleImageClick(index)}
                 >
                   <Image
-                    src={item.src}
-                    alt={item.title}
+                    src={item?.avatar ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.avatar}` : "/images/employeeTestimonials-logo.svg"}
+                    alt={item.image_alt}
                     fill
                     sizes="120px"
                     className="group-hover:scale-105 object-cover transition-transform duration-300"
@@ -304,10 +301,7 @@ export default function EmployeeTestimonials() {
           </div>
           <div className="w-full md:w-[calc(100%-268px)] lg:w-[calc(100%-368px)] xl:w-[calc(100%-520px)] 2xl:w-[calc(100%-676px)] 3xl:w-[calc(100%-820px)] lg:pl-[20px] xl:pl-[60px] 2xl:pl-[60px]">
             <div className="max-sm:hidden w-full mb-[10px] lg:mb-[15px] 2xl:mb-[30px] flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
-              <div className="text-title1 flex-1">
-                Employee
-                <span className="font-bold text-base2">&nbsp;Testimonials</span>
-              </div>
+              <div className="text-title1 [&>span]:font-bold [&>span]:text-base2" dangerouslySetInnerHTML={{ __html: testimonial_title ? testimonial_title : "<span>Employee &nbsp;Testimonials</span>" }} />
               <div className="w-[30px] lg:w-[50px] 2xl:w-[60px] 3xl:w-[80px] h-auto aspect-4/4 relative z-0">
                 <Image
                   src="/images/employeeTestimonials-delmt-1.svg"
@@ -320,15 +314,14 @@ export default function EmployeeTestimonials() {
             <div className="max-sm:hidden flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
               <div className="flex-1">
                 <div className="text-sm1">
-                  Avarage tenure is Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit. Sed volutpat commodo elementum.{" "}
+                  {testimonial_description ? testimonial_description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."}
                 </div>
               </div>
               <Link
-                href={"/"}
+                href={testimonial_button_link ? testimonial_button_link : "/"}
                 className="btn btn-base2 max-w-[100px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[180px]"
               >
-                VIEW MORE
+                {testimonial_button_name ? testimonial_button_name : "View All"}
               </Link>
             </div>
             <div className=" max-sm:bg-white max-sm:p-[30px_30px_25px_20px] max-sm:rounded-[24px]">
@@ -360,7 +353,7 @@ export default function EmployeeTestimonials() {
                 onSwiper={(swiper) => setSwiperInstance(swiper)}
                 onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
               >
-                {employeeTestimonials?.map((item, index) => (
+                {testimonials?.map((item, index) => (
                   <SwiperSlide key={index}>
                     <EmployeeTestimonialsBox index={index} item={item} />
                   </SwiperSlide>
@@ -370,7 +363,7 @@ export default function EmployeeTestimonials() {
           </div>
         </div>
       </div>
-      <div className="container max-sm:hidden block">
+      {/* <div className="container max-sm:hidden block">
         <Swiper
           modules={[Autoplay]}
           navigation={false}
@@ -415,7 +408,7 @@ export default function EmployeeTestimonials() {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </div> */}
     </section>
   );
 }

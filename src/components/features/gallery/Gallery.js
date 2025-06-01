@@ -59,9 +59,12 @@ const data = [
 const btnStyle =
   "text-[14px] sm:text-[16px] lg:text-[18px] 2xl:text-[20px] leading uppercase text-base1 rounded-[30px] overflow-hidden w-1/2 sm:w-1/3 px-[30px] 2xl:px-[35px] 3xl:px-[50px] py-[12px] 2xl:py-[15px] 3xl:py-[20px] h-fit aria-selected:text-white cursor-pointer";
 
-export default function Gallery() {
-  const slides = Array.from({ length: Math.ceil(data.length / 3) }, (_, i) =>
-    data.slice(i * 3, i * 3 + 3)
+export default function Gallery({ title, description, medias, sliderItems }) {
+
+  console.log(medias)
+
+  const slides = Array.from({ length: Math.ceil(medias?.length / 3) }, (_, i) =>
+    medias?.slice(i * 3, i * 3 + 3)
   );
 
   const GalleryItem = ({ item, width, height }) => {
@@ -90,22 +93,21 @@ export default function Gallery() {
           {item.images?.map((img, index) => (
             <Image
               key={index}
-              src={img}
+              src={img ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${img}` : "/images/gallSlide01.jpg"}
               width={width}
               height={height}
               alt={`${item.title} image ${index + 1}`}
-              className={`absolute w-full h-full rounded-[20px] object-cover grayscale-100 group-hover:grayscale-0 transition-opacity duration-500 ${
-                index === currentImage ? "opacity-100" : "opacity-0"
-              }`}
+              className={`absolute w-full h-full rounded-[20px] object-cover grayscale-100 group-hover:grayscale-0 transition-opacity duration-500 ${index === currentImage ? "opacity-100" : "opacity-0"
+                }`}
             />
           ))}
         </div>
         <div className="w-full h-[70%] absolute z-0 left-0 bottom-0 transition-all duration-500 ease-in-out flex flex-wrap items-end bg-gradient-to-b from-transparent via-[#80000080] to-[#0047AB] px-[25px] py-[35px] opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0">
           <div className="w-full max-w-[325px] 3xl:max-w-[495px] h-fit">
             <div className="relative text-white font-semibold text-[17px] 2xl:text-[20px] 3xl:text-[25px] leading-[1.1] uppercase pb-[6px] 2xl:pb-[10px] 3xl:pb-[15px] mb-[8px] 2xl:mb-[10px] 3xl:mb-[15px] after:content-[''] after:w-[17%] 2xl:after:w-[23%] after:h-[1px] after:bg-white after:absolute after:left-0 after:bottom-0">
-              {item.title}
+              {item.title ? item.title : "Title"}
             </div>
-            <div className="text-sm1 w-full text-white">{item.desc}</div>
+            <div className="text-sm1 w-full text-white">{item.description ? item.description : "Description"}</div>
           </div>
         </div>
       </div>
@@ -118,17 +120,13 @@ export default function Gallery() {
         <div className="w-full flex flex-wrap items-center mb-[40px] 2xl:mb-[50px] 3xl:mb-[65px] py-[10px] 2xl:py-[15px] px-[30px] 2xl:px-[40px] 3xl:px-[60px] rounded-l-[20px] border-l-2 border-[#17479E] bg-gradient-to-r from-[rgba(238,56,36,0.30)] to-[rgba(23,71,158,0.00)]">
           <div className="w-full md:w-[30%] xl:w-[20%] 2xl:w-[26%]">
             <h2 className="text-title1">
-              <span className="text-base2 font-bold">Gallery</span>
+              <span className="text-base2 font-bold">{title}</span>
             </h2>
             <PageBreadcrumb />
           </div>
           <div className="w-full md:w-[70%] xl:w-[80%] 2xl:w-[74%] pt-[20px] md:pt-0 md:pl-[20px] 2xl:pl-[30px]">
             <p className="text-sm1">
-              Welcome to The Gallery, a vibrant space where art comes to life.
-              Discover a carefully curated collection of contemporary and
-              classic works, each telling a unique story. Whether you&apos;re an
-              art enthusiast or a curious visitor, step into a world of
-              creativity, inspiration, and connection
+              {description}
             </p>
           </div>
         </div>
@@ -148,7 +146,7 @@ export default function Gallery() {
           </div>
           <TabsContent value="all">
             <div className="w-full 2xl:pb-[100px] md:pb-[60px] pb-[40px]">
-              <CardSlider />
+              <CardSlider sliderItems={sliderItems} />
             </div>
             <div className="mx-auto flex flex-wrap">
               {slides?.map((group, index) => {
@@ -161,14 +159,14 @@ export default function Gallery() {
                     className={`${gallClass} w-full lg:w-1/2 mb-2 h-[400px] md:h-[468px] xl:h-[545px] 2xl:h-[640px] 3xl:h-[815px] flex flex-wrap`}
                   >
                     <div className="flex flex-wrap w-full p-2 h-[40%] md:h-[50%] xl:h-[42%]">
-                      {group.slice(0, 1)?.map((item, i) => (
+                      {group?.slice(0, 1)?.map((item, i) => (
                         <div key={i} className="w-full mb-4 h-full">
                           <GalleryItem item={item} width={800} height={335} />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-wrap w-full h-[60%] md:h-[50%] xl:h-[58%]">
-                      {group.slice(1, 3)?.map((item, i) => (
+                      {group?.slice(1, 3)?.map((item, i) => (
                         <div key={i} className="w-1/2 p-2 h-full">
                           <GalleryItem item={item} width={380} height={445} />
                         </div>
@@ -215,14 +213,14 @@ export default function Gallery() {
                     className={`${gallClass} w-full lg:w-1/2 mb-6 h-[815px] flex flex-wrap`}
                   >
                     <div className="flex flex-wrap w-full p-2 h-[42%]">
-                      {group.slice(0, 1)?.map((item, i) => (
+                      {group?.slice(0, 1)?.map((item, i) => (
                         <div key={i} className="w-full mb-4 h-full">
                           <GalleryItem item={item} width={800} height={335} />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-wrap w-full h-[58%]">
-                      {group.slice(1, 3)?.map((item, i) => (
+                      {group?.slice(1, 3)?.map((item, i) => (
                         <div key={i} className="w-1/2 p-2 h-full">
                           <GalleryItem item={item} width={380} height={445} />
                         </div>
@@ -269,14 +267,14 @@ export default function Gallery() {
                     className={`${gallClass} w-full lg:w-1/2 mb-6 h-[815px] flex flex-wrap`}
                   >
                     <div className="flex flex-wrap w-full p-2 h-[42%]">
-                      {group.slice(0, 1)?.map((item, i) => (
+                      {group?.slice(0, 1)?.map((item, i) => (
                         <div key={i} className="w-full mb-4 h-full">
                           <GalleryItem item={item} width={800} height={335} />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-wrap w-full h-[58%]">
-                      {group.slice(1, 3)?.map((item, i) => (
+                      {group?.slice(1, 3)?.map((item, i) => (
                         <div key={i} className="w-1/2 p-2 h-full">
                           <GalleryItem item={item} width={380} height={445} />
                         </div>
