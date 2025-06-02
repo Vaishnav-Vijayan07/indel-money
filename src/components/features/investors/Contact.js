@@ -55,7 +55,7 @@ const contactDetails = [
     },
 ];
 
-export default function contact() {
+export default function contact({ content, contacts, error }) {
 
 
     return (
@@ -87,10 +87,10 @@ export default function contact() {
                         <Sidebar />
                     </div>
                     <div className="w-full md:w-[calc(100%-270px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
-                        <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">Investors Contact</div>
+                        <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{content?.investors_contact_title}</div>
 
                         <div className="flex flex-wrap w-full sm:m-[-8px] 2xl:m-[-15px] 3xl:m-[-20px]">
-                            {contactDetails?.map((contact, index) => (
+                            {contacts?.map((contact, index) => (
                                 <div key={index} className="w-full sm:w-[calc(100%/2)] p-[8px_0px] sm:p-[8px] 2xl:p-[-15px] 3xl:p-[20px]">
                                     <div className="w-full h-full bg-[linear-gradient(90deg,rgba(23,71,158,0.4)_0%,rgba(238,56,36,0.4)_100%)]  sm:bg-[linear-gradient(90deg,_#E5ECF5_0%,_#E5ECF5_100%)] px-[25px] py-[15px] 3xl:px-[35px] 3xl:py-[25px] rounded-[16px]">
                                         <div className="border-b border-dashed border-[#17479E]">

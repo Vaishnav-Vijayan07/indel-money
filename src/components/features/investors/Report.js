@@ -5,18 +5,18 @@ import Sidebar from "./Sidebar";
 import Annualreport from "./AnnualReport";
 import Annualreturns from "./AnnualReturns";
 
-export default function Scheme() {
+export default function Scheme({ reports, returns,content }) {
 
-    const reports = [
-        { year: "2023-24", link: "/pdfs/2023-24.pdf" },
-        { year: "2022-23", link: "/pdfs/2022-23.pdf" },
-        { year: "2021-22", link: "/pdfs/2021-22.pdf" },
-        { year: "2020-21", link: "/pdfs/2020-21.pdf" },
-        { year: "2019-20", link: "/pdfs/2019-20.pdf" },
-        { year: "2018-19", link: "/pdfs/2018-19.pdf" },
-        { year: "2017-18", link: "/pdfs/2017-18.pdf" },
-        { year: "2016-17", link: "/pdfs/2016-17.pdf" },
-    ];
+    // const reports = [
+    //     { year: "2023-24", link: "/pdfs/2023-24.pdf" },
+    //     { year: "2022-23", link: "/pdfs/2022-23.pdf" },
+    //     { year: "2021-22", link: "/pdfs/2021-22.pdf" },
+    //     { year: "2020-21", link: "/pdfs/2020-21.pdf" },
+    //     { year: "2019-20", link: "/pdfs/2019-20.pdf" },
+    //     { year: "2018-19", link: "/pdfs/2018-19.pdf" },
+    //     { year: "2017-18", link: "/pdfs/2017-18.pdf" },
+    //     { year: "2016-17", link: "/pdfs/2016-17.pdf" },
+    // ];
     return (
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">
@@ -45,10 +45,10 @@ export default function Scheme() {
                     <div className="w-full smd:w-[270px] xl:w-[330px] 2xl:w-[400px] 3xl:w-[510px]">
                         <Sidebar />
                     </div>
-                     <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
-                       
-                        <Annualreport />
-                        <Annualreturns />
+                    <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
+
+                        <Annualreport reports={reports} title={content?.annual_report_button_title} />
+                        <Annualreturns returns={returns} title={content?.annual_returns_title} />
                     </div>
 
                 </div>
