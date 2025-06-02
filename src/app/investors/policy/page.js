@@ -1,12 +1,17 @@
 import React from "react";
-import Policies from "../../../components/features/investors/Policies"; 
+import Policies from "../../../components/features/investors/Policies";
+import { fetchPolicyData } from "../../../lib/fetchCalls/fetchInvestors";
 
-export default function Policy() {
+export default async function Policy({ searchParams }) {
+
+  const page = searchParams?.page || 1
+
+  const { content, policies, totalPages, currentPage, limit, error } = await fetchPolicyData(page)
+
   return (
     <>
-      {/* Report*/}
-      <Policies />
-      
+      <Policies policies={policies} currentPage={currentPage} totalPages={totalPages} limit={limit} />
+
     </>
 
   );

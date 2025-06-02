@@ -6,7 +6,7 @@ export default async function report() {
 
   const { content, reports, returns, error } = await fetchReportData();
 
-  console.log(reports, returns, error);
+  
 
   if (!reports && !returns) {
     return <div>Failed to fetch report data</div>;

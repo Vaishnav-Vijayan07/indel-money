@@ -61,7 +61,7 @@ const btnStyle =
 
 export default function Gallery({ title, description, medias, sliderItems }) {
 
-  console.log(medias)
+  
 
   const slides = Array.from({ length: Math.ceil(medias?.length / 3) }, (_, i) =>
     medias?.slice(i * 3, i * 3 + 3)

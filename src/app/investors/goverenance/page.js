@@ -1,11 +1,11 @@
+import GoverenanceInfo from "../../../components/features/investors/GoverenanceInfo";
+import { fetchCorporateGoverneceData } from "../../../lib/fetchCalls/fetchInvestors";
 
-import GoverenanceInfo from "../../../components/features/investors/GoverenanceInfo"; 
- 
-
-export default function Goverenance() {
+export default async function Goverenance() {
+  const { contents, pdfItems } = await fetchCorporateGoverneceData()
   return (
     <>
-      <GoverenanceInfo /> 
+      <GoverenanceInfo contents={contents} pdfItems={pdfItems} />
     </>
 
   );

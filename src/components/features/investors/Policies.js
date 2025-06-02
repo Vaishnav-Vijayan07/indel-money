@@ -1,3 +1,4 @@
+"use client"
 
 import Image from "next/image";
 import Link from "next/link";
@@ -11,24 +12,42 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
+import PaginationComponent from "../../Pagination";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useCallback } from "react";
 
-const policies = [
-    { name: "Risk Management Policy", link: "/pdfs/2023-24.pdf" },
-    { name: "CSR Policy", link: "/pdfs/2023-24.pdf" },
-    { name: "CO Lending Policy", link: "/pdfs/2023-24.pdf" },
-    { name: "Covid 19 Moratorium Policy ", link: "/pdfs/2023-24.pdf" },
-    { name: "Moratorium Policy 2.0 ", link: "/pdfs/2023-24.pdf" },
-    { name: "Policy on Loans to Related Party  ", link: "/pdfs/2023-24.pdf" },
-    { name: "RPT Policy  ", link: "/pdfs/2023-24.pdf" },
-    { name: "Fair Practice Code  ", link: "/pdfs/2023-24.pdf" },
-    { name: "KYC AML CFT Policy  ", link: "/pdfs/2023-24.pdf" },
-    { name: "Asset Liability Management Policy", link: "/pdfs/2023-24.pdf" },
-    { name: "Whistle Blower Policy ", link: "/pdfs/2023-24.pdf" },
-    { name: "Policy of Stakeholders Relationship Committee  ", link: "/pdfs/2023-24.pdf" },
-];
+// const policies = [
+//     { name: "Risk Management Policy", link: "/pdfs/2023-24.pdf" },
+//     { name: "CSR Policy", link: "/pdfs/2023-24.pdf" },
+//     { name: "CO Lending Policy", link: "/pdfs/2023-24.pdf" },
+//     { name: "Covid 19 Moratorium Policy ", link: "/pdfs/2023-24.pdf" },
+//     { name: "Moratorium Policy 2.0 ", link: "/pdfs/2023-24.pdf" },
+//     { name: "Policy on Loans to Related Party  ", link: "/pdfs/2023-24.pdf" },
+//     { name: "RPT Policy  ", link: "/pdfs/2023-24.pdf" },
+//     { name: "Fair Practice Code  ", link: "/pdfs/2023-24.pdf" },
+//     { name: "KYC AML CFT Policy  ", link: "/pdfs/2023-24.pdf" },
+//     { name: "Asset Liability Management Policy", link: "/pdfs/2023-24.pdf" },
+//     { name: "Whistle Blower Policy ", link: "/pdfs/2023-24.pdf" },
+//     { name: "Policy of Stakeholders Relationship Committee  ", link: "/pdfs/2023-24.pdf" },
+// ];
 
-export default function Policies() {
+export default function Policies({ policies, currentPage, totalPages, limit }) {
+    const router = useRouter();
+    const searchParams = useSearchParams()
 
+    const createQueryString = useCallback(
+        (name, value) => {
+            const params = new URLSearchParams(searchParams.toString());
+            params.set(name, value);
+            return params.toString();
+        },
+        [searchParams]
+    );
+
+    const handlePageChange = (newPage) => {
+        
+        router.push(`?${createQueryString('page', newPage.toString())}`);
+    };
 
     return (
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
@@ -74,9 +93,9 @@ export default function Policies() {
                                 <div
                                     key={index}
                                     className="flex items-center justify-between py-[10px] sm:py-[25px] px-[10px] sm:px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] min-h-[55px] sm:min-h-[85px] 2xl:min-h-[100px] 3xl:min-h-[140px] rounded-2xl bg-gradient-to-r from-[rgba(23,71,158,0.40)] to-[rgba(238,56,36,0.40)] ">
-                                    <h3 className="text-[13px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-medium sm:font-bold text-black max-w-[260px]">{`${policies.name}`}</h3>
+                                    <h3 className="text-[13px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-medium sm:font-bold text-black max-w-[260px]">{`${policies.title ? policies.title : ""}`}</h3>
                                     <Link
-                                        href={policies.link}
+                                        href={policies.file ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${policies.file}` : "#"}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center space-x-2 md:max-lg:mt-[10px]">
@@ -93,7 +112,7 @@ export default function Policies() {
                                 </div>
                             ))}
                         </div>
-                        <div className="w-full sm:block hidden">
+                        {/* <div className="w-full sm:block hidden">
                             <Pagination className="justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
                                 <PaginationContent>
                                     <PaginationItem>
@@ -118,7 +137,10 @@ export default function Policies() {
                                     </PaginationItem>
                                 </PaginationContent>
                             </Pagination>
-                        </div>
+                        </div> */}
+                        <PaginationComponent totalPages={totalPages}
+                            currentPage={currentPage}
+                            onPageChange={handlePageChange} />
                     </div>
                 </div>
             </div>

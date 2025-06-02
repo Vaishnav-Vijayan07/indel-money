@@ -11,7 +11,7 @@ const pdfItems = [
     { title: "Shareholding Pattern", link: "#" },
 ];
 
-export default function GoverenanceInfo() {
+export default function GoverenanceInfo({ contents, pdfItems }) {
     return (
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">
@@ -46,7 +46,7 @@ export default function GoverenanceInfo() {
                     </div>
                     <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
                         <div className="text-black text-title1 font-medium mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
-                        Corporate Governance
+                            Corporate Governance
                         </div>
 
                         <div className="grid grid-cols-1 4xs:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-2 xl:gap-4 3xl:gap-6">
@@ -59,7 +59,7 @@ export default function GoverenanceInfo() {
                                         {item.title}
                                     </h3>
                                     <Link
-                                        href={item.link}
+                                        href={item.file ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.file}` : "#"}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center space-x-2 w-fit ml-auto mt-[8px] sm:mt-[25px]"
@@ -81,7 +81,7 @@ export default function GoverenanceInfo() {
                             ))}
                         </div>
 
-                        <Disclosure/>
+                        <Disclosure contents={contents} />
                     </div>
                 </div>
             </div>
