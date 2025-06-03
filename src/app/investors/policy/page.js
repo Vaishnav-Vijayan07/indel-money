@@ -4,7 +4,7 @@ import { fetchPolicyData } from "../../../lib/fetchCalls/fetchInvestors";
 
 export default async function Policy({ searchParams }) {
 
-  const page = searchParams?.page || 1
+  const page = await searchParams?.page || 1
 
   const { content, policies, totalPages, currentPage, limit, error } = await fetchPolicyData(page)
 

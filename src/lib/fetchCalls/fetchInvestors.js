@@ -173,4 +173,45 @@ export async function fetchCorporateGoverneceData() {
     }
 }
 
+export async function fetchNcdData() {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/ncd-reports`, {
+            cache: 'no-store', // or 'force-cache' depending on your needs
+        });
+
+        // Check if the response is ok (status 200-299)
+        if (!response.ok) {
+            if (response.status === 404) {
+                // This will trigger the not-found.js page
+                notFound();
+            }
+            // This will trigger the error.js page
+            throw new Error(`HTTP ${response.status}: Failed to fetch ncd data`);
+        }
+
+        const result = await response.json();
+        const data = result.data;
+
+        if (result.status === "success") {
+            return {
+                contents: data?.content,
+                reports: data?.reports,
+                error: null
+            };
+        }
+        return {
+            contents: null,
+            reports: null,
+            error: result.message
+        };
+    } catch (error) {
+        // Re-throw the error to be caught by error.js
+        if (error.message?.includes('notFound')) {
+            // Let notFound() handle this
+            throw error;
+        }
+        throw new Error(`Failed to fetch ncd data: ${error.message}`);
+    }
+}
+
 

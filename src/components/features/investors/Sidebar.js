@@ -8,9 +8,9 @@ export default function Sidebar() {
     const menuItems = [
         { name: "Annual Report", link: "/investors/report" },
         { name: "Investors Contact", link: "/investors/contact" },
-        { name: "NCD", link: "/ncd" },
+        { name: "NCD", link: "/investors/ncd" },
         { name: "Policies", link: "/investors/policy" },
-        { name: "Quarterly Results", link: "/quarterly-results" },
+        { name: "Quarterly Results", link: "/investors/quarterly-results" },
         { name: "Stock Exchange Filing", link: "/investors/stockexchange" },
         { name: "Corporate Governance", link: "/investors/goverenance" },
         { name: "Credit Rating", link: "/credit-rating" },
