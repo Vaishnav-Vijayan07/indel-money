@@ -57,6 +57,7 @@ const contactDetails = [
 
 export default function contact({ content, contacts, error }) {
 
+    const isDataPresent = contacts?.length > 0;
 
     return (
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
@@ -89,61 +90,75 @@ export default function contact({ content, contacts, error }) {
                     <div className="w-full md:w-[calc(100%-270px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
                         <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{content?.investors_contact_title}</div>
 
-                        <div className="flex flex-wrap w-full sm:m-[-8px] 2xl:m-[-15px] 3xl:m-[-20px]">
-                            {contacts?.map((contact, index) => (
-                                <div key={index} className="w-full sm:w-[calc(100%/2)] p-[8px_0px] sm:p-[8px] 2xl:p-[-15px] 3xl:p-[20px]">
-                                    <div className="w-full h-full bg-[linear-gradient(90deg,rgba(23,71,158,0.4)_0%,rgba(238,56,36,0.4)_100%)]  sm:bg-[linear-gradient(90deg,_#E5ECF5_0%,_#E5ECF5_100%)] px-[25px] py-[15px] 3xl:px-[35px] 3xl:py-[25px] rounded-[16px]">
-                                        <div className="border-b border-dashed border-[#17479E]">
-                                            <div className="text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px] font-bold text-base1 pb-[15px] leading-[1.3] max-w-[75%]">
-                                                {contact.title}
+                        {
+                            isDataPresent ? (
+
+                                <div className="flex flex-wrap w-full sm:m-[-8px] 2xl:m-[-15px] 3xl:m-[-20px]">
+                                    {contacts?.map((contact, index) => (
+                                        <div key={index} className="w-full sm:w-[calc(100%/2)] p-[8px_0px] sm:p-[8px] 2xl:p-[-15px] 3xl:p-[20px]">
+                                            <div className="w-full h-full bg-[linear-gradient(90deg,rgba(23,71,158,0.4)_0%,rgba(238,56,36,0.4)_100%)]  sm:bg-[linear-gradient(90deg,_#E5ECF5_0%,_#E5ECF5_100%)] px-[25px] py-[15px] 3xl:px-[35px] 3xl:py-[25px] rounded-[16px]">
+                                                <div className="border-b border-dashed border-[#17479E]">
+                                                    <div className="text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px] font-bold text-base1 pb-[15px] leading-[1.3] max-w-[75%]">
+                                                        {contact.title}
+                                                    </div>
+                                                </div>
+                                                <div className="border-b border-dashed border-[#17479E] py-[15px]">
+                                                    <div className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#121212] font-medium mb-[5px]">
+                                                        {contact.name}
+                                                    </div>
+                                                    <p className="text-gray-700 whitespace-pre-line">
+                                                        {contact.address}
+                                                    </p>
+                                                </div>
+                                                <div className="py-[10px]">
+                                                    <ul>
+                                                        <li className="mb-[5px]">
+                                                            <Link
+                                                                href={`tel:${contact.phone}`}
+                                                                className="w-fit text-[12px] 2xl:text-[16px] 3xl:text-[20px] text-[#383838] font-medium flex items-center duration-100 hover:text-base2"
+                                                            >
+                                                                <Image
+                                                                    src="/images/call.svg"
+                                                                    alt="Call Icon"
+                                                                    width={24}
+                                                                    height={24}
+                                                                    className="w-[10px] h-[10px] 3xl:w-[20px] 3xl:h-[20px]"
+                                                                />
+                                                                <span className="pl-[10px] break-all">{contact.phone}</span>
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link
+                                                                href={`mailto:${contact.email}`}
+                                                                className="w-fit break-all text-[12px] 2xl:text-[16px] 3xl:text-[20px] text-[#383838] font-medium flex items-center duration-100 hover:text-base2"
+                                                            >
+                                                                <Image
+                                                                    src="/images/mail.svg"
+                                                                    alt="Mail Icon"
+                                                                    width={24}
+                                                                    height={24}
+                                                                    className="w-[10px] h-[10px] 3xl:w-[20px] 3xl:h-[20px]"
+                                                                />
+                                                                <span className="pl-[10px]">{contact.email}</span>
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="border-b border-dashed border-[#17479E] py-[15px]">
-                                            <div className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#121212] font-medium mb-[5px]">
-                                                {contact.name}
-                                            </div>
-                                            <p className="text-gray-700 whitespace-pre-line">
-                                                {contact.address}
-                                            </p>
-                                        </div>
-                                        <div className="py-[10px]">
-                                            <ul>
-                                                <li className="mb-[5px]">
-                                                    <Link
-                                                        href={`tel:${contact.phone}`}
-                                                        className="w-fit text-[12px] 2xl:text-[16px] 3xl:text-[20px] text-[#383838] font-medium flex items-center duration-100 hover:text-base2"
-                                                    >
-                                                        <Image
-                                                            src="/images/call.svg"
-                                                            alt="Call Icon"
-                                                            width={24}
-                                                            height={24}
-                                                            className="w-[10px] h-[10px] 3xl:w-[20px] 3xl:h-[20px]"
-                                                        />
-                                                        <span className="pl-[10px] break-all">{contact.phone}</span>
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        href={`mailto:${contact.email}`}
-                                                        className="w-fit break-all text-[12px] 2xl:text-[16px] 3xl:text-[20px] text-[#383838] font-medium flex items-center duration-100 hover:text-base2"
-                                                    >
-                                                        <Image
-                                                            src="/images/mail.svg"
-                                                            alt="Mail Icon"
-                                                            width={24}
-                                                            height={24}
-                                                            className="w-[10px] h-[10px] 3xl:w-[20px] 3xl:h-[20px]"
-                                                        />
-                                                        <span className="pl-[10px]">{contact.email}</span>
-                                                    </Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
+                            )
+                                :
+                                (
+
+                                    <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black-400 italic">
+                                        No Data Available
+                                    </span>
+                                )
+
+                        }
+
                     </div>
                 </div>
             </div>

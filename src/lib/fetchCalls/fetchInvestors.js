@@ -214,4 +214,88 @@ export async function fetchNcdData() {
     }
 }
 
+export async function fetchCreditRatingsData() {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/credit-ratings`, {
+            cache: 'no-store', // or 'force-cache' depending on your needs
+        });
+
+        // Check if the response is ok (status 200-299)
+        if (!response.ok) {
+            if (response.status === 404) {
+                // This will trigger the not-found.js page
+                notFound();
+            }
+            // This will trigger the error.js page
+            throw new Error(`HTTP ${response.status}: Failed to fetch ncd data`);
+        }
+
+        const result = await response.json();
+        const data = result.data;
+
+        if (result.status === "success") {
+            return {
+                reports: data?.files,
+                error: null
+            };
+        }
+        return {
+            reports: null,
+            error: result.message
+        };
+    } catch (error) {
+        // Re-throw the error to be caught by error.js
+        if (error.message?.includes('notFound')) {
+            // Let notFound() handle this
+            throw error;
+        }
+        throw new Error(`Failed to fetch ncd data: ${error.message}`);
+    }
+}
+
+export async function fetchCsrData() {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/csr-details`, {
+            cache: 'no-store', // or 'force-cache' depending on your needs
+        });
+
+        // Check if the response is ok (status 200-299)
+        if (!response.ok) {
+            if (response.status === 404) {
+                // This will trigger the not-found.js page
+                notFound();
+            }
+            // This will trigger the error.js page
+            throw new Error(`HTTP ${response.status}: Failed to fetch ncd data`);
+        }
+
+        const result = await response.json();
+        const data = result.data;
+
+        if (result.status === "success") {
+            return {
+                contents : data?.content,
+                actionPlans : data?.actionPlans,
+                commitee : data?.committees,
+                reports: data?.reports,
+                error: null
+            };
+        }
+        return {
+            contents : null,
+            actionPlans : null,
+            commitee : null,
+            reports: null,
+            error: result.message
+        };
+    } catch (error) {
+        // Re-throw the error to be caught by error.js
+        if (error.message?.includes('notFound')) {
+            // Let notFound() handle this
+            throw error;
+        }
+        throw new Error(`Failed to fetch ncd data: ${error.message}`);
+    }
+}
+
 

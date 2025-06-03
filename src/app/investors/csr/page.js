@@ -1,16 +1,20 @@
 import React from "react";
-import Contact from "../../../components/features/investors/Contact";
-import { fetchContactData } from "../../../lib/fetchCalls/fetchInvestors";
+import CsrDetailsSection from "../../../components/features/investors/CsrDetailsSection";
+import { fetchCsrData } from "../../../lib/fetchCalls/fetchInvestors";
 
 
 export default async function contact() {
 
-  const { content, contacts, error } = await fetchContactData()
+  const { contents, reports, commitee, actionPlans, error } = await fetchCsrData()
+
+  if (!contents && !reports && !commitee && !actionPlans) {
+    return <div>Failed to fetch report data</div>;
+  }
+
 
   return (
     <>
-      {/* contact*/}
-      <Contact content={content} contacts={contacts} error={error} />
+      <CsrDetailsSection reports={reports} commitee={commitee} actionPlans={actionPlans} content={contents} />
     </>
 
   );

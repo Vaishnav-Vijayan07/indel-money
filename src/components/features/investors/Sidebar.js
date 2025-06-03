@@ -13,8 +13,8 @@ export default function Sidebar() {
         { name: "Quarterly Results", link: "/investors/quarterly-results" },
         { name: "Stock Exchange Filing", link: "/investors/stockexchange" },
         { name: "Corporate Governance", link: "/investors/goverenance" },
-        { name: "Credit Rating", link: "/credit-rating" },
-        { name: "Key Managerial Personnel", link: "/key-managerial-personnel" },
+        { name: "Credit Rating", link: "/investors/credit-ratings" },
+        // { name: "Key Managerial Personnel", link: "/investors/key-managerial-personnel" },
         { name: "CSR", link: "/investors/csr" },
     ];
 
