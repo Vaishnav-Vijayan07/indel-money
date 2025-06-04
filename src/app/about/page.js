@@ -35,7 +35,7 @@ async function fetchAboutData() {
 export default async function About() {
   const { data, error } = await fetchAboutData();
 
-  if(!data) {
+  if (!data) {
     return <div>Failed to fetch about data</div>
   }
 
@@ -46,7 +46,7 @@ export default async function About() {
 
       {/* Financial Partner section */}
       <div className="hidden sm:block">
-        <AboutFinacial statsData={data?.statsData} />
+        <AboutFinacial statsData={data?.statsData} super_title={data?.aboutContent?.overview_super_title} title={data?.aboutContent?.overview_title} sub_title={data?.aboutContent?.overview_sub_title} description={data?.aboutContent?.overview_description} />
       </div>
       <div className="block sm:hidden">
         <MobAboutFinacial />
@@ -56,7 +56,6 @@ export default async function About() {
       <div className="hidden sm:block">
         <AboutSupermarket
           serviceImages={data?.serviceImages}
-          sub_title={data?.aboutContent?.sub_title}
           description={data?.aboutContent?.service_description}
           title={data?.aboutContent?.service_title}
         />
@@ -86,7 +85,7 @@ export default async function About() {
         <Indelvalues links={data?.quickLinks} />
       </div>
       <div className="block sm:hidden">
-        <MobIndelvalues  />
+        <MobIndelvalues />
       </div>
 
       {/* Investors section */}

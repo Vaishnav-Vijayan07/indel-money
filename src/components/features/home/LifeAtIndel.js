@@ -20,7 +20,6 @@ const images = [
 ];
 
 function ImageBox({ item, className }) {
-  console.log(item)
   return (
     <div className={`${className} w-full p-1 sm:p-2`}>
       <div className={`${className} group w-full h-full xl:rounded-[35px] md:rounded-[28px] rounded-[20px] overflow-hidden`}>

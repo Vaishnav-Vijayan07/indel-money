@@ -2,7 +2,7 @@ import PartnersSection from "@/components/partners/Partners";
 
 async function fetchPartnersData() {
   try {
-    const response = await fetch(`${NEXT_PUBLIC_BACKEND_URL}/web/partners`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/partners`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response?.json();
@@ -19,7 +19,8 @@ async function fetchPartnersData() {
 export default async function Partners() {
   const { data, partners, error } = await fetchPartnersData();
 
-  if (!data || !partners) {
+
+  if (!data && !partners) {
     return <div>Failed to fetch partners data</div>;
   }
 

@@ -25,14 +25,14 @@ export default function AboutSlider({ serviceImages}) {
                 spaceBetween={15}
                 centeredSlides={true}
                 className="h-full w-full" >
-                {slides?.map((item, index) => (
+                {serviceImages?.map((item, index) => (
                     <SwiperSlide key={index} className="group flex justify-center items-center transition-all duration-300">
                         <div className="relative w-[75%] h-full m-auto rounded-3xl overflow-hidden transition-all duration-300 group-[.swiper-slide-active]:w-[100%]">
                             <Image
                                 src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`}
                                 width={1920}
                                 height={1080}
-                                alt={"Item"}
+                                alt={item?.image_alt ? item?.image_alt : "Item"}
                                 priority
                                 className="w-full h-full object-cover"
                             />

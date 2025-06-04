@@ -6,6 +6,7 @@ const listStyle =
   "text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-black relative pl-[15px] lg:pl-[20px] before:content-[''] before:absolute before:top-[4px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[5px]";
 
 export default function GoldLoanCriteria({ title, description, identityProof, addressProof, image, identityProofTitle, addressProofTitle }) {
+
   return (
     <section className="py-[30px] lg:py-[40px] 2xl:py-[60px] bg-[linear-gradient(90deg,#CDDFFF_1%,#FFD2D2_99%)]">
       <div className="container">

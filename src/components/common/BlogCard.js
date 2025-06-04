@@ -2,7 +2,7 @@ import { formatPostDate } from "@/lib/utils";
 import Image from "next/image";
 import React, { memo } from "react";
 
-function BlogCard({ item, className, index }) {
+function BlogCard({ item, className, index, type = "blog" }) {
   return (
     <div
       className={`${className ? className : ""
@@ -44,22 +44,25 @@ function BlogCard({ item, className, index }) {
         />
       </div>
       <div className="w-[calc(100%-127px)] sm:w-[calc(100%-160px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-240px)] 3xl:w-[calc(100%-320px)] py-1 3xl:py-2">
-        {item?.createdAt ? (
+
+        {(type === "blog" && item?.createdAt) || item?.posted_on ? (
           <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] text-[#505050] line-clamp-1 mb-0.5 3xl:mb-1 transition-transform duration-300 group-hover:text-base2">
-            {formatPostDate(item?.createdAt)}
+            {formatPostDate(type === "blog" ? item?.createdAt : item?.posted_on)}
           </div>
-        )
-          :
-          (
-            <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] text-[#505050] line-clamp-1 mb-0.5 3xl:mb-1 transition-transform duration-300 group-hover:text-base2">
-              {formatPostDate(item?.posted_on)}
-            </div>
-
-          )
-        }
+        ) : null}
         <div className="text-[13px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-[1.3] text-black font-bold line-clamp-2 mb-1 3xl:mb-3" dangerouslySetInnerHTML={{ __html: item?.title ? item?.title : "" }} />
+        {
+          type == "blog" ? (
 
-        <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-2 sm:line-clamp-4" dangerouslySetInnerHTML={{ __html: item?.image_description ? item?.image_description : "" }} />
+            <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-2 sm:line-clamp-4" dangerouslySetInnerHTML={{ __html: item?.image_description ? item?.image_description : "" }} />
+          )
+            :
+            (
+              <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-2 sm:line-clamp-4" dangerouslySetInnerHTML={{ __html: item?.description ? item?.description : "" }} />
+
+            )
+        }
+
 
         {item?.year && (
           <div className="text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-medium text-[#2d2d2d] line-clamp-1 mt-[10px] lg:mt-[10px] 2xl:mt-[20px]">

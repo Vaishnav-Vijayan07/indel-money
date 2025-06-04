@@ -111,9 +111,7 @@ export default function AccoladesSlider({ accolades }) {
                 </div>
               </div>
               <div className="3xl:w-[calc(100%-250px)] 2xl:w-[calc(100%-200px)] w-[calc(100%-150px)] 2xl:pl-[55px] md:pl-[35px] pl-[25px] text-justify">
-                <div className="3xl:text-[32px] xl:text-[20px] text-[14px] text-black mb-[15px] [&>span]:block [&>span]:font-medium [&>span]:text-black">
-                  {/* {item?.title} <span className="block font-medium text-black">{item?.bold_text}</span> */}
-                </div>
+                <div className="3xl:text-[32px] xl:text-[20px] text-[14px] text-black mb-[15px] [&>span]:block [&>span]:font-medium [&>span]:text-black" dangerouslySetInnerHTML={{ __html: item?.title ? item?.title : "" }} />
                 <p className="3xltext-[18px] 2xl:text-[16px]  text-[12px] text-[#343434] leading-[1.4]">{item?.description}</p>
                 <Link
                   href="#"

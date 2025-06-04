@@ -114,7 +114,8 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
           <div className=" w-full xl:w-[calc(100%-600px)] 2xl:w-[calc(100%-750px)] max-xl:pt-[50px] flex items-center p-[8px]">
             <div className="w-full lg:pl-[60px]">
               <div className="text-title1 font-medium xl:mb-[20px] mb-[10px]">{renderTitle(title)}</div>
-              <p className="3xl:text-[18px] mb-[15px]">{description}</p>
+              <div className="[&>p]:mb-[15px] [&>p]:3xl:text-[18px]" dangerouslySetInnerHTML={{ __html: description ? description : "" }}/>
+              {/* <p className="3xl:text-[18px] mb-[15px]">{description}</p> */}
               {/* <p className="3xl:text-[18px]">
                 Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
                 consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable

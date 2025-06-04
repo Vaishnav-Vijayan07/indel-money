@@ -60,7 +60,7 @@ export default function AwardClient({ contents, awards, sliderItems }) {
                                 key={index}
                                 className="w-full md:w-1/2 p-[6px_4px] lg:p-[10px_15px] 2xl:p-[25px_35px]"
                             >
-                                <BlogCard item={item} />
+                                <BlogCard item={item} type="award" />
                             </div>
                         ))}
                     </div>

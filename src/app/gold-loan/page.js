@@ -25,18 +25,19 @@ async function fetchGoldLoanData() {
     const goldloanData = result.data;
 
     if (result.status === "success") {
-      return { contents: goldloanData.GoldloanContent, bannerIcons: goldloanData.GoldloanBannerFeatures, schemes: goldloanData.schemes, faqs: goldloanData.GoldLoanFaq, features: goldloanData.GoldLoanFeatures, error: null };
+      return { steps: goldloanData.Steps, contents: goldloanData.GoldloanContent, bannerIcons: goldloanData.GoldloanBannerFeatures, schemes: goldloanData.schemes, faqs: goldloanData.GoldLoanFaq, features: goldloanData.GoldLoanFeatures, error: null };
     }
-    return { contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: result.message };
+    return { steps: null, contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: result.message };
   } catch (error) {
-    return { contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: "Failed to fetch service data" };
+    return { steps: null, contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: "Failed to fetch service data" };
   }
 }
 
 export default async function GoldLoan() {
-  const { contents, bannerIcons, schemes, faqs, features, error } = await fetchGoldLoanData();
+  const { steps, contents, bannerIcons, schemes, faqs, features, error } = await fetchGoldLoanData();
 
-  if (!contents || !bannerIcons || !schemes || !faqs || !features) {
+
+  if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
   }
 
@@ -58,7 +59,7 @@ export default async function GoldLoan() {
 
       {/* Gold loan contents*/}
       <div className="hidden sm:block">
-        <StepGoldLoan className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]" hideTitle={true} />
+        <StepGoldLoan className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]" hideTitle={true} loanSteps={steps} />
       </div>
       <div className="block sm:hidden">
         <MobStepGoldLoan className="py-[30px_20px]" />
@@ -90,7 +91,7 @@ export default async function GoldLoan() {
 
       {/* instant hussle free */}
       <div className="hidden sm:block">
-        <InstantHasslefree title={contents?.gold_loan_title}  description={contents?.gold_loan_description} />
+        <InstantHasslefree title={contents?.gold_loan_title} description={contents?.gold_loan_description} />
       </div>
       <div className="block sm:hidden">
         <MobInstantHasslefree />
