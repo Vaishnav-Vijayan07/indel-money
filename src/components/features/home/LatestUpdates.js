@@ -9,8 +9,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { formatPostDate } from "@/lib/utils";
 
-export default function LatestUpdates({ sliderItems, sliderTitle, sliderButtonText, sliderButtonLink }) {
+export default function LatestUpdates({ sliderItems, sliderTitle }) {
   return (
+    
     <section className="w-full block">
       <div className="container">
         {/* <motion.div
@@ -25,10 +26,10 @@ export default function LatestUpdates({ sliderItems, sliderTitle, sliderButtonTe
             <div className="flex justify-between items-center gap-2 mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">
               <h3 className="text-title1 text-black font-medium max-w-[70%]">{sliderTitle}</h3>
               <Link
-                href={sliderButtonLink || "/"}
+                href={"/"}
                 className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-bold flex items-center shrink-0 hover:text-base2 transition-color duration-300"
               >
-                {sliderButtonText}
+                View All
                 <Image
                   src="/images/icon-right.svg"
                   width={7}
@@ -82,7 +83,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle, sliderButtonTe
                     /> */}
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
-                      alt={item?.image}
+                      alt={item?.image_alt}
                       fill
                       sizes="520px"
                       priority={index === 0} // Prioritize first image
@@ -90,7 +91,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle, sliderButtonTe
                     />
                     <div className="w-full h-auto absolute inset-0 top-auto p-[15px_15px_30px] lg:p-[20px_20px_30px] xl:p-[30px_30px_40px] 3xl:p-[50px_50px_60px] bg-gradient-to-t from-black/60 to-transparent">
                       <div className="text-sm 3xl:text-lg text-white line-clamp-1 mb-2 3xl:mb-4">
-                        {formatPostDate(item?.createdAt)}
+                        {formatPostDate(item?.posted_on)}
                       </div>
                       <div className="text-[14px] sm:text-[18px] lg:text-[22px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[36px] leading-[1.2] text-white font-medium line-clamp-2 mb-4 3xl:mb-6">
                         {item?.title}

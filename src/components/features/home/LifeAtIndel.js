@@ -20,14 +20,15 @@ const images = [
 ];
 
 function ImageBox({ item, className }) {
+  console.log(item)
   return (
     <div className={`${className} w-full p-1 sm:p-2`}>
       <div className={`${className} group w-full h-full xl:rounded-[35px] md:rounded-[28px] rounded-[20px] overflow-hidden`}>
         <Image
-          src={item.src}
+          src={item ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item}` : "/images/life-1.jpg"}
           width={276}
           height={276}
-          alt={item.alt}
+          alt={item.alt ? item?.alt : ""}
           className="w-full h-full object-cover transition-transform duration-300  group-hover:scale-105"
         />
       </div>
@@ -35,7 +36,8 @@ function ImageBox({ item, className }) {
   );
 }
 
-export default function LifeAtIndel({ pageContent }) {
+export default function LifeAtIndel({ pageContent, lifeAtIndel, image1, image2, image3 }) {
+  const images = [image1, image2, image3]
   return (
     <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px] overflow-hidden">
       <div className="container">
@@ -81,7 +83,7 @@ export default function LifeAtIndel({ pageContent }) {
               {pageContent?.life_section_description}
             </div>
             <div className="mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
-              <LifeIndelSlider />
+              <LifeIndelSlider lifeAtIndel={lifeAtIndel} />
             </div>
             <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 3xl:gap-[20px]">
               <div>

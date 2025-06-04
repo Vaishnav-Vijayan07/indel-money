@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 
-const CounterBox = ({ value, suffix, title, showDivider }) => {
+const CounterBox = ({ value, suffix, description, showDivider }) => {
     const [start, setStart] = useState(false);
 
     return (
@@ -27,7 +27,7 @@ const CounterBox = ({ value, suffix, title, showDivider }) => {
                     <CountUp start={start ? 0 : null} end={parseInt(value)} duration={3} suffix={suffix} />
                 </div>
                 <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-[1.2] text-black font-medium xl:max-w-[90%] max-w-full">
-                    {title}
+                    {description}
                 </div>
             </div>
         </motion.div>

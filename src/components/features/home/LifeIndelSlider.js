@@ -38,7 +38,7 @@ const slides = [
   },
 ];
 
-export default function LifeIndelSlider() {
+export default function LifeIndelSlider({ lifeAtIndel }) {
   return (
     <Swiper
       modules={[Pagination, Autoplay]}
@@ -51,19 +51,19 @@ export default function LifeIndelSlider() {
       pagination={{ clickable: true }}
       className="lifeSlide"
     >
-      {slides?.map((item, index) => (
+      {lifeAtIndel?.map((item, index) => (
         <SwiperSlide key={index}>
           <Link
-            href={item.href}
+            href={item.href ? item.href : "/"}
             className="w-full h-full block rounded-[24px] bg-[#E6EDF7] overflow-hidden p-[20px] pl-[25px]"
           >
             <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
               <div className="3xl:w-[calc(100%-200px)] xl:w-[calc(100%-150px)] lg:w-[calc(100%-100px)] sm:w-[calc(100%-100px)] w-full 3xl:pr-[30px] sm:pr-[20px] sm:pt-0 pt-[20px]">
                 <h5 className="text-[14px] sm:text-[16px] xl:text-[18px] 3xl:text-[24px] text-[#1e1e1e] font-normal mb-[5px] xl:mb-[10px] 3xl:mb-[15px]">
-                  {item.title}
+                  {item.title ? item.title : ""}
                   <span className="text-base2 uppercase font-bold">
                     &nbsp;&apos;
-                    {item.title2}
+                    {item.title2 ? item.title2 : ""}
                     &apos;
                   </span>
                 </h5>
@@ -74,8 +74,8 @@ export default function LifeIndelSlider() {
               <div className="3xl:w-[200px] xl:w-[150px] lg:w-[100px] w-[100px]">
                 <div className="group w-full h-auto xl:h-full rounded-[24px] overflow-hidden">
                   <Image
-                    src={item.image}
-                    alt={item.alt}
+                    src={item.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/awards-img-1.jpg"}
+                    alt={item.alt ? item.alt : "Life at Indel Image 1"}
                     width={200}
                     height={250}
                     className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
