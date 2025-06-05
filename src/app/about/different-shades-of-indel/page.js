@@ -5,7 +5,7 @@ import MobDifferentShadesIndelSlide from "@/components/features/about/MobDiffere
 
 async function fetchData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/shades-of-indel", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/shades-of-indel`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

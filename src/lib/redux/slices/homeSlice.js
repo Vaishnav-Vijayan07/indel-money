@@ -9,7 +9,7 @@ const initialState = {
 
 export const fetchHomeData = createAsyncThunk("home/fetchHomeData", async (_, { rejectWithValue }) => {
   try {
-    const response = await axios.get("http://localhost:3000/api/home", { timeout: 5000 });
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/home`, { timeout: 5000 });
     if (response.data.status !== "success") {
       return rejectWithValue(response.data.message || "Failed to fetch home data");
     }

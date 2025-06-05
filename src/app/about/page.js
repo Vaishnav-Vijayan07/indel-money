@@ -18,7 +18,7 @@ import MobLifeIndel from "../../components/features/about/MobLifeIndelInfo";
 
 async function fetchAboutData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/about", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/about`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

@@ -5,7 +5,7 @@ import OurApproach from "@/components/features/about/OurApproach";
 
 async function fetchData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/indel-values", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/indel-values`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

@@ -7,7 +7,7 @@ const BranchLocator = dynamic(() => import("@/components/features/home/BranchLoc
 
 async function fetchContactsData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/contacts", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/contacts`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

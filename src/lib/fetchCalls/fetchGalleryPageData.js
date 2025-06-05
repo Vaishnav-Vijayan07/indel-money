@@ -1,6 +1,6 @@
 export async function fetchData() {
     try {
-        const response = await fetch("http://localhost:7700/api/web/event-gallery", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event-gallery`, {
             cache: "no-store", // Ensure fresh data
         });
 

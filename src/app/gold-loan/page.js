@@ -18,7 +18,7 @@ import MobGoldLoanFaq from "../../components/features/goldLoan/MobGoldLoanFaq";
 
 async function fetchGoldLoanData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/gold-loan", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-loan`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

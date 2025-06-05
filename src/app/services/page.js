@@ -5,7 +5,7 @@ import IndelRemit from "@/components/features/services/IndelRemit";
 
 async function fetchManagementData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/our-services", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/our-services`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

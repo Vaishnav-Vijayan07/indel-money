@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 export async function fetchData() {
     try {
-        const response = await fetch("http://localhost:7700/api/web/career-active-jobs", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/career-active-jobs`, {
             cache: "no-store", // Ensure fresh data
         });
 
@@ -47,7 +47,7 @@ export async function fetchData() {
 
 export async function fetchDropDownData() {
     try {
-        const response = await fetch("http://localhost:7700/api/career/jobs/dropdowns", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/jobs/dropdowns`, {
             cache: "no-store", // Ensure fresh data
         });
 

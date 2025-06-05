@@ -4,7 +4,7 @@ import MobYearsInception from "../../components/features/history/MobYearsIncepti
 
 async function fetchHistoryData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/history", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/history`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

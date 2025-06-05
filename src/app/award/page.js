@@ -3,7 +3,7 @@ import NoContents from "@/components/NoContents";
 
 async function fetchData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/awards", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/awards`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

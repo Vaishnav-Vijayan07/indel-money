@@ -5,7 +5,7 @@ import MobEligibility from "../../../components/features/services/MobEligibility
 
 async function fetchData() {
     try {
-        const response = await fetch("http://localhost:7700/api/web/cd-loan", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/cd-loan`, {
             cache: "no-store", // Ensure fresh data
         });
         const result = await response.json();

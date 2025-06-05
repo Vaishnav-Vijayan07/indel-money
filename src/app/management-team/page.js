@@ -2,7 +2,7 @@ import ManagementTeam from "@/components/features/management-team/ManagementTeam
 
 async function fetchManagementData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/management", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/management`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

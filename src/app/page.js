@@ -3,7 +3,7 @@ import HomeClient from "../pages/HomeClient";
 
 async function fetchHomeData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/home", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/home`, {
       cache: "no-store", // Ensure fresh data
     });
 

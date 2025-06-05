@@ -11,7 +11,7 @@ import MobWhoDoServe from "@/components/features/msmeloan/MobWhoDoServe";
 
 async function fetchData() {
   try {
-    const response = await fetch("http://localhost:7700/api/web/msme", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/msme`, {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();

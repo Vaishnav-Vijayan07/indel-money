@@ -1,6 +1,6 @@
 export async function fetchData() {
     try {
-        const response = await fetch("http://localhost:7700/api/web/career", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/career`, {
             cache: "no-store", // Ensure fresh data
         });
 
