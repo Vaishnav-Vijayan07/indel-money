@@ -27,6 +27,9 @@ import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
 export default function Home({ initialData, initialError }) {
 
+  console.log("initialData", initialData);
+  console.log("URL", process.env.NEXT_PUBLIC_BACKEND_URL);
+
 
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   return (
