@@ -82,7 +82,7 @@ export function ValueBox({ item }) {
         <div className="group w-[39px] sm:w-[35px] 2xl:w-[45px] h-[40px] 2xl:h-[50px]">
           <Image
             src={item.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/apprch01.svg"}
-            alt={item.alt ? item.alt : "value-1"}
+            alt={item?.alt ? item?.alt : "value-1"}
             width={45}
             height={50}
             className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"

@@ -162,7 +162,7 @@ function MegaMenu({ items }) {
                     src={item.image}
                     width={28}
                     height={28}
-                    alt={item.alt}
+                    alt={item?.alt}
                     className="w-full h-full block max-w-2/4 object-contain"
                   />
                 </div>

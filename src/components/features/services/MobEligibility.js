@@ -89,7 +89,7 @@ function ProductCoveredBox({ item }) {
                 <div className="group w-[25px] 3xl:w-[25px] h-[16px] 2xl:h-[20px] 3xl:h-[25px]">
                     <Image
                         src={item.icon}
-                        alt={item.alt}
+                        alt={item?.alt}
                         width={25}
                         height={25}
                         className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"

@@ -66,7 +66,7 @@ export function ValueBox({ item }) {
             <div className="group w-[65px] 3xs:w-[74px] sm:w-[40px] xl:w-[50px] 3xl:w-[75px] h-[65px] 3xs:h-[74px] sm:h-[40px] xl:h-[45px] 3xl:h-[65px] rounded-full p-[15px] 3xs:p-[20px] sm:p-0 sm:rounded-0 mb-[12px] sm:mb-[45px] xl:mb-[65px] 2xl:mb-[80px] 3xl:mb-[90px] sm:rounded-0 sm:bg-none bg-gradient-to-b from-[rgba(23,71,158,0.07)] via-[rgba(23,71,158,0.14)] to-[rgba(238,56,36,0.35)]">
                 <Image
                     src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/value01.png"}
-                    alt={item.alt ? item.alt : "value-1"}
+                    alt={item?.alt ? item?.alt : "value-1"}
                     width={72}
                     height={65}
                     className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"

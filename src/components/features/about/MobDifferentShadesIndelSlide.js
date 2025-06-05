@@ -192,7 +192,7 @@ export default function MobDifferentShadesIndelSlide() {
             <div className="w-full h-auto bg-white shadow-[0_0_50px_0_rgba(0,0,0,0.1)] rounded-[10px] p-[20px] mb-[15px]">
               <Image
                 src={slideContents[activeIndex].logo.src}
-                alt={slideContents[activeIndex].logo.alt}
+                alt={slideContents[activeIndex].logo?.alt}
                 width={slideContents[activeIndex].logo.width}
                 height={slideContents[activeIndex].logo.height}
                 className={slideContents[activeIndex].logo.className}

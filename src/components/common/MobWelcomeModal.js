@@ -57,7 +57,7 @@ function WelcomeBox({ item, index }) {
       <div className="group w-[100px] height-[115px] overflow-hidden rounded-[10px] relative z-0">
         <Image
           src={item.src}
-          alt={item.alt}
+          alt={item?.alt}
           fill
           sizes="100px"
           className="object-cover transition-transform duration-300 group-hover:scale-105"

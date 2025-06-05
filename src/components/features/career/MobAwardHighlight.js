@@ -98,7 +98,7 @@ export default function MobAwardHighlight() {
               <div className="w-full h-[165px] aspect-[175px/165px] overflow-hidden rounded-[8px] relative z-0 after:content-[''] after:w-full after:h-[80%] after:block after:absolute after:-z-1 after:inset-0 after:top-auto after:bg-linear-to-t after:from-base1 after:to-base2/0">
                 <Image
                   src={item.image}
-                  alt={item.alt}
+                  alt={item?.alt}
                   fill
                   sizes="175px"
                   className="-z-2 object-cover"
@@ -117,7 +117,7 @@ export default function MobAwardHighlight() {
                 <div className="w-full max-w-[95%] h-[60px] mx-auto overflow-hidden rounded-b-[24px] relative z-0">
                   <Image
                     src="/images/mob-awards-delmt.jpg"
-                    alt={item.alt}
+                    alt={item?.alt}
                     fill
                     sizes="175px"
                     className="object-cover object-top"

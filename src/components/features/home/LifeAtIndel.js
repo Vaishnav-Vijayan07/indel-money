@@ -27,7 +27,7 @@ function ImageBox({ item, className }) {
           src={item ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item}` : "/images/life-1.jpg"}
           width={276}
           height={276}
-          alt={item.alt ? item?.alt : ""}
+          alt={item?.alt ? item?.alt : ""}
           className="w-full h-full object-cover transition-transform duration-300  group-hover:scale-105"
         />
       </div>

@@ -75,7 +75,7 @@ export default function LifeIndelSlider({ lifeAtIndel }) {
                 <div className="group w-full h-auto xl:h-full rounded-[24px] overflow-hidden">
                   <Image
                     src={item.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/awards-img-1.jpg"}
-                    alt={item.alt ? item.alt : "Life at Indel Image 1"}
+                    alt={item?.alt ? item?.alt : "Life at Indel Image 1"}
                     width={200}
                     height={250}
                     className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"

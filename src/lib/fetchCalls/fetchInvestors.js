@@ -205,12 +205,7 @@ export async function fetchNcdData() {
             error: result.message
         };
     } catch (error) {
-        // Re-throw the error to be caught by error.js
-        if (error.message?.includes('notFound')) {
-            // Let notFound() handle this
-            throw error;
-        }
-        throw new Error(`Failed to fetch ncd data: ${error.message}`);
+        return { reports: null, error: "Failed to fetch ncd data" };
     }
 }
 
@@ -274,17 +269,17 @@ export async function fetchCsrData() {
 
         if (result.status === "success") {
             return {
-                contents : data?.content,
-                actionPlans : data?.actionPlans,
-                commitee : data?.committees,
+                contents: data?.content,
+                actionPlans: data?.actionPlans,
+                commitee: data?.committees,
                 reports: data?.reports,
                 error: null
             };
         }
         return {
-            contents : null,
-            actionPlans : null,
-            commitee : null,
+            contents: null,
+            actionPlans: null,
+            commitee: null,
             reports: null,
             error: result.message
         };

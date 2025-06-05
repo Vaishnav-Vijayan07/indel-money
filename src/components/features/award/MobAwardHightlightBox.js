@@ -70,7 +70,7 @@ export default function MobAwardHighlightBox({ variant = "default" }) {
                                 <div className="group w-full h-full rounded-[24px] overflow-hidden">
                                     <Image
                                         src={item.image}
-                                        alt={item.alt}
+                                        alt={item?.alt}
                                         width={370}
                                         height={465}
                                         className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"

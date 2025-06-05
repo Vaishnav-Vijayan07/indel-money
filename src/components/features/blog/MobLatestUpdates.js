@@ -87,7 +87,7 @@ export default function MobLatestUpdates() {
                 <div className="group w-full h-[220px] overflow-hidden rounded-[25px] block relative z-0">
                   <Image
                     src={item.image}
-                    alt={item.alt}
+                    alt={item?.alt}
                     fill
                     sizes="380px"
                     className="transition-transform duration-300 object-cover group-hover:scale-105"
@@ -156,7 +156,7 @@ export default function MobLatestUpdates() {
                   <div className="w-full h-[100px] rounded-[16px] overflow-hidden relative z-0 mb-[12px]">
                     <Image
                       src={item.image}
-                      alt={item.alt}
+                      alt={item?.alt}
                       fill
                       sizes="160px"
                       className="transition-transform duration-300 object-cover group-hover:scale-105"

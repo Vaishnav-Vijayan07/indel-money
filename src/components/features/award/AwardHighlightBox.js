@@ -96,7 +96,7 @@ export default function AwardHighlightBox({ variant = "default", items = slides 
                 <div className="group w-full h-full rounded-[24px] overflow-hidden">
                   <Image
                     src={item.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/blog/1.jpg"}
-                    alt={item.image_alt ? item.image_alt : item.alt}
+                    alt={item.image_alt ? item.image_alt : item?.alt}
                     width={370}
                     height={465}
                     className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"

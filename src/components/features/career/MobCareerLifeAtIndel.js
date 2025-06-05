@@ -41,7 +41,7 @@ function ImageBox({ item, heightClass }) {
         >
             <Image
                 src={item.src}
-                alt={item.alt}
+                alt={item?.alt}
                 fill
                 sizes="320px"
                 className="group-hover:scale-105 object-cover transition-transform duration-300"

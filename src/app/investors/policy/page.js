@@ -1,12 +1,55 @@
 import React from "react";
 import Policies from "../../../components/features/investors/Policies";
-import { fetchPolicyData } from "../../../lib/fetchCalls/fetchInvestors";
+
+async function fetchPolicyData(page = 1, limit = 5) {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/policies?page=${page}&limit=${limit}`, {
+      cache: 'no-store', // or 'force-cache' depending on your needs
+    });
+
+    const result = await response.json();
+    const policyData = result.data;
+    const pagination = result.data.pagination
+
+
+    if (result.status === "success") {
+      return {
+        content: policyData?.content,
+        policies: policyData?.policies,
+        totalPages: pagination?.totalPages,
+        currentPage: pagination?.currentPage,
+        limit: pagination?.limit,
+        error: null
+      };
+    }
+    return {
+      content: null,
+      policies: null,
+      totalPages: null,
+      currentPage: null,
+      limit: null,
+      error: result.message
+    };
+  } catch (error) {
+    return {
+      content: null,
+      policies: null,
+      totalPages: null,
+      currentPage: null,
+      limit: null, error: "Failed to fetch policy data"
+    };
+  }
+}
 
 export default async function Policy({ searchParams }) {
 
   const page = await searchParams?.page || 1
 
   const { content, policies, totalPages, currentPage, limit, error } = await fetchPolicyData(page)
+
+  if (!content && !policies && !totalPages && !currentPage && !limit) {
+    return <div>Failed to fetch policy data</div>;
+  }
 
   return (
     <>

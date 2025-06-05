@@ -277,7 +277,7 @@ export default function Footer() {
                   >
                     <Image
                       src={item.src}
-                      alt={item.alt}
+                      alt={item?.alt}
                       fill
                       className="aspect-square object-contain m-auto"
                     />

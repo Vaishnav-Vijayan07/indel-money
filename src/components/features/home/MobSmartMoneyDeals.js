@@ -83,7 +83,7 @@ export default function MobSmartMoneyDeals() {
                 <div>
                   <Image
                     src={item.image}
-                    alt={item.alt}
+                    alt={item?.alt}
                     width={50}
                     height={50}
                     className="aspect-square mx-auto"

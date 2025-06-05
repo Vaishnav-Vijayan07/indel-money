@@ -117,7 +117,7 @@ function ValueBox({ item }) {
         <div className="group w-[20px] 2xl:w-[25px] h-[20px] 2xl:h-[25px]">
           <Image
             src={item.icon}
-            alt={item.alt}
+            alt={item?.alt}
             width={25}
             height={25}
             className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"

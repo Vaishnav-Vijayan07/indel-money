@@ -61,7 +61,7 @@ export default function MobKickStartVenture() {
                 <div className="w-[24px] h-auto aspect-square relative z-0">
                   <Image
                     src={item.image}
-                    alt={item.alt}
+                    alt={item?.alt}
                     fill
                     sizes="24px"
                     className="object-contain transition-transform duration-300 group-hover:scale-105"

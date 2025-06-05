@@ -92,7 +92,7 @@ export default function MobJoinTeam() {
                 <div className="group w-full h-[150px] rounded-[15px] overflow-hidden relative z-0">
                   <Image
                     src={item.image}
-                    alt={item.alt}
+                    alt={item?.alt}
                     fill
                     className="aspect-4/3 object-cover transition-transform duration-300 group-hover:scale-105"
                   />
@@ -163,7 +163,7 @@ export default function MobJoinTeam() {
                   <div className="w-full h-auto">
                     <Image
                       src={item.image}
-                      alt={item.alt}
+                      alt={item?.alt}
                       width={170}
                       height={220}
                       className="aspect-170/220 rounded-[24px] mx-auto"
