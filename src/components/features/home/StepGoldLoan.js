@@ -26,11 +26,10 @@ export default function StepGoldLoan({ sectionTitle, loanSteps, className, hideT
     <section className={`${className} w-full pt-[20px] md:pt-[30px] 2xl:pt-[60px]`}>
       <div className="container">
         {!hideTitle && (
-          <div className="text-title1 font-normal mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
-            {/* Our Easy Step{" "} */}
-            {sectionTitle}
-            {/* <span className="font-bold text-base2">Gold Loan</span>{" "} */}
-          </div>
+          <div
+            className="text-title1 font-normal mb-[15px] lg:mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
+            dangerouslySetInnerHTML={{ __html: sectionTitle ? sectionTitle : "" }}
+          />
         )}
         <div className="flex justify-between">
           {loanSteps?.map((step, index) => (
