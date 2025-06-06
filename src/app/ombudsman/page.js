@@ -7,14 +7,7 @@ async function fetchData() {
       cache: "no-store", // Ensure fresh data
     });
 
-    // Check if response is ok
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-
     const result = await response.json();
-
-    // Log the actual result, not undefined 'files'
 
     if (result.status === "success") {
       return {
@@ -38,11 +31,6 @@ async function fetchData() {
 
 export default async function Ombudsmans() {
   const { data: files, error } = await fetchData(); // ← Fixed destructuring
-
-  // Handle error state - this will trigger your error.tsx
-  if (error) {
-    throw new Error(error); // ← This triggers your error boundary
-  }
 
   // Handle not found case
   if (!files || files.length === 0) {
