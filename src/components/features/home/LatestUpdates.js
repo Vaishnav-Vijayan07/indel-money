@@ -10,6 +10,9 @@ import "swiper/css/pagination";
 import { formatPostDate } from "@/lib/utils";
 
 export default function LatestUpdates({ sliderItems, sliderTitle }) {
+
+  console.log(sliderItems)
+
   return (
     
     <section className="w-full block">

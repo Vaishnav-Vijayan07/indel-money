@@ -36,7 +36,8 @@ function ImageBox({ item, className }) {
 }
 
 export default function LifeAtIndel({ pageContent, lifeAtIndel, image1, image2, image3 }) {
-  const images = [image1, image2, image3]
+
+  const images = [image1, image2, image3];
   return (
     <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px] overflow-hidden">
       <div className="container">
@@ -68,10 +69,13 @@ export default function LifeAtIndel({ pageContent, lifeAtIndel, image1, image2, 
             transition={{ duration: 0.5 }}
             className="w-full lg:w-1/2 lg:px-[15px] xl:px-[20px] 3xl:px-[35px]"
           >
-            <h2
-              className="text-title1 [&>span]:text-base2 [&>span]:font-bold"
-              dangerouslySetInnerHTML={{ __html: pageContent?.life_section_title ? pageContent?.life_section_title : "" }}
-            />
+            {pageContent?.life_section_title && (
+              <h2
+                className="text-title1 [&>span]:text-base2 [&>span]:font-bold"
+                dangerouslySetInnerHTML={{ __html: pageContent.life_section_title }}
+              />
+            )}
+
             <div className="text-sm1 line-clamp-4 mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
               {/* {{ Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy

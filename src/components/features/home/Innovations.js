@@ -12,15 +12,22 @@ export default function Innovations({ pageContent }) {
             <div className="w-full sm:max-w-[calc(100%-176px)] lg:max-w-[calc(100%-268px)] xl:max-w-[calc(100%-320px)] 2xl:max-w-[calc(100%-376px)] 3xl:max-w-[calc(100%-400px)]">
               <div className="flex flex-wrap items-center mb-[15px] lg:mb[20px] 2xl:mb[30px]">
                 <div className="w-full lg:w-[276px] 2xl:w-[376px] 3xl:w-[420px] lg:border-r-1 lg:border-r-[rgba(0,0,0,0.6)] h-full">
-                  <div className="text-title1 max-w-9/10">
-                    {/* Innovations and{" "}
-                    <span className="text-base2 font-bold">Features</span> */}
-                    {pageContent?.features_title}
-                  </div>
+                  <div
+                    className="text-title1 max-w-9/10 [&>span]:text-base2 [&>span]:font-bold"
+                    dangerouslySetInnerHTML={{ __html: pageContent?.features_title ? pageContent?.features_title : "" }}
+                  />
                 </div>
                 <div className="2xl:w-[calc(100%-340px] xl:w-[calc(100%-350px] lg:w-[calc(100%-200px] xl:pl-[50px] lg:pl-[30px] max-lg:w-full max-lg:mt-3">
-                  {/* <ul>
-                    <li className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[14px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]">
+                  <ul>
+                    {pageContent?.features_sub_title?.split(",").map((item, index) => (
+                      <li
+                        key={index}
+                        className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[14px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]"
+                      >
+                        {item.trim()}
+                      </li>
+                    ))}
+                    {/* <li className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[14px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]">
                       Mobile app
                     </li>
                     <li className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[14px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[3px]">
@@ -28,9 +35,8 @@ export default function Innovations({ pageContent }) {
                     </li>
                     <li className="2xl:text-[22px] xl:text-[18px] lg:text-[16px] text-[14px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[10px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] ">
                       Paperless operation
-                    </li>
-                  </ul> */}
-                  {pageContent?.features_sub_title}
+                    </li> */}
+                  </ul>
                 </div>
               </div>
               {/* content */}

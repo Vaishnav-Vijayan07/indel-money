@@ -58,7 +58,7 @@ function BlogCard({ item, className, index, type = "blog" }) {
           )
             :
             (
-              <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-2 sm:line-clamp-4" dangerouslySetInnerHTML={{ __html: item?.description ? item?.description : "" }} />
+              <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-2 sm:line-clamp-4" dangerouslySetInnerHTML={{ __html: item?.description ? item?.description : item?.image_description }} />
 
             )
         }
