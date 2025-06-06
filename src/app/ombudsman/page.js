@@ -1,11 +1,57 @@
 import Ombudsman from "@/components/features/ombudsman/Ombudsman";
+import NoContents from "@/components/NoContents";
 
+async function fetchData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/ombudsman`, {
+      cache: "no-store", // Ensure fresh data
+    });
 
-export default function Ombudsmans() {
-    return (
-        <>
-            <Ombudsman />
-        </>
+    // Check if response is ok
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
 
-    );
+    const result = await response.json();
+
+    // Log the actual result, not undefined 'files'
+
+    if (result.status === "success") {
+      return {
+        data: result.data,
+        error: null, // ← Fixed: should be null on success
+      };
+    }
+
+    return {
+      data: null,
+      error: result.message || "Failed to fetch ombudsman data",
+    };
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return {
+      data: null,
+      error: "Failed to fetch ombudsman data",
+    };
+  }
+}
+
+export default async function Ombudsmans() {
+  const { data: files, error } = await fetchData(); // ← Fixed destructuring
+
+  // Handle error state - this will trigger your error.tsx
+  if (error) {
+    throw new Error(error); // ← This triggers your error boundary
+  }
+
+  // Handle not found case
+  if (!files || files.length === 0) {
+    <NoContents />;
+  }
+
+  return (
+    <>
+      <Ombudsman files={files} />
+    </>
+  );
 }
