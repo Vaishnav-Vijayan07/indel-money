@@ -31,7 +31,6 @@ export default function HeroBanner({ heroBanner, initialData }) {
     }
   };
 
-
   useEffect(() => {
     fetchGoldRateLive();
   }, [])

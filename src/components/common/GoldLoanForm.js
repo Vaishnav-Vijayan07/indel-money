@@ -22,8 +22,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import EnquiryModal from "./EnquiryModal";
+import api from "@/lib/api/axios";
+import toast from 'react-hot-toast';
 
 // Schema Validation
 const formSchema = z.object({
@@ -48,6 +50,7 @@ const toggleBtnStyle =
   "text-[10px] lg:text-[12px] 2xl:text-[14px] text-center leading-[1.2] font-normal text-white w-[40px] lg:w-[45px] 2xl:w-[54px] h-[20px] lg:h-[20px] 2xl:h-[26px] rounded-[4px] lg:rounded-[6px] flex items-center justify-center cursor-pointer transition-colors duration-300";
 
 export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
+  const API_KEY_GOLD_RATE = "ed8d7baf6b5bc3be44ea3fcd65482541a6770d8d";
   const [submittedData, setSubmittedData] = useState({});
   const [goldRate, setGoldRate] = useState(Math.floor(Math.random() * (6000 - 5000 + 1)) + 5000);
   const [reductionPercent, setReductionPercent] = useState(7);
@@ -89,6 +92,32 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
   const finalRate = useMemo(() => {
     return goldRate * (1 - reductionPercent / 100);
   }, [goldRate, reductionPercent]);
+
+  const fetchGoldRateLive = async () => {
+    try {
+      const { data } = await api.post(
+        "http://insight.indelmoney.com:8089/indel/api/insight/latestLTV",
+        {},
+        {
+          headers: {
+            Api_key: API_KEY_GOLD_RATE
+          }
+        }
+      );
+
+      if (data.status) {
+        setGoldRate(data.LTV);
+      } else {
+        toast.error("Failed to fetch gold carat types!");
+      }
+    } catch (error) {
+      toast.error("Gold carat fetching failed!");
+    }
+  };
+
+  useEffect(() => {
+    fetchGoldRateLive();
+  }, [])
 
   return (
     <>
