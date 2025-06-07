@@ -63,25 +63,6 @@ const montserrat = Montserrat({
 // };
 
 export default function RootLayout({ children }) {
-  const [footerData, setFooterData] = useState(null);
-
-  const fetchFooterData = async () => {
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/footer`, {
-        cache: "no-store", // Ensure fresh data
-      });
-      const result = await response.json();
-      if (result.status === "success" && result.data) {
-        setFooterData(result.data);
-      }
-    } catch (error) {
-      console.error("Error fetching footer data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchFooterData();
-  }, []);
 
   return (
     <html lang="en">
@@ -93,7 +74,7 @@ export default function RootLayout({ children }) {
         <Provider store={store}>
           <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         </Provider>
-        <Footer footerData={footerData?.content} icons={footerData?.icons} />
+        <Footer />
         <FloatingButton />
       </body>
     </html>

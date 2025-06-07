@@ -1,90 +1,12 @@
+"use client";
+
 import PlaceholdersAndVanishInputDemo from "../footer/SubscribeForm";
 import Image from "next/image";
 import Link from "next/link";
+import api from "../../../lib/api/axios";
 
 import "./Footer.css";
-
-// async function fetchFooterData() {
-
-//   try {
-//     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/footer`, {
-//       cache: "no-store", // Ensure fresh data
-//     });
-
-//     console.log(response)
-
-//     const result = await response.json();
-
-//     if (result.status === "success" && result.data) {
-//       const {
-//         title,
-//         logo,
-//         sub_title,
-//         address,
-//         toll_free_num,
-//         email,
-//         button_1_text,
-//         button_1_link,
-//         button_2_text,
-//         button_2_link,
-//         icon_section_link,
-//         icon_section_text,
-//         social_media_text,
-//       } = result.data;
-
-//       return {
-//         title,
-//         logo,
-//         sub_title,
-//         address,
-//         toll_free_num,
-//         email,
-//         button_1_text,
-//         button_1_link,
-//         button_2_text,
-//         button_2_link,
-//         icon_section_link,
-//         icon_section_text,
-//         social_media_text,
-//         error: null,
-//       };
-//     }
-
-//     return {
-//       title: null,
-//       logo: null,
-//       sub_title: null,
-//       address: null,
-//       toll_free_num: null,
-//       email: null,
-//       button_1_text: null,
-//       button_1_link: null,
-//       button_2_text: null,
-//       button_2_link: null,
-//       icon_section_link: null,
-//       icon_section_text: null,
-//       social_media_text: null,
-//       error: result.message || "Invalid data format",
-//     };
-//   } catch (error) {
-//     return {
-//       title: null,
-//       logo: null,
-//       sub_title: null,
-//       address: null,
-//       toll_free_num: null,
-//       email: null,
-//       button_1_text: null,
-//       button_1_link: null,
-//       button_2_text: null,
-//       button_2_link: null,
-//       icon_section_link: null,
-//       icon_section_text: null,
-//       social_media_text: null,
-//       error: "Failed to fetch footer data",
-//     };
-//   }
-// }
+import { useEffect, useState } from "react";
 
 const socialmedias = [
   {
@@ -216,7 +138,26 @@ function ExternalLinkBtn({ btn1, btn1_link, btn2, btn2_link }) {
   );
 }
 
-export default function Footer({ footerData,icons }) {
+export default function Footer() {
+  const [footerData, setFooterData] = useState(null);
+  const [icons, setIcons] = useState([]);
+
+  const fetchFooterData = async () => {
+    try {
+      const { data } = await api.get("/web/footer", {});
+      if (data.status === "success" && data.data) {
+        setFooterData(data.data.content);
+        setIcons(data.data.icons);
+      }
+    } catch (error) {
+      console.error("Error fetching footer data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFooterData();
+  }, []);
+
   const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full h-auto block bg-[#e6edf7] pt-[30px] lg:pt-[40px] xl:pt-[60px] 3xl:pt-[80px] pb-[15px] lg:pb-[20px] xl:pb-[30px] 3xl:pb-[40px]">
