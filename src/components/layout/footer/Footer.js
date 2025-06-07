@@ -339,7 +339,7 @@ export default function Footer({ footerData,icons }) {
               <ContactBox
                 href={footerData?.toll_free_num ? `tel:${footerData?.toll_free_num}` : "tel:18004253990"}
                 src="/images/icon-call.svg"
-                title={footerData?.toll_free_text ? footerData?.toll_free_text : "1800 425 39 90"}
+                title={footerData?.toll_free_num ? footerData?.toll_free_num : "1800 425 39 90"}
                 alt="call"
               />
             </div>
