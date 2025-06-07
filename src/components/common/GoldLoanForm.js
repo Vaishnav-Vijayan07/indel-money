@@ -29,15 +29,11 @@ import toast from 'react-hot-toast';
 
 // Schema Validation
 const formSchema = z.object({
-  carat: z.number({
-    required_error: "carat is required",
-  }).positive({
-    message: "carat must be selected",
+  carat: z.string().nonempty({
+    message: "carat is required",
   }),
-  goldType: z.number({
-    required_error: "Gold type is required",
-  }).positive({
-    message: "Gold type must be selected",
+  goldType: z.string().nonempty({
+    message: "Gold type is required",
   }),
   // goldAmount: z.string().min(2, {
   //   message: "must be at least 2 characters.",
@@ -59,8 +55,8 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      carat: null,
-      goldType: null,
+      carat: "",
+      goldType: "",
       goldAmount: "",
       loanAmount: "₹ 59,080",
     },
@@ -143,7 +139,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
                     </SelectTrigger>
                     <SelectContent className="bg-white border-white">
                       {goldCaratTypes?.map((carat) => (
-                        <SelectItem key={carat?.value} value={carat?.value}>
+                        <SelectItem key={carat?.value} value={carat?.label}>
                           {carat?.label}
                         </SelectItem>
                       ))}
@@ -171,7 +167,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
                     </SelectTrigger>
                     <SelectContent className="bg-white border-white">
                       {goldTypes?.map((type) => (
-                        <SelectItem key={type?.value} value={type?.value}>
+                        <SelectItem key={type?.value} value={type?.label}>
                           {type?.label}
                         </SelectItem>
                       ))}
