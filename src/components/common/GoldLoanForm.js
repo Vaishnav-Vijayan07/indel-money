@@ -74,7 +74,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
   function onSubmit() {
     setSubmittedData({
       ...form.getValues(),
-      loanAmount: unit == "gm" ? finalRate.toFixed(2) : (finalRate * 1000).toFixed(2),
+      goldAmount: unit == "gm" ? finalRate.toFixed(2) : (finalRate * 1000).toFixed(2),
     });
 
     setIsDialogOpen(true);
@@ -254,7 +254,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
                     />
                   </div>
                   <FormDescription className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-none font-normal text-[#3c3c3c]">
-                    Rate Calculated @ 5798 / Gm
+                    Rate Calculated @ {finalRate} / Gm
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
