@@ -8,6 +8,7 @@ import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "@/components/common/FloatingButton";
 import { Provider } from "react-redux";
 import { store } from "@/lib/redux/store";
+import { useEffect, useState } from "react";
 
 // Define font with modern configuration
 // const amino = localFont({
@@ -62,19 +63,37 @@ const montserrat = Montserrat({
 // };
 
 export default function RootLayout({ children }) {
+  const [footerData, setFooterData] = useState(null);
+
+  const fetchFooterData = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/footer`, {
+        cache: "no-store", // Ensure fresh data
+      });
+      const result = await response.json();
+      if (result.status === "success" && result.data) {
+        setFooterData(result.data);
+      }
+    } catch (error) {
+      console.error("Error fetching footer data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFooterData();
+  }, []);
+
   return (
     <html lang="en">
       {/* <body
         className={`${amino.variable} font-amino min-h-screen flex flex-col antialiased`}
       > */}
-      <body
-        className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}
-      >
+      <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />
         <Provider store={store}>
           <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         </Provider>
-        <Footer />
+        <Footer footerData={footerData?.content} icons={footerData?.icons} />
         <FloatingButton />
       </body>
     </html>
