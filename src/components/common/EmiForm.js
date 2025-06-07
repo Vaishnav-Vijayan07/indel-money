@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import EnquiryModal from "./EnquiryModal";
 
 const labelStyle =
@@ -26,6 +26,9 @@ export default function EmiForm() {
       loanAmount,
       interestRate,
       tenure,
+      loanAmount,
+      interestRate,
+      tenure,
     };
 
     setSubmittedData(formData);
@@ -36,6 +39,52 @@ export default function EmiForm() {
   function handleCancel() {
     setIsDialogOpen(false);
   }
+
+  function calculateEMI(P, annualRate, N) {
+    // Validate inputs: ensure they are positive numbers
+    if (
+      typeof P !== "number" || isNaN(P) || P <= 0 ||
+      typeof annualRate !== "number" || isNaN(annualRate) || annualRate <= 0 ||
+      typeof N !== "number" || isNaN(N) || N <= 0
+    ) {
+      return {
+        emi: 0,
+        totalInterest: 0,
+        totalPayment: 0,
+      };
+    }
+
+    const R = annualRate / 12 / 100;
+    const numerator = P * R * Math.pow(1 + R, N);
+    const denominator = Math.pow(1 + R, N) - 1;
+
+    // Avoid division by zero
+    if (denominator === 0) {
+      return {
+        emi: 0,
+        totalInterest: 0,
+        totalPayment: 0,
+      };
+    }
+
+    const emi = numerator / denominator;
+    const totalPayment = emi * N;
+    const totalInterest = totalPayment - P;
+
+    return {
+      emi: Math.round(emi),
+      totalInterest: Math.round(totalInterest),
+      totalPayment: Math.round(totalPayment),
+    };
+  }
+
+  // Example usage with safe principal:
+  const principal = Number(loanAmount) * 100000 || 0;
+
+  const { emi, totalInterest, totalPayment } = useMemo(() => {
+    return calculateEMI(principal, interestRate, tenure);
+  }, [principal, interestRate, tenure]);
+
 
   return (
     <>
@@ -65,7 +114,7 @@ export default function EmiForm() {
                 >
                   Loan EMI
                 </div>
-                <div className={resultStyle}>₹2500</div>
+                <div className={resultStyle}>{emi}</div>
               </div>
               <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[46px] 3xl:h-[52px] bg-[#6497db]"></div>
               <div className="max-sm:w-1/3">
@@ -75,7 +124,7 @@ export default function EmiForm() {
                 >
                   Total Interest Payable
                 </div>
-                <div className={resultStyle}>₹1500</div>
+                <div className={resultStyle}>{totalInterest}</div>
               </div>
               <div className="w-[1px] h-[20px] lg-[30px] xl:h-[40px] 2xl:h-[46px] 3xl:h-[52px] bg-[#6497db]"></div>
               <div className="max-sm:w-1/3">
@@ -85,7 +134,7 @@ export default function EmiForm() {
                 >
                   Total Payment (Principal + Interest)
                 </div>
-                <div className={resultStyle}>₹4000</div>
+                <div className={resultStyle}>{totalPayment}</div>
               </div>
             </div>
           </div>

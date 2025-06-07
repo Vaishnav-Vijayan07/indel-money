@@ -31,7 +31,7 @@ export default function EnquiryModal({ isDialogOpen, onCancel, enquiryCalculator
 
       const { data } = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/service-enquiries`, payload);
 
-      if (data.status === "success") {
+      if (data.success) {
         toast.success("Enquiry submitted successfully!");
         onCancel();
       }

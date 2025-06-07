@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import EnquiryModal from "./EnquiryModal";
 
 // Schema Validation
@@ -37,9 +37,9 @@ const formSchema = z.object({
   }).positive({
     message: "Gold type must be selected",
   }),
-  goldAmount: z.string().min(2, {
-    message: "must be at least 2 characters.",
-  }),
+  // goldAmount: z.string().min(2, {
+  //   message: "must be at least 2 characters.",
+  // }),
 });
 
 const labelStyle =
@@ -49,6 +49,9 @@ const toggleBtnStyle =
 
 export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
   const [submittedData, setSubmittedData] = useState({});
+  const [goldRate, setGoldRate] = useState(Math.floor(Math.random() * (6000 - 5000 + 1)) + 5000);
+  const [reductionPercent, setReductionPercent] = useState(7);
+
   // Define form
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -69,8 +72,12 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // Handle form submission
-  function onSubmit(event) {
-    setSubmittedData(form.getValues || {});
+  function onSubmit() {
+    setSubmittedData({
+      ...form.getValues(),
+      loanAmount: unit == "gm" ? finalRate.toFixed(2) : (finalRate * 1000).toFixed(2),
+    });
+
     setIsDialogOpen(true);
   }
 
@@ -78,6 +85,10 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
   function handleCancel() {
     setIsDialogOpen(false);
   }
+
+  const finalRate = useMemo(() => {
+    return goldRate * (1 - reductionPercent / 100);
+  }, [goldRate, reductionPercent]);
 
   return (
     <>
@@ -178,6 +189,15 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
                       className="bg-white border-white"
                       placeholder="Gold Amount (in gms)"
                       {...field}
+                      value={
+                        finalRate
+                          ? unit === "gm"
+                            ? finalRate.toFixed(2)
+                            : (finalRate * 1000).toFixed(2)
+                          : ""
+                      }
+
+                      disabled
                     />
                   </FormControl>
                   <FormMessage />
