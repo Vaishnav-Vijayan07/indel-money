@@ -8,6 +8,7 @@ import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "@/components/common/FloatingButton";
 import { Provider } from "react-redux";
 import { store } from "@/lib/redux/store";
+import { Toaster } from 'react-hot-toast';
 
 // Define font with modern configuration
 // const amino = localFont({
@@ -76,6 +77,7 @@ export default function RootLayout({ children }) {
         </Provider>
         <Footer />
         <FloatingButton />
+        <Toaster position="top-right" />
       </body>
     </html>
   );

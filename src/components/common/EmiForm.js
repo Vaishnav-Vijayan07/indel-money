@@ -12,9 +12,11 @@ const resultStyle =
 
 export default function EmiForm() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [submittedData, setSubmittedData] = useState({});
 
   // Handle form submission
   function onSubmit(event) {
+    setSubmittedData(event || {});
     event.preventDefault();
     setIsDialogOpen(true);
   }
@@ -84,7 +86,7 @@ export default function EmiForm() {
         </div>
       </form>
       {isDialogOpen && (
-        <EnquiryModal isDialogOpen={isDialogOpen} onCancel={handleCancel} />
+        <EnquiryModal isDialogOpen={isDialogOpen} onCancel={handleCancel} enquiryCalculatorData={submittedData} type={'emi_calculator'} />
       )}
     </>
   );

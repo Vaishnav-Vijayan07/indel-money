@@ -27,13 +27,17 @@ import EnquiryModal from "./EnquiryModal";
 
 // Schema Validation
 const formSchema = z.object({
-  carat: z.string().min(2, {
-    message: "must be at least 2 characters.",
+  carat: z.number({
+    required_error: "carat is required",
+  }).positive({
+    message: "carat must be selected",
   }),
-  goldType: z.string().min(10, {
-    message: "must be at least 2 characters.",
+  goldType: z.number({
+    required_error: "Gold type is required",
+  }).positive({
+    message: "Gold type must be selected",
   }),
-  goldAmount: z.string().email({
+  goldAmount: z.string().min(2, {
     message: "must be at least 2 characters.",
   }),
 });
@@ -43,13 +47,14 @@ const labelStyle =
 const toggleBtnStyle =
   "text-[10px] lg:text-[12px] 2xl:text-[14px] text-center leading-[1.2] font-normal text-white w-[40px] lg:w-[45px] 2xl:w-[54px] h-[20px] lg:h-[20px] 2xl:h-[26px] rounded-[4px] lg:rounded-[6px] flex items-center justify-center cursor-pointer transition-colors duration-300";
 
-export default function GoldLoanForm() {
+export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
+  const [submittedData, setSubmittedData] = useState({});
   // Define form
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      carat: "",
-      goldType: "",
+      carat: null,
+      goldType: null,
       goldAmount: "",
       loanAmount: "₹ 59,080",
     },
@@ -65,7 +70,7 @@ export default function GoldLoanForm() {
 
   // Handle form submission
   function onSubmit(event) {
-    event.preventDefault();
+    setSubmittedData(form.getValues || {});
     setIsDialogOpen(true);
   }
 
@@ -90,14 +95,18 @@ export default function GoldLoanForm() {
                   <FormLabel className={labelStyle}>Carat</FormLabel>
                   <Select
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    value={field.value}
+                    key={field.value}
                   >
                     <SelectTrigger className="w-full bg-white border-white">
                       <SelectValue placeholder="Carat" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border-white">
-                      <SelectItem value="1">18 Carat</SelectItem>
-                      <SelectItem value="2">24 Carat</SelectItem>
+                      {goldCaratTypes?.map((carat) => (
+                        <SelectItem key={carat?.value} value={carat?.value}>
+                          {carat?.label}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -114,14 +123,18 @@ export default function GoldLoanForm() {
                   <FormLabel className={labelStyle}>Gold type</FormLabel>
                   <Select
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    value={field.value}
+                    key={field.value}
                   >
                     <SelectTrigger className="w-full bg-white border-white">
                       <SelectValue placeholder="Gold type" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border-white">
-                      <SelectItem value="1">Gold type 1</SelectItem>
-                      <SelectItem value="2">Gold type 2</SelectItem>
+                      {goldTypes?.map((type) => (
+                        <SelectItem key={type?.value} value={type?.value}>
+                          {type?.label}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -142,21 +155,19 @@ export default function GoldLoanForm() {
                     <div className="inline-flex gap-[4px] lg:gap-[6px] 2xl:gap-[8px] rounded-[5px] lg:rounded-[10px] 2xl:rounded-[15px] bg-white p-[2px_4px] lg:p-[3px_6px] 2xl:p-[4px_8px]">
                       <div
                         onClick={() => handleToggle("gm")}
-                        className={`${
-                          unit === "gm"
-                            ? "bg-base1"
-                            : " bg-base1/50 hover:bg-base1/60"
-                        } ${toggleBtnStyle}`}
+                        className={`${unit === "gm"
+                          ? "bg-base1"
+                          : " bg-base1/50 hover:bg-base1/60"
+                          } ${toggleBtnStyle}`}
                       >
                         gm
                       </div>
                       <div
                         onClick={() => handleToggle("kg")}
-                        className={`${
-                          unit === "kg"
-                            ? "bg-base1"
-                            : " bg-base1/50 hover:bg-base1/60"
-                        } ${toggleBtnStyle}`}
+                        className={`${unit === "kg"
+                          ? "bg-base1"
+                          : " bg-base1/50 hover:bg-base1/60"
+                          } ${toggleBtnStyle}`}
                       >
                         kg
                       </div>
@@ -216,7 +227,7 @@ export default function GoldLoanForm() {
         </form>
       </Form>
       {isDialogOpen && (
-        <EnquiryModal isDialogOpen={isDialogOpen} onCancel={handleCancel} />
+        <EnquiryModal isDialogOpen={isDialogOpen} onCancel={handleCancel} enquiryCalculatorData={submittedData} type={'gold_loan_calculator'} />
       )}
     </>
   );
