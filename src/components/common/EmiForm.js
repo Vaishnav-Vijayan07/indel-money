@@ -13,11 +13,22 @@ const resultStyle =
 export default function EmiForm() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [submittedData, setSubmittedData] = useState({});
+  const [loanAmount, setLoanAmount] = useState(33); // in lakhs
+  const [interestRate, setInterestRate] = useState(20); // in %
+  const [tenure, setTenure] = useState(69); // in months
+
 
   // Handle form submission
   function onSubmit(event) {
-    setSubmittedData(event || {});
     event.preventDefault();
+
+    const formData = {
+      loanAmount,
+      interestRate,
+      tenure,
+    };
+
+    setSubmittedData(formData);
     setIsDialogOpen(true);
   }
 
@@ -32,15 +43,18 @@ export default function EmiForm() {
         <div className="flex flex-wrap">
           <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
             <div className={labelStyle}>Loan Amount (lakhs)</div>
-            <Slider defaultValue={[33]} max={100} step={1} />
+            {/* <Slider defaultValue={[33]} max={100} step={1} /> */}
+            <Slider value={[loanAmount]} onValueChange={(value) => setLoanAmount(value[0])} max={100} step={1} />
           </div>
           <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
             <div className={labelStyle}>Interest rate (%)</div>
-            <Slider defaultValue={[20]} max={31} step={1} />
+            {/* <Slider defaultValue={[20]} max={31} step={1} /> */}
+            <Slider value={[interestRate]} onValueChange={(value) => setInterestRate(value[0])} max={31} step={1} />
           </div>
           <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
             <div className={labelStyle}>Tenure (in months)</div>
-            <Slider defaultValue={[69]} max={70} step={[12]} />
+            {/* <Slider defaultValue={[69]} max={70} step={[12]} /> */}
+            <Slider value={[tenure]} onValueChange={(value) => setTenure(value[0])} max={70} step={12} />
           </div>
           <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
             <div className="flex items-center xl:justify-between gap-x-[20px] sm:gap-x-[10px] 2xl:gap-x-[20px] 3xl:gap-x-[30px]">
