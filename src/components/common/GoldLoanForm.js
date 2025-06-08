@@ -1,7 +1,8 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { optional, z } from "zod";
+import { z } from "zod";
+import { useWatch } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -32,12 +33,12 @@ const formSchema = z.object({
   carat: z.string().nonempty({
     message: "carat is required",
   }),
-  goldType: z.string().nonempty({
+  gold_type: z.string().nonempty({
     message: "Gold type is required",
   }),
-  // goldAmount: z.string().min(2, {
-  //   message: "must be at least 2 characters.",
-  // }),
+  gold_amount: z.string().min(1, {
+    message: "must be at least 1 characters.",
+  }),
 });
 
 const labelStyle =
@@ -46,9 +47,8 @@ const toggleBtnStyle =
   "text-[10px] lg:text-[12px] 2xl:text-[14px] text-center leading-[1.2] font-normal text-white w-[40px] lg:w-[45px] 2xl:w-[54px] h-[20px] lg:h-[20px] 2xl:h-[26px] rounded-[4px] lg:rounded-[6px] flex items-center justify-center cursor-pointer transition-colors duration-300";
 
 export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
-  const API_KEY_GOLD_RATE = "ed8d7baf6b5bc3be44ea3fcd65482541a6770d8d";
   const [submittedData, setSubmittedData] = useState({});
-  const [goldRate, setGoldRate] = useState(Math.floor(Math.random() * (6000 - 5000 + 1)) + 5000);
+  const [goldRate, setGoldRate] = useState(0);
   const [reductionPercent, setReductionPercent] = useState(7);
 
   // Define form
@@ -56,10 +56,15 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       carat: "",
-      goldType: "",
-      goldAmount: "",
+      gold_type: "",
+      gold_amount: "",
       loanAmount: "₹ 59,080",
     },
+  });
+
+  const goldAmount = useWatch({
+    control: form.control,
+    name: "gold_amount",
   });
 
   const [unit, setUnit] = useState("gm");
@@ -71,10 +76,15 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // Handle form submission
-  function onSubmit() {
+  function onSubmit(values) {
+    const weight = parseFloat(values.gold_amount);
+    const weightInGm = unit === "kg" ? weight * 1000 : weight;
+    const calculatedLoanAmount = weightInGm * finalRate;
+
     setSubmittedData({
-      ...form.getValues(),
-      goldAmount: unit == "gm" ? finalRate.toFixed(2) : (finalRate * 1000).toFixed(2),
+      ...values,
+      gold_amount: `${weight} ${unit}`,
+      loan_amount: `₹ ${calculatedLoanAmount.toFixed(2)}`,
     });
 
     setIsDialogOpen(true);
@@ -89,20 +99,19 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
     return goldRate * (1 - reductionPercent / 100);
   }, [goldRate, reductionPercent]);
 
+  const loanAmountValue = useMemo(() => {
+    const weight = parseFloat(goldAmount || "0");
+    if (isNaN(weight)) return "";
+
+    const weightInGm = unit === "kg" ? weight * 1000 : weight;
+    return (weightInGm * finalRate).toFixed(2);
+  }, [goldAmount, finalRate, unit]);
+
   const fetchGoldRateLive = async () => {
     try {
-      const { data } = await api.post(
-        "http://insight.indelmoney.com:8089/indel/api/insight/latestLTV",
-        {},
-        {
-          headers: {
-            Api_key: API_KEY_GOLD_RATE
-          }
-        }
-      );
-
-      if (data.status) {
-        setGoldRate(data.LTV);
+      const { data } = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-live-rate`);
+      if (data.success) {
+        setGoldRate(Number(data?.data?.LTV) || 0);
       } else {
         toast.error("Failed to fetch gold carat types!");
       }
@@ -153,7 +162,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
           <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
             <FormField
               control={form.control}
-              name="goldType"
+              name="gold_type"
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <FormLabel className={labelStyle}>Gold type</FormLabel>
@@ -181,7 +190,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
           <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
             <FormField
               control={form.control}
-              name="goldAmount"
+              name="gold_amount"
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <div className="flex">
@@ -212,17 +221,8 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
                   <FormControl>
                     <Input
                       className="bg-white border-white"
-                      placeholder="Gold Amount (in gms)"
+                      placeholder={`Gold Amount (in ${unit})`}
                       {...field}
-                      value={
-                        finalRate
-                          ? unit === "gm"
-                            ? finalRate.toFixed(2)
-                            : (finalRate * 1000).toFixed(2)
-                          : ""
-                      }
-
-                      disabled
                     />
                   </FormControl>
                   <FormMessage />
@@ -243,6 +243,8 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
                         className="bg-white border-white"
                         placeholder="Loan amount"
                         {...field}
+                        value={loanAmountValue ? `₹ ${loanAmountValue}` : ""}
+                        disabled
                       />
                     </FormControl>
                     <Image
@@ -254,7 +256,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
                     />
                   </div>
                   <FormDescription className="text-[10px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-none font-normal text-[#3c3c3c]">
-                    Rate Calculated @ {finalRate} / Gm
+                    Rate Calculated @ {goldRate} / Gm
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

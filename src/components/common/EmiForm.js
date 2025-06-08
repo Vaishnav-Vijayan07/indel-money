@@ -23,11 +23,9 @@ export default function EmiForm() {
     event.preventDefault();
 
     const formData = {
-      loanAmount,
-      interestRate,
+      loan_amount: loanAmount,
+      interest_rate: interestRate,
       tenure,
-      loanAmount,
-      interestRate,
       tenure,
     };
 
