@@ -8,6 +8,7 @@ import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "@/components/common/FloatingButton";
 import { Provider } from "react-redux";
 import { store } from "@/lib/redux/store";
+import { useEffect, useState } from "react";
 import { Toaster } from 'react-hot-toast';
 
 // Define font with modern configuration
@@ -63,14 +64,13 @@ const montserrat = Montserrat({
 // };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       {/* <body
         className={`${amino.variable} font-amino min-h-screen flex flex-col antialiased`}
       > */}
-      <body
-        className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}
-      >
+      <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />
         <Provider store={store}>
           <main className="flex-grow mt-[var(--header-y)]">{children}</main>
