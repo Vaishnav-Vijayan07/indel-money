@@ -1,6 +1,5 @@
 import HomeClient from "../pages/HomeClient";
 
-
 async function fetchHomeData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/home`, {
@@ -20,5 +19,5 @@ async function fetchHomeData() {
 
 export default async function HomePage() {
   const { data, error } = await fetchHomeData();
-  return <HomeClient initialData={data} initialError={error} />
+  return <HomeClient initialData={data} serviceBanner={data?.service} banner={data?.banner} initialError={error} />;
 }
