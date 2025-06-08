@@ -1,4 +1,3 @@
-"use client";
 
 // import localFont from "next/font/local";
 import { Montserrat } from "next/font/google";
@@ -6,9 +5,6 @@ import "./globals.css";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "@/components/common/FloatingButton";
-import { Provider } from "react-redux";
-import { store } from "@/lib/redux/store";
-import { useEffect, useState } from "react";
 
 // Define font with modern configuration
 // const amino = localFont({
@@ -63,7 +59,6 @@ const montserrat = Montserrat({
 // };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en">
       {/* <body
@@ -71,9 +66,7 @@ export default function RootLayout({ children }) {
       > */}
       <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />
-        <Provider store={store}>
-          <main className="flex-grow mt-[var(--header-y)]">{children}</main>
-        </Provider>
+        <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         <Footer />
         <FloatingButton />
       </body>
