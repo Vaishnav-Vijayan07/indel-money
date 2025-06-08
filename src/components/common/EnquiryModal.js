@@ -29,9 +29,6 @@ export default function EnquiryModal({ isDialogOpen, onCancel, enquiryCalculator
         enquiry_type_details: enquiryCalculatorData || {}
       };
 
-      console.log("Enquiry Payload:", payload);
-      return;
-      
       const { data } = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/service-enquiries`, payload);
 
       if (data.success) {
