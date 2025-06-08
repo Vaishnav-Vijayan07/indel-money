@@ -23,10 +23,12 @@ export default function EmiForm() {
     event.preventDefault();
 
     const formData = {
-      loan_amount: loanAmount,
-      interest_rate: interestRate,
+      loan_amount: `${loanAmount} lakhs`,
+      interest_rate: `${interestRate} %`,
       tenure,
-      tenure,
+      loan_emi: emi,
+      total_interest: totalInterest,
+      total_payment: totalPayment,
     };
 
     setSubmittedData(formData);
@@ -76,7 +78,6 @@ export default function EmiForm() {
     };
   }
 
-  // Example usage with safe principal:
   const principal = Number(loanAmount) * 100000 || 0;
 
   const { emi, totalInterest, totalPayment } = useMemo(() => {
