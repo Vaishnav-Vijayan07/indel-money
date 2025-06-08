@@ -69,7 +69,7 @@ export default function RootLayout({ children }) {
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         <Footer />
         <FloatingButton />
-        <Toaster position="top-right" />
+        {/* <Toaster position="top-right" /> */}
       </body>
     </html>
   );
