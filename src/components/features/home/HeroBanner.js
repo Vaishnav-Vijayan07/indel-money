@@ -15,14 +15,14 @@ export default function HeroBanner({ heroBanner, initialData }) {
       if (data.success) {
         setGoldLiveRate(data?.data?.LTV);
       } else {
-        // toast.error("Failed to fetch gold carat types!");
+        toast.error("Failed to fetch gold carat types!");
         const min = 6000;
         const max = 8000;
         const rand = min + Math.random() * (max - min);
         setGoldLiveRate(rand.toFixed(0));
       }
     } catch (error) {
-      // toast.error("Gold carat fetching failed!");
+      toast.error("Gold carat fetching failed!");
         const min = 6000;
         const max = 8000;
         const rand = min + Math.random() * (max - min);
