@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import FindJobForm from "./FindJobForm";
@@ -13,8 +13,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchActiveJobsData } from "@/lib/redux/slices/activeJobsSlice";
 import LoadingCircleSpinner from "@/components/common/LoadingCircleSpinner";
 
 const jobResults = [
@@ -77,22 +75,43 @@ const jobResults = [
 ];
 
 export default function ActiveJobsInfo() {
-  const dispatch = useDispatch()
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [filters, setFilters] = useState({ state: null, role: null, location: null });
+  const [error, setError] = useState(null);
 
-const { data: jobs, loading } = useSelector((state) => state?.jobs);
+  const fetchJobs = async ({ state, role, location }) => {
+    const params = {};
+    if (state) params.state = state;
+    if (role) params.role = role;
+    if (location) params.location = location;
 
-// dispatch with optional parameters only when needed
-const handleSubmit = (state, role, location) => {
-  dispatch(fetchActiveJobsData({ state, role, location }));
-};
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await api.get("/web/career-active-jobs", { params, timeout: 5000 });
+      if (response.data.status !== "success") {
+        setError(response.data.message || "Failed to fetch ActiveJobs data");
+        setJobs([]);
+      } else {
+        setJobs(response.data.data || []);
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to fetch ActiveJobs data");
+      setJobs([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-// fetch all jobs initially (no filters)
-useEffect(() => {
-  dispatch(fetchActiveJobsData({ state: null, role: null, location: null }));
-}, []);
+  const handleSubmit = (state, role, location) => {
+    setFilters({ state, role, location });
+  };
 
-
-
+  // fetch on mount and when filters change
+  useEffect(() => {
+    fetchJobs(filters);
+  }, [filters]);
 
   return (
     <section className="w-full block pb-[30px] lg:pb-[40px] 2xl:pb-[50px]">
@@ -101,59 +120,50 @@ useEffect(() => {
           <FindJobForm variant={"activeJobs"} handleSubmit={handleSubmit} />
         </div>
 
-        {
-          loading ? (
-            <div className="flex justify-center items-center">
-              <LoadingCircleSpinner />
-            </div>
-          )
-            :
-            (
-
-              <>
-                <div className="flex flex-wrap -mx-[4px] sm:-mx-[15px] lg:-mx-[20px] 2xl:-mx-[25px]">
-                  {jobs?.map((item, index) => (
-                    <div
-                      key={index}
-                      className="w-full lg:w-1/2 p-[4px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_20px] 3xl:p-[20px_25px]"
-                    >
-                      <div className="hidden sm:block">
-                        <JobResultBox variant={"activeJobs"} item={item} />
-                      </div>
-                      {/* <div className="block sm:hidden">
+        {loading ? (
+          <div className="flex justify-center items-center">
+            <LoadingCircleSpinner />
+          </div>
+        ) : (
+          <>
+            <div className="flex flex-wrap -mx-[4px] sm:-mx-[15px] lg:-mx-[20px] 2xl:-mx-[25px]">
+              {jobs?.map((item, index) => (
+                <div key={index} className="w-full lg:w-1/2 p-[4px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_20px] 3xl:p-[20px_25px]">
+                  <div className="hidden sm:block">
+                    <JobResultBox variant={"activeJobs"} item={item} />
+                  </div>
+                  {/* <div className="block sm:hidden">
                 <MobJobResultBox item={item} />
               </div> */}
-                    </div>
-                  ))}
                 </div>
-                <Pagination className="justify-start sm:justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
-                  <PaginationContent>
-                    <PaginationItem>
-                      <PaginationPrevious href="#" />
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationLink href="#" isActive>
-                        1
-                      </PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationLink href="#">2</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationLink href="#">3</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationEllipsis />
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationNext href="#" />
-                    </PaginationItem>
-                  </PaginationContent>
-                </Pagination>
-              </>
-            )
-        }
-
+              ))}
+            </div>
+            <Pagination className="justify-start sm:justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious href="#" />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#" isActive>
+                    1
+                  </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">2</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#">3</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext href="#" />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </>
+        )}
       </div>
     </section>
   );

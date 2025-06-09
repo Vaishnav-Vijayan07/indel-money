@@ -3,27 +3,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import api from "@/lib/api/axios";
 import { toast } from "sonner";
-import { submitCareerForm } from "@/lib/redux/slices/careerFormSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 // Schema Validation
 const formSchema = z.object({
@@ -55,9 +41,7 @@ const formSchema = z.object({
 });
 
 export default function CareerForm() {
-  const dispatch = useDispatch();
-
-  const { loading, error } = useSelector((state) => state.careerForm);
+  const [loading, setLoading] = useState(false);
 
   const [dropdowns, setDropdowns] = useState({
     locations: [],
@@ -95,8 +79,6 @@ export default function CareerForm() {
 
   // Handle form submission
   async function onSubmit(values) {
-
-
     if (!selectedFile) {
       toast.error("Please upload your resume.");
       return;
@@ -106,18 +88,18 @@ export default function CareerForm() {
     formData.append("name", values.name);
     formData.append("phone", values.phone);
     formData.append("email", values.email);
-    formData.append("location", values.location || '');
-    formData.append("referred_name", values.referred_name || '');
-    formData.append("referral_code", values.referral_code || '');
-    formData.append("age", values.age || '');
-    formData.append("preferred_role", values.preferred_role || '');
-    formData.append("current_salary", values.current_salary || '');
-    formData.append("expected_salary", values.expected_salary || '');
+    formData.append("location", values.location || "");
+    formData.append("referred_name", values.referred_name || "");
+    formData.append("referral_code", values.referral_code || "");
+    formData.append("age", values.age || "");
+    formData.append("preferred_role", values.preferred_role || "");
+    formData.append("current_salary", values.current_salary || "");
+    formData.append("expected_salary", values.expected_salary || "");
     formData.append("resume", selectedFile);
 
     try {
-      await dispatch(submitCareerForm(formData)).unwrap();
-      // Reset form and file input after successful submission
+      setLoading(true);
+      const { data } = await api.post("/web/career/resume", formData);
       form.reset();
       setSelectedFile(null);
       // Optionally show success message
@@ -125,14 +107,16 @@ export default function CareerForm() {
     } catch (err) {
       console.error("Form submission error:", err);
       toast.error("Failed to submit form. Please try again.");
+    } finally {
+      setLoading(false);
     }
-
   }
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      if (file.size > 5 * 1024 * 1024) {
+        // 5MB limit
         toast.error("File size should be less than 5MB");
         return;
       }
@@ -152,10 +136,7 @@ export default function CareerForm() {
   return (
     <>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]"
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
           <div className="max-sm:flex items-center hidden p-[10px] bg-white bg-custom-svg mb-[20px]">
             <div className="w-[80px] lg:w-[110px]">
               <div className="flex items-center">
@@ -167,16 +148,8 @@ export default function CareerForm() {
                     height={21}
                     className="w-[15px] lg:w-[25px] filter-[brightness(0)_saturate(100%)_invert(100%)_sepia(100%)_saturate(0%)_hue-rotate(137deg)_brightness(107%)_contrast(101%)]"
                   />
-                  <span className="font-medium ml-[4px] lg:ml-[6px] 3xl:ml-[8px] text-white">
-                    Choose
-                  </span>
-                  <input
-                    type="file"
-                    name="resume"
-                    accept="image/*,.pdf"
-                    className="hidden"
-                    onChange={handleFileChange}
-                  />
+                  <span className="font-medium ml-[4px] lg:ml-[6px] 3xl:ml-[8px] text-white">Choose</span>
+                  <input type="file" name="resume" accept="image/*,.pdf" className="hidden" onChange={handleFileChange} />
                 </label>
               </div>
             </div>
@@ -191,11 +164,7 @@ export default function CareerForm() {
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <FormControl>
-                    <Input
-                      className="bg-white border-white"
-                      placeholder="Name"
-                      {...field}
-                    />
+                    <Input className="bg-white border-white" placeholder="Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -209,12 +178,7 @@ export default function CareerForm() {
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <FormControl>
-                    <Input
-                      type="tel"
-                      className="bg-white border-white"
-                      placeholder="Phone Number"
-                      {...field}
-                    />
+                    <Input type="tel" className="bg-white border-white" placeholder="Phone Number" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -228,12 +192,7 @@ export default function CareerForm() {
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <FormControl>
-                    <Input
-                      type="email"
-                      className="bg-white border-white"
-                      placeholder="Email Address"
-                      {...field}
-                    />
+                    <Input type="email" className="bg-white border-white" placeholder="Email Address" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -246,10 +205,7 @@ export default function CareerForm() {
               name="location"
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <SelectTrigger className="w-full bg-white border-white">
                       <SelectValue placeholder="Preferred Location" />
                     </SelectTrigger>
@@ -273,11 +229,7 @@ export default function CareerForm() {
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <FormControl>
-                    <Input
-                      className="bg-white border-white"
-                      placeholder="Referred employee name"
-                      {...field}
-                    />
+                    <Input className="bg-white border-white" placeholder="Referred employee name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -291,11 +243,7 @@ export default function CareerForm() {
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <FormControl>
-                    <Input
-                      className="bg-white border-white"
-                      placeholder="Employee referral code"
-                      {...field}
-                    />
+                    <Input className="bg-white border-white" placeholder="Employee referral code" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -309,11 +257,7 @@ export default function CareerForm() {
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <FormControl>
-                    <Input
-                      className="bg-white border-white"
-                      placeholder="Age"
-                      {...field}
-                    />
+                    <Input className="bg-white border-white" placeholder="Age" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -326,10 +270,7 @@ export default function CareerForm() {
               name="preferred_role"
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <SelectTrigger className="w-full bg-white border-white">
                       <SelectValue placeholder="Preferred Role" />
                     </SelectTrigger>
@@ -353,11 +294,7 @@ export default function CareerForm() {
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <FormControl>
-                    <Input
-                      className="bg-white border-white"
-                      placeholder="Current Salary (Month)"
-                      {...field}
-                    />
+                    <Input className="bg-white border-white" placeholder="Current Salary (Month)" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -371,11 +308,7 @@ export default function CareerForm() {
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
                   <FormControl>
-                    <Input
-                      className="bg-white border-white"
-                      placeholder="Expected Salary (Month)"
-                      {...field}
-                    />
+                    <Input className="bg-white border-white" placeholder="Expected Salary (Month)" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -391,21 +324,9 @@ export default function CareerForm() {
                   <FormControl>
                     <div className="flex items-center">
                       <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[100px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[6px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
-                        <Image
-                          src="/images/icon-upload.svg"
-                          alt="icon-upload"
-                          width={26}
-                          height={21}
-                        />
-                        <span className="font-medium ml-[4px] lg:ml-[6px] 3xl:ml-[8px]">
-                          Choose
-                        </span>
-                        <input
-                          type="file"
-                          accept="image/*,.pdf"
-                          className="hidden"
-                          onChange={handleFileChange}
-                        />
+                        <Image src="/images/icon-upload.svg" alt="icon-upload" width={26} height={21} />
+                        <span className="font-medium ml-[4px] lg:ml-[6px] 3xl:ml-[8px]">Choose</span>
+                        <input type="file" accept="image/*,.pdf" className="hidden" onChange={handleFileChange} />
                       </label>
                       <span className="text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] whitespace-nowrap text-ellipsis overflow-hidden flex-1 ml-[4px] lg:ml-[6px] 2xl:ml-[8px]">
                         {selectedFile ? selectedFile.name : "No file chosen"}
@@ -423,9 +344,7 @@ export default function CareerForm() {
               type="submit"
               disabled={loading}
             >
-              <span className="px-[4px] lg:px-[15px] 2xl:px-[20px]">
-                {loading ? "Submitting..." : "Submit"}
-              </span>
+              <span className="px-[4px] lg:px-[15px] 2xl:px-[20px]">{loading ? "Submitting..." : "Submit"}</span>
               <Image
                 src={"/images/icon-careerBtn.svg"}
                 alt="careerBtn"

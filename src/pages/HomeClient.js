@@ -25,13 +25,12 @@ import MobLatestUpdates from "../components/features/home/MobLatestUpdates";
 import MobInnovations from "../components/features/home/MobInnovations";
 import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
-export default function Home({ initialData, initialError }) {
-
+export default function Home({ initialData, serviceBanner, banner, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   return (
     <>
       {/* welcome contents*/}
-      {isMobile ? <MobWelcomeModal /> : <WelcomeModal />}
+      {isMobile ? <MobWelcomeModal /> : banner ? <WelcomeModal banner={banner} /> : null}
 
       {/* banner section contents*/}
       <div className="hidden sm:block">
@@ -76,7 +75,13 @@ export default function Home({ initialData, initialError }) {
 
       {/* Life at Indel contents*/}
       <div className="hidden sm:block">
-        <LifeAtIndel pageContent={initialData?.pageContent} lifeAtIndel={initialData?.lifeAtIndel} image1={initialData?.pageContent?.life_section_image1} image2={initialData?.pageContent?.life_section_image2} image3={initialData?.pageContent?.life_section_image3} />
+        <LifeAtIndel
+          pageContent={initialData?.pageContent}
+          lifeAtIndel={initialData?.lifeAtIndel}
+          image1={initialData?.pageContent?.life_section_image1}
+          image2={initialData?.pageContent?.life_section_image2}
+          image3={initialData?.pageContent?.life_section_image3}
+        />
       </div>
       <div className="block sm:hidden">
         <MobJoinTeam pageContent={initialData?.pageContent} />
