@@ -1,7 +1,29 @@
 import Image from "next/image";
-import parse from "html-react-parser";
+import parse, { domToReact } from "html-react-parser";
+
+const options = {
+  replace: (node) => {
+    if (node.name === "li") {
+      return (
+        <li className="3xl:text-[20px] 2xl:text-[15px] xl:text-[13px] text-[12px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px] mb-[3px] last:mb-0">
+          {domToReact(node.children, options)}
+        </li>
+      );
+    }
+    // Optional: strip <ul> class and use your own outside
+    if (node.name === "ul") {
+      return (
+        <ul className="w-full bg-[#ECF4FF] rounded-[20px] xl:rounded-[24px] overflow-hidden px-[20px] xl:px-[25px] 2xl:px-[30px] py-[15px] mb-[15px] xl:mb-[20px] 2xl:mb-[35px]">
+          {domToReact(node.children, options)}
+        </ul>
+      );
+    }
+  },
+};
 
 export default function ({ products, title, image, criteriaIcon, criteriaTitle, criteriaDescription, criteriaNote }) {
+
+
   const slides = [
     {
       icon: "/images/proIcon01.svg",
@@ -87,30 +109,11 @@ export default function ({ products, title, image, criteriaIcon, criteriaTitle, 
                   className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
                 />
               </div>
-              <h2
-                className="text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-normal text-[#141414] pl-[15px] [&>span]:text-base2 [&>span]:font-bold]"
-                dangerouslySetInnerHTML={{
-                  __html: criteriaTitle ? criteriaTitle : " Eligibility<span >&nbsp;Criteria</span>",
-                }}
-              />
+              <h2 className="text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-normal text-[#141414] pl-[15px] [&>span]:text-base2 [&>span]:font-bold">
+                {criteriaTitle ? parse(criteriaTitle) : "Eligibility Criteria"}
+              </h2>
             </div>
-            {/* <ul className="w-full bg-[#ECF4FF] rounded-[20px] xl:rounded-[24px] overflow-hidden px-[20px] xl:px-[25px] 2xl:px-[30px] py-[15px] mb-[15px] xl:mb-[20px] 2xl:mb-[35px]">
-                            <li className="3xl:text-[20px] 2xl:text-[15px] xl:text-[13px] text-[12px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px] mb-[3px]" >Minimum age – 21 years</li>
-                            <li className="3xl:text-[20px] 2xl:text-[15px] xl:text-[13px] text-[12px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px] mb-[3px]" >Maximum age – 60 years</li>
-                            <li className="3xl:text-[20px] 2xl:text-[15px] xl:text-[13px] text-[12px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px] mb-[3px]">Tenure – 6 months</li>
-                            <li className="3xl:text-[20px] 2xl:text-[15px] xl:text-[13px] text-[12px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px] mb-[3px]">Customer type – IMPL customer</li>
-                            <li className="3xl:text-[20px] 2xl:text-[15px] xl:text-[13px] text-[12px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px]">Security – Gold Ornament</li>
-                        </ul> */}
-            <ul className="w-full bg-[#ECF4FF] rounded-[20px] xl:rounded-[24px] overflow-hidden px-[20px] xl:px-[25px] 2xl:px-[30px] py-[15px] mb-[15px] xl:mb-[20px] 2xl:mb-[35px]">
-              {criteriaDescription?.split(",")?.map((item, index) => (
-                <li
-                  key={index}
-                  className="3xl:text-[20px] 2xl:text-[15px] xl:text-[13px] text-[12px] text-[#323232] relative pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px] mb-[3px] last:mb-0"
-                >
-                  {item.trim()}
-                </li>
-              ))}
-            </ul>
+            {parse(criteriaDescription, options)}
 
             <div className="text-sm1 font-medium max-w-[70%]">
               {criteriaNote

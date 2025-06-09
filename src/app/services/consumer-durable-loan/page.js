@@ -33,7 +33,7 @@ export default async function Services() {
     return (
         <>
             {/* ConsumerDurable contents */}
-            <ConsumerDurable page_title={contents?.page_title} loan_offer_description={contents?.loan_offer_description} loan_offer_title={contents?.loan_offer_title} loan_offer_button_text={contents?.loan_offer_button_text} loan_offer_button_link={contents?.loan_offer_button_link} />
+            <ConsumerDurable page_title={contents?.page_title} image={contents?.image} image_alt={contents?.image_alt} loan_offer_description={contents?.loan_offer_description} loan_offer_title={contents?.loan_offer_title} loan_offer_button_text={contents?.loan_offer_button_text} loan_offer_button_link={contents?.loan_offer_button_link} />
 
             {/* ProductCovered contents */}
             <ProductCovered products={products} title={contents?.covered_products_section_title} image={contents?.covered_products_section_image} criteriaTitle={contents?.eligibility_criteria_title} criteriaIcon={contents?.eligibility_criteria_icon} criteriaDescription={contents?.eligibility_criteria_description} criteriaNote={contents?.eligibility_criteria_note} />
