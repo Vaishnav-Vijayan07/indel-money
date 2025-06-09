@@ -45,7 +45,7 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
       yourName: "",
       contactNumber: "",
       emailAddress: "",
-      serviceType: null,
+      serviceType: "",
     },
   });
 

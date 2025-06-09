@@ -11,6 +11,7 @@ export default function HeroBanner({ heroBanner, initialData }) {
   const fetchGoldRateLive = async () => {
     try {
       const { data } = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-live-rate`);
+      throw new Error("Failed to fetch gold live rate!"); // Simulating an error for testing purposes
       if (data.success) {
         setGoldLiveRate(data?.data?.LTV);
       } else {
@@ -22,6 +23,10 @@ export default function HeroBanner({ heroBanner, initialData }) {
       }
     } catch (error) {
       toast.error("Gold carat fetching failed!");
+        const min = 6000;
+        const max = 8000;
+        const rand = min + Math.random() * (max - min);
+        setGoldLiveRate(rand.toFixed(0));
     }
   };
 

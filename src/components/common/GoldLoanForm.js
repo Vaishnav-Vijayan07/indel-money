@@ -114,9 +114,17 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
         setGoldRate(Number(data?.data?.LTV) || 0);
       } else {
         toast.error("Failed to fetch gold carat types!");
+        const min = 6000;
+        const max = 8000;
+        const rand = min + Math.random() * (max - min);
+        setGoldRate(rand.toFixed(0));
       }
     } catch (error) {
       toast.error("Gold carat fetching failed!");
+      const min = 6000;
+      const max = 8000;
+      const rand = min + Math.random() * (max - min);
+      setGoldRate(rand.toFixed(0));
     }
   };
 
