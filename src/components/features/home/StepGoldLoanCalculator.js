@@ -67,7 +67,7 @@ export default function StepGoldLoanCalculator({ className }) {
   }, [goldCaratTypes]);
 
   return (
-    <section className={`${className} w-full py-[20px] md:py-[30px] 2xl:py-[100px]`}>
+    <section id="gold-loan-section" className={`${className} w-full py-[20px] md:py-[30px] 2xl:py-[100px]`}>
       <div className="container">
         <div className="flex flex-wrap -mx-[10px] lg:-mx-[15px] 2xl:-mx-[20px]">
           <div className="w-full sm:w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
