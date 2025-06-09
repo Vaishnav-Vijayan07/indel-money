@@ -30,7 +30,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
   return (
     <>
       {/* welcome contents*/}
-      {isMobile ? <MobWelcomeModal /> : banner ? <WelcomeModal banner={banner} /> : null}
+      {isMobile ? <MobWelcomeModal /> : banner || serviceBanner ? <WelcomeModal banner={banner} serviceBanner={serviceBanner} /> : null}
 
       {/* banner section contents*/}
       <div className="hidden sm:block">
