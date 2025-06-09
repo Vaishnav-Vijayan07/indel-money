@@ -79,7 +79,13 @@ function WelcomeBox({ item, index }) {
           isActive ? "aspect-[386/254]" : "aspect-[300/230]"
         } group w-full overflow-hidden rounded-[10px] lg:rounded-[15px] 2xl:rounded-[24px] mb-[15px] lg:mb-[20px] 3xl:mb-[30px] relative`}
       >
-        <Image src={item?.src} alt={item?.alt} fill sizes="386px" className="object-cover transition-transform duration-300 group-hover:scale-105" />
+        <Image
+          src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/welcome-4.jpg"}
+          alt={item?.image_alt ? item?.image_alt : "welcome-4"}
+          fill
+          sizes="386px"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+        />
       </div>
 
       <div className="w-full flex flex-col flex-grow">
@@ -90,7 +96,7 @@ function WelcomeBox({ item, index }) {
               : "text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[17px] 2xl:text-[20px] 3xl:text-[22px]"
           } font-bold text-base1 line-clamp-1 leading-none mb-[5px] lg:mb-[10px] 3xl:mb-[15px] transition-all duration-300`}
         >
-          {item?.title}
+          {item?.title ? item?.title : "Quick pay"}
         </div>
 
         <div
@@ -100,17 +106,17 @@ function WelcomeBox({ item, index }) {
               : "text-[12px] lg:text-[12px] xl:text-[13px] 2xl:text-[16px] 3xl:text-[18px] leading-[1.3]"
           } font-normal text-[#323232] line-clamp-3 mb-[10px] lg:mb-[15px] 2xl:mb-[20px] transition-all duration-300`}
         >
-          {item?.description}
+          {item?.description ? item?.description : "efficient payment solution designed to make transactions faster and easier."}
         </div>
 
         <Link
-          href={item?.link}
+          href={item?.button_link ? item?.button_link : "/"}
           className={`${
             isActive ? "border-base1 bg-base1 text-white" : "bg-white border-black/25 text-black"
           } group flex items-center justify-center gap-[4px] lg:gap-[6px] 2xl:gap-[8px] w-full h-[30px] lg:h-[35px] 2xl:h-[42px] text-[12px] lg:text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[16px] uppercase text-normal rounded-full border mt-auto transition-all duration-300 hover:bg-base1/80 hover:text-white
                     `}
         >
-          {item?.linkname}
+          {item?.button_text ? item?.button_text : "Get Started"}
           <svg
             width="7"
             height="13"
@@ -127,7 +133,9 @@ function WelcomeBox({ item, index }) {
   );
 }
 
-export default function WelcomeModal({ banner }) {
+export default function WelcomeModal({ banner, serviceBanner }) {
+  console.log(banner,serviceBanner);
+  const appear_in = banner?.banner_popup_appearence_time || serviceBanner?.banner_popup_appearence_time;
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -135,7 +143,7 @@ export default function WelcomeModal({ banner }) {
 
     if (!hasSeenModal) {
       // Get appearance time from banner props (convert to milliseconds)
-      const appearanceTime = (banner?.banner_popup_appearence_time || 5) * 1000;
+      const appearanceTime = (appear_in || 5) * 1000;
 
       // Show modal after appearance time (initial delay)
       const initialTimer = setTimeout(() => {
@@ -157,11 +165,8 @@ export default function WelcomeModal({ banner }) {
         clearInterval(intervalTimer);
       };
     }
-  }, [banner?.banner_popup_appearence_time]);
+  }, [banner?.banner_popup_appearence_time, serviceBanner?.banner_popup_appearence_time]);
 
-  // Handle manual closing and mark as seen (stops future appearances)
-
-  // Handle manual closing and mark as seen (stops future appearances)
   const handleClose = () => {
     setIsOpen(false);
     localStorage.setItem("hasSeenWelcomeModal", "true");
@@ -203,30 +208,43 @@ export default function WelcomeModal({ banner }) {
               </div>
             </div>
           </div>
-          <div className="-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px] relative z-0 before:absolute before:inset-0 before:left-auto before:z-2 before:block before:bg-gradient-to-r before:to-white before:from-transparent before:w-[20px] before:h-full before:pointer-events-none before:xl:hidden">
-            <Swiper
-              slidesPerView={"auto"}
-              spaceBetween={0}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: false,
-              }}
-              className="welcomeSlide"
-            >
-              {slides?.map((item, index) => (
-                <SwiperSlide
-                  key={index}
-                  className={`${
-                    index === 0
-                      ? "max-w-[220px] sm:max-w-[240px] lg:max-w-[260px] xl:max-w-[290px] 2xl:max-w-[360px] 3xl:max-w-[450px]"
-                      : "max-w-[200px] sm:max-w-[220px] lg:max-w-[240px] xl:max-w-[calc((100%-290px)/3)] 2xl:max-w-[calc((100%-360px)/3)] 3xl:max-w-[calc((100%-450px)/3)]"
-                  } h-auto! p-[4px] lg:p-[6px] 2xl:p-[10px] transition-all duration-300 `}
-                >
-                  <WelcomeBox item={item} index={index} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          {banner && (
+            <div className="w-full">
+              <Image
+                src={banner?.banner_popup_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.banner_popup_image}` : "/icons/logo_sm.svg"}
+                width={1920}
+                height={1080}
+                alt={banner?.sub_title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+          {serviceBanner && (
+            <div className="-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px] relative z-0 before:absolute before:inset-0 before:left-auto before:z-2 before:block before:bg-gradient-to-r before:to-white before:from-transparent before:w-[20px] before:h-full before:pointer-events-none before:xl:hidden">
+              <Swiper
+                slidesPerView={"auto"}
+                spaceBetween={0}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                }}
+                className="welcomeSlide"
+              >
+                {serviceBanner?.services?.map((item, index) => (
+                  <SwiperSlide
+                    key={index}
+                    className={`${
+                      index === 0
+                        ? "max-w-[220px] sm:max-w-[240px] lg:max-w-[260px] xl:max-w-[290px] 2xl:max-w-[360px] 3xl:max-w-[450px]"
+                        : "max-w-[200px] sm:max-w-[220px] lg:max-w-[240px] xl:max-w-[calc((100%-290px)/3)] 2xl:max-w-[calc((100%-360px)/3)] 3xl:max-w-[calc((100%-450px)/3)]"
+                    } h-auto! p-[4px] lg:p-[6px] 2xl:p-[10px] transition-all duration-300 `}
+                  >
+                    <WelcomeBox item={item} index={index} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          )}
         </div>
       </AlertDialogContent>
     </AlertDialog>
