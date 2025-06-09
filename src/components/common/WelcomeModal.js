@@ -134,7 +134,7 @@ function WelcomeBox({ item, index }) {
 }
 
 export default function WelcomeModal({ banner, serviceBanner }) {
-  console.log(banner,serviceBanner);
+  console.log(banner, serviceBanner);
   const appear_in = banner?.banner_popup_appearence_time || serviceBanner?.banner_popup_appearence_time;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -190,10 +190,12 @@ export default function WelcomeModal({ banner, serviceBanner }) {
             />
           </AlertDialogCancel>
           <div className="flex flex-wrap gap-[15px] lg:gap-[20px] xl:gap-[30px] 2xl:gap-[40px] 3xl:gap-[50px] mb-[10px] sm:mb-[15px] lg:mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
-            <div className="w-full max-w-[80px] sm:max-w-[90px] md:max-w-[100px] lg:max-w-[120px] xl:max-w-[140px] 2xl:max-w-[180px] 3xl:max-w-[280px] h-auto inline-block">
+            <div
+              className="w-full max-w-[80px] sm:max-w-[90px] md:max-w-[100px] lg:max-w-[120px] xl:max-w-[140px] 2xl:max-w-[180px] 3xl:max-w-[280px] h-auto inline-block"
+            >
               <Image
                 src={banner?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.logo}` : "/icons/logo_sm.svg"}
-                alt="logo"
+                alt={banner?.image_alt ? banner?.image_alt : "alt"}
                 width={218}
                 height={112}
                 inert
@@ -209,15 +211,15 @@ export default function WelcomeModal({ banner, serviceBanner }) {
             </div>
           </div>
           {banner && (
-            <div className="w-full">
+            <Link href={banner?.image_link ? banner?.image_link : "/"} className="w-full">
               <Image
                 src={banner?.banner_popup_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.banner_popup_image}` : "/icons/logo_sm.svg"}
                 width={1920}
                 height={1080}
-                alt={banner?.sub_title}
+                alt={banner?.image_alt ? banner?.image_alt : "alt"}
                 className="w-full h-full object-cover"
               />
-            </div>
+            </Link>
           )}
           {serviceBanner && (
             <div className="-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px] relative z-0 before:absolute before:inset-0 before:left-auto before:z-2 before:block before:bg-gradient-to-r before:to-white before:from-transparent before:w-[20px] before:h-full before:pointer-events-none before:xl:hidden">
