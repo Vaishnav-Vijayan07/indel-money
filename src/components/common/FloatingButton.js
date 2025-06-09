@@ -20,11 +20,18 @@ import {
 } from "@/components/ui/command";
 import GoldLoanForm from "./GoldLoanForm";
 
-function FloatingCalculator() {
+function FloatingCalculator({ scrollTargetId }) {
+  const handleClick = () => {
+    const element = document.getElementById(scrollTargetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <div className="w-[25px] lg:w-[30px] 2xl:w-[40px] 3xl:w-[46px] aspect-square rounded-full relative z-0 block transition-all duration-300 hover:scale-105 shadow-[0_5px_10px_rgba(0,0,0,0.10)] cursor-pointer">
+        <div onClick={handleClick} className="w-[25px] lg:w-[30px] 2xl:w-[40px] 3xl:w-[46px] aspect-square rounded-full relative z-0 block transition-all duration-300 hover:scale-105 shadow-[0_5px_10px_rgba(0,0,0,0.10)] cursor-pointer">
           <Image
             src={"/images/floating-calculator.svg"}
             alt="calculator"
@@ -33,7 +40,7 @@ function FloatingCalculator() {
           />
         </div>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      {/* <AlertDialogContent>
         <div className="w-full min-w-[340px] sm:min-w-[360px] md:min-w-[376px] lg:min-w-[420px] xl:min-w-[468px] 2xl:min-w-[576px] 3xl:min-w-[668px] mx-auto bg-[#dceafb] rounded-[15px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_25px] lg:p-[20px_30px] xl:p-[30px_50px] 2xl:p-[40px_60px] 3xl:p-[50px_80px] relative z-0">
           <AlertDialogCancel className="text-[12px] 2xl:text-[14px] 3xl:text-[16px] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] xl:top-[20px] 2xl:top-[25px] 3xl:top-[30px] right-[15px] xl:right-[20px] 2xl:right-[25px] 3xl:right-[30px] transition-color cursor-pointer hover:text-base2">
             Close
@@ -58,7 +65,7 @@ function FloatingCalculator() {
             <GoldLoanForm />
           </div>
         </div>
-      </AlertDialogContent>
+      </AlertDialogContent> */}
     </AlertDialog>
   );
 }
@@ -98,18 +105,18 @@ function FloatingSearch() {
                   heading="Suggestions"
                 >
                   {/* <div className="overflow-y-auto h-[176px] lg:h-[220px] 2xl:h-[268px]"> */}
-                    <CommandItem>Calendar</CommandItem>
-                    <CommandItem>Search Emoji</CommandItem>
-                    <CommandItem>Calculator</CommandItem>
-                    <CommandItem>Calendar</CommandItem>
-                    <CommandItem>Search Emoji</CommandItem>
-                    <CommandItem>Calculator</CommandItem>
-                    <CommandItem>Calendar</CommandItem>
-                    <CommandItem>Search Emoji</CommandItem>
-                    <CommandItem>Calculator</CommandItem>
-                    <CommandItem>Calendar</CommandItem>
-                    <CommandItem>Search Emoji</CommandItem>
-                    <CommandItem>Calculator</CommandItem>
+                  <CommandItem>Calendar</CommandItem>
+                  <CommandItem>Search Emoji</CommandItem>
+                  <CommandItem>Calculator</CommandItem>
+                  <CommandItem>Calendar</CommandItem>
+                  <CommandItem>Search Emoji</CommandItem>
+                  <CommandItem>Calculator</CommandItem>
+                  <CommandItem>Calendar</CommandItem>
+                  <CommandItem>Search Emoji</CommandItem>
+                  <CommandItem>Calculator</CommandItem>
+                  <CommandItem>Calendar</CommandItem>
+                  <CommandItem>Search Emoji</CommandItem>
+                  <CommandItem>Calculator</CommandItem>
                   {/* </div> */}
                 </CommandGroup>
               </CommandList>
@@ -164,7 +171,7 @@ export default function FloatingButton() {
         </Link>
       </div>
       <div>
-        <FloatingCalculator />
+        <FloatingCalculator scrollTargetId="gold-loan-section" />
       </div>
       <div>
         <FloatingSearch />
