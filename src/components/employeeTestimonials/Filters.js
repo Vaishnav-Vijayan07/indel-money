@@ -1,7 +1,7 @@
 const TestimonialFilter = {
-  ALL: "ALL_TESTIMONIALS",
-  WORDS: "EMPLOYEE_WORDS",
-  VIDEO: "VIDEO_TESTIMONIAL",
+  ALL: "all",
+  WORDS: "text",
+  VIDEO: "video",
 };
 
 function TestimonialFilters({ activeFilter, onFilterChange }) {
