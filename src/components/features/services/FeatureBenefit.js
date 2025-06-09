@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function FeatureBenefit({ benfits, title, image }) {
+export default function FeatureBenefit({ benefits, title, image }) {
     const slides = [
         {
             icon: "/images/ftrB-01.svg",
@@ -58,6 +58,7 @@ export default function FeatureBenefit({ benfits, title, image }) {
             benefit: "Easy documentation",
         },
     ];
+
     return (
         <section className="w-full sm:bg-gradient-to-r sm:from-[rgba(243,0,0,0.00)] sm:via-transparent sm:to-[rgba(235,2,8,0.10)] bg-[#E5F6FF] py-[20px] lg:py-0 sm:mt-0 mt-[20px] sm:rounded-[0px] rounded-[20px]">
             <div className="max-w-[var(--container-x)] lg:max-w-[calc(100%-(100%-var(--container-x))/2)] mx-auto lg:ml-[0] px-[var(--container-padding,1rem)] lg:pl-[0]">
@@ -94,7 +95,7 @@ export default function FeatureBenefit({ benfits, title, image }) {
                                             className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]" />
                                     </div>
                                     <div className="relative z-1 flex flex-wrap -my-[5px] 2xl:-my-[8px] -mx-[10px] 2xl:-mx-[15px]">
-                                        {benfits?.map((item, index) => (
+                                        {benefits?.map((item, index) => (
                                             <div key={index} className="w-full sm:w-1/2 py-[5px] 2xl:py-[8px] px-[10px] 2xl:px-[15px]">
                                                 <FeatureBenefitBox item={item} />
                                             </div>

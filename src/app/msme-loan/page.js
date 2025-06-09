@@ -8,7 +8,6 @@ import GrownWithMsme from "@/components/features/msmeloan/GrownWithMsme";
 import MobKickStartVenture from "@/components/features/msmeloan/MobKickStartVenture";
 import MobWhoDoServe from "@/components/features/msmeloan/MobWhoDoServe";
 
-
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/msme`, {
@@ -18,29 +17,43 @@ async function fetchData() {
     const msmeData = result.data;
 
     if (result.status === "success") {
-
-      return { contents: msmeData?.msmeLoanContent, offerings: msmeData?.msmeOfferings, faqs: msmeData?.msmeLoanFaq, error: result.message };
+      return {
+        contents: msmeData?.msmeLoanContent,
+        offerings: msmeData?.msmeOfferings,
+        faqs: msmeData?.msmeLoanFaq,
+        loanTypes: msmeData?.msmeLoanTypes,
+        industries: msmeData?.msmeLoanSupportedIndustries,
+        audience: msmeData?.msmeTargetedAudience,
+        error: result.message,
+      };
     }
-    return { contents: null, offerings: null, faqs: null, error: result.message };
+    return { contents: null, offerings: null, faqs: null, loanTypes: null, industries: null, audience: null, error: result.message };
   } catch (error) {
-    return { contents: null, offerings: null, faqs: null, error: "Failed to fetch service data" };
+    return { contents: null, offerings: null, faqs: null, loanTypes: null, industries: null, audience: null, error: "Failed to fetch service data" };
   }
 }
 
 export default async function MsmeLoan() {
+  const { contents, offerings, faqs, loanTypes, industries, audience, error } = await fetchData();
 
-  const { contents, offerings, faqs, error } = await fetchData();
-
-  if (!contents || !offerings || !faqs) {
+  if (error) {
     return <div>Failed to fetch MSME data</div>;
   }
-
 
   return (
     <>
       {/* KickStartVenture contents*/}
       <div className="hidden sm:block">
-        <KickStartVenture title={contents?.title} sub_title={contents?.sub_title} description={contents?.description} button_text={contents?.button_text} button_url={contents?.button_url} our_offering_title={contents?.our_offering_title} our_offering_description={contents?.our_offering_description} offerings={offerings} />
+        <KickStartVenture
+          title={contents?.title}
+          sub_title={contents?.sub_title}
+          description={contents?.description}
+          button_text={contents?.button_text}
+          button_url={contents?.button_url}
+          our_offering_title={contents?.our_offering_title}
+          our_offering_description={contents?.our_offering_description}
+          offerings={offerings}
+        />
       </div>
       {/* WhoDoServe Mobile contents*/}
       <div className="block sm:hidden">
@@ -48,25 +61,28 @@ export default async function MsmeLoan() {
       </div>
 
       {/* LoanSlider contents*/}
-      <LoansList />
+      <LoansList loanTypes={loanTypes} />
 
       {/* WhyMsme contents*/}
-      <WhyMsme />
+      <WhyMsme
+        title={contents?.why_msme_loan_title}
+        description={contents?.why_msme_loan_description}
+        image={contents?.why_msme_loan_image}
+        alt={contents?.image_alt}
+      />
 
       {/* WhoDoServe contents*/}
       <div className="hidden sm:block">
-        <WhoDoServe />
+        <WhoDoServe audience={audience} who_do_serve_title={contents?.who_do_serve_title} />
       </div>
       {/* WhoDoServe Mobile contents*/}
-      <div className="block sm:hidden">
-        <MobWhoDoServe />
-      </div>
+      <div className="block sm:hidden">{/* <MobWhoDoServe /> */}</div>
 
       {/* MsmePresence contents*/}
-      <MsmePresence />
+      <MsmePresence title={contents?.about_msme_title} description={contents?.about_msme_description} audience={audience} />
 
       {/* Grown With Msme contents*/}
-      <GrownWithMsme faqs={faqs} />
+      <GrownWithMsme faqs={faqs} title={contents?.msme_loan_overview_title} description={contents?.msme_loan_overview_description} />
     </>
   );
 }
