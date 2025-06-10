@@ -13,7 +13,7 @@ import {
 
 import { Button } from "../../components/ui/button";
 
-export default function BranchForm({ states, districts, locations, selectedState, selectedDistrict, selectedLocation, onValueChange }) {
+export default function BranchForm({ states, districts, locations, selectedState, selectedDistrict, selectedLocation, onValueChange, onOpenChange }) {
 
   return (
     <form className="flex flex-wrap -mx-[10px] sm:-mx-[10px] 2xl:-mx-[15px]">
@@ -67,14 +67,14 @@ export default function BranchForm({ states, districts, locations, selectedState
 
       {/* Distance */}
       <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
-        <Select>
+        <Select onOpenChange={onOpenChange} onValueChange={(value) => onValueChange("distance", value)}>
           <SelectTrigger className="w-full bg-[#e7eff9] border-[#e7eff9]">
             <SelectValue placeholder="Select Distance" />
           </SelectTrigger>
           <SelectContent className="bg-[#e7eff9] border-[#e7eff9]">
-            <SelectItem value="10km">10km</SelectItem>
-            <SelectItem value="20km">20km</SelectItem>
-            <SelectItem value="30km">30km</SelectItem>
+            <SelectItem value="10">10km</SelectItem>
+            <SelectItem value="20">20km</SelectItem>
+            <SelectItem value="30">30km</SelectItem>
           </SelectContent>
         </Select>
       </div>
