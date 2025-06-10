@@ -7,7 +7,7 @@ import JobResultBoxSlide from "./JobResultBoxSlide";
 function JobLocationBox({ item }) {
   return (
     <Link
-      href={"/"}
+      href={`/career/active-jobs?state_id=${item.id}`}
       className={`${
         item.is_active ? "group opacity-100 grayscale-0 cursor-pointer" : "opacity-80 grayscale-100 cursor-default"
       } w-full h-auto aspect-220/160 bg-white rounded-[7px] sm:rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] overflow-hidden block relative z-0`}
@@ -20,7 +20,7 @@ function JobLocationBox({ item }) {
         className="group-hover:scale-105 transition-transform duration-300"
       />
       <div className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] leading-[1] whitespace-nowrap text-ellipsis overflow-hidden font-medium text-white bg-gradient-to-r to-white/0 from-[#f30000]/90 max-sm:bg-[linear-gradient(270deg,#17479E_0%,#F30000_100%)] absolute z-1 left-0 bottom-0 right-0 sm:mb-[5px] lg:mb-[10px] xl:mb-[15px] 2xl:mb-[20px] 3xl:mb-[24px] p-[7px] lg:p-[4px_10px] xl:p-[6px_12px] 2xl:p-[8px_16px] 3xl:p-[8px_18px]">
-        {item.state_name}
+        {item?.state_name}
       </div>
     </Link>
   );
