@@ -48,6 +48,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
     }
     else if (field == "district") {
       setSelectedDistrict(value);
+      fetchLocations(selectedState, value);
     }
     else if (field == "location") {
       setSelectedLocation(value);
@@ -85,16 +86,23 @@ export default function BranchLocator({ variant = "default", pageContent }) {
     }
   };
 
-  const fetchLocations = async () => {
+  const fetchLocations = async (state_id, district_id) => {
+
+    console.log('state_id:', state_id, 'district_id:', district_id);
+    
     try {
-      const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/locations`);
+      const url = state_id && district_id ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/locations/by_district_state` : `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/locations`;
+      const params = state_id && district_id ? { state_id, district_id } : {};
+
+      const { data } = await api.get(url, { params });
+
       if (data.success) {
         setLocations(data.data);
       } else {
-        console.error("Failed to fetch states:", data.message);
+        console.error("Failed to fetch locations:", data.message);
       }
     } catch (error) {
-      console.log("Error fetching states:", error);
+      console.error("Error fetching locations:", error);
     }
   };
 
