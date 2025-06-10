@@ -40,7 +40,9 @@ const formSchema = z.object({
   }),
 });
 
-export default function CareerForm() {
+export default function CareerForm({ jobId }) {
+  console.log("CareerForm rendered with jobId:", jobId);
+
   const [loading, setLoading] = useState(false);
 
   const [dropdowns, setDropdowns] = useState({

@@ -20,8 +20,7 @@ function CareerDetailInfoBox({ children }) {
   );
 }
 
-export default function CareerDetailInfo({ jobId = 0 }) {
-  const job = jobResults.find((item) => item.id === jobId) || {};
+export default function CareerDetailInfo({ job }) {
   return (
     <section className="w-full h-auto py-[30px] lg:py-[50px_80px]">
       <div className="container">
@@ -33,13 +32,11 @@ export default function CareerDetailInfo({ jobId = 0 }) {
             <div className="w-full h-auto p-[10px_20px_0] sm:p-[30px_30px_0] lg:p-[50px_50px_0]">
               <div className="w-full h-auto mb-[30px] lg:mb-[40px] 2xl:mb-[60px]">
                 <div className="text-[14px] sm:text-[16px] lg:text-[20px] 2xl:text-[24px] leading-none font-medium capitalize text-black mb-[15px]">
-                  {job.job_title}
+                  {job?.job_title}
                 </div>
                 <div className="flex flex-wrap gap-[5px] sm:gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
                   <div>
-                    <CareerDetailInfoBox>
-                      Experience: {job.experience || "Not specified"}
-                    </CareerDetailInfoBox>
+                    <CareerDetailInfoBox>Experience: {parseInt(job?.experience) || "Not specified"}</CareerDetailInfoBox>
                   </div>
                   <div>
                     <CareerDetailInfoBox>
@@ -56,7 +53,7 @@ export default function CareerDetailInfo({ jobId = 0 }) {
                           fill="#17479E"
                         />
                       </svg>
-                      {job.location}
+                      {job?.location?.location_name || "Location not specified"}
                     </CareerDetailInfoBox>
                   </div>
                 </div>
@@ -67,45 +64,32 @@ export default function CareerDetailInfo({ jobId = 0 }) {
                   JOB RESPONSIBILITIES
                 </div>
                 <div className="text-editor">
-                  <h4>Purpose of Job</h4>
-                  <ul>
+                  <h4>Job Description</h4>
+                  {/* <ul>
                     <li>Mobilization of Financial Products</li>
-                    <li>
-                      Effective communication/ follow up with prospective
-                      customers
-                    </li>
+                    <li>Effective communication/ follow up with prospective customers</li>
                     <li>Marketing activities for assigned Area</li>
-                    <li>
-                      Accountable for meeting business targets month on month
-                    </li>
-                  </ul>
+                    <li>Accountable for meeting business targets month on month</li>
+                  </ul> */}
+
+                  {job?.job_description || "No job description provided."}
                   <br />
                   <h4>key Responsibilities and Accountabilities</h4>
-                  <ul>
+                  {/* <ul>
                     <li>
-                      Acquisitions of new clients and re-activation of existing
-                      clients by selling wealth management products like
+                      Acquisitions of new clients and re-activation of existing clients by selling wealth management products like
                       debentures and Non-Convertible Debentures.
                     </li>
                     <li>Responsible for fulfilment of business targets.</li>
-                    <li>
-                      Have the direct to customer approach and build
-                      relationship with wide spread customers
-                    </li>
-                    <li>
-                      Acquisition and handling a group of HNI (High Net Worth
-                      Exclusive) Clients.
-                    </li>
-                    <li>
-                      Conduct HNI meets, customer interaction programs within
-                      the location.
-                    </li>
-                    <li>
-                      Responsible for the timely reporting of Business MIS.
-                    </li>
+                    <li>Have the direct to customer approach and build relationship with wide spread customers</li>
+                    <li>Acquisition and handling a group of HNI (High Net Worth Exclusive) Clients.</li>
+                    <li>Conduct HNI meets, customer interaction programs within the location.</li>
+                    <li>Responsible for the timely reporting of Business MIS.</li>
                     <li>Plan and achieve a minimum target per month.</li>
                     <li>Conduct Marketing activities for assigned Area</li>
-                  </ul>
+                  </ul> */}
+
+                  {job?.key_responsibility}
                 </div>
               </div>
             </div>
@@ -114,7 +98,7 @@ export default function CareerDetailInfo({ jobId = 0 }) {
                 <div className="text-[13px] sm:text-[14px] lg:text-[16px] 2xl:text-[18px] leading-none font-normal text-black mb-[15px] lg:mb-[20px]">
                   Fill the fields below to apply for this post
                 </div>
-                <CareerForm />
+                <CareerForm jobId={job?.id} />
               </div>
             </div>
           </div>
