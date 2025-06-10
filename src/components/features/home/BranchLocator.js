@@ -115,7 +115,6 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 
   const fetchBranchLocationsFiltered = async () => {
     try {
-
       const queryParams = {
         state: selectedState,
         district: selectedDistrict,
