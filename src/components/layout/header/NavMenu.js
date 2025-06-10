@@ -85,6 +85,10 @@ const Abouts = [
     link: "/management-team",
   },
   {
+    title: "board of directors",
+    link: "/board-directors",
+  },
+  {
     title: "partners",
     link: "/partners",
   },

@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 import "./Management.css";
 import "./management.config.js";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 export default function ManagementTeam({ pageContent, teams }) {
   const slides = [
@@ -97,10 +98,9 @@ export default function ManagementTeam({ pageContent, teams }) {
       <div className="container flex flex-wrap">
         <div className="flex flex-wrap mb-[60px]">
           <div className="w-full md:w-[45%] 2xl:w-[40%]">
-            <h2
-              className="text-title1 mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold]"
-              dangerouslySetInnerHTML={{ __html: pageContent?.title ? pageContent?.title : "" }}
-            />
+            <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
+              {pageContent?.title ? renderHtml(pageContent?.title) : "Management Team"}
+            </h2>
           </div>
           <div className="w-full md:w-[55%] 2xl:w-[60%] md:pl-[30px]">
             <p className="text-sm1">{pageContent?.description}</p>

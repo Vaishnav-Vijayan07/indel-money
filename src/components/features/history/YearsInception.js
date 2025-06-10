@@ -67,7 +67,7 @@ export default function YearsInception({ inceptionslides, title }) {
         <div className="flex flex-wrap relative z-1">
           <div className="w-full lg:w-[220px] xl:w-[300px] 2xl:w-[350px] 3xl:w-[420px] py-[40px] lg:py-[120px] flex items-end">
             <div className=" w-full">
-              <div className="text-title2 text-white">{title}</div>
+              <div className="text-title2 text-white [&>span]:text-base2 [&>span]:font-bold]">{title}</div>
             </div>
           </div>
           <div className="w-full lg:w-[calc(100%-220px)] xl:w-[calc(100%-300px)] 2xl:w-[calc(100%-350px)] 3xl:w-[calc(100%-420px)] bg-base1 pr-[30px] 2xl:pr-[60px] pl-[30px] lg:pl-[60px] 3xl:pl-[130px] pt-[40px] lg:pt-[50px] 3xl:pt-[70px]">
@@ -105,7 +105,7 @@ export default function YearsInception({ inceptionslides, title }) {
                       <SwiperSlide key={index}>
                         <div className="flex flex-wrap items-start text-white relative h-full">
                           <div className="w-[70px] 2xl:w-[100px] relative h-full">
-                            <div className="text-white text-[55px] 2xl:text-[80px] 3xl:text-[93px] leading-none font-bold">{item?.year.slice(2)}</div>
+                            <div className="text-white text-[55px] 2xl:text-[80px] 3xl:text-[93px] leading-none font-bold">{item?.year?.slice(2)}</div>
                             {index !== inceptionslides?.length - 1 && (
                               <div className="absolute bg-white w-[2px] left-0 2xl:left-0 right-0 m-auto bottom-0 h-[calc(100%-70px)] 3xl:h-[calc(100%-100px)] before:content-[''] before:absolute before:top-0 before:left-[-5px] before:m-auto before:w-[12px] before:h-[12px] before:bg-white before:rounded-full">
                                 <span className="absolute bottom-0 left-[-8px] m-auto bg-[#DCEBFF] w-[18px] h-[18px] rounded-full before:content-[''] before:absolute before:inset-0 before:m-auto before:w-[10px] before:h-[10px] before:bg-[#EB0208] before:rounded-full"></span>
@@ -141,7 +141,7 @@ export default function YearsInception({ inceptionslides, title }) {
 
               {/* Timeline with moving arrow */}
               <div className="relative w-[120px] 3xl:w-[200px] flex flex-col items-center justify-between h-[350px] 2xl:h-[510px] 3xl:h-[620px] my-auto mx-0 custom-pagination-wrapper">
-                <div className="text-white text-[12px] 2xl:text-[14px] mb-2">{inceptionslides?.[0].year}</div>
+                <div className="text-white text-[12px] 2xl:text-[14px] mb-2">{inceptionslides?.[0]?.year}</div>
 
                 <div className="flex flex-col justify-between items-center relative h-full">
                   {[...Array(13)].map((_, index) => {
@@ -167,7 +167,7 @@ export default function YearsInception({ inceptionslides, title }) {
                   </div>
                 </div>
 
-                <div className="text-white text-[12px] 2xl:text-[14px] mt-2">{inceptionslides?.[inceptionslides?.length - 1].year}</div>
+                <div className="text-white text-[12px] 2xl:text-[14px] mt-2">{inceptionslides?.[inceptionslides?.length - 1]?.year}</div>
               </div>
             </div>
           </div>
