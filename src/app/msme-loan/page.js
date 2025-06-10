@@ -79,7 +79,7 @@ export default async function MsmeLoan() {
       <div className="block sm:hidden">{/* <MobWhoDoServe /> */}</div>
 
       {/* MsmePresence contents*/}
-      <MsmePresence title={contents?.about_msme_title} description={contents?.about_msme_description} audience={audience} />
+      <MsmePresence title={contents?.about_msme_title} description={contents?.about_msme_description} audience={industries} />
 
       {/* Grown With Msme contents*/}
       <GrownWithMsme faqs={faqs} title={contents?.msme_loan_overview_title} description={contents?.msme_loan_overview_description} />
