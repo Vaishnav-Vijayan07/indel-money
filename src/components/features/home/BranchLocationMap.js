@@ -26,6 +26,7 @@ import "leaflet/dist/leaflet.css";
 
 // Dynamically import Leaflet itself to ensure it only loads on the client
 import L from "leaflet";
+import api from "@/lib/api/axios";
 
 // Branch locations data
 const branchLocations = [
@@ -147,11 +148,15 @@ function MapController({ selectedBranch }) {
     if (!isMounted || !map) return;
 
     // Pan to the selected branch location
-    map.setView(selectedBranch.coordinates, 13);
+    // map.setView(selectedBranch.coordinates, 13);
+
+    if (selectedBranch?.latitude && selectedBranch?.longitude) {
+      map.setView([selectedBranch?.longitude, selectedBranch?.latitude], 13);
+    }
 
     // Open the popup for the selected branch
-    if (markerRefs.current[selectedBranch.id]) {
-      markerRefs.current[selectedBranch.id].openPopup();
+    if (markerRefs?.current[selectedBranch?.id]) {
+      markerRefs?.current[selectedBranch?.id].openPopup();
     }
   }, [selectedBranch, map, isMounted]);
 
@@ -216,9 +221,8 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
   const icons = {
     address: (
       <svg
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
-          selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
-        }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
+          }`}
         viewBox="0 0 12 16"
       >
         <path d="M5.99772 0C2.80256 0 0.203125 2.59944 0.203125 5.79456C0.203125 9.75981 5.38872 15.581 5.6095 15.8269C5.81687 16.0579 6.17894 16.0575 6.38594 15.8269C6.60672 15.581 11.7923 9.75981 11.7923 5.79456C11.7922 2.59944 9.19284 0 5.99772 0ZM5.99772 8.70997C4.39016 8.70997 3.08234 7.40213 3.08234 5.79456C3.08234 4.187 4.39019 2.87919 5.99772 2.87919C7.60525 2.87919 8.91306 4.18703 8.91306 5.79459C8.91306 7.40216 7.60525 8.70997 5.99772 8.70997Z" />
@@ -226,9 +230,8 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
     ),
     phone: (
       <svg
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
-          selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
-        }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
+          }`}
         viewBox="0 0 16 16"
       >
         <path d="M15.5032 12.0936C14.804 11.3944 14.1067 10.6952 13.4075 9.99789C12.853 9.41521 12.1257 9.41521 11.543 9.99789C11.1069 10.4339 10.669 10.87 10.2329 11.3079C10.1164 11.4245 10.0281 11.4245 9.88332 11.3662C9.6202 11.1914 9.30066 11.0749 9.03751 10.9001C7.78574 10.1144 6.70875 9.09381 5.77647 7.92848C5.31034 7.34581 4.90247 6.73495 4.61113 6.03576C4.55287 5.89103 4.55287 5.80269 4.6694 5.68616C5.13553 5.27829 5.54341 4.84224 5.97946 4.46256C6.5922 3.8517 6.5922 3.1525 5.97946 2.54164C5.60166 2.16197 5.28026 1.84244 4.93255 1.49285C4.55287 1.11505 4.20327 0.765455 3.85368 0.415847C3.30107 -0.138616 2.57182 -0.138616 1.99102 0.415847C1.55309 0.851908 1.11704 1.28797 0.679087 1.72591C0.271236 2.13377 0.068228 2.6281 0.00995039 3.18258C-0.0483042 4.08476 0.154681 4.95877 0.476079 5.80269C1.11704 7.57888 2.10755 9.09381 3.30107 10.5204C4.90247 12.4432 6.85346 13.9863 9.09579 15.0652C10.1164 15.5313 11.1652 15.9392 12.2704 15.9975C13.0861 16.0257 13.7571 15.8227 14.3097 15.2099C14.6875 14.8021 15.1254 14.4243 15.5032 14.0164C16.0859 13.4037 16.0859 12.6763 15.5032 12.0936Z" />
@@ -236,9 +239,8 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
     ),
     email: (
       <svg
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
-          selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
-        }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
+          }`}
         viewBox="0 0 16 16"
       >
         <path d="M9.33716 9.80206C8.93909 10.0674 8.47672 10.2077 8 10.2077C7.52331 10.2077 7.06094 10.0674 6.66287 9.80206L0.106531 5.43103C0.0701562 5.40678 0.0347187 5.3815 0 5.3555V12.5179C0 13.3391 0.666406 13.9908 1.47291 13.9908H14.5271C15.3482 13.9908 16 13.3244 16 12.5179V5.35547C15.9652 5.38153 15.9297 5.40688 15.8932 5.43116L9.33716 9.80206Z" />
@@ -247,9 +249,8 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
     ),
     contactNumber: (
       <svg
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
-          selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
-        }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
+          }`}
         viewBox="0 0 16 16"
       >
         <path d="M11.8855 5.13086L11.853 5.59086C11.8451 5.70016 11.8708 5.80926 11.9266 5.90354C11.9825 5.99782 12.0658 6.07277 12.1655 6.11836C13.058 6.52586 15.4155 7.41836 15.6805 5.58586L11.8855 5.13086Z" />
@@ -271,8 +272,7 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
   );
 }
 
-export default function BranchLocationMap() {
-  const [selectedBranch, setSelectedBranch] = useState(branchLocations[0]);
+export default function BranchLocationMap({ branchLocations, selectedBranch, setSelectedBranch }) {
   const [mapCenter] = useState([9.9312, 76.2673]);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -304,17 +304,16 @@ export default function BranchLocationMap() {
       </div>
       <div className="w-full sm:w-[220px] lg:w-[260px] xl:w-[320px] 2xl:w-[420px] sm:h-full bg-base1 relative z-0 max-sm:shadow-[0_0_25px_0_rgba(238,56,36,0.20)] before:absolute before:inset-0 before:top-auto before:z-2 before:block before:bg-gradient-to-t before:to-transparent before:from-base1 before:w-full before:h-[20px] lg:before:h-[30px] before:pointer-events-none">
         <h2 className="text-[16px] lg:text-[18px] 2xl:text-[22px] text-white font-bold p-[20px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_30px] border-b-[1px] border-solid border-white/80">
-          20 Branches Near You
+          {branchLocations?.length} Branches Near You
         </h2>
         <div className="max-sm:p-[20px] overflow-y-auto max-h-[280px] sm:max-h-[calc(100%-49px)] lg:max-h-[calc(100%-49px)] 2xl:max-h-[calc(100%-65px)]">
           {branchLocations?.map((branch) => (
             <div
               key={branch.id}
-              className={`max-sm:bg-[#7E94BC]/50 max-sm:rounded-[10px] max-sm:mb-[12px] last:mb-0 p-[15px_10px] sm:p-[10px_10px] lg:p-[20px_15px] 2xl:p-[20px_30px] cursor-pointer sm:border-b-[1px] border-solid border-white/10 loclist ${
-                selectedBranch.id === branch.id
-                  ? "bg-[#f30000] max-sm:bg-[#f30000] active"
-                  : "hover:bg-blue-700"
-              }`}
+              className={`max-sm:bg-[#7E94BC]/50 max-sm:rounded-[10px] max-sm:mb-[12px] last:mb-0 p-[15px_10px] sm:p-[10px_10px] lg:p-[20px_15px] 2xl:p-[20px_30px] cursor-pointer sm:border-b-[1px] border-solid border-white/10 loclist ${selectedBranch.id === branch.id
+                ? "bg-[#f30000] max-sm:bg-[#f30000] active"
+                : "hover:bg-blue-700"
+                }`}
               onClick={() => handleBranchClick(branch)}
             >
               <div className="flex items-center justify-between mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
@@ -322,15 +321,14 @@ export default function BranchLocationMap() {
                   {branch.name}
                 </h3>
                 <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${branch.coordinates[0]},${branch.coordinates[1]}`}
+                  href={`https://www.google.com/maps/search/?api=1&query=${branch?.coordinates?.[0]},${branch?.coordinates?.[1]}`}
                   target="_blank"
                   className="text-[13px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] text-white bg-none transition-colors flex items-center gap-[4px] 2xl:gap-[6px]"
                 >
                   <span>Get Direction</span>
                   <svg
-                    className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square ${
-                      selectedBranch.id === branch.id ? "fill-white" : ""
-                    }`}
+                    className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square ${selectedBranch?.id === branch?.id ? "fill-white" : ""
+                      }`}
                     fill="#F30000"
                     viewBox="0 0 16 16"
                   >
@@ -350,18 +348,18 @@ export default function BranchLocationMap() {
                   </svg>
                 </a>
               </div>
-              {branch.address && (
+              {branch?.address && (
                 <BranchLocationsInfo
                   type="address"
-                  item={branch.address}
+                  item={branch?.address}
                   selectedBranch={selectedBranch.id}
                   branch={branch.id}
                 />
               )}
-              {branch.phone && (
+              {branch.phone_no && (
                 <BranchLocationsInfo
                   type="phone"
-                  item={branch.phone}
+                  item={branch.phone_no}
                   selectedBranch={selectedBranch.id}
                   branch={branch.id}
                 />
@@ -374,10 +372,10 @@ export default function BranchLocationMap() {
                   branch={branch.id}
                 />
               )}
-              {branch.contactNumber && (
+              {branch.mobile_no && (
                 <BranchLocationsInfo
                   type="contactNumber"
-                  item={branch.contactNumber}
+                  item={branch.mobile_no}
                   selectedBranch={selectedBranch.id}
                   branch={branch.id}
                 />
