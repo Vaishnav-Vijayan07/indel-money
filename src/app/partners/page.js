@@ -8,7 +8,7 @@ async function fetchPartnersData() {
     const result = await response?.json();
 
     if (result.status === "success") {
-      return { data: result?.data, partners: result?.partnersData, error: null };
+      return { content: result?.data?.content, partners: result?.data?.partners, error: null };
     }
     return { data: null, partners: null, error: result?.message };
   } catch (error) {

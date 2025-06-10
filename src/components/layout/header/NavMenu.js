@@ -15,26 +15,26 @@ const GoldLoans = [
   {
     image: "/images/icon-goldloan-1.svg",
     alt: "item",
-    title: "Gold Loan Steps:",
-    link: "about",
+    title: "Gold Loan Steps",
+    link: "/gold-loan#gold-loan-steps",
   },
   {
     image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "Instant & hassle free Gold Loan",
-    link: "#",
+     link: "/gold-loan#hassle-free",
   },
   {
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "Our Easy Step Gold Loan",
-    link: "#",
+     link: "/gold-loan#easy-step",
   },
   {
     image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Gold Loan Scheme",
-    link: "#",
+    link: "/gold-loan#scheme",
   },
 ];
 const OtherLoans = [
@@ -55,18 +55,6 @@ const OtherLoans = [
     alt: "item",
     title: "consumer durable Loan",
     link: "/services/consumer-durable-loan",
-  },
-  {
-    image: "/images/icon-goldloan-4.svg",
-    alt: "item",
-    title: "Loan againist property",
-    link: "#",
-  },
-  {
-    image: "/images/icon-goldloan-1.svg",
-    alt: "item",
-    title: "Foreign exchange",
-    link: "#",
   },
 ];
 const Careers = [
@@ -93,16 +81,16 @@ const Abouts = [
     link: "/about/indel-values",
   },
   {
-    title: "board of directors",
-    link: "/about",
-  },
-  {
     title: "management team",
     link: "/management-team",
   },
   {
     title: "partners",
     link: "/partners",
+  },
+  {
+    title: "history",
+    link: "/history",
   },
   {
     title: "different shades of indel",
@@ -205,7 +193,7 @@ export default function NavMenu() {
 
       <MenubarMenu>
         <Link
-          href={"#"}
+          href={"https://indelremit.com"}
           className={`${
             pathname === "#" ? "" : ""
           } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}

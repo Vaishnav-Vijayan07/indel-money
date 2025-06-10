@@ -50,7 +50,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
       </div>
 
       {/* Gold loan contents*/}
-      <div className="hidden sm:block">
+      <div  id="gold-loan-steps" className="hidden sm:block">
         <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
       </div>
       <div className="block sm:hidden">

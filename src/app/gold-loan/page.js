@@ -58,7 +58,7 @@ export default async function GoldLoan() {
       </div>
 
       {/* Gold loan contents*/}
-      <div className="hidden sm:block">
+      <div id="gold-loan-steps" className="hidden sm:block">
         <StepGoldLoan className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]" hideTitle={true} loanSteps={steps} />
       </div>
       <div className="block sm:hidden">
@@ -66,7 +66,7 @@ export default async function GoldLoan() {
       </div>
 
       {/* Gold loan steps */}
-      <div className="hidden sm:block">
+      <div id="easy-step" className="hidden sm:block">
         <GoldLoanCriteria
           title={contents?.gold_loan_step_title}
           description={contents?.description}
@@ -90,7 +90,7 @@ export default async function GoldLoan() {
       </div>
 
       {/* instant hussle free */}
-      <div className="hidden sm:block">
+      <div id="hassle-free" className="hidden sm:block">
         <InstantHasslefree title={contents?.gold_loan_title} description={contents?.gold_loan_description} />
       </div>
       <div className="block sm:hidden">
@@ -106,7 +106,7 @@ export default async function GoldLoan() {
       </div>
 
       {/* Scheme */}
-      <div className="hidden sm:block">
+      <div id="scheme" className="hidden sm:block">
         <GoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
       </div>
       <div className="block sm:hidden">
