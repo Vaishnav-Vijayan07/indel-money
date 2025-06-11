@@ -2,7 +2,7 @@ import CareerForm from "@/components/common/CareerForm";
 import Image from "next/image";
 import React from "react";
 
-export default function MakeYourMove({ make_your_move_title, make_your_move_description, make_your_move_image, image_alt }) {
+export default function MakeYourMove({ make_your_move_title, make_your_move_description, make_your_move_image, image_alt, isGeneral }) {
   console.log("Make Your Move Props:", {
     make_your_move_title,
     make_your_move_description,
@@ -38,7 +38,7 @@ export default function MakeYourMove({ make_your_move_title, make_your_move_desc
                   {make_your_move_description ? make_your_move_description : "Description"}
                 </div>
               </div>
-              <CareerForm />
+              <CareerForm isGeneral={isGeneral} />
             </div>
           </div>
         </div>

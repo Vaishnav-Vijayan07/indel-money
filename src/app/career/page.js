@@ -82,6 +82,7 @@ export default async function Career() {
         make_your_move_description={contents?.make_your_move_description}
         make_your_move_image={contents?.make_your_move_image}
         image_alt={contents?.image_alt}
+        isGeneral={true}
       />
       <div className="hidden sm:block">
         <CareerLifeAtIndel />
