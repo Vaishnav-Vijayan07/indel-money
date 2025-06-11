@@ -5,7 +5,7 @@ import GallerySlider from "../../../components/features/gallery/GallerySlider";
 
 async function fetchData(slug) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event?&${slug}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event?slug=${slug}`, {
       cache: "no-store", // Ensure fresh data
     });
 
@@ -14,39 +14,31 @@ async function fetchData(slug) {
 
     if (result.status === "success") {
       return {
-        contents: galleryData?.galleryPageContent,
-        medias: galleryData?.galleryItems,
-        sliderItems: galleryData?.mainSliderItems,
-        pagination: galleryData?.pagination,
+        images: galleryData?.galleryItems,
         error: null,
       };
     }
 
     return {
-      contents: null,
-      medias: null,
-      sliderItems: null,
-      pagination: null,
+      images: null,
       error: result.message,
     };
   } catch (error) {
     return {
-      contents: null,
-      medias: null,
-      sliderItems: null,
-      pagination: null,
+      images: null,
       error: "Failed to fetch gallery data",
     };
   }
 }
 
-export default function GalleryDetailPage({ searchParams }) {
-  const slug = searchParams.slug;
+export default async function GalleryDetailPage({ params }) {
+  const { slug } = await params;
+  const { images, error } = await fetchData(slug);
 
   return (
     <>
       {/* Gallery contents */}
-      <GalleryDetail />
+      <GalleryDetail galleryItems={images} error={error} />
 
       {/* GallerySlider contents */}
       <GallerySlider />

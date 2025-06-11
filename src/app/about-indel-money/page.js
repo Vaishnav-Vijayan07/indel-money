@@ -121,7 +121,7 @@ export default async function About() {
       </div>
 
       {/* LifeAtIndel section */}
-      <div className="hidden sm:block">
+      <div id="life-at-indel" className="hidden sm:block">
         <LifeIndel
           title={data?.aboutContent?.life_at_indel_title}
           description={data?.aboutContent?.life_at_indel_description}

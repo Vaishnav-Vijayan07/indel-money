@@ -41,8 +41,8 @@ const navigations = [
     title: "About",
     links: [
       { linkname: "About Indel Money", href: "/about" },
-      { linkname: "Board of Directors", href: "/about" },
-      { linkname: "Life at Indel Money", href: "/about" },
+      { linkname: "Board of Directors", href: "/board-directors" },
+      { linkname: "Life at Indel Money", href: "/about#life-at-indel" },
       { linkname: "Employee Testimonials", href: "/employee-testimonial" },
       {
         linkname: "Different Shades of Indel",
@@ -65,8 +65,8 @@ const navigations = [
         linkname: "Consumer Durable Loans",
         href: "/services/consumer-durable-loan",
       },
-      { linkname: "Loan Against Property", href: "/services" },
-      { linkname: "Gold Loan Schemes", href: "/gold-loan" },
+      { linkname: "Services", href: "/services" },
+      { linkname: "Gold Loan Schemes", href: "/gold-loan#scheme" },
       { linkname: "E-Connect", href: "/services" },
     ],
   },
@@ -95,7 +95,7 @@ const navigations = [
     links: [
       { linkname: "Contact Us", href: "/contact" },
       { linkname: "Careers", href: "/career" },
-      { linkname: "EMI Calculator", href: "/#gold-loan-step" },
+      { linkname: "EMI Calculator", href: "/#calculator" },
     ],
   },
 ];

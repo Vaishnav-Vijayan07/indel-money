@@ -58,7 +58,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
       </div>
 
       {/* Gold loan calculator*/}
-      <div className="hidden sm:block">
+      <div id="calculator" className="hidden sm:block">
         <StepGoldLoanCalculator />
       </div>
       <div className="block sm:hidden">

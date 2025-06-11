@@ -48,7 +48,6 @@ const GallSliderBx = ({ item }) => {
     if (hovered) {
       interval = setInterval(() => {
         setCurrentImage((prev) => (prev + 1) % item.images.length);
-
       }, 1000); // Change image every 1 second
     } else {
       setCurrentImage(0); // Reset to first image when not hovered
@@ -71,8 +70,9 @@ const GallSliderBx = ({ item }) => {
             width={400}
             height={400}
             alt={`${item.title} image ${index + 1}`}
-            className={`absolute w-full h-full rounded-[7px] sm:rounded-[12px] md:rounded-[20px] object-cover transition-opacity duration-500 ${index === currentImage ? "opacity-100" : "opacity-0"
-              }`}
+            className={`absolute w-full h-full rounded-[7px] sm:rounded-[12px] md:rounded-[20px] object-cover transition-opacity duration-500 ${
+              index === currentImage ? "opacity-100" : "opacity-0"
+            }`}
           />
         ))}
       </div>
@@ -81,9 +81,7 @@ const GallSliderBx = ({ item }) => {
           <div className="relative text-white font-semibold text-[12px] md:text-[17px] 2xl:text-[20px] 3xl:text-[25px] leading-[1.1] uppercase pb-[6px] 2xl:pb-[10px] 3xl:pb-[15px] mb-[8px] 2xl:mb-[10px] 3xl:mb-[15px] after:content-[''] after:w-[17%] 2xl:after:w-[23%] after:h-[1px] after:bg-white after:absolute after:left-0 after:bottom-0">
             {item.title}
           </div>
-          <div className="text-sm1 w-full text-white line-clamp-2 md:line-clamp-3">
-            {item.desc}
-          </div>
+          <div className="text-sm1 w-full text-white line-clamp-2 md:line-clamp-3">{item.desc}</div>
         </div>
       </div>
     </Link>
@@ -93,49 +91,15 @@ const GallSliderBx = ({ item }) => {
 export default function GallerySlider({ className }) {
   return (
     <section className="w-full pb-[30px] xl:pb-[60px] 3xl:pb-[100px]">
-      <div className="container w-full">
-        <div className="w-full flex flex-wrap justify-between items-center mb-[15px] sm:mb-[30px] 2xl:mb-[40px] 3xl:mb-[70px]">
-          <div className="w-full sm:w-[40%] md:w-[30%] xl:w-[27%] 2xl:w-[30%]">
-            <h2 className="text-[20px] md:text-[22px] lg:text-[26px] xl:text-[30px] 2xl:text-[35px] font-medium leading-normal text-[#020202]">
-              View More Galleries
-            </h2>
-          </div>
-          <div className="w-full sm:w-[60%] md:w-[70%] xl:w-[73%] 2xl:w-[70%] pt-[20px] md:pt-0 md:pl-[20px] 2xl:pl-[30px] hidden sm:block">
-            <Pagination className="justify-end">
-              <PaginationContent>
-                <PaginationItem>
-                  <PaginationPrevious href="#" />
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#" isActive>
-                    1
-                  </PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">2</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">3</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationEllipsis />
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationNext href="#" />
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
-          </div>
-        </div>
-      </div>
+      <div className="container w-full"></div>
       <div className="max-w-[var(--container-x)] lg:max-w-[calc(100%-(100%-var(--container-x))/2)] mx-auto lg:mr-[0] px-[var(--container-padding,1rem)] lg:pr-[0]">
         <Swiper
           spaceBetween={10}
           pagination={{ clickable: true }}
           slidesPerView={1.5}
           breakpoints={{
-            420: { slidesPerView: 2.3, spaceBetween:10 },
-            640: { slidesPerView: 3, spaceBetween:10 },
+            420: { slidesPerView: 2.3, spaceBetween: 10 },
+            640: { slidesPerView: 3, spaceBetween: 10 },
             768: { slidesPerView: 3, spaceBetween: 20 },
             1024: { slidesPerView: 3.8, spaceBetween: 30 },
           }}
@@ -159,4 +123,3 @@ export default function GallerySlider({ className }) {
     </section>
   );
 }
-

@@ -8,13 +8,13 @@ function GalleryItem({ item, width, height }) {
     let interval;
     if (hovered) {
       interval = setInterval(() => {
-        setCurrentImage((prev) => (prev + 1) % item.images.length);
+        setCurrentImage((prev) => (prev + 1) % item.thumbnails.length);
       }, 1000); // Change image every 1 second
     } else {
       setCurrentImage(0); // Reset to first image when not hovered
     }
     return () => clearInterval(interval);
-  }, [hovered, item.images.length]);
+  }, [hovered, item.thumbnails.length]);
 
   return (
     <div
@@ -23,8 +23,8 @@ function GalleryItem({ item, width, height }) {
       onMouseLeave={() => setHovered(false)}
     >
       <div className="relative w-full h-full">
-        {item.images.length > 0 ? (
-          item.images.map((img, index) => (
+        {item.thumbnails.length > 0 ? (
+          item.thumbnails.map((img, index) => (
             <Image
               key={index}
               src={img ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${img}` : "/images/gall04.jpg"}

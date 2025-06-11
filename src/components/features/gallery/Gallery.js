@@ -37,8 +37,6 @@ export default function Gallery({ title = "Gallery", description = "", medias = 
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  console.log(sliderItems)
-
   // Memoized values
   const totalPages = useMemo(() => pagination?.totalPages || 1, [pagination?.totalPages]);
 
