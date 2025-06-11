@@ -82,12 +82,12 @@ const navigations = [
   {
     title: "Policies",
     links: [
-      { linkname: "Privacy Policy", href: "/policy/privacy-policy" },
-      { linkname: "Disclaimer", href: "/policy/privacy-policy" },
-      { linkname: "Mobile App Policy", href: "/policy/mobile-app-policy" },
-      { linkname: "Fair Practice Code", href: "/policy/fair-practice-code" },
-      { linkname: "Terms & Conditions", href: "/policy/terms-and-conditions" },
-      { linkname: "KYC Policy", href: "/policy/kyc-policy" },
+      { linkname: "Privacy Policy", href: "/privacy-policy" },
+      { linkname: "Disclaimer", href: "/disclaimer" },
+      { linkname: "Mobile App Policy", href: "/mobile-app-policy" },
+      { linkname: "Fair Practice Code", href: "/fair-practice-code" },
+      { linkname: "Terms & Conditions", href: "/terms-and-conditions" },
+      { linkname: "KYC Policy", href: "/kyc-policy" },
     ],
   },
   {
