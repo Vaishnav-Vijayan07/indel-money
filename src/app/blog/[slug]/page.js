@@ -1,16 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { Suspense, memo } from "react";
-import BlogItem from "@/components/blog/BlogItem";
-import PageBreadcrumb from "@/components/common/PageBreadcrumb";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import BlogDetail from "@/components/features/blog/BlogDetail";
+import RecentBlog from "@/components/features/blog/RecentBlog";
 
 const LatestUpdates = dynamic(() => import("@/components/features/home/LatestUpdates"), {
   loading: () => <div>Loading slider...</div>,
@@ -25,30 +16,32 @@ async function fetchBlogData(slug) {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs/${slug}`, {
       next: { revalidate: 60 },
     });
+
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const result = await response.json();
 
+    console.log("Fetching blog data for slug:", result);
+
     if (result.status === "success") {
-      const { content, sliderItems, blogs, pagination } = result.data || {};
+      // const { content, sliderItems, blogs, pagination } = result.data || {};
       return {
-        content,
-        sliderData: sliderItems,
-        blogs,
-        pagination: pagination || { currentPage: 1, totalPages: 1, totalItems: 0 },
+        content: result?.data,
+        // sliderData: sliderItems,
+        // blogs,
+        // pagination: pagination || { currentPage: 1, totalPages: 1, totalItems: 0 },
         error: null,
       };
     }
     return {
       content: null,
-      sliderData: null,
-      blogs: null,
-      pagination: null,
+      // sliderData: null,
+      // blogs: null,
+      // pagination: null,
       error: result.message,
     };
   } catch (error) {
-    
     return { data: null, error: "Failed to fetch blog data" };
   }
 }
@@ -68,22 +61,19 @@ async function fetchRecentBlogs() {
     }
     return { data: [], error: result.message };
   } catch (error) {
-    
     return { data: [], error: "Failed to fetch recent blogs" };
   }
 }
 
 // Generate dynamic metadata
 export async function generateMetadata({ params }) {
-  const { slug } = params; // params is already an object, no need to await
+  const { slug } = await params; // params is already an object, no need to await
   const { data, error } = await fetchBlogData(slug);
 
   // Log for debugging
-  
 
   // Fallback metadata in case of error or missing data
   if (error || !data) {
-    
     return {
       title: "Blog Post | My Website",
       description: "Read our latest blog post.",
@@ -124,9 +114,7 @@ export async function generateMetadata({ params }) {
       type: "article",
       images: [
         {
-          url: data?.image
-            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.image}`
-            : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
+          url: data?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.image}` : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
           width: 1200,
           height: 630,
           alt: data?.image_alt || data?.title || "Blog Post",
@@ -138,9 +126,7 @@ export async function generateMetadata({ params }) {
       title: data?.title || "Blog Post | My Website",
       description: data?.meta_description || data?.description || "Read our latest blog post.",
       images: [
-        data?.meta_image
-          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.meta_image}`
-          : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
+        data?.meta_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.meta_image}` : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
       ],
     },
     alternates: {
@@ -150,12 +136,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Blog({ params }) {
-  const { slug } = params; // params is already an object, no need to await
-  const { data: blogData, error: blogError } = await fetchBlogData(slug);
+  const { slug } = await params; // params is already an object, no need to await
+  const { content: blogData, error: blogError } = await fetchBlogData(slug);
   const { data: recentBlogs, error: recentError } = await fetchRecentBlogs();
 
   // Log for debugging
-  
+
 
   // Handle error state for blog data
   if (blogError || !blogData) {

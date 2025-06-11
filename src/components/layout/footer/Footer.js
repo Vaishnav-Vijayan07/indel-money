@@ -88,12 +88,6 @@ const navigations = [
       { linkname: "Fair Practice Code", href: "/privacy-policy" },
       { linkname: "Terms & Conditions", href: "/privacy-policy" },
       { linkname: "KYC Policy", href: "/privacy-policy" },
-      { linkname: "Privacy Policy", href: "/privacy-policy" },
-      { linkname: "Disclaimer", href: "/privacy-policy" },
-      { linkname: "Mobile App Policy", href: "/privacy-policy" },
-      { linkname: "Fair Practice Code", href: "/privacy-policy" },
-      { linkname: "Terms & Conditions", href: "/privacy-policy" },
-      { linkname: "KYC Policy", href: "/privacy-policy" },
     ],
   },
   {
@@ -101,9 +95,7 @@ const navigations = [
     links: [
       { linkname: "Contact Us", href: "/contact" },
       { linkname: "Careers", href: "/career" },
-      { linkname: "EMI Calculator", href: "#" },
-      { linkname: "Downloads", href: "#" },
-      { linkname: "KYC Policy", href: "#" },
+      { linkname: "EMI Calculator", href: "/#gold-loan-step" },
     ],
   },
 ];
