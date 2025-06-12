@@ -71,9 +71,10 @@ export default function ContactForm() {
   // Handle form submission
   async function onSubmit(data) {
     const cleanedData = Object.fromEntries(Object.entries(data).map(([key, value]) => [key, value === "" ? null : value]));
+    const payload = { ...cleanedData, enquiry_type: "contact" };
     try {
-      const response = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/contact/submissions`, cleanedData);
-      if (response.data.success) {
+      const { data } = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/service-enquiries`, payload);
+      if (data.success) {
         toast.success("Contact form submitted successfully!");
         form.reset(); // Reset form on success
       } else {

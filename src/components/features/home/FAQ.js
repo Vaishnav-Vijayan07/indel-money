@@ -77,12 +77,12 @@ export default function FAQ({ faqs, pageContents }) {
               </div>
               <div className="flex items-center justify-between mb-2 pb-[30px] border-b-1 border-[rgba(0,0,0,0.68)]">
                 <div className="text-black text-title1">{pageContents?.faq_section_title}</div>
-                <Link
+                {/* <Link
                   href="/"
                   className="btn btn-base2 max-w-[100px] lg:max-w-[90px] xl:max-w-[100px] 2xl:max-w-[120px] 3xl:max-w-[140px]"
                 >
                   <span>VIEW ALL</span>
-                </Link>
+                </Link> */}
               </div>
               {faqs?.map((faq, index) => (
                 <div
