@@ -13,7 +13,7 @@ const slides = [
     date: "24 SEPTEMBER 2024:",
     title:
       "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
   },
   {
@@ -23,7 +23,7 @@ const slides = [
     date: "24 SEPTEMBER 2024:",
     title:
       "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
   },
   {
@@ -33,7 +33,7 @@ const slides = [
     date: "24 SEPTEMBER 2024:",
     title:
       "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
   },
 ];

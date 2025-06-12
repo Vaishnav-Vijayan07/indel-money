@@ -18,7 +18,7 @@ const awards = [
     image: "/images/award-1.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -27,7 +27,7 @@ const awards = [
     image: "/images/award-2.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -36,7 +36,7 @@ const awards = [
     image: "/images/award-3.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -45,7 +45,7 @@ const awards = [
     image: "/images/award-4.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -54,7 +54,7 @@ const awards = [
     image: "/images/award-5.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -63,7 +63,7 @@ const awards = [
     image: "/images/award-6.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -72,7 +72,7 @@ const awards = [
     image: "/images/award-7.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -81,7 +81,7 @@ const awards = [
     image: "/images/award-8.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -90,7 +90,7 @@ const awards = [
     image: "/images/award-3.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -99,7 +99,7 @@ const awards = [
     image: "/images/award-4.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -108,7 +108,7 @@ const awards = [
     image: "/images/award-1.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -117,7 +117,7 @@ const awards = [
     image: "/images/award-2.jpg",
     alt: "news-1",
     title: "Lorem Ipsum is simply dummy text of the printing 2024",
-    discription:
+    description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. ",
     year: "2024",
   },
@@ -130,9 +130,7 @@ export default function Award() {
         <div className="container">
           <div className="w-full">
             <div className="text-title1 font-bold text-base2">Awards</div>
-            <div className="sm:block hidden">
-              <PageBreadcrumb />
-            </div>
+            <PageBreadcrumb />
           </div>
         </div>
       </section>

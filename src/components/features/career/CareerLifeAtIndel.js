@@ -9,7 +9,7 @@ const careerLifeAtIndelImages = [
         alt: "careerLifeAtIndel",
     },
     {
-        id: 1,
+        id: 1, 
         src: "/images/careerLifeAtIndel-2.jpg",
         alt: "careerLifeAtIndel",
     },

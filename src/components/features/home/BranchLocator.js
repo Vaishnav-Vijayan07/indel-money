@@ -16,19 +16,25 @@ export default function BranchLocator({ variant = "default" }) {
     <section
       className={`${
         variant === "contact"
-          ? "sm:bg-[#e6edf7] rounded-t-[10px] sm:py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px] max-sm:shadow-[0_0_150px_0_rgba(0,0,0,0.25)]"
+          ? "sm:bg-[#e6edf7] rounded-t-[10px] py-[20px_0] sm:py-[20px] lg:py-[30px] 2xl:py-[40px] 3xl:py-[50px] max-sm:shadow-[0_0_150px_0_rgba(0,0,0,0.25)]"
           : ""
       }
        ${
          variant === "branch"
-           ? "pt-[40px] pb-[0px] 2xl:pt-[30px] 2xl:pb-[90px] 3xl:pt-[50px] 3xl:pb-[120px]"
+           ? "pt-[30px] sm:pt-[40px] pb-[0px] 2xl:pt-[30px] 2xl:pb-[90px] 3xl:pt-[50px] 3xl:pb-[120px]"
            : ""
-       }
+       } 
        w-full block`}
     >
-      <div className="py-[20px] sm:py-0">
+      <div>
         <div className="container">
-          <div className="mb-[15px] sm:mb-[20px] lg:mb-30px flex flex-col lg:flex-row items-start xl:items-start justify-between flex-wrap">
+          <div
+            className={`flex flex-col lg:flex-row items-start xl:items-start justify-between flex-wrap ${
+              variant === "contact"
+                ? "mb-[15px] sm:mb-[20px] lg:mb-30px"
+                : "mb-[35px] sm:mb-[20px] lg:mb-30px"
+            }`}
+          >
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -61,7 +67,7 @@ export default function BranchLocator({ variant = "default" }) {
           transition={{ duration: 0.5 }}
           className="container"
         >
-          <div className="sm:bg-white sm:shadow-[0_0_50px_rgba(0,0,0,0.15)] sm:rounded-[20px] 2xl:rounded-[30px] sm:p-[10px_15px] lg:p-[15px_20px] 2xl:p-[20px_30px] sm:mb-[15px] lg:mb-[30px] 2xl:mb-[35px]">
+          <div className="bg-white shadow-[0_0_50px_rgba(0,0,0,0.15)] rounded-[20px] 2xl:rounded-[30px] p-[18px] sm:p-[10px_15px] lg:p-[15px_20px] 2xl:p-[20px_30px] mb-[30px] sm:mb-[15px] lg:mb-[30px] 2xl:mb-[35px]">
             <BranchForm />
           </div>
         </motion.div>
@@ -75,7 +81,7 @@ export default function BranchLocator({ variant = "default" }) {
             : ""
         }`}
       >
-        <div className="max-sm:max-w-full max-sm:px-0! container">
+        <div className="max-sm:max-w-full container">
           <BranchLocationMap />
         </div>
       </div>

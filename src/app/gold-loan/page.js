@@ -3,14 +3,18 @@ import StepGoldLoan from "../../components/features/home/StepGoldLoan";
 import StepGoldLoanCalculator from "../../components/features/home/StepGoldLoanCalculator";
 import GoldLoanCriteria from "../../components/features/goldLoan/GoldLoanCriteria";
 import InstantHasslefree from "../../components/features/goldLoan/InstantHasslefree";
-import Services from "../../components/features/goldLoan/GoldLoanServices";
-import Scheme from "../../components/features/goldLoan/loanScheme";
-import Faq from "../../components/features/goldLoan/faq";
+import GoldLoanServices from "../../components/features/goldLoan/GoldLoanServices";
+import GoldLoanScheme from "../../components/features/goldLoan/GoldLoanScheme";
+import GoldLoanFaq from "../../components/features/goldLoan/GoldLoanFaq";
 
 import MobServiceBanner from "../../components/features/goldLoan/MobServiceBanner";
 import MobStepGoldLoan from "../../components/features/home/MobStepGoldLoan";
 import MobStepGoldLoanCalculator from "../../components/features/home/MobStepGoldLoanCalculator";
 import MobGoldLoanCriteria from "../../components/features/goldLoan/MobGoldLoanCriteria";
+import MobInstantHasslefree from "../../components/features/goldLoan/MobInstantHasslefree";
+import MobGoldLoanServices from "../../components/features/goldLoan/MobGoldLoanServices";
+import MobGoldLoanScheme from "../../components/features/goldLoan/MobGoldLoanScheme";
+import MobGoldLoanFaq from "../../components/features/goldLoan/MobGoldLoanFaq";
 
 export default function GoldLoan() {
   return (
@@ -51,16 +55,36 @@ export default function GoldLoan() {
       </div>
 
       {/* instant hussle free */}
-      <InstantHasslefree />
+      <div className="hidden sm:block">
+        <InstantHasslefree />
+      </div>
+      <div className="block sm:hidden">
+        <MobInstantHasslefree />
+      </div>
 
       {/* instant hussle free */}
-      <Services />
+      <div className="hidden sm:block">
+        <GoldLoanServices />
+      </div>
+      <div className="block sm:hidden">
+        <MobGoldLoanServices />
+      </div>
 
       {/* Scheme */}
-      <Scheme />
+      <div className="hidden sm:block">
+        <GoldLoanScheme />
+      </div>
+      <div className="block sm:hidden">
+        <MobGoldLoanScheme />
+      </div>
 
       {/* faq contents */}
-      <Faq />
+      <div className="hidden sm:block">
+        <GoldLoanFaq />
+      </div>
+      <div className="block sm:hidden">
+        <MobGoldLoanFaq />
+      </div>
     </>
   );
 }

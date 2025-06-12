@@ -40,10 +40,10 @@ export default function PageBreadcrumb({
   homeElement = "Home",
   activeItemClasses = `${
     variant === "white" ? "text-white" : "text-[#383838]"
-  } text-[12px] lg:text-[14px] 2xl:text-[16px] leading-[1] font-normal font-normal`,
+  } text-[12px] lg:text-[14px] 2xl:text-[16px] leading-none font-normal font-normal`,
   inactiveItemClasses = `${
     variant === "white" ? "text-white" : "text-[#383838]"
-  } text-[12px] lg:text-[14px] 2xl:text-[16px] leading-[1] font-normal hover:text-base2`,
+  } text-[12px] lg:text-[14px] 2xl:text-[16px] leading-none font-normal hover:text-base2`,
   transformLabel = defaultTransformLabel,
 }) {
   const pathname = usePathname();
@@ -92,7 +92,7 @@ export default function PageBreadcrumb({
                     href={item.href}
                     className={`${
                       variant === "white" ? "text-white" : "text-[#383838]"
-                    } text-[12px] lg:text-[14px] 2xl:text-[16px] leading-[1] font-normal hover:text-base2`}
+                    } text-[12px] lg:text-[14px] 2xl:text-[16px] leading-none font-normal hover:text-base2`}
                   >
                     {item.label}
                   </Link>

@@ -22,7 +22,7 @@ export default function MobBlogCard({ item, className }) {
                     {item?.title}
                 </div>
                 <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-2 sm:line-clamp-4">
-                    {item?.discription}
+                    {item?.description}
                 </div>
                 {item?.year &&
                     <div className="text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-medium text-[#2d2d2d] line-clamp-1 mt-[10px] lg:mt-[10px] 2xl:mt-[20px]">

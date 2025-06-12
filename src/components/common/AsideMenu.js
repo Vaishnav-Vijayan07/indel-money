@@ -20,7 +20,7 @@ export default function AsideMenu({ navigationItems }) {
       <ol>
         {navigationItems?.map((item, index) => {
           return (
-            <li key={index}>
+            <li key={item.id}>
               <div className="w-full h-auto relative z-0">
                 <Link
                   href={item.href}
@@ -46,9 +46,9 @@ export default function AsideMenu({ navigationItems }) {
 
                 {item.sub_menu && (
                   <button
-                    onClick={() => toggleSubmenu(index)}
+                    onClick={() => toggleSubmenu(item.id)}
                     className="w-[20px] lg:w-[20px] xl:w-[25px] 2xl:w-[30px] 3xl:w-[35px] absolute z-1 top-0 bottom-0 right-[15px] lg:right-[20px] xl:right-[30px] 2xl:right-[40px] 3xl:right-[50px]"
-                    aria-expanded={openMenuIndex === index ? "true" : "false"}
+                    aria-expanded={openMenuIndex === item.id ? "true" : "false"}
                     aria-label={`Toggle ${item.title} submenu`}>
                     <svg
                       width="11"
@@ -59,7 +59,7 @@ export default function AsideMenu({ navigationItems }) {
                       aria-hidden="true"
                       className={`${
                         item.sub_menu &&
-                        openMenuIndex === index &&
+                        openMenuIndex === item.id &&
                         "scale-y-[-1]"
                       } w-[10px] block m-auto`}
                     >
@@ -72,11 +72,11 @@ export default function AsideMenu({ navigationItems }) {
                 )}
               </div>
 
-              {item.sub_menu && openMenuIndex === index && (
+              {item.sub_menu && openMenuIndex === item.id && (
                 <ul className="submenu pl-4 lg:pl-6 xl:pl-8">
                   {item.sub_menu.map((subItem, subIndex) => {
                     return (
-                      <li key={subIndex} className="submenu-item">
+                      <li key={subItem.id} className="submenu-item">
                         <Link
                           href={subItem.href}
                           className={`text-white text-nowrap text-ellipsis capitalize block text-xs lg:text-base xl:text-xl 2xl:text-2xl p-2 lg:p-4 xl:p-5 2xl:p-6 ${

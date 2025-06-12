@@ -5,7 +5,7 @@ export default function MobHomeMarquee() {
   return (
     <div className="w-full absolute z-1 bottom-0 left-0 right-0">
       <div className="container">
-        <div className="w-full text-sm1 leading-[1] text-white flex items-center gap-[6px] mb-[10px]">
+        <div className="w-full text-sm1 leading-none text-white flex items-center gap-[6px] mb-[10px]">
           <Image
             src={"/images/mob-marquee-1.svg"}
             alt={"coin"}

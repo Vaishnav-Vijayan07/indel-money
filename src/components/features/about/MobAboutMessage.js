@@ -60,16 +60,16 @@ export default function MobAboutMessage() {
                     />
                   </div>
                   <div>
-                    <h4 className="text-[16px] 4xs:text-[18px] leading-[1] line-clamp-1 font-semibold text-[#1e1e1e] mb-[8px]">
+                    <h4 className="text-[16px] 4xs:text-[18px] leading-none line-clamp-1 font-semibold text-[#1e1e1e] mb-[8px]">
                       {item.title.replace(item.highlight, "")}
                       <span className="text-base2 font-bold">
                         {item.highlight}
                       </span>
                     </h4>
-                    <h5 className="text-[12px] 4xs:text-[14px] leading-[1] line-clamp-1 font-medium text-[#0b0b0b] mb-[5px]">
+                    <h5 className="text-[12px] 4xs:text-[14px] leading-none line-clamp-1 font-medium text-[#0b0b0b] mb-[5px]">
                       {item.name}
                     </h5>
-                    <p className="text-[11px] 4xs:text-[13px] leading-[1] line-clamp-1 font-normal text-[#33538c]">
+                    <p className="text-[11px] 4xs:text-[13px] leading-none line-clamp-1 font-normal text-[#33538c]">
                       {item.position}
                     </p>
                   </div>
@@ -80,7 +80,7 @@ export default function MobAboutMessage() {
                 </p>
                 <div
                   onClick={() => toggleReadMore(index)}
-                  className="text-[13px] leading-[1] font-medium text-base1 capitalize my-[10px]"
+                  className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px]"
                 >
                   {isExpanded ? "Show Less" : "Read More"}
                 </div>

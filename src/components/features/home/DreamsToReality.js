@@ -49,7 +49,7 @@ export default function DreamsToReality() {
               <span className="text-base2 font-bold">Dreams To Reality</span>,
               We&apos;re With You Every Step Of The Way.
             </div>
-            <div className="text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[24px] leading-[1] font-bold mb-[10px] xl:mb-[15px] 2xl:mb-[20px] text-base1">
+            <div className="text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[24px] leading-none font-bold mb-[10px] xl:mb-[15px] 2xl:mb-[20px] text-base1">
               Indel Money :{" "}
               <span className="font-normal text-[#343434]">Overview</span>
             </div>

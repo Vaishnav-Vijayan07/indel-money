@@ -60,7 +60,7 @@ export default function IndelRemit() {
                                 All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
                             </p>
                         </div>
-                        <Link href="/" className="group w-full text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center leading-[1] hover:text-base2 transition-color duration-300 mt-[20px]">
+                        <Link href="/" className="group w-full text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center leading-none hover:text-base2 transition-color duration-300 mt-[20px]">
                             LEARN MORE
                             <Image
                                 src="/images/icon-right.svg"

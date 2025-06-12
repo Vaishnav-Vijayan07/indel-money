@@ -1,9 +1,15 @@
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from '../../ui/navigation-menu';
-import Image from 'next/image';
-import Link from 'next/link';
-
-
-const navigationMenuTriggerStyle = () => 'hover:bg-gray-100 p-2 rounded-md transition';
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const GoldLoans = [
   {
@@ -16,172 +22,235 @@ const GoldLoans = [
     image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "Instant & hassle free Gold Loan",
-    link: "/",
+    link: "#",
   },
   {
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "Our Easy Step Gold Loan",
-    link: "/",
+    link: "#",
   },
   {
     image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Gold Loan Scheme",
-    link: "/",
-  }
+    link: "#",
+  },
 ];
-const Careers = [
+const OtherLoans = [
   {
     image: "/images/icon-goldloan-1.svg",
     alt: "item",
-    title: "career 1:",
-    link: "about",
+    title: "Gold Loan",
+    link: "/gold-loan",
   },
   {
     image: "/images/icon-goldloan-2.svg",
     alt: "item",
-    title: "career 2",
-    link: "/",
+    title: "MSME Loan",
+    link: "/msme-loan",
   },
   {
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
-    title: "career 3",
-    link: "/",
+    title: "consumer durable Loan",
+    link: "/services/consumer-durable-loan",
+  },
+  {
+    image: "/images/icon-goldloan-4.svg",
+    alt: "item",
+    title: "Loan againist property",
+    link: "#",
+  },
+  {
+    image: "/images/icon-goldloan-1.svg",
+    alt: "item",
+    title: "Foreign exchange",
+    link: "#",
+  },
+];
+const Careers = [
+  {
+    title: "life at indel",
+    link: "/career",
+  },
+  {
+    title: "employee testimonial",
+    link: "/employee-testimonial",
+  },
+  {
+    title: "current openings",
+    link: "/career/active-jobs",
+  },
+  {
+    title: "apply now",
+    link: "/career/active-jobs",
+  },
+];
+const Abouts = [
+  {
+    title: "indel values",
+    link: "/about/indel-values",
+  },
+  {
+    title: "board of directors",
+    link: "/about",
+  },
+  {
+    title: "management team",
+    link: "/management-team",
+  },
+  {
+    title: "partners",
+    link: "/partners",
+  },
+  {
+    title: "different shades of indel",
+    link: "/about/different-shades-of-indel",
   },
 ];
 
-const NavMenu = () => {
+const Arrow = () => {
   return (
-      <NavigationMenu className="h-[var(--header-y)] lg:px-[10px] 2xl:px-[15px] 3xl:px-[20px]">
-        <NavigationMenuList className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px]">
-          {/* Gold Loan Menu */}
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Gold Loan</span></NavigationMenuTrigger>
-            <NavigationMenuContent className="bg-white p-0">
-              <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {GoldLoans.map((item, index) => (
-                  <li key={index}>
-                    <Link href={item.link}
-                      legacyBehavior
-                      passHref
-                    >
-                      <NavigationMenuLink
-                        className="group flex gap-[5px] lg:gap-[8px] 3xl:gap-[10px] p-[10px] 3xl:p-[15px] flex-row items-center"
-                      >
-                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
-                          <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
-                        </div>
-                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 group-hover:text-base2 transition-color duration-300">{item.title}</div>
-                      </NavigationMenuLink>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-          {/* Foreign Exchange Menu */}
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="p-0 cursor-pointer"><span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Foreign Exchange</span></NavigationMenuTrigger>
-            <NavigationMenuContent className="bg-white p-0">
-              <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {GoldLoans.map((item, index) => (
-                  <li key={index}>
-                    <Link href={item.link}
-                      legacyBehavior
-                      passHref
-                    >
-                      <NavigationMenuLink
-                        className="group flex gap-[5px] lg:gap-[8px] 3xl:gap-[10px] p-[10px] 3xl:p-[15px] flex-row items-center"
-                      >
-                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
-                          <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
-                        </div>
-                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 group-hover:text-base2 transition-color duration-300">{item.title}</div>
-                      </NavigationMenuLink>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-          {/* Other Loan Menu */}
-          <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} p-0 cursor-pointer`}><span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Other Loan</span></NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-
-          {/* Careers Menu */}
-          {/* <NavigationMenuItem>
-            <Link href="/career" legacyBehavior passHref>
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} p-0 cursor-pointer`}>
-                <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Careers</span>
-                </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem> */}
-          <NavigationMenuItem className="relative z-0">
-            <NavigationMenuTrigger className="p-0 cursor-pointer">
-              <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">Careers</span>
-              </NavigationMenuTrigger>
-            <NavigationMenuContent className="bg-white p-0">
-              <ul className="flex flex-col md:grid-cols-2 p-[10px] 3xl:p-[15px] w-[120px] md:w-[200px] lg:w-[200px]">
-                {Careers.map((item, index) => (
-                  <li key={index}>
-                    <Link href={item.link}
-                      legacyBehavior
-                      passHref
-                    >
-                      <NavigationMenuLink
-                        className="group flex gap-[5px] lg:gap-[8px] 3xl:gap-[10px] p-[10px] 3xl:p-[15px] flex-row items-center"
-                      >
-                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
-                          <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
-                        </div>
-                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 group-hover:text-base2 transition-color duration-300">{item.title}</div>
-                      </NavigationMenuLink>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-
-
-          {/* About Menu */}
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="p-0 cursor-pointer">
-              <span className="text-header1 uppercase hover:text-base2 transition-color duration-300">About</span>
-              </NavigationMenuTrigger>
-            <NavigationMenuContent className="bg-white p-0">
-              <ul className="grid w-[400px] p-[10px] 3xl:p-[15px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {GoldLoans.map((item, index) => (
-                  <li key={index}>
-                    <Link href={item.link}
-                      legacyBehavior
-                      passHref
-                    >
-                      <NavigationMenuLink
-                        className="group flex gap-[5px] lg:gap-[8px] 3xl:gap-[10px] p-[10px] 3xl:p-[15px] flex-row items-center"
-                      >
-                        <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
-                          <Image src={item.image} width={28} height={28} alt={item.alt} className="w-full h-full block max-w-2/4 object-contain" />
-                        </div>
-                        <div className="w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 group-hover:text-base2 transition-color duration-300">{item.title}</div>
-                      </NavigationMenuLink>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+    <svg
+      width="11"
+      height="6"
+      viewBox="0 0 11 6"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="size-2 ml-0.5 transition duration-300 group-data-[state=open]:rotate-180"
+    >
+      <path d="M5.5 6L10.2631 0.75H0.73686L5.5 6Z" fill="#2A2A2A" />
+    </svg>
   );
 };
 
-export default NavMenu;
+function DropdownMenu({ items }) {
+  const pathname = usePathname();
+  return (
+    <ul className="flex flex-col p-[5px] 3xl:p-[10px] w-[180px] lg:w-[200px] 2xl:w-[240px]">
+      {items.map((item, index) => (
+        <li key={index}>
+          <Link href={item.link} legacyBehavior passHref>
+            <MenubarItem>
+              <div
+                className={`${
+                  pathname === item.link ? "text-base2" : ""
+                } text-header1 hover:text-base2! capitalize cursor-pointer transition-color duration-300`}
+              >
+                {item.title}
+              </div>
+            </MenubarItem>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function MegaMenu({ items }) {
+  const pathname = usePathname();
+  return (
+    <ul className="grid md:grid-cols-2 p-[10px] 3xl:p-[15px] w-[360px] lg:w-[420px] 2xl:w-[576px] 3xl:w-[600px]">
+      {items.map((item, index) => (
+        <li key={index}>
+          <Link href={item.link} legacyBehavior passHref>
+            <MenubarItem className="p-0">
+              <div className="group flex flex-row items-center p-[10px] 3xl:p-[10px] cursor-pointer">
+                <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
+                  <Image
+                    src={item.image}
+                    width={28}
+                    height={28}
+                    alt={item.alt}
+                    className="w-full h-full block max-w-2/4 object-contain"
+                  />
+                </div>
+                <div
+                  className={`${
+                    pathname === item.link ? "text-base2" : ""
+                  } w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 capitalize pl-[5px] lg:pl-[8px] 3xl:pl-[10px] group-hover:text-base2! transition-color duration-300`}
+                >
+                  {item.title}
+                </div>
+              </div>
+            </MenubarItem>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+const tabStyle =
+  "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
+
+export default function NavMenu() {
+  const pathname = usePathname();
+  return (
+    <Menubar className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px] h-[var(--header-y)] lg:px-[10px] 2xl:px-[15px] 3xl:px-[20px] border-none shadow-none">
+      <MenubarMenu>
+        <div className="flex">
+          <Link href={"/gold-loan"} className={tabStyle}>
+            Gold Loan
+          </Link>
+          <MenubarTrigger className={tabStyle}>
+            <Arrow />
+          </MenubarTrigger>
+        </div>
+        <MenubarContent className="border-[#e4e4e4] bg-white p-0">
+          <MegaMenu items={GoldLoans} />
+        </MenubarContent>
+      </MenubarMenu>
+
+      <MenubarMenu>
+        <Link
+          href={"#"}
+          className={`${
+            pathname === "#" ? "" : ""
+          } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
+        >
+          FOREIGN EXCHANGE
+        </Link>
+      </MenubarMenu>
+
+      <MenubarMenu>
+        <MenubarTrigger className={tabStyle}>
+          <span>other loan</span>
+          <Arrow />
+        </MenubarTrigger>
+        <MenubarContent className="border-[#e4e4e4] bg-white p-0">
+          <MegaMenu items={OtherLoans} />
+        </MenubarContent>
+      </MenubarMenu>
+
+      <MenubarMenu>
+        <div className="flex">
+          <Link href={"/career"} className={tabStyle}>
+            careers
+          </Link>
+          <MenubarTrigger className={tabStyle}>
+            <Arrow />
+          </MenubarTrigger>
+        </div>
+        <MenubarContent className="border-[#e4e4e4] bg-white p-0">
+          <DropdownMenu items={Careers} />
+        </MenubarContent>
+      </MenubarMenu>
+
+      <MenubarMenu>
+        <div className="flex">
+          <Link href={"/about"} className={tabStyle}>
+            about
+          </Link>
+          <MenubarTrigger className={tabStyle}>
+            <Arrow />
+          </MenubarTrigger>
+        </div>
+        <MenubarContent className="border-[#e4e4e4] bg-white p-0">
+          <DropdownMenu items={Abouts} />
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  );
+}

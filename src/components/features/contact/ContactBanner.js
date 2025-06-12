@@ -25,7 +25,7 @@ export default function ContactBanner() {
               <a
                 href="tel:18004253990"
                 target="_blank"
-                className="inline-block max-sm:text-[16px] max-sm:p-[15px_20px] max-sm:rounded-[28px] max-sm:bg-gradient-to-tl max-sm:from-base2 max-sm:to-base1 max-sm:mb-[10px] sm:text-[28px] md:text-[32px] lg:text-[26px] xl:text-[36px] 2xl:text-[48px] 3xl:text-[56px] leading-[1] text-white sm:text-base1 font-bold hover:text-base2 transition-colors duration-300"
+                className="inline-block max-sm:text-[16px] max-sm:p-[15px_20px] max-sm:rounded-[28px] max-sm:bg-gradient-to-tl max-sm:from-base2 max-sm:to-base1 max-sm:mb-[10px] sm:text-[28px] md:text-[32px] lg:text-[26px] xl:text-[36px] 2xl:text-[48px] 3xl:text-[56px] leading-none text-white sm:text-base1 font-bold hover:text-base2 transition-colors duration-300"
                 aria-label="call"
               >
                 1800 4253 990

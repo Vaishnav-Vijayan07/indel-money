@@ -43,10 +43,10 @@ export default function AboutMessage() {
                                 ${
                                   index % 2 === 0
                                     ? "bg-[#EE3824]"
-                                    : "bg-[#17479E]"
+                                    : "bg-base1"
                                 }`}
               >
-                <div className="3xl:text-[30px] 2xl:text-[26px] text-[18px] mb-[10px] text-white text-center leading-[1]">
+                <div className="3xl:text-[30px] 2xl:text-[26px] text-[18px] mb-[10px] text-white text-center leading-none">
                   {item.post}
                 </div>
                 <div className="w-full max-w-[180px]">

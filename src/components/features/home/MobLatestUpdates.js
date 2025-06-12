@@ -60,7 +60,7 @@ export default function MobLatestUpdates() {
             <h3 className="text-title1 font-medium text-black">Blogs</h3>
             <Link
               href="/"
-              className="text-[12px] leading-[1] font-bold flex items-center hover:text-base2 transition-color duration-300"
+              className="text-[12px] leading-none font-bold flex items-center hover:text-base2 transition-color duration-300"
             >
               VIEW ALL
               <Image
@@ -101,7 +101,7 @@ export default function MobLatestUpdates() {
                     </div>
                     <Link
                       href={item.href}
-                      className="text-[12px] leading-[1] font-bold text-white uppercase hover:text-base2 transition-color duration-300 flex items-center"
+                      className="text-[12px] leading-none font-bold text-white uppercase hover:text-base2 transition-color duration-300 flex items-center"
                     >
                       Read More
                       <Image
@@ -163,7 +163,7 @@ export default function MobLatestUpdates() {
                     />
                   </div>
                   <div className="w-full h-auto">
-                    <div className="text-[10px] leading-[1] font-normal text-[#505050] line-clamp-1 mb-[2px]">
+                    <div className="text-[10px] leading-none font-normal text-[#505050] line-clamp-1 mb-[2px]">
                       {item.date}
                     </div>
                     <div className="text-[12px] leading-[1.2] text-black font-medium line-clamp-2 mb-[5px]">

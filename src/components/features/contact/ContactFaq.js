@@ -180,7 +180,7 @@ export default function ContactFaq() {
             ))}
           </div>
           <div className="w-full lg:w-[calc(100%-376px)] xl:w-[calc(100%-468px)] 2xl:w-[calc(100%-576px)] 3xl:w-[calc(100%-700px)] sm:py-[10px] lg:px-[15px] 2xl:px-[20px] max-sm:py-[30px_30px] max-sm:bg-[#f0faff] max-sm:px-[var(--container-padding)]">
-            <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] leading-[1] font-bold text-black mb-[5px] lg:mb-[5px] 2xl:mb-[10px] lg:mt-[10px]">
+            <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] leading-none font-bold text-black mb-[5px] lg:mb-[5px] 2xl:mb-[10px] lg:mt-[10px]">
               FAQ
             </div>
             <div className="text-title1 mb-[15px] lg:mb-[20px] 2xl:mb-[25px]">

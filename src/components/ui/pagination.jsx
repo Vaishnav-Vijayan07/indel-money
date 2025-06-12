@@ -45,7 +45,7 @@ function PaginationLink({ className, isActive, size = "icon", ...props }) {
           variant: isActive ? "outline" : "ghost",
           size,
         }),
-        "text-[12px] lg:text-[14px] 2xl:text-[16px] leading-[1] font-normal text-[#777777] w-[25px] h-[25px] lg:w-[30px] lg:h-[30px] 2xl:w-[36px] 2xl:h-[36px] rounded-[4px] border-1 border-[#bdcce4] border-solid hover:bg-[#e6efff]",
+        "text-[12px] lg:text-[14px] 2xl:text-[16px] leading-none font-normal text-[#777777] w-[25px] h-[25px] lg:w-[30px] lg:h-[30px] 2xl:w-[36px] 2xl:h-[36px] rounded-[4px] border-1 border-[#bdcce4] border-solid hover:bg-[#e6efff]",
         isActive ? "bg-base1 text-white pointer-events-none" : "bg-[#f6f9ff]",
         className
       )}

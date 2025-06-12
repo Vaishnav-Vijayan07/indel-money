@@ -6,7 +6,8 @@ import { Pagination, Autoplay, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import styles from "../history/History.module.css";
+
+import "./History.css";
 
 const slides = [
   {
@@ -69,8 +70,8 @@ export default function MobYearsInception() {
   return (
     <section className="w-full block bg-[#003595]">
       <div className="container">
-        <div className="text-[24px] leading-[1] font-medium text-white flex items-center py-[30px]">
-          <span className="text-[48px] 4xs:text-[72px] xs:text-[90px] leading-[1] font-bold text-base2 mr-[25px]">
+        <div className="text-[24px] leading-none font-medium text-white flex items-center py-[30px]">
+          <span className="text-[48px] 4xs:text-[72px] xs:text-[90px] leading-none font-bold text-base2 mr-[25px]">
             38
           </span>
           Years Since Inception
@@ -162,7 +163,7 @@ export default function MobYearsInception() {
                     <div
                       key={index}
                       ref={(el) => (dotsRef.current[index] = el)}
-                      className={`${styles.dotTimeline} ${
+                      className={`${"dotTimeline"} ${
                         index === activeDotIndex ? "active" : ""
                       }`}
                     ></div>
@@ -170,14 +171,14 @@ export default function MobYearsInception() {
                 })}
 
                 <div
-                  className={styles.movingArrowsIndicator}
+                  className={"movingArrowsIndicator"}
                   style={{
                     transform: `translateY(${arrowPos}px) translateX(-50%)`,
                     transition: "transform 0.8s ease",
                   }}
                 >
-                  <div className={styles.arrowUp} />
-                  <div className={styles.arrowDown} />
+                  <div className={"arrowUp"} />
+                  <div className={"arrowDown"} />
                 </div>
               </div>
 

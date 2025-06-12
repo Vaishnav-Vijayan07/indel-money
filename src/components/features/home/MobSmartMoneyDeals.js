@@ -88,7 +88,7 @@ export default function MobSmartMoneyDeals() {
                     height={50}
                     className="aspect-square mx-auto"
                   />
-                  <div className="text-[14px] font-medium leading-[1] line-clamp-3 text-black text-center capitalize mt-[10px] @md:mt-[15px]">
+                  <div className="text-[14px] font-medium leading-none line-clamp-3 text-black text-center capitalize mt-[10px] @md:mt-[15px]">
                     {item.title}
                   </div>
                 </div>
