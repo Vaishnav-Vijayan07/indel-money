@@ -13,7 +13,7 @@ const slides = [
     image: "/images/awards-img-1.jpg",
     alt: "Life at Indel Image 1",
     title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
+    title2: "1 GREAT PLACE TO WORK",
     discription:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute...",
     href: "/",
@@ -22,7 +22,7 @@ const slides = [
     image: "/images/awards-img-1.jpg",
     alt: "Life at Indel Image 2",
     title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
+    title2: "2 GREAT PLACE TO WORK",
     discription:
       "We are committed to financial excellence and providing reliable services for our customers.",
     href: "/",
@@ -31,7 +31,7 @@ const slides = [
     image: "/images/awards-img-1.jpg",
     alt: "Life at Indel Image 3",
     title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
+    title2: "3 GREAT PLACE TO WORK",
     discription:
       "With a legacy of trust and innovation, we empower individuals and businesses alike.",
     href: "/",
@@ -42,6 +42,7 @@ export default function LifeIndelSlider() {
   return (
     <Swiper
       modules={[Pagination, Autoplay]}
+      loop={false}
       slidesPerView={1}
       spaceBetween={20}
       autoplay={{
@@ -52,7 +53,8 @@ export default function LifeIndelSlider() {
       className="lifeSlide"
     >
       {slides.map((item, index) => (
-        <SwiperSlide key={index}>
+        <SwiperSlide key={`lifeslide ${index}`}>
+          {console.log("item===>", item)}
           <Link
             href={item.href}
             className="w-full h-full block rounded-[24px] bg-[#E6EDF7] overflow-hidden p-[20px] pl-[25px]"

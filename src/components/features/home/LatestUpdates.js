@@ -89,8 +89,7 @@ export default function LatestUpdates() {
             {slides.slice(0, 1).map((item, index) => (
               <div
                 key={index}
-                className="group w-full aspect-4/3 md:aspect-auto md:h-full overflow-hidden block relative z-0"
-              >
+                className="group w-full aspect-4/3 md:aspect-auto md:h-full overflow-hidden block relative z-0">
                 <Image
                   src={item?.image}
                   alt={item?.alt}
