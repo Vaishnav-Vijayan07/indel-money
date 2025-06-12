@@ -70,7 +70,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <BranchLocator pageContent={initialData?.pageContent} variant={"home"} />
       </div>
       <div className="block sm:hidden">
-        <MobBranchLocator />
+        <MobBranchLocator pageContent={initialData?.pageContent} />
       </div>
 
       {/* Life at Indel contents*/}

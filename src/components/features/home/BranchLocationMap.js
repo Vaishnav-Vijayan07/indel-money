@@ -301,6 +301,10 @@ export default function BranchLocationMap({ branchLocations: initialBranchLocati
     }
   }, [initialBranchLocations, setSelectedBranch]);
 
+  useEffect(() => {
+ setBranchLocations(initialBranchLocations);
+  }, [initialBranchLocations])
+  
   const handleBranchClick = (branch) => {
     setSelectedBranch(branch);
   };
