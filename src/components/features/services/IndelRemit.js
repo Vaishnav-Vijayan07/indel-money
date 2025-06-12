@@ -38,7 +38,7 @@ export default function IndelRemit({ remit_section_description, remit_section_ti
               </p> */}
             </div>
             <Link
-              href={remit_section_button_link || "/services/indel-remit"}
+              href={remit_section_button_link || "/loan-against-property/indel-remit"}
               className="group w-full text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center leading-none hover:text-base2 transition-color duration-300 mt-[20px]"
             >
               {(remit_section_button_title).toUpperCase() || "Learn More"}

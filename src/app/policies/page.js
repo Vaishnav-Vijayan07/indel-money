@@ -1,5 +1,5 @@
 import React from "react";
-import Policies from "../../../components/features/investors/Policies";
+import Policies from "../../components/features/investors/Policies";
 
 async function fetchPolicyData(page = 1, limit = 5) {
   try {

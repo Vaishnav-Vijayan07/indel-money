@@ -7,7 +7,7 @@ async function fetchData(type) {
     });
 
     const result = await response.json();
-    const PolicyData = result.data;
+    const PolicyData = result.policy;
 
     if (result.status === "success") {
       return {
@@ -15,6 +15,7 @@ async function fetchData(type) {
         error: null,
       };
     }
+    s;
 
     return {
       content: null,

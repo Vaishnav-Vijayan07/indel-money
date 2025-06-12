@@ -1,5 +1,5 @@
 import React from "react";
-import Report from "../../../components/features/investors/Report";
+import Report from "../../components/features/investors/Report";
 
 async function fetchReportData() {
   try {

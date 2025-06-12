@@ -6,14 +6,14 @@ import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
     const menuItems = [
-        { name: "Annual Report", link: "/investors/report" },
-        { name: "Investors Contact", link: "/investors/contact" },
-        { name: "NCD", link: "/investors/ncd" },
-        { name: "Policies", link: "/investors/policy" },
-        { name: "Quarterly Results", link: "/investors/quarterly-results" },
-        { name: "Stock Exchange Filing", link: "/investors/stockexchange" },
-        { name: "Corporate Governance", link: "/investors/goverenance" },
-        { name: "Credit Rating", link: "/investors/credit-ratings" },
+        { name: "Annual Report", link: "/annual-reports" },
+        { name: "Investors Contact", link: "/investors-contact" },
+        { name: "NCD", link: "/past-ncd-issues" },
+        { name: "Policies", link: "/policies" },
+        { name: "Quarterly Results", link: "/quarterly-results" },
+        { name: "Stock Exchange Filing", link: "/stock-exchange-filings" },
+        { name: "Corporate Governance", link: "/corporate-governance" },
+        { name: "Credit Rating", link: "/credit-ratings" },
         // { name: "Key Managerial Personnel", link: "/investors/key-managerial-personnel" },
         { name: "CSR", link: "/investors/csr" },
     ];

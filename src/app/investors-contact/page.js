@@ -1,5 +1,5 @@
 import React from "react";
-import Contact from "../../../components/features/investors/Contact";
+import Contact from "../../components/features/investors/Contact";
 
 async function fetchContactData() {
   try {
