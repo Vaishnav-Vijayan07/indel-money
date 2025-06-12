@@ -13,30 +13,6 @@ import Link from "next/link";
 import "./Home.css";
 import EnquiryForm from "@/components/common/EnquiryForm";
 
-const slides = [
-  {
-    image: "/images/mob-MainSlide1.jpg",
-    alt: "Indel Money Banner 1",
-    title1: "Indel Money:",
-    title2: "Your trusted partner for a brighter future.",
-    link: "/",
-  },
-  {
-    image: "/images/mob-MainSlide1.jpg",
-    alt: "Indel Money Banner 2",
-    title1: "Empowering your",
-    title2: "Financial dreams with confidence.",
-    link: "/",
-  },
-  {
-    image: "/images/mob-MainSlide1.jpg",
-    alt: "Indel Money Banner 3",
-    title1: "Your reliable",
-    title2: "Partner in every financial journey.",
-    link: "/",
-  },
-];
-
 export default function MobHeroBanner({ heroBanner, initialData }) {
   return (
     <section className="w-full block relative z-0 overflow-hidden">
@@ -67,7 +43,7 @@ export default function MobHeroBanner({ heroBanner, initialData }) {
             />
             <div className="container">
               <div className="max-w-full">
-              <h1 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[10px] 4xs:mb-[15px]">
+                <h1 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[10px] 4xs:mb-[15px]">
                   <span className="text-base2 font-bold">{item.title}</span> {item.title2}
                 </h1>
                 <Link href={item?.button_link} className="btn btn-base2 max-w-[130px]">
@@ -83,7 +59,7 @@ export default function MobHeroBanner({ heroBanner, initialData }) {
         goldRateLabel={initialData?.pageContent?.gold_rate_label}
         goldRateIcon={initialData?.pageContent?.gold_rate_icon}
       />
-      <EnquiryForm />
+      <HeroBannerEnquiry />
     </section>
   );
 }
