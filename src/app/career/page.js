@@ -6,16 +6,13 @@ import FindJob from "@/components/features/career/FindJob";
 import MakeYourMove from "@/components/features/career/MakeYourMove";
 import BenefitsEmployee from "@/components/features/career/BenefitsEmployee";
 import MobBenefitsEmployee from "@/components/features/career/MobBenefitsEmployee";
-import { fetchData } from "@/lib/fetchCalls/fetchCareerPageData";
 
 export default async function Career() {
-
   async function fetchData() {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/career`, {
         cache: "no-store", // Ensure fresh data
       });
-
 
       const result = await response.json();
       const careerData = result.data;
@@ -29,7 +26,7 @@ export default async function Career() {
           testimonials: careerData?.testimoinials,
           states: careerData?.careerStates,
           jobs: careerData?.careerJobs,
-          error: null
+          error: null,
         };
       }
 
@@ -41,7 +38,7 @@ export default async function Career() {
         testimonials: null,
         states: null,
         jobs: null,
-        error: result.message
+        error: result.message,
       };
     } catch (error) {
       return {
@@ -52,19 +49,41 @@ export default async function Career() {
         testimonials: null,
         states: null,
         jobs: null,
-        error: "Failed to fetch career data"
+        error: "Failed to fetch career data",
       };
     }
   }
 
-  const { contents, banners, benefits, awards, testimonials, states, jobs, error } = await fetchData()
+  const { contents, banners, benefits, awards, testimonials, states, jobs, error } = await fetchData();
 
+  console.log("Career Page Data:", {
+    contents,
+    banners,
+    benefits,
+    awards,
+    testimonials,
+    states,
+    jobs,
+    error,
+  });
 
   return (
     <div className="w-full h-auto bg-linear-to-b from-base1/10 to-base2/10">
       <CareerBanner banners={banners} />
-      <FindJob states={states} jobs={jobs} find_job_title={contents?.find_job_title} find_job_button_name={contents?.find_job_button_name} find_job_button_link={contents?.find_job_button_link} />
-      <MakeYourMove make_your_move_title={contents?.make_your_move_title} make_your_move_description={contents?.make_your_move_description} make_your_move_image={contents?.make_your_move_image} image_alt={contents?.image_alt} />
+      <FindJob
+        states={states}
+        jobs={jobs}
+        find_job_title={contents?.find_job_title}
+        find_job_button_name={contents?.find_job_button_name}
+        find_job_button_link={contents?.find_job_button_link}
+      />
+      <MakeYourMove
+        make_your_move_title={contents?.make_your_move_title}
+        make_your_move_description={contents?.make_your_move_description}
+        make_your_move_image={contents?.make_your_move_image}
+        image_alt={contents?.image_alt}
+        isGeneral={true}
+      />
       <div className="hidden sm:block">
         <CareerLifeAtIndel />
       </div>
@@ -77,7 +96,14 @@ export default async function Career() {
       <div className="block sm:hidden">
         <MobBenefitsEmployee />
       </div>
-      <EmployeeTestimonials testimonials={testimonials} awards={awards} testimonial_button_link={contents?.testimonial_button_link} testimonial_button_name={contents?.testimonial_button_name} testimonial_description={contents?.testimonial_description} testimonial_title={contents?.testimonial_title} />
+      <EmployeeTestimonials
+        testimonials={testimonials}
+        awards={awards}
+        testimonial_button_link={contents?.testimonial_button_link}
+        testimonial_button_name={contents?.testimonial_button_name}
+        testimonial_description={contents?.testimonial_description}
+        testimonial_title={contents?.testimonial_title}
+      />
     </div>
   );
 }

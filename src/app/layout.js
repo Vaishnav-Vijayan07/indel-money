@@ -5,6 +5,8 @@ import "./globals.css";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "@/components/common/FloatingButton";
+// import ToasterWrapper from "@/components/common/ToasterWrapper";
+import { Toaster } from "react-hot-toast";
 
 
 const montserrat = Montserrat({
@@ -31,7 +33,8 @@ export default function RootLayout({ children }) {
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         <Footer />
         <FloatingButton />
-        {/* <Toaster position="top-right" /> */}
+        <Toaster position="top-right" />
+        {/* <ToasterWrapper /> */}
       </body>
     </html>
   );
