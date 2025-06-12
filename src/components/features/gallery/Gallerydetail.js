@@ -79,6 +79,7 @@ export default function GalleryDetail() {
                   height={335}
                   className="h-full"
                 />
+                
               </div>
             </div>
             <div className="flex flex-wrap w-full h-[60%] md:h-[50%]">
