@@ -104,7 +104,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <Innovations pageContent={initialData?.pageContent} />
       </div>
       <div className="block sm:hidden">
-        <MobInnovations />
+        <MobInnovations pageContent={initialData?.pageContent}/>
       </div>
 
       {/* faq contents */}
