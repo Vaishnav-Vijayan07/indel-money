@@ -70,7 +70,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <BranchLocator pageContent={initialData?.pageContent} variant={"home"} />
       </div>
       <div className="block sm:hidden">
-        <MobBranchLocator />
+        <MobBranchLocator pageContent={initialData?.pageContent} />
       </div>
 
       {/* Life at Indel contents*/}
@@ -101,16 +101,16 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <MobLatestUpdates />
       </div>
 
-      {/* <div className="hidden sm:block">
+      <div className="hidden sm:block">
         <TrustedInvestment pageContent={initialData?.pageContent} />
-      </div> */}
+      </div>
 
       {/* Innovations*/}
       <div className="hidden sm:block">
         <Innovations pageContent={initialData?.pageContent} />
       </div>
       <div className="block sm:hidden">
-        <MobInnovations pageContent={initialData?.pageContent} />
+        <MobInnovations pageContent={initialData?.pageContent} pageContent={initialData?.pageContent}/>
       </div>
 
       {/* faq contents */}
