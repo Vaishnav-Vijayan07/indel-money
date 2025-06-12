@@ -54,7 +54,7 @@ const OtherLoans = [
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "consumer durable Loan",
-    link: "/services/consumer-durable-loan",
+    link: "/consumer-durable-loans",
   },
 ];
 const Careers = [
@@ -64,7 +64,7 @@ const Careers = [
   },
   {
     title: "employee testimonial",
-    link: "/employee-testimonial",
+    link: "/emptestimonial",
   },
   {
     title: "current openings",
@@ -78,7 +78,7 @@ const Careers = [
 const Abouts = [
   {
     title: "indel values",
-    link: "/about/indel-values",
+    link: "/indel-values",
   },
   {
     title: "management team",
@@ -86,7 +86,7 @@ const Abouts = [
   },
   {
     title: "board of directors",
-    link: "/board-directors",
+    link: "/board-of-directors",
   },
   {
     title: "partners",
@@ -94,11 +94,11 @@ const Abouts = [
   },
   {
     title: "history",
-    link: "/history",
+    link: "/history-of-indel",
   },
   {
     title: "different shades of indel",
-    link: "/about/different-shades-of-indel",
+    link: "/different-shades-of-indelmoney",
   },
 ];
 
@@ -232,7 +232,7 @@ export default function NavMenu() {
 
       <MenubarMenu>
         <div className="flex">
-          <Link href={"/about"} className={tabStyle}>
+          <Link href={"/about-indel-money"} className={tabStyle}>
             about
           </Link>
           <MenubarTrigger className={tabStyle}>

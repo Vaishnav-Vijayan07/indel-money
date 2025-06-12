@@ -5,7 +5,7 @@ import BlogCard from "@/components/common/BlogCard";
 import MobBlogListCard from "@/components/features/blog/MobBlogListCard";
 import Link from "next/link";
 
-const RecentBlog = ({ recentBlogs }) => {
+const RecentBlog = ({ recentBlogs, type = "blog" }) => {
   return (
     <section className="p-[5px_0_30px_0] sm:p-[10px_0_40px_0] 2xl:p-[35px_0_75px_0]">
       <div className="container">
@@ -25,7 +25,7 @@ const RecentBlog = ({ recentBlogs }) => {
           >
             {recentBlogs?.map((item, index) => (
               <SwiperSlide key={index}>
-                <Link href={`/blog/${item.slug}`}>
+                <Link href={`/${type}/${item.slug}`}>
                   <BlogCard item={item} />
                 </Link>
               </SwiperSlide>

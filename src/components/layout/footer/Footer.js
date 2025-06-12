@@ -40,20 +40,20 @@ const navigations = [
   {
     title: "About",
     links: [
-      { linkname: "About Indel Money", href: "/about" },
-      { linkname: "Board of Directors", href: "/about" },
-      { linkname: "Life at Indel Money", href: "/about" },
-      { linkname: "Employee Testimonials", href: "/employee-testimonial" },
+      { linkname: "About Indel Money", href: "/about-indel-money" },
+      { linkname: "Board of Directors", href: "/board-of-directors" },
+      { linkname: "Life at Indel Money", href: "/about-indel-money#life-at-indel" },
+      { linkname: "Employee Testimonials", href: "/emptestimonial" },
       {
         linkname: "Different Shades of Indel",
-        href: "/about/different-shades-of-indel",
+        href: "/different-shades-of-indelmoney",
       },
     ],
   },
   {
     title: "Investors",
     links: [
-      { linkname: "Investors Reports", href: "/investors/report" },
+      { linkname: "Investors Reports", href: "/annual-reports" },
       { linkname: "Ombudsman Scheme", href: "/ombudsman" },
     ],
   },
@@ -63,11 +63,11 @@ const navigations = [
       { linkname: "MSME Loan", href: "/msme-loan" },
       {
         linkname: "Consumer Durable Loans",
-        href: "/services/consumer-durable-loan",
+        href: "/consumer-durable-loans",
       },
-      { linkname: "Loan Against Property", href: "/services" },
-      { linkname: "Gold Loan Schemes", href: "/gold-loan" },
-      { linkname: "E-Connect", href: "/services" },
+      { linkname: "Services", href: "/loan-against-property" },
+      { linkname: "Gold Loan Schemes", href: "/gold-loan#scheme" },
+      { linkname: "E-Connect", href: "/loan-against-property" },
     ],
   },
   {
@@ -83,17 +83,11 @@ const navigations = [
     title: "Policies",
     links: [
       { linkname: "Privacy Policy", href: "/privacy-policy" },
-      { linkname: "Disclaimer", href: "/privacy-policy" },
-      { linkname: "Mobile App Policy", href: "/privacy-policy" },
-      { linkname: "Fair Practice Code", href: "/privacy-policy" },
-      { linkname: "Terms & Conditions", href: "/privacy-policy" },
-      { linkname: "KYC Policy", href: "/privacy-policy" },
-      { linkname: "Privacy Policy", href: "/privacy-policy" },
-      { linkname: "Disclaimer", href: "/privacy-policy" },
-      { linkname: "Mobile App Policy", href: "/privacy-policy" },
-      { linkname: "Fair Practice Code", href: "/privacy-policy" },
-      { linkname: "Terms & Conditions", href: "/privacy-policy" },
-      { linkname: "KYC Policy", href: "/privacy-policy" },
+      { linkname: "Disclaimer", href: "/disclaimer" },
+      { linkname: "Mobile App Policy", href: "/mobile-app-policy" },
+      { linkname: "Fair Practice Code", href: "/fair-practice-code" },
+      { linkname: "Terms & Conditions", href: "/terms-and-conditions" },
+      { linkname: "KYC Policy", href: "/kyc-policy" },
     ],
   },
   {
@@ -101,9 +95,7 @@ const navigations = [
     links: [
       { linkname: "Contact Us", href: "/contact" },
       { linkname: "Careers", href: "/career" },
-      { linkname: "EMI Calculator", href: "#" },
-      { linkname: "Downloads", href: "#" },
-      { linkname: "KYC Policy", href: "#" },
+      { linkname: "EMI Calculator", href: "/#calculator" },
     ],
   },
 ];

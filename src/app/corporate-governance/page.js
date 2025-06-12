@@ -1,4 +1,4 @@
-import GoverenanceInfo from "../../../components/features/investors/GoverenanceInfo";
+import GoverenanceInfo from "../../components/features/investors/GoverenanceInfo";
 
 async function fetchCorporateGoverneceData() {
   try {

@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { formatPostDate } from "@/lib/utils";
 
-export default function LatestUpdates({ sliderItems, sliderTitle }) {
+export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" }) {
   return (
     <section className="w-full block">
       <div className="container">
@@ -37,6 +37,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle }) {
                 "relative lg:before:[''] before:hidden lg:before:block before:absolute before:bottom-0 before:right-0 before:w-[170px] before:lg:w-[198px] before:xl:w-[241px] before:2xl:w-[337px] before:3xl:w-[423px] before:h-[1px] before:bg-[#a8a8a8]"
               }
               slides={sliderItems}
+              type={type}
             />
           </div>
           <div className="w-full md:w-[45%] lg:w-1/2">
@@ -63,7 +64,8 @@ export default function LatestUpdates({ sliderItems, sliderTitle }) {
             >
               {sliderItems?.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <div
+                  <Link
+                    href={`/${type}/${item?.slug}`}
                     key={index}
                     className="group w-full h-[368px] sm:h-[420px] md:h-[490px] lg:h-[530px] xl:h-[586px] 2xl:h-[701px] 3xl:h-[854px] overflow-hidden block relative z-0"
                   >
@@ -101,7 +103,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle }) {
                         />
                       </Link>
                     </div>
-                  </div>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>

@@ -1,5 +1,5 @@
 import React from "react";
-import CreditRatings from "../../../components/features/investors/CreditRatings";
+import CreditRatings from "../../components/features/investors/CreditRatings";
 import { notFound } from "next/navigation";
 
 async function fetchCreditRatingsData() {

@@ -1,7 +1,7 @@
-import ConsumerDurable from "../../../components/features/services/ConsumerDurable";
-import ProductCovered from "../../../components/features/services/ProductCovered";
-import FeatureBenefit from "../../../components/features/services/FeatureBenefit";
-import MobEligibility from "../../../components/features/services/MobEligibility";
+import ConsumerDurable from "@/components/features/services/ConsumerDurable";
+import ProductCovered from "@/components/features/services/ProductCovered";
+import FeatureBenefit from "@/components/features/services/FeatureBenefit";
+import MobEligibility from "@/components/features/services/MobEligibility";
 
 async function fetchData() {
     try {

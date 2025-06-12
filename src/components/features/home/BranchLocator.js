@@ -57,6 +57,14 @@ export default function BranchLocator({ variant = "default", pageContent }) {
       setSelectedDistance(value);
       fetchBranchLocations();
     }
+    else if (field == "clear") {
+      setSelectedLocation("");
+      setSelectedState("");
+      setSelectedDistrict("");
+      setSelectedDistance("");
+      setUserLocation(null);
+      fetchBranchLocations();
+    }
   };
 
   const fetchStates = async () => {

@@ -75,7 +75,7 @@ function PresenceBox({ item }) {
     <div className="group w-full h-auto flex flex-wrap justify-center">
       <div className="w-[42px] sm:w-[50px] 2xl:w-[65px] 3xl:w-[72px] h-[42px] sm:h-[50px] 2xl:h-[65px] 3xl:h-[72px] bg-base2 border-4 border-[#93BFFA] rounded-full flex items-center justify-center overflow-hidden p-[7px] 2xl:p-[12px] mb-[10px] 2xl:mb-[20px]">
         <Image
-          src={item.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/presnc06.svg"}
+          src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/presnc06.svg"}
           alt={item?.image_alt ? item?.image_alt : "Presence image"}
           width={42}
           height={42}
