@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../components/ui/select";
+import { Button } from "../ui/button";
 
 export default function BranchForm({ states, districts, locations, selectedState, selectedDistrict, selectedLocation, onValueChange, onOpenChange }) {
 
@@ -78,14 +79,18 @@ export default function BranchForm({ states, districts, locations, selectedState
       </div>
 
       {/* Search Button */}
-      {/* <div className="w-full md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px] flex items-center justify-center md:justify-end">
+      <div className="w-full md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px] flex items-center justify-center md:justify-end">
         <Button
           type="submit"
+          onClick={(e) => {
+            e.preventDefault();
+            onValueChange("clear", true);
+          }}
           className="btn btn-base2 max-w-[140px] lg:max-w-[160px] xl:max-w-[180px] 3xl:max-w-[220px]"
         >
-          SEARCH
+          CLEAR FILTER
         </Button>
-      </div> */}
+      </div>
     </form>
   );
 }
