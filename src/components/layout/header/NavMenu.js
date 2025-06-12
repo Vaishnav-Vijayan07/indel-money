@@ -1,12 +1,4 @@
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,13 +14,13 @@ const GoldLoans = [
     image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "Instant & hassle free Gold Loan",
-     link: "/gold-loan#hassle-free",
+    link: "/gold-loan#hassle-free",
   },
   {
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "Our Easy Step Gold Loan",
-     link: "/gold-loan#easy-step",
+    link: "/gold-loan#easy-step",
   },
   {
     image: "/images/icon-goldloan-4.svg",
@@ -60,7 +52,7 @@ const OtherLoans = [
 const Careers = [
   {
     title: "life at indel",
-    link: "/career",
+    link: "/life-at-indel-money",
   },
   {
     title: "employee testimonial",
@@ -68,11 +60,11 @@ const Careers = [
   },
   {
     title: "current openings",
-    link: "/career/active-jobs",
+    link: "/active-jobs",
   },
   {
     title: "apply now",
-    link: "/career/active-jobs",
+    link: "/active-jobs",
   },
 ];
 const Abouts = [
@@ -150,13 +142,7 @@ function MegaMenu({ items }) {
             <MenubarItem className="p-0">
               <div className="group flex flex-row items-center p-[10px] 3xl:p-[10px] cursor-pointer">
                 <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
-                  <Image
-                    src={item.image}
-                    width={28}
-                    height={28}
-                    alt={item?.alt}
-                    className="w-full h-full block max-w-2/4 object-contain"
-                  />
+                  <Image src={item.image} width={28} height={28} alt={item?.alt} className="w-full h-full block max-w-2/4 object-contain" />
                 </div>
                 <div
                   className={`${
@@ -174,8 +160,7 @@ function MegaMenu({ items }) {
   );
 }
 
-const tabStyle =
-  "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
+const tabStyle = "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
 
 export default function NavMenu() {
   const pathname = usePathname();
@@ -198,9 +183,7 @@ export default function NavMenu() {
       <MenubarMenu>
         <Link
           href={"https://indelremit.com"}
-          className={`${
-            pathname === "#" ? "" : ""
-          } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
+          className={`${pathname === "#" ? "" : ""} text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
         >
           FOREIGN EXCHANGE
         </Link>

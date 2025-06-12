@@ -92,7 +92,7 @@ export default function ActiveJobsInfo() {
   };
 
   const handleClearFilters = () => {
-    router.push("/career/active-jobs");
+    router.push("/active-jobs");
   };
 
   const hasActiveFilters = () => {

@@ -7,49 +7,43 @@ import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
 import "./gallery.css";
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 
 const slides = [
   {
     src: "/images/gallSlide01.jpg",
     title: "0nam 2024",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
   },
   {
     src: "/images/gallSlide02.jpg",
     title: "0nam 2024",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
   },
   {
     src: "/images/gallSlide03.jpg",
     title: "0nam 2024",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
   },
   {
     src: "/images/gallSlide04.jpg",
     title: "0nam 2024",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
   },
   {
     src: "/images/gallSlide05.jpg",
     title: "0nam 2024",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
   },
   {
     src: "/images/gallSlide02.jpg",
     title: "0nam 2024",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
   },
   {
     src: "/images/gallSlide04.jpg",
     title: "0nam 2024",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages",
   },
 ];
 
@@ -59,6 +53,11 @@ export default function CardSlider({ sliderItems }) {
   const handleSlideChange = (swiper) => {
     setActiveIndex(swiper.activeIndex);
   };
+
+  const handleSlideClick = (index) => {
+    
+  };
+
   return (
     <div className="w-full flex justify-center items-center py-10">
       <style>{`
@@ -152,17 +151,18 @@ export default function CardSlider({ sliderItems }) {
             key={index}
             className="w-full h-full not-[:where(.swiper-slide-visible)]:opacity-0 not-[:has(.swiper-slide-active)]:[.SwiprCntn]:opacity-0"
           >
-            <div className="relative w-full h-[370px] lg:h-[350px] xl:h-[400px] 2xl:h-[400px] 3xl:h-[518px] rounded-[38px] overflow-hidden shadow-lg">
+            <div
+              className="relative w-full h-[370px] lg:h-[350px] xl:h-[400px] 2xl:h-[400px] 3xl:h-[518px] rounded-[38px] overflow-hidden shadow-lg"
+              onClick={() => handleSlideClick(slide?.slug)}
+            >
               <Image
-                src={slide?.gallery ?  `${process.env.NEXT_PUBLIC_BACKEND_URL}${slide.gallery}` :"/images/gallSlide01.jpg" }
+                src={slide?.gallery ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${slide.gallery}` : "/images/gallSlide01.jpg"}
                 alt={slide.description ? slide.description : "Gallery"}
                 fill
                 sizes="518px"
                 className="object-cover"
               />
-              <div
-                className="card-box-content absolute z-1 bottom-0 left-0 right-0 p-[30px_15px] lg:p-[30px_15px] 2xl:p-[65px_25px] pointer-events-none transition-all duration-300  bg-gradient-to-b from-[rgba(143,0,0,0)] to-base1"
-              >
+              <div className="card-box-content absolute z-1 bottom-0 left-0 right-0 p-[30px_15px] lg:p-[30px_15px] 2xl:p-[65px_25px] pointer-events-none transition-all duration-300  bg-gradient-to-b from-[rgba(143,0,0,0)] to-base1">
                 <h3 className="text-[18px] lg:text-[18px] xl:text-[20px] 2xl:text-[18px] 3xl:text-[25px] uppercase font-black text-center text-white">
                   {slide.title ? slide.title : "Gallery"}
                 </h3>
