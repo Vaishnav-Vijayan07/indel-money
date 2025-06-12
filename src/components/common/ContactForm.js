@@ -10,22 +10,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "../ui/textarea";
 import api from "@/lib/api/axios";
 import { useEffect, useMemo, useState } from "react";
+import toast from "react-hot-toast";
 
 // Schema Validation
-const formSchema = z.object({
-  yourName: z.string().min(2, {
-    message: "Your Name must be at least 2 characters.",
-  }),
-  contactNumber: z.string().min(10, {
-    message: "Contact Number must be at least 10 digits.",
-  }),
-  emailAddress: z.string().email({
-    message: "Invalid email address.",
-  }),
-  serviceType: z.string().nonempty({
-    message: "Please select a service.",
-  }),
-});
+const formSchema = z
+  .object({
+    name: z.string().min(2, {
+      message: "Name must be at least 2 characters.",
+    }),
+    email: z.string().email({ message: "Invalid email address." }),
+    phone: z.string().regex(/^\+?\d{10,15}$/, {
+      message: "Phone number must be 10-15 digits.",
+    }),
+  })
+  .passthrough();
 
 export default function ContactForm() {
   const [serviceTypes, setServiceTypes] = useState([]);
@@ -36,10 +34,9 @@ export default function ContactForm() {
         setServiceTypes(data.data);
       } else {
         toast.error("Failed to fetch service types!");
-        return [];
       }
     } catch (error) {
-      toast.error("service fetching failed!");
+      toast.error("Service fetching failed!");
     }
   };
 
@@ -51,7 +48,7 @@ export default function ContactForm() {
     if (serviceTypes?.length > 0) {
       return serviceTypes?.map((type) => ({
         label: type.type_name,
-        value: type.id,
+        value: type.id.toString(),
       }));
     }
     return [];
@@ -61,24 +58,40 @@ export default function ContactForm() {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      yourName: "",
-      contactNumber: "",
-      emailAddress: "",
-      serviceType: "",
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+      city: "",
+      service_types: "",
     },
   });
 
   // Handle form submission
-  function onSubmit(values) {}
+  async function onSubmit(data) {
+    const cleanedData = Object.fromEntries(Object.entries(data).map(([key, value]) => [key, value === "" ? null : value]));
+    try {
+      const response = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/contact/submissions`, cleanedData);
+      if (response.data.success) {
+        toast.success("Contact form submitted successfully!");
+        form.reset(); // Reset form on success
+      } else {
+        toast.error("Failed to submit contact form!");
+      }
+    } catch (error) {
+      toast.error("Submission failed! Please try again.");
+    }
+  }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
         <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
-          {/* Your Name Field */}
+          {/* Name Field */}
           <FormField
             control={form.control}
-            name="yourName"
+            name="name"
             render={({ field }) => (
               <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
                 <FormControl>
@@ -90,10 +103,10 @@ export default function ContactForm() {
           />
         </div>
         <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
-          {/* Contact Number Field */}
+          {/* Phone Field */}
           <FormField
             control={form.control}
-            name="contactNumber"
+            name="phone"
             render={({ field }) => (
               <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
                 <FormControl>
@@ -105,10 +118,10 @@ export default function ContactForm() {
           />
         </div>
         <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
-          {/* Email Address Field */}
+          {/* Email Field */}
           <FormField
             control={form.control}
-            name="emailAddress"
+            name="email"
             render={({ field }) => (
               <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
                 <FormControl>
@@ -150,19 +163,21 @@ export default function ContactForm() {
           />
         </div>
         <div className="w-full md:w-1/2 px-[4px] lg:px-[6px] 2xl:px-[10px]">
-          {/* Select Service Field */}
+          {/* Service Type Field */}
           <FormField
             control={form.control}
-            name="serviceType"
+            name="service_types"
             render={({ field }) => (
               <FormItem className="mb-2 xl:mb-3 3xl:mb-5">
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} value={field.value} key={field.value}>
                   <SelectTrigger className="w-full bg-white border-white">
                     <SelectValue placeholder="Select service" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
                     {formattedServiceTypes?.map((service, index) => (
-                      <SelectItem key={index} value={service.value}>{service.label}</SelectItem>
+                      <SelectItem key={index} value={service.value}>
+                        {service.label}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -172,7 +187,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
-          {/* Textarea Field */}
+          {/* Message Field */}
           <FormField
             control={form.control}
             name="message"
