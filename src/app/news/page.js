@@ -22,7 +22,7 @@ const MobLatestUpdates = dynamic(() => import("@/components/features/blog/MobLat
 async function fetchBlogsData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news?page=${page}&limit=${limit}`, {
-      next: { revalidate: 3600 },
+   
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const result = await response.json();
@@ -57,7 +57,7 @@ async function fetchBlogsData(page = 1, limit = 10) {
 }
 
 export async function generateMetadata({ params }) {
-  const page = parseInt(params?.page) || 1;
+  const page = await parseInt(params?.page) || 1;
   const { content, error } = await fetchBlogsData(page, 10);
   // ... metadata logic (same as original)
 }
@@ -67,7 +67,7 @@ const PaginationItems = memo(({ currentPage, totalPages }) => {
 });
 
 export default async function News({ searchParams }) {
-  const page = parseInt(searchParams?.page) || 1;
+  const page = await parseInt(searchParams?.page) || 1;
   const limit = 10;
   const { content, blogs, sliderData, pagination, error } = await fetchBlogsData(page, limit);
 
