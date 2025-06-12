@@ -25,6 +25,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "crm.intersmarthosting.in",
       },
+      {
+        protocol: "https",
+        hostname: "www.youtube.com",
+      },
     ],
   },
 };
