@@ -53,7 +53,7 @@ export default function LifeIndelInfo() {
                     spaceBetween: -500,
                   },
                 }}
-                className="relative w-[250px] lg:w-[260px] xl:w-[520px] h-full m-auto !overflow-visible lifeSlide"
+                className="relative w-[250px] lg:w-[260px] xl:w-[520px] h-full m-auto !overflow-visible lifeSlide lifeSlide2"
               >
                 {images.map((img, index) => (
                   <SwiperSlide key={index} className="flex justify-center">
