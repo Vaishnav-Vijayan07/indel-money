@@ -1,7 +1,17 @@
-import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar";
+"use client";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const GoldLoans = [
   {
@@ -142,7 +152,13 @@ function MegaMenu({ items }) {
             <MenubarItem className="p-0">
               <div className="group flex flex-row items-center p-[10px] 3xl:p-[10px] cursor-pointer">
                 <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
-                  <Image src={item.image} width={28} height={28} alt={item?.alt} className="w-full h-full block max-w-2/4 object-contain" />
+                  <Image
+                    src={item.image}
+                    width={28}
+                    height={28}
+                    alt={item?.alt}
+                    className="w-full h-full block max-w-2/4 object-contain"
+                  />
                 </div>
                 <div
                   className={`${
@@ -160,71 +176,114 @@ function MegaMenu({ items }) {
   );
 }
 
-const tabStyle = "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
+const tabStyle =
+  "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
 
 export default function NavMenu() {
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  const handleMouseEnter = (menu) => setOpenDropdown(menu);
+  const handleMouseLeave = () => setOpenDropdown(null);
+
   const pathname = usePathname();
   return (
-    <Menubar className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px] h-[var(--header-y)] lg:px-[10px] 2xl:px-[15px] 3xl:px-[20px] border-none shadow-none">
-      <MenubarMenu>
-        <div className="flex">
-          <Link href={"/gold-loan"} className={tabStyle}>
-            Gold Loan
-          </Link>
-          <MenubarTrigger className={tabStyle}>
-            <Arrow />
-          </MenubarTrigger>
+    <Menubar
+      onMouseLeave={handleMouseLeave}
+      className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px] h-[var(--header-y)] lg:px-[10px] 2xl:px-[15px] 3xl:px-[20px] border-none shadow-none"
+    >
+      <MenubarMenu
+        open={openDropdown === "goldloan"}
+        onOpenChange={(open) => setOpenDropdown(open ? "goldloan" : null)}
+      >
+        <div
+          onMouseEnter={() => handleMouseEnter("goldloan")}
+          className="relative"
+        >
+          <div className="flex">
+            <MenubarTrigger className={tabStyle}>
+              <Link href={"/gold-loan"} className={tabStyle}>
+                Gold Loan
+              </Link>
+              <Arrow />
+            </MenubarTrigger>
+          </div>
+          <MenubarContent className="border-[#e4e4e4] bg-white p-0">
+            <MegaMenu items={GoldLoans} />
+          </MenubarContent>
         </div>
-        <MenubarContent className="border-[#e4e4e4] bg-white p-0">
-          <MegaMenu items={GoldLoans} />
-        </MenubarContent>
       </MenubarMenu>
 
       <MenubarMenu>
         <Link
           href={"https://indelremit.com"}
-          className={`${pathname === "#" ? "" : ""} text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
+          className={`${
+            pathname === "#" ? "" : ""
+          } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
         >
           FOREIGN EXCHANGE
         </Link>
       </MenubarMenu>
 
-      <MenubarMenu>
-        <MenubarTrigger className={tabStyle}>
-          <span>other loan</span>
-          <Arrow />
-        </MenubarTrigger>
-        <MenubarContent className="border-[#e4e4e4] bg-white p-0">
-          <MegaMenu items={OtherLoans} />
-        </MenubarContent>
-      </MenubarMenu>
-
-      <MenubarMenu>
-        <div className="flex">
-          <Link href={"/career"} className={tabStyle}>
-            careers
-          </Link>
+      <MenubarMenu
+        open={openDropdown === "otherloan"}
+        onOpenChange={(open) => setOpenDropdown(open ? "otherloan" : null)}
+      >
+        <div
+          onMouseEnter={() => handleMouseEnter("otherloan")}
+          className="relative"
+        >
           <MenubarTrigger className={tabStyle}>
+            <span>other loan</span>
             <Arrow />
           </MenubarTrigger>
+          <MenubarContent className="border-[#e4e4e4] bg-white p-0">
+            <MegaMenu items={OtherLoans} />
+          </MenubarContent>
         </div>
-        <MenubarContent className="border-[#e4e4e4] bg-white p-0">
-          <DropdownMenu items={Careers} />
-        </MenubarContent>
       </MenubarMenu>
 
-      <MenubarMenu>
-        <div className="flex">
-          <Link href={"/about-indel-money"} className={tabStyle}>
-            about
-          </Link>
-          <MenubarTrigger className={tabStyle}>
-            <Arrow />
-          </MenubarTrigger>
+      <MenubarMenu
+        open={openDropdown === "careers"}
+        onOpenChange={(open) => setOpenDropdown(open ? "careers" : null)}
+      >
+        <div
+          onMouseEnter={() => handleMouseEnter("careers")}
+          className="relative"
+        >
+          <div className="flex">
+            <MenubarTrigger className={tabStyle}>
+              <Link href={"/career"} className={tabStyle}>
+                careers
+              </Link>
+              <Arrow />
+            </MenubarTrigger>
+          </div>
+          <MenubarContent className="border-[#e4e4e4] bg-white p-0">
+            <DropdownMenu items={Careers} />
+          </MenubarContent>
         </div>
-        <MenubarContent className="border-[#e4e4e4] bg-white p-0">
-          <DropdownMenu items={Abouts} />
-        </MenubarContent>
+      </MenubarMenu>
+
+      <MenubarMenu
+        open={openDropdown === "about"}
+        onOpenChange={(open) => setOpenDropdown(open ? "about" : null)}
+      >
+        <div
+          onMouseEnter={() => handleMouseEnter("about")}
+          className="relative"
+        >
+          <div className="flex">
+            <MenubarTrigger className={tabStyle}>
+              <Link href={"/about-indel-money"} className={tabStyle}>
+                about
+              </Link>
+              <Arrow />
+            </MenubarTrigger>
+          </div>
+          <MenubarContent className="border-[#e4e4e4] bg-white p-0">
+            <DropdownMenu items={Abouts} />
+          </MenubarContent>
+        </div>
       </MenubarMenu>
     </Menubar>
   );
