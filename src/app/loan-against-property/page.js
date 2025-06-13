@@ -24,7 +24,7 @@ export default async function Services() {
   const { serviceContent, services, error } = await fetchManagementData();
 
   if (!serviceContent || !services) {
-    return <div>Failed to fetch about data</div>
+    return <div>Failed to fetch about data</div>;
   }
 
   return (
@@ -32,10 +32,23 @@ export default async function Services() {
       <div className="absolute bottom-[7%] left-0 w-full h-[65%] md:h-[55%] xl:h-[59%] bg-gradient-to-r from-[rgba(243,0,0,0)] to-[rgba(235,2,8,0.10)] z-0 sm:block hidden"></div>
 
       {/* InnerBanner contents */}
-      <ServiceBanner page_title={serviceContent?.page_title} page_super_title={serviceContent?.page_super_title} />
+      <ServiceBanner
+        page_title={serviceContent?.page_title}
+        page_super_title={serviceContent?.page_super_title}
+        image={serviceContent?.banner_image}
+        alt={serviceContent?.banner_alt}
+      />
 
       {/* SmartMoneyDeal contents */}
-      <SmartMoneyDeal deals_description={serviceContent?.deals_description} deals_title={serviceContent?.deals_title} />
+      <SmartMoneyDeal
+        deals_description={serviceContent?.deals_description}
+        deals_title={serviceContent?.deals_title}
+        benfits_title={serviceContent?.benfits_title}
+        title={serviceContent?.gold_loan_title}
+        desc={serviceContent?.gold_title_description}
+        image={serviceContent?.gold_loan_image}
+        alt={serviceContent?.gold_loan_image_alt}
+      />
 
       {/* OtherGoldLoan contents */}
       <OtherGoldLoan services={services} />

@@ -28,10 +28,16 @@ function ServiceBannerItem({ item }) {
   );
 }
 
-export default function ServiceBanner({ bannerIcons, title, announcement_text, gold_rate_text }) {
+export default function ServiceBanner({ bannerIcons, title, announcement_text, gold_rate_text, banner_image, alt }) {
   return (
     <section className="w-full relative overflow-hidden before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:-z-1 before:bg-[linear-gradient(90deg,rgba(0,0,0,0.5)_0%,rgba(102,102,102,0)_100%)]">
-      <Image src="/images/goldloanBanner.webp" alt="value-innerBanner" fill sizes="100vw" className="-z-2 object-cover pointer-events-none" />
+      <Image
+        src={banner_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner_image}` : "/images/goldloanBanner.webp"}
+        alt={alt ? alt : "value-innerBanner"}
+        fill
+        sizes="100vw"
+        className="-z-2 object-cover pointer-events-none"
+      />
       <div className="container flex items-end flex-wrap justify-start p-4 md:p-6 lg:p-8 xl:p-10 text-white z-20 mx-auto pb-[60px] min-h-[360px] 2xl:min-h-[460px] 3xl:min-h-[560px]">
         <div className="w-full">
           <div className="max-w-[600px] xl:max-w-[655px] md:max-w-[755px] lg:max-w-[840px] mb-[40px]">

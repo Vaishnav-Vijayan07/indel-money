@@ -25,7 +25,15 @@ async function fetchGoldLoanData() {
     const goldloanData = result.data;
 
     if (result.status === "success") {
-      return { steps: goldloanData.Steps, contents: goldloanData.GoldloanContent, bannerIcons: goldloanData.GoldloanBannerFeatures, schemes: goldloanData.schemes, faqs: goldloanData.GoldLoanFaq, features: goldloanData.GoldLoanFeatures, error: null };
+      return {
+        steps: goldloanData.Steps,
+        contents: goldloanData.GoldloanContent,
+        bannerIcons: goldloanData.GoldloanBannerFeatures,
+        schemes: goldloanData.schemes,
+        faqs: goldloanData.GoldLoanFaq,
+        features: goldloanData.GoldLoanFeatures,
+        error: null,
+      };
     }
     return { steps: null, contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: result.message };
   } catch (error) {
@@ -36,11 +44,9 @@ async function fetchGoldLoanData() {
 export default async function GoldLoan() {
   const { steps, contents, bannerIcons, schemes, faqs, features, error } = await fetchGoldLoanData();
 
-
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
   }
-
 
   return (
     <>
@@ -51,6 +57,8 @@ export default async function GoldLoan() {
           title={contents?.page_title}
           announcement_text={contents?.announcement_text}
           gold_rate_text={contents?.gold_rate_text}
+          banner_image={contents?.banner_image}
+          alt={contents?.banner_alt}
         />
       </div>
       <div className="block sm:hidden">
@@ -91,7 +99,12 @@ export default async function GoldLoan() {
 
       {/* instant hussle free */}
       <div id="hassle-free" className="hidden sm:block">
-        <InstantHasslefree title={contents?.gold_loan_title} description={contents?.gold_loan_description} />
+        <InstantHasslefree
+          title={contents?.gold_loan_title}
+          description={contents?.gold_loan_description}
+          hassle_free_image={contents?.hassle_free_image}
+          hassle_free_image_alt={contents?.hassle_free_image_alt}
+        />
       </div>
       <div className="block sm:hidden">
         <MobInstantHasslefree />
