@@ -5,59 +5,9 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import Link from "next/link";
-import { renderHtml } from "@/lib/utils/htmlParser";
+import parse  from "html-react-parser";
 
-const slides = [
-  {
-    image: "/images/mobJoinTeam-1.jpg",
-    alt: "mobJoinTeam",
-    link: "/",
-  },
-  {
-    image: "/images/mobJoinTeam-2.jpg",
-    alt: "mobJoinTeam",
-    link: "/",
-  },
-  {
-    image: "/images/mobJoinTeam-3.jpg",
-    alt: "mobJoinTeam",
-    link: "/",
-  },
-  {
-    image: "/images/mobJoinTeam-2.jpg",
-    alt: "mobJoinTeam",
-    link: "/",
-  },
-  {
-    image: "/images/mobJoinTeam-3.jpg",
-    alt: "mobJoinTeam",
-    link: "/",
-  },
-];
 
-const awards = [
-  {
-    image: "/images/awards-img-1.jpg",
-    alt: "Life at Indel Image 1",
-    title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
-    href: "/",
-  },
-  {
-    image: "/images/awards-img-1.jpg",
-    alt: "Life at Indel Image 2",
-    title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
-    href: "/",
-  },
-  {
-    image: "/images/awards-img-1.jpg",
-    alt: "Life at Indel Image 3",
-    title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
-    href: "/",
-  },
-];
 
 export default function MobJoinTeam({pageContent, lifeAtIndel, image1, image2, image3}) {
   
@@ -68,7 +18,7 @@ export default function MobJoinTeam({pageContent, lifeAtIndel, image1, image2, i
       <div className="w-full py-[30px] mb-[30px] bg-[#E3E3E3] rounded-[15px] bg-gradient-to-tl from-base1 to-base2">
         <div className="container">
           <div className="text-title1 text-white mb-[15px] 2xl:mb-[30px] [&>span]:text-white [&>span]:font-bold">
-            {pageContent?.life_section_title ? renderHtml(pageContent?.life_section_title) : "Join Our Team"}
+            {pageContent?.life_section_title ? parse(pageContent?.life_section_title) : "Join Our Team"}
           </div>
         </div>
         <div className="w-full max-w-[calc(100%-((100%-var(--container-x))/2))] pr-0 mr-0 mx-auto pl-[var(--container-padding)]">
@@ -106,7 +56,7 @@ export default function MobJoinTeam({pageContent, lifeAtIndel, image1, image2, i
         </div>
         <div className="container">
           <div className="w-full h-auto bg-white rounded-[24px] p-[20px] mb-[15px] @sm:mb-[25px]">
-            {pageContent?.life_section_mob_description ? renderHtml(pageContent?.life_section_mob_description) : ""}
+            {pageContent?.life_section_mob_description ? parse(pageContent?.life_section_mob_description) : ""}
           </div>
           <div className="flex flex-wrap justify-between -mx-[5px]">
             <div className="p-[5px]">
@@ -128,7 +78,7 @@ export default function MobJoinTeam({pageContent, lifeAtIndel, image1, image2, i
       <div className="container">
         <div className="w-full p-[20px_20px_10px] bg-white rounded-[24px] shadow-[0_0_10px_0_rgba(0,0,0,0.1)]">
           <div className="text-title1 text-base1 text-center font-bold mb-[15px] 2xl:mb-[20px]">
-            {pageContent?.awards_title ? renderHtml(pageContent?.awards_title) : "Life at Indel"}
+            {pageContent?.awards_title ? parse(pageContent?.awards_title) : "Life at Indel"}
           </div>
           <Swiper
             modules={[Autoplay, Pagination]}
@@ -153,7 +103,7 @@ export default function MobJoinTeam({pageContent, lifeAtIndel, image1, image2, i
               <SwiperSlide key={index}>
                 <div className="w-full block">
                   <div className="text-[14px] text-[#1e1e1e] font-normal text-center mb-[15px] @sm:mb-[20px] [&>span]:block [&>span]:text-[#EB0208] [&>span]:uppercase [&>span]:font-bold ">
-                    {item?.title ? renderHtml(item?.title) : ""}
+                    {item?.title ? parse(item?.title) : ""}
                   </div>
                   <div className="w-full h-auto">
                     <Image
