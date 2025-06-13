@@ -33,10 +33,20 @@ async function fetchGoldLoanData() {
         schemes: goldloanData.schemes,
         faqs: goldloanData.GoldLoanFaq,
         features: goldloanData.GoldLoanFeatures,
+        GoldloanBenefits: goldloanData.GoldloanBenefits,
         error: null,
       };
     }
-    return { steps: null, contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: result.message };
+    return {
+      steps: null,
+      contents: null,
+      bannerIcons: null,
+      GoldloanBenefits: null,
+      schemes: null,
+      faqs: null,
+      features: null,
+      error: result.message,
+    };
   } catch (error) {
     return {
       steps: null,
@@ -45,13 +55,14 @@ async function fetchGoldLoanData() {
       schemes: null,
       faqs: null,
       features: null,
+      GoldloanBenefits: null,
       error: "Failed to fetch service data",
     };
   }
 }
 
 export default async function GoldLoan() {
-  const { steps, contents, bannerIcons, schemes, faqs, features, error } = await fetchGoldLoanData();
+  const { steps, contents, bannerIcons, schemes, faqs, features, GoldloanBenefits, error } = await fetchGoldLoanData();
 
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
@@ -128,6 +139,7 @@ export default async function GoldLoan() {
           description={contents?.gold_loan_description}
           hassle_free_image={contents?.hassle_free_image}
           hassle_free_image_alt={contents?.hassle_free_image_alt}
+          GoldloanBenefits={GoldloanBenefits}
         />
       </div>
       <div className="block sm:hidden">
@@ -136,6 +148,7 @@ export default async function GoldLoan() {
           description={contents?.gold_loan_description}
           hassle_free_image={contents?.hassle_free_image}
           hassle_free_image_alt={contents?.hassle_free_image_alt}
+          GoldloanBenefits={GoldloanBenefits}
         />
       </div>
 

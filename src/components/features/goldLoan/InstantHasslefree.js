@@ -41,7 +41,7 @@ const features = [
   },
 ];
 
-export default function InstantHasslefree({ title, description, hassle_free_image, hassle_free_image_alt }) {
+export default function InstantHasslefree({ title, description, hassle_free_image, hassle_free_image_alt, GoldloanBenefits }) {
   return (
     <section className="w-full block py-[35px] xl:py-[45px] 2xl:py-[65px] bg-[linear-gradient(90deg,#CDDFFF_1%,#FFD2D2_99%)] rounded-[20px]">
       <div className="container">
@@ -83,7 +83,7 @@ export default function InstantHasslefree({ title, description, hassle_free_imag
 
             <div className="w-full bg-white rounded-[24px] p-[20px] 2xl:p-[25px] mt-[10px] lg:mt-[15px] 2xl:mt-[25px]">
               <ul className="flex flex-wrap">
-                {features?.map((feature, index) => (
+                {GoldloanBenefits?.map((feature, index) => (
                   <li
                     key={index}
                     className={`${
@@ -91,9 +91,9 @@ export default function InstantHasslefree({ title, description, hassle_free_imag
                     } 3xl:text-[18px] 2xl:text-[14px] text-[12px] text-[#000] relative mb-[10px] 2xl:mb-[15px] flex flex-wrap`}
                   >
                     <div className="w-18px h-[18px] 2xl:w-[20px] 2xl:h-[22px] 3xl:w-[24px] 3xl:h-[24px]">
-                      <Image src={feature.icon} alt="loanicon" width={24} height={24} className="w-full h-full object-contain" />
+                      <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${feature?.icon}`} title={feature?.icon} alt={feature?.image_alt} width={24} height={24} className="w-full h-full object-contain" />
                     </div>
-                    <div className="w-[calc(100%-18px)] 2xl:w-[calc(100%-20px)] 3xl:w-[calc(100%-24px)] pl-[10px] 3xl:pl-[15px]">{feature.text}</div>
+                    <div className="w-[calc(100%-18px)] 2xl:w-[calc(100%-20px)] 3xl:w-[calc(100%-24px)] pl-[10px] 3xl:pl-[15px]">{feature?.title}</div>
                   </li>
                 ))}
               </ul>
