@@ -84,7 +84,7 @@ export default function FindJobForm({ variant = "default" }) {
     const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value !== ""));
     const query = new URLSearchParams(filteredParams).toString();
     // Redirect only if at least one parameter is present, otherwise go to base URL
-    router.push(query ? `/career/active-jobs?${query}` : "/active-jobs");
+    router.push(query ? `/career-list?${query}` : "/active-jobs");
   }
 
   useEffect(() => {
@@ -282,7 +282,7 @@ export default function FindJobForm({ variant = "default" }) {
 //     const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value !== ""));
 //     const query = new URLSearchParams(filteredParams).toString();
 //     // Redirect only if at least one parameter is present, otherwise go to base URL
-//     router.push(query ? `/career/active-jobs?${query}` : "/active-jobs");
+//     router.push(query ? `/career-list?${query}` : "/active-jobs");
 //   }
 
 //   useEffect(() => {

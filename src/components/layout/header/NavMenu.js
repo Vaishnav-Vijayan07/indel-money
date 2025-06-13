@@ -52,7 +52,7 @@ const OtherLoans = [
 const Careers = [
   {
     title: "life at indel",
-    link: "/life-at-indel-money",
+    link: "/career#life",
   },
   {
     title: "employee testimonial",

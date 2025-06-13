@@ -42,7 +42,7 @@ const navigations = [
     links: [
       { linkname: "About Indel Money", href: "/about-indel-money" },
       { linkname: "Board of Directors", href: "/board-of-directors" },
-      { linkname: "Life at Indel Money", href: "/about-indel-money#life-at-indel" },
+      { linkname: "Life at Indel Money", href: "/career#life" },
       { linkname: "Employee Testimonials", href: "/emptestimonial" },
       {
         linkname: "Different Shades of Indel",
@@ -73,7 +73,7 @@ const navigations = [
   {
     title: "Media",
     links: [
-      { linkname: "News", href: "/blog" },
+      { linkname: "News", href: "/news" },
       { linkname: "Blog", href: "/blog" },
       { linkname: "Image Gallery", href: "/gallery" },
       { linkname: "Video Gallery", href: "/gallery" },

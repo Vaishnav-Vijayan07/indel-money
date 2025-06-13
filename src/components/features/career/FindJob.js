@@ -7,7 +7,7 @@ import JobResultBoxSlide from "./JobResultBoxSlide";
 function JobLocationBox({ item }) {
   return (
     <Link
-      href={`/career/active-jobs?state_id=${item.id}`}
+      href={`/career-list?state_id=${item.id}`}
       className={`${
         item.is_active ? "group opacity-100 grayscale-0 cursor-pointer" : "opacity-80 grayscale-100 cursor-default"
       } w-full h-auto aspect-220/160 bg-white rounded-[7px] sm:rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] overflow-hidden block relative z-0`}

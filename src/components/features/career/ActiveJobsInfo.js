@@ -88,7 +88,7 @@ export default function ActiveJobsInfo() {
   const handlePageChange = (page) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
-    router.push(`/career/active-jobs?${params.toString()}`);
+    router.push(`/career-list?${params.toString()}`);
   };
 
   const handleClearFilters = () => {
