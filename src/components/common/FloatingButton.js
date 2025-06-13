@@ -1,7 +1,13 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/custom-alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/custom-alert-dialog";
 import {
   Command,
   CommandDialog,
@@ -119,9 +125,9 @@ export default function FloatingButton() {
       <div>
         <FloatingCalculator scrollTargetId="calculator" router={router} />
       </div>
-      <div>
+      {/* <div>
         <FloatingSearch />
-      </div>
+      </div> */}
     </div>
   );
 }
