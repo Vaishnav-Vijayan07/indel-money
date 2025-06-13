@@ -100,7 +100,9 @@ export default function FloatingButton() {
     <div className="max-sm:hidden flex flex-wrap flex-col gap-[4px] lg:gap-[6px] 2xl:gap-[10px] fixed z-4 top-[50%] right-[40px] translate-y-[-50%]">
       <div>
         <Link
-          href={"/"}
+          href="tel:+911234567890"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-[25px] lg:w-[30px] 2xl:w-[40px] 3xl:w-[46px] aspect-square rounded-full relative z-0 block transition-all duration-300 hover:scale-105 shadow-[0_5px_10px_rgba(0,0,0,0.10)]"
         >
           <Image src={"/images/floating-call.svg"} alt="call" fill sizes="46px" />
@@ -108,7 +110,9 @@ export default function FloatingButton() {
       </div>
       <div>
         <Link
-          href={"/"}
+          href="https://wa.me/911234567890"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-[25px] lg:w-[30px] 2xl:w-[40px] 3xl:w-[46px] aspect-square rounded-full relative z-0 block transition-all duration-300 hover:scale-105 shadow-[0_5px_10px_rgba(0,0,0,0.10)]"
         >
           <Image src={"/images/floating-whatsapp.svg"} alt="whatsapp" fill sizes="46px" />
@@ -116,7 +120,7 @@ export default function FloatingButton() {
       </div>
       <div>
         <Link
-          href={"/"}
+          href="mailto:info@example.com"
           className="w-[25px] lg:w-[30px] 2xl:w-[40px] 3xl:w-[46px] aspect-square rounded-full relative z-0 block transition-all duration-300 hover:scale-105 shadow-[0_5px_10px_rgba(0,0,0,0.10)]"
         >
           <Image src={"/images/floating-mail.svg"} alt="mail" fill sizes="46px" />
