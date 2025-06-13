@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-export default function MobHomeMarquee() {
+export default function MobHomeMarquee({ announcementText, goldRateLabel, goldRateIcon }) {
   return (
     <div className="w-full absolute z-1 bottom-0 left-0 right-0">
       <div className="container">
@@ -13,25 +13,21 @@ export default function MobHomeMarquee() {
             height={16}
             className="w-[18px] @sm:w-[15px] object-contain"
           />
-          Gold rate
-          <span className="font-medium text-black p-[6px_10px] bg-[#e8c002] rounded-[20px]">
-            &#8377; 59,080
-          </span>
+          {/* Gold rate */}
+          {goldRateLabel}
+          <span className="font-medium text-black p-[6px_10px] bg-[#e8c002] rounded-[20px]">&#8377; 59,080</span>
         </div>
       </div>
       <div className="w-full h-[var(--marquee-y)] bg-base1 flex items-center">
         <div className="w-full max-w-[calc(100%-((100%-var(--container-x))/2))] pr-0 mr-0 ml-auto pl-[var(--container-padding)]">
-          <Marquee
-            speed={80}
-            pauseOnHover={true}
-            className="text-sm1 text-white"
-          >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
+          <Marquee speed={80} pauseOnHover={true} className="text-sm1 text-white">
+            {/* Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&apos;s standard dummy
             text ever since the 1500s, when an unknown printer took a galley of
             type and scrambled it to make a type specimen book. It has survived
             not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged.
+            typesetting, remaining essentially unchanged. */}
+            {announcementText}
           </Marquee>
         </div>
       </div>

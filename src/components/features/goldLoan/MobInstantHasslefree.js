@@ -67,7 +67,7 @@ export default function MobInstantHasslefree() {
         </p>
         <div className="w-full h-auto bg-white rounded-[10px] p-[15px_15px] 4xs:p-[20px_30px] shadow-[0_0_25px_0_rgba(0,0,0,0.1)] mt-[15px]">
           <ul className="flex flex-wrap max-h-[180px] overflow-y-auto">
-            {features.map((item, index) => (
+            {features?.map((item, index) => (
               <li
                 key={index}
                 className="w-full h-auto flex flex-wrap mb-[15px]"

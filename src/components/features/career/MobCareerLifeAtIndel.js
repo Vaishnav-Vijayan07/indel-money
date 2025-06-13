@@ -41,7 +41,7 @@ function ImageBox({ item, heightClass }) {
         >
             <Image
                 src={item.src}
-                alt={item.alt}
+                alt={item?.alt}
                 fill
                 sizes="320px"
                 className="group-hover:scale-105 object-cover transition-transform duration-300"
@@ -124,7 +124,7 @@ export default function MobCareerLifeAtIndel() {
                         loop={true}
                         className="mobCareerSlider w-full"
                     >
-                        {careerLifeAtIndelImages.map((item) => (
+                        {careerLifeAtIndelImages?.map((item) => (
                             <SwiperSlide key={item.id}>
                                 <div className="p-[4px] lg:p-[6px] 2xl:p-[10px]">
                                     <ImageBox

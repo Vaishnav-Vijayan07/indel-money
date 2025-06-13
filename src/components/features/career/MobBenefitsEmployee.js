@@ -95,7 +95,7 @@ export default function BenefitsEmployee() {
                 >
                   <Image
                     src={item.src}
-                    alt={item.alt}
+                    alt={item?.alt}
                     width={25}
                     height={25}
                     className="aspect-square"

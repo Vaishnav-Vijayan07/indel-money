@@ -23,7 +23,7 @@ const slides = [
   },
 ];
 
-export default function MobAboutSupermarket() {
+export default function MobAboutSupermarket({serviceImages}) {
   return (
     <section className="w-full py-[25px_35px] rounded-[10px] bg-[#eef9ff]">
       <div className="container">
@@ -49,12 +49,12 @@ export default function MobAboutSupermarket() {
             },
           }}
         >
-          {slides?.map((item, index) => (
+          {serviceImages?.map((item, index) => (
             <SwiperSlide key={index} className="max-w-[240px]">
               <div className="group w-full h-[160px] rounded-[24px] overflow-hidden relative z-0">
                 <Image
-                  src={item.image}
-                  alt={item.alt}
+                  src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`}
+                  alt={"spImg1"}
                   fill
                   sizes="240px"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"

@@ -64,7 +64,7 @@ export default function MobAsideMenu({ navigationItems }) {
 
                 {item.sub_menu && openMenuIndex === item.id && (
                   <ul className="w-[140px] h-auto bg-white shadow-[0_0_10px_0_rgba(0,0,0,0.4)] rounded-[10px] absolute z-2 top-full left-0 p-[4px_0]">
-                    {item.sub_menu.map((subItem, subIndex) => {
+                    {item.sub_menu?.map((subItem, subIndex) => {
                       return (
                         <li key={subItem.id}>
                           <Link

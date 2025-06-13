@@ -1,17 +1,34 @@
-// "use client";
-// import { useMediaQuery } from "@react-hook/media-query";
 import MobHeader from "./MobHeader";
 import DeskHeader from "./DeskHeader";
-
 import "./Header.css";
 
-export default function Header() {
-  // const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+async function fetchData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/header`, {
+      cache: "no-store", // Ensure fresh data
+    });
+    const result = await response.json();
+
+    if (result.status === "success") {
+      return { contents: result.data, error: null };
+    }
+    return { contents: null, error: result.message };
+  } catch (error) {
+    return { contents: null, error: "Failed to fetch header data" };
+  }
+}
+
+export default async function Header() {
+  const { contents: headerData, error } = await fetchData();
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
-    // <>{isMobile ? <MobHeader /> : <DeskHeader />}</>
     <>
       <div className="hidden lg:block">
-        <DeskHeader />
+        <DeskHeader headerData={headerData} />
       </div>
       <div className="block lg:hidden">
         <MobHeader />

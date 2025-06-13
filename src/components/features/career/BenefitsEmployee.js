@@ -44,7 +44,7 @@ const benefitsEmployee = [
   },
 ];
 
-export default function BenefitsEmployee() {
+export default function BenefitsEmployee({ benefits, benefits_title }) {
   return (
     <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[50px]">
       <div className="container">
@@ -56,37 +56,34 @@ export default function BenefitsEmployee() {
             height={50}
             className="w-[30px] xl:w-[40px] 2xl:w-[50px] inline aspect-square mr-[10px] lg:mr-[15px] 2xl:mr-[20px]"
           />
-          Benefits of being an
-          <span className="text-base2 font-bold">&nbsp;indel employee</span>
+          <div className="[&>span]:font-bold [&>span]:text-base2" dangerouslySetInnerHTML={{ __html: benefits_title ? benefits_title : "benefits" }} />
         </div>
         <div className="flex flex-wrap -mx-[5px] sm:-mx-[10px] lg:-mx-[15px] xl:-mx-[30px] 2xl:-mx-[40px]">
-          {benefitsEmployee?.map((item, index) => (
+          {benefits?.map((item, index) => (
             <div
               key={index}
               className="w-full sm:w-1/2 md:w-1/3 p-[5px_5px] sm:p-[5px_10px] lg:p-[5px_15px] xl:p-[10px_30px] 2xl:p-[15px_40px]"
             >
               <div
                 className={`
-                                        ${
-                                          index % 2 === 0
-                                            ? "border-base1/20 hover:shadow-[0_4px_15px_0_rgba(23,71,71,0.20)]"
-                                            : "border-[#d6071e]/20 hover:shadow-[0_4px_15px_0_rgba(214,7,30,0.20)]"
-                                        } 
+                                        ${index % 2 === 0
+                    ? "border-base1/20 hover:shadow-[0_4px_15px_0_rgba(23,71,71,0.20)]"
+                    : "border-[#d6071e]/20 hover:shadow-[0_4px_15px_0_rgba(214,7,30,0.20)]"
+                  } 
                                         w-full h-full flex rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] shadow-[0_4px_15px_0_rgba(0,0,0,0.15)] border overflow-hidden hover:-translate-y-[5px] transition-all duration-300
                                         `}
               >
                 <div
                   className={`
-                                        ${
-                                          index % 2 === 0
-                                            ? "bg-base1"
-                                            : "bg-[#d6071e]"
-                                        } 
+                                        ${index % 2 === 0
+                      ? "bg-base1"
+                      : "bg-[#d6071e]"
+                    } 
                                         w-[50px] lg:w-[60px] xl:w-[80px] 2xl:w-[100px] 3xl:w-[120px] p-[20px_10px] lg:p-[30px_15px] 2xl:p-[40px_20px] flex items-center justify-center`}
                 >
                   <Image
-                    src={item.src}
-                    alt={item.alt}
+                    src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/benefitsEmployee-1.svg"}
+                    alt={item.image_alt ? item.image_alt : "benefitsEmployee"}
                     width={70}
                     height={70}
                     className="aspect-square"

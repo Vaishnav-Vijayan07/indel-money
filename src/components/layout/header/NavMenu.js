@@ -1,12 +1,4 @@
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,26 +7,26 @@ const GoldLoans = [
   {
     image: "/images/icon-goldloan-1.svg",
     alt: "item",
-    title: "Gold Loan Steps:",
-    link: "about",
+    title: "Gold Loan Steps",
+    link: "/gold-loan#gold-loan-steps",
   },
   {
     image: "/images/icon-goldloan-2.svg",
     alt: "item",
     title: "Instant & hassle free Gold Loan",
-    link: "#",
+    link: "/gold-loan#hassle-free",
   },
   {
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "Our Easy Step Gold Loan",
-    link: "#",
+    link: "/gold-loan#easy-step",
   },
   {
     image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Gold Loan Scheme",
-    link: "#",
+    link: "/gold-loan#scheme",
   },
 ];
 const OtherLoans = [
@@ -54,59 +46,51 @@ const OtherLoans = [
     image: "/images/icon-goldloan-3.svg",
     alt: "item",
     title: "consumer durable Loan",
-    link: "/services/consumer-durable-loan",
-  },
-  {
-    image: "/images/icon-goldloan-4.svg",
-    alt: "item",
-    title: "Loan againist property",
-    link: "#",
-  },
-  {
-    image: "/images/icon-goldloan-1.svg",
-    alt: "item",
-    title: "Foreign exchange",
-    link: "#",
+    link: "/consumer-durable-loans",
   },
 ];
 const Careers = [
   {
     title: "life at indel",
-    link: "/career",
+    link: "/career#life",
   },
   {
     title: "employee testimonial",
-    link: "/employee-testimonial",
+    link: "/emptestimonial",
   },
   {
     title: "current openings",
-    link: "/career/active-jobs",
+    link: "/active-jobs",
   },
   {
     title: "apply now",
-    link: "/career/active-jobs",
+    link: "/active-jobs",
   },
 ];
 const Abouts = [
   {
     title: "indel values",
-    link: "/about/indel-values",
-  },
-  {
-    title: "board of directors",
-    link: "/about",
+    link: "/indel-values",
   },
   {
     title: "management team",
     link: "/management-team",
   },
   {
+    title: "board of directors",
+    link: "/board-of-directors",
+  },
+  {
     title: "partners",
     link: "/partners",
   },
   {
+    title: "history",
+    link: "/history-of-indel",
+  },
+  {
     title: "different shades of indel",
-    link: "/about/different-shades-of-indel",
+    link: "/different-shades-of-indelmoney",
   },
 ];
 
@@ -129,7 +113,7 @@ function DropdownMenu({ items }) {
   const pathname = usePathname();
   return (
     <ul className="flex flex-col p-[5px] 3xl:p-[10px] w-[180px] lg:w-[200px] 2xl:w-[240px]">
-      {items.map((item, index) => (
+      {items?.map((item, index) => (
         <li key={index}>
           <Link href={item.link} legacyBehavior passHref>
             <MenubarItem>
@@ -152,19 +136,13 @@ function MegaMenu({ items }) {
   const pathname = usePathname();
   return (
     <ul className="grid md:grid-cols-2 p-[10px] 3xl:p-[15px] w-[360px] lg:w-[420px] 2xl:w-[576px] 3xl:w-[600px]">
-      {items.map((item, index) => (
+      {items?.map((item, index) => (
         <li key={index}>
           <Link href={item.link} legacyBehavior passHref>
             <MenubarItem className="p-0">
               <div className="group flex flex-row items-center p-[10px] 3xl:p-[10px] cursor-pointer">
                 <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
-                  <Image
-                    src={item.image}
-                    width={28}
-                    height={28}
-                    alt={item.alt}
-                    className="w-full h-full block max-w-2/4 object-contain"
-                  />
+                  <Image src={item.image} width={28} height={28} alt={item?.alt} className="w-full h-full block max-w-2/4 object-contain" />
                 </div>
                 <div
                   className={`${
@@ -182,8 +160,7 @@ function MegaMenu({ items }) {
   );
 }
 
-const tabStyle =
-  "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
+const tabStyle = "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
 
 export default function NavMenu() {
   const pathname = usePathname();
@@ -205,10 +182,8 @@ export default function NavMenu() {
 
       <MenubarMenu>
         <Link
-          href={"#"}
-          className={`${
-            pathname === "#" ? "" : ""
-          } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
+          href={"https://indelremit.com"}
+          className={`${pathname === "#" ? "" : ""} text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
         >
           FOREIGN EXCHANGE
         </Link>
@@ -240,7 +215,7 @@ export default function NavMenu() {
 
       <MenubarMenu>
         <div className="flex">
-          <Link href={"/about"} className={tabStyle}>
+          <Link href={"/about-indel-money"} className={tabStyle}>
             about
           </Link>
           <MenubarTrigger className={tabStyle}>

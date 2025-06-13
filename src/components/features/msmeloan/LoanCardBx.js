@@ -18,8 +18,8 @@ export default function LoanCardBx({ item, variant = "default" }) {
       <div className="w-full flex flex-wrap sm:flex-row">
         <div className="w-full h-auto xl:h-full rounded-[15px] sm:rounded-[24px] overflow-hidden mb-[15px] xl:mb-[25px] 3xl:mb-[30px] aspect-300/190 sm:aspect-465/295">
           <Image
-            src={item?.image || "/default-image.jpg"}
-            alt={item?.alt || "Loan image"}
+            src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/default-image.jpg"}
+            alt={item?.image_alt ? item?.image_alt : "Loan image"}
             width={465}
             height={295}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.05]"
@@ -34,9 +34,12 @@ export default function LoanCardBx({ item, variant = "default" }) {
               {item.title2}
             </div>
           )}
-          <div className="w-full sm:mb-[5px] 3xl:mb-[10px] text-sm1 line-clamp-4">
-            {item?.description || "No description available."}
-          </div>
+          {item?.sub_title && (
+            <div className="text-[12px] sm:text-[14px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[20px] text-[#1E1E1E] font-normal mb-[15px] line-clamp-1">
+              {item.sub_title}
+            </div>
+          )}
+          <div className="w-full sm:mb-[5px] 3xl:mb-[10px] text-sm1 line-clamp-4">{item?.description || "No description available."}</div>
         </div>
       </div>
     </Link>
