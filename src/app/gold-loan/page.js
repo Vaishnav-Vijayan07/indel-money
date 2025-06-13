@@ -63,6 +63,7 @@ async function fetchGoldLoanData() {
 
 export default async function GoldLoan() {
   const { steps, contents, bannerIcons, schemes, faqs, features, GoldloanBenefits, error } = await fetchGoldLoanData();
+  const flattenedFeatures = features?.flat()?.filter((item) => !item.is_center);
 
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
@@ -94,10 +95,15 @@ export default async function GoldLoan() {
 
       {/* Gold loan contents*/}
       <div id="gold-loan-steps" className="hidden sm:block">
-        <StepGoldLoan className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]" hideTitle={true} loanSteps={steps} />
+        <StepGoldLoan
+          className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]"
+          hideTitle={true}
+          loanSteps={steps}
+          title={contents?.gold_loan_step_title}
+        />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoan loanSteps={steps} className="py-[30px_20px]" />
+        <MobStepGoldLoan loanSteps={steps} className="py-[30px_20px]" title={contents?.gold_loan_step_title} />
       </div>
 
       {/* Gold loan steps */}
@@ -157,7 +163,7 @@ export default async function GoldLoan() {
         <GoldLoanServices features={features} />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanServices />
+        <MobGoldLoanServices features={flattenedFeatures} />
       </div>
 
       {/* Scheme */}
@@ -165,7 +171,7 @@ export default async function GoldLoan() {
         <GoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanScheme />
+        <MobGoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
       </div>
 
       {/* faq contents */}
@@ -173,7 +179,7 @@ export default async function GoldLoan() {
         <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanFaq />
+        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
       </div>
     </>
   );

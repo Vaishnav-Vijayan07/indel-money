@@ -3,47 +3,10 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-
-const goldloanServices = [
-  {
-    icon: "/images/servIcon1.svg",
-    title: "India’s Longest Tenure",
-    description:
-      "Best possible means of capital been provided through our long tenure gold loan schemes in order",
-  },
-  {
-    icon: "/images/servIcon2.svg",
-    title: "Instant ; Swift processing and instant funds",
-    description:
-      "Get instant gold loan within minutes and choose any custom repayment option that suits you.",
-  },
-  {
-    icon: "/images/servIcon3.svg",
-    title: "Safety guaranteed",
-    description:
-      "We value the safety of your precious jewellery. Your gold will be evaluated, sealed & documented in your presence and moved into vaults in our strong rooms.",
-  },
-  {
-    icon: "/images/servIcon4.svg",
-    title: "Attractive ; Lowest interest rates",
-    description:
-      "We offer gold loan with low interest rates that is highly competitive. Another attractive feature is being able to choose repayment plans tailor made to your convenience.",
-  },
-  {
-    icon: "/images/servIcon5.svg",
-    title: "Flexible ; Maximum value for your gold",
-    description:
-      "We value the safety of your precious jewellery. Your gold will be evaluated, sealed & documented in your presence and moved into vaults in our strong rooms.",
-  },
-  {
-    icon: "/images/servIcon6.svg",
-    title: "Transparent ; Trusted and reliable",
-    description:
-      "Our interest rate, payment modes and other charges will be communicated with you in writing at the very outset of the loan processing. We assure you there won’t be any hidden costs or charges.",
-  },
-];
-
-export default function MobGoldLoanServices() {
+import parse from "html-react-parser";
+export default function MobGoldLoanServices({ features }) {
+  console.log("MobGoldLoanServices features:", features);
+  
   return (
     <section className="w-full block py-[30px]">
       <div className="container">
@@ -59,27 +22,21 @@ export default function MobGoldLoanServices() {
             className=""
           >
             <>
-              {goldloanServices?.map((item, index) => (
+              {features?.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div className="w-full h-[160px] block bg-[#d4e6ff] p-[20px] rounded-[16px]">
                     <div className="flex items-center mb-[15px]">
                       <div className="w-[25px] 4xs:w-[30px] aspect-square relative z-0">
-                        <Image
-                          src={item.icon}
-                          alt={item.title}
-                          fill
-                          sizes="30px"
-                          className="object-contain"
-                        />
+                        <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}`} alt={item?.image_alt} fill sizes="30px" className="object-contain" />
                       </div>
                       <div className="w-[calc(100%-25px)] 4xs:w-[calc(100%-30px)] pl-[10px]">
                         <div className="text-[16px] 4xs:text-[20px] leading-none font-medium text-base1 line-clamp-2">
-                          {item.title}
+                          {item?.title}
                         </div>
                       </div>
                     </div>
                     <div className="line-clamp-3">
-                      <p>{item.description}</p>
+                      <p>{parse(item?.description)}</p>
                     </div>
                   </div>
                 </SwiperSlide>
