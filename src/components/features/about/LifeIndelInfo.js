@@ -65,7 +65,7 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
                     spaceBetween: -500,
                   },
                 }}
-                className="relative w-[250px] lg:w-[260px] xl:w-[520px] h-full m-auto !overflow-visible lifeSlide"
+                className="relative w-[250px] lg:w-[260px] xl:w-[520px] h-full m-auto !overflow-visible lifeSlide lifeSlide2"
               >
                 {lifeImages?.map((img, index) => (
                   <SwiperSlide key={index} className="flex justify-center">

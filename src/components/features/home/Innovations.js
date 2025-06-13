@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 
 export default function Innovations({ pageContent }) {
   return (
-    <section className="w-full 2xl:pt-[80px] 2xl:pb-[30px] md:pt-[30px] md:pb-[30px] pt-[40px] pb-[20px]">
+      <section className="w-full 2xl:pt-[140px] 2xl:mt-[80px] xl:mt-[120px] lg:mt-[60px] 2xl:pb-[30px] md:pt-[30px] md:pb-[30px] pt-[40px] pb-[20px]">
       <div className="container">
         <div className="rounded-[36px] bg-[#CAE5F4] 2xl:px-[85px] lg:px-[45px] px-[30px] h-full w-full">
-          <div className="flex flex-wrap relative  h-full w-full 2xl:py[60px] lg:py-[40px] py-[25px]">
+          <div className="flex flex-wrap relative h-full w-full 2xl:py[60px] lg:py-[40px] py-[25px]">
             <div className="w-full sm:max-w-[calc(100%-176px)] lg:max-w-[calc(100%-268px)] xl:max-w-[calc(100%-320px)] 2xl:max-w-[calc(100%-376px)] 3xl:max-w-[calc(100%-400px)]">
               <div className="flex flex-wrap items-center mb-[15px] lg:mb[20px] 2xl:mb[30px]">
                 <div className="w-full lg:w-[276px] 2xl:w-[376px] 3xl:w-[420px] lg:border-r-1 lg:border-r-[rgba(0,0,0,0.6)] h-full">
