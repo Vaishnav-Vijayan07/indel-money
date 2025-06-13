@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-export default function MobHomeMarquee({ announcementText, goldRateLabel, goldRateIcon }) {
+export default function MobHomeMarquee({ announcementText, goldRateLabel, goldRateIcon, goldRate }) {
   return (
     <div className="w-full absolute z-1 bottom-0 left-0 right-0">
       <div className="container">
@@ -15,7 +15,7 @@ export default function MobHomeMarquee({ announcementText, goldRateLabel, goldRa
           />
           {/* Gold rate */}
           {goldRateLabel}
-          <span className="font-medium text-black p-[6px_10px] bg-[#e8c002] rounded-[20px]">&#8377; 59,080</span>
+          <span className="font-medium text-black p-[6px_10px] bg-[#e8c002] rounded-[20px]">&#8377; {goldRate}</span>
         </div>
       </div>
       <div className="w-full h-[var(--marquee-y)] bg-base1 flex items-center">
