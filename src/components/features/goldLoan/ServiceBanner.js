@@ -31,14 +31,12 @@ function ServiceBannerItem({ item }) {
   );
 }
 
-export default function ServiceBanner({ bannerIcons, title, announcement_text, gold_rate_text }) {
-  const [goldLiveRate, setGoldLiveRate] = useState(getRandomGoldRate());
-
+export default function ServiceBanner({ bannerIcons, title, announcement_text, gold_rate_text, banner_image, alt }) {
   return (
     <section className="w-full relative overflow-hidden before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:-z-1 before:bg-[linear-gradient(90deg,rgba(0,0,0,0.5)_0%,rgba(102,102,102,0)_100%)]">
       <Image
-        src="/images/goldloanBanner.webp"
-        alt="value-innerBanner"
+        src={banner_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner_image}` : "/images/goldloanBanner.webp"}
+        alt={alt ? alt : "value-innerBanner"}
         fill
         sizes="100vw"
         className="-z-2 object-cover pointer-events-none"

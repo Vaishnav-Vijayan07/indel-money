@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,7 +15,7 @@ const slides = [
     image: "/images/awards-img-1.jpg",
     alt: "Life at Indel Image 1",
     title: "Indel Money Limited is bestowed as",
-    title2: "GREAT PLACE TO WORK",
+    title2: "1 GREAT PLACE TO WORK",
     description:
       "Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute Every year, more than 10,000 organizations from over 60 countries partner with Great Place to Work® Institute...",
     href: "/",
@@ -39,7 +41,9 @@ const slides = [
 export default function LifeIndelSlider({ lifeAtIndel }) {
   return (
     <Swiper
+      key={"lifeSlide"}
       modules={[Pagination, Autoplay]}
+      loop={false}
       slidesPerView={1}
       spaceBetween={20}
       autoplay={{

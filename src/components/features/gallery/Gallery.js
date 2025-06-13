@@ -7,6 +7,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/custom
 import CardSlider from "@/components/features/gallery/CardSlider";
 import GalleryItem from "./GalleryItem";
 import PaginationComponent from "@/components/Pagination";
+import Link from "next/link";
 
 // Constants
 const ITEMS_PER_GROUP = 3;
@@ -141,23 +142,23 @@ export default function Gallery({ title = "Gallery", description = "", medias = 
                   {/* Main image - larger */}
                   <div className="flex flex-wrap w-full p-2 h-[40%] md:h-[50%] xl:h-[42%]">
                     {group?.slice(0, 1)?.map((item, i) => (
-                      <div key={`main-${index}-${i}`} className="w-full mb-4 h-full">
+                      <Link href={`/gallery/${item?.slug}`} key={`main-${index}-${i}`} className="w-full mb-4 h-full">
                         <GalleryItem
                           item={item}
                           width={800}
                           height={335}
                           priority={index < 2} // Prioritize first 2 groups
                         />
-                      </div>
+                      </Link>
                     ))}
                   </div>
 
                   {/* Secondary images - smaller */}
                   <div className="flex flex-wrap w-full h-[60%] md:h-[50%] xl:h-[58%]">
                     {group?.slice(1, 3)?.map((item, i) => (
-                      <div key={`secondary-${index}-${i}`} className="w-1/2 p-2 h-full">
+                      <Link href={`/gallery/${item?.slug}`} key={`secondary-${index}-${i}`} className="w-1/2 p-2 h-full">
                         <GalleryItem item={item} width={380} height={445} priority={false} />
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>

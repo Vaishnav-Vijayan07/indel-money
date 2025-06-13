@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function SmartMoneyDeal({ deals_title, deals_description }) {
+export default function SmartMoneyDeal({ deals_title, deals_description, benfits_title, title, desc, image, alt }) {
   const slides = [
     {
       icon: "/images/benefitIcon01.svg",
@@ -56,13 +56,9 @@ export default function SmartMoneyDeal({ deals_title, deals_description }) {
         <div className="w-full relative bg-[#CAE5F4] flex flex-wrap rounded-[36px] overflow-hidden lg:flex-row flex-col-reverse">
           <div className="w-full lg:w-[calc(100%-345px)] xl:w-[calc(100%-445px)] 2xl:w-[calc(100%-700px)] p-[20px] sm:p-[25px] xl:p-[35px] 2xl:p-[45px]">
             <div className="font-bold leading-none text-base1 text-[20px] md:text-[20px] lg:text-[22px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] mb-[15px]">
-              GOLD LOAN
+              {title ? title : "Why choose Indel Money?"}
             </div>
-            <p className="text-sm1">
-              Indel Money is a leading and trusted provider via years of dedicated service in the gold loan industry. We have become a household name
-              synonymous with gold loaning for our low interest rates, easy documentation, instant processing and various tailor-made loan options
-              that fit your requirement.
-            </p>
+            <p className="text-sm1">{desc ? desc : ""}</p>
             <div className="w-full rounded-[36px] overflow-hidden mt-[25px]">
               <div className="relative w-full bg-[#DCEAFB] px-[25px] 2xl:px-[35px] py-[20px] 2xl:py-[30px]">
                 <div className="absolute z-0 sm:left-0 left-[10px] top-0 sm:w-[45%] w-[100%] h-full pointer-events-none">
@@ -84,7 +80,7 @@ export default function SmartMoneyDeal({ deals_title, deals_description }) {
                   />
                 </div>
                 <div className="relative z-1 text-base2 text-[14px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold leading-normal uppercase mb-[10px]">
-                  BENEFITS
+                  {benfits_title ? benfits_title : "Benefits"}
                 </div>
                 <div className="relative z-1 flex flex-wrap -my-[5px] 2xl:-my-[8px] -mx-[10px] 2xl:-mx-[15px]">
                   {slides?.map((item, index) => (
@@ -98,8 +94,8 @@ export default function SmartMoneyDeal({ deals_title, deals_description }) {
           </div>
           <div className="group w-full h-full lg:h-auto lg:w-[345px] xl:w-[445px] 2xl:w-[700px] overflow-hidden left-0 top-0 opacity-[100%] relative z-0 lg:z-1">
             <Image
-              src="/images/deal01.jpg"
-              alt="money-deal"
+              src={image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${image}` : "/images/deal01.jpg"}
+              alt={alt ? alt : "money-deal"}
               width={700}
               height={475}
               className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"

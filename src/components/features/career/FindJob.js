@@ -7,7 +7,7 @@ import JobResultBoxSlide from "./JobResultBoxSlide";
 function JobLocationBox({ item }) {
   return (
     <Link
-      href={`/career/active-jobs?state_id=${item.id}`}
+      href={`/career-list?state_id=${item.id}`}
       className={`${
         item.is_active ? "group opacity-100 grayscale-0 cursor-pointer" : "opacity-80 grayscale-100 cursor-default"
       } w-full h-auto aspect-220/160 bg-white rounded-[7px] sm:rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] overflow-hidden block relative z-0`}
@@ -44,7 +44,7 @@ export default function FindJob({ find_job_title, find_job_button_name, find_job
                     </div> */}
           <div className="max-sm:hidden block">
             <Link
-              href={"/career/active-jobs"}
+              href={"/active-jobs"}
               className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-bold text-white h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[54px] flex items-center bg-base2 rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
             >
               <span className="px-[5px] md:px-[10px] lg:px-[15px] 2xl:px-[20px]">

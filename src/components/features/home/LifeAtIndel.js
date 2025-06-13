@@ -36,7 +36,6 @@ function ImageBox({ item, className }) {
 }
 
 export default function LifeAtIndel({ pageContent, lifeAtIndel, image1, image2, image3 }) {
-
   const images = [image1, image2, image3];
   return (
     <section className="w-full pt-[20px] pb-[20px] md:pt-[70px] md:pb-[70px] sm:pt-[30px] sm:pb-[30px] lg:pb-[60px] overflow-hidden">

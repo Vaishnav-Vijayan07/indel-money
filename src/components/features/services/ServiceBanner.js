@@ -1,17 +1,17 @@
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import Image from "next/image";
 
-export default function ServiceBanner({ page_super_title, page_title }) {
+export default function ServiceBanner({ page_super_title, page_title, image, alt }) {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="sm:relative absolute w-full h-full md:h-[280px] lg:h-[340px] xl:h-[365px] 2xl:h-[460px] 3xl:h-[560px]">
         <picture className="block w-full h-full">
-          <source media="(min-width: 640px)" srcSet="/images/serviceBanner.jpg" />
+          <source media="(min-width: 640px)" srcSet={image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${image}` : "/images/serviceBanner.jpg"} />
           <img
-            src="/images/serviceBannerMb.png"
+            src={image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${image}` : "/images/serviceBannerMb.png"}
             width={640}
             height={500}
-            alt="value-innerBanner"
+            alt={alt ? alt : "value-innerBanner"}
             loading="lazy"
             className="w-full h-full object-cover"
           />

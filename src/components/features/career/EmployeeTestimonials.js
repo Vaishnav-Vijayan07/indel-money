@@ -122,8 +122,7 @@ const employeeTestimonialsVideo = [
   },
 ];
 
-const stylesBox =
-  "w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full";
+const stylesBox = "w-[15px] lg:w-[30px] 2xl:w-[40px] h-auto aspect-square rounded-full";
 
 function EmployeeTestimonialsBox({ item, index }) {
   const [expanded, setExpanded] = useState({});
@@ -143,10 +142,7 @@ function EmployeeTestimonialsBox({ item, index }) {
       <div className="w-full h-auto text-[12px] lg:text-[12px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-normal text-black py-[15px_10px] lg:py-[20px_15px] xl:py-[40px_20px] 2xl:py-[60px_40px]">
         {/* {item.description} */}
         {isExpanded ? item.testimonial : preview}
-        <div
-          onClick={() => toggleReadMore(index)}
-          className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px]"
-        >
+        <div onClick={() => toggleReadMore(index)} className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px]">
           {isExpanded ? "Show Less" : "Read More"}
         </div>
       </div>
@@ -183,7 +179,15 @@ function EmployeeTestimonialsBox({ item, index }) {
   );
 }
 
-export default function EmployeeTestimonials({ awards, testimonial_title, testimonial_description, testimonial_button_name, testimonial_button_link, testimonials }) {
+export default function EmployeeTestimonials({
+  awards,
+  testimonial_title,
+  testimonial_description,
+  testimonial_button_name,
+  testimonial_button_link,
+  textTestimonials,
+  videoTestimonials,
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState(0);
 
@@ -209,15 +213,13 @@ export default function EmployeeTestimonials({ awards, testimonial_title, testim
         <div className="flex flex-wrap items-center">
           <div className="max-sm:block hidden w-full mb-[20px]">
             <div className="w-full mb-[10px] flex flex-wrap gap-[10px]">
-              <div className="text-title1 [&>span]:font-bold [&>span]:text-base2" dangerouslySetInnerHTML={{ __html: testimonial_title ? testimonial_title : "<span>Employee &nbsp;Testimonials</span>" }} />
+              <div
+                className="text-title1 [&>span]:font-bold [&>span]:text-base2"
+                dangerouslySetInnerHTML={{ __html: testimonial_title ? testimonial_title : "<span>Employee &nbsp;Testimonials</span>" }}
+              />
 
               <div className="w-[30px] lg:w-[50px] 2xl:w-[60px] 3xl:w-[80px] h-auto aspect-4/4 relative z-0">
-                <Image
-                  src="/images/employeeTestimonials-delmt-1.svg"
-                  alt={"dfgdg"}
-                  fill
-                  sizes="80px"
-                />
+                <Image src="/images/employeeTestimonials-delmt-1.svg" alt={"dfgdg"} fill sizes="80px" />
               </div>
             </div>
             <div className="flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
@@ -230,12 +232,7 @@ export default function EmployeeTestimonials({ awards, testimonial_title, testim
           </div>
           <div className="w-full md:w-[268px] lg:w-[368px] xl:w-[520px] 2xl:w-[676px] 3xl:w-[820px] mb-[20px] lg:mb-0 select-none">
             <div className="w-[220px] 4xs:w-[320px] md:w-[220px] lg:w-[340px] xl:w-[476px] 2xl:w-[576px] 3xl:w-[720px] h-auto aspect-square block m-auto relative z-0">
-              <Image
-                src={"/images/employeeTestimonials-logo.svg"}
-                alt="employeeTestimonials-logo"
-                fill
-                sizes="576px"
-              />
+              <Image src={"/images/employeeTestimonials-logo.svg"} alt="employeeTestimonials-logo" fill sizes="576px" />
 
               <div className="absolute z-1 top-[15%] left-[40%] scale-100">
                 <motion.div
@@ -264,28 +261,26 @@ export default function EmployeeTestimonials({ awards, testimonial_title, testim
                 <div className={`${stylesBox} bg-[#ffb1b1]`}></div>
               </div>
 
-              {testimonials?.slice(0, 7)?.map((item, index) => (
+              {textTestimonials?.slice(0, 7)?.map((item, index) => (
                 <div
                   key={index}
                   className={`group w-[40px] 4xs:w-[50px] sm:w-[40px] lg:w-[60px] 2xl:w-[80px] 3xl:w-[100px] h-auto aspect-4/4 rounded-full overflow-hidden border-[2px] lg:border-[3px] 2xl:border-[4px] border-solid bg-[#ffb1b1] shadow-[0_4px_60px_0_rgba(255,255,255,0.6)] absolute z-1 transition-all duration-300 
-                                        ${index === activeIndex
-                      ? "border-base2 scale-100"
-                      : "border-white"
-                    }
-                                        ${index === 0
-                      ? "top-[2%] left-[15%] scale-75"
-                      : index === 1
-                        ? "top-[5%] left-[60%] scale-75"
-                        : index === 2
-                          ? "top-[30%] left-[1%] scale-50"
-                          : index === 3
-                            ? "top-[42%] left-[30%] scale-55"
-                            : index === 4
-                              ? "top-[36%] left-[68%] scale-60"
-                              : index === 5
-                                ? "top-[74%] left-[56%] scale-60"
-                                : "top-[84%] left-[20%] scale-85"
-                    }`}
+                                        ${index === activeIndex ? "border-base2 scale-100" : "border-white"}
+                                        ${
+                                          index === 0
+                                            ? "top-[2%] left-[15%] scale-75"
+                                            : index === 1
+                                            ? "top-[5%] left-[60%] scale-75"
+                                            : index === 2
+                                            ? "top-[30%] left-[1%] scale-50"
+                                            : index === 3
+                                            ? "top-[42%] left-[30%] scale-55"
+                                            : index === 4
+                                            ? "top-[36%] left-[68%] scale-60"
+                                            : index === 5
+                                            ? "top-[74%] left-[56%] scale-60"
+                                            : "top-[84%] left-[20%] scale-85"
+                                        }`}
                   onClick={() => handleImageClick(index)}
                 >
                   <Image
@@ -301,14 +296,12 @@ export default function EmployeeTestimonials({ awards, testimonial_title, testim
           </div>
           <div className="w-full md:w-[calc(100%-268px)] lg:w-[calc(100%-368px)] xl:w-[calc(100%-520px)] 2xl:w-[calc(100%-676px)] 3xl:w-[calc(100%-820px)] lg:pl-[20px] xl:pl-[60px] 2xl:pl-[60px]">
             <div className="max-sm:hidden w-full mb-[10px] lg:mb-[15px] 2xl:mb-[30px] flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
-              <div className="text-title1 [&>span]:font-bold [&>span]:text-base2" dangerouslySetInnerHTML={{ __html: testimonial_title ? testimonial_title : "<span>Employee &nbsp;Testimonials</span>" }} />
+              <div
+                className="text-title1 [&>span]:font-bold [&>span]:text-base2"
+                dangerouslySetInnerHTML={{ __html: testimonial_title ? testimonial_title : "<span>Employee &nbsp;Testimonials</span>" }}
+              />
               <div className="w-[30px] lg:w-[50px] 2xl:w-[60px] 3xl:w-[80px] h-auto aspect-4/4 relative z-0">
-                <Image
-                  src="/images/employeeTestimonials-delmt-1.svg"
-                  alt={"dfgdg"}
-                  fill
-                  sizes="80px"
-                />
+                <Image src="/images/employeeTestimonials-delmt-1.svg" alt={"dfgdg"} fill sizes="80px" />
               </div>
             </div>
             <div className="max-sm:hidden flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
@@ -346,14 +339,14 @@ export default function EmployeeTestimonials({ awards, testimonial_title, testim
                       type: "fraction",
                       clickable: true,
                       enabled: true,
-                    }
-                  }
+                    },
+                  },
                 }}
                 className="employeeTestimonialsSlide"
                 onSwiper={(swiper) => setSwiperInstance(swiper)}
                 onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
               >
-                {testimonials?.map((item, index) => (
+                {textTestimonials?.map((item, index) => (
                   <SwiperSlide key={index}>
                     <EmployeeTestimonialsBox index={index} item={item} />
                   </SwiperSlide>
@@ -363,7 +356,7 @@ export default function EmployeeTestimonials({ awards, testimonial_title, testim
           </div>
         </div>
       </div>
-      {/* <div className="container max-sm:hidden block">
+      <div className="container max-sm:hidden block">
         <Swiper
           modules={[Autoplay]}
           navigation={false}
@@ -402,13 +395,13 @@ export default function EmployeeTestimonials({ awards, testimonial_title, testim
             },
           }}
         >
-          {employeeTestimonialsVideo?.map((item, index) => (
+          {videoTestimonials?.map((item, index) => (
             <SwiperSlide key={index}>
               <EmployeeTestimonialsVideoBox item={item} />
             </SwiperSlide>
           ))}
         </Swiper>
-      </div> */}
+      </div>
     </section>
   );
 }

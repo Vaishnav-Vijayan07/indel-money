@@ -46,11 +46,11 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
       </div>
       <div className="block sm:hidden">
         {/* Develope api for smart money deals */}
-        <MobSmartMoneyDeals initialData={initialData} />
+        <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
       </div>
 
       {/* Gold loan contents*/}
-      <div  id="gold-loan-steps" className="hidden sm:block">
+      <div id="gold-loan-steps" className="hidden sm:block">
         <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
       </div>
       <div className="block sm:hidden">
@@ -84,7 +84,13 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         />
       </div>
       <div className="block sm:hidden">
-        <MobJoinTeam pageContent={initialData?.pageContent} />
+        <MobJoinTeam
+          pageContent={initialData?.pageContent}
+          lifeAtIndel={initialData?.lifeAtIndel}
+          image1={initialData?.pageContent?.life_section_image1}
+          image2={initialData?.pageContent?.life_section_image2}
+          image3={initialData?.pageContent?.life_section_image3}
+        />
       </div>
 
       {/* Latest Updates contents*/}
@@ -95,16 +101,16 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <MobLatestUpdates />
       </div>
 
-      <div className="hidden sm:block">
+      {/* <div className="hidden sm:block">
         <TrustedInvestment pageContent={initialData?.pageContent} />
-      </div>
+      </div> */}
 
       {/* Innovations*/}
       <div className="hidden sm:block">
         <Innovations pageContent={initialData?.pageContent} />
       </div>
       <div className="block sm:hidden">
-        <MobInnovations pageContent={initialData?.pageContent}/>
+        <MobInnovations pageContent={initialData?.pageContent} />
       </div>
 
       {/* faq contents */}

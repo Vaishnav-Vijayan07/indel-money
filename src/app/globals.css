@@ -31,7 +31,6 @@
   /* 1536px */
   --breakpoint-3xl: 120rem;
   /* 1920px */
-
 }
 
 @layer base {
@@ -43,7 +42,6 @@
   }
 
   @media (min-width: 640px) {
-
     /* sm */
     :root {
       --container-x: var(--breakpoint-sm);
@@ -51,7 +49,6 @@
   }
 
   @media (min-width: 768px) {
-
     /* md */
     :root {
       --container-x: var(--breakpoint-md);
@@ -59,7 +56,6 @@
   }
 
   @media (min-width: 1024px) {
-
     /* lg */
     :root {
       --container-x: var(--breakpoint-lg);
@@ -70,7 +66,6 @@
   }
 
   @media (min-width: 1280px) {
-
     /* xl */
     :root {
       --container-x: var(--breakpoint-xl);
@@ -81,7 +76,6 @@
   }
 
   @media (min-width: 1536px) {
-
     /* 2xl */
     :root {
       --container-x: var(--breakpoint-2xl);
@@ -92,7 +86,6 @@
   }
 
   @media (min-width: 1920px) {
-
     /* 3xl */
     :root {
       --container-x: var(--breakpoint-3xl);
@@ -219,7 +212,6 @@
   }
 
   @media (min-width: 640px) {
-
     /* sm */
     .text-title1 {
       font-size: 22px;
@@ -231,7 +223,6 @@
   }
 
   @media (min-width: 768px) {
-
     /* md */
     .text-title1 {
       font-size: 22px;
@@ -243,7 +234,6 @@
   }
 
   @media (min-width: 1024px) {
-
     /* lg */
     .text-title1 {
       font-size: 24px;
@@ -260,7 +250,6 @@
   }
 
   @media (min-width: 1280px) {
-
     /* xl */
     .text-title1 {
       font-size: 30px;
@@ -268,7 +257,6 @@
   }
 
   @media (min-width: 1536px) {
-
     /* 2xl */
     .text-title1 {
       font-size: 36px;
@@ -285,7 +273,6 @@
   }
 
   @media (min-width: 1920px) {
-
     /* 3xl */
     .text-title1 {
       font-size: 54px;
@@ -300,7 +287,6 @@
       font-size: 18px;
     }
   }
-
 
   .LoanSlider .swiper-wrapper {
     padding: 20px 0px !important;
@@ -355,7 +341,6 @@
   }
 
   @media (min-width: 640px) {
-
     /* sm */
     .custom-container {
       max-width: 600px;
@@ -364,7 +349,6 @@
   }
 
   @media (min-width: 768px) {
-
     /* md */
     .custom-container {
       max-width: 750px;
@@ -372,7 +356,6 @@
   }
 
   @media (min-width: 1024px) {
-
     /* lg */
     .custom-container {
       max-width: 980px;
@@ -380,7 +363,6 @@
   }
 
   @media (min-width: 1280px) {
-
     /* xl */
     .custom-container {
       max-width: 1180px;
@@ -388,7 +370,6 @@
   }
 
   @media (min-width: 1536px) {
-
     /* 2xl */
     .custom-container {
       max-width: 1430px;
@@ -396,7 +377,6 @@
   }
 
   @media (min-width: 1920px) {
-
     /* 3xl */
     .custom-container {
       max-width: 1640px;
@@ -404,9 +384,11 @@
   }
 
   .bg-custom-gradient {
-    background: linear-gradient(180deg,
-        rgba(23, 71, 158, 0.3) 0%,
-        rgba(235, 2, 8, 0.3) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(23, 71, 158, 0.3) 0%,
+      rgba(235, 2, 8, 0.3) 100%
+    );
   }
 
   .custom-prev.swiper-button-disabled,
@@ -420,7 +402,7 @@
     width: 1.5px;
   }
 
-  .lifeSlide .swiper-wrapper {
+  .lifeSlide2 .swiper-wrapper {
     transform: translate3d(0px, 0, 0) !important;
   }
 
