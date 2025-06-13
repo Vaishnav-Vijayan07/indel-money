@@ -76,6 +76,8 @@ export default async function GoldLoan() {
           title={contents?.page_title}
           announcement_text={contents?.announcement_text}
           gold_rate_text={contents?.gold_rate_text}
+          banner_image={contents?.banner_image}
+          alt={contents?.banner_alt}
         />
       </div>
 
@@ -129,7 +131,12 @@ export default async function GoldLoan() {
         />
       </div>
       <div className="block sm:hidden">
-        <MobInstantHasslefree />
+        <MobInstantHasslefree
+          title={contents?.gold_loan_title}
+          description={contents?.gold_loan_description}
+          hassle_free_image={contents?.hassle_free_image}
+          hassle_free_image_alt={contents?.hassle_free_image_alt}
+        />
       </div>
 
       {/* instant hussle free */}
