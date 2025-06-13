@@ -80,13 +80,13 @@ export default function Innovations({ pageContent }) {
               transition={{ duration: 0.5 }}
               className="w-full sm:max-w-[176px] lg:max-w-[268px] xl:max-w-[320px] 2xl:max-w-[376px] 3xl:max-w-[400px] absolute bottom-0 right-0 max-sm:hidden"
             >
-              {/* <Image
+              <Image
                 src={pageContent?.mobile_app_image_url ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${pageContent?.mobile_app_image_url}` : "/images/app-1.png"}
                 alt="app"
                 width={460}
                 height={600}
                 className="w-full h-full object-cover transition-transform duration-300"
-              /> */}
+              />
             </motion.div>
           </div>
         </div>

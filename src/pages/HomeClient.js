@@ -101,9 +101,9 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <MobLatestUpdates />
       </div>
 
-      <div className="hidden sm:block">
+      {/* <div className="hidden sm:block">
         <TrustedInvestment pageContent={initialData?.pageContent} />
-      </div>
+      </div> */}
 
       {/* Innovations*/}
       <div className="hidden sm:block">
