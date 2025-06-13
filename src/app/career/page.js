@@ -7,65 +7,61 @@ import MakeYourMove from "@/components/features/career/MakeYourMove";
 import BenefitsEmployee from "@/components/features/career/BenefitsEmployee";
 import MobBenefitsEmployee from "@/components/features/career/MobBenefitsEmployee";
 
-export default async function Career() {
-  async function fetchData() {
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/career`, {
-        cache: "no-store", // Ensure fresh data
-      });
+async function fetchData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/career`, {
+      cache: "no-store", // Ensure fresh data
+    });
 
-      const result = await response.json();
-      const careerData = result.data;
+    const result = await response.json();
+    const careerData = result.data;
 
-      if (result.status === "success") {
-        return {
-          contents: careerData?.careersContent,
-          banners: careerData?.careerBanners,
-          benefits: careerData?.empBenefits,
-          awards: careerData?.awards,
-          testimonials: careerData?.testimoinials,
-          states: careerData?.careerStates,
-          jobs: careerData?.careerJobs,
-          error: null,
-        };
-      }
-
+    if (result.status === "success") {
       return {
-        contents: null,
-        banners: null,
-        benefits: null,
-        awards: null,
-        testimonials: null,
-        states: null,
-        jobs: null,
-        error: result.message,
-      };
-    } catch (error) {
-      return {
-        contents: null,
-        banners: null,
-        benefits: null,
-        awards: null,
-        testimonials: null,
-        states: null,
-        jobs: null,
-        error: "Failed to fetch career data",
+        contents: careerData?.careersContent,
+        gallery: careerData?.careerGallery,
+        banners: careerData?.careerBanners,
+        benefits: careerData?.empBenefits,
+        awards: careerData?.awards,
+        testimonials: careerData?.testimoinials,
+        states: careerData?.careerStates,
+        jobs: careerData?.careerJobs,
+        error: null,
       };
     }
+
+    return {
+      contents: null,
+      banners: null,
+      benefits: null,
+      gallery: null,
+      awards: null,
+      testimonials: null,
+      states: null,
+      jobs: null,
+      error: result.message,
+    };
+  } catch (error) {
+    return {
+      contents: null,
+      banners: null,
+      benefits: null,
+      gallery: null,
+      awards: null,
+      testimonials: null,
+      states: null,
+      jobs: null,
+      error: "Failed to fetch career data",
+    };
   }
+}
 
-  const { contents, banners, benefits, awards, testimonials, states, jobs, error } = await fetchData();
+export default async function Career() {
+  const { contents, banners, benefits, awards, gallery, testimonials, states, jobs, error } = await fetchData();
 
-  console.log("Career Page Data:", {
-    contents,
-    banners,
-    benefits,
-    awards,
-    testimonials,
-    states,
-    jobs,
-    error,
-  });
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="w-full h-auto bg-linear-to-b from-base1/10 to-base2/10">
@@ -85,7 +81,14 @@ export default async function Career() {
         isGeneral={true}
       />
       <div id="life" className="hidden sm:block">
-        <CareerLifeAtIndel />
+        <CareerLifeAtIndel
+          gallery_title={contents?.gallery_title}
+          gallery_sub_title={contents?.gallery_sub_title}
+          gallery_description={contents?.gallery_description}
+          gallery_button_text={contents?.gallery_button_text}
+          gallery_button_link={contents?.gallery_button_link}
+          gallery={gallery}
+        />
       </div>
       <div className="block sm:hidden">
         <MobCareerLifeAtIndel />
@@ -97,7 +100,8 @@ export default async function Career() {
         <MobBenefitsEmployee />
       </div>
       <EmployeeTestimonials
-        testimonials={testimonials}
+        textTestimonials={testimonials.textTestimonials}
+        videoTestimonials={testimonials.imageTestimonials}
         awards={awards}
         testimonial_button_link={contents?.testimonial_button_link}
         testimonial_button_name={contents?.testimonial_button_name}
