@@ -23,24 +23,39 @@ async function fetchGoldLoanData() {
     });
     const result = await response.json();
     const goldloanData = result.data;
+    console.log("Gold Loan Data:", goldloanData);
 
     if (result.status === "success") {
-      return { steps: goldloanData.Steps, contents: goldloanData.GoldloanContent, bannerIcons: goldloanData.GoldloanBannerFeatures, schemes: goldloanData.schemes, faqs: goldloanData.GoldLoanFaq, features: goldloanData.GoldLoanFeatures, error: null };
+      return {
+        steps: goldloanData.Steps,
+        contents: goldloanData.GoldloanContent,
+        bannerIcons: goldloanData.GoldloanBannerFeatures,
+        schemes: goldloanData.schemes,
+        faqs: goldloanData.GoldLoanFaq,
+        features: goldloanData.GoldLoanFeatures,
+        error: null,
+      };
     }
     return { steps: null, contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: result.message };
   } catch (error) {
-    return { steps: null, contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: "Failed to fetch service data" };
+    return {
+      steps: null,
+      contents: null,
+      bannerIcons: null,
+      schemes: null,
+      faqs: null,
+      features: null,
+      error: "Failed to fetch service data",
+    };
   }
 }
 
 export default async function GoldLoan() {
   const { steps, contents, bannerIcons, schemes, faqs, features, error } = await fetchGoldLoanData();
 
-
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
   }
-
 
   return (
     <>
@@ -54,7 +69,12 @@ export default async function GoldLoan() {
         />
       </div>
       <div className="block sm:hidden">
-        <MobServiceBanner />
+        <MobServiceBanner
+          bannerIcons={bannerIcons}
+          title={contents?.page_title}
+          announcement_text={contents?.announcement_text}
+          gold_rate_text={contents?.gold_rate_text}
+        />
       </div>
 
       {/* Gold loan contents*/}
@@ -62,7 +82,7 @@ export default async function GoldLoan() {
         <StepGoldLoan className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]" hideTitle={true} loanSteps={steps} />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoan className="py-[30px_20px]" />
+        <MobStepGoldLoan loanSteps={steps} className="py-[30px_20px]" />
       </div>
 
       {/* Gold loan steps */}
@@ -78,7 +98,15 @@ export default async function GoldLoan() {
         />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanCriteria />
+        <MobGoldLoanCriteria
+          title={contents?.gold_loan_step_title}
+          description={contents?.description}
+          idProofTitle={contents?.identity_proof_title}
+          identityProof={contents?.identity_proof_description}
+          addressProofTitle={contents?.address_proof}
+          addressProof={contents?.address_proof_description}
+          image={contents?.steps_image}
+        />
       </div>
 
       {/* Gold loan calculator contents*/}
