@@ -32,16 +32,7 @@ function ServiceBannerItem({ item }) {
 }
 
 export default function ServiceBanner({ bannerIcons, title, announcement_text, gold_rate_text, banner_image, alt }) {
-  console.log("ServiceBanner Props:", {
-    bannerIcons,
-    title,
-    announcement_text,
-    gold_rate_text,
-    banner_image,
-    alt
-  });
-  
-  const [goldLiveRate, setGoldLiveRate] = useState(getRandomGoldRate());
+  const [goldLiveRate] = useState(getRandomGoldRate());
   return (
     <section className="w-full relative overflow-hidden before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:-z-1 before:bg-[linear-gradient(90deg,rgba(0,0,0,0.5)_0%,rgba(102,102,102,0)_100%)]">
       <Image

@@ -41,7 +41,11 @@ const features = [
   },
 ];
 
-export default function MobInstantHasslefree({ title, description, hassle_free_image, hassle_free_image_alt }) {
+export default function MobInstantHasslefree({ title, description, hassle_free_image, hassle_free_image_alt, GoldloanBenefits }) {
+  console.log("MobInstantHasslefree rendered with props:", {
+    GoldloanBenefits,
+  });
+
   return (
     <section className="w-full block py-[25px] bg-[linear-gradient(90deg,#CDDFFF_1%,#FFD2D2_99%)] rounded-[20px]">
       <div className="container">
@@ -58,12 +62,14 @@ export default function MobInstantHasslefree({ title, description, hassle_free_i
         <p>{parse(description)}</p>
         <div className="w-full h-auto bg-white rounded-[10px] p-[15px_15px] 4xs:p-[20px_30px] shadow-[0_0_25px_0_rgba(0,0,0,0.1)] mt-[15px]">
           <ul className="flex flex-wrap max-h-[180px] overflow-y-auto">
-            {features?.map((item, index) => (
+            {GoldloanBenefits?.map((item, index) => (
               <li key={index} className="w-full h-auto flex flex-wrap mb-[15px]">
                 <div className="w-18px">
-                  <Image src={item.icon} alt={item.text} width={18} height={18} className="aspect-square object-contain" />
+                  <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.icon}`} title={item?.icon} alt={item?.image_alt} width={18} height={18} className="aspect-square object-contain" />
                 </div>
-                <div className="text-[14px] leading-[1.2] font-normal text-black w-[calc(100%-18px)] pl-[10px]">{item.text}</div>
+                <div className="text-[14px] leading-[1.2] font-normal text-black w-[calc(100%-18px)] pl-[10px]">
+                  {item?.title}
+                </div>
               </li>
             ))}
           </ul>

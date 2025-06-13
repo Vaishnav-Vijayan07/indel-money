@@ -12,16 +12,7 @@ const getRandomGoldRate = () => {
 };
 
 export default function MobServiceBanner({ bannerIcons, title, announcement_text, gold_rate_text, banner_image, alt }) {
-  console.log("MobServiceBanner Props:", {
-    bannerIcons,
-    title,
-    announcement_text,
-    gold_rate_text,
-    banner_image,
-    alt,
-  });
-
-  const [goldLiveRate, setGoldLiveRate] = useState(getRandomGoldRate());
+  const [goldLiveRate] = useState(getRandomGoldRate());
   return (
     <section className="w-full h-[468px] 4xs:h-[576px] block relative z-0 overflow-hidden before:content-[''] before:absolute before:w-full before:h-[30%] before:bottom-[var(--marquee-y)] before:left-0 before:-z-1 before:bg-linear-to-t before:from-black before:to-transparent">
       <Image

@@ -3,32 +3,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const steps = [
-  {
-    title: "Step 1",
-    description: "Walk in any of our branches with your gold",
-    img: "/images/step1.webp",
-  },
-  {
-    title: "Step 2",
-    description: "Fill in and submit the required documents",
-    img: "/images/step2.webp",
-  },
-  {
-    title: "Step 3",
-    description: "After evaluation, our officer will sanction the loan",
-    img: "/images/step3.webp",
-  },
-];
-
-export default function StepGoldLoan({ sectionTitle, loanSteps, className, hideTitle = false }) {
+export default function StepGoldLoan({ title, loanSteps, className, hideTitle = false }) {
   return (
     <section className={`${className} w-full pt-[20px] md:pt-[30px] 2xl:pt-[60px]`}>
       <div className="container">
         {!hideTitle && (
           <div
             className="text-title1 font-normal mb-[15px] lg:mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
-            dangerouslySetInnerHTML={{ __html: sectionTitle ? sectionTitle : "" }}
+            dangerouslySetInnerHTML={{ __html: title ? title : "" }}
           />
         )}
         <div className="flex justify-between">
@@ -43,7 +25,7 @@ export default function StepGoldLoan({ sectionTitle, loanSteps, className, hideT
             >
               <div>
                 {/* Arrow - Animated & Hides for last step */}
-                {index !== steps.length - 1 && (
+                {index !== loanSteps.length - 1 && (
                   <div
                     className={`absolute left-[110px] md:left-[130px] lg:left-[145px] xl:left-[180px] 2xl:left-[260px] 3xl:left-[265px] max-w-[110px] w-full md:max-w-[140px] lg:max-w-[160px] xl:max-w-[220px]  2xl:max-w-[260px] 3xl:max-w-[380px]   ${
                       index % 2 === 1 ? "rotate-x-[-180deg] top-1/4" : "top-[30px]"
@@ -98,7 +80,7 @@ export default function StepGoldLoan({ sectionTitle, loanSteps, className, hideT
                       {step.title}
                     </motion.div>
 
-                    {index !== steps.length - 1 && (
+                    {index !== loanSteps.length - 1 && (
                       <motion.div
                         className="border border-black border-dashed top-[18px] 3xl:top-[30px] h-[1px] w-full absolute left-[calc((100%-55px))] md:left-[calc((100%-30px))] lg:left-[calc((100%-125px))] xl:left-[calc((100%-120px))] 2xl:left-[calc((100%-50px))] 3xl:left-[calc((100%-130px))] before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-[-1px] before:w-[10px] before:h-[10px] before:bg-base1 before:rounded-full"
                         initial={{ width: 0 }}
