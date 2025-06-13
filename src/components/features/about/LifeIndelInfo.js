@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 const images = [
   "/images/lifeImage1.webp",
@@ -14,7 +15,7 @@ const images = [
   "/images/lifeImage1.webp",
 ];
 
-export default function LifeIndelInfo({ title, description, buttonText, buttonLink,lifeImages }) {
+export default function LifeIndelInfo({ title, description, buttonText, buttonLink, lifeImages }) {
   const renderTitle = (title) => {
     const words = title?.split(" ");
     if (words?.length === 3) {
@@ -85,7 +86,14 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
                             transition: "transform 0.5s ease, opacity 1s ease",
                           }}
                         >
-                          <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${img?.image}`} alt={`Slide ${index}`} fill sizes="240px" priority className="w-full h-full object-cover" />
+                          <Image
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${img?.image}`}
+                            alt={`Slide ${index}`}
+                            fill
+                            sizes="240px"
+                            priority
+                            className="w-full h-full object-cover"
+                          />
                         </div>
                       );
                     }}
@@ -113,8 +121,8 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
           </div>
           <div className=" w-full xl:w-[calc(100%-600px)] 2xl:w-[calc(100%-750px)] max-xl:pt-[50px] flex items-center p-[8px]">
             <div className="w-full lg:pl-[60px]">
-              <div className="text-title1 font-medium xl:mb-[20px] mb-[10px]">{renderTitle(title)}</div>
-              <div className="[&>p]:mb-[15px] [&>p]:3xl:text-[18px]" dangerouslySetInnerHTML={{ __html: description ? description : "" }}/>
+              <div className="text-title1 font-medium xl:mb-[20px] mb-[10px] [&>span]:text-base2 [&>span]:font-bold ">{renderHtml(title)}</div>
+              <div className="[&>p]:mb-[15px] [&>p]:3xl:text-[18px]" dangerouslySetInnerHTML={{ __html: description ? description : "" }} />
               {/* <p className="3xl:text-[18px] mb-[15px]">{description}</p> */}
               {/* <p className="3xl:text-[18px]">
                 Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
@@ -123,7 +131,7 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
                 Evil) by Cicero, written in 45 BC.{" "}
               </p> */}
               <Link
-                href={ buttonLink || "#" }
+                href={buttonLink || "#"}
                 className="group btn btn-base1 relative z-0 flex items-center justify-between mt-[15px] lg:mt-[30px] w-fit min-w-[150px] 2xl:min-w-[200px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[60px] rounded-full bg-base2 text-white font-bold transition-all duration-300 overflow-hidden shadow-lg hover:bg-base1"
               >
                 <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px]">{buttonText}</span>

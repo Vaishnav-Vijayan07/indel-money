@@ -72,6 +72,7 @@ export default function DeskHeader({ headerData }) {
             <nav className="w-[calc(100%-60px)] xl:w-[calc(100%-90px)] 2xl:w-[calc(100%-120px)] 3xl:w-[calc(100%-140px)] flex justify-end">
               <div className="flex items-center gap-[6px] xl:gap-[10px] 2xl:gap-[14px] 3xl:gap-[14px]">
                 <div>
+                  {/* <NavMenu /> */}
                   <NavMenu />
                 </div>
                 <div>

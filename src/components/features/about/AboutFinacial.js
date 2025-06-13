@@ -1,6 +1,6 @@
 import Countersec from "./Countersec";
 import CountersecCopy from "./Countersec copy";
-
+import { renderHtml } from "@/lib/utils/htmlParser";
 export default function AboutFinacial({ statsData, super_title, title, sub_title, description }) {
   return (
     <section className="w-full py-[50px] 2xl:py-[80px] 3xl:py-[100px]">
@@ -18,9 +18,9 @@ export default function AboutFinacial({ statsData, super_title, title, sub_title
                 {sub_title ? sub_title : "Truly Indian Born"}
               </h5>
               <div className="max-w-full lg:max-w-[calc(100%-20px)] xl:max-w-[calc(100%-40px)] 2xl:max-w-[calc(100%-80px)] 3xl:max-w-[calc(100%-100px)]">
-                <p>
-                  {description ? description : "                  Indel Money, an RBI-regulated Non-Banking Finance Company (NBFC) since 1986, has built a strong foundation on the values of Indiancivilization. With 268 branches across Kerala, Tamil Nadu, Karnataka, Andhra Pradesh, Telangana, Odisha, Maharashtra, MadhyaPradesh, Delhi-NCR, and Puducherry, we’ve served millions for over two decades"}
-                </p>
+                  {description
+                    ? renderHtml(description)
+                    : "Indel Money, an RBI-regulated Non-Banking Finance Company (NBFC) since 1986, has built a strong foundation on the values of Indiancivilization. With 268 branches across Kerala, Tamil Nadu, Karnataka, Andhra Pradesh, Telangana, Odisha, Maharashtra, MadhyaPradesh, Delhi-NCR, and Puducherry, we’ve served millions for over two decades"}
               </div>
             </div>
           </div>
