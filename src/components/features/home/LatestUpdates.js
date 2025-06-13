@@ -25,7 +25,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
             <div className="flex justify-between items-center gap-2 mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">
               <h3 className="text-title1 text-black font-medium max-w-[70%]">{sliderTitle}</h3>
               <Link
-                href={"/"}
+                href={"/blogs"}
                 className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-bold flex items-center shrink-0 hover:text-base2 transition-color duration-300"
               >
                 View All
