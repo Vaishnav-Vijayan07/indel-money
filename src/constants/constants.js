@@ -9,3 +9,5 @@ export const navigationItems = [
   { title: "Strategic Consultants", href: "/strategic-consultant", key: "strategicConsultant" },
   { title: "Business Partners", href: "/business-partners", key: "businessPartners" },
 ];
+
+export const serverMediaPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
