@@ -23,6 +23,9 @@ async function fetchData() {
 export default async function DifferentShadesIndel() {
 
   const { contents, values, error } = await fetchData();
+  console.log("Different Shades of Indel contents:", contents);
+  console.log("Different Shades of Indel values:", values);
+  
 
   if (!contents || !values) {
     return <div>Failed to fetch Different Shades of Indel data</div>;

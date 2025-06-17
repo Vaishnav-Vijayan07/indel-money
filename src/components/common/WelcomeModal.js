@@ -18,41 +18,6 @@ import {
 
 import { useState, useEffect } from "react";
 
-const slides = [
-  {
-    src: "/images/welcome-1.jpg",
-    alt: "welcome-1",
-    title: "Gold Loans",
-    description: "Need quick financing? Get the best rates with our secure gold loans.",
-    link: "/",
-    linkname: "Get a Gold Loan Today",
-  },
-  {
-    src: "/images/welcome-2.jpg",
-    alt: "welcome-1",
-    title: "Other Services",
-    description: "We offer a range of services tailored to your needs. Let us guide you.",
-    link: "/",
-    linkname: "Explore Our Services",
-  },
-  {
-    src: "/images/welcome-3.jpg",
-    alt: "welcome-1",
-    title: "Career Opportunities",
-    description: "Looking for a new opportunity? Explore our open positions and start your journey with us.",
-    link: "/",
-    linkname: "FIND YOUR DREAM JOB",
-  },
-  {
-    src: "/images/welcome-4.jpg",
-    alt: "welcome-1",
-    title: "Quick pay",
-    description: "efficient payment solution designed to make transactions faster and easier.",
-    link: "/",
-    linkname: "Make your payment",
-  },
-];
-
 function WelcomeBox({ item, index }) {
   const isActive = index === 0;
   return (
@@ -190,9 +155,7 @@ export default function WelcomeModal({ banner, serviceBanner }) {
             />
           </AlertDialogCancel>
           <div className="flex flex-wrap gap-[15px] lg:gap-[20px] xl:gap-[30px] 2xl:gap-[40px] 3xl:gap-[50px] mb-[10px] sm:mb-[15px] lg:mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
-            <div
-              className="w-full max-w-[80px] sm:max-w-[90px] md:max-w-[100px] lg:max-w-[120px] xl:max-w-[140px] 2xl:max-w-[180px] 3xl:max-w-[280px] h-auto inline-block"
-            >
+            <div className="w-full max-w-[80px] sm:max-w-[90px] md:max-w-[100px] lg:max-w-[120px] xl:max-w-[140px] 2xl:max-w-[180px] 3xl:max-w-[280px] h-auto inline-block">
               <Image
                 src={banner?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.logo}` : "/icons/logo_sm.svg"}
                 alt={banner?.image_alt ? banner?.image_alt : "alt"}
@@ -213,7 +176,11 @@ export default function WelcomeModal({ banner, serviceBanner }) {
           {banner && (
             <Link href={banner?.image_link ? banner?.image_link : "/"} className="w-full">
               <Image
-                src={banner?.banner_popup_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.banner_popup_image}` : "/icons/logo_sm.svg"}
+                src={
+                  banner?.banner_popup_image
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.banner_popup_image}`
+                    : "/icons/logo_sm.svg"
+                }
                 width={1920}
                 height={1080}
                 alt={banner?.image_alt ? banner?.image_alt : "alt"}
