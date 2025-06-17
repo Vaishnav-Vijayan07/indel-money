@@ -19,10 +19,17 @@ const slides = [
     title: "MSME loan",
     link: "/",
   },
+  
   {
     image: "/images/MobSmartMoneyDeals-3.png",
     alt: "MobSmartMoneyDeals",
     title: "consumer durable loan",
+    link: "/",
+  },
+  {
+    image: "/images/MobSmartMoneyDeals-4-.png",
+    alt: "MobSmartMoneyDeals",
+    title: "Loan Against Property",
     link: "/",
   },
   {
@@ -41,6 +48,12 @@ const slides = [
     image: "/images/MobSmartMoneyDeals-3.png",
     alt: "MobSmartMoneyDeals",
     title: "consumer durable loan",
+    link: "/",
+  },
+    {
+    image: "/images/MobSmartMoneyDeals-4.png",
+    alt: "MobSmartMoneyDeals",
+    title: "Loan Against Property",
     link: "/",
   },
 ];

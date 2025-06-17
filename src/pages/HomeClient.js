@@ -58,7 +58,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoan loanSteps={initialData?.loanSteps} />
+        <MobStepGoldLoan title={'sample'} loanSteps={initialData?.loanSteps} />
       </div>
 
       {/* Gold loan calculator*/}
