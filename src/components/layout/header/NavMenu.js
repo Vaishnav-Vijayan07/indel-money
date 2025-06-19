@@ -58,6 +58,12 @@ const OtherLoans = [
     title: "consumer durable Loan",
     link: "/consumer-durable-loans",
   },
+    {
+    image: "/images/icon-goldloan-4.svg",
+    alt: "item",
+    title: "Loan Against Property",
+    link: "/loan-against-property",
+  },
 ];
 const Careers = [
   {
