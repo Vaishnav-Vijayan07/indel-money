@@ -293,8 +293,8 @@ export default function CareerForm({ jobId, isGeneral }) {
         toast.error("File size should be less than 5MB");
         return false;
       }
-      if (!["application/pdf", "image/jpeg", "image/png"].includes(file.type)) {
-        toast.error("Please upload a PDF, JPEG, or PNG file");
+      if (!["application/pdf"].includes(file.type)) {
+        toast.error("Please upload a PDF file");
         return false;
       }
       setSelectedFile(file);
