@@ -9,10 +9,15 @@ async function fetchData() {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();
-    const indelValues = result.data
+    const indelValues = result.data;
 
     if (result.status === "success") {
-      return { contents: indelValues?.indelValueContent, values: indelValues?.indelValues, propositions: indelValues?.approachPropositions, error: null };
+      return {
+        contents: indelValues?.indelValueContent,
+        values: indelValues?.indelValues,
+        propositions: indelValues?.approachPropositions,
+        error: null,
+      };
     }
     return { contents: null, values: null, propositions: null, error: result.message };
   } catch (error) {
@@ -21,7 +26,6 @@ async function fetchData() {
 }
 
 export default async function IndelValues() {
-
   const { contents, values, propositions, error } = await fetchData();
 
   if (!contents || !values || !propositions) {
@@ -31,7 +35,7 @@ export default async function IndelValues() {
   return (
     <>
       <div className="hidden sm:block">
-        <IndelValueBanner image={contents?.image} title={contents?.page_title} />
+        <IndelValueBanner image={contents?.banner_image} alt={contents?.image_alt} title={contents?.page_title} />
       </div>
       <div className="block sm:hidden">
         <MobIndelValueBanner />
