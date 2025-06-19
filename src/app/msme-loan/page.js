@@ -27,9 +27,25 @@ async function fetchData() {
         error: result.message,
       };
     }
-    return { contents: null, offerings: null, faqs: null, loanTypes: null, industries: null, audience: null, error: result.message };
+    return {
+      contents: null,
+      offerings: null,
+      faqs: null,
+      loanTypes: null,
+      industries: null,
+      audience: null,
+      error: result.message,
+    };
   } catch (error) {
-    return { contents: null, offerings: null, faqs: null, loanTypes: null, industries: null, audience: null, error: "Failed to fetch service data" };
+    return {
+      contents: null,
+      offerings: null,
+      faqs: null,
+      loanTypes: null,
+      industries: null,
+      audience: null,
+      error: "Failed to fetch service data",
+    };
   }
 }
 
@@ -82,7 +98,11 @@ export default async function MsmeLoan() {
       <MsmePresence title={contents?.about_msme_title} description={contents?.about_msme_description} audience={industries} />
 
       {/* Grown With Msme contents*/}
-      <GrownWithMsme faqs={faqs} title={contents?.msme_loan_overview_title} description={contents?.msme_loan_overview_description} />
+      <GrownWithMsme
+        faqs={faqs}
+        title={contents?.msme_loan_overview_title}
+        description={contents?.msme_loan_overview_description}
+      />
     </>
   );
 }

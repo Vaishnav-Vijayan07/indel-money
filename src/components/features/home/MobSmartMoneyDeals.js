@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Link from "next/link";
-import { renderHtml } from "@/lib/utils/htmlParser";
+import parse from "html-react-parser";
 
 const slides = [
   {
@@ -63,7 +63,7 @@ export default function MobSmartMoneyDeals({ title, deals }) {
     <section className="w-full py-[20px]">
       <div className="container">
         <div className="text-title1 mb-[10px] 2xl:mb-[15px] [&>span]:text-base2 [&>span]:font-bold ">
-          {title ? renderHtml(title) : "Smart Money Deals"}
+          {title ? parse(title) : "Smart Money Deals"}
         </div>
         <Swiper
           modules={[Autoplay]}

@@ -14,8 +14,7 @@ const slides = [
     image: "/images/news-1.jpg",
     alt: "news-1",
     date: "24 SEPTEMBER 2024:",
-    title:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
+    title: "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
     description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
   },
@@ -24,8 +23,7 @@ const slides = [
     image: "/images/news-2.jpg",
     alt: "news-1",
     date: "24 SEPTEMBER 2024:",
-    title:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
+    title: "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
     description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
   },
@@ -34,8 +32,7 @@ const slides = [
     image: "/images/news-3.jpg",
     alt: "news-1",
     date: "24 SEPTEMBER 2024:",
-    title:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
+    title: "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
     description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
   },
@@ -44,32 +41,27 @@ const slides = [
     image: "/images/news-4.jpg",
     alt: "news-1",
     date: "24 SEPTEMBER 2024:",
-    title:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
+    title: "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing and typesetting.",
     description:
       "Aliquam malesuada risus at nulla egestas, sit amet feugiat tortor molestie. Fusce dapibus tempus eros ac vehicula. Fusce faucibus, justo et cursus varius, metus.",
   },
 ];
 
-export default function MobLatestUpdates() {
+export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blog" }) {
+  console.log("sliderItems", sliderItems);
+
   return (
     <section className="w-full py-[30px] bg-[#cae5f4] rounded-[20px_20px_0_0] overflow-hidden">
       <div className="container">
         <div className="mb-[25px]">
           <div className="flex justify-between items-center gap-2 mb-[15px] @sm:mb-[20px]">
-            <h3 className="text-title1 font-medium text-black">Blogs</h3>
+            <h3 className="text-title1 font-medium text-black">{sliderTitle}</h3>
             <Link
-              href="/"
+              href="/blogs"
               className="text-[12px] leading-none font-bold flex items-center hover:text-base2 transition-color duration-300"
             >
               VIEW ALL
-              <Image
-                src="/images/icon-right.svg"
-                width={5}
-                height={9}
-                alt="right"
-                className="ml-[5px]"
-              />
+              <Image src="/images/icon-right.svg" width={5} height={9} alt="right" className="ml-[5px]" />
             </Link>
           </div>
           <Swiper
@@ -82,25 +74,21 @@ export default function MobLatestUpdates() {
             }}
             pagination={false}
           >
-            {slides?.map((item, index) => (
+            {sliderItems?.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="group w-full h-[220px] overflow-hidden rounded-[25px] block relative z-0">
                   <Image
-                    src={item.image}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
                     alt={item?.alt}
                     fill
                     sizes="380px"
                     className="transition-transform duration-300 object-cover group-hover:scale-105"
                   />
                   <div className="w-full h-auto absolute inset-0 top-auto p-[20px] bg-gradient-to-t from-black/80 to-transparent">
-                    <div className="text-[12px] text-white line-clamp-1 mb-[2px]">
-                      {item.date}
-                    </div>
-                    <div className="text-[16px] leading-[1.2] text-white font-bold line-clamp-2 mb-[10px]">
-                      {item.title}
-                    </div>
+                    <div className="text-[12px] text-white line-clamp-1 mb-[2px]">{item.date}</div>
+                    <div className="text-[16px] leading-[1.2] text-white font-bold line-clamp-2 mb-[10px]">{item.title}</div>
                     <Link
-                      href={item.href}
+                      href={`/${type}/${item?.slug}`}
                       className="text-[12px] leading-none font-bold text-white uppercase hover:text-base2 transition-color duration-300 flex items-center"
                     >
                       Read More
@@ -147,15 +135,12 @@ export default function MobLatestUpdates() {
               "--swiper-pagination-bullet-inactive-opacity": "1",
             }}
           >
-            {slides?.map((item, index) => (
+            {sliderItems?.map((item, index) => (
               <SwiperSlide key={index}>
-                <Link
-                  href={item.href}
-                  className="group w-full h-auto block bg-white p-[10px] rounded-[16px]"
-                >
+                <Link href={`/${type}/${item?.slug}`} className="group w-full h-auto block bg-white p-[10px] rounded-[16px]">
                   <div className="w-full h-[100px] rounded-[16px] overflow-hidden relative z-0 mb-[12px]">
                     <Image
-                      src={item.image}
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
                       alt={item?.alt}
                       fill
                       sizes="160px"
@@ -163,15 +148,9 @@ export default function MobLatestUpdates() {
                     />
                   </div>
                   <div className="w-full h-auto">
-                    <div className="text-[10px] leading-none font-normal text-[#505050] line-clamp-1 mb-[2px]">
-                      {item.date}
-                    </div>
-                    <div className="text-[12px] leading-[1.2] text-black font-medium line-clamp-2 mb-[5px]">
-                      {item.title}
-                    </div>
-                    <div className="text-[10px] leading-[1.4] text-[#2d2d2d] font-normal line-clamp-3 mb-[5px]">
-                      {item.title}
-                    </div>
+                    <div className="text-[10px] leading-none font-normal text-[#505050] line-clamp-1 mb-[2px]">{item.date}</div>
+                    <div className="text-[12px] leading-[1.2] text-black font-medium line-clamp-2 mb-[5px]">{item.title}</div>
+                    <div className="text-[10px] leading-[1.4] text-[#2d2d2d] font-normal line-clamp-3 mb-[5px]">{item.title}</div>
                   </div>
                 </Link>
               </SwiperSlide>
