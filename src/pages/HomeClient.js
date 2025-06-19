@@ -99,7 +99,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
 
       {/* Latest Updates contents*/}
       <div className="hidden sm:block">
-        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
+        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="csr" />
       </div>
       <div className="block sm:hidden">
         <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
