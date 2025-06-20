@@ -27,9 +27,25 @@ async function fetchData() {
         error: result.message,
       };
     }
-    return { contents: null, offerings: null, faqs: null, loanTypes: null, industries: null, audience: null, error: result.message };
+    return {
+      contents: null,
+      offerings: null,
+      faqs: null,
+      loanTypes: null,
+      industries: null,
+      audience: null,
+      error: result.message,
+    };
   } catch (error) {
-    return { contents: null, offerings: null, faqs: null, loanTypes: null, industries: null, audience: null, error: "Failed to fetch service data" };
+    return {
+      contents: null,
+      offerings: null,
+      faqs: null,
+      loanTypes: null,
+      industries: null,
+      audience: null,
+      error: "Failed to fetch service data",
+    };
   }
 }
 
@@ -57,7 +73,14 @@ export default async function MsmeLoan() {
       </div>
       {/* WhoDoServe Mobile contents*/}
       <div className="block sm:hidden">
-        <MobKickStartVenture />
+        <MobKickStartVenture
+          title={contents?.title}
+          sub_title={contents?.sub_title}
+          button_text={contents?.button_text}
+          button_url={contents?.button_url}
+          our_offering_title={contents?.our_offering_title}
+          offerings={offerings}
+        />
       </div>
 
       {/* LoanSlider contents*/}

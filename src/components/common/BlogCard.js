@@ -3,6 +3,8 @@ import Image from "next/image";
 import React, { memo } from "react";
 
 function BlogCard({ item, className, index, type = "blog" }) {
+
+
   return (
     <div
       className={`${className ? className : ""

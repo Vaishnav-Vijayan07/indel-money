@@ -5,44 +5,11 @@ import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-// const faqs = [
-//   {
-//     question: "There are many variations of passages of Lorem Ipsum available?",
-//     answer:
-//       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.",
-//   },
-//   {
-//     question:
-//       "If you are going to use a passage of Lorem Ipsum, you need to be sure?",
-//     answer:
-//       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.",
-//   },
-//   {
-//     question: "All the Lorem Ipsum generators on the Internet tend to repeat?",
-//     answer:
-//       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.",
-//   },
-//   {
-//     question:
-//       "Lorem Ipsum is therefore always free from repetition, injected humour?",
-//     answer:
-//       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.",
-//   },
-//   {
-//     question:
-//       "The standard chunk of Lorem Ipsum used since the 1500s is reproduced?",
-//     answer:
-//       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.",
-//   },
-// ];
-
 export default function FAQ({ faqs, pageContents }) {
   const [openIndex, setOpenIndex] = useState(null);
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-
-  
 
   return (
     <section className="w-full 2xl:pt-[100px] 2xl:pb-[100px] md:pt-[60px] md:pb-[60px] pt-[40px] pb-[40px]">

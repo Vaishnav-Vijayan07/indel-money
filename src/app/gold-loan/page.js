@@ -23,6 +23,7 @@ async function fetchGoldLoanData() {
     });
     const result = await response.json();
     const goldloanData = result.data;
+    console.log("Gold Loan Data:", goldloanData);
 
     if (result.status === "success") {
       return {
@@ -32,17 +33,37 @@ async function fetchGoldLoanData() {
         schemes: goldloanData.schemes,
         faqs: goldloanData.GoldLoanFaq,
         features: goldloanData.GoldLoanFeatures,
+        GoldloanBenefits: goldloanData.GoldloanBenefits,
         error: null,
       };
     }
-    return { steps: null, contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: result.message };
+    return {
+      steps: null,
+      contents: null,
+      bannerIcons: null,
+      GoldloanBenefits: null,
+      schemes: null,
+      faqs: null,
+      features: null,
+      error: result.message,
+    };
   } catch (error) {
-    return { steps: null, contents: null, bannerIcons: null, schemes: null, faqs: null, features: null, error: "Failed to fetch service data" };
+    return {
+      steps: null,
+      contents: null,
+      bannerIcons: null,
+      schemes: null,
+      faqs: null,
+      features: null,
+      GoldloanBenefits: null,
+      error: "Failed to fetch service data",
+    };
   }
 }
 
 export default async function GoldLoan() {
-  const { steps, contents, bannerIcons, schemes, faqs, features, error } = await fetchGoldLoanData();
+  const { steps, contents, bannerIcons, schemes, faqs, features, GoldloanBenefits, error } = await fetchGoldLoanData();
+  const flattenedFeatures = features?.flat()?.filter((item) => !item.is_center);
 
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
@@ -62,15 +83,27 @@ export default async function GoldLoan() {
         />
       </div>
       <div className="block sm:hidden">
-        <MobServiceBanner />
+        <MobServiceBanner
+          bannerIcons={bannerIcons}
+          title={contents?.page_title}
+          announcement_text={contents?.announcement_text}
+          gold_rate_text={contents?.gold_rate_text}
+          banner_image={contents?.banner_image}
+          alt={contents?.banner_alt}
+        />
       </div>
 
       {/* Gold loan contents*/}
       <div id="gold-loan-steps" className="hidden sm:block">
-        <StepGoldLoan className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]" hideTitle={true} loanSteps={steps} />
+        <StepGoldLoan
+          className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]"
+          hideTitle={true}
+          loanSteps={steps}
+          title={contents?.gold_loan_step_title}
+        />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoan className="py-[30px_20px]" />
+        <MobStepGoldLoan loanSteps={steps} className="py-[30px_20px]" title={contents?.gold_loan_step_title} />
       </div>
 
       {/* Gold loan steps */}
@@ -86,7 +119,15 @@ export default async function GoldLoan() {
         />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanCriteria />
+        <MobGoldLoanCriteria
+          title={contents?.gold_loan_step_title}
+          description={contents?.description}
+          idProofTitle={contents?.identity_proof_title}
+          identityProof={contents?.identity_proof_description}
+          addressProofTitle={contents?.address_proof}
+          addressProof={contents?.address_proof_description}
+          image={contents?.steps_image}
+        />
       </div>
 
       {/* Gold loan calculator contents*/}
@@ -104,10 +145,17 @@ export default async function GoldLoan() {
           description={contents?.gold_loan_description}
           hassle_free_image={contents?.hassle_free_image}
           hassle_free_image_alt={contents?.hassle_free_image_alt}
+          GoldloanBenefits={GoldloanBenefits}
         />
       </div>
       <div className="block sm:hidden">
-        <MobInstantHasslefree />
+        <MobInstantHasslefree
+          title={contents?.gold_loan_title}
+          description={contents?.gold_loan_description}
+          hassle_free_image={contents?.hassle_free_image}
+          hassle_free_image_alt={contents?.hassle_free_image_alt}
+          GoldloanBenefits={GoldloanBenefits}
+        />
       </div>
 
       {/* instant hussle free */}
@@ -115,7 +163,7 @@ export default async function GoldLoan() {
         <GoldLoanServices features={features} />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanServices />
+        <MobGoldLoanServices features={flattenedFeatures} />
       </div>
 
       {/* Scheme */}
@@ -123,7 +171,7 @@ export default async function GoldLoan() {
         <GoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanScheme />
+        <MobGoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
       </div>
 
       {/* faq contents */}
@@ -131,7 +179,7 @@ export default async function GoldLoan() {
         <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanFaq />
+        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
       </div>
     </>
   );

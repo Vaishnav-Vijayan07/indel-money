@@ -27,6 +27,7 @@ async function fetchBlogsData(page = 1, limit = 10) {
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const result = await response.json();
 
+    console.log(result.data);
     if (result.status === "success") {
       const { content, sliderItems, blogs, pagination } = result.data || {};
       return {
@@ -57,7 +58,7 @@ async function fetchBlogsData(page = 1, limit = 10) {
 }
 
 export async function generateMetadata({ params }) {
-  const page = await parseInt(params?.page) || 1;
+  const page = parseInt(params?.page) || 1;
   const { content, error } = await fetchBlogsData(page, 10);
   // ... metadata logic (same as original)
 }
@@ -71,17 +72,17 @@ export default async function Blog({ searchParams }) {
   const limit = 10;
   const { content, blogs, sliderData, pagination, error } = await fetchBlogsData(page, limit);
 
-  if (error) {
-    return (
-      <div className="container py-10">
-        <h1>Error Loading Blog</h1>
-        <p>{error}</p>
-        <button onClick={() => window.location.reload()} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-          Retry
-        </button>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="container py-10">
+  //       <h1>Error Loading Blog</h1>
+  //       <p>{error}</p>
+  //       <button onClick={() => window.location.reload()} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+  //         Retry
+  //       </button>
+  //     </div>
+  //   );
+  // }
 
   if (!content && !blogs && !sliderData) {
     return (
@@ -117,7 +118,7 @@ export default async function Blog({ searchParams }) {
         <div className="container">
           <div className="text-sm sm:text-lg md:text-xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl text-black font-medium mb-[15px]">
             {content?.all_blogs_title || "All Blogs"}
-          </div>
+        </div>
           <div className="flex flex-wrap -mx-[4px] lg:-mx-[15px] sm:border-b sm:border-b-[rgb(0,0,0,18%)] 2xl:-mx-[35px] sm:pb-[20px] 2xl:pb-[50px] 2xl:mb-[40px] sm:mb-[20px]">
             {blogs?.length > 0 ? (
               blogs?.map((item, index) => <BlogItem index={index} key={item.id || index} item={item} />)

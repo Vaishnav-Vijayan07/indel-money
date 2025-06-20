@@ -30,7 +30,11 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
   return (
     <>
       {/* welcome contents*/}
-      {isMobile ? <MobWelcomeModal /> : banner || serviceBanner ? <WelcomeModal banner={banner} serviceBanner={serviceBanner} /> : null}
+      {isMobile ? (
+        <MobWelcomeModal />
+      ) : banner || serviceBanner ? (
+        <WelcomeModal banner={banner} serviceBanner={serviceBanner} />
+      ) : null}
 
       {/* banner section contents*/}
       <div className="hidden sm:block">
@@ -54,7 +58,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoan loanSteps={initialData?.loanSteps} />
+        <MobStepGoldLoan title={'sample'} loanSteps={initialData?.loanSteps} />
       </div>
 
       {/* Gold loan calculator*/}
@@ -95,10 +99,10 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
 
       {/* Latest Updates contents*/}
       <div className="hidden sm:block">
-        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
+        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="csr" />
       </div>
       <div className="block sm:hidden">
-        <MobLatestUpdates />
+        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
       </div>
 
       {/* <div className="hidden sm:block">
