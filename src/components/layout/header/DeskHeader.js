@@ -14,6 +14,7 @@ import {
 } from "../../ui/dropdown-menu";
 import { useEffect, useState } from "react";
 import NavMenu from "./NavMenu";
+import NavMenu2 from "./NavMenuOld";
 
 function ContactBox({ href, src, title, alt }) {
   return (

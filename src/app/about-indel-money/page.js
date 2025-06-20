@@ -12,7 +12,7 @@ import MobAboutFinacial from "../../components/features/about/MobAboutFinacial";
 import MobAboutSupermarket from "../../components/features/about/MobAboutSupermarket";
 import MobAboutMessage from "../../components/features/about/MobAboutMessage";
 import MobAccolades from "../../components/features/about/MobAccolades";
-import MobIndelvalues from "../../components/features/about/MobIndelValueBanner";
+import MobIndelValuesInfo from "../../components/features/about/MobIndelValuesInfo";
 import MobInvestors from "../../components/features/about/MobInvestorsInfo";
 import MobLifeIndel from "../../components/features/about/MobLifeIndelInfo";
 
@@ -85,7 +85,7 @@ export default async function About() {
         <Indelvalues links={data?.quickLinks} />
       </div>
       <div className="block sm:hidden">
-        <MobIndelvalues />
+        <MobIndelValuesInfo />
       </div>
 
       {/* Investors section */}
