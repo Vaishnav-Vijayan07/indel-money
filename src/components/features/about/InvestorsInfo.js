@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 export default function InvestorsInfo({
   title,
@@ -22,7 +23,7 @@ export default function InvestorsInfo({
           <div className="w-full lg:w-[calc(100%-550px)]  xl:w-[calc(100%-600px)] 2xl:w-[calc(100%-740px)] 3xl:w-[calc(100%-940px)] flex items-center max-lg:mb-[20px]">
             <div className="lg:max-w-[290px] xl:max-w-[400px] 2xl:max-w-[450px] 3xl:max-w-[570px]">
               <div className="text-title1 font-medium xl:mb-[20px] mb-[10px]">{title}</div>
-              <p className="3xl:text-[18px]">{description}</p>
+              <div className="[&>p]:3xl:text-[18px]">{description ? renderHtml(description) : ""}</div>
               <Link
                 href={buttonLink}
                 className="group btn btn-base1 relative z-0 flex items-center justify-between mt-[15px] lg:mt-[30px] w-full max-w-[190px] 2xl:max-w-[240px] 3xl:max-w-[270px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[60px] rounded-full bg-base2 text-white font-bold transition-all duration-300 overflow-hidden shadow-lg hover:bg-base1"

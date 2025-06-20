@@ -45,7 +45,7 @@ export default function AboutMessage({ messages }) {
                 <div className="3xl:text-[30px] 2xl:text-[26px] text-[18px] mb-[10px] text-white text-center leading-none">{item.designation}</div>
                 <div className="w-full max-w-[180px]">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
+                    src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/ceo.png"}
                     alt={item.full_name}
                     width={180}
                     height={180}
@@ -61,7 +61,7 @@ export default function AboutMessage({ messages }) {
                 index % 2 === 0 ? "3xl:pl-[60px] 2xl:pl-[50px] pl-[30px]" : "3xl:pr-[60px] 2xl:pr-[50px] pr-[30px] text-right"
               } 3xl:py-[50px] py-[30px]`}
             >
-              <div className="text-title1 mb-[25px]" dangerouslySetInnerHTML={{ __html: item.title ? item.title : "" }}></div>
+              <div className="text-title1 mb-[25px] [&>span]:font-bold [&>span]:text-base2">{item?.title ? renderHtml(item?.title) : ""}</div>
               {item?.description ? renderHtml(item?.description) : ""}
               <div className="mt-[30px]">
                 <div className="text-[16px] xl:text-[18px] 3xl:text-[24px] text-[#0B0B0B] font-medium mb-[5px]">{item.full_name}</div>

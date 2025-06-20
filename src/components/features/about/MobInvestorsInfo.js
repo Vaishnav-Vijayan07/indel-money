@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 const mobInvestorsBxStyle = "w-full h-full min-h-[115px] rounded-[6px] p-[15px_15px] bg-linear-to-r from-base1 to-[#93BFFA]";
 const mobInvestorsBxTextSmStyle = "text-[12px] 4xs:text-[14px] leading-none font-medium text-white my-[8px]";
@@ -41,7 +42,7 @@ export default function MobInvestorsInfo({
             </div>
           </div>
         </div>
-        <div className="text-[13px] leading-[1.3] font-normal text-black mb-[10px]">{description}</div>
+        <div className="text-[13px] leading-[1.3] font-normal text-black mb-[10px]">{description ? renderHtml(description) : ""}</div>
         <Link
           href={buttonLink || "/"}
           className="group text-[12px] leading-none font-medium capitalize text-[#100f0f] flex items-center mt-[15px] hover:text-base1"

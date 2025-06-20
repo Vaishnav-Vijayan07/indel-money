@@ -5,6 +5,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import Link from "next/link";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 const awards = [
   {
@@ -60,14 +61,11 @@ export default function MobAccolades({ accolades }) {
             <SwiperSlide key={index}>
               <div className="w-full h-auto flex flex-wrap p-[15px_10px_30px_15px] rounded-[20px] bg-gradient-to-l from-[rgba(255,197,197,0.40)] via-[rgba(23,71,158,0.30)] to-[rgba(255,197,197,0.30)]">
                 <div className="w-full 4xs:w-[calc(100%-135px)] pr-[10px] 4xs:pr-[20px] mb-[15px] 4xs:mb-0">
-                  <div
-                    className="text-[18px] leading-[1.2] font-normal text-[#1e1e1e] mb-[15px] [&>span]:text-base2 [&>span]:font-bold"
-                    dangerouslySetInnerHTML={{ __html: item.title ? item.title : "" }}
-                  />
+                  <div className="text-[18px] leading-[1.2] font-normal text-[#1e1e1e] mb-[15px] [&>span]:text-base2 [&>span]:font-bold"></div>
 
                   <div className="text-[12px] leading-[1.3] font-normal text-black">{item.description}</div>
                   <Link
-                    href={"/"}
+                    href={"/award"}
                     className="group text-[12px] leading-none font-medium capitalize text-[#100f0f] flex items-center mt-[15px] hover:text-base1"
                   >
                     view all
@@ -81,7 +79,13 @@ export default function MobAccolades({ accolades }) {
                   </Link>
                 </div>
                 <div className="w-full 4xs:w-[135px] h-[320px] 4xs:h-auto  overflow-hidden rounded-[20px] relative z-0">
-                  <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`} alt={item.title} fill sizes={135} className="object-cover" />
+                  <Image
+                    src={item.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/awards-img-1.jpg"}
+                    alt={item.title}
+                    fill
+                    sizes={135}
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </SwiperSlide>
