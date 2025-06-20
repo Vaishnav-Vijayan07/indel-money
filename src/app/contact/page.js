@@ -30,7 +30,12 @@ export default async function Contact() {
 
   return (
     <>
-      <ContactBanner trollFreeNum={contents?.troll_free_num} contactTitle={contents?.title} contactDesc={contents?.description} />
+      <ContactBanner
+        trollFreeNum={contents?.toll_free_number}
+        contactTitle={contents?.title}
+        contactDesc={contents?.description}
+        helpText={contents?.help_title}
+      />
       <WriteIntel formTitle={contents?.form_title} formSubtitle={contents?.form_sub_title} contactImage={contents?.contact_image} />
       <BranchLocator variant="contact" pageContent={contents} />
       <ContactFaq faqs={faqs} officeContacts={officeContacts} faqTitle={contents?.faq_title} faqSuperTitle={contents?.faq_super_title} />

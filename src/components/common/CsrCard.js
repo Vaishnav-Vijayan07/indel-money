@@ -2,7 +2,7 @@ import { formatPostDate } from "@/lib/utils";
 import Image from "next/image";
 import React, { memo } from "react";
 
-function BlogCard({ item, className, index, type = "blog" }) {
+function CsrCard({ item, className, index, type = "csr" }) {
 
 
   return (
@@ -17,7 +17,7 @@ function BlogCard({ item, className, index, type = "blog" }) {
               ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.second_image}`
               : item?.image
               ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`
-              : "/images/blog/1.jpg"
+              : "/images/csr/1.jpg"
           }
           alt={item?.image_alt}
           fill
@@ -33,7 +33,7 @@ function BlogCard({ item, className, index, type = "blog" }) {
               ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.second_image}`
               : item?.image
                 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`
-                : "/images/blog/1.jpg"
+                : "/images/csr/1.jpg"
           }
           alt={item?.image_alt}
           fill
@@ -41,20 +41,20 @@ function BlogCard({ item, className, index, type = "blog" }) {
           quality={25}
           placeholder="blur" // Optional: Add a blur placeholder
           blurDataURL="/placeholder.jpg" // Optional: Low-res placeholder
-          priority={index === 0} // Prioritize first blog card image
+          priority={index === 0} // Prioritize first csr card image
           className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
         />
       </div>
       <div className="w-[calc(100%-127px)] sm:w-[calc(100%-160px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-240px)] 3xl:w-[calc(100%-320px)] py-1 3xl:py-2">
 
-        {(type === "blog" && item?.createdAt) || item?.posted_on ? (
+        {(type === "csr" && item?.createdAt) || item?.posted_on ? (
           <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] text-[#505050] line-clamp-1 mb-0.5 3xl:mb-1 transition-transform duration-300 group-hover:text-base2">
-            {formatPostDate(type === "blog" ? item?.createdAt : item?.posted_on)}
+            {formatPostDate(type === "csr" ? item?.createdAt : item?.posted_on)}
           </div>
         ) : null}
         <div className="text-[13px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-[1.3] text-black font-bold line-clamp-2 mb-1 3xl:mb-3" dangerouslySetInnerHTML={{ __html: item?.title ? item?.title : "" }} />
         {
-          type == "blog" ? (
+          type == "csr" ? (
 
             <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-2 sm:line-clamp-4" dangerouslySetInnerHTML={{ __html: item?.image_description ? item?.image_description : "" }} />
           )
@@ -77,13 +77,13 @@ function BlogCard({ item, className, index, type = "blog" }) {
   );
 }
 
-export default memo(BlogCard);
+export default memo(CsrCard);
 
 // import { formatPostDate } from "@/lib/utils";
 // import Image from "next/image";
 // import Link from "next/link";
 
-// export default function BlogCard({ item, className }) {
+// export default function csrCard({ item, className }) {
 //   return (
 //     <div
 //       className={`${
@@ -97,7 +97,7 @@ export default memo(BlogCard);
 //               ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.second_image}` || item?.second_image
 //               : item?.image
 //               ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` || item?.image
-//               : "/images/blog/1.jpg"
+//               : "/images/csr/1.jpg"
 //           }
 //           alt={item?.image_alt}
 //           fill

@@ -73,7 +73,14 @@ export default async function MsmeLoan() {
       </div>
       {/* WhoDoServe Mobile contents*/}
       <div className="block sm:hidden">
-        <MobKickStartVenture />
+        <MobKickStartVenture
+          title={contents?.title}
+          sub_title={contents?.sub_title}
+          button_text={contents?.button_text}
+          button_url={contents?.button_url}
+          our_offering_title={contents?.our_offering_title}
+          offerings={offerings}
+        />
       </div>
 
       {/* LoanSlider contents*/}
@@ -98,11 +105,7 @@ export default async function MsmeLoan() {
       <MsmePresence title={contents?.about_msme_title} description={contents?.about_msme_description} audience={industries} />
 
       {/* Grown With Msme contents*/}
-      <GrownWithMsme
-        faqs={faqs}
-        title={contents?.msme_loan_overview_title}
-        description={contents?.msme_loan_overview_description}
-      />
+      <GrownWithMsme faqs={faqs} title={contents?.msme_loan_overview_title} description={contents?.msme_loan_overview_description} />
     </>
   );
 }
