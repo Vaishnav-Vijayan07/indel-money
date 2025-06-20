@@ -38,10 +38,10 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
 
       {/* banner section contents*/}
       <div className="hidden sm:block">
-        <HeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} />
+        <HeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} announcement={initialData?.announcement?.text} />
       </div>
       <div className="block sm:hidden">
-        <MobHeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} />
+        <MobHeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} announcement={initialData?.announcement?.text} />
       </div>
 
       {/* Dreams to Reality contents*/}

@@ -1,3 +1,4 @@
+import { log } from "console";
 import HomeClient from "../pages/HomeClient";
 
 // async function fetchHomeData() {
@@ -40,5 +41,6 @@ async function fetchHomeData() {
 
 export default async function HomePage() {
   const { data, error } = await fetchHomeData();
+  console.log("data ====>", data);
   return <HomeClient initialData={data} serviceBanner={data?.service} banner={data?.banner} initialError={error} />;
 }

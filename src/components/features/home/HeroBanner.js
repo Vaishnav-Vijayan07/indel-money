@@ -3,7 +3,7 @@ import HomeMarquee from "../../features/home/HomeMarquee";
 import HeroBannerEnquiry from "./HeroBannerEnquiry";
 import { useEffect, useState } from "react";
 
-export default function HeroBanner({ heroBanner, initialData }) {
+export default function HeroBanner({ heroBanner, initialData, announcement }) {
   const [goldLiveRate, setGoldLiveRate] = useState("0");
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function HeroBanner({ heroBanner, initialData }) {
     <section className="w-full block relative z-0 overflow-hidden">
       <HomeSlider heroBanner={heroBanner} />
       <HomeMarquee
-        announcementText={initialData?.pageContent?.announcement_text}
+        announcementText={announcement}
         goldRateLabel={initialData?.pageContent?.gold_rate_label}
         goldRateIcon={initialData?.pageContent?.gold_rate_icon}
         goldRate={goldLiveRate}
