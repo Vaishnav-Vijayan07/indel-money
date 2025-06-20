@@ -28,6 +28,7 @@ async function fetchGoldLoanData() {
     if (result.status === "success") {
       return {
         steps: goldloanData.Steps,
+        announcement: goldloanData.announcement,
         contents: goldloanData.GoldloanContent,
         bannerIcons: goldloanData.GoldloanBannerFeatures,
         schemes: goldloanData.schemes,
@@ -40,6 +41,7 @@ async function fetchGoldLoanData() {
     return {
       steps: null,
       contents: null,
+      announcement: null,
       bannerIcons: null,
       GoldloanBenefits: null,
       schemes: null,
@@ -51,6 +53,7 @@ async function fetchGoldLoanData() {
     return {
       steps: null,
       contents: null,
+      announcement: null,
       bannerIcons: null,
       schemes: null,
       faqs: null,
@@ -62,7 +65,7 @@ async function fetchGoldLoanData() {
 }
 
 export default async function GoldLoan() {
-  const { steps, contents, bannerIcons, schemes, faqs, features, GoldloanBenefits, error } = await fetchGoldLoanData();
+  const { steps, contents, bannerIcons, schemes, faqs, features, GoldloanBenefits, announcement } = await fetchGoldLoanData();
   const flattenedFeatures = features?.flat()?.filter((item) => !item.is_center);
 
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
@@ -76,7 +79,7 @@ export default async function GoldLoan() {
         <ServiceBanner
           bannerIcons={bannerIcons}
           title={contents?.page_title}
-          announcement_text={contents?.announcement_text}
+          announcement_text={announcement?.text}
           gold_rate_text={contents?.gold_rate_text}
           banner_image={contents?.banner_image}
           alt={contents?.banner_alt}
@@ -86,7 +89,7 @@ export default async function GoldLoan() {
         <MobServiceBanner
           bannerIcons={bannerIcons}
           title={contents?.page_title}
-          announcement_text={contents?.announcement_text}
+          announcement_text={announcement?.text}
           gold_rate_text={contents?.gold_rate_text}
           banner_image={contents?.banner_image}
           alt={contents?.banner_alt}
