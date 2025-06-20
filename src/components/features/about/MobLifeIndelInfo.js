@@ -65,7 +65,7 @@ export default function MobLifeIndelInfo({ title, description, buttonText, butto
           <div className="w-full h-[40px] flex justify-between items-center rounded-[50px] p-[8px] bg-linear-to-t from-base2/30 to-base1/30 absolute inset-0 m-auto">
             <button
               onClick={goToPrevious}
-              className="w-[22px] h-[22px] rounded-full bg-base1 text-white flex items-center justify-center shadow-xl z-20 transition-all duration-500 cursor-pointer hover:bg-base2"
+              className="w-[22px] h-[22px] rounded-full bg-base1 text-white flex items-center justify-center shadow-xl z-1 transition-all duration-500 cursor-pointer hover:bg-base2"
             >
               <svg viewBox="0 0 19 15" className="w-[8px]">
                 <path d="M7.25 14.25L8.825 12.6187L4.83125 8.625H18.5V6.375H4.83125L8.825 2.38125L7.25 0.75L0.5 7.5L7.25 14.25Z" fill="white" />
@@ -73,7 +73,7 @@ export default function MobLifeIndelInfo({ title, description, buttonText, butto
             </button>
             <button
               onClick={goToNext}
-              className="w-[22px] h-[22px] rounded-full bg-base1 text-white flex items-center justify-center shadow-xl z-20 transition-all duration-500 cursor-pointer hover:bg-base2"
+              className="w-[22px] h-[22px] rounded-full bg-base1 text-white flex items-center justify-center shadow-xl z-1 transition-all duration-500 cursor-pointer hover:bg-base2"
             >
               <svg viewBox="0 0 19 15" className="w-[8px]">
                 <path d="M11.75 14.25L10.175 12.6187L14.1687 8.625H0.5V6.375H14.1687L10.175 2.38125L11.75 0.75L18.5 7.5L11.75 14.25Z" fill="white" />
