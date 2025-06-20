@@ -9,7 +9,7 @@ async function fetchData() {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();
-    const shadesValues = result.data
+    const shadesValues = result.data;
 
     if (result.status === "success") {
       return { contents: shadesValues?.shadesOfIndelContent, values: shadesValues?.differentShades, error: null };
@@ -21,11 +21,7 @@ async function fetchData() {
 }
 
 export default async function DifferentShadesIndel() {
-
   const { contents, values, error } = await fetchData();
-  console.log("Different Shades of Indel contents:", contents);
-  console.log("Different Shades of Indel values:", values);
-  
 
   if (!contents || !values) {
     return <div>Failed to fetch Different Shades of Indel data</div>;
@@ -39,7 +35,7 @@ export default async function DifferentShadesIndel() {
         <DifferentShadesIndelSlide shades={values} />
       </div>
       <div className="block sm:hidden">
-        <MobDifferentShadesIndelSlide />
+        <MobDifferentShadesIndelSlide shades={values} />
       </div>
     </>
   );
