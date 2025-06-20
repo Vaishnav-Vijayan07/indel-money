@@ -1,4 +1,5 @@
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 export default function DifferentShadesIndelBanner({ title }) {
   return (
@@ -7,8 +8,8 @@ export default function DifferentShadesIndelBanner({ title }) {
         <div className="w-full mb-[20px] lg:mb-[30px] 2xl:mb-[50px]">
           <PageBreadcrumb />
         </div>
-        <div className="text-title2 [&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: title   ? title : "" }} />
+        <div className="text-title2 [&>span]:text-base2 [&>span]:font-bold"> {title ? renderHtml(title) : ""}</div>
       </div>
     </section>
-  )
+  );
 }

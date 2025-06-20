@@ -16,18 +16,6 @@ const images = [
 ];
 
 export default function LifeIndelInfo({ title, description, buttonText, buttonLink, lifeImages }) {
-  const renderTitle = (title) => {
-    const words = title?.split(" ");
-    if (words?.length === 3) {
-      return (
-        <>
-          {words[0]} {words[1]} <span className="text-[#EE3824] font-bold">{words[2]}</span>
-        </>
-      );
-    }
-    return title;
-  };
-
   return (
     <section className="w-full py-[80px] xl:py-[80px] 2xl:py-[120px] bg-[linear-gradient(95deg, rgba(243, 0, 0, 0) 3%, rgba(235, 2, 8, 0.15) 100%)]">
       <div className="container">
@@ -87,7 +75,7 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
                           }}
                         >
                           <Image
-                            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${img?.image}`}
+                            src={img?.images ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${img?.image}` : "/images/lifeImage1.webp"}
                             alt={`Slide ${index}`}
                             fill
                             sizes="240px"
@@ -121,15 +109,9 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
           </div>
           <div className=" w-full xl:w-[calc(100%-600px)] 2xl:w-[calc(100%-750px)] max-xl:pt-[50px] flex items-center p-[8px]">
             <div className="w-full lg:pl-[60px]">
-              <div className="text-title1 font-medium xl:mb-[20px] mb-[10px] [&>span]:text-base2 [&>span]:font-bold ">{renderHtml(title)}</div>
-              <div className="[&>p]:mb-[15px] [&>p]:3xl:text-[18px]" dangerouslySetInnerHTML={{ __html: description ? description : "" }} />
-              {/* <p className="3xl:text-[18px] mb-[15px]">{description}</p> */}
-              {/* <p className="3xl:text-[18px]">
-                Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
-                consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
-                source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &apos;de Finibus Bonorum et Malorum&apos; (The Extremes of Good and
-                Evil) by Cicero, written in 45 BC.{" "}
-              </p> */}
+              <div className="text-title1 font-medium xl:mb-[20px] mb-[10px] [&>span]:text-base2 [&>span]:font-bold">{renderHtml(title)}</div>
+              {description ? renderHtml(description) : ""}
+
               <Link
                 href={buttonLink || "#"}
                 className="group btn btn-base1 relative z-0 flex items-center justify-between mt-[15px] lg:mt-[30px] w-fit min-w-[150px] 2xl:min-w-[200px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[60px] rounded-full bg-base2 text-white font-bold transition-all duration-300 overflow-hidden shadow-lg hover:bg-base1"

@@ -4,6 +4,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import LoanCardBx from "@/components/features/msmeloan/LoanCardBx";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 const slides = [
   {
@@ -36,10 +37,10 @@ export default function WhoDoServe({ audience, who_do_serve_title }) {
   return (
     <section className="w-full block py-[20px] md:py-[20px] xl:pt-[30px] 2xl:py-[50px] 3xl:py-[70px]">
       <div className="container">
-        <h2
-          className="text-title1 mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
-          dangerouslySetInnerHTML={{ __html: who_do_serve_title ? who_do_serve_title : "" }}
-        />
+        <h2 className="text-title1 mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold">
+          {" "}
+          {who_do_serve_title ? renderHtml(who_do_serve_title) : ""}
+        </h2>
 
         <Swiper
           modules={[Autoplay, Pagination]}

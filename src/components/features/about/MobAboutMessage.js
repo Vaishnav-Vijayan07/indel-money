@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { renderHtml } from "@/lib/utils/htmlParser";
+import parse from "html-react-parser";
 
 // const messages = [
 //   {
@@ -40,7 +42,15 @@ export default function MobAboutMessage({ messages }) {
         <div className="-mx-[0.5rem]">
           {messages?.map((item, index) => {
             const isExpanded = expanded[index];
-            const preview = item.description.slice(0, 360) + "...";
+            const getTextPreview = (htmlString, limit = 360) => {
+              const tempDiv = document.createElement("div");
+              tempDiv.innerHTML = htmlString;
+
+              const text = tempDiv.textContent || tempDiv.innerText || "";
+              const truncated = text.slice(0, limit) + "...";
+
+              return `<p>${truncated}</p>`;
+            };
 
             const isFirst = index === 0;
 
@@ -52,21 +62,27 @@ export default function MobAboutMessage({ messages }) {
               >
                 <div className="flex items-center gap-[10px] 4xs:gap-[20px] mb-[20px]">
                   <div className="w-[60px] 4xs:w-[76px] h-[60px] 4xs:h-[76px] overflow-hidden rounded-full shadow-[0_4px_4px_0_rgba(0,0,0,0.15)] relative z-0">
-                    <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`} alt={item.full_name} fill className="aspect-square object-cover" />
+                    <Image
+                      src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/mob-ceo.png"}
+                      alt={item.full_name}
+                      fill
+                      className="aspect-square object-cover"
+                    />
                   </div>
                   <div>
-                    <h4 className="text-[16px] 4xs:text-[18px] leading-none line-clamp-1 font-semibold text-[#1e1e1e] mb-[8px]">
-                      {item.title.replace(item.highlight, "")}
-                      <span className="text-base2 font-bold">{item.highlight}</span>
+                    <h4 className="text-[16px] 4xs:text-[18px] leading-none line-clamp-1 font-semibold text-[#1e1e1e] mb-[8px] [&>span]:text-bold [&>span]:text-base2">
+                      {item?.title ? renderHtml(item?.title) : "Message from Chairman"}
                     </h4>
                     <h5 className="text-[12px] 4xs:text-[14px] leading-none line-clamp-1 font-medium text-[#0b0b0b] mb-[5px]">{item.full_name}</h5>
                     <p className="text-[11px] 4xs:text-[13px] leading-none line-clamp-1 font-normal text-[#33538c]">{item.designation}</p>
                   </div>
                 </div>
-                <p className="text-sm1">
-                  {/* {item.message} */}
-                  {isExpanded ? item.description : preview}
-                </p>
+                {isExpanded
+                  ? parse(item.description) // Full HTML
+                  : parse(
+                      getTextPreview(item.description)
+                    ) // Preview with tags
+                }
                 <div onClick={() => toggleReadMore(index)} className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px]">
                   {isExpanded ? "Show Less" : "Read More"}
                 </div>

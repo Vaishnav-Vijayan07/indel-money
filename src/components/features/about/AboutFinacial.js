@@ -2,6 +2,11 @@ import Countersec from "./Countersec";
 import CountersecCopy from "./Countersec copy";
 import { renderHtml } from "@/lib/utils/htmlParser";
 export default function AboutFinacial({ statsData, super_title, title, sub_title, description }) {
+  console.log("statsData", statsData);
+  console.log("super_title", super_title);
+  console.log("title", title);
+  console.log("sub_title", sub_title);
+  console.log("description", description);
   return (
     <section className="w-full py-[50px] 2xl:py-[80px] 3xl:py-[100px]">
       <div className="container">

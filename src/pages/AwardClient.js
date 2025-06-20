@@ -44,7 +44,7 @@ export default function AwardClient({ contents, awards, sliderItems }) {
                         <AwardHighlightBox items={sliderItems} />
                     </div>
                     <div className="sm:hidden block">
-                        <MobAwardHighlightBox />
+                        <MobAwardHighlightBox items={sliderItems} title={contents?.mobile_title} />
                     </div>
                 </div>
             </section>

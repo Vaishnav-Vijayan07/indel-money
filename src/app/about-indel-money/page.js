@@ -12,7 +12,7 @@ import MobAboutFinacial from "../../components/features/about/MobAboutFinacial";
 import MobAboutSupermarket from "../../components/features/about/MobAboutSupermarket";
 import MobAboutMessage from "../../components/features/about/MobAboutMessage";
 import MobAccolades from "../../components/features/about/MobAccolades";
-import MobIndelvalues from "../../components/features/about/MobIndelValueBanner";
+import MobIndelValuesInfo from "../../components/features/about/MobIndelValuesInfo";
 import MobInvestors from "../../components/features/about/MobInvestorsInfo";
 import MobLifeIndel from "../../components/features/about/MobLifeIndelInfo";
 
@@ -36,7 +36,7 @@ export default async function About() {
   const { data, error } = await fetchAboutData();
 
   if (!data) {
-    return <div>Failed to fetch about data</div>
+    return <div>Failed to fetch about data</div>;
   }
 
   return (
@@ -46,10 +46,22 @@ export default async function About() {
 
       {/* Financial Partner section */}
       <div className="hidden sm:block">
-        <AboutFinacial statsData={data?.statsData} super_title={data?.aboutContent?.overview_super_title} title={data?.aboutContent?.overview_title} sub_title={data?.aboutContent?.overview_sub_title} description={data?.aboutContent?.overview_description} />
+        <AboutFinacial
+          statsData={data?.statsData}
+          super_title={data?.aboutContent?.overview_super_title}
+          title={data?.aboutContent?.overview_title}
+          sub_title={data?.aboutContent?.overview_sub_title}
+          description={data?.aboutContent?.overview_description}
+        />
       </div>
       <div className="block sm:hidden">
-        <MobAboutFinacial />
+        <MobAboutFinacial
+          statsData={data?.statsData}
+          super_title={data?.aboutContent?.overview_super_title}
+          title={data?.aboutContent?.overview_title}
+          sub_title={data?.aboutContent?.overview_sub_title}
+          description={data?.aboutContent?.overview_description}
+        />
       </div>
 
       {/* Financial Supermarket section */}
@@ -61,7 +73,11 @@ export default async function About() {
         />
       </div>
       <div className="block sm:hidden">
-        <MobAboutSupermarket serviceImages={data?.serviceImages} />
+        <MobAboutSupermarket
+          serviceImages={data?.serviceImages}
+          description={data?.aboutContent?.service_description}
+          title={data?.aboutContent?.service_title}
+        />
       </div>
 
       {/* Message section */}
@@ -74,7 +90,7 @@ export default async function About() {
 
       {/* Accolades section */}
       <div className="hidden sm:block">
-        <Accolades accolades={data?.accolades} />
+        <Accolades accolades={data?.accolades} achievements_title={data?.aboutContent?.achievements_title} />
       </div>
       <div className="block sm:hidden">
         <MobAccolades accolades={data?.accolades} />
@@ -85,7 +101,7 @@ export default async function About() {
         <Indelvalues links={data?.quickLinks} />
       </div>
       <div className="block sm:hidden">
-        <MobIndelvalues />
+        <MobIndelValuesInfo links={data?.quickLinks} />
       </div>
 
       {/* Investors section */}

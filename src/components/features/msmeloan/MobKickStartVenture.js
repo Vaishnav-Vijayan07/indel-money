@@ -59,7 +59,7 @@ export default function MobKickStartVenture({ title, sub_title, button_text, but
                 <div className="w-[24px] h-auto aspect-square relative z-0">
                   <Image
                     src={item?.icon ? `${serverMediaPath}${item?.icon}` : "/images/offr-05.svg"}
-                    alt={item?.alt}
+                    alt={item?.image_alt ? item?.image_alt : "Offering image"}
                     fill
                     sizes="24px"
                     className="object-contain transition-transform duration-300 group-hover:scale-105"
