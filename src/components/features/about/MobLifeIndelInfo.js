@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 const images = ["/images/lifeImage1.webp", "/images/lifeImage2.webp", "/images/lifeImage3.webp", "/images/lifeImage1.webp"];
 
@@ -26,9 +27,7 @@ export default function MobLifeIndelInfo({ title, description, buttonText, butto
   return (
     <section className="w-full py-[40px_50px] block overflow-hidden">
       <div className="container">
-        <div className="text-title1 font-medium text-center mb-[10px]">
-          Life at <span className="text-base2 font-bold">Indel</span>
-        </div>
+        <div className="text-title1 font-medium text-center mb-[10px] [&>span]:text-base2 [&>span]:font-bold">{title}</div>
         <div className="relative py-[30px] 4xs:py-[40px] xs:py-[50px]">
           <div className="relative w-[200px] 4xs:w-[240px] h-auto aspect-240/300 mx-auto">
             {lifeImages?.map((src, index) => {
@@ -52,7 +51,7 @@ export default function MobLifeIndelInfo({ title, description, buttonText, butto
                   }}
                 >
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${src?.image}`}
+                    src={src?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${src?.image}` : "/images/lifeImage1.webp"}
                     alt={`Slide ${index + 1}`}
                     layout="fill"
                     sizes="240px"
@@ -81,14 +80,7 @@ export default function MobLifeIndelInfo({ title, description, buttonText, butto
             </button>
           </div>
         </div>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book. It has survived not
-          only five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged.
-        </p>
+        {description ? renderHtml(description) : ""}
         <Link
           href={buttonLink || "#"}
           className="group text-[12px] leading-none font-medium capitalize text-[#100f0f] flex items-center mt-[15px] hover:text-base1"

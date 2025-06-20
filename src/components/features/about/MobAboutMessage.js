@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { renderHtml } from "@/lib/utils/htmlParser";
+import parse from "html-react-parser";
 
 // const messages = [
 //   {
@@ -26,7 +27,6 @@ import { renderHtml } from "@/lib/utils/htmlParser";
 // ];
 
 export default function MobAboutMessage({ messages }) {
-  console.log("MobAboutMessage messages:", messages);
   const [expanded, setExpanded] = useState({});
 
   const toggleReadMore = (index) => {
@@ -45,7 +45,11 @@ export default function MobAboutMessage({ messages }) {
             const getTextPreview = (htmlString, limit = 360) => {
               const tempDiv = document.createElement("div");
               tempDiv.innerHTML = htmlString;
-              return tempDiv.textContent.slice(0, limit) + "...";
+
+              const text = tempDiv.textContent || tempDiv.innerText || "";
+              const truncated = text.slice(0, limit) + "...";
+
+              return `<p>${truncated}</p>`;
             };
 
             const isFirst = index === 0;
@@ -66,23 +70,22 @@ export default function MobAboutMessage({ messages }) {
                     />
                   </div>
                   <div>
-                    <h4 className="text-[16px] 4xs:text-[18px] leading-none line-clamp-1 font-semibold text-[#1e1e1e] mb-[8px]">
-                      {item.title.replace(item.highlight, "")}
-                      <span className="text-base2 font-bold">{item.highlight}</span>
+                    <h4 className="text-[16px] 4xs:text-[18px] leading-none line-clamp-1 font-semibold text-[#1e1e1e] mb-[8px] [&>span]:text-bold [&>span]:text-base2">
+                      {item?.title ? renderHtml(item?.title) : "Message from Chairman"}
                     </h4>
                     <h5 className="text-[12px] 4xs:text-[14px] leading-none line-clamp-1 font-medium text-[#0b0b0b] mb-[5px]">{item.full_name}</h5>
                     <p className="text-[11px] 4xs:text-[13px] leading-none line-clamp-1 font-normal text-[#33538c]">{item.designation}</p>
                   </div>
                 </div>
-                {renderHtml(item.description)} 
-                {/* {isExpanded ? (
-                  renderHtml(item.description) // shows full HTML with formatting
-                ) : (
-                  <p>{getTextPreview(item.description)}</p> // shows plain text preview
-                )} */}
-                {/* <div onClick={() => toggleReadMore(index)} className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px]">
+                {isExpanded
+                  ? parse(item.description) // Full HTML
+                  : parse(
+                      getTextPreview(item.description)
+                    ) // Preview with tags
+                }
+                <div onClick={() => toggleReadMore(index)} className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px]">
                   {isExpanded ? "Show Less" : "Read More"}
-                </div> */}
+                </div>
               </div>
             );
           })}

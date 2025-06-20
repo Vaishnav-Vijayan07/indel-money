@@ -101,7 +101,7 @@ export default async function About() {
         <Indelvalues links={data?.quickLinks} />
       </div>
       <div className="block sm:hidden">
-        <MobIndelValuesInfo />
+        <MobIndelValuesInfo links={data?.quickLinks} />
       </div>
 
       {/* Investors section */}
