@@ -50,6 +50,9 @@ export default function StockExchange() {
     }
   };
 
+
+  console.log(intimations);
+
   useEffect(() => {
     if (activeYear?.id) {
       fetchStocksData(activeYear?.id);
@@ -144,7 +147,7 @@ export default function StockExchange() {
                                 </td>
                                 <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)]">
                                   <Link
-                                    href={stock?.intimation_document}
+                                    href={`${process.env.NEXT_PUBLIC_BACKEND_URL}${stock?.intimation_document}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-[10px] xl:text-[12px] 3xl:text-[16px] flex items-center space-x-2 text-[#1F1B1B] hover:text-red-600"
@@ -161,7 +164,7 @@ export default function StockExchange() {
                                 </td>
                                 <td className="text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px]">
                                   <Link
-                                    href={stock.outcome_document}
+                                    href={`${process.env.NEXT_PUBLIC_BACKEND_URL}${stock.outcome_document}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-[10px] xl:text-[12px] 3xl:text-[16px] flex items-center space-x-2 text-[#1F1B1B] hover:text-red-600"
@@ -213,7 +216,7 @@ export default function StockExchange() {
                                 </td>
                                 <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)] whitespace-nowrap">
                                   <Link
-                                    href={intimation?.record_date_document}
+                                    href={`${process.env.NEXT_PUBLIC_BACKEND_URL}${intimation?.record_date_document}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-[10px] xl:text-[12px] 3xl:text-[16px] flex items-center space-x-2 text-[#1F1B1B] hover:text-red-600"
@@ -230,7 +233,7 @@ export default function StockExchange() {
                                 </td>
                                 <td className="text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px]">
                                   <Link
-                                    href={intimation?.interest_payment_document}
+                                    href={`${process.env.NEXT_PUBLIC_BACKEND_URL}${intimation?.interest_payment_document}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-[10px] xl:text-[12px] 3xl:text-[16px] flex items-center space-x-2 text-[#1F1B1B] hover:text-red-600"
