@@ -29,8 +29,6 @@ async function fetchHomeData() {
     });
 
     const result = await response.json();
-    console.log("result ====>", result);
-    
 
     if (result.status === "success") {
       return { data: result.data, error: null };
@@ -43,6 +41,5 @@ async function fetchHomeData() {
 
 export default async function HomePage() {
   const { data, error } = await fetchHomeData();
-  console.log("data ====>", data);
   return <HomeClient initialData={data} serviceBanner={data?.service} banner={data?.banner} initialError={error} />;
 }
