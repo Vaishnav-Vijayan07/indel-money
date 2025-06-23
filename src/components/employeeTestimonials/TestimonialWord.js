@@ -37,6 +37,7 @@ function WordTestimonialCard({ item }) {
             </div>
             <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-none font-normal text-[#121212] capitalize line-clamp-1">
               {item?.name}
+              
             </div>
           </div>
         </div>
