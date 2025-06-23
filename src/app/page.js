@@ -29,6 +29,8 @@ async function fetchHomeData() {
     });
 
     const result = await response.json();
+    console.log("result ====>", result);
+    
 
     if (result.status === "success") {
       return { data: result.data, error: null };
