@@ -53,7 +53,6 @@ export default function CareerLifeAtIndel({
   gallery_button_link,
   gallery,
 }) {
-
   return (
     <section className="w-full block py-[20px_20px] lg:py-[40px_30px] 2xl:py-[60px_40px] 3xl:py-[80px_50px] relative z-0">
       <div className="container">
@@ -83,34 +82,7 @@ export default function CareerLifeAtIndel({
           <div className="w-full lg:w-[376px] xl:w-[420px] 2xl:w-[520px] 3xl:w-[676px] mb-[15px] lg:mb-0">
             <div className="w-full h-full p-[20px_15px] lg:p-[30px_20px] xl:p-[40px_30px] 2xl:p-[60px_40px] 3xl:p-[80px_60px] rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] bg-linear-to-b from-transparent to-white relative z-0 overflow-hidden after:content-[''] after:absolute after:-z-1 after:inset-0 after:opacity-50 after:block after:bg-linear-to-b after:from-base1 after:to-base2 after:pointer-events-none flex items-center">
               <Image src="/images/careerLifeAtIndel-bg.jpg" alt="careerLifeAtIndel-bg" fill sizes="676px" className="opacity-5 pointer-events-none" />
-              <div className="editor">
-                {/* <ul>
-                  <li>
-                    <b>A Culture of Excellence: </b>Immerse yourself in a culture that values hard work, creativity, and a relentless pursuit of
-                    excellence.
-                  </li>
-                  <li>
-                    <b>Empowering Opportunities: </b>Explore diverse career paths and receive continuous learning and development opportunities.
-                  </li>
-                  <li>
-                    <b>Work-Life Harmony: </b>Balance your professional and personal life with flexible work
-                  </li>
-                  <li>
-                    <b>Social Events and Celebrations: </b>Participate in a range of social events and celebrations that foster camaraderie and team
-                    spirit.
-                  </li>
-                  <li>
-                    <b>Recognition and Rewards: </b>Be recognized and rewarded for your contributions through various incentive programs and
-                    accolades.
-                  </li>
-                  <li>
-                    <b>Social Events and Celebrations: </b>Participate in a range of social events and celebrations that foster camaraderie and team
-                    spirit.
-                  </li>
-                </ul>
-                <p>Join the Indel family and experience a fulfilling and rewarding career journey.</p> */}
-                {gallery_description ? renderHtml(gallery_description) : ""}
-              </div>
+              <div className="editor">{gallery_description ? renderHtml(gallery_description) : ""}</div>
             </div>
           </div>
           <div className="w-full lg:w-[calc(100%-376px)] xl:w-[calc(100%-420px)] 2xl:w-[calc(100%-520px)] 3xl:w-[calc(100%-676px)] lg:px-[6px] 2xl:px-[10px]">

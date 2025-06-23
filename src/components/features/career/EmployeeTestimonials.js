@@ -187,6 +187,7 @@ export default function EmployeeTestimonials({
   testimonial_button_link,
   textTestimonials,
   videoTestimonials,
+  title,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState(0);
@@ -205,7 +206,7 @@ export default function EmployeeTestimonials({
             <AwardHighlightBox variant={"employeeTestimonials"} items={awards} />
           </div>
           <div className="sm:hidden block">
-            <MobAwardHighlight />
+            <MobAwardHighlight items={awards} title={title} />
           </div>
         </div>
       </div>
