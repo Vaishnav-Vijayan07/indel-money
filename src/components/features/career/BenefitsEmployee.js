@@ -1,12 +1,12 @@
 import Image from "next/image";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 const benefitsEmployee = [
   {
     src: "/images/benefitsEmployee-1.svg",
     alt: "benefitsEmployee",
     title: "Career Growth",
-    description:
-      "Indel offers ample opportunities for professional development and advancement.",
+    description: "Indel offers ample opportunities for professional development and advancement.",
   },
   {
     src: "/images/benefitsEmployee-2.svg",
@@ -18,29 +18,25 @@ const benefitsEmployee = [
     src: "/images/benefitsEmployee-3.svg",
     alt: "benefitsEmployee",
     title: "Work-Life Balance",
-    description:
-      "Enjoy a healthy work-life balance with flexible work arrangements.",
+    description: "Enjoy a healthy work-life balance with flexible work arrangements.",
   },
   {
     src: "/images/benefitsEmployee-4.svg",
     alt: "benefitsEmployee",
     title: "Employee Welfare",
-    description:
-      "Benefit from comprehensive employee welfare programs and initiatives.",
+    description: "Benefit from comprehensive employee welfare programs and initiatives.",
   },
   {
     src: "/images/benefitsEmployee-5.svg",
     alt: "benefitsEmployee",
     title: "Financial Rewards",
-    description:
-      "Receive competitive compensation packages and performance-based incentives.",
+    description: "Receive competitive compensation packages and performance-based incentives.",
   },
   {
     src: "/images/benefitsEmployee-6.svg",
     alt: "benefitsEmployee",
     title: "Strong Leadership",
-    description:
-      "Learn from experienced leaders and mentors who inspire and guide.",
+    description: "Learn from experienced leaders and mentors who inspire and guide.",
   },
 ];
 
@@ -56,29 +52,24 @@ export default function BenefitsEmployee({ benefits, benefits_title }) {
             height={50}
             className="w-[30px] xl:w-[40px] 2xl:w-[50px] inline aspect-square mr-[10px] lg:mr-[15px] 2xl:mr-[20px]"
           />
-          <div className="[&>span]:font-bold [&>span]:text-base2" dangerouslySetInnerHTML={{ __html: benefits_title ? benefits_title : "benefits" }} />
+          <div className="[&>span]:font-bold [&>span]:text-base2">{benefits_title ? renderHtml(benefits_title) : ""}</div>
         </div>
         <div className="flex flex-wrap -mx-[5px] sm:-mx-[10px] lg:-mx-[15px] xl:-mx-[30px] 2xl:-mx-[40px]">
           {benefits?.map((item, index) => (
-            <div
-              key={index}
-              className="w-full sm:w-1/2 md:w-1/3 p-[5px_5px] sm:p-[5px_10px] lg:p-[5px_15px] xl:p-[10px_30px] 2xl:p-[15px_40px]"
-            >
+            <div key={index} className="w-full sm:w-1/2 md:w-1/3 p-[5px_5px] sm:p-[5px_10px] lg:p-[5px_15px] xl:p-[10px_30px] 2xl:p-[15px_40px]">
               <div
                 className={`
-                                        ${index % 2 === 0
-                    ? "border-base1/20 hover:shadow-[0_4px_15px_0_rgba(23,71,71,0.20)]"
-                    : "border-[#d6071e]/20 hover:shadow-[0_4px_15px_0_rgba(214,7,30,0.20)]"
-                  } 
+                                        ${
+                                          index % 2 === 0
+                                            ? "border-base1/20 hover:shadow-[0_4px_15px_0_rgba(23,71,71,0.20)]"
+                                            : "border-[#d6071e]/20 hover:shadow-[0_4px_15px_0_rgba(214,7,30,0.20)]"
+                                        } 
                                         w-full h-full flex rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] shadow-[0_4px_15px_0_rgba(0,0,0,0.15)] border overflow-hidden hover:-translate-y-[5px] transition-all duration-300
                                         `}
               >
                 <div
                   className={`
-                                        ${index % 2 === 0
-                      ? "bg-base1"
-                      : "bg-[#d6071e]"
-                    } 
+                                        ${index % 2 === 0 ? "bg-base1" : "bg-[#d6071e]"} 
                                         w-[50px] lg:w-[60px] xl:w-[80px] 2xl:w-[100px] 3xl:w-[120px] p-[20px_10px] lg:p-[30px_15px] 2xl:p-[40px_20px] flex items-center justify-center`}
                 >
                   <Image
@@ -93,9 +84,7 @@ export default function BenefitsEmployee({ benefits, benefits_title }) {
                   <div className="text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[24px] 3xl:text-[28px] font-medium leading-none text-[#161616] mb-[5px] lg:mb-[10px] 2xl:mb-[15px]">
                     {item.title}
                   </div>
-                  <div className="text-sm1 text-[#161616] line-clamp-3">
-                    {item.description}
-                  </div>
+                  <div className="text-sm1 text-[#161616] line-clamp-3">{item.description}</div>
                 </div>
               </div>
             </div>

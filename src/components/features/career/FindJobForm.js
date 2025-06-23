@@ -193,7 +193,7 @@ export default function FindJobForm({ variant = "default" }) {
           >
             <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">VIEW ALL</span>
             <Image
-              src="/images/icon-career.png"
+              src="/images/icon-careerBtn.svg"
               alt="careerBtn"
               width={40}
               height="40"

@@ -23,6 +23,7 @@ async function fetchData() {
         banners: careerData?.careerBanners,
         benefits: careerData?.empBenefits,
         awards: careerData?.awards,
+        award_content: careerData?.awardContent,
         testimonials: careerData?.testimoinials,
         states: careerData?.careerStates,
         jobs: careerData?.careerJobs,
@@ -36,6 +37,7 @@ async function fetchData() {
       benefits: null,
       gallery: null,
       awards: null,
+      award_content: null,
       testimonials: null,
       states: null,
       jobs: null,
@@ -48,6 +50,7 @@ async function fetchData() {
       benefits: null,
       gallery: null,
       awards: null,
+      award_content: null,
       testimonials: null,
       states: null,
       jobs: null,
@@ -57,7 +60,7 @@ async function fetchData() {
 }
 
 export default async function Career() {
-  const { contents, banners, benefits, awards, gallery, testimonials, states, jobs, error } = await fetchData();
+  const { contents, banners, benefits, awards, award_content, gallery, testimonials, states, jobs, error } = await fetchData();
 
   if (error) {
     return <div>{error}</div>;
@@ -91,13 +94,20 @@ export default async function Career() {
         />
       </div>
       <div className="block sm:hidden">
-        <MobCareerLifeAtIndel />
+        <MobCareerLifeAtIndel
+          gallery_title={contents?.gallery_title}
+          gallery_sub_title={contents?.gallery_sub_title}
+          gallery_description={contents?.gallery_description}
+          gallery_button_text={contents?.gallery_button_text}
+          gallery_button_link={contents?.gallery_button_link}
+          gallery={gallery}
+        />
       </div>
       <div className="hidden sm:block">
         <BenefitsEmployee benefits={benefits} benefits_title={contents?.benefits_title} />
       </div>
       <div className="block sm:hidden">
-        <MobBenefitsEmployee />
+        <MobBenefitsEmployee benefits={benefits} benefits_title={contents?.benefits_title} />
       </div>
       <EmployeeTestimonials
         textTestimonials={testimonials.textTestimonials}
@@ -107,6 +117,7 @@ export default async function Career() {
         testimonial_button_name={contents?.testimonial_button_name}
         testimonial_description={contents?.testimonial_description}
         testimonial_title={contents?.testimonial_title}
+        title={award_content?.mobile_title}
       />
     </div>
   );
