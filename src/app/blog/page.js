@@ -71,6 +71,7 @@ export default async function Blog({ searchParams }) {
   const page = await parseInt(searchParams?.page) || 1;
   const limit = 10;
   const { content, blogs, sliderData, pagination, error } = await fetchBlogsData(page, limit);
+    console.log(content);
 
   // if (error) {
   //   return (

@@ -47,7 +47,7 @@ async function fetchBlogData(slug) {
 }
 
 // Fetch recent blogs
-async function fetchRecentBlogs() {
+async function fetchRecentBlogs(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs?limit=3`, {
       cache: "no-store",
@@ -57,7 +57,8 @@ async function fetchRecentBlogs() {
     }
     const result = await response.json();
     if (result.status === "success") {
-      return { data: result.data?.blogs || [], error: null };
+      const blog = result.data?.blogs?.filter((blog) => blog.slug !== slug);
+      return { data: blog || [], error: null };
     }
     return { data: [], error: result.message };
   } catch (error) {
@@ -138,7 +139,7 @@ export async function generateMetadata({ params }) {
 export default async function Blog({ params }) {
   const { slug } = await params; // params is already an object, no need to await
   const { content: blogData, error: blogError } = await fetchBlogData(slug);
-  const { data: recentBlogs, error: recentError } = await fetchRecentBlogs();
+  const { data: recentBlogs, error: recentError } = await fetchRecentBlogs(slug);
 
   // Log for debugging
 

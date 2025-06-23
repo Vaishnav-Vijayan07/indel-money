@@ -22,17 +22,17 @@ const MobLatestUpdates = dynamic(() => import("@/components/features/blog/MobLat
 async function fetchBlogsData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news?page=${page}&limit=${limit}`, {
-   
+      cache: "no-store", // Ensure fresh data
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const result = await response.json();
-
+console.log(result.data);
     if (result.status === "success") {
-      const { content, sliderItems, blogs, pagination } = result.data || {};
+      const { content, sliderItems, news, pagination } = result.data || {};
       return {
         content,
         sliderData: sliderItems,
-        blogs,
+        news,
         pagination: pagination || { currentPage: 1, totalPages: 1, totalItems: 0 },
         error: null,
       };
@@ -40,7 +40,7 @@ async function fetchBlogsData(page = 1, limit = 10) {
     return {
       content: null,
       sliderData: null,
-      blogs: null,
+      news: null,
       pagination: null,
       error: result.message,
     };
@@ -49,9 +49,9 @@ async function fetchBlogsData(page = 1, limit = 10) {
     return {
       content: null,
       sliderData: null,
-      blogs: null,
+      news: null,
       pagination: null,
-      error: "Failed to fetch blog data. Please try again.",
+      error: "Failed to fetch news data. Please try again.",
     };
   }
 }
@@ -69,21 +69,21 @@ const PaginationItems = memo(({ currentPage, totalPages }) => {
 export default async function News({ searchParams }) {
   const page = await parseInt(searchParams?.page) || 1;
   const limit = 10;
-  const { content, blogs, sliderData, pagination, error } = await fetchBlogsData(page, limit);
+  const { content, news, sliderData, pagination, error } = await fetchBlogsData(page, limit);
 
-  if (error) {
-    return (
-      <div className="container py-10">
-        <h1>Error Loading News</h1>
-        <p>{error}</p>
-        <button onClick={() => window.location.reload()} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-          Retry
-        </button>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="container py-10">
+  //       <h1>Error Loading News</h1>
+  //       <p>{error}</p>
+  //       <button onClick={() => window.location.reload()} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+  //         Retry
+  //       </button>
+  //     </div>
+  //   );
+  // }
 
-  if (!content && !blogs && !sliderData) {
+  if (!content && !news && !sliderData) {
     return (
       <div className="container py-10">
         <h1>No News Data Available</h1>
@@ -117,13 +117,13 @@ export default async function News({ searchParams }) {
       <section className="p-[30px_0_20px_0] 2xl:p-[40px_0_60px_0] relative z-0">
         <div className="container">
           <div className="text-sm sm:text-lg md:text-xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl text-black font-medium mb-[15px]">
-            {content?.all_blogs_title || "All News"}
+            {content?.all_news_title || "All News"}
           </div>
           <div className="flex flex-wrap -mx-[4px] lg:-mx-[15px] sm:border-b sm:border-b-[rgb(0,0,0,18%)] 2xl:-mx-[35px] sm:pb-[20px] 2xl:pb-[50px] 2xl:mb-[40px] sm:mb-[20px]">
-            {blogs?.length > 0 ? (
-              blogs?.map((item, index) => <BlogItem index={index} key={item.id || index} item={item} type="news" />)
+            {news?.length > 0 ? (
+              news?.map((item, index) => <BlogItem index={index} key={item.id || index} item={item} type="news" />)
             ) : (
-              <p>No blogs available.</p>
+              <p>No news available.</p>
             )}
           </div>
           <Pagination aria-label="News pagination">
