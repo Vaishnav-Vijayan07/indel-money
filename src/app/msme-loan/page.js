@@ -99,7 +99,9 @@ export default async function MsmeLoan() {
         <WhoDoServe audience={audience} who_do_serve_title={contents?.who_do_serve_title} />
       </div>
       {/* WhoDoServe Mobile contents*/}
-      <div className="block sm:hidden">{/* <MobWhoDoServe /> */}</div>
+      <div className="block sm:hidden">
+        <MobWhoDoServe audience={audience} who_do_serve_title={contents?.who_do_serve_title} />
+      </div>
 
       {/* MsmePresence contents*/}
       <MsmePresence title={contents?.about_msme_title} description={contents?.about_msme_description} audience={industries} />

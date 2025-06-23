@@ -38,10 +38,18 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
 
       {/* banner section contents*/}
       <div className="hidden sm:block">
-        <HeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} />
+        <HeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.announcement?.text}
+        />
       </div>
       <div className="block sm:hidden">
-        <MobHeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} />
+        <MobHeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.announcement?.text}
+        />
       </div>
 
       {/* Dreams to Reality contents*/}
@@ -58,7 +66,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoan title={'sample'} loanSteps={initialData?.loanSteps} />
+        <MobStepGoldLoan title={"sample"} loanSteps={initialData?.loanSteps} />
       </div>
 
       {/* Gold loan calculator*/}
@@ -99,7 +107,11 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
 
       {/* Latest Updates contents*/}
       <div className="hidden sm:block">
-        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="csr" />
+        <LatestUpdates
+          sliderItems={initialData?.blogs}
+          sliderTitle={initialData?.pageContent?.updates_section_title}
+          type="csr"
+        />
       </div>
       <div className="block sm:hidden">
         <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />

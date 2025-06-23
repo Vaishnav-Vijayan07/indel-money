@@ -13,7 +13,7 @@ import Link from "next/link";
 import "./Home.css";
 import EnquiryForm from "@/components/common/EnquiryForm";
 
-export default function MobHeroBanner({ heroBanner, initialData }) {
+export default function MobHeroBanner({ heroBanner, initialData, announcement }) {
   return (
     <section className="w-full block relative z-0 overflow-hidden">
       <Swiper
@@ -55,7 +55,7 @@ export default function MobHeroBanner({ heroBanner, initialData }) {
         ))}
       </Swiper>
       <MobHomeMarquee
-        announcementText={initialData?.pageContent?.announcement_text}
+        announcementText={announcement}
         goldRateLabel={initialData?.pageContent?.gold_rate_label}
         goldRateIcon={initialData?.pageContent?.gold_rate_icon}
       />
