@@ -1,5 +1,6 @@
 import Image from "next/image";
 function WordTestimonialCard({ item }) {
+
   return (
     <div className="w-full md:w-1/2 p-[60px_0_6px] sm:p-[10px] 2xl:p-[22px] first:pt-[15px]">
       <div className="group w-full h-full sm:aspect-[795/415] bg-[#D4E6FF] sm:overflow-hidden rounded-[20px] 2xl:rounded-[24px] block p-[40px_20px] sm:p-[20px_30px] xl:p-[40px_30px] 3xl:p-[60px_40px] relative z-0">
@@ -35,7 +36,7 @@ function WordTestimonialCard({ item }) {
               {item?.title}
             </div>
             <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-none font-normal text-[#121212] capitalize line-clamp-1">
-              {item?.testimonial}
+              {item?.name}
             </div>
           </div>
         </div>
