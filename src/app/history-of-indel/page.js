@@ -21,12 +21,9 @@ async function fetchHistoryData() {
 export default async function History() {
   const { contents, images, inceptions, error } = await fetchHistoryData();
 
-  console.log(contents, images, inceptions, error);
-
-  if(!contents || !images || !inceptions) {
+  if (!contents || !images || !inceptions) {
     return <div>Failed to fetch history data</div>;
   }
-
 
   return (
     <>
@@ -42,7 +39,7 @@ export default async function History() {
         <YearsInception inceptionslides={inceptions} title={contents?.inception_title} />
       </div>
       <div className="block sm:hidden">
-        <MobYearsInception />
+        <MobYearsInception inceptionslides={inceptions} title={contents?.inception_title} years={contents?.inception_count} />
       </div>
     </>
   );
