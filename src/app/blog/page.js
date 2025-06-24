@@ -22,7 +22,6 @@ const MobLatestUpdates = dynamic(() => import("@/components/features/blog/MobLat
 async function fetchBlogsData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs?page=${page}&limit=${limit}`, {
-      next: { revalidate: 3600 },
       cache: "no-store", // Ensure fresh data
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);

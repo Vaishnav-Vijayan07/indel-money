@@ -68,7 +68,7 @@ export default function MobAboutFinacial({ super_title, title, statsData, sub_ti
             <div>
               <div className="w-full h-auto overflow-hidden rounded-[10px] bg-white p-[18px]">
                 <h5 className="text-[16px] leading-[1.2] font-bold text-base1 mb-[8px]">{sub_title ? sub_title : ""}</h5>
-                <p>{description ? description : ""}</p>
+                {description ? renderHtml(description) : ""}
               </div>
             </div>
           </div>

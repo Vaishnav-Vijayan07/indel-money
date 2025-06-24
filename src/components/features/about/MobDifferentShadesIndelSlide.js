@@ -122,6 +122,7 @@ function ShadeIndelBox({ item, isActive }) {
             fill
             sizes="50px"
             className="mx-auto"
+            objectFit="contain"
           />
         </div>
         <div className="text-[14px] leading-none font-medium capitalize text-[#1e1e1e] text-center overflow-hidden transition-all duration-300 block">
