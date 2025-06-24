@@ -31,11 +31,11 @@ import { useCallback } from "react";
 //     { name: "Policy of Stakeholders Relationship Committee  ", link: "/pdfs/2023-24.pdf" },
 // ];
 
-export default function Policies({ policies, currentPage, totalPages, }) {
+export default function Policies({ policies, currentPage, totalPages,content }) {
     const isDataPresent = policies?.length > 0;
     const router = useRouter();
     const searchParams = useSearchParams()
-
+    console.log(content?.policies_title);
     const createQueryString = useCallback(
         (name, value) => {
             const params = new URLSearchParams(searchParams.toString());
@@ -54,7 +54,7 @@ export default function Policies({ policies, currentPage, totalPages, }) {
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">
                 <h2 className="text-[28px] lg:text-[35px] xl:text-[45px] 2xl:text-[50px] 3xl:text-[68px] text-black font-regular mb-[5px]">
-                    <span className="text-[#F30000] font-bold">Investors</span>
+                    <span className="text-[#F30000] font-bold">{content?.page_title}</span>
                 </h2>
                 <div className='breadcrumb hidden sm:flex flex-wrap mb-[10px] md:mb-[35px]'>
                     <Link href="/" className="block w-fit text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#383838] mr-[25px] relative 
@@ -87,7 +87,7 @@ export default function Policies({ policies, currentPage, totalPages, }) {
                         <Sidebar />
                     </div>
                     <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
-                        <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">Policies</div>
+                        <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{content?.policies_title}</div>
                         {
                             isDataPresent ? (
                                 <>

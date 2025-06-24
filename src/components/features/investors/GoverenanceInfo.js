@@ -16,7 +16,7 @@ export default function GoverenanceInfo({ contents, pdfItems }) {
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">
                 <h2 className="text-[28px] lg:text-[35px] xl:text-[45px] 2xl:text-[50px] 3xl:text-[68px] text-black font-regular mb-[5px]">
-                    <span className="text-[#F30000] font-bold">Investors</span>
+                    <span className="text-[#F30000] font-bold">{contents?.page_title? contents?.page_title : "Investors"}</span>
                 </h2>
                 <div className="breadcrumb hidden sm:flex flex-wrap mb-[10px] md:mb-[35px]">
                     <Link
@@ -46,7 +46,7 @@ export default function GoverenanceInfo({ contents, pdfItems }) {
                     </div>
                     <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
                         <div className="text-black text-title1 font-medium mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
-                            Corporate Governance
+                            {contents?.corporate_governance_title? contents?.corporate_governance_title : "corporate governance title"}
                         </div>
 
                         <div className="grid grid-cols-1 4xs:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-2 xl:gap-4 3xl:gap-6">

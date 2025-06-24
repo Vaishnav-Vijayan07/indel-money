@@ -9,10 +9,11 @@ async function fetchCreditRatingsData() {
         });
         const result = await response.json();
 
+
         if (result.status === "success") {
-            return { reports: result.data?.files, error: null };
+            return { content: result.data?.content[0]?.page_title, reports: result.data?.files, error: null };
         }
-        return { reports: null, error: result.message };
+        return { content: null,reports: null, error: result.message };
     } catch (error) {
         return { reports: null, error: "Failed to fetch credit ratings data" };
     }
@@ -21,7 +22,7 @@ async function fetchCreditRatingsData() {
 
 export default async function QuarterlyReports() {
 
-    const { reports, error } = await fetchCreditRatingsData()
+    const { content, reports, error } = await fetchCreditRatingsData()
 
     if (!reports) {
         notFound()
@@ -29,7 +30,7 @@ export default async function QuarterlyReports() {
 
     return (
         <>
-            <CreditRatings reports={reports} />
+            <CreditRatings content={content} reports={reports} />
         </>
 
     );

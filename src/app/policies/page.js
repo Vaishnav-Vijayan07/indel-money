@@ -11,7 +11,6 @@ async function fetchPolicyData(page = 1, limit = 5) {
     const policyData = result.data;
     const pagination = result.data.pagination
 
-
     if (result.status === "success") {
       return {
         content: policyData?.content,
@@ -53,7 +52,7 @@ export default async function Policy({ searchParams }) {
 
   return (
     <>
-      <Policies policies={policies} currentPage={currentPage} totalPages={totalPages} limit={limit} />
+      <Policies policies={policies} content={content} currentPage={currentPage} totalPages={totalPages} limit={limit} />
 
     </>
 
