@@ -103,7 +103,7 @@ export async function fetchPolicyData(page = 1, limit = 5) {
         const policyData = result.data;
         const pagination = result.data.pagination
 
-
+ 
         if (result.status === "success") {
             return {
                 content: policyData?.content,

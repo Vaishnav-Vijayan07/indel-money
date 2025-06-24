@@ -18,7 +18,7 @@ export default function MakeYourMove({ make_your_move_title, make_your_move_desc
             <div className="group w-full h-full rounded-[15px] lg:rounded-[20px] 2xl:rounded-[30px] 3xl:rounded-[36px] overflow-hidden relative z-0">
               <Image
                 src={
-                  make_your_move_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${make_your_move_image}` : "/images/career-1.jpg"
+                  make_your_move_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/${make_your_move_image}` : "/images/career-1.jpg"
                 }
                 alt={image_alt || "career"}
                 fill

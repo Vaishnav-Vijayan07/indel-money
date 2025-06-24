@@ -13,14 +13,13 @@ import LoadingCircleSpinner from "@/components/common/LoadingCircleSpinner";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { FreeMode } from "swiper/modules";
 
-export default function StockExchange() {
+export default function StockExchange({setContent}) {
   const [activeYear, setActiveYear] = useState({});
   const [openAccordion, setOpenAccordion] = useState("");
   const [years, setYears] = useState([]);
   const [meetings, setMeetings] = useState([]);
   const [intimations, setIntimations] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const handleAccordionToggle = (year) => {
     setOpenAccordion(openAccordion === year ? null : year);
   };
@@ -45,13 +44,13 @@ export default function StockExchange() {
       const { data } = await api.get("/web/investors/stock-exchange", { params: { year } });
       setMeetings(data?.data?.meetings || []);
       setIntimations(data?.data?.intimations || []);
+      setContent(data?.data?.content)
     } catch (error) {
       console.error("Error fetching fiscal years:", error);
     }
   };
 
 
-  console.log(intimations);
 
   useEffect(() => {
     if (activeYear?.id) {

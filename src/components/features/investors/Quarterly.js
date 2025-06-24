@@ -1,17 +1,18 @@
-
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
 import QuarterlyReportSection from "./QuarterlyReports";
+import { useState } from "react";
 
 export default function Quarterly() {
-
+  const [content, setContent] = useState(null);
 
     return (
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">
                 <h2 className="text-[28px] lg:text-[35px] xl:text-[45px] 2xl:text-[50px] 3xl:text-[68px] text-black font-regular mb-[5px]">
-                    <span className="text-[#F30000] font-bold">Investors</span>
+                    <span className="text-[#F30000] font-bold">{content ? content : "Investors"}</span>
                 </h2>
                 <div className='breadcrumb flex-wrap mb-[35px] sm:flex hidden'>
                     <Link href="/" className="block w-fit text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#383838] mr-[25px] relative 
@@ -45,7 +46,7 @@ export default function Quarterly() {
                     </div>
                     <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
                         <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">Quarterly Results</div>
-                        <QuarterlyReportSection />
+                        <QuarterlyReportSection setContent={setContent} />
                     </div>
                 </div>
             </div>

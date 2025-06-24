@@ -6,7 +6,7 @@ export default function StockExchange() {
   return (
     <>
       {/* contact*/}
-      <Stockexchange /> 
+      <Stockexchange />
     </>
 
   );
