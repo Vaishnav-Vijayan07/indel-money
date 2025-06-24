@@ -31,6 +31,7 @@ export default function JobResultBox({ item, variant = "default" }) {
                 />
                 Share
               </Link>
+              
             </div>
             <div>
               {/* <JobResultAlert /> */}
