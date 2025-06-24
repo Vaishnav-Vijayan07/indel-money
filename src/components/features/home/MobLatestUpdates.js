@@ -48,6 +48,7 @@ const slides = [
 ];
 
 export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blog" }) {
+
   console.log("sliderItems", sliderItems);
 
   return (
