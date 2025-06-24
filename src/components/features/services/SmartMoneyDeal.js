@@ -1,39 +1,15 @@
 import Image from "next/image";
 
-export default function SmartMoneyDeal({ deals_title, deals_description, benfits_title, title, desc, image, alt }) {
-  const slides = [
-    {
-      icon: "/images/benefitIcon01.svg",
-      alt: "value-1",
-      benefit: "Instant processing",
-    },
-    {
-      icon: "/images/benefitIcon02.svg",
-      alt: "value-2",
-      benefit: "Maximum value for your gold",
-    },
-    {
-      icon: "/images/benefitIcon03.svg",
-      alt: "value-3",
-      benefit: "Easy documentation",
-    },
-    {
-      icon: "/images/benefitIcon04.svg",
-      alt: "value-4",
-      benefit: "Part-payment and pre-payment options",
-    },
-    {
-      icon: "/images/benefitIcon05.svg",
-      alt: "value-5",
-      benefit: "In-house gold evaluation",
-    },
-    {
-      icon: "/images/benefitIcon06.svg",
-      alt: "value-6",
-      benefit: "Competitive interest rates",
-    },
-  ];
-
+export default function SmartMoneyDeal({
+  deals_title,
+  deals_description,
+  benfits_title,
+  title,
+  desc,
+  image,
+  alt,
+  serviceBenefit,
+}) {
   return (
     <section className="relative z-1 w-full pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[100px] pb-[50px] xl:pb-[40px] 2xl:pb-[90px]">
       <div className="container">
@@ -83,7 +59,7 @@ export default function SmartMoneyDeal({ deals_title, deals_description, benfits
                   {benfits_title ? benfits_title : "Benefits"}
                 </div>
                 <div className="relative z-1 flex flex-wrap -my-[5px] 2xl:-my-[8px] -mx-[10px] 2xl:-mx-[15px]">
-                  {slides?.map((item, index) => (
+                  {serviceBenefit?.map((item, index) => (
                     <div key={index} className="w-full 3xs:w-1/2 py-[5px] 2xl:py-[8px] px-[10px] 2xl:px-[15px]">
                       <ValueBox item={item} />
                     </div>
@@ -112,15 +88,15 @@ function ValueBox({ item }) {
       <div className="flex items-center">
         <div className="group w-[20px] 2xl:w-[25px] h-[20px] 2xl:h-[25px]">
           <Image
-            src={item.icon}
-            alt={item?.alt}
+            src={item?.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/ftrB-01.svg"}
+            alt={item?.image_alt}
             width={25}
             height={25}
             className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"
           />
         </div>
         <div className="text-[11px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.4] font-normal text-black w-[calc(100%-20px)] 2xl:w-[calc(100%-25px)] pl-[15px]">
-          {item.benefit}
+          {item?.title}
         </div>
       </div>
     </div>

@@ -12,16 +12,22 @@ async function fetchManagementData() {
     const serviceData = result.data;
 
     if (result.status === "success") {
-      return { serviceContent: serviceData.serviceContent, services: serviceData.services, error: null };
+      return {
+        serviceContent: serviceData.serviceContent,
+        services: serviceData.services,
+        serviceBenefit: serviceData.serviceBenefit,
+        error: null,
+      };
     }
-    return { serviceContent: null, services: null, error: result.message };
+    return { serviceContent: null, services: null, serviceBenefit: null, error: result.message };
   } catch (error) {
-    return { serviceContent: null, services: null, error: "Failed to fetch service data" };
+    return { serviceContent: null, services: null, serviceBenefit: null, error: "Failed to fetch service data" };
   }
 }
 
 export default async function Services() {
-  const { serviceContent, services, error } = await fetchManagementData();
+  const { serviceContent, services, serviceBenefit, error } = await fetchManagementData();
+  console.log("serviceContent", serviceBenefit);
 
   if (!serviceContent || !services) {
     return <div>Failed to fetch about data</div>;
@@ -48,6 +54,7 @@ export default async function Services() {
         desc={serviceContent?.gold_title_description}
         image={serviceContent?.gold_loan_image}
         alt={serviceContent?.gold_loan_image_alt}
+        serviceBenefit={serviceBenefit}
       />
 
       {/* OtherGoldLoan contents */}
