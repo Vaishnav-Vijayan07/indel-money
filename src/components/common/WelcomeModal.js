@@ -99,7 +99,7 @@ function WelcomeBox({ item, index }) {
 }
 
 export default function WelcomeModal({ banner, serviceBanner }) {
-  console.log(banner, serviceBanner);
+  
   const appear_in = banner?.banner_popup_appearence_time || serviceBanner?.banner_popup_appearence_time;
   const [isOpen, setIsOpen] = useState(false);
 

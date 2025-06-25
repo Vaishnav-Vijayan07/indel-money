@@ -32,7 +32,7 @@ async function fetchData() {
 export default async function Ombudsmans() {
   const { data: files, error } = await fetchData(); // ← Fixed destructuring
 
-  console.log("Files:", files);
+  
 
   // Handle not found case
   if (!files || files.length === 0) {

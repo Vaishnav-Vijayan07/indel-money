@@ -2,7 +2,7 @@ import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import { renderHtml } from "@/lib/utils/htmlParser";
 
 export default function ContactBanner({ contactTitle, contactDesc, trollFreeNum, helpText }) {
-  console.log(contactTitle, contactDesc, trollFreeNum, helpText);
+  
   return (
     <section className="w-full block pt-[30px] lg:pt-[40px] 2xl:pt-[50px]">
       <div className="container">

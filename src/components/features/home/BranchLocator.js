@@ -26,7 +26,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
   const [userLocation, setUserLocation] = useState(null);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
-  console.log("BranchLocator rendered with variant:", branchLocationsAPI);
+  
   
 
   const fetchStates = async () => {
@@ -118,7 +118,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           });
-          console.log("User location fetched:", position.coords);
+          
         },
         (error) => {
           console.error("Error fetching location:", error);

@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function AwardClient({ contents, awards, sliderItems }) {
 
-    console.log("AwardClient contents", contents);
+    
 
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = 6;

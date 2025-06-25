@@ -1,6 +1,6 @@
 import Image from "next/image";
 function WordTestimonialCard({ item }) {
-  console.log("item", item);
+  
 
   return (
     <div className="w-full md:w-1/2 p-[60px_0_6px] sm:p-[10px] 2xl:p-[22px] first:pt-[15px]">

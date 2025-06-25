@@ -11,7 +11,7 @@ function DownloadBx({ src, href, alt }) {
 }
 
 export default function MobInnovations({ pageContent }) {
-  console.log(pageContent?.features_title);
+  
   return (
     <section className="w-full py-[50px_80px] overflow-hidden relative z-0 ">
       <div className="absolute -z-1 top-[68px] left-[40%] rotate-[-30deg]">

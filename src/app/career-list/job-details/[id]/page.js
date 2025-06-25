@@ -13,7 +13,7 @@ export default async function CareerDetail({ params }) {
       error = response.data.message || "Failed to fetch job details";
     } else {
       job = response.data.data || null;
-      console.log("Job details fetched successfully:", job);
+      
       
     }
   } catch (err) {

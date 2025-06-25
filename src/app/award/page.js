@@ -25,7 +25,7 @@ export default async function Award() {
   
   const { contents, awards, sliderItems, error } = await fetchData();
 
-  console.log("Award contents", contents);
+  
   
 
   if (!contents ) {

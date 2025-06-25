@@ -105,7 +105,7 @@ export default function MobBranchLocator({ pageContent }) {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           });
-          console.log("User location fetched:", position.coords);
+          
         },
         (error) => {
           console.error("Error fetching location:", error);

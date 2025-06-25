@@ -23,7 +23,7 @@ async function fetchGoldLoanData() {
     });
     const result = await response.json();
     const goldloanData = result.data;
-    console.log("Gold Loan Data:", goldloanData);
+    
 
     if (result.status === "success") {
       return {

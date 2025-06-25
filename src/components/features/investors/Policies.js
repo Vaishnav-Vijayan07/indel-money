@@ -35,7 +35,7 @@ export default function Policies({ policies, currentPage, totalPages, content })
   const isDataPresent = policies?.length > 0;
   const router = useRouter();
   const searchParams = useSearchParams();
-  console.log(content?.policies_title);
+  
   const createQueryString = useCallback(
     (name, value) => {
       const params = new URLSearchParams(searchParams.toString());

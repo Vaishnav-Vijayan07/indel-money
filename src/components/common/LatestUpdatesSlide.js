@@ -12,7 +12,7 @@ const BlogCard = dynamic(() => import("./BlogCard"), {
 
 const LatestUpdatesSlide = memo(({ slides, className, type = "blog" }) => {
   const memoizedSlides = useMemo(() => slides, [slides]);
-  console.log("memoizedSlides", memoizedSlides);
+  
   
 
   return (

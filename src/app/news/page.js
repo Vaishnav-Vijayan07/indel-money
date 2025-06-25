@@ -26,7 +26,7 @@ async function fetchBlogsData(page = 1, limit = 10) {
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const result = await response.json();
-console.log(result.data);
+
     if (result.status === "success") {
       const { content, sliderItems, news, pagination } = result.data || {};
       return {
