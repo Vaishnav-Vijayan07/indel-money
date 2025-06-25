@@ -2,9 +2,9 @@ import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import { serverMediaPath } from "@/constants/constants";
 
 export default function IndelValueBanner({ image, alt, title }) {
-  console.log(image);
-  console.log(alt);
-  console.log(title);
+  
+  
+  
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.50)] to-[rgba(102,102,102,0.00)] z-1"></div>

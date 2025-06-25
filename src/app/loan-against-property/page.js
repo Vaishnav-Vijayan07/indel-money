@@ -11,11 +11,13 @@ async function fetchData() {
     const result = await response.json();
     const cdData = result.data;
 
+
     if (result.status === "success") {
       return { contents: cdData?.cdLoanContent, benfits: cdData?.cdLoanBenefits, products: cdData?.cdLoanProducts, error: result.message };
     }
     return { contents: null, benfits: null, products: null, error: result.message };
   } catch (error) {
+    console.error("Error fetching service data:", error);
     return { contents: null, benfits: null, products: null, error: "Failed to fetch service data" };
   }
 }

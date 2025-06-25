@@ -22,7 +22,7 @@ async function fetchBlogData(slug) {
     }
     const result = await response.json();
 
-    console.log("Fetching blog data for slug:", result);
+    
 
     if (result.status === "success") {
       // const { content, sliderItems, blogs, pagination } = result.data || {};

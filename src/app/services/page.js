@@ -27,7 +27,7 @@ async function fetchManagementData() {
 
 export default async function Services() {
   const { serviceContent, services, serviceBenefit, error } = await fetchManagementData();
-  console.log("serviceContent", serviceBenefit);
+  
 
   if (!serviceContent || !services) {
     return <div>Failed to fetch about data</div>;

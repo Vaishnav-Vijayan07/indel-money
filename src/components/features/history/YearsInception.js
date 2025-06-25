@@ -52,7 +52,7 @@ export default function YearsInception({ inceptionslides, title }) {
   const dotsRef = useRef([]);
   const [arrowPos, setArrowPos] = useState(0);
 
-  console.log("inceptionslides", inceptionslides);
+  
 
   useEffect(() => {
     const activeDotIndex = Math.round((activeIndex / (inceptionslides?.length - 1)) * (12 - 1));

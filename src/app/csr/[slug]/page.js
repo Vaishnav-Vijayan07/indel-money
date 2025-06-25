@@ -21,7 +21,7 @@ async function fetchCsrData(slug) {
     }
     const result = await response.json();
 
-    console.log(result.data);
+    
     if (result.status === "success") {
       return {
         content: result?.data,
