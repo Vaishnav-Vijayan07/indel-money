@@ -164,6 +164,7 @@ function TeamBox({ item }) {
 }
 
 function TeamModal({ item }) {
+  console.log(item);
   return (
     <div className="container">
       <div className="relative z-[1] w-full flex flex-wrap bg-white rounded-[10px] sm:rounded-[36px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:px-[20px] xl:px-[35px] 2xl:px-[55px] 3xl:px-[75px] sm:py-[25px]  pb-[60px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[80px]  p-0">
@@ -198,7 +199,7 @@ function TeamModal({ item }) {
                         [&::-webkit-scrollbar-track]:rounded-full
                         scroll-smooth"
           >
-            <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">{item.title}</div>
+            <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">{item?.description}</div>
           </div>
         </div>
         <div
@@ -210,7 +211,7 @@ function TeamModal({ item }) {
                     [&::-webkit-scrollbar-track]:rounded-full
                     scroll-smooth"
         >
-          <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">{item.title}</div>
+          <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">{item?.description}</div>
         </div>
       </div>
     </div>
