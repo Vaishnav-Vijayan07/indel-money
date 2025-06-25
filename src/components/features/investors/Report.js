@@ -47,7 +47,7 @@ export default function Scheme({ reports, returns,content }) {
                     </div>
                     <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
 
-                        <Annualreport reports={reports} title={content?.annual_report_button_title} />
+                        <Annualreport reports={reports} title={content?.annual_report_title} />
                         <Annualreturns returns={returns} title={content?.annual_returns_title} />
                     </div>
 
