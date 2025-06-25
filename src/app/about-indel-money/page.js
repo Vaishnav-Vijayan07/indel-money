@@ -70,6 +70,7 @@ export default async function About() {
           serviceImages={data?.serviceImages}
           description={data?.aboutContent?.service_description}
           title={data?.aboutContent?.service_title}
+          sub_title={data?.aboutContent?.service_sub_title}
         />
       </div>
       <div className="block sm:hidden">
