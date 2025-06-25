@@ -45,8 +45,7 @@ export default function QuarterlyReportSection({setContent}) {
     try {
       const { data } = await api.get("/web/investors/quarterly-reports", { params: { year } });
       setReports(data?.data?.reports || []);
-      setContent(data?.data?.content?.[0]?.page_title || "");
-      console.log(data.data);
+      setContent(data?.data?.content);
     } catch (error) {
       console.error("Error fetching fiscal years:", error);
     }

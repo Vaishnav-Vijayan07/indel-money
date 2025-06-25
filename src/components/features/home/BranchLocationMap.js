@@ -5,26 +5,11 @@ import dynamic from "next/dynamic";
 import axios from "axios";
 
 // Dynamically import react-leaflet components
-const MapContainer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.MapContainer),
-  { ssr: false }
-);
-const TileLayer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.TileLayer),
-  { ssr: false }
-);
-const Marker = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Marker),
-  { ssr: false }
-);
-const Popup = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Popup),
-  { ssr: false }
-);
-const Circle = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Circle),
-  { ssr: false }
-);
+const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), { ssr: false });
+const TileLayer = dynamic(() => import("react-leaflet").then((mod) => mod.TileLayer), { ssr: false });
+const Marker = dynamic(() => import("react-leaflet").then((mod) => mod.Marker), { ssr: false });
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), { ssr: false });
+const Circle = dynamic(() => import("react-leaflet").then((mod) => mod.Circle), { ssr: false });
 import { useMap } from "react-leaflet";
 
 // Leaflet CSS
@@ -38,7 +23,7 @@ const CustomPopup = ({ branch }) => {
   return (
     <div className="popup-content w-[260px] lg:w-[320px] 2xl:w-[376px]">
       <h3 className="text-[14px] lg:text-[16px] 2xl:text-[18px] font-bold line-clamp-1 text-[#1B1B1B] mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
-        {branch.name}
+        {branch?.name}
       </h3>
       <div className="flex items-start mb-[5px] lg:mb-[10px] 2xl:mb-[15px] flex-wrap">
         <svg
@@ -49,27 +34,32 @@ const CustomPopup = ({ branch }) => {
           <path d="M5.99772 0C2.80256 0 0.203125 2.59944 0.203125 5.79456C0.203125 9.75981 5.38872 15.581 5.6095 15.8269C5.81687 16.0579 6.17894 16.0575 6.38594 15.8269C6.60672 15.581 11.7923 9.75981 11.7923 5.79456C11.7922 2.59944 9.19284 0 5.99772 0ZM5.99772 8.70997C4.39016 8.70997 3.08234 7.40213 3.08234 5.79456C3.08234 4.187 4.39019 2.87919 5.99772 2.87919C7.60525 2.87919 8.91306 4.18703 8.91306 5.79459C8.91306 7.40216 7.60525 8.70997 5.99772 8.70997Z" />
         </svg>
         <span className="w-[calc(100%-16px)] pl-[10px] text-[13px] lg:text-[14px] 2xl:text-[16px] font-normal text-[#1B1B1B] m-0">
-          {branch.address}
+          {/* {`${branch.address_1}  ${branch.address_2} ${branch.address_3}`} */}
+          {branch?.address_1 + " " + branch?.address_2 + " " + branch?.address_3}
         </span>
       </div>
-      <div className="flex items-center mb-[5px] lg:mb-[10px] 2xl:mb-[15px] flex-wrap">
-        <svg className="w-[10px] lg:w-[14px] 2xl:w-[16px] h-auto aspect-square" viewBox="0 0 16 16" fill="#F30000">
-          <path d="M15.5032 12.0936C14.804 11.3944 14.1067 10.6952 13.4075 9.99789C12.853 9.41521 12.1257 9.41521 11.543 9.99789C11.1069 10.4339 10.669 10.87 10.2329 11.3079C10.1164 11.4245 10.0281 11.4245 9.88332 11.3662C9.6202 11.1914 9.30066 11.0749 9.03751 10.9001C7.78574 10.1144 6.70875 9.09381 5.77647 7.92848C5.31034 7.34581 4.90247 6.73495 4.61113 6.03576C4.55287 5.89103 4.55287 5.80269 4.6694 5.68616C5.13553 5.27829 5.54341 4.84224 5.97946 4.46256C6.5922 3.8517 6.5922 3.1525 5.97946 2.54164C5.60166 2.16197 5.28026 1.84244 4.93255 1.49285C4.55287 1.11505 4.20327 0.765455 3.85368 0.415847C3.30107 -0.138616 2.57182 -0.138616 1.99102 0.415847C1.55309 0.851908 1.11704 1.28797 0.679087 1.72591C0.271236 2.13377 0.068228 2.6281 0.00995039 3.18258C-0.0483042 4.08476 0.154681 4.95877 0.476079 5.80269C1.11704 7.57888 2.10755 9.09381 3.30107 10.5204C4.90247 12.4432 6.85346 13.9863 9.09579 15.0652C10.1164 15.5313 11.1652 15.9392 12.2704 15.9975C13.0861 16.0257 13.7571 15.8227 14.3097 15.2099C14.6875 14.8021 15.1254 14.4243 15.5032 14.0164C16.0859 13.4037 16.0859 12.6763 15.5032 12.0936Z" />
-        </svg>
-        <span className="w-[calc(100%-16px)] pl-[10px] text-[13px] lg:text-[14px] 2xl:text-[16px] font-normal text-[#1B1B1B]">
-          {branch.phone_no}
-        </span>
-      </div>
-      <div className="flex items-center mb-[5px] lg:mb-[10px] 2xl:mb-[15px] flex-wrap">
-        <svg className="w-[10px] lg:w-[14px] 2xl:w-[16px] h-auto aspect-square" viewBox="0 0 16 16" fill="#F30000">
-          <path d="M9.33716 9.80206C8.93909 10.0674 8.47672 10.2077 8 10.2077C7.52331 10.2077 7.06094 10.0674 6.66287 9.80206L0.106531 5.43103C0.0701562 5.40678 0.0347187 5.3815 0 5.3555V12.5179C0 13.3391 0.666406 13.9908 1.47291 13.9908H14.5271C15.3482 13.9908 16 13.3244 16 12.5179V5.35547C15.9652 5.38153 15.9297 5.40688 15.8932 5.43116L9.33716 9.80206Z" />
-          <path d="M0.626562 4.65131L7.18291 9.02238C7.43109 9.18784 7.71553 9.27056 7.99997 9.27056C8.28444 9.27056 8.56891 9.18781 8.81709 9.02238L15.3734 4.65131C15.7658 4.38991 16 3.95241 16 3.48022C16 2.66831 15.3395 2.00781 14.5276 2.00781H1.47241C0.660531 2.00784 0 2.66834 0 3.481C0 3.95241 0.23425 4.38991 0.626562 4.65131Z" />
-        </svg>
-        <span className="w-[calc(100%-16px)] pl-[10px] text-[13px] lg:text-[14px] 2xl:text-[16px] font-normal text-[#1B1B1B]">
-          {branch.email}
-        </span>
-      </div>
-      {branch.mobile_no && (
+      {branch?.phone_no && (
+        <div className="flex items-center mb-[5px] lg:mb-[10px] 2xl:mb-[15px] flex-wrap">
+          <svg className="w-[10px] lg:w-[14px] 2xl:w-[16px] h-auto aspect-square" viewBox="0 0 16 16" fill="#F30000">
+            <path d="M15.5032 12.0936C14.804 11.3944 14.1067 10.6952 13.4075 9.99789C12.853 9.41521 12.1257 9.41521 11.543 9.99789C11.1069 10.4339 10.669 10.87 10.2329 11.3079C10.1164 11.4245 10.0281 11.4245 9.88332 11.3662C9.6202 11.1914 9.30066 11.0749 9.03751 10.9001C7.78574 10.1144 6.70875 9.09381 5.77647 7.92848C5.31034 7.34581 4.90247 6.73495 4.61113 6.03576C4.55287 5.89103 4.55287 5.80269 4.6694 5.68616C5.13553 5.27829 5.54341 4.84224 5.97946 4.46256C6.5922 3.8517 6.5922 3.1525 5.97946 2.54164C5.60166 2.16197 5.28026 1.84244 4.93255 1.49285C4.55287 1.11505 4.20327 0.765455 3.85368 0.415847C3.30107 -0.138616 2.57182 -0.138616 1.99102 0.415847C1.55309 0.851908 1.11704 1.28797 0.679087 1.72591C0.271236 2.13377 0.068228 2.6281 0.00995039 3.18258C-0.0483042 4.08476 0.154681 4.95877 0.476079 5.80269C1.11704 7.57888 2.10755 9.09381 3.30107 10.5204C4.90247 12.4432 6.85346 13.9863 9.09579 15.0652C10.1164 15.5313 11.1652 15.9392 12.2704 15.9975C13.0861 16.0257 13.7571 15.8227 14.3097 15.2099C14.6875 14.8021 15.1254 14.4243 15.5032 14.0164C16.0859 13.4037 16.0859 12.6763 15.5032 12.0936Z" />
+          </svg>
+          <span className="w-[calc(100%-16px)] pl-[10px] text-[13px] lg:text-[14px] 2xl:text-[16px] font-normal text-[#1B1B1B]">
+            {branch.phone_no}
+          </span>
+        </div>
+      )}
+      {branch?.email && (
+        <div className="flex items-center mb-[5px] lg:mb-[10px] 2xl:mb-[15px] flex-wrap">
+          <svg className="w-[10px] lg:w-[14px] 2xl:w-[16px] h-auto aspect-square" viewBox="0 0 16 16" fill="#F30000">
+            <path d="M9.33716 9.80206C8.93909 10.0674 8.47672 10.2077 8 10.2077C7.52331 10.2077 7.06094 10.0674 6.66287 9.80206L0.106531 5.43103C0.0701562 5.40678 0.0347187 5.3815 0 5.3555V12.5179C0 13.3391 0.666406 13.9908 1.47291 13.9908H14.5271C15.3482 13.9908 16 13.3244 16 12.5179V5.35547C15.9652 5.38153 15.9297 5.40688 15.8932 5.43116L9.33716 9.80206Z" />
+            <path d="M0.626562 4.65131L7.18291 9.02238C7.43109 9.18784 7.71553 9.27056 7.99997 9.27056C8.28444 9.27056 8.56891 9.18781 8.81709 9.02238L15.3734 4.65131C15.7658 4.38991 16 3.95241 16 3.48022C16 2.66831 15.3395 2.00781 14.5276 2.00781H1.47241C0.660531 2.00784 0 2.66834 0 3.481C0 3.95241 0.23425 4.38991 0.626562 4.65131Z" />
+          </svg>
+          <span className="w-[calc(100%-16px)] pl-[10px] text-[13px] lg:text-[14px] 2xl:text-[16px] font-normal text-[#1B1B1B]">
+            {branch.email}
+          </span>
+        </div>
+      )}
+      {branch?.mobile_no && (
         <div className="flex items-center flex-wrap">
           <svg className="w-[10px] lg:w-[14px] 2xl:w-[16px] h-auto aspect-square" viewBox="0 0 16 16" fill="#F30000">
             <path d="M11.8855 5.13086L11.853 5.59086C11.8451 5.70016 11.8708 5.80926 11.9266 5.90354C11.9825 5.99782 12.0658 6.07277 12.1655 6.11836C13.058 6.52586 15.4155 7.41836 15.6805 5.58586L11.8855 5.13086Z" />
@@ -79,7 +69,7 @@ const CustomPopup = ({ branch }) => {
             <path d="M11.2692 6.75032V5.88782C11.2732 5.51627 11.1296 5.15832 10.8699 4.89256C10.6102 4.62679 10.2557 4.47493 9.88418 4.47032L9.85918 6.73532L6.12168 6.69282L6.14668 4.42782C5.77513 4.42381 5.41718 4.56741 5.15142 4.82708C4.88565 5.08676 4.73379 5.44128 4.72918 5.81282V6.67532C4.13726 6.66887 3.56204 6.87141 3.10475 7.2473C2.64746 7.6232 2.33741 8.14834 2.22918 8.73032L1.32418 13.6103C1.287 13.8113 1.2942 14.018 1.34527 14.2159C1.39635 14.4138 1.49006 14.5981 1.61985 14.756C1.74964 14.9139 1.91237 15.0415 2.09665 15.1299C2.28093 15.2183 2.4823 15.2654 2.68668 15.2678L13.1142 15.3878C13.3185 15.39 13.5208 15.3476 13.7069 15.2635C13.8931 15.1794 14.0587 15.0556 14.192 14.9008C14.3253 14.746 14.4233 14.564 14.4789 14.3674C14.5346 14.1709 14.5466 13.9645 14.5142 13.7628L13.7217 8.86032C13.6264 8.27629 13.3283 7.74456 12.8797 7.35863C12.4312 6.97271 11.8609 6.75731 11.2692 6.75032ZM5.83668 13.5603C5.66635 13.4449 5.51957 13.2981 5.40418 13.1278C5.07566 12.6788 4.85894 12.1578 4.77198 11.6083C4.68503 11.0587 4.73035 10.4964 4.90418 9.96782C5.1548 9.24271 5.65516 8.63037 6.3158 8.2403C6.97643 7.85022 7.75427 7.70783 8.51025 7.83859C9.26623 7.96934 9.95105 8.36472 10.4423 8.95403C10.9335 9.54333 11.1992 10.2882 11.1917 11.0553C11.1517 13.5003 8.39418 15.2953 5.83668 13.5603Z" />
           </svg>
           <span className="w-[calc(100%-16px)] pl-[10px] text-[12px] lg:text-[14px] 2xl:text-[16px] font-normal text-[#1B1B1B]">
-            {branch.mobile_no}
+            {branch?.mobile_no}
           </span>
         </div>
       )}
@@ -90,11 +80,7 @@ const CustomPopup = ({ branch }) => {
           className="block text-center bg-base1 px-3 py-2 rounded hover:bg-[#F30000] transition-colors"
         >
           <div className="flex items-center justify-center">
-            <svg
-              className="w-[10px] lg:w-[14px] 2xl:w-[16px] h-auto aspect-square mr-2"
-              viewBox="0 0 16 16"
-              fill="#ffffff"
-            >
+            <svg className="w-[10px] lg:w-[14px] 2xl:w-[16px] h-auto aspect-square mr-2" viewBox="0 0 16 16" fill="#ffffff">
               <path d="M15.76 7.44L8.56 0.24C8.24003 -0.08 7.76 -0.08 7.44 0.24L0.24 7.44C-0.08 7.76 -0.08 8.24003 0.24 8.56L7.44 15.76C7.76 16.08 8.24003 16.08 8.56 15.76L15.76 8.56C16.08 8.24003 16.08 7.76003 15.76 7.44ZM9.6 10V8.00003H6.4V10.4H4.8V7.20003C4.8 6.72003 5.12 6.40003 5.6 6.40003H9.6V4.40003L12.4 7.20003L9.6 10Z" />
             </svg>
             <span className="text-white">Get Directions</span>
@@ -115,16 +101,30 @@ function MapController({ selectedBranch, branchesData, userLocation }) {
     setIsMounted(true);
   }, []);
 
+  // useEffect(() => {
+  //   if (!isMounted || !map) return;
+
+  //   if (selectedBranch?.latitude && selectedBranch?.longitude) {
+  //     map.setView([selectedBranch.latitude, selectedBranch.longitude], 11);
+  //   } else if (userLocation) {
+  //     map.setView([userLocation.latitude, userLocation.longitude], 11);
+  //   }
+
+  //   if (markerRefs.current[selectedBranch?.id]) {
+  //     markerRefs.current[selectedBranch.id].openPopup();
+  //   }
+  // }, [selectedBranch, userLocation, map, isMounted]);
+
   useEffect(() => {
     if (!isMounted || !map) return;
 
-    if (selectedBranch?.latitude && selectedBranch?.longitude) {
-      map.setView([selectedBranch.latitude, selectedBranch.longitude], 11);
-    } else if (userLocation) {
+    if (userLocation) {
       map.setView([userLocation.latitude, userLocation.longitude], 11);
+    } else if (selectedBranch?.latitude && selectedBranch?.longitude) {
+      map.setView([selectedBranch.latitude, selectedBranch.longitude], 11);
     }
 
-    if (markerRefs.current[selectedBranch?.id]) {
+    if (selectedBranch && markerRefs.current[selectedBranch?.id]) {
       markerRefs.current[selectedBranch.id].openPopup();
     }
   }, [selectedBranch, userLocation, map, isMounted]);
@@ -200,8 +200,9 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
   const icons = {
     address: (
       <svg
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
-          }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
+          selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
+        }`}
         viewBox="0 0 12 16"
       >
         <path d="M5.99772 0C2.80256 0 0.203125 2.59944 0.203125 5.79456C0.203125 9.75981 5.38872 15.581 5.6095 15.8269C5.81687 16.0579 6.17894 16.0575 6.38594 15.8269C6.60672 15.581 11.7923 9.75981 11.7923 5.79456C11.7922 2.59944 9.19284 0 5.99772 0ZM5.99772 8.70997C4.39016 8.70997 3.08234 7.40213 3.08234 5.79456C3.08234 4.187 4.39019 2.87919 5.99772 2.87919C7.60525 2.87919 8.91306 4.18703 8.91306 5.79459C8.91306 7.40216 7.60525 8.70997 5.99772 8.70997Z" />
@@ -209,8 +210,9 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
     ),
     phone: (
       <svg
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
-          }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
+          selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
+        }`}
         viewBox="0 0 16 16"
       >
         <path d="M15.5032 12.0936C14.804 11.3944 14.1067 10.6952 13.4075 9.99789C12.853 9.41521 12.1257 9.41521 11.543 9.99789C11.1069 10.4339 10.669 10.87 10.2329 11.3079C10.1164 11.4245 10.0281 11.4245 9.88332 11.3662C9.6202 11.1914 9.30066 11.0749 9.03751 10.9001C7.78574 10.1144 6.70875 9.09381 5.77647 7.92848C5.31034 7.34581 4.90247 6.73495 4.61113 6.03576C4.55287 5.89103 4.55287 5.80269 4.6694 5.68616C5.13553 5.27829 5.54341 4.84224 5.97946 4.46256C6.5922 3.8517 6.5922 3.1525 5.97946 2.54164C5.60166 2.16197 5.28026 1.84244 4.93255 1.49285C4.55287 1.11505 4.20327 0.765455 3.85368 0.415847C3.30107 -0.138616 2.57182 -0.138616 1.99102 0.415847C1.55309 0.851908 1.11704 1.28797 0.679087 1.72591C0.271236 2.13377 0.068228 2.6281 0.00995039 3.18258C-0.0483042 4.08476 0.154681 4.95877 0.476079 5.80269C1.11704 7.57888 2.10755 9.09381 3.30107 10.5204C4.90247 12.4432 6.85346 13.9863 9.09579 15.0652C10.1164 15.5313 11.1652 15.9392 12.2704 15.9975C13.0861 16.0257 13.7571 15.8227 14.3097 15.2099C14.6875 14.8021 15.1254 14.4243 15.5032 14.0164C16.0859 13.4037 16.0859 12.6763 15.5032 12.0936Z" />
@@ -218,8 +220,9 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
     ),
     email: (
       <svg
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
-          }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
+          selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
+        }`}
         viewBox="0 0 16 16"
       >
         <path d="M9.33716 9.80206C8.93909 10.0674 8.47672 10.2077 8 10.2077C7.52331 10.2077 7.06094 10.0674 6.66287 9.80206L0.106531 5.43103C0.0701562 5.40678 0.0347187 5.3815 0 5.3555V12.5179C0 13.3391 0.666406 13.9908 1.47291 13.9908H14.5271C15.3482 13.9908 16 13.3244 16 12.5179V5.35547C15.9652 5.38153 15.9297 5.40688 15.8932 5.43116L9.33716 9.80206Z" />
@@ -228,8 +231,9 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
     ),
     contactNumber: (
       <svg
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
-          }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
+          selectedBranch === branch ? "fill-white" : "fill-[#F30000]"
+        }`}
         viewBox="0 0 16 16"
       >
         <path d="M11.8855 5.13086L11.853 5.59086C11.8451 5.70016 11.8708 5.80926 11.9266 5.90354C11.9825 5.99782 12.0658 6.07277 12.1655 6.11836C13.058 6.52586 15.4155 7.41836 15.6805 5.58586L11.8855 5.13086Z" />
@@ -277,10 +281,18 @@ export default function BranchLocationMap({ branchLocations: initialBranchLocati
                 long: longitude,
               },
             });
+            // if (response.data.success) {
+            //   setBranchLocations(response.data.data);
+            //   if (response.data.data.length > 0) {
+            //     setSelectedBranch(response.data.data[0]); // Select first branch
+            //   }
+            // }
+
             if (response.data.success) {
               setBranchLocations(response.data.data);
-              if (response.data.data.length > 0) {
-                setSelectedBranch(response.data.data[0]); // Select first branch
+              // Only select the first branch if user location is NOT available
+              if (!userLocation && response.data.data.length > 0) {
+                setSelectedBranch(response.data.data[0]);
               }
             }
           } catch (error) {
@@ -302,9 +314,9 @@ export default function BranchLocationMap({ branchLocations: initialBranchLocati
   }, [initialBranchLocations, setSelectedBranch]);
 
   useEffect(() => {
- setBranchLocations(initialBranchLocations);
-  }, [initialBranchLocations])
-  
+    setBranchLocations(initialBranchLocations);
+  }, [initialBranchLocations]);
+
   const handleBranchClick = (branch) => {
     setSelectedBranch(branch);
   };
@@ -314,21 +326,9 @@ export default function BranchLocationMap({ branchLocations: initialBranchLocati
   return (
     <div className="w-full h-[376px] sm:h-[510px] 2xl:h-[670px] relative z-1 flex flex-wrap rounded-[10px] sm:rounded-[16px] overflow-hidden">
       <div className="w-full sm:w-[calc(100%-220px)] lg:w-[calc(100%-260px)] xl:w-[calc(100%-320px)] 2xl:w-[calc(100%-420px)] max-sm:h-[620px] h-full relative z-0">
-        <MapContainer
-          center={mapCenter}
-          zoom={12}
-          className="absolute z-0 inset-0"
-          style={{ height: "100%", width: "100%" }}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="© OpenStreetMap contributors"
-          />
-          <MapController
-            selectedBranch={selectedBranch}
-            branchesData={branchLocations}
-            userLocation={userLocation}
-          />
+        <MapContainer center={mapCenter} zoom={12} className="absolute z-0 inset-0" style={{ height: "100%", width: "100%" }}>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="© OpenStreetMap contributors" />
+          <MapController selectedBranch={selectedBranch} branchesData={branchLocations} userLocation={userLocation} />
         </MapContainer>
       </div>
       <div className="w-full sm:w-[220px] lg:w-[260px] xl:w-[320px] 2xl:w-[420px] sm:h-full bg-base1 relative z-0 max-sm:shadow-[0_0_25px_0_rgba(238,56,36,0.20)] before:absolute before:inset-0 before:top-auto before:z-2 before:block before:bg-gradient-to-t before:to-transparent before:from-base1 before:w-full before:h-[20px] lg:before:h-[30px] before:pointer-events-none">
@@ -339,8 +339,9 @@ export default function BranchLocationMap({ branchLocations: initialBranchLocati
           {branchLocations?.map((branch) => (
             <div
               key={branch.id}
-              className={`max-sm:bg-[#7E94BC]/50 max-sm:rounded-[10px] max-sm:mb-[12px] last:mb-0 p-[15px_10px] sm:p-[10px_10px] lg:p-[20px_15px] 2xl:p-[20px_30px] cursor-pointer sm:border-b-[1px] border-solid border-white/10 loclist ${selectedBranch?.id === branch.id ? "bg-[#f30000] max-sm:bg-[#f30000] active" : "hover:bg-blue-700"
-                }`}
+              className={`max-sm:bg-[#7E94BC]/50 max-sm:rounded-[10px] max-sm:mb-[12px] last:mb-0 p-[15px_10px] sm:p-[10px_10px] lg:p-[20px_15px] 2xl:p-[20px_30px] cursor-pointer sm:border-b-[1px] border-solid border-white/10 loclist ${
+                selectedBranch?.id === branch.id ? "bg-[#f30000] max-sm:bg-[#f30000] active" : "hover:bg-blue-700"
+              }`}
               onClick={() => handleBranchClick(branch)}
             >
               <div className="flex items-center justify-between mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
@@ -374,29 +375,19 @@ export default function BranchLocationMap({ branchLocations: initialBranchLocati
                   </svg>
                 </a>
               </div>
-              {branch?.address && (
+              {branch?.address_1 && (
                 <BranchLocationsInfo
                   type="address"
-                  item={branch?.address}
+                  item={branch?.address_1 + " " + branch?.address_2 + " " + branch?.address_3}
                   selectedBranch={selectedBranch?.id}
                   branch={branch.id}
                 />
               )}
               {branch.phone_no && (
-                <BranchLocationsInfo
-                  type="phone"
-                  item={branch.phone_no}
-                  selectedBranch={selectedBranch?.id}
-                  branch={branch.id}
-                />
+                <BranchLocationsInfo type="phone" item={branch.phone_no} selectedBranch={selectedBranch?.id} branch={branch.id} />
               )}
               {branch.email && (
-                <BranchLocationsInfo
-                  type="email"
-                  item={branch.email}
-                  selectedBranch={selectedBranch?.id}
-                  branch={branch.id}
-                />
+                <BranchLocationsInfo type="email" item={branch.email} selectedBranch={selectedBranch?.id} branch={branch.id} />
               )}
               {branch.mobile_no && (
                 <BranchLocationsInfo

@@ -2,12 +2,12 @@ import Link from "next/link";
 import Sidebar from "./Sidebar";
 import AnnualReturns from "./AnnualReturns";
 
-export default function CreditRatings({ content,reports }) {
+export default function CreditRatings({ content, reports }) {
   return (
     <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
       <div className="container">
         <h2 className="text-[28px] lg:text-[35px] xl:text-[45px] 2xl:text-[50px] 3xl:text-[68px] text-black font-regular mb-[5px]">
-          <span className="text-[#F30000] font-bold">{content ? content : "Investors"}</span>
+          <span className="text-[#F30000] font-bold">{content ? content?.page_title : "Investors"}</span>
         </h2>
         <div className="breadcrumb flex-wrap mb-[35px] sm:flex hidden">
           <Link
@@ -37,7 +37,11 @@ export default function CreditRatings({ content,reports }) {
             <Sidebar />
           </div>
           <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
-            <AnnualReturns returns={reports} title="Credit Ratings" type="CreditRatings" />
+            <AnnualReturns
+              returns={reports}
+              title={content?.credit_rating_title ? content?.credit_rating_title : "Credit Ratings"}
+              type="CreditRatings"
+            />
           </div>
         </div>
       </div>
