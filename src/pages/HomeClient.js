@@ -110,7 +110,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <LatestUpdates
           sliderItems={initialData?.blogs}
           sliderTitle={initialData?.pageContent?.updates_section_title}
-          type="csr"
+          type="indel-money-cares"
         />
       </div>
       <div className="block sm:hidden">

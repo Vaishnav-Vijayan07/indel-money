@@ -1,6 +1,7 @@
 import { formatPostDate } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { renderHtml } from "@/lib/utils/htmlParser"; // Assuming you have a utility for HTML parsing
 
 export default function IndelCaresEventMobileCard({ item, className }) {
   return (
@@ -27,7 +28,7 @@ export default function IndelCaresEventMobileCard({ item, className }) {
           {item?.title}
         </div>
         <div className="text-[13px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-3 sm:line-clamp-4">
-          {item?.description}
+          {item?.description ? renderHtml(item?.description) : ""}
         </div>
       </div>
     </Link>

@@ -1,4 +1,5 @@
 import { formatPostDate } from "@/lib/utils";
+import { renderHtml } from "@/lib/utils/htmlParser";
 import Image from "next/image";
 import Link from "next/link";
 import React, { memo } from "react";
@@ -34,7 +35,7 @@ function IndelCareEventCard({ item, className }) {
         </div>
 
         <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-2 sm:line-clamp-4">
-          {item?.description}
+          {item?.description ? renderHtml(item?.description) : ""}
         </div>
       </div>
     </Link>

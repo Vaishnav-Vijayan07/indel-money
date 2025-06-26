@@ -5,6 +5,7 @@ import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import IndelMoneyCarsGallery from "@/components/features/indel-money-cares/IndelMoneyCarsGallery";
 
 import { formatPostDate } from "@/lib/utils";
+import { renderHtml } from "@/lib/utils/htmlParser";
 import PaginationComponent from "@/components/Pagination";
 import { useSearchParams, useRouter } from "next/navigation";
 import IndelCaresEventCard from "@/components/common/IndelCaresEventCard";
@@ -25,7 +26,7 @@ export default function IndelMoneyCars({ content, slideItems, nonSlideItems, tot
   );
 
   const handlePageChange = (newPage) => {
-    router.push(`?${createQueryString("page", newPage.toString())}`,{
+    router.push(`?${createQueryString("page", newPage.toString())}`, {
       scroll: false, // Prevent scrolling to the top
     });
   };
@@ -35,10 +36,7 @@ export default function IndelMoneyCars({ content, slideItems, nonSlideItems, tot
       <section className="w-full block py-[20px] lg:py-[30px] 2xl:py-[50px]">
         <div className="container">
           <div className="w-full mb-[20px] lg:mb-[15px] 2xl:mb-[50px]">
-            <div
-              className="text-title2 [&>span]:text-base2 [&>span]:font-bold "
-              dangerouslySetInnerHTML={{ __html: content?.page_title ? content?.page_title : "" }}
-            />
+            <div className="text-title2 [&>span]:text-base2 [&>span]:font-bold "> {content?.page_title ? renderHtml(content?.page_title) : ""}</div>
             <PageBreadcrumb />
           </div>
         </div>
@@ -78,7 +76,7 @@ export default function IndelMoneyCars({ content, slideItems, nonSlideItems, tot
                         {item?.title}
                       </div>
                       <div className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-12">
-                        {item?.description || item?.description}
+                        {item?.description ? renderHtml(item?.description) : ""}
                       </div>
                     </div>
                   </Link>
