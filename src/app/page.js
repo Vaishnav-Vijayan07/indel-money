@@ -18,6 +18,16 @@ import HomeClient from "../pages/HomeClient";
 //   }
 // }
 
+export async function generateMetadata() {
+  const { data, error } = await fetchHomeData();
+
+  return {
+    title: data?.pageContent?.meta_title || "Blog Post | My Website",
+    description: data?.pageContent?.meta_description || data?.pageContent?.description || "Read our latest blog post.",
+    keywords: data?.pageContent?.meta_keywords || "blog, post, news",
+  };
+}
+
 async function fetchHomeData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/home`, {
