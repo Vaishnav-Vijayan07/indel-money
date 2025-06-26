@@ -68,6 +68,7 @@ export default async function GoldLoan() {
   const { steps, contents, bannerIcons, schemes, faqs, features, GoldloanBenefits, announcement } = await fetchGoldLoanData();
   const flattenedFeatures = features?.flat()?.filter((item) => !item.is_center);
 
+  console.log(contents);
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
   }
@@ -113,8 +114,11 @@ export default async function GoldLoan() {
       <div id="easy-step" className="hidden sm:block">
         <GoldLoanCriteria
           title={contents?.gold_loan_step_title}
+          eligibilityTitle = {contents?.eligibility_title}
           description={contents?.description}
-          idProofTitle={contents?.identity_proof_title}
+          documentationTitle = {contents?.documentation_title}
+          documentationDescription = {contents?.documentation_description}
+          identityProofTitle={contents?.identity_proof_title}
           identityProof={contents?.identity_proof_description}
           addressProofTitle={contents?.address_proof}
           addressProof={contents?.address_proof_description}

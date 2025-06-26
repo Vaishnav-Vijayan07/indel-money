@@ -5,7 +5,7 @@ const titleStyle2 = "text-[12px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] 
 const listStyle =
   "text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-black relative pl-[15px] lg:pl-[20px] before:content-[''] before:absolute before:top-[4px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[5px]";
 
-export default function GoldLoanCriteria({ title, description, identityProof, addressProof, image, identityProofTitle, addressProofTitle }) {
+export default function GoldLoanCriteria({ title, description, identityProof, eligibilityTitle, documentationTitle, documentationDescription,  addressProof, image, identityProofTitle, addressProofTitle }) {
 
   return (
     <section className="py-[30px] lg:py-[40px] 2xl:py-[60px] bg-[linear-gradient(90deg,#CDDFFF_1%,#FFD2D2_99%)]">
@@ -18,12 +18,12 @@ export default function GoldLoanCriteria({ title, description, identityProof, ad
                 dangerouslySetInnerHTML={{ __html: title ? title : "" }}
               />
               <div className="mb-[10px]">
-                <div className={titleStyle}>Eligibility</div>
+                <div className={titleStyle}>{eligibilityTitle}</div>
                 <p>{description}</p>
               </div>
               <div className="mb-[10px]">
-                <div className={titleStyle}>Documentation</div>
-                <p>Please ensure you carry the following documents (Original) for easing the process of your gold loan application.</p>
+                <div className={titleStyle}>{documentationTitle}</div>
+                <p>{documentationDescription}</p>
               </div>
               <div className="flex flex-wrap lg:max-w-[730px] -mx-[5px] lg:-mx-[10px] 2xl:-mx-[15px]">
                 <div className="w-[50%] p-[5px] lg:p-[10px] 2xl:p-[15px]">
