@@ -210,6 +210,7 @@ export default function CareerForm({ jobId, isGeneral }) {
       
       if (!data.success) throw new Error(data.message || "Invalid OTP");
       if (data.data) {
+        console.log(data.data);
         autoFillForm(data.data);
         Cookies.set("applicantData", JSON.stringify(data.data), {
           expires: 7,
@@ -462,7 +463,7 @@ export default function CareerForm({ jobId, isGeneral }) {
       {/* Main Form */}
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-1 lg:-mx-1.5 2xl:-mx-2.5">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5">
             <div
               className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${
                 isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
@@ -744,7 +745,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                             // disabled={!isOtpVerified}
                           />
                         </label>
-                        <span className="text-xs lg:text-sm 2xl:text-base leading-none font-normal text-gray-700 whitespace-nowrap text-ellipsis overflow-hidden flex-1 ml-1 lg:ml-1.5">
+                        <span className="text-xs lg:text-xs 2xl:text-base leading-none font-normal text-gray-700 whitespace-nowrap text-ellipsis overflow-hidden flex-1 ml-1 lg:ml-1.5">
                           {selectedFile
                             ? `${selectedFile.name} (${getFileTypeDisplay(selectedFile, null)})`
                             : selectedFileName
