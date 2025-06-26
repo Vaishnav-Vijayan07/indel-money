@@ -6,6 +6,7 @@ import { Autoplay, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import { formatPostDate } from "@/lib/utils";
+import Link from "next/link";
 
 // const slides = [
 //     {
@@ -85,10 +86,14 @@ const IndelMoneyCarsGallery = ({ sliderItems = [] }) => {
                 />
               </div>
               <div className="absolute z-1 bottom-0 left-0 block w-full bg-gradient-to-t from-black/80 to-transparent text-white rounded-[20px] xl:rounded-[35px] 2xl:p-[0_0_55px_65px] xl:p-[0_0_40px_40px] p-[0_0_30px_30px]">
-                <h2 className="2xl:text-[36px] xl:text-[24px] md:text-[22px] text-[16px] leading-[1.3] font-bold 2xl:max-w-[874px] xl:max-w-[720px] md:max-w-[640px] xl:mb-[15px] mb-[10px]">
+                <h2 className="2xl:text-[36px] xl:text-[24px] md:text-[22px] text-[16px] leading-[1.3] font-bold line-clamp-4 2xl:max-w-[874px] xl:max-w-[720px] md:max-w-[640px] xl:mb-[15px] mb-[10px]">
                   {slide?.description}
                 </h2>
-                <p className="2xl:text-[18px] xl:text-[16px] md:text-[14px] text-[12px] font-normal text-white">{formatPostDate(slide?.event_date)}</p>
+                {slide?.event_date && (
+                  <p className="2xl:text-[18px] xl:text-[16px] md:text-[14px] text-[12px] font-normal text-white">
+                    {formatPostDate(slide?.event_date)}
+                  </p>
+                )}
               </div>
             </div>
           </SwiperSlide>

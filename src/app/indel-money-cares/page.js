@@ -1,4 +1,5 @@
 import IndelCares from "@/pages/IndelCares";
+import { Suspense } from "react";
 
 async function fetchData(page = 1, limit = 3) {
   try {

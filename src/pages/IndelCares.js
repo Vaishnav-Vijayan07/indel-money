@@ -25,7 +25,9 @@ export default function IndelMoneyCars({ content, slideItems, nonSlideItems, tot
   );
 
   const handlePageChange = (newPage) => {
-    router.push(`?${createQueryString("page", newPage.toString())}`);
+    router.push(`?${createQueryString("page", newPage.toString())}`,{
+      scroll: false, // Prevent scrolling to the top
+    });
   };
 
   return (
@@ -55,7 +57,7 @@ export default function IndelMoneyCars({ content, slideItems, nonSlideItems, tot
               {nonSlideItems?.slice(0, 1)?.map((item, index) => (
                 <div key={index} className="w-full">
                   <Link
-                    href={item?.href || "/"}
+                    href={`/indel-money-cares/${item?.slug}`}
                     className="group w-full h-full flex flex-wrap sm:flex-nowrap gap-[10px] xl:gap-[20px] 2xl:gap-[25px] 3xl:gap-[30px]"
                   >
                     <div className="w-[100%] sm:w-[170px] lg:w-[240px] xl:w-[320px] 3xl:w-[510px] h-[210px] sm:h-auto overflow-hidden rounded-[20px] relative z-0">

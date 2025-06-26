@@ -3,13 +3,6 @@ import Link from "next/link";
 import BlogDetail from "@/components/features/blog/BlogDetail";
 import RecentBlog from "@/components/features/blog/RecentBlog";
 
-const LatestUpdates = dynamic(() => import("@/components/features/home/LatestUpdates"), {
-  loading: () => <div>Loading slider...</div>,
-});
-const MobLatestUpdates = dynamic(() => import("@/components/features/blog/MobLatestUpdates"), {
-  loading: () => <div>Loading mobile slider...</div>,
-});
-
 // Fetch blog data for a specific post
 async function fetchBlogData(slug) {
   try {
@@ -21,48 +14,23 @@ async function fetchBlogData(slug) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const result = await response.json();
-
-    
+    console.log("Blog data fetched:", result); // Log for debugging
 
     if (result.status === "success") {
-      // const { content, sliderItems, blogs, pagination } = result.data || {};
+      const { blog, recentBlogs } = result.data || {};
       return {
-        content: result?.data,
-        // sliderData: sliderItems,
-        // blogs,
-        // pagination: pagination || { currentPage: 1, totalPages: 1, totalItems: 0 },
+        data: blog,
+        recentBlogs,
         error: null,
       };
     }
     return {
-      content: null,
-      // sliderData: null,
-      // blogs: null,
-      // pagination: null,
+      data: null,
+      recentBlogs: null,
       error: result.message,
     };
   } catch (error) {
-    return { data: null, error: "Failed to fetch blog data" };
-  }
-}
-
-// Fetch recent blogs
-async function fetchRecentBlogs(slug) {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs?limit=3`, {
-      cache: "no-store",
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const result = await response.json();
-    if (result.status === "success") {
-      const blog = result.data?.blogs?.filter((blog) => blog.slug !== slug);
-      return { data: blog || [], error: null };
-    }
-    return { data: [], error: result.message };
-  } catch (error) {
-    return { data: [], error: "Failed to fetch recent blogs" };
+    return { data: null, recentBlogs: null, error: "Failed to fetch blog data" };
   }
 }
 
@@ -137,12 +105,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Blog({ params }) {
-  const { slug } = await params; // params is already an object, no need to await
-  const { content: blogData, error: blogError } = await fetchBlogData(slug);
-  const { data: recentBlogs, error: recentError } = await fetchRecentBlogs(slug);
-
-  // Log for debugging
-
+  const { slug } = await params;
+  const { data: blogData, recentBlogs, error: blogError } = await fetchBlogData(slug);
 
   // Handle error state for blog data
   if (blogError || !blogData) {
@@ -157,7 +121,7 @@ export default async function Blog({ params }) {
   return (
     <>
       <BlogDetail data={blogData} />
-      <RecentBlog recentBlogs={recentBlogs?.slice(0, 10)} error={recentError} />
+      <RecentBlog recentBlogs={recentBlogs} error={blogError} />
     </>
   );
 }
