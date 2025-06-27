@@ -7,9 +7,7 @@ export default async function Blog({ searchParams }) {
   return (
     <>
       <LatestBlogs />
-      <Suspense fallback={<div>Loading...</div>}>
-        <AllBlogsPage page={page} />
-      </Suspense>
+      <AllBlogsPage page={page} />
     </>
   );
 }
