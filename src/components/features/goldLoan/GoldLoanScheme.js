@@ -68,24 +68,32 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
             {schemeDetails?.map((detailsArray, idx) => (
               <SwiperSlide key={idx}>
                 <div className="flex flex-wrap m-[-8px] 3xl:m-[-12px] py-[15px]">
-                  {detailsArray?.map((detail, detailIndex) => (
-                    <div
-                      className="w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] p-[8px] 3xl:p-[12px]"
-                      key={detail.id || detailIndex}
-                    >
-                      <div className="w-full h-full shadow-[0_0_10px_rgba(0,0,0,0.20)] text-center rounded-[15px] 3xl:rounded-[25px] overflow-hidden">
-                        <div className="bg-[#CDE2FF] w-full min-h-[50px] 2xl:min-h-[55px] 3xl:min-h-[73px] flex items-center justify-center text-[12px] 2xl:text-[18px] 3xl:text-[24px] text-[#1F1B1B] font-medium">
-                          {detail.title}
-                        </div>
-                        <div
-                          className="text-[#08388E] text-[12px] 2xl:text-[18px] 3xl:text-[24px] font-bold 
-                                                    h-[calc(100%-50px)] 2xl:h-[calc(100%-55px)] 3xl:h-[calc(100%-73px)] flex items-center justify-center min-h-[65px] xl:min-h-[80px] 3xl:min-h-[120px] p-[15px]"
-                        >
-                          {detail.value || "—"}
+                  {detailsArray?.length > 0 ? (
+                    detailsArray?.map((detail, detailIndex) => (
+                      <div
+                        className="w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] p-[8px] 3xl:p-[12px]"
+                        key={detail.id || detailIndex}
+                      >
+                        <div className="w-full h-full shadow-[0_0_10px_rgba(0,0,0,0.20)] text-center rounded-[15px] 3xl:rounded-[25px] overflow-hidden">
+                          <div className="bg-[#CDE2FF] w-full min-h-[50px] 2xl:min-h-[55px] 3xl:min-h-[73px] flex items-center justify-center text-[12px] 2xl:text-[18px] 3xl:text-[24px] text-[#1F1B1B] font-medium">
+                            {detail.title}
+                          </div>
+                          <div
+                            className="text-[#08388E] text-[12px] 2xl:text-[18px] 3xl:text-[24px] font-bold 
+                                                      h-[calc(100%-50px)] 2xl:h-[calc(100%-55px)] 3xl:h-[calc(100%-73px)] flex items-center justify-center min-h-[65px] xl:min-h-[80px] 3xl:min-h-[120px] p-[15px]"
+                          >
+                            {detail.value || "—"}
+                          </div>
                         </div>
                       </div>
+                    ))
+                  ) : (
+                    <div className="w-full h-full text-center">
+                      <div className="text-[#1F1B1B] text-[18px] 2xl:text-[24px] 3xl:text-[30px] font-bold mt-[20px]">
+                        No Data
+                      </div>
                     </div>
-                  ))}
+                  )}
                 </div>
               </SwiperSlide>
             ))}
