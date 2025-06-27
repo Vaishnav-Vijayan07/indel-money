@@ -32,6 +32,7 @@ export default function DeskHeader({ headerData }) {
   const common = headerData?.footerContent;
   const modes = headerData?.modes;
 
+  console.log(header);
   const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
@@ -116,7 +117,7 @@ export default function DeskHeader({ headerData }) {
                 </div>
                 <div>
                   <Link
-                    href={header?.android_dowload_link ? header?.android_dowload_link : "/"}
+                    href={header?.andrioid_download_link ? header?.andrioid_download_link : "/hello"}
                     className="w-[10px] lg:w-[14px] 2xl:w-[18px] h-auto block transition-transform duration-300 hover:scale-105"
                   >
                     <Image
@@ -172,7 +173,7 @@ export default function DeskHeader({ headerData }) {
                   </DropdownMenu>
                 </div>
                 <div>
-                  <Link href="/contact" className="btn btn-base2 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px]">
+                  <Link href={header?.button_2_link || '#'} className="btn btn-base2 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px]">
                     {header?.button_2_text ? header?.button_2_text : "Contact Us"}
                   </Link>
                 </div>

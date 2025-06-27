@@ -60,6 +60,12 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+
+  function handleRefresh(){
+    form.setValue("gold_amount", "");
+  }
+
+
   // Handle form submission
   function onSubmit(values) {
     const weight = parseFloat(values.gold_amount);
@@ -176,7 +182,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
                     </div>
                   </div>
                   <FormControl>
-                    <Input className="bg-white border-white" placeholder={`Gold Amount (in ${unit})`} {...field} />
+                    <Input type="number" className="bg-white border-white" placeholder={`Gold Amount (in ${unit})`} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -205,6 +211,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
                       alt="refresh"
                       width={16}
                       height={16}
+                      onClick={handleRefresh}
                       className="w-[10px] sm:w-[10px] 2xl:w-[15px] aspect-square absolute z-1 top-0 bottom-0 right-[10px] lg:right-[12px] 2xl:right-[15px] m-auto cursor-pointer hover:scale-95 transition-transform duration-300"
                     />
                   </div>
