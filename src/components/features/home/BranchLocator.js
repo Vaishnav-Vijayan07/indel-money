@@ -221,7 +221,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
               transition={{ duration: 0.5 }}
               className="hidden sm:flex w-full lg:w-[468px] xl:w-[500px] 2xl:w-[600px] 3xl:w-[600px] mt-2 xl:mt-[10px] xl:text-right"
             >
-              <p className="text-[12px] lg:text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[16px]">
+              <p className="text-[12px] lg:text-[12px] xl:text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#323232]">
                 {pageContent?.branch_section_description || ""}
               </p>
             </motion.div>
