@@ -164,14 +164,13 @@ function TeamBox({ item }) {
 }
 
 function TeamModal({ item }) {
-  console.log(item);
   return (
     <div className="container">
       <div className="relative z-[1] w-full flex flex-wrap bg-white rounded-[10px] sm:rounded-[36px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:px-[20px] xl:px-[35px] 2xl:px-[55px] 3xl:px-[75px] sm:py-[25px]  pb-[60px] xl:py-[40px] 2xl:py-[60px] 3xl:py-[80px]  p-0">
         <div className="group w-full sm:w-[150px] lg:w-[250px] xl:w-[270px] 2xl:w-[385px] flex sm:justify-center items-end sm:items-center bg-gradient-to-t from-[rgba(238,56,36,0.40)] via-[rgba(23,71,158,0.25)] to-[rgba(23,71,158,0.10)] sm:bg-gradient-to-b sm:from-[#EFEFEF] sm:to-[#AFDBF6] rounded-[10px] sm:rounded-[20px] p-[15px] pb-0 sm:p-0 overflow-hidden">
           <div className="group h-auto sm:w-full w-[135px] flex justify-center items-center">
             <Image
-              src={item?.image ?  `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/team010.png"}
+              src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/team010.png"}
               alt={item.title}
               layout="responsive"
               width={100}
