@@ -11,13 +11,7 @@ function BlogCard({ item, className, index, type = "blog" }) {
     >
       <div className="group w-[127px] sm:w-[160px] lg:w-[180px] xl:w-[220px] 2xl:w-[240px] 3xl:w-[320px] aspect-[4/3] overflow-hidden rounded-[20px] relative z-0">
         <Image
-          src={
-            item?.second_image
-              ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.second_image}`
-              : item?.image
-              ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`
-              : "/images/blog/1.jpg"
-          }
+          src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/blog/1.jpg"}
           alt={item?.image_alt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 320px"

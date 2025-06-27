@@ -8,25 +8,31 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { formatPostDate } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" }) {
+  const router = useRouter();
   return (
     <section className="w-full block">
       <div className="container">
-        {/* <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-wrap bg-[#cae5f4] rounded-[30px] overflow-hidden"
-        > */}
         <div className="flex flex-wrap bg-[#cae5f4] rounded-[30px] overflow-hidden">
           <div className="w-full md:w-[55%] lg:w-1/2 p-4 lg:p-6 xl:p-8">
             <div className="flex justify-between items-center gap-2 mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">
               <h3 className="text-title1 text-black font-medium max-w-[70%]">{sliderTitle}</h3>
               <Link
-                href={`/${type}`}
+                href={`/${type}/#all`}
                 className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-bold flex items-center shrink-0 hover:text-base2 transition-color duration-300"
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent default anchor jump
+                  const section = document.querySelector("#all");
+                  if(type === "indel-money-cares") {
+                    router.push(`/${type}`, undefined, { scroll: false });
+                    return
+                  }
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
               >
                 View All
                 <Image src="/images/icon-right.svg" width={7} height={13} alt="right" className="w-[4px] lg:w-[6px] ml-1 lg:ml-2" />
@@ -85,8 +91,10 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
                       className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
                     />
                     <div className="w-full h-auto absolute inset-0 top-auto p-[15px_15px_30px] lg:p-[20px_20px_30px] xl:p-[30px_30px_40px] 3xl:p-[50px_50px_60px] bg-gradient-to-t from-black/60 to-transparent">
-                      {item?.event_date && (
-                        <div className="text-sm 3xl:text-lg text-white line-clamp-1 mb-2 3xl:mb-4">{formatPostDate(item?.event_date)}</div>
+                      {(item?.event_date || item?.posted_on) && (
+                        <div className="text-sm 3xl:text-lg text-white line-clamp-1 mb-2 3xl:mb-4">
+                          {formatPostDate(item?.posted_on || item?.event_date)}
+                        </div>
                       )}
                       <div className="text-[14px] sm:text-[18px] lg:text-[22px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[36px] leading-[1.2] text-white font-medium line-clamp-2 mb-4 3xl:mb-6">
                         {item?.title}
@@ -116,4 +124,3 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
     </section>
   );
 }
-

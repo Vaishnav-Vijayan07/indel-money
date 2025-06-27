@@ -1,63 +1,31 @@
-import dynamic from "next/dynamic";
-import Link from "next/link";
 import BlogDetail from "@/components/features/blog/BlogDetail";
 import RecentBlog from "@/components/features/blog/RecentBlog";
 
-// Fetch blog data for a specific post
+// Fetch news data for a specific post
 async function fetchBlogData(slug) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news/${slug}`, {
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news/${slug}`, {});
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const result = await response.json();
 
-
     if (result.status === "success") {
-      // const { content, sliderItems, blogs, pagination } = result.data || {};
+      const { news, recentNews } = result.data || {};
       return {
-        content: result?.data,
-        // sliderData: sliderItems,
-        // blogs,
-        // pagination: pagination || { currentPage: 1, totalPages: 1, totalItems: 0 },
+        data: news,
+        recentNews,
         error: null,
       };
     }
     return {
-      content: null,
-      // sliderData: null,
-      // blogs: null,
-      // pagination: null,
+      data: null,
+      recentNews: null,
       error: result.message,
     };
   } catch (error) {
-    return { data: null, error: "Failed to fetch news data" };
-  }
-}
-
-// Fetch recent newss
-async function fetchRecentBlogs(slug) {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news?limit=3`, {
-      cache: "no-store",
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    
-    const result = await response.json();
-    if (result.status === "success") {
-        const news = result.data?.news?.filter((news) => news.slug !== slug);
-
-      return { data: news || [], error: null };
-    }
-    return { data: [], error: result.message };
-  } catch (error) {
-    return { data: [], error: "Failed to fetch recent news" };
+    return { data: null, recentNews: null, error: "Failed to fetch news data" };
   }
 }
 
@@ -102,7 +70,7 @@ export async function generateMetadata({ params }) {
   return {
     title: data?.title || "News Post | My Website",
     description: data?.meta_description || data?.description || "Read our latest news.",
-    keywords: data?.meta_keywords || "blog, post, news",
+    keywords: data?.meta_keywords || "news, post, news",
     openGraph: {
       title: data?.meta_title || data?.title || "News Post | My Website",
       description: data?.meta_description || data?.description || "Read our latest news.",
@@ -133,13 +101,14 @@ export async function generateMetadata({ params }) {
 
 export default async function News({ params }) {
   const { slug } = await params; // params is already an object, no need to await
-  const { content: newsData, error: blogError } = await fetchBlogData(slug);
-  const { data: recentBlogs, error: recentError } = await fetchRecentBlogs(slug);
+  const { data: newsData, recentNews, error } = await fetchBlogData(slug);
+
+  console.log("News Data:", recentNews); // Log for debugging
 
   // Log for debugging
 
-  // Handle error state for blog data
-  if (blogError || !newsData) {
+  // Handle error state for news data
+  if (error || !newsData) {
     return (
       <div className="container py-10">
         <h1>Error Loading News Post</h1>
@@ -151,7 +120,7 @@ export default async function News({ params }) {
   return (
     <>
       <BlogDetail data={newsData} type="news" />
-      <RecentBlog recentBlogs={recentBlogs?.slice(0, 10)} error={recentError} type="news" />
+      <RecentBlog recentBlogs={recentNews} type="news" />
     </>
   );
 }
