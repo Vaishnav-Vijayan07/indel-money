@@ -59,6 +59,46 @@ async function fetchData() {
   }
 }
 
+async function getMetaData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=career`);
+    const result = await response.json();
+    const meta = result.data;
+
+    if (result.status === "success") {
+      return {
+        title: meta?.meta_title || "Careers | My Website",
+        description: meta?.meta_description || "Join our team and build your career with us.",
+        keywords: meta?.meta_keywords || "careers, jobs, employment, work with us",
+        error: null,
+      };
+    }
+    return {
+      title: "Careers | My Website",
+      description: "Join our team and build your career with us.",
+      keywords: "careers, jobs, employment, work with us",
+      error: result.message,
+    };
+  } catch (error) {
+    return {
+      title: "Careers | My Website",
+      description: "Join our team and build your career with us.",
+      keywords: "careers, jobs, employment, work with us",
+      error: "Failed to fetch service data",
+    };
+  }
+}
+
+export async function generateMetadata() {
+  const { title, description, keywords } = await getMetaData();
+
+  return {
+    title,
+    description,
+    keywords,
+  };
+}
+
 export default async function Career() {
   const { contents, banners, benefits, awards, award_content, gallery, testimonials, states, jobs, error } = await fetchData();
 
