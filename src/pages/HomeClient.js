@@ -25,7 +25,7 @@ import MobLatestUpdates from "../components/features/home/MobLatestUpdates";
 import MobInnovations from "../components/features/home/MobInnovations";
 import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
-export default function Home({ initialData, serviceBanner, banner, initialError }) {
+export default function Home({ initialData, serviceBanner, banner,branchLocatorData, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   return (
     <>
@@ -79,10 +79,10 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
 
       {/* Branch locator contents*/}
       <div className="hidden sm:block">
-        <BranchLocator pageContent={initialData?.pageContent} variant={"home"} />
+        <BranchLocator pageContent={branchLocatorData} variant={"home"} />
       </div>
       <div className="block sm:hidden">
-        <MobBranchLocator pageContent={initialData?.pageContent} />
+        <MobBranchLocator pageContent={branchLocatorData} />
       </div>
 
       {/* Life at Indel contents*/}

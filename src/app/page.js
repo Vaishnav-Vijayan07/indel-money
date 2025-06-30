@@ -51,5 +51,13 @@ async function fetchHomeData() {
 
 export default async function HomePage() {
   const { data, error } = await fetchHomeData();
-  return <HomeClient initialData={data} serviceBanner={data?.service} banner={data?.banner} initialError={error} />;
+  return (
+    <HomeClient
+      initialData={data}
+      serviceBanner={data?.service}
+      banner={data?.banner}
+      branchLocatorData={data?.branchLocatorData}
+      initialError={error}
+    />
+  );
 }

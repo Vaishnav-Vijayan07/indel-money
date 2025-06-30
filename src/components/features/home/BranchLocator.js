@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import api from "../../../lib/api/axios";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 // Dynamically import BranchLocationMap with SSR disabled
 const BranchLocationMap = dynamic(() => import("@/components/features/home/BranchLocationMap"), {
@@ -25,9 +26,6 @@ export default function BranchLocator({ variant = "default", pageContent }) {
   const [selectedDistance, setSelectedDistance] = useState("");
   const [userLocation, setUserLocation] = useState(null);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
-
-  
-  
 
   const fetchStates = async () => {
     try {
@@ -118,7 +116,6 @@ export default function BranchLocator({ variant = "default", pageContent }) {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           });
-          
         },
         (error) => {
           console.error("Error fetching location:", error);
@@ -213,26 +210,22 @@ export default function BranchLocator({ variant = "default", pageContent }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               className="text-title1 w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-600px)] xl:pr-[40px] 2xl:pr-[60px] 3xl:pr-[80px] [&>span]:text-base2 [&>span]:font-bold"
-              dangerouslySetInnerHTML={{ __html: pageContent?.branch_section_title || "" }}
-            />
+            >
+              {pageContent?.title ? renderHtml(pageContent?.title) : ""}
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               className="hidden sm:flex w-full lg:w-[468px] xl:w-[500px] 2xl:w-[600px] 3xl:w-[600px] mt-2 xl:mt-[10px] xl:text-right"
             >
-              <p className="text-[12px] lg:text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[16px]">
-                {pageContent?.branch_section_description || ""}
+              <p className="text-[12px] lg:text-[12px] xl:text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#323232]">
+                {pageContent?.description || ""}
               </p>
             </motion.div>
           </div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="container mx-auto"
-        >
+        <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="container mx-auto">
           <div className="bg-white shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-[12px] p-[12px] sm:p-[16px] lg:p-[20px] 2xl:p-[24px] mb-6">
             <BranchForm
               states={states}
@@ -257,11 +250,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
         }`}
       >
         <div className="max-w-full container mx-auto">
-          <BranchLocationMap
-            branchLocations={branchLocationsAPI}
-            selectedBranch={selectedBranch}
-            setSelectedBranch={setSelectedBranch}
-          />
+          <BranchLocationMap branchLocations={branchLocationsAPI} selectedBranch={selectedBranch} setSelectedBranch={setSelectedBranch} />
         </div>
       </div>
     </section>

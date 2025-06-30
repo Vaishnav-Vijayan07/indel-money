@@ -5,7 +5,7 @@ export default function AboutFinacial({ statsData, super_title, title, sub_title
   return (
     <section className="w-full py-[50px] 2xl:py-[80px] 3xl:py-[100px]">
       <div className="container">
-        <div className="flex flex-wrap items-end">
+        <div className="flex flex-wrap items-center">
           <div className="w-full lg:w-[calc(100%-576px)] xl:w-[calc(100%-700px)] 2xl:w-[calc(100%-768px)] 3xl:w-[calc(100%-1024px)] max-lg:mb-[20px] lg:pr-[25px] xl:pr-[30px] 2xl:pr-[35px] 3xl:pr-[35px]">
             <div className="w-full">
               <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[34px] 2xl:text-[40px] 3xl:text-[64px] leading-none font-bold text-base2 mb-[4px] xl:mb-[6px]">

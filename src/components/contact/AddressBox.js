@@ -10,7 +10,7 @@ function AddressBox({ item }) {
         {item.office_name}
       </div>
       <div className="text-sm1 text-white sm:text-black/80 mb-[15px] lg:mb-[10px] 2xl:mb-[15px]">{item.address}</div>
-      {item.phone && <LinkBox href={`tel:${item.phone}`} src="/images/icon-call.svg" title={item.alternative_phone} alt="call" items={item.alternative_phone} />}
+      {item.phone && <LinkBox href={`tel:${item.phone}`} src="/images/icon-call.svg" title={item.phone} alt="call" items={item.phone} />}
       {item.email && <LinkBox href={`mailto:${item.email}`} src="/images/icon-ft-email.svg" title={item.email} alt="mail" items={item.email} />}
     </div>
   );

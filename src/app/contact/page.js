@@ -13,16 +13,22 @@ async function fetchContactsData() {
     const result = await response.json();
 
     if (result.status === "success") {
-      return { contents: result.data?.content, faqs: result.data?.faqs, officeContacts: result.data?.officeContacts, error: null };
+      return {
+        contents: result.data?.content,
+        faqs: result.data?.faqs,
+        officeContacts: result.data?.officeContacts,
+        branchLocatorData: result.data?.branchLocatorData,
+        error: null,
+      };
     }
-    return { contents: null, faqs: null, officeContacts: null, error: result.message };
+    return { contents: null, faqs: null, officeContacts: null, branchLocatorData: null, error: result.message };
   } catch (error) {
-    return { contents: null, faqs: null, officeContacts: null, error: "Failed to fetch management data" };
+    return { contents: null, faqs: null, officeContacts: null, branchLocatorData: null, error: "Failed to fetch management data" };
   }
 }
 
 export default async function Contact() {
-  const { contents, faqs, officeContacts } = await fetchContactsData();
+  const { contents, faqs, officeContacts, branchLocatorData, error } = await fetchContactsData();
 
   if (!contents || !faqs || !officeContacts) {
     return <div>Failed to fetch contact data</div>;
@@ -37,7 +43,7 @@ export default async function Contact() {
         helpText={contents?.help_title}
       />
       <WriteIntel formTitle={contents?.form_title} formSubtitle={contents?.form_sub_title} contactImage={contents?.contact_image} />
-      <BranchLocator variant="contact" pageContent={contents} />
+      <BranchLocator variant="contact" pageContent={branchLocatorData} />
       <ContactFaq faqs={faqs} officeContacts={officeContacts} faqTitle={contents?.faq_title} faqSuperTitle={contents?.faq_super_title} />
     </>
   );

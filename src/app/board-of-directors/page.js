@@ -19,6 +19,8 @@ async function fetchManagementData() {
 export default async function ManagementTeamPage() {
   const { data, error } = await fetchManagementData();
 
+  console.log("Management Team Data:", data);
+
   if (!data) {
     return <div>Failed to fetch directors data</div>;
   }
