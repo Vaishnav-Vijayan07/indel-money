@@ -34,6 +34,8 @@ async function fetchBlogsData() {
   }
 }
 
+
+
 async function LatestBlogs() {
   const { content, blogs } = await fetchBlogsData();
   return (
