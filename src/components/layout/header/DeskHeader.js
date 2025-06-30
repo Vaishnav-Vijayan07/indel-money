@@ -32,7 +32,6 @@ export default function DeskHeader({ headerData }) {
   const common = headerData?.footerContent;
   const modes = headerData?.modes;
 
-  console.log(header);
   const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 

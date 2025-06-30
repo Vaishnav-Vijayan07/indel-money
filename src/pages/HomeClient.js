@@ -27,6 +27,7 @@ import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
 export default function Home({ initialData, serviceBanner, banner,branchLocatorData, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+  console.log(initialData?.pageContent?.announcement_text);
   return (
     <>
       {/* welcome contents*/}
@@ -41,14 +42,14 @@ export default function Home({ initialData, serviceBanner, banner,branchLocatorD
         <HeroBanner
           heroBanner={initialData?.heroBanner || []}
           initialData={initialData}
-          announcement={initialData?.announcement?.text}
+          announcement={initialData?.pageContent?.announcement_text}
         />
       </div>
       <div className="block sm:hidden">
         <MobHeroBanner
           heroBanner={initialData?.heroBanner || []}
           initialData={initialData}
-          announcement={initialData?.announcement?.text}
+          announcement={initialData?.pageContent?.announcement_text}
         />
       </div>
 
