@@ -25,6 +25,46 @@ async function fetchData() {
   }
 }
 
+async function getMetaData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=indelValues`);
+    const result = await response.json();
+    const meta = result.data;
+
+    if (result.status === "success") {
+      return {
+        title: meta?.meta_title || "Indel Values | My Website",
+        description: meta?.meta_description || "Explore the core values of indel money, its history, milestones, and journey.",
+        keywords: meta?.meta_keywords || "indel, money, values, history, milestones",
+        error: null,
+      };
+    }
+    return {
+      title: "Indel Values | My Website",
+      description: "Explore the core values of indel money, its history, milestones, and journey.",
+      keywords: "indel, money, values, history, milestones",
+      error: result.message,
+    };
+  } catch (error) {
+    return {
+      title: "Indel Values | My Website",
+      description: "Explore the core values of indel money, its history, milestones, and journey.",
+      keywords: "indel, money, values, history, milestones",
+      error: "Failed to fetch service data",
+    };
+  }
+}
+
+export async function generateMetadata() {
+  const { title, description, keywords } = await getMetaData();
+
+  return {
+    title,
+    description,
+    keywords,
+  };
+}
+
 export default async function IndelValues() {
   const { contents, values, propositions, error } = await fetchData();
 

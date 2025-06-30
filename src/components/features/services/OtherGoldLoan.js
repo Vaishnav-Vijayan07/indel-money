@@ -53,7 +53,7 @@ function ServiceCard({ item }) {
     <div className="group w-full h-full flex gap-[10px] xl:gap-[20px] 2xl:gap-[25px] 3xl:gap-[30px]">
       <Link href="/" className="group w-[160px] lg:w-[200px] xl:w-[255px] 3xl:w-[400px] overflow-hidden rounded-[20px]">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
+          src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/OthrLoan01.jpg"}
           width={400}
           height={275}
           alt={item?.alt || "Service Image"}
