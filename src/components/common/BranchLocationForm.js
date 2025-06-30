@@ -9,7 +9,7 @@ export default function BranchLocationForm() {
     const [distance, setDistance] = useState("");
 
     const handleSearch = () => {
-        console.log({ state, district, location, distance });
+        
     };
 
     return (

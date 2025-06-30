@@ -1,0 +1,55 @@
+/* BANNER_SLIDER */
+.IndelvalueSlider {
+  --swiper-pagination-bottom: 40px;
+  --swiper-pagination-color: #fff;
+  --swiper-pagination-bullet-width: 6px;
+  --swiper-pagination-bullet-height: 6px;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+}
+
+@media (min-width: 640px) {
+    .IndelvalueSlider {
+        --swiper-pagination-bullet-horizontal-gap: 10px;
+      }
+  }
+.IndelvalueSlider {
+  --swiper-pagination-color: #ffffff;
+  --swiper-pagination-bullet-inactive-color: #fff;
+}
+
+.IndelvalueSlider .swiper-pagination {
+  text-align: start !important;
+  max-width: var(--container-x);
+  padding-left: var(--container-padding, 1rem);
+  padding-right: var(--container-padding, 1rem);
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.IndelvalueSlider
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  outline: 2px solid #ee3824;
+}
+
+@media (min-width: 640px) {
+    .IndelvalueSlider
+      .swiper-pagination
+      .swiper-pagination-bullet.swiper-pagination-bullet-active {
+      outline-width: 3px;
+    }
+  }
+
+.even-slide-gradient
+    .GradientClass{
+        background: linear-gradient(
+      -80deg,
+      rgba(23, 71, 158, 0.06) 0%,
+      rgba(23, 71, 158, 0.12) 30%,
+      rgba(238, 56, 36, 0.30) 100%
+    );
+    
+}

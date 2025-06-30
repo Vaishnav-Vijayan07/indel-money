@@ -1,0 +1,126 @@
+import BlogDetail from "@/components/features/blog/BlogDetail";
+import RecentBlog from "@/components/features/blog/RecentBlog";
+
+// Fetch news data for a specific post
+async function fetchBlogData(slug) {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news/${slug}`, {});
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const result = await response.json();
+
+    if (result.status === "success") {
+      const { news, recentNews } = result.data || {};
+      return {
+        data: news,
+        recentNews,
+        error: null,
+      };
+    }
+    return {
+      data: null,
+      recentNews: null,
+      error: result.message,
+    };
+  } catch (error) {
+    return { data: null, recentNews: null, error: "Failed to fetch news data" };
+  }
+}
+
+// Generate dynamic metadata
+export async function generateMetadata({ params }) {
+  const { slug } = await params; // params is already an object, no need to await
+  const { data, error } = await fetchBlogData(slug);
+
+  // Log for debugging
+
+  // Fallback metadata in case of error or missing data
+  if (error || !data) {
+    return {
+      title: "News Post | My Website",
+      description: "Read our latest news Post.",
+      openGraph: {
+        title: "News Post | My Website",
+        description: "Read our latest news Post.",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug}`,
+        type: "article",
+        images: [
+          {
+            url: `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
+            width: 1200,
+            height: 630,
+            alt: "News Post",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "News Post | My Website",
+        description: "Read our latest news Post.",
+        images: [`${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`],
+      },
+      alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug}`,
+      },
+    };
+  }
+
+  return {
+    title: data?.title || "News Post | My Website",
+    description: data?.meta_description || data?.description || "Read our latest news.",
+    keywords: data?.meta_keywords || "news, post, news",
+    openGraph: {
+      title: data?.meta_title || data?.title || "News Post | My Website",
+      description: data?.meta_description || data?.description || "Read our latest news.",
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug}`,
+      type: "article",
+      images: [
+        {
+          url: data?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.image}` : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: data?.image_alt || data?.title || "News Post",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data?.title || "News Post | My Website",
+      description: data?.meta_description || data?.description || "Read our latest news.",
+      images: [
+        data?.meta_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.meta_image}` : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
+      ],
+    },
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug}`,
+    },
+  };
+}
+
+export default async function News({ params }) {
+  const { slug } = await params; // params is already an object, no need to await
+  const { data: newsData, recentNews, error } = await fetchBlogData(slug);
+
+  console.log("News Data:", recentNews); // Log for debugging
+
+  // Log for debugging
+
+  // Handle error state for news data
+  if (error || !newsData) {
+    return (
+      <div className="container py-10">
+        <h1>Error Loading News Post</h1>
+        <p>{blogError || "News post not found."}</p>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <BlogDetail data={newsData} type="news" />
+      <RecentBlog recentBlogs={recentNews} type="news" />
+    </>
+  );
+}
