@@ -5,7 +5,6 @@ import "swiper/css";
 import Image from "next/image";
 
 export default function OurValues({ propositions, title }) {
-
   console.log(propositions);
   const slides = [
     {
@@ -45,7 +44,14 @@ export default function OurValues({ propositions, title }) {
           Our Approach <br className="hidden sm:block"></br>
           <span className="text-base2 font-bold">Proposition</span>
         </h1> */}
-        <h1 className="text-title1 font-medium sm:font-normal text-[#1E1E1E] mb-[20px] sm:mb-[30px] 2xl:mb-[50px] [&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: title ? title : "Our Approach <br></br> <span>Proposition</span>" }} />
+        <h2
+          className="text-title1 font-medium sm:font-normal text-[#1E1E1E] mb-[20px] sm:mb-[30px] 2xl:mb-[50px] [&>span]:text-base2 [&>span]:font-bold"
+          dangerouslySetInnerHTML={{
+            __html: title
+              ? title
+              : "Our Approach <br></br> <span>Proposition</span>",
+          }}
+        />
 
         <div className="w-full">
           <Swiper
@@ -77,13 +83,17 @@ export default function OurValues({ propositions, title }) {
     </section>
   );
 }
-export function ValueBox({ item }) {
+function ValueBox({ item }) {
   return (
-    <div className="w-full h-full overflow-hidden sm:bg-[linear-gradient(80deg,_rgba(23,71,158,0.06)_0%,_rgba(23,71,158,0.12)_30%,_rgba(238,56,36,0.30)_100%)] bg-[linear-gradient(-80deg,_rgba(23,71,158,0.06)_0%,_rgba(23,71,158,0.12)_30%,_rgba(238,56,36,0.30)_100%)] hover:from-[rgba(238,56,36,0.30)] hover:via-[rgba(23,71,158,0.12)] hover:to-[rgba(23,71,158,0.06)]                                                                                                                                                                                                                               GradientClass p-[20px] xl:p-[30px] 2xl:p-[50px] 3xl:p-[60px] rounded-[20px] transition-all duration-600 hover:transform hover:translate-y-2 2xl:hover:translate-y-4">
+    <div className="w-full h-full overflow-hidden sm:bg-[linear-gradient(80deg,_rgba(23,71,158,0.06)_0%,_rgba(23,71,158,0.12)_30%,_rgba(238,56,36,0.30)_100%)] bg-[linear-gradient(-80deg,_rgba(23,71,158,0.06)_0%,_rgba(23,71,158,0.12)_30%,_rgba(238,56,36,0.30)_100%)] hover:from-[rgba(238,56,36,0.30)] hover:via-[rgba(23,71,158,0.12)] hover:to-[rgba(23,71,158,0.06)] p-[20px] xl:p-[30px] 2xl:p-[50px] 3xl:p-[60px] rounded-[20px] transition-all duration-600 hover:transform hover:translate-y-2 2xl:hover:translate-y-4">
       <div className="flex items-center mb-[20px]">
         <div className="group w-[39px] sm:w-[35px] 2xl:w-[45px] h-[40px] 2xl:h-[50px]">
           <Image
-            src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.icon}` : "/images/apprch01.svg"}
+            src={
+              item.icon
+                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.icon}`
+                : "/images/apprch01.svg"
+            }
             alt={item?.alt ? item?.alt : "value-1"}
             width={45}
             height={50}

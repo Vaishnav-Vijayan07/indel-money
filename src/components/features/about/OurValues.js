@@ -59,7 +59,7 @@ export default function OurValues({ values, }) {
         </section>
     );
 }
-export function ValueBox({ item }) {
+function ValueBox({ item }) {
     return (
         <div className="w-full h-full relative overflow-hidden bg-white shadow-[0_0_28px_rgba(0,0,0,0.10)] p-[20px] xl:p-[30px] 2xl:p-[40px] rounded-[10px] sm:rounded-[20px] transition-transform duration-600 hover:transform hover:translate-y-2 2xl:hover:translate-y-4">
             <div className="w-[120px] xl:w-[145px] 2xl:w-[190px] 3xl:w-[240px] h-[120px] xl:h-[145px] 2xl:h-[190px] 3xl:h-[240px] rotate-[65deg] 2xl:rotate-[150deg] rounded-full absolute left-[-8%] xl:left-[-5%] 2xl:left-[-10%] top-[-11%] 2xl:top-[-15%] sm:bg-gradient-to-b sm:from-[rgba(23,71,158,0.07)] sm:via-[rgba(23,71,158,0.14)] sm:to-[rgba(238,56,36,0.65)]"></div>
