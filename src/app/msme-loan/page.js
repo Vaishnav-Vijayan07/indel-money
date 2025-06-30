@@ -48,6 +48,45 @@ async function fetchData() {
     };
   }
 }
+async function getMetaData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=msme`);
+    const result = await response.json();
+    const meta = result.data;
+
+    if (result.status === "success") {
+      return {
+        title: meta?.meta_title || "MSME Loan | My Website",
+        description: meta?.meta_description || "Get the best MSME loan offers with us.",
+        keywords: meta?.meta_keywords || "msme loan, offers, financial services",
+        error: null,
+      };
+    }
+    return {
+      title: "MSME Loan | My Website",
+      description: "Get the best MSME loan offers with us.",
+      keywords: "msme loan, offers, financial services",
+      error: result.message,
+    };
+  } catch (error) {
+    return {
+      title: "MSME Loan | My Website",
+      description: "Get the best MSME loan offers with us.",
+      keywords: "msme loan, offers, financial services",
+      error: "Failed to fetch service data",
+    };
+  }
+}
+
+export async function generateMetadata() {
+  const { title, description, keywords } = await getMetaData();
+
+  return {
+    title,
+    description,
+    keywords,
+  };
+}
 
 export default async function MsmeLoan() {
   const { contents, offerings, faqs, loanTypes, industries, audience, error } = await fetchData();

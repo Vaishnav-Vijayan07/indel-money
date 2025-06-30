@@ -80,7 +80,7 @@ const Careers = [
   },
   {
     title: "apply now",
-    link: "/career-list",
+    link: "/career/#makemove",
   },
 ];
 const Abouts = [

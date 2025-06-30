@@ -32,6 +32,46 @@ async function fetchAboutData() {
   }
 }
 
+async function getMetaData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=about`);
+    const result = await response.json();
+    const meta = result.data;
+
+    if (result.status === "success") {
+      return {
+        title: meta?.meta_title || "About Us | My Website",
+        description: meta?.meta_description || "Learn more about our company and values.",
+        keywords: meta?.meta_keywords || "about us, company, values",
+        error: null,
+      };
+    }
+    return {
+      title: "About Us | My Website",
+      description: "Learn more about our company and values.",
+      keywords: "about us, company, values",
+      error: result.message,
+    };
+  } catch (error) {
+    return {
+      title: "About Us | My Website",
+      description: "Learn more about our company and values.",
+      keywords: "about us, company, values",
+      error: "Failed to fetch service data",
+    };
+  }
+}
+
+export async function generateMetadata() {
+  const { title, description, keywords } = await getMetaData();
+
+  return {
+    title,
+    description,
+    keywords,
+  };
+}
+
 export default async function About() {
   const { data, error } = await fetchAboutData();
 

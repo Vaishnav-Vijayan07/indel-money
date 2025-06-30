@@ -68,9 +68,7 @@ async function getMetaData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=goldloan`);
     const result = await response.json();
-    const meta = result.datametaData;
-
-    console.log("Meta Data:", meta);  
+    const meta = result.data;
 
     if (result.status === "success") {
       return {
