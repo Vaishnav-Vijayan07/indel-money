@@ -32,7 +32,6 @@ export default function DeskHeader({ headerData }) {
   const common = headerData?.footerContent;
   const modes = headerData?.modes;
 
-  console.log(header);
   const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
@@ -123,7 +122,7 @@ export default function DeskHeader({ headerData }) {
                     <Image
                       src={
                         header?.andrioid_download_icon
-                          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${header?.android_download_link}`
+                          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${header?.andrioid_download_icon}`
                           : "/images/icon-playStore.svg"
                       }
                       width={0}
