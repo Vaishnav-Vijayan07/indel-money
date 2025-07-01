@@ -13,7 +13,7 @@ const PostDateDisplay = ({ date = "24 NOVEMBER 2024" }) => {
 };
 
 const EventDetail = ({ data }) => {
-    console.log("Event Detail Data:", data); // Log for debugging
+    
   return (
     <section className="w-full block py-[20px] lg:p-[30px_0_25px] 2xl:p-[50px_0_35px] relative z-0 before:content-[''] before:absolute before:-z-1 before:top-0 before:bottom-0 before:block before:w-full before:h-[50%] before:bg-gradient-to-r before:from-[rgba(243,0,0,0.00)] before:to-[rgba(235,2,8,0.10)] before:my-auto before:pointer-events-none sm:before:block before:hidden">
       <div className="container">

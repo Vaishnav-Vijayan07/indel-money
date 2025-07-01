@@ -43,7 +43,7 @@ const options = {
 };
 
 export default function PrivacyPolicy({ content, type }) {
-  console.log(content);
+  
 
   return (
     <section className="w-full pt-[30px] pb-[20px] 2xl:pt-[50px]  2xl:pb-[70px] md:pb-[40px] sm:pt-[30px] sm:pb-[30px]">

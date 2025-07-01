@@ -80,7 +80,7 @@ const NavigationItem = ({ item, isActive, onClick, isMobile = false }) => {
 };
 
 function PartnersSection({ content, initialError, partners = [] }) {
-  console.log("PartnersSection rendered with partners:", content);
+  
   // State management
   const [activeTab, setActiveTab] = useState(partners[0] || null);
   const [partnersData, setPartnersData] = useState([]);

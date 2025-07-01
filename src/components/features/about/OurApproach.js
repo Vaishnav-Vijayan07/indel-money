@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function OurValues({ propositions, title }) {
 
-  console.log(propositions);
+  
   const slides = [
     {
       image: "/images/apprch01.svg",

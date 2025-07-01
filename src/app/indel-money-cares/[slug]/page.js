@@ -12,7 +12,7 @@ async function fetchEventData(slug) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const result = await response.json();
-    console.log("Blog data fetched:", result); // Log for debugging
+    
 
     if (result.status === "success") {
       const { event, recentEvents } = result.data || {};

@@ -210,7 +210,7 @@ export default function CareerForm({ jobId, isGeneral }) {
       
       if (!data.success) throw new Error(data.message || "Invalid OTP");
       if (data.data) {
-        console.log(data.data);
+        
         autoFillForm(data.data);
         Cookies.set("applicantData", JSON.stringify(data.data), {
           expires: 7,

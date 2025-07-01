@@ -22,7 +22,7 @@ const data = [
 
 function ImageBox({ item, className, isVideo = false }) {
 
-  console.log(item);
+  
   return (
     <div className={`w-full p-1 sm:p-2 ${className}`}>
       {isVideo ? (
@@ -114,7 +114,7 @@ function ImageBox({ item, className, isVideo = false }) {
 
 export default function GalleryDetail({ galleryItems, error }) {
   const data = galleryItems || [];
-  console.log(data);
+  
   return (
     <section className="w-full pt-[40px] pb-[25px] xl:pb-[40px] 3xl:pb-[80px]">
       <div className="container mx-auto">

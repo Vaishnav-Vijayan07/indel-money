@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import AllBlogs from "@/components/blog/AllBlogs";
 
 async function fetchAllNews(page = 1, limit = 10) {
-  console.log("Fetching news data for page:", page, "with limit:", limit);
+  
 
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news?page=${page}&limit=${limit}`, {
