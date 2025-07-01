@@ -36,7 +36,7 @@ const slides = [
 ];
 
 export default function LoanSlider({ loanTypes }) {
-  console.log("loanTypes", loanTypes);
+  
   const [showPagination, setShowPagination] = useState(false);
 
   useEffect(() => {

@@ -1,14 +1,11 @@
 import CareerDetailInfo from "@/components/features/career/CareerDetailInfo";
 import api from "@/lib/api/axios";
-import { decodeId } from '@/lib/hashids';
-
+import { decodeId } from "@/lib/hashids";
 
 export default async function CareerDetail({ params }) {
   const { id } = await params;
 
-  const DecodeId = decodeId(id)
-  
-  console.log("ID:", id);
+  const DecodeId = decodeId(id);
 
   let job = null;
   let error = null;
@@ -19,18 +16,13 @@ export default async function CareerDetail({ params }) {
       error = response.data.message || "Failed to fetch job details";
     } else {
       job = response.data.data || null;
-      console.log("Job details fetched successfully:", job);
     }
   } catch (err) {
     error = err.response?.data?.message || "Failed to fetch job details";
   }
 
   if (error || !job) {
-    return (
-      <div className="container py-8 text-center text-red-500">
-        Error: {error || "Job not found"}
-      </div>
-    );
+    return <div className="container py-8 text-center text-red-500">Error: {error || "Job not found"}</div>;
   }
 
   return <CareerDetailInfo job={job} />;

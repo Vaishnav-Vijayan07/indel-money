@@ -14,10 +14,11 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 import { FreeMode } from "swiper/modules";
 
-export default function QuarterlyReportSection() {
+export default function QuarterlyReportSection({setContent}) {
   const [activeYear, setActiveYear] = useState({});
   const [openAccordion, setOpenAccordion] = useState("");
   const [years, setYears] = useState([]);
+
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -44,6 +45,7 @@ export default function QuarterlyReportSection() {
     try {
       const { data } = await api.get("/web/investors/quarterly-reports", { params: { year } });
       setReports(data?.data?.reports || []);
+      setContent(data?.data?.content);
     } catch (error) {
       console.error("Error fetching fiscal years:", error);
     }

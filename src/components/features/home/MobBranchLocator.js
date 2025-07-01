@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import BranchForm from "../../common/BranchForm";
 import api from "../../../lib/api/axios";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 export default function MobBranchLocator({ pageContent }) {
   const [states, setStates] = useState([]);
@@ -105,7 +106,6 @@ export default function MobBranchLocator({ pageContent }) {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           });
-          console.log("User location fetched:", position.coords);
         },
         (error) => {
           console.error("Error fetching location:", error);
@@ -160,8 +160,8 @@ export default function MobBranchLocator({ pageContent }) {
   return (
     <section className="w-full py-[30px_15px] mb-[30px] bg-white shadow-[0_0_150px_0_rgba(0,0,0,0.25)] rounded-[10px_10px_0_0]">
       <div className="container">
-        <div className="text-title1 mb-[10px] 2xl:mb-[15px]">
-          Discover Gold Loan Options Near You with Our <span className="text-base2 font-bold">Branch Locator</span>
+        <div className="text-title1 mb-[10px] 2xl:mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
+          {pageContent?.title ? renderHtml(pageContent?.title) : "Find Your Nearest Branch"}
         </div>
         <BranchForm
           states={states || []}

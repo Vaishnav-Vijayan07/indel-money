@@ -15,6 +15,7 @@ import MobInstantHasslefree from "../../components/features/goldLoan/MobInstantH
 import MobGoldLoanServices from "../../components/features/goldLoan/MobGoldLoanServices";
 import MobGoldLoanScheme from "../../components/features/goldLoan/MobGoldLoanScheme";
 import MobGoldLoanFaq from "../../components/features/goldLoan/MobGoldLoanFaq";
+import { title } from "process";
 
 async function fetchGoldLoanData() {
   try {
@@ -23,7 +24,6 @@ async function fetchGoldLoanData() {
     });
     const result = await response.json();
     const goldloanData = result.data;
-    console.log("Gold Loan Data:", goldloanData);
 
     if (result.status === "success") {
       return {
@@ -62,6 +62,46 @@ async function fetchGoldLoanData() {
       error: "Failed to fetch service data",
     };
   }
+}
+
+async function getMetaData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=goldloan`);
+    const result = await response.json();
+    const meta = result.data;
+
+    if (result.status === "success") {
+      return {
+        title: meta?.meta_title || "Gold Loan | My Website",
+        description: meta?.meta_description || "Get the best gold loan offers with us.",
+        keywords: meta?.meta_keywords || "gold loan, offers, financial services",
+        error: null,
+      };
+    }
+    return {
+      title: "Gold Loan | My Website",
+      description: "Get the best gold loan offers with us.",
+      keywords: "gold loan, offers, financial services",
+      error: result.message,
+    };
+  } catch (error) {
+    return {
+      title: "Gold Loan | My Website",
+      description: "Get the best gold loan offers with us.",
+      keywords: "gold loan, offers, financial services",
+      error: "Failed to fetch service data",
+    };
+  }
+}
+
+export async function generateMetadata() {
+  const { title, description, keywords } = await getMetaData();
+
+  return {
+    title,
+    description,
+    keywords,
+  };
 }
 
 export default async function GoldLoan() {
@@ -113,8 +153,11 @@ export default async function GoldLoan() {
       <div id="easy-step" className="hidden sm:block">
         <GoldLoanCriteria
           title={contents?.gold_loan_step_title}
+          eligibilityTitle={contents?.eligibility_title}
           description={contents?.description}
-          idProofTitle={contents?.identity_proof_title}
+          documentationTitle={contents?.documentation_title}
+          documentationDescription={contents?.documentation_description}
+          identityProofTitle={contents?.identity_proof_title}
           identityProof={contents?.identity_proof_description}
           addressProofTitle={contents?.address_proof}
           addressProof={contents?.address_proof_description}

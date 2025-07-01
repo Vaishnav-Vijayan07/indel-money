@@ -16,6 +16,7 @@ const images = [
 ];
 
 export default function LifeIndelInfo({ title, description, buttonText, buttonLink, lifeImages }) {
+  
   return (
     <section className="w-full py-[80px] xl:py-[80px] 2xl:py-[120px] bg-[linear-gradient(95deg, rgba(243, 0, 0, 0) 3%, rgba(235, 2, 8, 0.15) 100%)]">
       <div className="container">
@@ -75,7 +76,7 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
                           }}
                         >
                           <Image
-                            src={img?.images ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${img?.image}` : "/images/lifeImage1.webp"}
+                            src={img?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${img?.image}` : "/images/lifeImage1.webp"}
                             alt={`Slide ${index}`}
                             fill
                             sizes="240px"

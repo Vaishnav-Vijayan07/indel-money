@@ -85,9 +85,9 @@ const navigations = [
     links: [
       { linkname: "Privacy Policy", href: "/privacy-policy" },
       { linkname: "Disclaimer", href: "/disclaimer" },
-      { linkname: "Mobile App Policy", href: "/mobile-app-policy" },
-      { linkname: "Fair Practice Code", href: "/fair-practice-code" },
-      { linkname: "Terms & Conditions", href: "/terms-and-conditions" },
+      { linkname: "Mobile App Policy", href: "/mobile-app-privacy-policy-indel-money-private-limited" },
+      { linkname: "Fair Practice Code", href: "/fair-practices-code" },
+      { linkname: "Terms & Conditions", href: "/gold-loan-terms-and-conditions" },
       { linkname: "KYC Policy", href: "/kyc-policy" },
     ],
   },
@@ -299,7 +299,7 @@ export default function Footer() {
           <div className="text-footer2 hidden md:block">CIN: U65990MH1986PLC040897</div>
           <div className="text-footer2 flex whitespace-nowrap gap-1">
             Designed By:
-            <a href={"https:www.intersmart.com/"} target="_blank" rel="noopener noreferrer" className="">
+            <a href={"https:www.intersmart.in/"} target="_blank" rel="noopener noreferrer" className="">
               <Image src={"/images/intersmart.svg"} alt={"intersmart"} width={104} height={16} className="aspect-104/16 inline" />
             </a>
           </div>

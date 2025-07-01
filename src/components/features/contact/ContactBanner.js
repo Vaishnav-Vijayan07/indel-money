@@ -2,7 +2,7 @@ import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import { renderHtml } from "@/lib/utils/htmlParser";
 
 export default function ContactBanner({ contactTitle, contactDesc, trollFreeNum, helpText }) {
-  console.log(contactTitle, contactDesc, trollFreeNum, helpText);
+  
   return (
     <section className="w-full block pt-[30px] lg:pt-[40px] 2xl:pt-[50px]">
       <div className="container">
@@ -14,7 +14,7 @@ export default function ContactBanner({ contactTitle, contactDesc, trollFreeNum,
               dangerouslySetInnerHTML={{ __html: contactTitle ? contactTitle : "" }}
             />
 
-            <div className="text-sm1 max-sm:mb-[10px]">{contactDesc}</div>
+            <div className="text-sm1 max-sm:mb-[10px]">{contactDesc ? renderHtml(contactDesc) : ""}</div>
           </div>
           <div className="w-full flex flex-wrap flex-col-reverse sm:flex-col lg:max-w-[468px] xl:max-w-[420px] 2xl:max-w-[576px] 3xl:max-w-[620px]">
             <div className="text-[14px] lg:text-[16px] 2xl:text-[20px] 3xl:text-[24px] lg:mb-[15px] 2xl:mb-[20px]">

@@ -58,17 +58,11 @@ const slides = [
   },
 ];
 
-export default function MobAwardHighlight() {
+export default function MobAwardHighlight(awards, title) {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <div className="w-full h-auto bg-white rounded-[24px] shadow-[0_0_15px_0_rgba(0,0,0,0.1)] p-[18px]">
-      <div className="text-title1 text-center font-bold text-base1 mb-[15px]">
-        Our Achievements
-      </div>
-      <div className="text-[14px] font-normal leading-[1.2] text-center text-[#1e1e1e] mb-[10px] [&>span]:font-bold [&>span]:text-base2 [&>span]:block">
-        Indel Money Limited is bestowed as
-        <span>&apos;GREAT PLACE TO WORK&apos;</span>
-      </div>
+      <div className="text-title1 text-center font-bold text-base1 mb-[15px]">{title ? title : "Our Achievements"}</div>
       <Swiper
         modules={[Autoplay, Pagination]}
         slidesPerView={"auto"}
@@ -94,34 +88,22 @@ export default function MobAwardHighlight() {
       >
         {slides?.map((item, index) => (
           <SwiperSlide key={index} className="w-[175px]!">
+            <div className="text-[14px] font-normal leading-[1.2] text-center text-[#1e1e1e] mb-[10px] [&>span]:font-bold [&>span]:text-base2 [&>span]:block">
+              Indel Money Limited is bestowed as
+              <span>&apos;GREAT PLACE TO WORK&apos;</span>
+            </div>
             <div className="w-full h-auto block rounded-[8px] overflow-hidden">
               <div className="w-full h-[165px] aspect-[175px/165px] overflow-hidden rounded-[8px] relative z-0 after:content-[''] after:w-full after:h-[80%] after:block after:absolute after:-z-1 after:inset-0 after:top-auto after:bg-linear-to-t after:from-base1 after:to-base2/0">
-                <Image
-                  src={item.image}
-                  alt={item?.alt}
-                  fill
-                  sizes="175px"
-                  className="-z-2 object-cover"
-                />
+                <Image src={item.image} alt={item?.alt} fill sizes="175px" className="-z-2 object-cover" />
                 <div className="absolute z-1 inset-0 top-auto p-[10px]">
-                  <div className="text-[13px] leading-none font-black capitalize text-white">
-                    {item.title}
-                  </div>
+                  <div className="text-[13px] leading-none font-black capitalize text-white">{item.title}</div>
                   <span className="w-[60px] h-[1px] bg-white my-[5px] block"></span>
-                  <div className="text-[12px] leading-[1.2] font-normal line-clamp-2 text-white ">
-                    {item.description}
-                  </div>
+                  <div className="text-[12px] leading-[1.2] font-normal line-clamp-2 text-white ">{item.description}</div>
                 </div>
               </div>
               {index === activeIndex && (
                 <div className="w-full max-w-[95%] h-[60px] mx-auto overflow-hidden rounded-b-[24px] relative z-0">
-                  <Image
-                    src="/images/mob-awards-delmt.jpg"
-                    alt={item?.alt}
-                    fill
-                    sizes="175px"
-                    className="object-cover object-top"
-                  />
+                  <Image src="/images/mob-awards-delmt.jpg" alt={item?.alt} fill sizes="175px" className="object-cover object-top" />
                 </div>
               )}
             </div>

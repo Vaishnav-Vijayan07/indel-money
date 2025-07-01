@@ -84,7 +84,7 @@ export default function FindJobForm({ variant = "default" }) {
     const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value !== ""));
     const query = new URLSearchParams(filteredParams).toString();
     // Redirect only if at least one parameter is present, otherwise go to base URL
-    router.push(query ? `/career-list?${query}` : "/active-jobs");
+    router.push(query ? `/career-list?${query}` : "/career-list");
   }
 
   useEffect(() => {
@@ -187,13 +187,13 @@ export default function FindJobForm({ variant = "default" }) {
         </div>
         <div className="max-sm:block mt-[8px] hidden w-full">
           <Link
-            href="/active-jobs"
+            href="/career-list"
             className="text-[14px] leading-[1] font-bold text-white h-[40px] flex items-center justify-center bg-base2 rounded-[24px] p-[4px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
             onClick={() => form.reset()}
           >
             <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">VIEW ALL</span>
             <Image
-              src="/images/icon-career.png"
+              src="/images/icon-careerBtn.svg"
               alt="careerBtn"
               width={40}
               height="40"

@@ -11,7 +11,7 @@ export default function CsrDetailsSection({ reports, commitee, actionPlans, cont
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">
                 <h2 className="text-[28px] lg:text-[35px] xl:text-[45px] 2xl:text-[50px] 3xl:text-[68px] text-black font-regular mb-[5px]">
-                    <span className="text-[#F30000] font-bold">Investors</span>
+                    <span className="text-[#F30000] font-bold">{content?.page_title? content?.page_title: "Investors"}</span>
                 </h2>
                 <div className='breadcrumb flex-wrap mb-[35px] sm:flex hidden'>
                     <Link href="/" className="block w-fit text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#383838] mr-[25px] relative 

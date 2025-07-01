@@ -21,7 +21,7 @@ export default function Scheme({ reports, returns,content }) {
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">
                 <h2 className="text-[28px] lg:text-[35px] xl:text-[45px] 2xl:text-[50px] 3xl:text-[68px] text-black font-regular mb-[5px]">
-                    <span className="text-[#F30000] font-bold">Investors</span>
+                    <span className="text-[#F30000] font-bold">{content?.page_title? content?.page_title : "Investors" }</span>
                 </h2>
                 <div className='breadcrumb flex-wrap mb-[35px] sm:flex hidden'>
                     <Link href="/" className="block w-fit text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-[#383838] mr-[25px] relative 
@@ -47,7 +47,7 @@ export default function Scheme({ reports, returns,content }) {
                     </div>
                     <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
 
-                        <Annualreport reports={reports} title={content?.annual_report_button_title} />
+                        <Annualreport reports={reports} title={content?.annual_report_title} />
                         <Annualreturns returns={returns} title={content?.annual_returns_title} />
                     </div>
 

@@ -80,6 +80,7 @@ const NavigationItem = ({ item, isActive, onClick, isMobile = false }) => {
 };
 
 function PartnersSection({ content, initialError, partners = [] }) {
+  
   // State management
   const [activeTab, setActiveTab] = useState(partners[0] || null);
   const [partnersData, setPartnersData] = useState([]);
@@ -176,7 +177,7 @@ function PartnersSection({ content, initialError, partners = [] }) {
       <div className="container">
         {/* Header Section */}
         <header className="w-full mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[50px]">
-          <h1 className="text-title1 font-bold text-base2">{content?.content?.title || "Our Partners"}</h1>
+          <h1 className="text-title1 font-bold text-base2">{content?.title || "Our Partners"}</h1>
           <PageBreadcrumb />
         </header>
 

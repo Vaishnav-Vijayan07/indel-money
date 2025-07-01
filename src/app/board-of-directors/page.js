@@ -16,6 +16,46 @@ async function fetchManagementData() {
   }
 }
 
+async function getMetaData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=directors`);
+    const result = await response.json();
+    const meta = result.data;
+
+    if (result.status === "success") {
+      return {
+        title: meta?.meta_title || "Our Directors | My Website",
+        description: meta?.meta_description || "Meet our management team and directors.",
+        keywords: meta?.meta_keywords || "management, directors, team",
+        error: null,
+      };
+    }
+    return {
+      title: "Our Directors | My Website",
+      description: "Meet our management team and directors.",
+      keywords: "management, directors, team",
+      error: result.message,
+    };
+  } catch (error) {
+    return {
+      title: "Our Directors | My Website",
+      description: "Meet our management team and directors.",
+      keywords: "management, directors, team",
+      error: "Failed to fetch service data",
+    };
+  }
+}
+
+export async function generateMetadata() {
+  const { title, description, keywords } = await getMetaData();
+
+  return {
+    title,
+    description,
+    keywords,
+  };
+}
+
 export default async function ManagementTeamPage() {
   const { data, error } = await fetchManagementData();
 

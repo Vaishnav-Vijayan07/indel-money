@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import CsrDetail from "@/components/features/csr/BlogDetail";
-import RecentCsr from "@/components/features/csr/RecentBlog";
+import RecentCsr from "@/components/features/csr/RecentCSR";
 
 const LatestUpdates = dynamic(() => import("@/components/features/home/LatestUpdates"), {
   loading: () => <div>Loading slider...</div>,
@@ -21,7 +21,7 @@ async function fetchCsrData(slug) {
     }
     const result = await response.json();
 
-    console.log(result.data);
+    
     if (result.status === "success") {
       return {
         content: result?.data,
@@ -38,7 +38,7 @@ async function fetchCsrData(slug) {
 }
 
 // Fetch recent CSR posts
-async function fetchRecentCsrs() {
+async function fetchRecentCsrs(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/csr?limit=3`, {
       
@@ -48,7 +48,8 @@ async function fetchRecentCsrs() {
     }
     const result = await response.json();
     if (result.status === "success") {
-      return { data: result.data?.csr || [], error: null };
+       const csr = result.data?.csr?.filter((csr) => csr.slug !== slug);
+      return { data: csr || [], error: null };
     }
     return { data: [], error: result.message };
   } catch (error) {
@@ -127,7 +128,7 @@ export async function generateMetadata({ params }) {
 export default async function CSRDetailPage({ params }) {
   const { slug } = params;
   const { content: csrData, error: csrError } = await fetchCsrData(slug);
-  const { data: recentCsrs, error: recentError } = await fetchRecentCsrs();
+  const { data: recentCsrs, error: recentError } = await fetchRecentCsrs(slug);
 
   if (csrError || !csrData) {
     return (
@@ -141,7 +142,7 @@ export default async function CSRDetailPage({ params }) {
   return (
     <>
       <CsrDetail data={csrData} />
-      <RecentCsr recentCsrs={recentCsrs?.slice(0, 10)} error={recentError} />
+      <RecentCsr recentCsr={recentCsrs?.slice(0, 10)} error={recentError} />
     </>
   );
 }

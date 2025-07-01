@@ -20,6 +20,46 @@ async function fetchData() {
   }
 }
 
+async function getMetaData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=cdloan`);
+    const result = await response.json();
+    const meta = result.data;
+
+    if (result.status === "success") {
+      return {
+        title: meta?.meta_title || "Consumer Durable Loan | My Website",
+        description: meta?.meta_description || "Get the best consumer durable loan offers with us.",
+        keywords: meta?.meta_keywords || "consumer durable loan, offers, financial services",
+        error: null,
+      };
+    }
+    return {
+      title: "Consumer Durable Loan | My Website",
+      description: "Get the best consumer durable loan offers with us.",
+      keywords: "consumer durable loan, offers, financial services",
+      error: result.message,
+    };
+  } catch (error) {
+    return {
+      title: "Consumer Durable Loan | My Website",
+      description: "Get the best consumer durable loan offers with us.",
+      keywords: "consumer durable loan, offers, financial services",
+      error: "Failed to fetch service data",
+    };
+  }
+}
+
+export async function generateMetadata() {
+  const { title, description, keywords } = await getMetaData();
+
+  return {
+    title,
+    description,
+    keywords,
+  };
+}
+
 export default async function Services() {
   const { contents, benfits, products, error } = await fetchData();
 

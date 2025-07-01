@@ -1,12 +1,7 @@
-import KickStartVenture from "@/components/features/msmeloan/KickStartVenture";
-import LoansList from "@/components/features/msmeloan/LoansList";
-import WhyMsme from "@/components/features/msmeloan/WhyMsme";
-import WhoDoServe from "@/components/features/msmeloan/WhoDoServe";
-import MsmePresence from "@/components/features/msmeloan/MsmePresence";
-import GrownWithMsme from "@/components/features/msmeloan/GrownWithMsme";
-
-import MobKickStartVenture from "@/components/features/msmeloan/MobKickStartVenture";
-import MobWhoDoServe from "@/components/features/msmeloan/MobWhoDoServe";
+import ConsumerDurable from "@/components/features/services/ConsumerDurable";
+import ProductCovered from "@/components/features/services/ProductCovered";
+import FeatureBenefit from "@/components/features/services/FeatureBenefit";
+import MobEligibility from "@/components/features/services/MobEligibility";
 
 async function fetchData() {
   try {
@@ -14,92 +9,62 @@ async function fetchData() {
       cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();
-    const loanAgainstPropertyData = result.data;
+    const cdData = result.data;
+
 
     if (result.status === "success") {
-      return {
-        contents: loanAgainstPropertyData?.loanAgainstPropertyContent,
-        offerings: loanAgainstPropertyData?.loanPropertyOfferings,
-        faqs: loanAgainstPropertyData?.loanAgainstPropertyFaq,
-        loanTypes: loanAgainstPropertyData?.loanAgainstPropertyTypes,
-        industries: loanAgainstPropertyData?.loanAgainstPropertySupportedIndustries,
-        audience: loanAgainstPropertyData?.loanAgainstPropertyTargetedAudience,
-        error: result.message,
-      };
+      return { contents: cdData?.cdLoanContent, benfits: cdData?.cdLoanBenefits, products: cdData?.cdLoanProducts, error: result.message };
     }
-    return { contents: null, offerings: null, faqs: null, loanTypes: null, industries: null, audience: null, error: result.message };
+    return { contents: null, benfits: null, products: null, error: result.message };
   } catch (error) {
-    return { contents: null, offerings: null, faqs: null, loanTypes: null, industries: null, audience: null, error: "Failed to fetch service data" };
+    console.error("Error fetching service data:", error);
+    return { contents: null, benfits: null, products: null, error: "Failed to fetch service data" };
   }
 }
 
-export default async function LapLoan() {
-  const { contents, offerings, faqs, loanTypes, industries, audience, error } = await fetchData();
+export default async function Services() {
+  const { contents, benfits, products, error } = await fetchData();
 
-  if (error) {
-    return <div>Failed to fetch LAP data</div>;
+  if (!contents || !benfits || !products) {
+    return <div>Failed to data</div>;
   }
 
   return (
     <>
-      {/* KickStartVenture contents*/}
-      <div className="hidden sm:block">
-        <KickStartVenture
-          title={contents?.title}
-          sub_title={contents?.sub_title}
-          description={contents?.description}
-          button_text={contents?.button_text}
-          button_url={contents?.button_url}
-          our_offering_title={contents?.our_offering_title}
-          our_offering_description={contents?.our_offering_description}
-          offerings={offerings}
+      {/* ConsumerDurable contents */}
+      <ConsumerDurable
+        page_title={contents?.page_title}
+        image={contents?.image}
+        image_alt={contents?.image_alt}
+        loan_offer_description={contents?.loan_offer_description}
+        loan_offer_title={contents?.loan_offer_title}
+        loan_offer_button_text={contents?.loan_offer_button_text}
+        loan_offer_button_link={contents?.loan_offer_button_link}
+      />
+
+      {/* ProductCovered contents */}
+      <ProductCovered
+        products={products}
+        title={contents?.covered_products_section_title}
+        image={contents?.covered_products_section_image}
+        criteriaTitle={contents?.eligibility_criteria_title}
+        criteriaIcon={contents?.eligibility_criteria_icon}
+        criteriaDescription={contents?.eligibility_criteria_description}
+        criteriaNote={contents?.eligibility_criteria_note}
+      />
+
+      {/* ConsumerDurable contents */}
+      <FeatureBenefit benefits={benfits} title={contents?.feature_title} image={contents?.feature_image} />
+
+      {/* Eligibility for mobile view contents */}
+      <div className="block sm:hidden">
+        <MobEligibility
+          criteriaTitle={contents?.eligibility_criteria_title}
+          criteriaIcon={contents?.eligibility_criteria_icon}
+          criteriaDescription={contents?.eligibility_criteria_description}
+          criteriaNote={contents?.eligibility_criteria_note}
         />
       </div>
-      {/* WhoDoServe Mobile contents*/}
-      <div className="block sm:hidden">
-        <MobKickStartVenture
-          title={contents?.title}
-          sub_title={contents?.sub_title}
-          button_text={contents?.button_text}
-          button_url={contents?.button_url}
-          our_offering_title={contents?.our_offering_title}
-          offerings={offerings}
-        />
-      </div>
-
-      {/* LoanSlider contents*/}
-      <LoansList loanTypes={loanTypes} />
-
-      {/* WhyLAP contents*/}
-      <WhyMsme
-        title={contents?.why_loan_against_property_title}
-        description={contents?.why_loan_against_property_description}
-        image={contents?.why_loan_against_property_image}
-        alt={contents?.image_alt}
-      />
-
-      {/* WhoDoServe contents*/}
-      <div className="hidden sm:block">
-        <WhoDoServe audience={audience} who_do_serve_title={contents?.who_do_serve_title} />
-      </div>
-      {/* WhoDoServe Mobile contents*/}
-      <div className="block sm:hidden">
-        <MobWhoDoServe audience={audience} who_do_serve_title={contents?.who_do_serve_title} />
-      </div>
-
-      {/* LapPresence contents*/}
-      <MsmePresence
-        title={contents?.about_loan_against_property_title}
-        description={contents?.about_loan_against_property_description}
-        audience={industries}
-      />
-
-      {/* Grown With Lap contents*/}
-      <GrownWithMsme
-        faqs={faqs}
-        title={contents?.loan_against_property_overview_title}
-        description={contents?.loan_against_property_overview_description}
-      />
     </>
   );
 }

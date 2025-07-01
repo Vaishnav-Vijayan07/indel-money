@@ -8,6 +8,9 @@ import PaginationComponent from "@/components/Pagination";
 import { useEffect, useState } from "react";
 
 export default function AwardClient({ contents, awards, sliderItems }) {
+
+    
+
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = 6;
 

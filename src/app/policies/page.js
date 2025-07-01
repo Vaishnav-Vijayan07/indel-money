@@ -1,16 +1,15 @@
 import React from "react";
 import Policies from "../../components/features/investors/Policies";
 
-async function fetchPolicyData(page = 1, limit = 5) {
+async function fetchPolicyData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/policies?page=${page}&limit=${limit}`, {
-      cache: 'no-store', // or 'force-cache' depending on your needs
+      cache: "no-store", // or 'force-cache' depending on your needs
     });
 
     const result = await response.json();
     const policyData = result.data;
-    const pagination = result.data.pagination
-
+    const pagination = result.data.pagination;
 
     if (result.status === "success") {
       return {
@@ -19,7 +18,7 @@ async function fetchPolicyData(page = 1, limit = 5) {
         totalPages: pagination?.totalPages,
         currentPage: pagination?.currentPage,
         limit: pagination?.limit,
-        error: null
+        error: null,
       };
     }
     return {
@@ -28,7 +27,7 @@ async function fetchPolicyData(page = 1, limit = 5) {
       totalPages: null,
       currentPage: null,
       limit: null,
-      error: result.message
+      error: result.message,
     };
   } catch (error) {
     return {
@@ -36,16 +35,16 @@ async function fetchPolicyData(page = 1, limit = 5) {
       policies: null,
       totalPages: null,
       currentPage: null,
-      limit: null, error: "Failed to fetch policy data"
+      limit: null,
+      error: "Failed to fetch policy data",
     };
   }
 }
 
 export default async function Policy({ searchParams }) {
+  const page = (await searchParams?.page) || 1;
 
-  const page = await searchParams?.page || 1
-
-  const { content, policies, totalPages, currentPage, limit, error } = await fetchPolicyData(page)
+  const { content, policies, totalPages, currentPage, limit, error } = await fetchPolicyData(page);
 
   if (!content && !policies && !totalPages && !currentPage && !limit) {
     return <div>Failed to fetch policy data</div>;
@@ -53,9 +52,7 @@ export default async function Policy({ searchParams }) {
 
   return (
     <>
-      <Policies policies={policies} currentPage={currentPage} totalPages={totalPages} limit={limit} />
-
+      <Policies policies={policies} content={content} currentPage={currentPage} totalPages={totalPages} limit={limit} />
     </>
-
   );
 }

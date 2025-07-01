@@ -18,7 +18,7 @@ export default function ServiceBanner({ page_super_title, page_title, image, alt
         </picture>
       </div>
       <div className="container sm:absolute relative h-auto inset-0 flex flex-wrap sm:items-center items-start sm:justify-start justify-start pt-[40px] 3xs:pt-[60px] sm:p-4 md:p-6 lg:p-8 xl:p-10 text-white z-1 mx-auto">
-        <div className="max-w-[655px] md:max-w-[755px] lg:max-w-[840px]">
+        <div className=" max-w-[655px] md:max-w-[755px] lg:max-w-[840px]">
           <div className="text-base1 text-[16px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-normal leading-normal uppercase mb-[8px] lg:mb-[10px] 2xl:mb-[15px]">
             {page_super_title ? page_super_title : "Our Services"}
           </div>
@@ -42,13 +42,13 @@ export default function ServiceBanner({ page_super_title, page_title, image, alt
           <div className="w-full max-w-[320px] 4xs:max-w-[400px] h-auto aspect-[400/280] absolute z-0 -right-[var(--container-padding)] bottom-[120px]">
             <Image src="/images/redBgElement.png" alt="value-image" fill sizes="400px" className="object-cover" />
           </div>
-          <Image
+          {/* <Image
             src="/images/serviceBannerPic.png"
             alt="value-image"
             width={395}
             height={500}
             className="aspect-[395/500] object-cover relative max-w-[395px] ml-auto"
-          />
+          /> */}
         </div>
       </div>
     </section>

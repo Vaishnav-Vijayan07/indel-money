@@ -21,42 +21,84 @@ const data = [
 ];
 
 function ImageBox({ item, className, isVideo = false }) {
-  console.log(item);
 
+  
   return (
     <div className={`w-full p-1 sm:p-2 ${className}`}>
       {isVideo ? (
         <div className={`w-full h-full p-1 sm:p-2`}>
           <div className="group w-full h-full rounded-[3px] sm:rounded-[15px] block overflow-hidden relative z-0">
-            <LightGallery speed={300} plugins={[lgThumbnail, lgZoom, lgVideo]} download={false} elementClassNames="w-full">
-              <a
-                data-src={item?.video}
-                data-poster={item?.video_thumbnail ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video_thumbnail}` : "/images/gallDet01.jpg"}
-                data-lg-size="1280-720"
-              >
-                <Image
-                  src={item?.video_thumbnail ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video_thumbnail}` : "/images/gallDet01.jpg"}
-                  alt={item?.thhumbnail_alt ? item?.thumbnail_alt : "Gallery Video"}
-                  fill
-                  sizes="520px"
-                  className="group-hover:scale-105 object-cover transition-transform duration-300"
-                />
-              </a>
-            </LightGallery>
+  <LightGallery
+  speed={300}
+  plugins={[lgThumbnail, lgZoom, lgVideo]}
+  download={false}
+  elementClassNames="w-full"
+>
+  <a
+    data-lg-size="1280-720"
+  data-video={JSON.stringify({
+      source: [
+        {
+          src: `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video}`,
+          type: "video/mp4",
+        },
+      ],
+      attributes: {
+        preload: false,
+        controls: true,
+      },
+    })}
+    data-poster={
+      item?.video_thumbnail
+        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video_thumbnail}`
+        : "/images/gallDet01.jpg"
+    }
+  >
+    <Image
+      src={
+        item?.video_thumbnail
+          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video_thumbnail}`
+          : "/images/gallDet01.jpg"
+      }
+      alt={item?.thumbnail_alt || "Gallery Video"}
+      fill
+      sizes="520px"
+      className="group-hover:scale-105 object-cover transition-transform duration-300"
+    />
+  </a>
+</LightGallery>
+
             <div className="w-[30px] lg:w-[35px] 2xl:w-[48px] aspect-square absolute z-1 inset-0 m-auto pointer-events-none">
-              <Image src={"/images/icon-play.svg"} alt={"play"} fill sizes="48px" />
+              <Image
+                src={"/images/icon-play.svg"}
+                alt={"play"}
+                fill
+                sizes="48px"
+              />
             </div>
           </div>
         </div>
       ) : (
         <div className="group w-full h-full rounded-[3px] sm:rounded-[15px] overflow-hidden">
-          <LightGallery plugins={[lgThumbnail, lgZoom]} download={false} elementClassNames="w-full h-full">
+          <LightGallery
+            plugins={[lgThumbnail, lgZoom]}
+            download={false}
+            elementClassNames="w-full h-full"
+          >
             <a
-              href={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/gallDet01.jpg"}
+              href={
+                item?.image
+                  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`
+                  : "/images/gallDet01.jpg"
+              }
               className="w-full h-full relative z-0 block"
             >
               <Image
-                src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/gallDet01.jpg"}
+                src={
+                  item?.image
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`
+                    : "/images/gallDet01.jpg"
+                }
                 alt="Gallery Image"
                 fill
                 sizes="520px"
@@ -71,8 +113,8 @@ function ImageBox({ item, className, isVideo = false }) {
 }
 
 export default function GalleryDetail({ galleryItems, error }) {
-  console.log(galleryItems);
   const data = galleryItems || [];
+  
   return (
     <section className="w-full pt-[40px] pb-[25px] xl:pb-[40px] 3xl:pb-[80px]">
       <div className="container mx-auto">
@@ -80,7 +122,10 @@ export default function GalleryDetail({ galleryItems, error }) {
           <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px] sm:flex sm:flex-wrap">
             Onam Celebrations 2024 for
             <span className="sm:block hidden"> &nbsp;LIFE@INDEL </span>
-            <span className="text-base2 font-bold sm:hidden block"> &nbsp;LIFE@INDEL </span>
+            <span className="text-base2 font-bold sm:hidden block">
+              {" "}
+              &nbsp;LIFE@INDEL{" "}
+            </span>
           </h1>
           <div className="sm:block hidden">
             <PageBreadcrumb />
@@ -91,14 +136,34 @@ export default function GalleryDetail({ galleryItems, error }) {
           <div className="w-full 4xs:w-1/2 mb-2 flex flex-wrap h-[300px] 4sx:h-[200px] 3xs:h-[280px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
             <div className="flex flex-wrap w-full h-full">
               <div className="w-1/2 h-full">
-                {data[0] && <ImageBox item={data[0]} className="h-1/2" isVideo={data[0]?.is_video} />}
-                {data[1] && <ImageBox item={data[1]} className="h-1/2" isVideo={data[1]?.is_video} />}
+                {data[0] && (
+                  <ImageBox
+                    item={data[0]}
+                    className="h-1/2"
+                    isVideo={data[0]?.is_video}
+                  />
+                )}
+                {data[1] && (
+                  <ImageBox
+                    item={data[1]}
+                    className="h-1/2"
+                    isVideo={data[1]?.is_video}
+                  />
+                )}
               </div>
               <div className="w-1/2 h-full">
                 {/* <ImageBox item={data[2]} className="h-full" /> */}
                 <div className={`w-full h-full p-1 sm:p-2`}>
                   <div className="group w-full h-full rounded-[3px] sm:rounded-[15px] block overflow-hidden relative z-0">
-                    {data[2] && <ImageBox item={data[2]} width={800} height={335} className="h-full" isVideo={data[2]?.is_video} />}
+                    {data[2] && (
+                      <ImageBox
+                        item={data[2]}
+                        width={800}
+                        height={335}
+                        className="h-full"
+                        isVideo={data[2]?.is_video}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -108,15 +173,39 @@ export default function GalleryDetail({ galleryItems, error }) {
           <div className="w-full 4xs:w-1/2 mb-2 flex flex-wrap h-[300px] 4sx:h-[200px] 3xs:h-[280px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
             <div className="flex flex-wrap w-full h-[40%] md:h-[50%]">
               <div className="w-full mb-4 h-full">
-                {data[3] && <ImageBox item={data[3]} width={800} height={335} className="h-full" isVideo={data[3]?.is_video} />}
+                {data[3] && (
+                  <ImageBox
+                    item={data[3]}
+                    width={800}
+                    height={335}
+                    className="h-full"
+                    isVideo={data[3]?.is_video}
+                  />
+                )}
               </div>
             </div>
             <div className="flex flex-wrap w-full h-[60%] md:h-[50%]">
               <div className="w-1/2 h-full">
-                {data[4] && <ImageBox item={data[4]} width={380} height={445} className="h-full" isVideo={data[4]?.is_video} />}
+                {data[4] && (
+                  <ImageBox
+                    item={data[4]}
+                    width={380}
+                    height={445}
+                    className="h-full"
+                    isVideo={data[4]?.is_video}
+                  />
+                )}
               </div>
               <div className="w-1/2 h-full">
-                {data[5] && <ImageBox item={data[5]} width={380} height={445} className="h-full" isVideo={data[5]?.is_video} />}
+                {data[5] && (
+                  <ImageBox
+                    item={data[5]}
+                    width={380}
+                    height={445}
+                    className="h-full"
+                    isVideo={data[5]?.is_video}
+                  />
+                )}
               </div>
             </div>
           </div>

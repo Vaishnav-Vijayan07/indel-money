@@ -10,25 +10,42 @@ import "lightgallery/css/lg-video.css";
 import Image from "next/image";
 
 export default function EmployeeTestimonialsVideoBox({ className, item }) {
+  
   return (
     <div
       className={`${className} group w-full h-auto aspect-[526/360] overflow-hidden rounded-[10px] lg:rounded-[20px] 2xl:rounded-[24px] block relative z-0`}
     >
-      <LightGallery speed={300} plugins={[lgThumbnail, lgZoom, lgVideo]} download={false} elementClassNames="w-full">
-        <a
-          data-src={item?.video ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video}` : "//www.youtube.com/watch?v=EIUJfXk3_3w"}
-          data-poster={item?.thumbnail ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.thumbnail}` : ""}
-          data-lg-size="1280-720"
-        >
-          <Image
-            src={item?.thumbnail ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.thumbnail}` : "/images/testimonial-video-1.jpg"}
-            alt={item?.thumbnail_alt ? item?.thumbnail_alt : "testimonial-video"}
-            fill
-            sizes="520px"
-            className="group-hover:scale-105 object-cover transition-transform duration-300"
-          />
-        </a>
-      </LightGallery>
+<LightGallery
+  speed={500}
+  plugins={[lgThumbnail, lgZoom, lgVideo]}
+  elementClassNames="w-full"
+>
+  <a
+    data-lg-size="1280-720"
+    data-poster={item?.thumbnail ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.thumbnail}` : ""}
+    data-sub-html={`<h4>${item?.name}</h4><p>${item?.designation}</p>`}
+    data-video={JSON.stringify({
+      source: [
+        {
+          src: `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video}`,
+          type: "video/mp4",
+        },
+      ],
+      attributes: {
+        preload: false,
+        controls: true,
+      },
+    })}
+  >
+    <Image
+      src={item?.thumbnail ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.thumbnail}` : "/images/placeholder.jpg"}
+      alt="video"
+      fill
+      className="object-cover"
+    />
+  </a>
+</LightGallery>
+
       <div className="w-[25px] lg:w-[30px] 2xl:w-[48px] aspect-48/38 absolute z-1 top-[15px] left-[15px] lg:top-[20px] lg:left-[20px] 2xl:top-[30px] 2xl:left-[30px]">
         <Image src={"/images/employeeTestimonialsVideo-delmt-1.svg"} alt={"employeeTestimonialsVideo-delmt"} fill sizes="48px" />
       </div>

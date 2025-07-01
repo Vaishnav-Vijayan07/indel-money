@@ -5,7 +5,7 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import parse from "html-react-parser";
 export default function MobGoldLoanServices({ features }) {
-  console.log("MobGoldLoanServices features:", features);
+  
   
   return (
     <section className="w-full block py-[30px]">

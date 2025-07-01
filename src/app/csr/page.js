@@ -22,12 +22,10 @@ const MobLatestUpdates = dynamic(() => import("@/components/features/csr/MobLate
 async function fetchCsrData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/csr?page=${page}&limit=${limit}`, {
-      next: { revalidate: 3600 },
       cache: "no-store", // Ensure fresh data
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const result = await response.json();
-    console.log(result.data);
     if (result.status === "success") {
     const { content, sliderItems, csr, pagination } = result.data || {};
       return {

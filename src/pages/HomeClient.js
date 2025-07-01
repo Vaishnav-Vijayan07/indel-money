@@ -25,8 +25,9 @@ import MobLatestUpdates from "../components/features/home/MobLatestUpdates";
 import MobInnovations from "../components/features/home/MobInnovations";
 import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
-export default function Home({ initialData, serviceBanner, banner, initialError }) {
+export default function Home({ initialData, serviceBanner, banner,branchLocatorData, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+  console.log(initialData?.pageContent?.announcement_text);
   return (
     <>
       {/* welcome contents*/}
@@ -41,14 +42,14 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <HeroBanner
           heroBanner={initialData?.heroBanner || []}
           initialData={initialData}
-          announcement={initialData?.announcement?.text}
+          announcement={initialData?.pageContent?.announcement_text}
         />
       </div>
       <div className="block sm:hidden">
         <MobHeroBanner
           heroBanner={initialData?.heroBanner || []}
           initialData={initialData}
-          announcement={initialData?.announcement?.text}
+          announcement={initialData?.pageContent?.announcement_text}
         />
       </div>
 
@@ -78,11 +79,12 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
       </div>
 
       {/* Branch locator contents*/}
-      <div className="hidden sm:block">
-        <BranchLocator pageContent={initialData?.pageContent} variant={"home"} />
+      <div className="hidden sm:block" id="branch-locator" >
+        <BranchLocator pageContent={branchLocatorData} variant={"home"} />
       </div>
-      <div className="block sm:hidden">
-        <MobBranchLocator pageContent={initialData?.pageContent} />
+      <div className="block sm:hidden" id="branch-locator">
+        {/* Develope api for branch locator */}
+        <MobBranchLocator pageContent={branchLocatorData} />
       </div>
 
       {/* Life at Indel contents*/}
@@ -110,7 +112,7 @@ export default function Home({ initialData, serviceBanner, banner, initialError 
         <LatestUpdates
           sliderItems={initialData?.blogs}
           sliderTitle={initialData?.pageContent?.updates_section_title}
-          type="csr"
+          type="indel-money-cares"
         />
       </div>
       <div className="block sm:hidden">

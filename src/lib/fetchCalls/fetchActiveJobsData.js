@@ -19,6 +19,8 @@ export async function fetchData() {
         const result = await response.json();
         const jobsData = result.data;
 
+        
+
         if (result.status === "success") {
             return {
                 jobs: jobsData?.jobs,

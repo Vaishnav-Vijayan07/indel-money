@@ -69,11 +69,11 @@ const Careers = [
   },
   {
     title: "current openings",
-    link: "/active-jobs",
+    link: "/career-list",
   },
   {
     title: "apply now",
-    link: "/active-jobs",
+    link: "/career-list",
   },
 ];
 const Abouts = [
