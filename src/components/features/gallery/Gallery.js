@@ -177,19 +177,6 @@ export default function Gallery({ title = "Gallery", description = "", medias = 
     [totalPages, currentPage, pagination?.currentPage, handlePageChange]
   );
 
-  // Early return if no medias
-  if (!medias?.length && !sliderItems?.length) {
-    return (
-      <section className="w-full pt-[40px] pb-[40px] xl:pb-[60px] 3xl:pb-[100px]">
-        <div className="container">
-          <div className="text-center py-20">
-            <h3 className="text-xl text-gray-500">No gallery items found</h3>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className="w-full pt-[40px] pb-[40px] xl:pb-[60px] 3xl:pb-[100px]">
       <div className="container">
@@ -255,17 +242,35 @@ export default function Gallery({ title = "Gallery", description = "", medias = 
                 <CardSlider sliderItems={sliderItems} />
               </div>
             )}
-            <GalleryGrid slides={slides} />
+            {slides?.length > 0 ? (
+              <GalleryGrid slides={slides} />
+            ) : (
+              <div className="text-center py-20">
+                <h3 className="text-xl text-gray-500">No gallery items found</h3>
+              </div>
+            )}
           </TabsContent>
 
           {/* Tab Content - Photo Gallery */}
           <TabsContent value={FILTER_TYPES.PHOTO}>
-            <GalleryGrid slides={slides} />
+            {slides?.length > 0 ? (
+              <GalleryGrid slides={slides} />
+            ) : (
+              <div className="text-center py-20">
+                <h3 className="text-xl text-gray-500">No gallery items found</h3>
+              </div>
+            )}
           </TabsContent>
 
           {/* Tab Content - Video Gallery */}
           <TabsContent value={FILTER_TYPES.VIDEO}>
-            <GalleryGrid slides={slides} />
+            {slides?.length > 0 ? (
+              <GalleryGrid slides={slides} />
+            ) : (
+              <div className="text-center py-20">
+                <h3 className="text-xl text-gray-500">No gallery items found</h3>
+              </div>
+            )}
           </TabsContent>
         </Tabs>
       </div>
