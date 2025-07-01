@@ -78,7 +78,7 @@ export default function GalleryDetail({ slug }) {
   const searchParams = useSearchParams();
   // const slug = searchParams.get("slug") || "default-slug"; // Fallback slug
   const page = Math.max(1, Number(searchParams.get("page")) || 1);
-  const limit = 2; // Configurable limit
+  const limit = 6; // Configurable limit
 
   const [galleryItems, setGalleryItems] = useState([]);
   const [content, setContent] = useState(null);
