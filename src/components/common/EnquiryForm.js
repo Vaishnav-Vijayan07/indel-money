@@ -149,7 +149,7 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
                 </SelectTrigger>
                 <SelectContent className="bg-white border-white">
                   {serviceTypes?.map((service) => (
-                    <SelectItem value={service.value}>
+                    <SelectItem key={service.value} value={service.value}>
                       {service.label}
                     </SelectItem>
                   ))}
