@@ -1,4 +1,3 @@
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -33,16 +32,13 @@ const formSchema = z.object({
   emailAddress: z.string().email({
     message: "Invalid email address.",
   }),
-  serviceType: z.string().min(10,{
+  serviceType: z.coerce.number().refine((val) => !isNaN(val) && val !== 0, {
     message: "Please select a service.",
   }),
 });
 
 export default function EnquiryForm({ handleSubmit, serviceTypes }) {
-
-
   const [isSubmitting, setIsSubmitting] = useState(false);
-
 
   // Define form
   const form = useForm({
@@ -58,16 +54,14 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
   // Handle form submission
   async function onSubmit(values) {
     try {
-      setIsSubmitting(true)
-    await handleSubmit(values);
-    form.reset();
+      setIsSubmitting(true);
+      await handleSubmit(values);
+      form.reset();
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
   }
 
-
-  
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -156,13 +150,19 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
           name="serviceType"
           render={({ field }) => (
             <FormItem className="relative mb-[10px] sm:mb-2 xl:mb-3 3xl:mb-5">
-              <Select onValueChange={field.onChange} value={field.value} key={field.value}>
+              <Select
+                onValueChange={field.onChange}
+                value={field.value ? String(field.value) : ""}
+              >
                 <SelectTrigger className="w-full bg-white border-white">
                   <SelectValue placeholder="Select service" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-white">
                   {serviceTypes?.map((service) => (
-                    <SelectItem value={service.value}>
+                    <SelectItem
+                      key={service.value}
+                      value={String(service.value)}
+                    >
                       {service.label}
                     </SelectItem>
                   ))}
@@ -178,7 +178,7 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
           className="btn btn-base2 ml-auto block max-w-[100px] sm:max-w-[80px] lg:max-w-[75px] xl:max-w-[95px] 2xl:max-w-[115px] 3xl:max-w-[140px]"
           type="submit"
         >
-         {isSubmitting ? "Submitting..." : "Submit"}
+          {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
       </form>
     </Form>
