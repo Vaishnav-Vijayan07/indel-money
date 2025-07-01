@@ -9,100 +9,61 @@ import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
 import "lightgallery/css/lg-video.css";
+import { renderHtml } from "@/lib/utils/htmlParser";
+import PaginationComponent from "@/components/Pagination";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState, memo } from "react";
+import { serverMediaPath } from "@/constants/constants";
+import api from "@/lib/api/axios";
+import LoadingCircleSpinner from "@/components/common/LoadingCircleSpinner";
 
-const data = [
-  { images: ["/images/gallDet01.jpg"] },
-  { images: ["/images/gallDet02.jpg"] },
-  { images: ["https://www.youtube.com/watch?v=jN-fY5zUOA4"] },
-  { images: ["/images/gallDet04.jpg"] },
-  { images: ["/images/gallDet05.jpg"] },
-  { images: ["/images/gallDet06.jpg"] },
-  { images: ["/images/gallDet06.jpg"] },
-];
+// Memoized ImageBox component to prevent unnecessary re-renders
+const ImageBox = memo(function ImageBox({ item, className, isVideo = false }) {
+  const src = item?.image || item?.video_thumbnail || "/images/placeholder.jpg";
+  const alt = item?.thumbnail_alt || (isVideo ? "Gallery Video" : "Gallery Image");
 
-function ImageBox({ item, className, isVideo = false }) {
-
-  
   return (
     <div className={`w-full p-1 sm:p-2 ${className}`}>
       {isVideo ? (
-        <div className={`w-full h-full p-1 sm:p-2`}>
-          <div className="group w-full h-full rounded-[3px] sm:rounded-[15px] block overflow-hidden relative z-0">
-  <LightGallery
-  speed={300}
-  plugins={[lgThumbnail, lgZoom, lgVideo]}
-  download={false}
-  elementClassNames="w-full"
->
-  <a
-    data-lg-size="1280-720"
-  data-video={JSON.stringify({
-      source: [
-        {
-          src: `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video}`,
-          type: "video/mp4",
-        },
-      ],
-      attributes: {
-        preload: false,
-        controls: true,
-      },
-    })}
-    data-poster={
-      item?.video_thumbnail
-        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video_thumbnail}`
-        : "/images/gallDet01.jpg"
-    }
-  >
-    <Image
-      src={
-        item?.video_thumbnail
-          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video_thumbnail}`
-          : "/images/gallDet01.jpg"
-      }
-      alt={item?.thumbnail_alt || "Gallery Video"}
-      fill
-      sizes="520px"
-      className="group-hover:scale-105 object-cover transition-transform duration-300"
-    />
-  </a>
-</LightGallery>
-
-            <div className="w-[30px] lg:w-[35px] 2xl:w-[48px] aspect-square absolute z-1 inset-0 m-auto pointer-events-none">
+        <div className="group w-full h-full rounded-[3px] sm:rounded-[15px] block overflow-hidden relative z-0">
+          <LightGallery speed={300} plugins={[lgThumbnail, lgZoom, lgVideo]} download={false} elementClassNames="w-full">
+            <a
+              data-lg-size="1280-720"
+              data-video={JSON.stringify({
+                source: [{ src: `${serverMediaPath}${item?.video}`, type: "video/mp4" }],
+                attributes: { preload: false, controls: true },
+              })}
+              data-poster={`${serverMediaPath}${src}`}
+            >
               <Image
-                src={"/images/icon-play.svg"}
-                alt={"play"}
+                src={`${serverMediaPath}${src}`}
+                alt={alt}
                 fill
-                sizes="48px"
+                sizes="(max-width: 640px) 100vw, 520px"
+                className="group-hover:scale-105 object-cover transition-transform duration-300"
+                loading="lazy"
               />
-            </div>
+            </a>
+          </LightGallery>
+          <div
+            className="w-[30px] lg:w-[35px] 2xl:w-[48px] aspect-square absolute z-10 inset-0 m-auto pointer-events-none"
+            role="img"
+            aria-label="Play video"
+          >
+            <Image src="/images/icon-play.svg" alt="Play icon" fill sizes="48px" />
           </div>
         </div>
       ) : (
         <div className="group w-full h-full rounded-[3px] sm:rounded-[15px] overflow-hidden">
-          <LightGallery
-            plugins={[lgThumbnail, lgZoom]}
-            download={false}
-            elementClassNames="w-full h-full"
-          >
-            <a
-              href={
-                item?.image
-                  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`
-                  : "/images/gallDet01.jpg"
-              }
-              className="w-full h-full relative z-0 block"
-            >
+          <LightGallery plugins={[lgThumbnail, lgZoom]} download={false} elementClassNames="w-full h-full">
+            <a href={`${serverMediaPath}${src}`} className="w-full h-full relative z-0 block">
               <Image
-                src={
-                  item?.image
-                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`
-                    : "/images/gallDet01.jpg"
-                }
-                alt="Gallery Image"
+                src={`${serverMediaPath}${src}`}
+                alt={alt}
                 fill
-                sizes="520px"
+                sizes="(max-width: 640px) 100vw, 520px"
                 className="group-hover:scale-105 object-cover transition-transform duration-300"
+                loading="lazy"
               />
             </a>
           </LightGallery>
@@ -110,104 +71,132 @@ function ImageBox({ item, className, isVideo = false }) {
       )}
     </div>
   );
-}
+});
 
-export default function GalleryDetail({ galleryItems, error }) {
-  const data = galleryItems || [];
-  
+export default function GalleryDetail({ slug }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  // const slug = searchParams.get("slug") || "default-slug"; // Fallback slug
+  const page = Math.max(1, Number(searchParams.get("page")) || 1);
+  const limit = 6; // Configurable limit
+
+  const [galleryItems, setGalleryItems] = useState([]);
+  const [content, setContent] = useState(null);
+  const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1 });
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event?slug=${slug}&page=${page}&limit=${limit}`);
+
+      const { galleryItems, content, pagination } = data?.data;
+
+      setGalleryItems(galleryItems);
+      setContent(content);
+      setPagination(pagination);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Fetch data on page change
+  useEffect(() => {
+    if (slug) {
+      fetchData();
+    }
+  }, [page, slug, limit, searchParams]);
+
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  const handlePageChange = useCallback(
+    (newPage) => {
+      router.push(`?${createQueryString("page", newPage.toString())}`, { scroll: false });
+    },
+    [router, createQueryString]
+  );
+
+  if (error) {
+    return (
+      <section className="w-full pt-[40px] pb-[25px]">
+        <div className="container mx-auto">
+          <div className="text-red-500">Error: {error}</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="w-full pt-[40px] pb-[25px] xl:pb-[40px] 3xl:pb-[80px]">
       <div className="container mx-auto">
         <div className="w-full sm:pb-[20px] lg:pb-[40px] 2xl:pb-[60px]">
-          <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px] sm:flex sm:flex-wrap">
-            Onam Celebrations 2024 for
-            <span className="sm:block hidden"> &nbsp;LIFE@INDEL </span>
-            <span className="text-base2 font-bold sm:hidden block">
-              {" "}
-              &nbsp;LIFE@INDEL{" "}
-            </span>
+          <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px] sm:flex sm:flex-wrap [&>span]:block [&>span]:text-base2 [&>span]:font-bold [&>span]:sm:hidden">
+            {content?.description ? renderHtml(content.description) : "No description available"}
           </h1>
           <div className="sm:block hidden">
             <PageBreadcrumb />
           </div>
         </div>
-
-        <div className="mx-auto flex flex-wrap overflow-hidden h-fit">
-          <div className="w-full 4xs:w-1/2 mb-2 flex flex-wrap h-[300px] 4sx:h-[200px] 3xs:h-[280px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
-            <div className="flex flex-wrap w-full h-full">
-              <div className="w-1/2 h-full">
-                {data[0] && (
-                  <ImageBox
-                    item={data[0]}
-                    className="h-1/2"
-                    isVideo={data[0]?.is_video}
-                  />
-                )}
-                {data[1] && (
-                  <ImageBox
-                    item={data[1]}
-                    className="h-1/2"
-                    isVideo={data[1]?.is_video}
-                  />
-                )}
-              </div>
-              <div className="w-1/2 h-full">
-                {/* <ImageBox item={data[2]} className="h-full" /> */}
-                <div className={`w-full h-full p-1 sm:p-2`}>
-                  <div className="group w-full h-full rounded-[3px] sm:rounded-[15px] block overflow-hidden relative z-0">
-                    {data[2] && (
-                      <ImageBox
-                        item={data[2]}
-                        width={800}
-                        height={335}
-                        className="h-full"
-                        isVideo={data[2]?.is_video}
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+        {isLoading ? (
+          <div className="flex justify-center items-center w-full py-4">
+            <LoadingCircleSpinner />
           </div>
-
-          <div className="w-full 4xs:w-1/2 mb-2 flex flex-wrap h-[300px] 4sx:h-[200px] 3xs:h-[280px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
-            <div className="flex flex-wrap w-full h-[40%] md:h-[50%]">
-              <div className="w-full mb-4 h-full">
-                {data[3] && (
-                  <ImageBox
-                    item={data[3]}
-                    width={800}
-                    height={335}
-                    className="h-full"
-                    isVideo={data[3]?.is_video}
-                  />
-                )}
-              </div>
+        ) : (
+          <>
+            <div className="mx-auto flex flex-wrap overflow-hidden h-fit">
+              {galleryItems?.length === 0 && !isLoading ? (
+                <p>No gallery items available.</p>
+              ) : (
+                <>
+                  <div className="w-full sm:w-1/2 mb-2 flex flex-wrap h-[300px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
+                    <div className="flex flex-wrap w-full h-full">
+                      <div className="w-1/2 h-full">
+                        {galleryItems[0] && <ImageBox item={galleryItems[0]} className="h-1/2" isVideo={galleryItems[0]?.is_video} />}
+                        {galleryItems[1] && <ImageBox item={galleryItems[1]} className="h-1/2" isVideo={galleryItems[1]?.is_video} />}
+                      </div>
+                      <div className="w-1/2 h-full">
+                        {galleryItems[2] && <ImageBox item={galleryItems[2]} className="h-full" isVideo={galleryItems[2]?.is_video} />}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full sm:w-1/2 mb-2 flex flex-wrap h-[300px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
+                    <div className="flex flex-wrap w-full h-[40%] md:h-[50%]">
+                      <div className="w-full mb-4 h-full">
+                        {galleryItems[3] && <ImageBox item={galleryItems[3]} className="h-full" isVideo={galleryItems[3]?.is_video} />}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap w-full h-[60%] md:h-[50%]">
+                      <div className="w-1/2 h-full">
+                        {galleryItems[4] && <ImageBox item={galleryItems[4]} className="h-full" isVideo={galleryItems[4]?.is_video} />}
+                      </div>
+                      <div className="w-1/2 h-full">
+                        {galleryItems[5] && <ImageBox item={galleryItems[5]} className="h-full" isVideo={galleryItems[5]?.is_video} />}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
-            <div className="flex flex-wrap w-full h-[60%] md:h-[50%]">
-              <div className="w-1/2 h-full">
-                {data[4] && (
-                  <ImageBox
-                    item={data[4]}
-                    width={380}
-                    height={445}
-                    className="h-full"
-                    isVideo={data[4]?.is_video}
-                  />
-                )}
-              </div>
-              <div className="w-1/2 h-full">
-                {data[5] && (
-                  <ImageBox
-                    item={data[5]}
-                    width={380}
-                    height={445}
-                    className="h-full"
-                    isVideo={data[5]?.is_video}
-                  />
-                )}
-              </div>
-            </div>
+          </>
+        )}
+        <div className="w-full flex sm:flex-row sm:justify-between sm:items-center gap-y-4 sm:gap-y-0 mt-4 sm:mt-6 2xl:mt-10 3xl:mt-[70px]">
+          <div className="w-full sm:w-2/5 md:w-1/3 xl:w-[27%] 2xl:w-[30%]">
+            <h2 className="text-[20px] md:text-[22px] lg:text-[26px] xl:text-[30px] 2xl:text-[35px] font-medium leading-normal text-[#020202]">
+              View More Galleries
+            </h2>
+          </div>
+          <div className="w-full sm:w-3/5 md:w-2/3 xl:w-[73%] 2xl:w-[70%] pt-5 sm:pt-0 sm:pl-5 2xl:pl-[30px]">
+            <PaginationComponent totalPages={pagination.totalPages} currentPage={pagination.currentPage} onPageChange={handlePageChange} />
           </div>
         </div>
       </div>
