@@ -6,6 +6,7 @@ import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "@/components/common/FloatingButton";
 // import ToasterWrapper from "@/components/common/ToasterWrapper";
 import { Toaster } from "react-hot-toast";
+import api from "../lib/api/axios";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -20,17 +21,6 @@ const montserrat = Montserrat({
 //     "Indel Money is one leading gold loan provider in Kerala, India that provides instant, hassle-free digital gold loans with flexible repayment.",
 // };
 
-const fetchFooterData = async () => {
-  try {
-    const { data } = await api.get("/web/footer", {});
-    if (data.status === "success" && data.data) {
-      setFooterData(data.data.content);
-      setIcons(data.data.icons);
-    }
-  } catch (error) {
-    console.error("Error fetching footer data:", error);
-  }
-};
 
 export default async function RootLayout({ children }) {
   let footerContent = null;
