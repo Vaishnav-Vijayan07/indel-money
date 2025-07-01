@@ -20,6 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { useState } from "react";
 
 // Schema Validation
 const formSchema = z.object({
@@ -32,12 +33,17 @@ const formSchema = z.object({
   emailAddress: z.string().email({
     message: "Invalid email address.",
   }),
-  serviceType: z.number().nonnegative({
+  serviceType: z.string().min(10,{
     message: "Please select a service.",
   }),
 });
 
 export default function EnquiryForm({ handleSubmit, serviceTypes }) {
+
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+
   // Define form
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -50,11 +56,18 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
   });
 
   // Handle form submission
-  function onSubmit(values) {
-    handleSubmit(values);
+  async function onSubmit(values) {
+    try {
+      setIsSubmitting(true)
+    await handleSubmit(values);
     form.reset();
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
+
+  
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -165,7 +178,7 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
           className="btn btn-base2 ml-auto block max-w-[100px] sm:max-w-[80px] lg:max-w-[75px] xl:max-w-[95px] 2xl:max-w-[115px] 3xl:max-w-[140px]"
           type="submit"
         >
-          Submit
+         {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
       </form>
     </Form>
