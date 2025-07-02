@@ -25,28 +25,6 @@ const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLa
 const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: false });
 const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeModal"), { ssr: false });
 
-// const DreamsToReality = lazy(() => import("../components/features/home/DreamsToReality"));
-// const StepGoldLoan = lazy(() => import("../components/features/home/StepGoldLoan"));
-// const StepGoldLoanCalculator = lazy(() => import("../components/features/home/StepGoldLoanCalculator"));
-// const LifeAtIndel = lazy(() => import("../components/features/home/LifeAtIndel"));
-// const LatestUpdates = lazy(() => import("../components/features/home/LatestUpdates"));
-// const TrustedInvestment = lazy(() => import("../components/features/home/TrustedInvestment"));
-// const BranchLocator = lazy(() => import("../components/features/home/BranchLocator"));
-// const Innovations = lazy(() => import("../components/features/home/Innovations"));
-// const FAQ = lazy(() => import("../components/features/home/FAQ"));
-// const WelcomeModal = lazy(() => import("../components/common/WelcomeModal"));
-
-// // MOBILE COMPONENTS
-// const MobHeroBanner = lazy(() => import("../components/features/home/MobHeroBanner"));
-// const MobSmartMoneyDeals = lazy(() => import("../components/features/home/MobSmartMoneyDeals"));
-// const MobStepGoldLoan = lazy(() => import("../components/features/home/MobStepGoldLoan"));
-// const MobStepGoldLoanCalculator = lazy(() => import("../components/features/home/MobStepGoldLoanCalculator"));
-// const MobBranchLocator = lazy(() => import("../components/features/home/MobBranchLocator"));
-// const MobJoinTeam = lazy(() => import("../components/features/home/MobJoinTeam"));
-// const MobLatestUpdates = lazy(() => import("../components/features/home/MobLatestUpdates"));
-// const MobInnovations = lazy(() => import("../components/features/home/MobInnovations"));
-// const MobWelcomeModal = lazy(() => import("../components/common/MobWelcomeModal"));
-
 export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   return (
