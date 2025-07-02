@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { renderHtml } from "@/lib/utils/htmlParser";
-import { parse } from "html-react-parser";
+import parse  from "html-react-parser";
 import { htmlToText } from "html-to-text";
 
 export default function MobAboutMessage({ messages }) {
