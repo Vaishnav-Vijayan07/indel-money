@@ -57,7 +57,7 @@ const GallSliderBx = ({ item }) => {
 
   return (
     <Link
-      href={"/"}
+      href={item?.slug ? item?.slug : "/"}
       className="group block relative rounded-[20px] overflow-hidden w-full h-[165px] sm:h-[205px] xl:h-[275px] 2xl:h-[360px] 3xl:h-[410px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

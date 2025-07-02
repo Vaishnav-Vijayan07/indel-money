@@ -157,7 +157,7 @@ export default function WelcomeModal({ banner, serviceBanner }) {
           <div className="flex flex-wrap gap-[15px] lg:gap-[20px] xl:gap-[30px] 2xl:gap-[40px] 3xl:gap-[50px] mb-[10px] sm:mb-[15px] lg:mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
             <div className="w-full max-w-[80px] sm:max-w-[90px] md:max-w-[100px] lg:max-w-[120px] xl:max-w-[140px] 2xl:max-w-[180px] 3xl:max-w-[280px] h-auto inline-block">
               <Image
-                src={banner?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.logo}` : "/icons/logo_sm.svg"}
+                src={banner?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.logo}` : serviceBanner?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${serviceBanner?.logo}` : "/icons/logo_sm.svg"}
                 alt={banner?.image_alt ? banner?.image_alt : "alt"}
                 width={218}
                 height={112}
@@ -166,10 +166,10 @@ export default function WelcomeModal({ banner, serviceBanner }) {
             </div>
             <div>
               <AlertDialogTitle className="text-[18px] sm:text-[24px] md:text-[30px] lg:text-[38px] xl:text-[44px] 2xl:text-[56px] 3xl:text-[64px] text-base2 leading-none font-bold mt-[2px] 2xl:mt-[4px] mb-[4px] 2xl:mb-[6px]">
-                {banner?.title ? banner?.title : "Welcome!"}
+                {banner?.title ? banner?.title : serviceBanner?.title ? serviceBanner?.title : "Welcome!"}
               </AlertDialogTitle>
               <div className="text-[14px] sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[36px] text-[#1e1e1e] leading-none font-normal">
-                {banner?.sub_title ? banner?.sub_title : "What Brings You Here Today?"}
+                {banner?.sub_title ? banner?.sub_title : serviceBanner?.sub_title ? serviceBanner?.sub_title : "What Brings You Here Today?"}
               </div>
             </div>
           </div>

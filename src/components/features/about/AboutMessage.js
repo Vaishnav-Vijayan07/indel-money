@@ -23,6 +23,7 @@ import { renderHtml } from "@/lib/utils/htmlParser";
 // ];
 
 export default function AboutMessage({ messages }) {
+  console.log(messages);
   return (
     <section className="py-[80px]">
       <div className="container">
@@ -42,7 +43,7 @@ export default function AboutMessage({ messages }) {
                 className={`w-full h-full rounded-[20px] overflow-hidden pt-[25px] flex flex-col justify-between
                                 ${index % 2 === 0 ? "bg-[#EE3824]" : "bg-base1"}`}
               >
-                <div className="3xl:text-[30px] 2xl:text-[26px] text-[18px] mb-[10px] text-white text-center leading-none">{item.designation}</div>
+                <div className="3xl:text-[30px] 2xl:text-[26px] text-[18px] mb-[10px] text-white text-center leading-none">{item.short_title}</div>
                 <div className="w-full max-w-[180px]">
                   <Image
                     src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/ceo.png"}

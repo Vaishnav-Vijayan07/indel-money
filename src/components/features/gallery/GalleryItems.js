@@ -91,7 +91,7 @@ function GalleryItems({ slug }) {
       setGalleryItems(galleryItems);
       setPagination(pagination);
     } catch (error) {
-      console.log("Error");
+      
     } finally {
       setIsLoading(false);
     }
@@ -129,42 +129,48 @@ function GalleryItems({ slug }) {
       ) : (
         <div className="mx-auto flex flex-wrap overflow-hidden h-fit">
           <>
-            <div className="w-full sm:w-1/2 mb-2 flex flex-wrap h-[300px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
-              <div className="flex flex-wrap w-full h-full">
-                <div className="w-1/2 h-full">
-                  {galleryItems?.[0] && <ImageBox item={galleryItems?.[0]} className="h-1/2" isVideo={galleryItems?.[0]?.is_video} />}
-                  {galleryItems?.[1] && <ImageBox item={galleryItems?.[1]} className="h-1/2" isVideo={galleryItems[1]?.is_video} />}
+            {galleryItems && galleryItems?.length > 0 ? (
+              <>
+                <div className="w-full sm:w-1/2 mb-2 flex flex-wrap h-[300px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
+                  <div className="flex flex-wrap w-full h-full">
+                    <div className="w-1/2 h-full">
+                      {galleryItems?.[0] && <ImageBox item={galleryItems?.[0]} className="h-1/2" isVideo={galleryItems?.[0]?.is_video} />}
+                      {galleryItems?.[1] && <ImageBox item={galleryItems?.[1]} className="h-1/2" isVideo={galleryItems[1]?.is_video} />}
+                    </div>
+                    <div className="w-1/2 h-full">
+                      {galleryItems?.[2] && <ImageBox item={galleryItems?.[2]} className="h-full" isVideo={galleryItems[2]?.is_video} />}
+                    </div>
+                  </div>
                 </div>
-                <div className="w-1/2 h-full">
-                  {galleryItems?.[2] && <ImageBox item={galleryItems?.[2]} className="h-full" isVideo={galleryItems[2]?.is_video} />}
+                <div className="w-full sm:w-1/2 mb-2 flex flex-wrap h-[300px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
+                  <div className="flex flex-wrap w-full h-[40%] md:h-[50%]">
+                    <div className="w-full mb-4 h-full">
+                      {galleryItems?.[3] && <ImageBox item={galleryItems?.[3]} className="h-full" isVideo={galleryItems[3]?.is_video} />}
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap w-full h-[60%] md:h-[50%]">
+                    <div className="w-1/2 h-full">
+                      {galleryItems?.[4] && <ImageBox item={galleryItems?.[4]} className="h-full" isVideo={galleryItems[4]?.is_video} />}
+                    </div>
+                    <div className="w-1/2 h-full">
+                      {galleryItems?.[5] && <ImageBox item={galleryItems?.[5]} className="h-full" isVideo={galleryItems[5]?.is_video} />}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="w-full sm:w-1/2 mb-2 flex flex-wrap h-[300px] sm:h-[405px] md:h-[410px] xl:h-[550px] 2xl:h-[740px] 3xl:h-[860px]">
-              <div className="flex flex-wrap w-full h-[40%] md:h-[50%]">
-                <div className="w-full mb-4 h-full">
-                  {galleryItems?.[3] && <ImageBox item={galleryItems?.[3]} className="h-full" isVideo={galleryItems[3]?.is_video} />}
+                <div className="w-full flex sm:flex-row sm:justify-between sm:items-center gap-y-4 sm:gap-y-0 mt-4 sm:mt-6 2xl:mt-10 3xl:mt-[70px]">
+                  <div className="w-full sm:w-2/5 md:w-1/3 xl:w-[27%] 2xl:w-[30%]">
+                    <h2 className="text-[20px] md:text-[22px] lg:text-[26px] xl:text-[30px] 2xl:text-[35px] font-medium leading-normal text-[#020202]">
+                      View More Galleries
+                    </h2>
+                  </div>
+                  <div className="w-full sm:w-3/5 md:w-2/3 xl:w-[73%] 2xl:w-[70%] pt-5 sm:pt-0 sm:pl-5 2xl:pl-[30px]">
+                    <PaginationComponent totalPages={pagination.totalPages} currentPage={pagination.currentPage} onPageChange={handlePageChange} />
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-wrap w-full h-[60%] md:h-[50%]">
-                <div className="w-1/2 h-full">
-                  {galleryItems?.[4] && <ImageBox item={galleryItems?.[4]} className="h-full" isVideo={galleryItems[4]?.is_video} />}
-                </div>
-                <div className="w-1/2 h-full">
-                  {galleryItems?.[5] && <ImageBox item={galleryItems?.[5]} className="h-full" isVideo={galleryItems[5]?.is_video} />}
-                </div>
-              </div>
-            </div>
-            <div className="w-full flex sm:flex-row sm:justify-between sm:items-center gap-y-4 sm:gap-y-0 mt-4 sm:mt-6 2xl:mt-10 3xl:mt-[70px]">
-              <div className="w-full sm:w-2/5 md:w-1/3 xl:w-[27%] 2xl:w-[30%]">
-                <h2 className="text-[20px] md:text-[22px] lg:text-[26px] xl:text-[30px] 2xl:text-[35px] font-medium leading-normal text-[#020202]">
-                  View More Galleries
-                </h2>
-              </div>
-              <div className="w-full sm:w-3/5 md:w-2/3 xl:w-[73%] 2xl:w-[70%] pt-5 sm:pt-0 sm:pl-5 2xl:pl-[30px]">
-                <PaginationComponent totalPages={pagination.totalPages} currentPage={pagination.currentPage} onPageChange={handlePageChange} />
-              </div>
-            </div>
+              </>
+            ) : (
+              <p>No items found</p>
+            )}
           </>
         </div>
       )}
