@@ -100,13 +100,12 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
       </div>
 
       {/* Branch locator contents*/}
-      <div className="hidden sm:block" id="branch-locator">
+      {/* <div className="hidden sm:block" id="branch-locator">
         <BranchLocator pageContent={branchLocatorData} variant={"home"} />
       </div>
       <div className="block sm:hidden" id="branch-locator">
-        {/* Develope api for branch locator */}
         <MobBranchLocator pageContent={branchLocatorData} />
-      </div>
+      </div> */}
 
       {/* Life at Indel contents*/}
       <div className="hidden sm:block">
