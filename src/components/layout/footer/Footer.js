@@ -72,13 +72,7 @@ function ContactBox({ href, src, title, alt }) {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-[10px] 3xl:gap-[15px]">
       <span>
-        <Image
-          src={src}
-          width={36}
-          height={36}
-          alt={alt}
-          className="w-[15px] 4xs:w-[20px] sm:w-[20px] xl:w-[25px] 3xl:w-[30px] h-[auto] block"
-        />
+        <Image src={src} width={36} height={36} alt={alt} className="w-[15px] 4xs:w-[20px] sm:w-[20px] xl:w-[25px] 3xl:w-[30px] h-[auto] block" />
       </span>
       <span className="text-[16px] lg:text-[20px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] font-medium group-hover:text-base2 transition-color duration-300">
         {title}
@@ -130,9 +124,9 @@ export default function Footer({ content, icons }) {
             </div>
             <div className="w-full h-auto block mb-[15px] xl:mb-[15px]">
               <div className="text-[14px] lg:text-[16px] 3xl:text-[20px] font-medium text-[#1b1b1b] flex gap-[10px] lg:gap-[15px] 3xl:gap-[20px] my-[10px] 3xl:my-[15px]">
-                <Image src="/images/icon-ft-call.svg" alt="call" width={16} height={16} className="w-[16px] h-auto aspect-1/1" />
+                <Image src={"/images/icon-ft-call.svg"} alt="call" width={16} height={16} className="w-[16px] h-auto aspect-1/1" />
                 <Link
-                  href="tel:18004253990"
+                  href={content?.toll_free_num ? `tel:${content?.toll_free_num}` : "tel:18004253990"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-base2 transition-color duration-300"
@@ -172,9 +166,7 @@ export default function Footer({ content, icons }) {
               {navigations?.map((item, index) => (
                 <div
                   key={index}
-                  className={`${
-                    item.title === "Policies" && "max-sm:hidden"
-                  } break-inside-avoid-column [display:table] w-full h-auto mb-3 xl:mb-6`}
+                  className={`${item.title === "Policies" && "max-sm:hidden"} break-inside-avoid-column [display:table] w-full h-auto mb-3 xl:mb-6`}
                 >
                   <div className="text-footer1 mb-[10px] 2xl:mb-[20px]">{item.title}</div>
                   <div className="w-100% max-w-[80px] lg:max-w-[100px] 3xl:max-w-[120px] flex h-auto mb-[15px] 2xl:mb-[20px]">
@@ -222,22 +214,22 @@ export default function Footer({ content, icons }) {
                 </div>
               ))}
             </div>
-            <div>
-              <ContactBox
-                href={content?.icon_section_link ? content?.icon_section_link : "/branch-locator"}
-                src="/images/icon-map.svg"
-                title={content?.icon_section_text ? content?.icon_section_text : "Branch Locator"}
-                alt="location"
-              />
-            </div>
-            <div>
-              <ContactBox
-                href={content?.toll_free_num ? `tel:${content?.toll_free_num}` : "tel:18004253990"}
-                src="/images/icon-call.svg"
-                title={content?.toll_free_num ? content?.toll_free_num : "1800 425 39 90"}
-                alt="call"
-              />
-            </div>
+              <div>
+                  <ContactBox
+                    href={content?.branch_locator_link ? content?.branch_locator_link : "/branch-locator"}
+                    src={ content?.branch_locator_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content?.branch_locator_icon_web}` : "/images/icon-map.svg"}
+                    title={content?.branch_locator ? content?.branch_locator : "Branch Locator"}
+                    alt="location"
+                  />
+                </div>
+                <div>
+                  <ContactBox
+                    href={content?.toll_free_num ? `tel:${content?.toll_free_num}` : "tel:18004253990"}
+                    src={ content?.toll_free_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content?.toll_free_icon_web}` : "/images/icon-call.svg"}
+                    title={content?.toll_free_num ? content?.toll_free_num : "1800 425 39 90"}
+                    alt="call"
+                  />
+                </div>
           </div>
         </div>
         <div className="w-full h-auto pb-[15px] mb-[15px] border-b-[1px] border-solid border-black/20 flex flex-wrap sm:hidden">

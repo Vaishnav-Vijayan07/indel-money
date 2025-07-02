@@ -10,16 +10,21 @@ async function fetchData() {
     const result = await response.json();
 
     if (result.status === "success") {
-      return { contents: result.data, error: null };
+      return {
+        contents: result.data,
+        socialLinks: result.data?.socialMediaLinks,
+        links: result.data?.quickLinks,
+        error: null,
+      };
     }
-    return { contents: null, error: result.message };
+    return { contents: null, socialLinks: null, links: null, error: result.message };
   } catch (error) {
-    return { contents: null, error: "Failed to fetch header data" };
+    return { contents: null, socialLinks: null, links: null, error: "Failed to fetch header data" };
   }
 }
 
 export default async function Header() {
-  const { contents: headerData, error } = await fetchData();
+  const { contents: headerData, socialLinks, links, error } = await fetchData();
 
   if (error) {
     return <div>{error}</div>;
@@ -31,7 +36,7 @@ export default async function Header() {
         <DeskHeader headerData={headerData} />
       </div>
       <div className="block lg:hidden">
-        <MobHeader />
+        <MobHeader socialLinks={socialLinks} logo={headerData?.content?.logo} links={links} />
       </div>
     </>
   );
