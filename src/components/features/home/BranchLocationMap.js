@@ -259,7 +259,7 @@ function BranchLocationsInfo({ item, type, selectedBranch, branch }) {
 export default function BranchLocationMap({ branchLocations: initialBranchLocations, selectedBranch, setSelectedBranch }) {
   const [mapCenter, setMapCenter] = useState([13.0827, 80.2707]); // Default: Chennai
   const [isMounted, setIsMounted] = useState(false);
-  const [branchLocations, setBranchLocations] = useState(initialBranchLocations || []);
+  const [branchLocations, setBranchLocations] = useState(initialBranchLocations.slice(0, 10) || []);
   const [userLocation, setUserLocation] = useState(null);
 
   useEffect(() => {

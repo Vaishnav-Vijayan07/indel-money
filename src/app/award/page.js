@@ -5,7 +5,7 @@ async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/awards`, {
       cache: "force-cache",
-      next: { revalidate: 60 },
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const awardsData = result.data;

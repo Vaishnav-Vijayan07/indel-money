@@ -20,9 +20,9 @@ import { title } from "process";
 async function fetchGoldLoanData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-loan`, {
-      cache: "no-store", // Ensure fresh data
-      // cache: "force-cache",
-      // next: { revalidate: 60 },
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const goldloanData = result.data;

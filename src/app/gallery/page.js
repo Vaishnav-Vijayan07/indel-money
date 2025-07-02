@@ -9,9 +9,14 @@ const defaultGalleryMeta = {
 };
 async function fetchData(page = 1, type = "all", limit = 6) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event-gallery?page=${page}&limit=${limit}&type=${type}`, {
-      cache: "no-store", // Ensure fresh data
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event-gallery?page=${page}&limit=${limit}&type=${type}`,
+      {
+        // cache: "no-store", // Ensure fresh data
+        cache: "force-cache",
+        next: { revalidate: 600 },
+      }
+    );
 
     const result = await response.json();
     const galleryData = result.data;
