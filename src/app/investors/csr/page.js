@@ -6,7 +6,7 @@ async function fetchCsrData() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/csr-details`, {
       // cache: 'no-store', // or 'force-cache' depending on your needs
       cache: "force-cache",
-      next: { revalidate: 60 },
+      next: { revalidate: 600 },
     });
 
     const result = await response.json();

@@ -5,7 +5,7 @@ async function fetchReportData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/report`, {
       cache: "force-cache",
-      next: { revalidate: 60 },
+      next: { revalidate: 600 },
     });
 
     const result = await response.json();

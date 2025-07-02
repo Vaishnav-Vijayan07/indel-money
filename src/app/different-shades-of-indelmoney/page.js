@@ -8,7 +8,7 @@ async function fetchData() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/shades-of-indel`, {
       // cache: "no-store", // Ensure fresh data
       cache: "force-cache",
-      next: { revalidate: 60 },
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const shadesValues = result.data;

@@ -14,7 +14,7 @@ async function fetchData(page = 1, type = "all", limit = 10) {
       {
         // cache: "no-store", // Ensure fresh data
         cache: "force-cache",
-        next: { revalidate: 60 },
+        next: { revalidate: 600 },
       }
     );
 

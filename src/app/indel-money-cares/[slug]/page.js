@@ -5,9 +5,9 @@ import RecentEvents from "@/components/features/indel-money-cares/RecentEvents";
 async function fetchEventData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/indel-cares/${slug}`, {
-      //   next: { revalidate: 60 },
+      //   next: { revalidate: 600 },
       cache: "force-cache",
-      next: { revalidate: 60 },
+      next: { revalidate: 600 },
     });
 
     if (!response.ok) {
