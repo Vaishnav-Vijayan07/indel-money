@@ -4,19 +4,15 @@ import { Slider } from "@/components/ui/slider";
 import { useMemo, useState } from "react";
 import EnquiryModal from "./EnquiryModal";
 
-const labelStyle =
-  "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-none font-normal text-black line-clamp-1";
-const resultStyle =
-  "text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[20px] leading-none font-bold text-black line-clamp-1";
-
+const labelStyle = "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] leading-none font-normal text-black line-clamp-1";
+const resultStyle = "text-[12px] lg:text-[14px] 2xl:text-[16px] 3xl:text-[20px] leading-none font-bold text-black line-clamp-1";
 
 export default function EmiForm() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [submittedData, setSubmittedData] = useState({});
-  const [loanAmount, setLoanAmount] = useState(33); // in lakhs
-  const [interestRate, setInterestRate] = useState(20); // in %
-  const [tenure, setTenure] = useState(69); // in months
-
+  const [loanAmount, setLoanAmount] = useState(1); // in lakhs
+  const [interestRate, setInterestRate] = useState(7); // in %
+  const [tenure, setTenure] = useState(36); // in months
 
   // Handle form submission
   function onSubmit(event) {
@@ -43,9 +39,15 @@ export default function EmiForm() {
   function calculateEMI(P, annualRate, N) {
     // Validate inputs: ensure they are positive numbers
     if (
-      typeof P !== "number" || isNaN(P) || P <= 0 ||
-      typeof annualRate !== "number" || isNaN(annualRate) || annualRate <= 0 ||
-      typeof N !== "number" || isNaN(N) || N <= 0
+      typeof P !== "number" ||
+      isNaN(P) ||
+      P <= 0 ||
+      typeof annualRate !== "number" ||
+      isNaN(annualRate) ||
+      annualRate <= 0 ||
+      typeof N !== "number" ||
+      isNaN(N) ||
+      N <= 0
     ) {
       return {
         emi: 0,
@@ -84,7 +86,6 @@ export default function EmiForm() {
     return calculateEMI(principal, interestRate, tenure);
   }, [principal, interestRate, tenure]);
 
-
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -92,17 +93,17 @@ export default function EmiForm() {
           <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
             <div className={labelStyle}>Loan Amount (lakhs)</div>
             {/* <Slider defaultValue={[33]} max={100} step={1} /> */}
-            <Slider value={[loanAmount]} onValueChange={(value) => setLoanAmount(value[0])} max={100} step={1} />
+            <Slider value={[loanAmount]} onValueChange={(value) => setLoanAmount(value[0])} min={1} max={100} step={1} />
           </div>
           <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
             <div className={labelStyle}>Interest rate (%)</div>
             {/* <Slider defaultValue={[20]} max={31} step={1} /> */}
-            <Slider value={[interestRate]} onValueChange={(value) => setInterestRate(value[0])} max={31} step={1} />
+            <Slider value={[interestRate]} onValueChange={(value) => setInterestRate(value[0])} min={1} max={31} step={1} />
           </div>
           <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
             <div className={labelStyle}>Tenure (in months)</div>
             {/* <Slider defaultValue={[69]} max={70} step={[12]} /> */}
-            <Slider value={[tenure]} onValueChange={(value) => setTenure(value[0])} max={70} step={12} />
+            <Slider value={[tenure]} onValueChange={(value) => setTenure(value[0])} min={12} max={70} step={12} />
           </div>
           <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
             <div className="flex items-center xl:justify-between gap-x-[20px] sm:gap-x-[10px] 2xl:gap-x-[20px] 3xl:gap-x-[30px]">
@@ -148,7 +149,12 @@ export default function EmiForm() {
         </div>
       </form>
       {isDialogOpen && (
-        <EnquiryModal isDialogOpen={isDialogOpen} onCancel={handleCancel} enquiryCalculatorData={submittedData} type={'emi_calculator'} />
+        <EnquiryModal
+          isDialogOpen={isDialogOpen}
+          onCancel={handleCancel}
+          enquiryCalculatorData={submittedData}
+          type={"emi_calculator"}
+        />
       )}
     </>
   );

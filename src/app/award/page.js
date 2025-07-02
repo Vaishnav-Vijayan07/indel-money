@@ -4,13 +4,19 @@ import NoContents from "@/components/NoContents";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/awards`, {
-      cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 60 },
     });
     const result = await response.json();
     const awardsData = result.data;
 
     if (result.status === "success") {
-      return { contents: awardsData?.awardPageContent, awards: awardsData?.nonSlideItems, sliderItems: awardsData?.slideItems, error: null };
+      return {
+        contents: awardsData?.awardPageContent,
+        awards: awardsData?.nonSlideItems,
+        sliderItems: awardsData?.slideItems,
+        error: null,
+      };
     }
     return { contents: null, awards: null, sliderItems: null, error: result.message };
   } catch (error) {

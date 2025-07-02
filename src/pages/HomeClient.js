@@ -1,29 +1,30 @@
 "use client";
 import { useMediaQuery } from "@react-hook/media-query";
 
-import React from "react";
+import React, { lazy } from "react";
 // DESKTOP COMPONENTS
-import HeroBanner from "../components/features/home/HeroBanner";
-import DreamsToReality from "../components/features/home/DreamsToReality";
-import StepGoldLoan from "../components/features/home/StepGoldLoan";
-import StepGoldLoanCalculator from "../components/features/home/StepGoldLoanCalculator";
-import LifeAtIndel from "../components/features/home/LifeAtIndel";
-import LatestUpdates from "../components/features/home/LatestUpdates";
-import TrustedInvestment from "../components/features/home/TrustedInvestment";
-import BranchLocator from "../components/features/home/BranchLocator";
-import Innovations from "../components/features/home/Innovations";
-import FAQ from "../components/features/home/FAQ";
-import WelcomeModal from "../components/common/WelcomeModal";
+const HeroBanner = lazy(() => import("../components/features/home/HeroBanner"));
+const DreamsToReality = lazy(() => import("../components/features/home/DreamsToReality"));
+const StepGoldLoan = lazy(() => import("../components/features/home/StepGoldLoan"));
+const StepGoldLoanCalculator = lazy(() => import("../components/features/home/StepGoldLoanCalculator"));
+const LifeAtIndel = lazy(() => import("../components/features/home/LifeAtIndel"));
+const LatestUpdates = lazy(() => import("../components/features/home/LatestUpdates"));
+const TrustedInvestment = lazy(() => import("../components/features/home/TrustedInvestment"));
+const BranchLocator = lazy(() => import("../components/features/home/BranchLocator"));
+const Innovations = lazy(() => import("../components/features/home/Innovations"));
+const FAQ = lazy(() => import("../components/features/home/FAQ"));
+const WelcomeModal = lazy(() => import("../components/common/WelcomeModal"));
+
 // MOBILE COMPONENTS
-import MobHeroBanner from "../components/features/home/MobHeroBanner";
-import MobSmartMoneyDeals from "../components/features/home/MobSmartMoneyDeals";
-import MobStepGoldLoan from "../components/features/home/MobStepGoldLoan";
-import MobStepGoldLoanCalculator from "../components/features/home/MobStepGoldLoanCalculator";
-import MobBranchLocator from "../components/features/home/MobBranchLocator";
-import MobJoinTeam from "../components/features/home/MobJoinTeam";
-import MobLatestUpdates from "../components/features/home/MobLatestUpdates";
-import MobInnovations from "../components/features/home/MobInnovations";
-import MobWelcomeModal from "../components/common/MobWelcomeModal";
+const MobHeroBanner = lazy(() => import("../components/features/home/MobHeroBanner"));
+const MobSmartMoneyDeals = lazy(() => import("../components/features/home/MobSmartMoneyDeals"));
+const MobStepGoldLoan = lazy(() => import("../components/features/home/MobStepGoldLoan"));
+const MobStepGoldLoanCalculator = lazy(() => import("../components/features/home/MobStepGoldLoanCalculator"));
+const MobBranchLocator = lazy(() => import("../components/features/home/MobBranchLocator"));
+const MobJoinTeam = lazy(() => import("../components/features/home/MobJoinTeam"));
+const MobLatestUpdates = lazy(() => import("../components/features/home/MobLatestUpdates"));
+const MobInnovations = lazy(() => import("../components/features/home/MobInnovations"));
+const MobWelcomeModal = lazy(() => import("../components/common/MobWelcomeModal"));
 
 export default function Home({
   initialData,

@@ -25,9 +25,9 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
                 onClick={(e) => {
                   e.preventDefault(); // Prevent default anchor jump
                   const section = document.querySelector("#all");
-                  if(type === "indel-money-cares") {
+                  if (type === "indel-money-cares") {
                     router.push(`/${type}`, undefined, { scroll: false });
-                    return
+                    return;
                   }
                   if (section) {
                     section.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -35,7 +35,13 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
                 }}
               >
                 View All
-                <Image src="/images/icon-right.svg" width={7} height={13} alt="right" className="w-[4px] lg:w-[6px] ml-1 lg:ml-2" />
+                <Image
+                  src="/images/icon-right.svg"
+                  width={7}
+                  height={13}
+                  alt="right"
+                  className="w-[4px] lg:w-[6px] ml-1 lg:ml-2"
+                />
               </Link>
             </div>
             <LatestUpdatesSlide
@@ -70,8 +76,8 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
             >
               {sliderItems?.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Link
-                    href={`/${type}/${item?.slug}`}
+                  <div
+                    // href={`/${type}/${item?.slug}`}
                     key={index}
                     className="group w-full h-[368px] sm:h-[420px] md:h-[490px] lg:h-[530px] xl:h-[586px] 2xl:h-[701px] 3xl:h-[854px] overflow-hidden block relative z-0"
                   >
@@ -113,7 +119,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
                         />
                       </Link>
                     </div>
-                  </Link>
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>

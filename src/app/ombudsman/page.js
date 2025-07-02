@@ -4,7 +4,8 @@ import NoContents from "@/components/NoContents";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/ombudsman`, {
-      cache: "force-cache", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 60 },
     });
 
     const result = await response.json();
@@ -31,8 +32,6 @@ async function fetchData() {
 
 export default async function Ombudsmans() {
   const { data: files, error } = await fetchData(); // ← Fixed destructuring
-
-  
 
   // Handle not found case
   if (!files || files.length === 0) {

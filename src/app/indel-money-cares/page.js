@@ -4,7 +4,9 @@ import { Suspense } from "react";
 async function fetchData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/indel-cares?page=${page}&limit=${limit}`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 60 },
     });
     const result = await response?.json();
     const data = result?.data;
