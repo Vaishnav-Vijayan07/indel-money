@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 import { useMediaQuery } from "@react-hook/media-query";
 // DESKTOP COMPONENTS
-const HeroBanner = dynamic(() => import("../components/features/home/HeroBanner"), { ssr: false });
+const HeroBanner = dynamic(() => import("../components/features/home/HeroBanner"), { ssr: true });
 const DreamsToReality = dynamic(() => import("../components/features/home/DreamsToReality"), { ssr: false });
 const StepGoldLoan = dynamic(() => import("../components/features/home/StepGoldLoan"), { ssr: false });
 const StepGoldLoanCalculator = dynamic(() => import("../components/features/home/StepGoldLoanCalculator"), { ssr: false });
@@ -15,7 +15,7 @@ const FAQ = dynamic(() => import("../components/features/home/FAQ"), { ssr: fals
 const WelcomeModal = dynamic(() => import("../components/common/WelcomeModal"), { ssr: false });
 
 // MOBILE COMPONENTS
-const MobHeroBanner = dynamic(() => import("../components/features/home/MobHeroBanner"), { ssr: false });
+const MobHeroBanner = dynamic(() => import("../components/features/home/MobHeroBanner"), { ssr: true });
 const MobSmartMoneyDeals = dynamic(() => import("../components/features/home/MobSmartMoneyDeals"), { ssr: false });
 const MobStepGoldLoan = dynamic(() => import("../components/features/home/MobStepGoldLoan"), { ssr: false });
 const MobStepGoldLoanCalculator = dynamic(() => import("../components/features/home/MobStepGoldLoanCalculator"), { ssr: false });
