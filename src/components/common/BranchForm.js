@@ -98,9 +98,11 @@ export default function BranchForm({
             <SelectValue placeholder="Select Distance" />
           </SelectTrigger>
           <SelectContent className="bg-[#e7eff9] border-[#e7eff9]">
-            <SelectItem value="10">10km</SelectItem>
             <SelectItem value="20">20km</SelectItem>
-            <SelectItem value="30">30km</SelectItem>
+            <SelectItem value="40">40km</SelectItem>
+            <SelectItem value="60">60km</SelectItem>
+            <SelectItem value="80">80km</SelectItem>
+            <SelectItem value="100">100km</SelectItem>
           </SelectContent>
         </Select>
       </div>

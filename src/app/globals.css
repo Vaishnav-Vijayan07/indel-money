@@ -1,5 +1,6 @@
 @import "tailwindcss";
-
+@import url('~leaflet.markercluster/dist/MarkerCluster.css');
+@import url('~leaflet.markercluster/dist/MarkerCluster.Default.css');
 @theme {
   --font-amino: "Amino", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
