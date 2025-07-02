@@ -93,8 +93,9 @@ export default function DeskHeader({ headerData }) {
                   />
                 </div>
                 <div>
-                  <Link
+                  <a
                     href={header?.apple_dowload_link ? header?.apple_dowload_link : "/"}
+                    target="_blank"
                     className="w-[10px] lg:w-[14px] 2xl:w-[18px] h-auto block transition-transform duration-300 hover:scale-105"
                   >
                     <Image
@@ -112,11 +113,12 @@ export default function DeskHeader({ headerData }) {
                       }}
                       alt="app"
                     />
-                  </Link>
+                  </a>
                 </div>
                 <div>
-                  <Link
+                  <a
                     href={header?.andrioid_download_link ? header?.andrioid_download_link : "/hello"}
+                    target="_blank"
                     className="w-[10px] lg:w-[14px] 2xl:w-[18px] h-auto block transition-transform duration-300 hover:scale-105"
                   >
                     <Image
@@ -134,7 +136,7 @@ export default function DeskHeader({ headerData }) {
                       }}
                       alt="app"
                     />
-                  </Link>
+                  </a>
                 </div>
                 <div>
                   <DropdownMenu>

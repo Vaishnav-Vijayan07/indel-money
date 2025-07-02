@@ -109,12 +109,10 @@ export async function generateMetadata() {
 export default async function GoldLoan() {
   const { steps, contents, bannerIcons, schemes, faqs, features, GoldloanBenefits, announcement } = await fetchGoldLoanData();
   const flattenedFeatures = features?.flat()?.filter((item) => !item.is_center);
-
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
   }
-
-  return (
+ return (
     <>
       {/* Gold loan calculator contents*/}
       <div className="hidden sm:block">
