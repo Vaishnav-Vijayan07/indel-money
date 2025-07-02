@@ -146,11 +146,11 @@ export default function BranchLocator({ variant = "default", pageContent }) {
             setUserLocation({ latitude, longitude });
             debouncedFetchNearbyBranchLocations({
               ...queryParams,
-              distance: distance || selectedDistance || "10",
+              distance: distance || selectedDistance || "20",
               lat: latitude,
               long: longitude,
             });
-            updateQueryParams({ distance: distance || selectedDistance || "10" });
+            updateQueryParams({ distance: distance || selectedDistance || "20" });
           },
           (error) => {
             console.error("Error fetching location:", error);
@@ -160,7 +160,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
       } else {
         debouncedFetchNearbyBranchLocations(queryParams);
         if (!activeFilters) {
-          updateQueryParams({ distance: distance || selectedDistance || "10" });
+          updateQueryParams({ distance: distance || selectedDistance || "20" });
         } else {
           updateQueryParams({ state: selectedState, district: selectedDistrict, location: selectedLocation });
         }
@@ -191,11 +191,11 @@ export default function BranchLocator({ variant = "default", pageContent }) {
           const { latitude, longitude } = position.coords;
           setUserLocation({ latitude, longitude });
           debouncedFetchNearbyBranchLocations({
-            distance: selectedDistance || "10",
+            distance: selectedDistance || "20",
             lat: latitude,
             long: longitude,
           });
-          updateQueryParams({ distance: selectedDistance || "10" });
+          updateQueryParams({ distance: selectedDistance || "20" });
         },
         (error) => {
           console.error("Error fetching location:", error);
@@ -203,11 +203,11 @@ export default function BranchLocator({ variant = "default", pageContent }) {
       );
     } else if (userLocation) {
       debouncedFetchNearbyBranchLocations({
-        distance: selectedDistance || "10",
+        distance: selectedDistance || "20",
         lat: userLocation.latitude,
         long: userLocation.longitude,
       });
-      updateQueryParams({ distance: selectedDistance || "10" });
+      updateQueryParams({ distance: selectedDistance || "20" });
     } else {
       console.error("Geolocation not supported by this browser.");
     }
@@ -262,14 +262,14 @@ export default function BranchLocator({ variant = "default", pageContent }) {
         setSelectedState("");
         setSelectedDistrict("");
         setSelectedLocation("");
-        setSelectedDistance("");
+        setSelectedDistance("20");
         setDistricts([]);
         setLocations([]);
         newParams.state = "";
         newParams.district = "";
         newParams.location = "";
-        newParams.distance = "";
-        fetchNearbyBranchesWithLocation("10"); // Reset to default 10km
+        newParams.distance = "20";
+        fetchNearbyBranchesWithLocation("20"); // Reset to default 10km
       }
 
       // Update URL parameters
@@ -305,7 +305,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
     const state = searchParams.get("state") || "";
     const district = searchParams.get("district") || "";
     const location = searchParams.get("location") || "";
-    const distance = searchParams.get("distance") || "10"; // Default to 10km
+    const distance = searchParams.get("distance") || "20"; // Default to 10km
 
     setSelectedState(state);
     setSelectedDistrict(district);
