@@ -39,7 +39,7 @@ export default function OurValues({ propositions, title }) {
   ];
 
   return (
-    <section className="w-full pb-[30px] xl:pb-[50px] 2xl:pb-[70px] 3xl:pb-[100px]">
+    <section className="w-full py-[40px_30px] xl:py-[50px_50px] 2xl:py-[60px_70px] 3xl:py-[80px_100px]">
       <div className="max-w-[var(--container-x)] lg:max-w-[calc(100%-(100%-var(--container-x))/2)] mx-auto lg:mr-[0] px-[var(--container-padding,1rem)] lg:pr-[0]">
         {/* <h1 className="text-title1 font-medium sm:font-normal text-[#1E1E1E] mb-[20px] sm:mb-[30px] 2xl:mb-[50px]">
           Our Approach <br className="hidden sm:block"></br>
