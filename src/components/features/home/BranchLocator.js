@@ -31,8 +31,6 @@ export default function BranchLocator({ variant = "default", pageContent }) {
   const [userLocation, setUserLocation] = useState(null);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
-  console.log("selectedDistance ====>", selectedDistance);
-
   const fetchStates = useCallback(async () => {
     try {
       const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/states`);
@@ -62,10 +60,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 
   const fetchLocations = useCallback(async (state_id, district_id) => {
     try {
-      const url =
-        state_id && district_id
-          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/locations/by_district_state`
-          : `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/locations`;
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/locations/by_district_state`;
       const params = state_id && district_id ? { state_id, district_id } : {};
       const { data } = await api.get(url, { params });
       if (data.success) {
@@ -128,28 +123,91 @@ export default function BranchLocator({ variant = "default", pageContent }) {
     [searchParams, router, pathname]
   );
 
+  const fetchNearbyBranchesWithLocation = useCallback(
+    (distance) => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setUserLocation({ latitude, longitude });
+            debouncedFetchNearbyBranchLocations({
+              distance: distance || selectedDistance || "10",
+              lat: latitude,
+              long: longitude,
+              state: selectedState || undefined,
+              district: selectedDistrict || undefined,
+              location: selectedLocation || undefined,
+            });
+            updateQueryParams({ distance: distance || selectedDistance || "10" });
+          },
+          (error) => {
+            console.error("Error fetching location:", error);
+            // Fallback to filters without geolocation
+            debouncedFetchNearbyBranchLocations({
+              state: selectedState || undefined,
+              district: selectedDistrict || undefined,
+              location: selectedLocation || undefined,
+              distance: distance || selectedDistance || "10",
+            });
+          }
+        );
+      } else {
+        console.error("Geolocation not supported by this browser.");
+        debouncedFetchNearbyBranchLocations({
+          state: selectedState || undefined,
+          district: selectedDistrict || undefined,
+          location: selectedLocation || undefined,
+          distance: distance || selectedDistance || "10",
+        });
+      }
+    },
+    [selectedState, selectedDistrict, selectedLocation, selectedDistance, debouncedFetchNearbyBranchLocations, updateQueryParams]
+  );
+
   const handleDistanceOpen = useCallback(() => {
-    if ("geolocation" in navigator) {
+    // Only fetch user location if not already set
+    if (!userLocation && "geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           setUserLocation({ latitude, longitude });
-          const distanceToUse = selectedDistance || "10";
           debouncedFetchNearbyBranchLocations({
-            distance: distanceToUse,
+            distance: selectedDistance || "10",
             lat: latitude,
             long: longitude,
+            state: selectedState || undefined,
+            district: selectedDistrict || undefined,
+            location: selectedLocation || undefined,
           });
-          updateQueryParams({ distance: distanceToUse });
+          updateQueryParams({ distance: selectedDistance || "10" });
         },
         (error) => {
           console.error("Error fetching location:", error);
         }
       );
+    } else if (userLocation) {
+      // If userLocation is already set, use it to fetch branches
+      debouncedFetchNearbyBranchLocations({
+        distance: selectedDistance || "10",
+        lat: userLocation.latitude,
+        long: userLocation.longitude,
+        state: selectedState || undefined,
+        district: selectedDistrict || undefined,
+        location: selectedLocation || undefined,
+      });
+      updateQueryParams({ distance: selectedDistance || "10" });
     } else {
       console.error("Geolocation not supported by this browser.");
     }
-  }, [selectedDistance, debouncedFetchNearbyBranchLocations, updateQueryParams]);
+  }, [
+    selectedDistance,
+    userLocation,
+    selectedState,
+    selectedDistrict,
+    selectedLocation,
+    debouncedFetchNearbyBranchLocations,
+    updateQueryParams,
+  ]);
 
   const handleBranchFormChange = useCallback(
     (field, value) => {
@@ -174,64 +232,33 @@ export default function BranchLocator({ variant = "default", pageContent }) {
       } else if (field === "distance") {
         setSelectedDistance(value);
         newParams.distance = value;
+        // Immediately fetch nearby branches with the new distance
+        fetchNearbyBranchesWithLocation(value);
+        return; // Exit early to avoid redundant fetch
       } else if (field === "clear") {
         setSelectedState("");
         setSelectedDistrict("");
         setSelectedLocation("");
         setSelectedDistance("");
-        setUserLocation(null);
         setDistricts([]);
         setLocations([]);
         newParams.state = "";
         newParams.district = "";
         newParams.location = "";
         newParams.distance = "";
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            async (position) => {
-              const { latitude, longitude } = position.coords;
-              setUserLocation({ latitude, longitude });
-              try {
-                const response = await api.get("/branch/branches/filtered_branches", {
-                  params: {
-                    distance: 10,
-                    lat: latitude,
-                    long: longitude,
-                  },
-                });
-                if (response.data.success) {
-                  setNearbyBranchLocations(response.data.data || []);
-                  setSelectedBranch(response.data.data?.[0] || null);
-                  updateQueryParams({ distance: "10" });
-                } else {
-                  console.error("Failed to fetch nearest branches:", response.data.message);
-                  setNearbyBranchLocations([]);
-                }
-              } catch (error) {
-                console.error("Error fetching nearest branches:", error);
-                setNearbyBranchLocations([]);
-              }
-            },
-            (error) => {
-              console.error("Geolocation error:", error);
-              setNearbyBranchLocations([]);
-            }
-          );
-        } else {
-          setNearbyBranchLocations([]);
-        }
+        fetchNearbyBranchesWithLocation("10"); // Reset to default 10km
       }
 
       // Update URL parameters
       updateQueryParams(newParams);
 
-      // Trigger filtered fetch for nearby branches only when filters are explicitly changed
-      if (field !== "clear" && (field === "state" || field === "district" || field === "location" || field === "distance")) {
+      // Trigger filtered fetch for nearby branches
+      if (field !== "clear") {
         debouncedFetchNearbyBranchLocations({
           state: field === "state" ? value : selectedState || undefined,
           district: field === "district" ? value : selectedDistrict || undefined,
           location: field === "location" ? value : selectedLocation || undefined,
-          distance: field === "distance" ? value : selectedDistance || undefined,
+          distance: selectedDistance || "10",
           lat: userLocation?.latitude || undefined,
           long: userLocation?.longitude || undefined,
         });
@@ -246,6 +273,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
       fetchDistricts,
       fetchLocations,
       debouncedFetchNearbyBranchLocations,
+      fetchNearbyBranchesWithLocation,
       updateQueryParams,
     ]
   );
@@ -256,7 +284,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
     const state = searchParams.get("state") || "";
     const district = searchParams.get("district") || "";
     const location = searchParams.get("location") || "";
-    const distance = searchParams.get("distance") || "20";
+    const distance = searchParams.get("distance") || "10"; // Default to 10km
 
     setSelectedState(state);
     setSelectedDistrict(district);
@@ -267,67 +295,13 @@ export default function BranchLocator({ variant = "default", pageContent }) {
     if (state) fetchDistricts(state);
     if (state && district) fetchLocations(state, district);
 
-    // Fetch all branches for the map
+    // Always fetch all branches for the map
     fetchAllBranchLocations();
 
-    // Fetch nearby branches for the list
-    if (state || district || location || distance) {
-      debouncedFetchNearbyBranchLocations({
-        state: state || undefined,
-        district: district || undefined,
-        location: location || undefined,
-        distance: distance || undefined,
-        lat: userLocation?.latitude || undefined,
-        long: userLocation?.longitude || undefined,
-      });
-    } else if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude });
-          const distanceToUse = distance || "10";
-          try {
-            const response = await api.get("/branch/branches/filtered_branches", {
-              params: {
-                distance: distanceToUse,
-                lat: latitude,
-                long: longitude,
-              },
-            });
-            if (response.data.success) {
-              setNearbyBranchLocations(response.data.data || []);
-              setSelectedBranch(response.data.data?.[0] || null);
-              updateQueryParams({ distance: distanceToUse });
-            } else {
-              console.error("Failed to fetch nearest branches:", response.data.message);
-              setNearbyBranchLocations([]);
-            }
-          } catch (error) {
-            console.error("Error fetching nearest branches:", error);
-            setNearbyBranchLocations([]);
-          }
-        },
-        (error) => {
-          console.error("Geolocation error:", error);
-          setNearbyBranchLocations([]);
-        }
-      );
-    } else {
-      console.error("Geolocation not supported");
-      setNearbyBranchLocations([]);
-    }
-
+    // Fetch nearby branches for the initial list based on geolocation or filters
+    fetchNearbyBranchesWithLocation(distance);
     setIsInitialLoad(false);
-  }, [
-    searchParams,
-    fetchStates,
-    fetchDistricts,
-    fetchLocations,
-    userLocation,
-    fetchAllBranchLocations,
-    debouncedFetchNearbyBranchLocations,
-    updateQueryParams,
-  ]);
+  }, [searchParams, fetchStates, fetchDistricts, fetchLocations, fetchAllBranchLocations, fetchNearbyBranchesWithLocation]);
 
   return (
     <section
@@ -350,7 +324,8 @@ export default function BranchLocator({ variant = "default", pageContent }) {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-title1 w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-600px)] xl:pr-[40px] 2xl:pr-[60px] 3xl:pr-[80px] [&>span]:text-base2 [&>span]:font-bold"
+              className="text-title1 w-full lg:w-[calc(100 Stuart BranchLocator.js:159
+(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-600px)] xl:pr-[40px] 2xl:pr-[60px] 3xl:pr-[80px] [&>span]:text-base2 [&>span]:font-bold"
             >
               {pageContent?.title ? renderHtml(pageContent?.title) : ""}
             </motion.div>
@@ -416,7 +391,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 // import BranchForm from "@/components/common/BranchForm";
 // import dynamic from "next/dynamic";
 // import { motion } from "framer-motion";
-// import { useSearchParams } from "next/navigation";
+// import { useSearchParams, useRouter, usePathname } from "next/navigation";
 // import api from "../../../lib/api/axios";
 // import { renderHtml } from "@/lib/utils/htmlParser";
 // import debounce from "lodash/debounce";
@@ -428,6 +403,8 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 
 // export default function BranchLocator({ variant = "default", pageContent }) {
 //   const searchParams = useSearchParams();
+//   const router = useRouter();
+//   const pathname = usePathname();
 //   const [allBranchLocations, setAllBranchLocations] = useState([]); // For map
 //   const [nearbyBranchLocations, setNearbyBranchLocations] = useState([]); // For list
 //   const [selectedBranch, setSelectedBranch] = useState(null);
@@ -437,12 +414,11 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 //   const [selectedLocation, setSelectedLocation] = useState("");
 //   const [selectedState, setSelectedState] = useState("");
 //   const [selectedDistrict, setSelectedDistrict] = useState("");
-//   const [selectedDistance, setSelectedDistance] = useState("20");
+//   const [selectedDistance, setSelectedDistance] = useState("");
 //   const [userLocation, setUserLocation] = useState(null);
 //   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
 //   console.log("selectedDistance ====>", selectedDistance);
-  
 
 //   const fetchStates = useCallback(async () => {
 //     try {
@@ -524,17 +500,34 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 //     [selectedBranch]
 //   );
 
+//   const updateQueryParams = useCallback(
+//     (newParams) => {
+//       const params = new URLSearchParams(searchParams.toString());
+//       Object.entries(newParams).forEach(([key, value]) => {
+//         if (value) {
+//           params.set(key, value);
+//         } else {
+//           params.delete(key);
+//         }
+//       });
+//       router.push(`${pathname}?${params.toString()}`, { scroll: false });
+//     },
+//     [searchParams, router, pathname]
+//   );
+
 //   const handleDistanceOpen = useCallback(() => {
 //     if ("geolocation" in navigator) {
 //       navigator.geolocation.getCurrentPosition(
 //         (position) => {
 //           const { latitude, longitude } = position.coords;
 //           setUserLocation({ latitude, longitude });
+//           const distanceToUse = selectedDistance || "10";
 //           debouncedFetchNearbyBranchLocations({
-//             distance: selectedDistance || 10,
+//             distance: distanceToUse,
 //             lat: latitude,
 //             long: longitude,
 //           });
+//           updateQueryParams({ distance: distanceToUse });
 //         },
 //         (error) => {
 //           console.error("Error fetching location:", error);
@@ -543,23 +536,31 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 //     } else {
 //       console.error("Geolocation not supported by this browser.");
 //     }
-//   }, [selectedDistance, debouncedFetchNearbyBranchLocations]);
+//   }, [selectedDistance, debouncedFetchNearbyBranchLocations, updateQueryParams]);
 
 //   const handleBranchFormChange = useCallback(
 //     (field, value) => {
+//       const newParams = {};
 //       if (field === "state") {
 //         setSelectedState(value);
 //         setSelectedDistrict("");
 //         setSelectedLocation("");
 //         fetchDistricts(value);
+//         newParams.state = value;
+//         newParams.district = "";
+//         newParams.location = "";
 //       } else if (field === "district") {
 //         setSelectedDistrict(value);
 //         setSelectedLocation("");
 //         fetchLocations(selectedState, value);
+//         newParams.district = value;
+//         newParams.location = "";
 //       } else if (field === "location") {
 //         setSelectedLocation(value);
+//         newParams.location = value;
 //       } else if (field === "distance") {
 //         setSelectedDistance(value);
+//         newParams.distance = value;
 //       } else if (field === "clear") {
 //         setSelectedState("");
 //         setSelectedDistrict("");
@@ -568,6 +569,10 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 //         setUserLocation(null);
 //         setDistricts([]);
 //         setLocations([]);
+//         newParams.state = "";
+//         newParams.district = "";
+//         newParams.location = "";
+//         newParams.distance = "";
 //         if (navigator.geolocation) {
 //           navigator.geolocation.getCurrentPosition(
 //             async (position) => {
@@ -582,8 +587,9 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 //                   },
 //                 });
 //                 if (response.data.success) {
-//                     setNearbyBranchLocations(response.data.data || []);
-//                     setSelectedBranch(response.data.data?.[0] || null);
+//                   setNearbyBranchLocations(response.data.data || []);
+//                   setSelectedBranch(response.data.data?.[0] || null);
+//                   updateQueryParams({ distance: "10" });
 //                 } else {
 //                   console.error("Failed to fetch nearest branches:", response.data.message);
 //                   setNearbyBranchLocations([]);
@@ -602,6 +608,10 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 //           setNearbyBranchLocations([]);
 //         }
 //       }
+
+//       // Update URL parameters
+//       updateQueryParams(newParams);
+
 //       // Trigger filtered fetch for nearby branches only when filters are explicitly changed
 //       if (field !== "clear" && (field === "state" || field === "district" || field === "location" || field === "distance")) {
 //         debouncedFetchNearbyBranchLocations({
@@ -623,10 +633,13 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 //       fetchDistricts,
 //       fetchLocations,
 //       debouncedFetchNearbyBranchLocations,
+//       updateQueryParams,
 //     ]
 //   );
 
 //   useEffect(() => {
+//     if (!isInitialLoad) return;
+
 //     const state = searchParams.get("state") || "";
 //     const district = searchParams.get("district") || "";
 //     const location = searchParams.get("location") || "";
@@ -641,66 +654,66 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 //     if (state) fetchDistricts(state);
 //     if (state && district) fetchLocations(state, district);
 
-//     if (isInitialLoad) {
-//       // Fetch all branches for the map
-//       fetchAllBranchLocations();
+//     // Fetch all branches for the map
+//     fetchAllBranchLocations();
 
-//       // Fetch nearby branches for the list
-//       if (state || district || location || distance) {
-//         debouncedFetchNearbyBranchLocations({
-//           state: state || undefined,
-//           district: district || undefined,
-//           location: location || undefined,
-//           distance: distance || undefined,
-//           lat: userLocation?.latitude || undefined,
-//           long: userLocation?.longitude || undefined,
-//         });
-//       } else if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(
-//           async (position) => {
-//             const { latitude, longitude } = position.coords;
-//             setUserLocation({ latitude, longitude });
-//             try {
-//               const response = await api.get("/branch/branches/filtered_branches", {
-//                 params: {
-//                   distance: 10,
-//                   lat: latitude,
-//                   long: longitude,
-//                 },
-//               });
-//               if (response.data.success) {
-//                 setNearbyBranchLocations(response.data.data || []);
-//                 setSelectedBranch(response.data.data?.[0] || null);
-//               } else {
-//                 console.error("Failed to fetch nearest branches:", response.data.message);
-//                 setNearbyBranchLocations([]);
-//               }
-//             } catch (error) {
-//               console.error("Error fetching nearest branches:", error);
+//     // Fetch nearby branches for the list
+//     if (state || district || location || distance) {
+//       debouncedFetchNearbyBranchLocations({
+//         state: state || undefined,
+//         district: district || undefined,
+//         location: location || undefined,
+//         distance: distance || undefined,
+//         lat: userLocation?.latitude || undefined,
+//         long: userLocation?.longitude || undefined,
+//       });
+//     } else if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition(
+//         async (position) => {
+//           const { latitude, longitude } = position.coords;
+//           setUserLocation({ latitude, longitude });
+//           const distanceToUse = distance || "10";
+//           try {
+//             const response = await api.get("/branch/branches/filtered_branches", {
+//               params: {
+//                 distance: distanceToUse,
+//                 lat: latitude,
+//                 long: longitude,
+//               },
+//             });
+//             if (response.data.success) {
+//               setNearbyBranchLocations(response.data.data || []);
+//               setSelectedBranch(response.data.data?.[0] || null);
+//               updateQueryParams({ distance: distanceToUse });
+//             } else {
+//               console.error("Failed to fetch nearest branches:", response.data.message);
 //               setNearbyBranchLocations([]);
 //             }
-//           },
-//           (error) => {
-//             console.error("Geolocation error:", error);
+//           } catch (error) {
+//             console.error("Error fetching nearest branches:", error);
 //             setNearbyBranchLocations([]);
 //           }
-//         );
-//       } else {
-//         console.error("Geolocation not supported");
-//         setNearbyBranchLocations([]);
-//       }
+//         },
+//         (error) => {
+//           console.error("Geolocation error:", error);
+//           setNearbyBranchLocations([]);
+//         }
+//       );
+//     } else {
+//       console.error("Geolocation not supported");
+//       setNearbyBranchLocations([]);
 //     }
 
 //     setIsInitialLoad(false);
 //   }, [
 //     searchParams,
-//     isInitialLoad,
 //     fetchStates,
 //     fetchDistricts,
 //     fetchLocations,
 //     userLocation,
 //     fetchAllBranchLocations,
 //     debouncedFetchNearbyBranchLocations,
+//     updateQueryParams,
 //   ]);
 
 //   return (
@@ -719,7 +732,7 @@ export default function BranchLocator({ variant = "default", pageContent }) {
 //             className={`flex flex-col lg:flex-row items-start xl:items-start justify-between flex-wrap ${
 //               variant === "contact" ? "mb-[15px] sm:mb-[20px] lg:mb-[30px]" : "mb-[35px]"
 //             }`}
-//       >
+//           >
 //             <motion.div
 //               initial={{ opacity: 0, x: -50 }}
 //               animate={{ opacity: 1, x: 0 }}
