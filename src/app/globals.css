@@ -384,11 +384,7 @@
   }
 
   .bg-custom-gradient {
-    background: linear-gradient(
-      180deg,
-      rgba(23, 71, 158, 0.3) 0%,
-      rgba(235, 2, 8, 0.3) 100%
-    );
+    background: linear-gradient(180deg, rgba(23, 71, 158, 0.3) 0%, rgba(235, 2, 8, 0.3) 100%);
   }
 
   .custom-prev.swiper-button-disabled,
@@ -410,4 +406,12 @@
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%2384AFFFFF' stroke-width='2' stroke-dasharray='4%2c 4' stroke-dashoffset='8' stroke-linecap='square'/%3e%3c/svg%3e");
     border-radius: 10px;
   }
+}
+
+.filter-red {
+  filter: brightness(0) saturate(100%) invert(19%) sepia(90%) saturate(7486%) hue-rotate(357deg) brightness(103%) contrast(104%);
+}
+
+.filter-white {
+  filter: brightness(0) invert(1);
 }
