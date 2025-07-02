@@ -1,6 +1,5 @@
 import { log } from "console";
-import dynamic from "next/dynamic";
-const HomeClient = dynamic(() => import("../pages/HomeClient"), { ssr: false }); // "../pages/HomeClient";
+import HomeClient from "../pages/HomeClient";
 
 // async function fetchHomeData() {
 //   try {
