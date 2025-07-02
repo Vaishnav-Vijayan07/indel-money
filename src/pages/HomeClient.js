@@ -3,26 +3,27 @@ import dynamic from "next/dynamic";
 import { useMediaQuery } from "@react-hook/media-query";
 // DESKTOP COMPONENTS
 const HeroBanner = dynamic(() => import("../components/features/home/HeroBanner"), { ssr: true });
-const DreamsToReality = dynamic(() => import("../components/features/home/DreamsToReality"), { ssr: false });
-const StepGoldLoan = dynamic(() => import("../components/features/home/StepGoldLoan"), { ssr: false });
-const StepGoldLoanCalculator = dynamic(() => import("../components/features/home/StepGoldLoanCalculator"), { ssr: false });
-const LifeAtIndel = dynamic(() => import("../components/features/home/LifeAtIndel"), { ssr: false });
-const LatestUpdates = dynamic(() => import("../components/features/home/LatestUpdates"), { ssr: false });
-const TrustedInvestment = dynamic(() => import("../components/features/home/TrustedInvestment"), { ssr: false });
+const DreamsToReality = dynamic(() => import("../components/features/home/DreamsToReality"), { ssr: true });
+const StepGoldLoan = dynamic(() => import("../components/features/home/StepGoldLoan"), { ssr: true });
+const StepGoldLoanCalculator = dynamic(() => import("../components/features/home/StepGoldLoanCalculator"), { ssr: true });
+const LifeAtIndel = dynamic(() => import("../components/features/home/LifeAtIndel"), { ssr: true });
+const LatestUpdates = dynamic(() => import("../components/features/home/LatestUpdates"), { ssr: true });
+const TrustedInvestment = dynamic(() => import("../components/features/home/TrustedInvestment"), { ssr: true });
 const BranchLocator = dynamic(() => import("../components/features/home/BranchLocator"), { ssr: false });
-const Innovations = dynamic(() => import("../components/features/home/Innovations"), { ssr: false });
-const FAQ = dynamic(() => import("../components/features/home/FAQ"), { ssr: false });
+const Innovations = dynamic(() => import("../components/features/home/Innovations"), { ssr: true });
+const FAQ = dynamic(() => import("../components/features/home/FAQ"), { ssr: true });
 const WelcomeModal = dynamic(() => import("../components/common/WelcomeModal"), { ssr: false });
 
 // MOBILE COMPONENTS
 const MobHeroBanner = dynamic(() => import("../components/features/home/MobHeroBanner"), { ssr: true });
-const MobSmartMoneyDeals = dynamic(() => import("../components/features/home/MobSmartMoneyDeals"), { ssr: false });
-const MobStepGoldLoan = dynamic(() => import("../components/features/home/MobStepGoldLoan"), { ssr: false });
-const MobStepGoldLoanCalculator = dynamic(() => import("../components/features/home/MobStepGoldLoanCalculator"), { ssr: false });
+const MobSmartMoneyDeals = dynamic(() => import("../components/features/home/MobSmartMoneyDeals"), { ssr: true });
+const MobStepGoldLoan = dynamic(() => import("../components/features/home/MobStepGoldLoan"), { ssr: true });
+const MobStepGoldLoanCalculator = dynamic(() => import("../components/features/home/MobStepGoldLoanCalculator"), { ssr: true
+ });
 const MobBranchLocator = dynamic(() => import("../components/features/home/MobBranchLocator"), { ssr: false });
-const MobJoinTeam = dynamic(() => import("../components/features/home/MobJoinTeam"), { ssr: false });
-const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLatestUpdates"), { ssr: false });
-const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: false });
+const MobJoinTeam = dynamic(() => import("../components/features/home/MobJoinTeam"), { ssr: true });
+const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLatestUpdates"), { ssr: true });
+const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: true });
 const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeModal"), { ssr: false });
 
 // const DreamsToReality = lazy(() => import("../components/features/home/DreamsToReality"));
