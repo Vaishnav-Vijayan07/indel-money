@@ -9,9 +9,14 @@ const defaultGalleryMeta = {
 };
 async function fetchData(page = 1, type = "all", limit = 10) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event-gallery?page=${page}&limit=${limit}&type=${type}`, {
-      cache: "no-store", // Ensure fresh data
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event-gallery?page=${page}&limit=${limit}&type=${type}`,
+      {
+        // cache: "no-store", // Ensure fresh data
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
 
     const result = await response.json();
     const galleryData = result.data;
@@ -95,7 +100,13 @@ export default async function GalleryPage({ searchParams }) {
     <>
       {/* Gallery contents */}
       <div className="sm:block hidden">
-        <Gallery title={contents?.title} description={contents?.description} medias={medias} sliderItems={sliderItems} pagination={pagination} />
+        <Gallery
+          title={contents?.title}
+          description={contents?.description}
+          medias={medias}
+          sliderItems={sliderItems}
+          pagination={pagination}
+        />
       </div>
 
       {/* Gallery contents */}

@@ -2,9 +2,14 @@ import Testimonial from "@/pages/Testimonials";
 
 async function fetchData(page = 1, limit = 10, type = "all") {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/testimonials?page=${page}&limit=${limit}&type=${type}`, {
-      cache: "no-store", // Ensure fresh data
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/testimonials?page=${page}&limit=${limit}&type=${type}`,
+      {
+        // cache: "no-store", // Ensure fresh data
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
 
     const result = await response.json();
 

@@ -17,6 +17,7 @@ import "leaflet/dist/leaflet.css";
 
 // Dynamically import Leaflet
 import L from "leaflet";
+import api from "@/lib/api/axios";
 
 // Custom popup content component
 const CustomPopup = ({ branch }) => {
@@ -273,38 +274,38 @@ export default function BranchLocationMap({ branchLocations: initialBranchLocati
           setUserLocation({ latitude, longitude });
 
           // Fetch branches within 10 km
-          try {
-            const response = await axios.get("/api/branch/branches/filtered_branches", {
-              params: {
-                distance: 10,
-                lat: latitude,
-                long: longitude,
-              },
-            });
-            // if (response.data.success) {
-            //   setBranchLocations(response.data.data);
-            //   if (response.data.data.length > 0) {
-            //     setSelectedBranch(response.data.data[0]); // Select first branch
-            //   }
-            // }
+          // try {
+          //   const response = await api.get("/branch/branches/filtered_branches", {
+          //     params: {
+          //       distance: 10,
+          //       lat: latitude,
+          //       long: longitude,
+          //     },
+          //   });
+          //   // if (response.data.success) {
+          //   //   setBranchLocations(response.data.data);
+          //   //   if (response.data.data.length > 0) {
+          //   //     setSelectedBranch(response.data.data[0]); // Select first branch
+          //   //   }
+          //   // }
 
-            if (response.data.success) {
-              setBranchLocations(response.data.data);
-              // Only select the first branch if user location is NOT available
-              if (!userLocation && response.data.data.length > 0) {
-                setSelectedBranch(response.data.data[0]);
-              }
-            }
-          } catch (error) {
-            console.error("Error fetching branches:", error);
-            setBranchLocations(initialBranchLocations);
-          }
+          //   if (response.data.success) {
+          //     setBranchLocations(response.data.data);
+          //     // Only select the first branch if user location is NOT available
+          //     if (!userLocation && response.data.data.length > 0) {
+          //       setSelectedBranch(response.data.data[0]);
+          //     }
+          //   }
+          // } catch (error) {
+          //   console.error("Error fetching branches:", error);
+          //   setBranchLocations(initialBranchLocations);
+          // }
         },
         (error) => {
           console.error("Geolocation error:", error);
           // Fallback to default center and initial branches
-          setMapCenter([13.0827, 80.2707]);
-          setBranchLocations(initialBranchLocations);
+          // setMapCenter([13.0827, 80.2707]);
+          // setBranchLocations(initialBranchLocations);
         }
       );
     } else {

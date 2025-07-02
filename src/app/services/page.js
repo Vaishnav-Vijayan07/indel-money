@@ -6,7 +6,9 @@ import IndelRemit from "@/components/features/services/IndelRemit";
 async function fetchManagementData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/our-services`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 60 },
     });
     const result = await response.json();
     const serviceData = result.data;
@@ -67,7 +69,6 @@ export async function generateMetadata() {
 
 export default async function Services() {
   const { serviceContent, services, serviceBenefit, error } = await fetchManagementData();
-  
 
   if (!serviceContent || !services) {
     return <div>Failed to fetch about data</div>;

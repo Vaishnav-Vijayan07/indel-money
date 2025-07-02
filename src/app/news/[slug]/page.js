@@ -4,7 +4,10 @@ import RecentBlog from "@/components/features/blog/RecentBlog";
 // Fetch news data for a specific post
 async function fetchBlogData(slug) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news/${slug}`, {});
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news/${slug}`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -101,7 +104,9 @@ export async function generateMetadata({ params }) {
       type: "article",
       images: [
         {
-          url: meta?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${meta.image}` : defaultMetadata(slug).openGraph.images[0].url,
+          url: meta?.image
+            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${meta.image}`
+            : defaultMetadata(slug).openGraph.images[0].url,
           width: 1200,
           height: 630,
           alt: meta?.image_alt || meta?.title || defaultMetadata(slug).openGraph.images[0].alt,
@@ -112,7 +117,9 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: meta?.title || defaultMetadata(slug).twitter.title,
       description: meta?.meta_description || meta?.description || defaultMetadata(slug).twitter.description,
-      images: [meta?.meta_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${meta.meta_image}` : defaultMetadata(slug).twitter.images[0]],
+      images: [
+        meta?.meta_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${meta.meta_image}` : defaultMetadata(slug).twitter.images[0],
+      ],
     },
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug}`,

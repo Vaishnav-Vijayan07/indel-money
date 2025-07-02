@@ -4,9 +4,10 @@ import CsrDetailsSection from "../../../components/features/investors/CsrDetails
 async function fetchCsrData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/csr-details`, {
-      cache: 'no-store', // or 'force-cache' depending on your needs
+      // cache: 'no-store', // or 'force-cache' depending on your needs
+      cache: "force-cache",
+      next: { revalidate: 60 },
     });
-
 
     const result = await response.json();
     const data = result.data;
@@ -17,7 +18,7 @@ async function fetchCsrData() {
         actionPlans: data?.actionPlans,
         commitee: data?.committees,
         reports: data?.reports,
-        error: null
+        error: null,
       };
     }
     return {
@@ -25,27 +26,23 @@ async function fetchCsrData() {
       actionPlans: null,
       commitee: null,
       reports: null,
-      error: result.message
+      error: result.message,
     };
   } catch (error) {
     return { reports: null, error: "Failed to fetch ncr data" };
   }
 }
 
-
 export default async function contact() {
-
-  const { contents, reports, commitee, actionPlans, error } = await fetchCsrData()
+  const { contents, reports, commitee, actionPlans, error } = await fetchCsrData();
 
   if (!contents && !reports && !commitee && !actionPlans) {
     return <div>Failed to fetch report data</div>;
   }
 
-
   return (
     <>
       <CsrDetailsSection reports={reports} commitee={commitee} actionPlans={actionPlans} content={contents} />
     </>
-
   );
 }
