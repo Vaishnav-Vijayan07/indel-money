@@ -6,7 +6,7 @@ export default function OurValues({ values, }) {
         <section className="w-full pt-[30px] xl:pt-[60px] 2xl:pt-[100px] pb-[30px] sm:pb-[50px] xl:pb-[30px] lg:pb-[40px] 2xl:pb-[70px] bg-[#17479E]">
             <div className="container">
                 <div className="relative flex flex-wrap -my-[12px] sm:-my-[15px] xl:-my-[20px] 2xl:-my-[30px] -mx-[10px] xl:-mx-[15px] 2xl:-mx-[20px]">
-                    <div className="absolute right-0 xl:right-auto xl:left-0 bottom-0 xl:bottom-auto xl:-top-[57px] z-1 max-w-[100%] md:max-w-[48%] h-auto">
+                    <div className="absolute right-0 xl:right-auto xl:left-0 bottom-0 xl:bottom-auto xl:-top-[57px] z-1 max-w-[100%] md:max-w-[48%] h-auto max-sm:hidden">
 
                         <Image
                             src="/images/bgText.svg"
