@@ -17,29 +17,32 @@ async function fetchMoreGalleryItems(slug) {
     if (result.status === "success") {
       return {
         galleryItems: galleryData?.galleryItems,
+        description: galleryData?.description,
         error: null,
       };
     }
 
     return {
       galleryItems: null,
+      description: null,
       error: result.message,
     };
   } catch (error) {
     return {
       galleryItems: null,
+      description: null,
       error: "Failed to fetch gallery data",
     };
   }
 }
 
-export default async function GalleryDetailPage({ params, searchParams }) {
+export default async function GalleryDetailPage({ params }) {
   const { slug } = await params;
-  const { galleryItems, error: moreError } = await fetchMoreGalleryItems(slug);
+  const { galleryItems, description } = await fetchMoreGalleryItems(slug);
 
   return (
     <>
-      <GalleryDetail slug={slug} />
+      <GalleryDetail slug={slug} description={description} />
       <GallerySlider galleryItems={galleryItems} />
     </>
   );
