@@ -3,7 +3,9 @@ import PartnersSection from "@/components/partners/Partners";
 async function fetchPartnersData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/partners`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 60 },
     });
     const result = await response?.json();
 
@@ -21,8 +23,6 @@ async function getMetaData() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=partners`);
     const result = await response.json();
     const meta = result.data;
-
-    
 
     if (result.status === "success") {
       return {
