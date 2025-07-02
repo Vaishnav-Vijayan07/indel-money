@@ -91,7 +91,7 @@ function GalleryItems({ slug }) {
       setGalleryItems(galleryItems);
       setPagination(pagination);
     } catch (error) {
-      console.log("Error");
+      
     } finally {
       setIsLoading(false);
     }

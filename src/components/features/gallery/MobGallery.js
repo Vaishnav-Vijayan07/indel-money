@@ -54,7 +54,7 @@ const GALLERY_FILTERS = [
 ];
 
 const GalleryItem = ({ item, width, height }) => {
-  console.log(item);
+  
   const [currentImage, setCurrentImage] = useState(0);
   const [hovered, setHovered] = useState(false);
 
