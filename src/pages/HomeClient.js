@@ -1,8 +1,8 @@
+"use client";
 import dynamic from "next/dynamic";
-import { useInView } from "react-intersection-observer";
-
+import { useMediaQuery } from "@react-hook/media-query";
 // DESKTOP COMPONENTS
-const HeroBanner = dynamic(() => import("../components/features/home/HeroBanner"), { ssr: true });
+const HeroBanner = dynamic(() => import("../components/features/home/HeroBanner"), { ssr: false });
 const DreamsToReality = dynamic(() => import("../components/features/home/DreamsToReality"), { ssr: false });
 const StepGoldLoan = dynamic(() => import("../components/features/home/StepGoldLoan"), { ssr: false });
 const StepGoldLoanCalculator = dynamic(() => import("../components/features/home/StepGoldLoanCalculator"), { ssr: false });
@@ -15,7 +15,7 @@ const FAQ = dynamic(() => import("../components/features/home/FAQ"), { ssr: fals
 const WelcomeModal = dynamic(() => import("../components/common/WelcomeModal"), { ssr: false });
 
 // MOBILE COMPONENTS
-const MobHeroBanner = dynamic(() => import("../components/features/home/MobHeroBanner"), { ssr: true });
+const MobHeroBanner = dynamic(() => import("../components/features/home/MobHeroBanner"), { ssr: false });
 const MobSmartMoneyDeals = dynamic(() => import("../components/features/home/MobSmartMoneyDeals"), { ssr: false });
 const MobStepGoldLoan = dynamic(() => import("../components/features/home/MobStepGoldLoan"), { ssr: false });
 const MobStepGoldLoanCalculator = dynamic(() => import("../components/features/home/MobStepGoldLoanCalculator"), { ssr: false });
@@ -25,156 +25,6 @@ const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLa
 const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: false });
 const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeModal"), { ssr: false });
 
-function LazySection({ Component, mobileComponent: MobileComponent, isMobile, ...props }) {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
-  return (
-    <div ref={ref}>
-      {inView ? isMobile ? <MobileComponent {...props} /> : <Component {...props} /> : <div className="h-[300px]"></div>}
-    </div>
-  );
-}
-
-export default function Home({ initialData, serviceBanner, banner, branchLocatorData }) {
-  return (
-    <>
-      <style jsx>{`
-        .mobile-only {
-          display: block;
-        }
-        .desktop-only {
-          display: none;
-        }
-        @media (min-width: 769px) {
-          .mobile-only {
-            display: none;
-          }
-          .desktop-only {
-            display: block;
-          }
-        }
-      `}</style>
-
-      {/* Welcome Modal */}
-      <div className="mobile-only">
-        <MobWelcomeModal />
-      </div>
-      <div className="desktop-only">
-        {(banner || serviceBanner) && <WelcomeModal banner={banner} serviceBanner={serviceBanner} />}
-      </div>
-
-      {/* Banner Section */}
-      <div className="desktop-only">
-        <HeroBanner
-          heroBanner={initialData?.heroBanner || []}
-          initialData={initialData}
-          announcement={initialData?.pageContent?.announcement_text}
-        />
-      </div>
-      <div className="mobile-only">
-        <MobHeroBanner
-          heroBanner={initialData?.heroBanner || []}
-          initialData={initialData}
-          announcement={initialData?.pageContent?.announcement_text}
-        />
-      </div>
-
-      {/* Dreams to Reality / Smart Money Deals */}
-      <LazySection
-        Component={DreamsToReality}
-        mobileComponent={MobSmartMoneyDeals}
-        isMobile={false} // Handled by CSS
-        initialData={initialData?.pageContent}
-        statsData={initialData?.homeStatistics}
-        title={initialData?.pageContent?.smart_deal_title}
-        deals={initialData?.smartMoneyDeals}
-      />
-
-      {/* Gold Loan Steps */}
-      <div id="gold-loan-steps">
-        <LazySection
-          Component={StepGoldLoan}
-          mobileComponent={MobStepGoldLoan}
-          isMobile={false}
-          loanSteps={initialData?.loanSteps}
-          sectionTitle={initialData?.pageContent?.step_title}
-          title="sample"
-        />
-      </div>
-
-      {/* Gold Loan Calculator */}
-      <div id="calculator">
-        <LazySection Component={StepGoldLoanCalculator} mobileComponent={MobStepGoldLoanCalculator} isMobile={false} />
-      </div>
-
-      {/* Branch Locator */}
-      <div id="branch-locator">
-        <LazySection
-          Component={BranchLocator}
-          mobileComponent={MobBranchLocator}
-          isMobile={false}
-          pageContent={branchLocatorData}
-          variant="home"
-        />
-      </div>
-
-      {/* Life at Indel / Join Team */}
-      <LazySection
-        Component={LifeAtIndel}
-        mobileComponent={MobJoinTeam}
-        isMobile={false}
-        pageContent={initialData?.pageContent}
-        lifeAtIndel={initialData?.lifeAtIndel}
-        image1={initialData?.pageContent?.life_section_image1}
-        image2={initialData?.pageContent?.life_section_image2}
-        image3={initialData?.pageContent?.life_section_image3}
-      />
-
-      {/* Latest Updates */}
-      <LazySection
-        Component={LatestUpdates}
-        mobileComponent={MobLatestUpdates}
-        isMobile={false}
-        sliderItems={initialData?.blogs}
-        sliderTitle={initialData?.pageContent?.updates_section_title}
-        type="indel-money-cares"
-      />
-
-      {/* Trusted Investment */}
-      {/* <LazySection
-        Component={TrustedInvestment}
-        mobileComponent={null}
-        isMobile={false}
-        pageContent={initialData?.pageContent}
-      /> */}
-
-      {/* Innovations */}
-      <LazySection
-        Component={Innovations}
-        mobileComponent={MobInnovations}
-        isMobile={false}
-        pageContent={initialData?.pageContent}
-      />
-
-      {/* FAQ */}
-      <div className="desktop-only">
-        <LazySection
-          Component={FAQ}
-          mobileComponent={null}
-          isMobile={false}
-          faqs={initialData?.faqs}
-          pageContents={initialData?.pageContent}
-        />
-      </div>
-    </>
-  );
-}
-
-// "use client";
-// import { useMediaQuery } from "@react-hook/media-query";
-
-// import React, { lazy } from "react";
-// // DESKTOP COMPONENTS
-// const HeroBanner = lazy(() => import("../components/features/home/HeroBanner"));
 // const DreamsToReality = lazy(() => import("../components/features/home/DreamsToReality"));
 // const StepGoldLoan = lazy(() => import("../components/features/home/StepGoldLoan"));
 // const StepGoldLoanCalculator = lazy(() => import("../components/features/home/StepGoldLoanCalculator"));
@@ -197,115 +47,115 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
 // const MobInnovations = lazy(() => import("../components/features/home/MobInnovations"));
 // const MobWelcomeModal = lazy(() => import("../components/common/MobWelcomeModal"));
 
-// export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
-//   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-//   return (
-//     <>
-//       {/* welcome contents*/}
-//       {isMobile ? (
-//         <MobWelcomeModal />
-//       ) : banner || serviceBanner ? (
-//         <WelcomeModal banner={banner} serviceBanner={serviceBanner} />
-//       ) : null}
+export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+  return (
+    <>
+      {/* welcome contents*/}
+      {isMobile ? (
+        <MobWelcomeModal />
+      ) : banner || serviceBanner ? (
+        <WelcomeModal banner={banner} serviceBanner={serviceBanner} />
+      ) : null}
 
-//       {/* banner section contents*/}
-//       <div className="hidden sm:block">
-//         <HeroBanner
-//           heroBanner={initialData?.heroBanner || []}
-//           initialData={initialData}
-//           announcement={initialData?.pageContent?.announcement_text}
-//         />
-//       </div>
-//       <div className="block sm:hidden">
-//         <MobHeroBanner
-//           heroBanner={initialData?.heroBanner || []}
-//           initialData={initialData}
-//           announcement={initialData?.pageContent?.announcement_text}
-//         />
-//       </div>
+      {/* banner section contents*/}
+      <div className="hidden sm:block">
+        <HeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.pageContent?.announcement_text}
+        />
+      </div>
+      <div className="block sm:hidden">
+        <MobHeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.pageContent?.announcement_text}
+        />
+      </div>
 
-//       {/* Dreams to Reality contents*/}
-//       <div className="hidden sm:block">
-//         <DreamsToReality initialData={initialData?.pageContent} statsData={initialData?.homeStatistics} />
-//       </div>
-//       <div className="block sm:hidden">
-//         {/* Develope api for smart money deals */}
-//         <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
-//       </div>
+      {/* Dreams to Reality contents*/}
+      <div className="hidden sm:block">
+        <DreamsToReality initialData={initialData?.pageContent} statsData={initialData?.homeStatistics} />
+      </div>
+      <div className="block sm:hidden">
+        {/* Develope api for smart money deals */}
+        <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
+      </div>
 
-//       {/* Gold loan contents*/}
-//       <div id="gold-loan-steps" className="hidden sm:block">
-//         <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
-//       </div>
-//       <div className="block sm:hidden">
-//         <MobStepGoldLoan title={"sample"} loanSteps={initialData?.loanSteps} />
-//       </div>
+      {/* Gold loan contents*/}
+      <div id="gold-loan-steps" className="hidden sm:block">
+        <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
+      </div>
+      <div className="block sm:hidden">
+        <MobStepGoldLoan title={"sample"} loanSteps={initialData?.loanSteps} />
+      </div>
 
-//       {/* Gold loan calculator*/}
-//       <div id="calculator" className="hidden sm:block">
-//         <StepGoldLoanCalculator />
-//       </div>
-//       <div className="block sm:hidden">
-//         <MobStepGoldLoanCalculator />
-//       </div>
+      {/* Gold loan calculator*/}
+      <div id="calculator" className="hidden sm:block">
+        <StepGoldLoanCalculator />
+      </div>
+      <div className="block sm:hidden">
+        <MobStepGoldLoanCalculator />
+      </div>
 
-//       {/* Branch locator contents*/}
-//       <div className="hidden sm:block" id="branch-locator">
-//         <BranchLocator pageContent={branchLocatorData} variant={"home"} />
-//       </div>
-//       <div className="block sm:hidden" id="branch-locator">
-//         {/* Develope api for branch locator */}
-//         <MobBranchLocator pageContent={branchLocatorData} />
-//       </div>
+      {/* Branch locator contents*/}
+      <div className="hidden sm:block" id="branch-locator">
+        <BranchLocator pageContent={branchLocatorData} variant={"home"} />
+      </div>
+      <div className="block sm:hidden" id="branch-locator">
+        {/* Develope api for branch locator */}
+        <MobBranchLocator pageContent={branchLocatorData} />
+      </div>
 
-//       {/* Life at Indel contents*/}
-//       <div className="hidden sm:block">
-//         <LifeAtIndel
-//           pageContent={initialData?.pageContent}
-//           lifeAtIndel={initialData?.lifeAtIndel}
-//           image1={initialData?.pageContent?.life_section_image1}
-//           image2={initialData?.pageContent?.life_section_image2}
-//           image3={initialData?.pageContent?.life_section_image3}
-//         />
-//       </div>
-//       <div className="block sm:hidden">
-//         <MobJoinTeam
-//           pageContent={initialData?.pageContent}
-//           lifeAtIndel={initialData?.lifeAtIndel}
-//           image1={initialData?.pageContent?.life_section_image1}
-//           image2={initialData?.pageContent?.life_section_image2}
-//           image3={initialData?.pageContent?.life_section_image3}
-//         />
-//       </div>
+      {/* Life at Indel contents*/}
+      <div className="hidden sm:block">
+        <LifeAtIndel
+          pageContent={initialData?.pageContent}
+          lifeAtIndel={initialData?.lifeAtIndel}
+          image1={initialData?.pageContent?.life_section_image1}
+          image2={initialData?.pageContent?.life_section_image2}
+          image3={initialData?.pageContent?.life_section_image3}
+        />
+      </div>
+      <div className="block sm:hidden">
+        <MobJoinTeam
+          pageContent={initialData?.pageContent}
+          lifeAtIndel={initialData?.lifeAtIndel}
+          image1={initialData?.pageContent?.life_section_image1}
+          image2={initialData?.pageContent?.life_section_image2}
+          image3={initialData?.pageContent?.life_section_image3}
+        />
+      </div>
 
-//       {/* Latest Updates contents*/}
-//       <div className="hidden sm:block">
-//         <LatestUpdates
-//           sliderItems={initialData?.blogs}
-//           sliderTitle={initialData?.pageContent?.updates_section_title}
-//           type="indel-money-cares"
-//         />
-//       </div>
-//       <div className="block sm:hidden">
-//         <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
-//       </div>
+      {/* Latest Updates contents*/}
+      <div className="hidden sm:block">
+        <LatestUpdates
+          sliderItems={initialData?.blogs}
+          sliderTitle={initialData?.pageContent?.updates_section_title}
+          type="indel-money-cares"
+        />
+      </div>
+      <div className="block sm:hidden">
+        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
+      </div>
 
-//       {/* <div className="hidden sm:block">
-//         <TrustedInvestment pageContent={initialData?.pageContent} />
-//       </div> */}
+      {/* <div className="hidden sm:block">
+        <TrustedInvestment pageContent={initialData?.pageContent} />
+      </div> */}
 
-//       {/* Innovations*/}
-//       <div className="hidden sm:block">
-//         <Innovations pageContent={initialData?.pageContent} />
-//       </div>
-//       <div className="block sm:hidden">
-//         <MobInnovations pageContent={initialData?.pageContent} />
-//       </div>
+      {/* Innovations*/}
+      <div className="hidden sm:block">
+        <Innovations pageContent={initialData?.pageContent} />
+      </div>
+      <div className="block sm:hidden">
+        <MobInnovations pageContent={initialData?.pageContent} />
+      </div>
 
-//       {/* faq contents */}
-//       <div className="hidden sm:block">
-//         <FAQ faqs={initialData?.faqs} pageContents={initialData?.pageContent} />
-//       </div>
-//     </>
-//   );
-// }
+      {/* faq contents */}
+      <div className="hidden sm:block">
+        <FAQ faqs={initialData?.faqs} pageContents={initialData?.pageContent} />
+      </div>
+    </>
+  );
+}
