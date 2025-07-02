@@ -194,6 +194,11 @@
     border-color: #17479e;
   }
 
+  .columns-5 {
+    -moz-columns: 5;
+    columns: 5;
+  }
+
   .gradient-stroke {
     @apply bg-gradient-to-b from-[#4D8CFF] to-[#17479E];
   }
