@@ -14,7 +14,6 @@ const BranchLocationMap = dynamic(() => import("@/components/features/home/Branc
 });
 
 export default function BranchLocator({ variant = "default", pageContent }) {
-  console.log(pageContent);
   const searchParams = useSearchParams();
   const [branchLocationsAPI, setBranchLocationsAPI] = useState([]);
   const [selectedBranch, setSelectedBranch] = useState(null);

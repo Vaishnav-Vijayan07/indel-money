@@ -25,9 +25,15 @@ import MobLatestUpdates from "../components/features/home/MobLatestUpdates";
 import MobInnovations from "../components/features/home/MobInnovations";
 import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
-export default function Home({ initialData, serviceBanner, banner,branchLocatorData, initialError }) {
+export default function Home({
+  initialData,
+  serviceBanner,
+  banner,
+  branchLocatorData,
+  initialError,
+}) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-  console.log(initialData?.pageContent?.announcement_text);
+
   return (
     <>
       {/* welcome contents*/}
@@ -55,16 +61,26 @@ export default function Home({ initialData, serviceBanner, banner,branchLocatorD
 
       {/* Dreams to Reality contents*/}
       <div className="hidden sm:block">
-        <DreamsToReality initialData={initialData?.pageContent} statsData={initialData?.homeStatistics} />
+        <DreamsToReality
+          initialData={initialData?.pageContent}
+          statsData={initialData?.homeStatistics}
+        />
       </div>
       <div className="block sm:hidden">
         {/* Develope api for smart money deals */}
-        <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
+        <MobSmartMoneyDeals
+          title={initialData?.pageContent?.smart_deal_title}
+          deals={initialData?.smartMoneyDeals}
+        />
       </div>
 
       {/* Gold loan contents*/}
       <div id="gold-loan-steps" className="hidden sm:block">
-        <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
+        <StepGoldLoan
+          title={initialData?.pageContent?.step_title}
+          loanSteps={initialData?.loanSteps}
+          sectionTitle={initialData?.pageContent?.step_title}
+        />
       </div>
       <div className="block sm:hidden">
         <MobStepGoldLoan title={"sample"} loanSteps={initialData?.loanSteps} />
@@ -79,7 +95,7 @@ export default function Home({ initialData, serviceBanner, banner,branchLocatorD
       </div>
 
       {/* Branch locator contents*/}
-      <div className="hidden sm:block" id="branch-locator" >
+      <div className="hidden sm:block" id="branch-locator">
         <BranchLocator pageContent={branchLocatorData} variant={"home"} />
       </div>
       <div className="block sm:hidden" id="branch-locator">
@@ -116,7 +132,10 @@ export default function Home({ initialData, serviceBanner, banner,branchLocatorD
         />
       </div>
       <div className="block sm:hidden">
-        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
+        <MobLatestUpdates
+          sliderItems={initialData?.blogs}
+          sliderTitle={initialData?.pageContent?.updates_section_title}
+        />
       </div>
 
       {/* <div className="hidden sm:block">

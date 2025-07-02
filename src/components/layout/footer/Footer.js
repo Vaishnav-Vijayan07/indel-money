@@ -118,14 +118,14 @@ function ExternalLinkBtn({ btn1, btn1_link, btn2, btn2_link }) {
   return (
     <div className="flex flex-wrap flex-col sm:flex-row gap-[10px] sm:gap-[10px] 2xl:gap-[15px] 3xl:gap-[20px]">
       <div>
-        <Link href={btn1_link ? btn1_link : "/"} className="btn btn-base1 w-[120px] sm:w-[100px] xl:w-[110px] 3xl:w-[160px]">
+        <a href={btn1_link ? btn1_link : "/"} target="_blank" className="btn btn-base1 w-[120px] sm:w-[100px] xl:w-[110px] 3xl:w-[160px]">
           {btn1 ? btn1 : "E Connect"}
-        </Link>
+        </a>
       </div>
       <div>
-        <Link href={btn2_link ? btn2_link : "/"} className="btn btn-base2 w-[120px] sm:w-[100px] xl:w-[110px] 3xl:w-[160px]">
+        <a href={btn2_link ? btn2_link : "/"} target="_blank" className="btn btn-base2 w-[120px] sm:w-[100px] xl:w-[110px] 3xl:w-[160px]">
           {btn2 ? btn2 : "Indel Remit"}
-        </Link>
+        </a>
       </div>
     </div>
   );
