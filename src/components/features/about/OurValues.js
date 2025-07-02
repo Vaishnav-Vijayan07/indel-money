@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-export default function OurValues() {
+export default function OurValues({ values, }) {
     const slides = [
         {
             image: "/images/value01.png",
             alt: "value-1",
-            title: "Performing in order to surpass excellence",
+            // title: "Performing in order to surpass excellence oooo",
             description: "We at Indel Money believe that achieving excellence is just a milestone in the journey to destiny. We trust in striving for more than excellence in each and every endeavor we undertake.",
         },
         {
@@ -38,7 +38,7 @@ export default function OurValues() {
         <section className="w-full pt-[30px] xl:pt-[60px] 2xl:pt-[100px] pb-[30px] sm:pb-[50px] xl:pb-[30px] lg:pb-[40px] 2xl:pb-[70px]">
             <div className="container">
                 <div className="flex flex-wrap -my-[12px] sm:-my-[15px] xl:-my-[20px] 2xl:-my-[30px] -mx-[10px] xl:-mx-[15px] 2xl:-mx-[20px]">
-                    {slides?.map((item, index) => (
+                    {values?.map((item, index) => (
                         <div key={index} className="w-full sm:w-2/4 lg:w-1/3 py-[12px] sm:py-[15px] xl:py-[20px] 2xl:py-[30px] px-[10px] xl:px-[15px] 2xl:px-[20px]">
                             <ValueBox item={item} />
                         </div>
@@ -65,8 +65,8 @@ export function ValueBox({ item }) {
             <div className="w-[120px] xl:w-[145px] 2xl:w-[190px] 3xl:w-[240px] h-[120px] xl:h-[145px] 2xl:h-[190px] 3xl:h-[240px] rotate-[65deg] 2xl:rotate-[150deg] rounded-full absolute left-[-8%] xl:left-[-5%] 2xl:left-[-10%] top-[-11%] 2xl:top-[-15%] sm:bg-gradient-to-b sm:from-[rgba(23,71,158,0.07)] sm:via-[rgba(23,71,158,0.14)] sm:to-[rgba(238,56,36,0.65)]"></div>
             <div className="group w-[65px] 3xs:w-[74px] sm:w-[40px] xl:w-[50px] 3xl:w-[75px] h-[65px] 3xs:h-[74px] sm:h-[40px] xl:h-[45px] 3xl:h-[65px] rounded-full p-[15px] 3xs:p-[20px] sm:p-0 sm:rounded-0 mb-[12px] sm:mb-[45px] xl:mb-[65px] 2xl:mb-[80px] 3xl:mb-[90px] sm:rounded-0 sm:bg-none bg-gradient-to-b from-[rgba(23,71,158,0.07)] via-[rgba(23,71,158,0.14)] to-[rgba(238,56,36,0.35)]">
                 <Image
-                    src={item.image}
-                    alt={item.alt}
+                    src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/value01.png"}
+                    alt={item?.alt ? item?.alt : "value-1"}
                     width={72}
                     height={65}
                     className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"

@@ -4,6 +4,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import LoanCardBx from "@/components/features/msmeloan/LoanCardBx";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 const slides = [
   {
@@ -32,14 +33,15 @@ const slides = [
   },
 ];
 
-export default function WhoDoServe() {
+export default function WhoDoServe({ audience, who_do_serve_title }) {
   return (
     <section className="w-full block py-[20px] md:py-[20px] xl:pt-[30px] 2xl:py-[50px] 3xl:py-[70px]">
       <div className="container">
-        <h2 className="text-title1 mb-[20px] 2xl:mb-[30px]">
-          Who Do
-          <span className="text-base2 font-bold">&nbsp;Serve</span>
+        <h2 className="text-title1 mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold">
+          {" "}
+          {who_do_serve_title ? renderHtml(who_do_serve_title) : ""}
         </h2>
+
         <Swiper
           modules={[Autoplay, Pagination]}
           spaceBetween={10}
@@ -55,7 +57,7 @@ export default function WhoDoServe() {
           }}
           className="LoanSlider pb-[15px]! lg:pb-[20px]! xl:pb-[30px]!"
         >
-          {slides?.map((item, index) => {
+          {audience?.map((item, index) => {
             const whoDoServe = index % 2 === 0 ? "whoDoServe1" : "whoDoServe2";
             return (
               <SwiperSlide key={index}>

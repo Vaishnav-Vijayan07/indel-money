@@ -102,7 +102,7 @@ export default function MobHeader() {
                   >
                     <Image
                       src={item.src}
-                      alt={item.alt}
+                      alt={item?.alt}
                       width={18}
                       height={36}
                       className="w-full h-full aspect-square object-contain"
@@ -122,7 +122,7 @@ export default function MobHeader() {
                   >
                     <Image
                       src={item.src}
-                      alt={item.alt}
+                      alt={item?.alt}
                       width={18}
                       height={36}
                       className="w-full h-full aspect-square object-contain"

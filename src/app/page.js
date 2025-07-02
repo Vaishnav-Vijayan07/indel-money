@@ -1,113 +1,64 @@
+import { log } from "console";
+import HomeClient from "../pages/HomeClient";
 
-"use client";
-import { useMediaQuery } from "@react-hook/media-query";
+// async function fetchHomeData() {
+//   try {
+//     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/home`, {
+//       cache: "no-store", // Ensure fresh data
+//     });
 
-import React from "react";
-// DESKTOP COMPONENTS
-import HeroBanner from "../components/features/home/HeroBanner";
-import DreamsToReality from "../components/features/home/DreamsToReality";
-import StepGoldLoan from "../components/features/home/StepGoldLoan";
-import StepGoldLoanCalculator from "../components/features/home/StepGoldLoanCalculator";
-import LifeAtIndel from "../components/features/home/LifeAtIndel";
-import LatestUpdates from "../components/features/home/LatestUpdates";
-import TrustedInvestment from "../components/features/home/TrustedInvestment";
-import BranchLocator from "../components/features/home/BranchLocator";
-import Innovations from "../components/features/home/Innovations";
-import FAQ from "../components/features/home/FAQ";
-import WelcomeModal from "../components/common/WelcomeModal";
-// MOBILE COMPONENTS
-import MobHeroBanner from "../components/features/home/MobHeroBanner";
-import MobSmartMoneyDeals from "../components/features/home/MobSmartMoneyDeals";
-import MobStepGoldLoan from "../components/features/home/MobStepGoldLoan";
-import MobStepGoldLoanCalculator from "../components/features/home/MobStepGoldLoanCalculator";
-import MobBranchLocator from "../components/features/home/MobBranchLocator";
-import MobJoinTeam from "../components/features/home/MobJoinTeam";
-import MobLatestUpdates from "../components/features/home/MobLatestUpdates";
-import MobInnovations from "../components/features/home/MobInnovations";
-import MobWelcomeModal from "../components/common/MobWelcomeModal";
+//     const result = await response.json();
 
-const FAQS = React.lazy(() => import("../components/features/home/FAQ"));
+//     if (result.status === "success") {
+//       return { data: result.data, error: null };
+//     }
+//     return { data: null, error: result.message };
+//   } catch (error) {
+//     return { data: null, error: "Failed to fetch home data" };
+//   }
+// }
 
-export default function Home() {
-  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+export async function generateMetadata() {
+  const { data, error } = await fetchHomeData();
+
+  return {
+    title: data?.pageContent?.meta_title || "Blog Post | My Website",
+    description: data?.pageContent?.meta_description || data?.pageContent?.description || "Read our latest blog post.",
+    keywords: data?.pageContent?.meta_keywords || "blog, post, news",
+  };
+}
+
+async function fetchHomeData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/home`, {
+      cache: "force-cache",
+      next: { revalidate: 6000 },
+      credentials: "include", // Ensures session cookie is sent
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      return { data: result.data, error: null };
+    }
+    return { data: null, error: result.message };
+  } catch (error) {
+    return { data: null, error: "Failed to fetch home data" };
+  }
+}
+
+export default async function HomePage() {
+  const { data, error } = await fetchHomeData();
   return (
-    <>
-      {/* welcome contents*/}
-      {isMobile ? <MobWelcomeModal /> : <WelcomeModal />}
-
-      {/* banner section contents*/}
-      <div className="hidden sm:block">
-        <HeroBanner />
-      </div>
-      <div className="block sm:hidden">
-        <MobHeroBanner />
-      </div>
-
-      {/* Dreams to Reality contents*/}
-      <div className="hidden sm:block">
-        <DreamsToReality />
-      </div>
-      <div className="block sm:hidden">
-        <MobSmartMoneyDeals />
-      </div>
-
-      {/* Gold loan contents*/}
-      <div className="hidden sm:block">
-        <StepGoldLoan />
-      </div>
-      <div className="block sm:hidden">
-        <MobStepGoldLoan />
-      </div>
-
-      {/* Gold loan calculator*/}
-      <div className="hidden sm:block">
-        <StepGoldLoanCalculator />
-      </div>
-      <div className="block sm:hidden">
-        <MobStepGoldLoanCalculator />
-      </div>
-
-      {/* Branch locator contents*/}
-      <div className="hidden sm:block">
-        <BranchLocator variant={"home"} />
-      </div>
-      <div className="block sm:hidden">
-        <MobBranchLocator />
-      </div>
-
-      {/* Life at Indel contents*/}
-      <div className="hidden sm:block">
-        <LifeAtIndel />
-      </div>
-      <div className="block sm:hidden">
-        <MobJoinTeam />
-      </div>
-
-      {/* Latest Updates contents*/}
-      <div className="hidden sm:block">
-        <LatestUpdates />
-      </div>
-      <div className="block sm:hidden">
-        <MobLatestUpdates />
-      </div>
-
-      {/* Trusted investment contents*/}
-      <div className="hidden sm:block">
-        <TrustedInvestment />
-      </div>
-
-      {/* Innovations*/}
-      <div className="hidden sm:block">
-        <Innovations />
-      </div>
-      <div className="block sm:hidden">
-        <MobInnovations />
-      </div>
-
-      {/* faq contents */}
-      <div className="hidden sm:block">
-        <FAQ />
-      </div>
-    </>
+    <HomeClient
+      initialData={data}
+      serviceBanner={data?.service}
+      banner={data?.banner}
+      branchLocatorData={data?.branchLocatorData}
+      initialError={error}
+    />
   );
 }

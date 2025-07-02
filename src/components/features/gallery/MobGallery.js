@@ -87,7 +87,7 @@ export default function MobGallery() {
         onMouseLeave={() => setHovered(false)}
       >
         <div className="relative w-full h-full">
-          {item.images.map((img, index) => (
+          {item.images?.map((img, index) => (
             <Image
               key={index}
               src={img}
@@ -149,7 +149,7 @@ export default function MobGallery() {
                   className={`${gallClass} w-full mb-[8px] 3xs:h-[170px] h-[150px] flex flex-wrap`}
                 >
                   <div className="flex flex-wrap w-full h-full">
-                    {group.slice(0, 1).map((item, i) => (
+                    {group.slice(0, 1)?.map((item, i) => (
                       <div key={i} className="w-full mb-4 h-full">
                         <GalleryItem item={item} width={380} height={150} />
                       </div>
@@ -198,7 +198,7 @@ export default function MobGallery() {
                   className={`${gallClass} w-full mb-[8px] 3xs:h-[170px] h-[150px] flex flex-wrap`}
                 >
                   <div className="flex flex-wrap w-full h-full">
-                    {group.slice(0, 1).map((item, i) => (
+                    {group.slice(0, 1)?.map((item, i) => (
                       <div key={i} className="w-full mb-4 h-full">
                         <GalleryItem item={item} width={380} height={150} />
                       </div>
@@ -248,7 +248,7 @@ export default function MobGallery() {
                   className={`${gallClass} w-full mb-[8px] h-[150px] flex flex-wrap`}
                 >
                   <div className="flex flex-wrap w-full h-full">
-                    {group.slice(0, 1).map((item, i) => (
+                    {group.slice(0, 1)?.map((item, i) => (
                       <div key={i} className="w-full mb-4 h-full">
                         <GalleryItem item={item} width={380} height={150} />
                       </div>

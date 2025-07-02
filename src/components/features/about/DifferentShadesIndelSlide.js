@@ -45,20 +45,15 @@ const slideContents = [
       alt: "Indel Automotive",
       width: 260,
       height: 100,
-      className:
-        "max-w-[120px] lg:max-w-[176px] 2xl:max-w-[220px] 3xl:max-w-[268px]",
+      className: "max-w-[120px] lg:max-w-[176px] 2xl:max-w-[220px] 3xl:max-w-[268px]",
     },
     content: (
       <>
         <p>
-          Indel Automotive Private Limited, the automotive division of our
-          organization, stands as one of India&apos;s foremost automotive
-          dealership conglomerates. With a strong legacy of excellence and
-          customer-centric values, we have established ourselves as a trusted
-          name in the automotive industry. Over the years, we have forged
-          strategic partnerships with some of the world&apos;s most renowned
-          automotive manufacturers, enabling us to deliver cutting-edge vehicles
-          and exceptional after-sales services to our customers.
+          Indel Automotive Private Limited, the automotive division of our organization, stands as one of India&apos;s foremost automotive dealership
+          conglomerates. With a strong legacy of excellence and customer-centric values, we have established ourselves as a trusted name in the
+          automotive industry. Over the years, we have forged strategic partnerships with some of the world&apos;s most renowned automotive
+          manufacturers, enabling us to deliver cutting-edge vehicles and exceptional after-sales services to our customers.
         </p>
         <Image
           src="/images/shadeIndel-disc-2.jpg"
@@ -75,32 +70,20 @@ const slideContents = [
           className="max-w-[160px] sm:max-w-[220px] lg:max-w-[276px] 2xl:max-w-[376px] 3xl:max-w-[468px] inline m-[0_20px_10px_0] sm:m-[0_40px_10px_0]"
         />
         <p>
-          Our extensive network spans multiple cities across the country,
-          featuring state-of-the-art showrooms and service centers designed to
-          provide a seamless and premium experience. Each of our showrooms is
-          equipped with modern facilities and staffed by highly trained
-          professionals who are dedicated to assisting customers in finding the
-          perfect vehicle to meet their needs. Our service centers, on the other
-          hand, are equipped with advanced tools and technologies to ensure that
-          every vehicle we sell receives the highest standard of maintenance and
-          care. The Indel Automotive group comprises several distinguished
-          brands, each representing a legacy of innovation, performance, and
-          reliability. These include **KERALA VOLVO**, where we offer the luxury
-          and sophistication of Volvo vehicles; **KAIRALI FORD**, delivering the
-          rugged durability and innovation of Ford automobiles; **INDEL
-          YAMAHA**, bringing the thrill and precision of Yamaha motorcycles;
-          **INDEL HONDA**, showcasing the efficiency and reliability of Honda
-          vehicles; and **INDEL SUZUKI**, providing the versatility and
-          affordability of Suzuki cars and two-wheelers.
+          Our extensive network spans multiple cities across the country, featuring state-of-the-art showrooms and service centers designed to provide
+          a seamless and premium experience. Each of our showrooms is equipped with modern facilities and staffed by highly trained professionals who
+          are dedicated to assisting customers in finding the perfect vehicle to meet their needs. Our service centers, on the other hand, are
+          equipped with advanced tools and technologies to ensure that every vehicle we sell receives the highest standard of maintenance and care.
+          The Indel Automotive group comprises several distinguished brands, each representing a legacy of innovation, performance, and reliability.
+          These include **KERALA VOLVO**, where we offer the luxury and sophistication of Volvo vehicles; **KAIRALI FORD**, delivering the rugged
+          durability and innovation of Ford automobiles; **INDEL YAMAHA**, bringing the thrill and precision of Yamaha motorcycles; **INDEL HONDA**,
+          showcasing the efficiency and reliability of Honda vehicles; and **INDEL SUZUKI**, providing the versatility and affordability of Suzuki
+          cars and two-wheelers.
           <br />
-          At Indel Automotive, we are committed to delivering more than just
-          vehicles; we aim to create lasting relationships with our customers by
-          offering unparalleled service, transparency, and trust. Whether you
-          are looking to purchase a new vehicle or maintain an existing one, our
-          team is here to ensure that your automotive journey is smooth,
-          enjoyable, and rewarding. With a focus on innovation, customer
-          satisfaction, and sustainable growth, we continue to drive forward as
-          a leader in India&apos;s automotive landscape.
+          At Indel Automotive, we are committed to delivering more than just vehicles; we aim to create lasting relationships with our customers by
+          offering unparalleled service, transparency, and trust. Whether you are looking to purchase a new vehicle or maintain an existing one, our
+          team is here to ensure that your automotive journey is smooth, enjoyable, and rewarding. With a focus on innovation, customer satisfaction,
+          and sustainable growth, we continue to drive forward as a leader in India&apos;s automotive landscape.
         </p>
       </>
     ),
@@ -111,15 +94,12 @@ const slideContents = [
       alt: "Indel Technology",
       width: 260,
       height: 100,
-      className:
-        "max-w-[120px] lg:max-w-[176px] 2xl:max-w-[220px] 3xl:max-w-[268px]",
+      className: "max-w-[120px] lg:max-w-[176px] 2xl:max-w-[220px] 3xl:max-w-[268px]",
     },
     content: (
       <p>
-        Indel Technology Solutions, a key pillar of our group, focuses on
-        delivering innovative tech solutions for the automotive sector. By
-        leveraging advanced AI and IoT technologies, we empower dealerships with
-        smart inventory management and predictive maintenance tools, driving
+        Indel Technology Solutions, a key pillar of our group, focuses on delivering innovative tech solutions for the automotive sector. By
+        leveraging advanced AI and IoT technologies, we empower dealerships with smart inventory management and predictive maintenance tools, driving
         efficiency and customer satisfaction.
       </p>
     ),
@@ -130,16 +110,12 @@ const slideContents = [
       alt: "Indel Sustainability",
       width: 260,
       height: 100,
-      className:
-        "max-w-[120px] lg:max-w-[176px] 2xl:max-w-[220px] 3xl:max-w-[268px]",
+      className: "max-w-[120px] lg:max-w-[176px] 2xl:max-w-[220px] 3xl:max-w-[268px]",
     },
     content: (
       <p>
-        Indel Sustainability Initiatives lead the charge in eco-friendly
-        automotive practices. Our commitment to green technologies includes
-        promoting electric vehicles and implementing sustainable manufacturing
-        processes, contributing to a cleaner and greener future for the
-        industry.
+        Indel Sustainability Initiatives lead the charge in eco-friendly automotive practices. Our commitment to green technologies includes promoting
+        electric vehicles and implementing sustainable manufacturing processes, contributing to a cleaner and greener future for the industry.
       </p>
     ),
   },
@@ -155,15 +131,13 @@ function ShadeIndelBox({ item, isActive }) {
               `}
     >
       <Image
-        src={item?.src}
-        alt={item?.alt}
+        src={item?.banner_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.banner_image}` : "/images/shadeIndel-disc-1.png"}
+        alt={item?.title}
         fill
         sizes="660px"
         style={{ objectFit: "cover" }}
         className={`
-          ${
-            isActive ? "opacity-100" : "opacity-50"
-          } transition-all duration-300 group-hover:scale-105`}
+          ${isActive ? "opacity-100" : "opacity-50"} transition-all duration-300 group-hover:scale-105`}
       />
       {isActive ? (
         <div className="w-full h-auto bg-gradient-to-r to-base1/0 from-base2/60 p-[10px_15px] lg:p-[15px_20px] xl:p-[20px_40px] 2xl:p-[25px_50px] 3xl:p-[30px_60px] absolute z-1 left-0 bottom-0 right-0 lg:mb-[15px] xl:mb-[30px] 2xl:mb-[35px] 3xl:mb-[40px]">
@@ -182,7 +156,7 @@ function ShadeIndelBox({ item, isActive }) {
   );
 }
 
-export default function DifferentShadesIndelSlide() {
+export default function DifferentShadesIndelSlide({ shades }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleSlideClick = (index) => {
@@ -191,12 +165,8 @@ export default function DifferentShadesIndelSlide() {
   return (
     <section className="w-full block py-[20px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] overflow-hidden">
       <div className="container">
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={0}
-          className="differentShadesSlide overflow-visible!"
-        >
-          {slides?.map((item, index) => (
+        <Swiper slidesPerView={"auto"} spaceBetween={0} className="differentShadesSlide overflow-visible!">
+          {shades?.map((item, index) => (
             <SwiperSlide
               key={index}
               onClick={() => handleSlideClick(index)}
@@ -211,78 +181,59 @@ export default function DifferentShadesIndelSlide() {
           ))}
         </Swiper>
         <div className="w-full mt-[20px] sm:mt-[40px] lg:mt-[60px] 2xl:mt-[80px] 3xl:mt-[80px] [&_p]:text-sm1 [&_p]:mb-[10px] sm:[&_p]:mb-[15px] lg:[&_p]:mb-[20px] [&_img]:mb-[10px] sm:[&_img]:mb-[15px] lg:[&_img]:mb-[20px]">
-          {slideContents[activeIndex]?.logo && (
-            <Image
-              src={slideContents[activeIndex].logo.src}
-              alt={slideContents[activeIndex].logo.alt}
-              width={slideContents[activeIndex].logo.width}
-              height={slideContents[activeIndex].logo.height}
-              className={slideContents[activeIndex].logo.className}
-            />
-          )}
-          {slideContents[activeIndex]?.content || <p>Content not available</p>}
-        </div>
-        {/* <div className="w-full mt-[20px] sm:mt-[40px] lg:mt-[60px] 2xl:mt-[80px] 3xl:mt-[80px] [&_p]:text-sm1 [&_p]:mb-[10px] sm:[&_p]:mb-[15px] lg:[&_p]:mb-[20px] [&_img]:mb-[10px] sm:[&_img]:mb-[15px] lg:[&_img]:mb-[20px]">
           <Image
-            src="/images/shadeIndel-disc-1.png"
-            alt="indel"
+            src={
+              shades[activeIndex]?.brand_icon
+                ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${shades[activeIndex]?.brand_icon}`
+                : "/images/shadeIndel-disc-1.png"
+            }
+            alt={"Indel Technology"}
             width={260}
             height={100}
             className="max-w-[120px] lg:max-w-[176px] 2xl:max-w-[220px] 3xl:max-w-[268px]"
           />
-          <p>
-            Indel Automotive Private Limited, the automotive division of our
-            organization, stands as one of India&apos;s foremost automotive
-            dealership conglomerates. With a strong legacy of excellence and
-            customer-centric values, we have established ourselves as a trusted
-            name in the automotive industry. Over the years, we have forged
-            strategic partnerships with some of the world&apos;s most renowned
-            automotive manufacturers, enabling us to deliver cutting-edge
-            vehicles and exceptional after-sales services to our customers.
-          </p>
-          <Image
-            src="/images/shadeIndel-disc-2.jpg"
-            alt="indel"
-            width={420}
-            height={276}
-            className="max-w-[160px] sm:max-w-[220px] lg:max-w-[276px] 2xl:max-w-[376px] 3xl:max-w-[468px] inline m-[0_20px_10px_0] sm:m-[0_40px_10px_0]"
-          />
-          <Image
-            src="/images/shadeIndel-disc-3.jpg"
-            alt="indel"
-            width={420}
-            height={276}
-            className="max-w-[160px] sm:max-w-[220px] lg:max-w-[276px] 2xl:max-w-[376px] 3xl:max-w-[468px] inline m-[0_20px_10px_0] sm:m-[0_40px_10px_0]"
-          />
-          <p>
-            Our extensive network spans multiple cities across the country,
-            featuring state-of-the-art showrooms and service centers designed to
-            provide a seamless and premium experience. Each of our showrooms is
-            equipped with modern facilities and staffed by highly trained
-            professionals who are dedicated to assisting customers in finding
-            the perfect vehicle to meet their needs. Our service centers, on the
-            other hand, are equipped with advanced tools and technologies to
-            ensure that every vehicle we sell receives the highest standard of
-            maintenance and care. The Indel Automotive group comprises several
-            distinguished brands, each representing a legacy of innovation,
-            performance, and reliability. These include **KERALA VOLVO**, where
-            we offer the luxury and sophistication of Volvo vehicles; **KAIRALI
-            FORD**, delivering the rugged durability and innovation of Ford
-            automobiles; **INDEL YAMAHA**, bringing the thrill and precision of
-            Yamaha motorcycles; **INDEL HONDA**, showcasing the efficiency and
-            reliability of Honda vehicles; and **INDEL SUZUKI**, providing the
-            versatility and affordability of Suzuki cars and two-wheelers.
-            <br />
-            At Indel Automotive, we are committed to delivering more than just
-            vehicles; we aim to create lasting relationships with our customers
-            by offering unparalleled service, transparency, and trust. Whether
-            you are looking to purchase a new vehicle or maintain an existing
-            one, our team is here to ensure that your automotive journey is
-            smooth, enjoyable, and rewarding. With a focus on innovation,
-            customer satisfaction, and sustainable growth, we continue to drive
-            forward as a leader in India&apos;s automotive landscape.
-          </p>
-        </div> */}
+          {/* {slideContents[activeIndex]?.content || <p>Content not available</p>} */}
+          {
+            <>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: shades[activeIndex]?.paragraph_1 || "<p>Content not available</p>",
+                }}
+              />
+              {shades[activeIndex]?.image && (
+                <Image
+                  src={
+                    shades[activeIndex]?.image
+                      ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${shades[activeIndex]?.image}`
+                      : "/images/shadeIndel-disc-2.jpg"
+                  }
+                  alt="indel"
+                  width={420}
+                  height={276}
+                  className="max-w-[160px] sm:max-w-[220px] lg:max-w-[276px] 2xl:max-w-[376px] 3xl:max-w-[468px] inline m-[0_20px_10px_0] sm:m-[0_40px_10px_0]"
+                />
+              )}
+              {shades[activeIndex]?.second_image && (
+                <Image
+                  src={
+                    shades[activeIndex]?.second_image
+                      ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${shades[activeIndex]?.second_image}`
+                      : "/images/shadeIndel-disc-3.jpg"
+                  }
+                  alt="indel"
+                  width={420}
+                  height={276}
+                  className="max-w-[160px] sm:max-w-[220px] lg:max-w-[276px] 2xl:max-w-[376px] 3xl:max-w-[468px] inline m-[0_20px_10px_0] sm:m-[0_40px_10px_0]"
+                />
+              )}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: shades[activeIndex]?.paragraph_2 || "<p>Content not available</p>",
+                }}
+              />
+            </>
+          }
+        </div>
       </div>
     </section>
   );

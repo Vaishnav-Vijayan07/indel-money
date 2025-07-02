@@ -5,6 +5,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
 import "./AwardHighlightBox.css";
+import { renderHtml } from "@/lib/utils/htmlParser";
+import { useState } from "react";
 
 const slides = [
   {
@@ -54,7 +56,7 @@ const slides = [
   },
 ];
 
-export default function AwardHighlightBox({ variant = "default" }) {
+export default function AwardHighlightBox({ variant = "default", items = slides }) {
   return (
     <div className="relative z-0 w-full h-full block rounded-[35px] sm:bg-[#B7D0FF] bg-[#fff] sm:shadow-none  shadow-[0_0_15px_0_rgba(0,0,0,0.10)] p-[15px_20px] sm:p-[30px_30px] lg:p-[30px] 2xl:p-[40px_30px_40px_40px] 3xl:p-[80px_50px_50px_70px]">
       <Swiper
@@ -68,41 +70,37 @@ export default function AwardHighlightBox({ variant = "default" }) {
         pagination={{ clickable: true }}
         className={"awardSlide"}
       >
-        {slides.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
-              <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-276px)] 3xl:w-[calc(100%-376px)] 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">
-                {variant === "employeeTestimonials" && (
-                  <div className="text-title1 font-bold leading-none mb-[5px] lg:mb-[10px] text-[#f30000]">
-                    Awards
+        {items?.map((item, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <div className="w-full flex flex-wrap sm:flex-row flex-col-reverse">
+                <div className="w-full sm:w-[calc(100%-150px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-276px)] 3xl:w-[calc(100%-376px)] 2xl:pr-[90px] xl:pr-[40px] md:pr-[20px] sm:pr-[20px]">
+                  {variant === "employeeTestimonials" && (
+                    <div className="text-title1 font-bold leading-none mb-[5px] lg:mb-[10px] text-[#f30000]">Awards</div>
+                  )}
+                  <h5 className="sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[40px] text-black font-normal mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]  [&>span]:block [&>span]:text-[#EB0208] [&>span]:uppercase [&>span]:font-bold ">
+                    {item.title ? renderHtml(item.title) : ""}
+                  </h5>
+
+                  <div className="w-full mb-[20px] lg:mb-[40px] 2xl:mb-[60px] text-[12px] lg:text-[13px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] line-clamp-8">
+                    {item.description}
                   </div>
-                )}
-                <h5 className="sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[40px] text-black font-normal mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
-                  {item.title}
-                  <span className="block text-[#EB0208] uppercase font-bold">
-                    &nbsp;&apos;
-                    {item.title2}
-                    &apos;
-                  </span>
-                </h5>
-                <div className="w-full mb-[20px] lg:mb-[40px] 2xl:mb-[60px] text-[12px] lg:text-[13px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] line-clamp-8">
-                  {item.description}
+                </div>
+                <div className="w-[150px] lg:w-[180px] xl:w-[220px] 2xl:w-[276px] 3xl:w-[376px]">
+                  <div className="group w-full h-full rounded-[24px] overflow-hidden">
+                    <Image
+                      src={item.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/blog/1.jpg"}
+                      alt={item.image_alt ? item.image_alt : item?.alt}
+                      width={370}
+                      height={465}
+                      className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="w-[150px] lg:w-[180px] xl:w-[220px] 2xl:w-[276px] 3xl:w-[376px]">
-                <div className="group w-full h-full rounded-[24px] overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    width={370}
-                    height={465}
-                    className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
-                  />
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
       <div className="absolute z-1 left-0 bottom-0 w-[20%] h-full pointer-events-none">
         <Image

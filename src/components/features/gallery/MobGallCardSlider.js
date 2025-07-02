@@ -148,7 +148,7 @@ export default function MobGallCardSlider() {
         }}
         className="w-full max-w-full"
       >
-        {slides.map((slide, index) => (
+        {slides?.map((slide, index) => (
           <SwiperSlide
             key={index}
             className="w-full h-full GallRoundSlide not-[:where(.swiper-slide-visible)]:opacity-0 not-[:has(.swiper-slide-active)]:[.SwiprCntn]:opacity-0"

@@ -32,12 +32,12 @@ const formSchema = z.object({
   emailAddress: z.string().email({
     message: "Invalid email address.",
   }),
-  serviceType: z.string().nonempty({
+  serviceType: z.number().nonnegative({
     message: "Please select a service.",
   }),
 });
 
-export default function EnquiryForm() {
+export default function EnquiryForm({ handleSubmit, serviceTypes }) {
   // Define form
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -51,7 +51,8 @@ export default function EnquiryForm() {
 
   // Handle form submission
   function onSubmit(values) {
-    console.log("Form submitted:", values);
+    handleSubmit(values);
+    form.reset();
   }
 
   return (
@@ -142,16 +143,16 @@ export default function EnquiryForm() {
           name="serviceType"
           render={({ field }) => (
             <FormItem className="relative mb-[10px] sm:mb-2 xl:mb-3 3xl:mb-5">
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value} key={field.value}>
                 <SelectTrigger className="w-full bg-white border-white">
                   <SelectValue placeholder="Select service" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-white">
-                  <SelectItem value="gold-loan">Gold Loan</SelectItem>
-                  <SelectItem value="other-loans">Other Loans</SelectItem>
-                  <SelectItem value="doorstep-gold-loan">
-                    Door Step Gold Loan
-                  </SelectItem>
+                  {serviceTypes?.map((service) => (
+                    <SelectItem key={service.value} value={service.value}>
+                      {service.label}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               <FormMessage />
