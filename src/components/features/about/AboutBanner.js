@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Image from "next/image";
 import { renderHtml } from "@/lib/utils/htmlParser";
+import { useMediaQuery } from "@react-hook/media-query";
 
 import "./About.css";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
@@ -28,7 +29,9 @@ const slides = [
   },
 ];
 
-export default function AboutBanner({ banners }) {
+export default function AboutBanner({ banners, mobileBanners }) {
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+  const bannerItems = isMobile ? mobileBanners : banners;
   return (
     <section className="w-full h-auto overflow-hidden">
       <Swiper
@@ -42,7 +45,7 @@ export default function AboutBanner({ banners }) {
         loop={true}
         className="w-full aboutSlide h-[560px] sm:h-[320px] lg:h-[468px] 2xl:h-[560px]"
       >
-        {banners?.map((item, index) => (
+        {bannerItems?.map((item, index) => (
           <SwiperSlide key={index} className="relative z-0">
             <div className="absolute -z-1 inset-0 w-full sm:w-[60%] h-[60%] sm:h-full bg-gradient-to-t sm:bg-gradient-to-r from-black sm:from-white/80 to-transparent pointer-events-none mt-auto"></div>
             <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`} alt={"Slide Image"} fill priority className="-z-2 object-cover" />

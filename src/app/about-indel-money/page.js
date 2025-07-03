@@ -133,7 +133,7 @@ export default async function About() {
   return (
     <>
       {/* Banner section */}
-      <AboutBanner banners={data?.aboutBanner} />
+      <AboutBanner banners={data?.aboutBanner} mobileBanners={data?.mobileBanners} />
 
       {/* Financial Partner section */}
       <div className="hidden sm:block">
