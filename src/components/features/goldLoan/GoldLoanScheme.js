@@ -15,7 +15,8 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
 
   return (
     <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
-      <div className="container mx-auto px-4">
+      {/* Old design start */}
+      <div className="container mx-auto px-4 hidden">
         <div className="flex flex-wrap items-center">
           {/* Title */}
           <div
@@ -99,6 +100,86 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
             ))}
           </Swiper>
         </div>
+      </div>
+      {/* Old design end */}
+      <div className="container">
+        <div
+          className="w-full xl:w-[calc(100%-700px)] 2xl:w-[calc(100%-950px)] 3xl:w-[calc(100%-1020px)] text-black text-title1 font-normal mb-[40px] [&>span]:text-base2 [&>span]:font-bold"
+          dangerouslySetInnerHTML={{ __html: scheme_title || "" }}
+        />
+        <div className="overflow-x-auto border-1 border-[#004494] rounded-[24px] pt-[0px] pb-0 px-0">
+          <table className="w-full text-sm text-left border border-[#D9E1ED] max-xl:whitespace-nowrap">
+            <thead>
+              <tr className="text-[#004494] font-bold">
+                <th className="border-b border-t border-l border-r border-t-[#fff] border-l-[#fff] border-r-[#fff] border-[#004494] px-4 py-3 bg-white"></th>
+                <th className="border-t border-l border-r border-t-[#fff] border-l-[#fff] border-r-[#fff] border-[#004494] px-4 py-3">INDEL MINIMAL</th>
+                <th className="border-t border-l border-r border-t-[#fff] border-l-[#fff] border-r-[#fff] border-[#004494] px-4 py-3">INDEL POWER</th>
+                <th className="border-t border-l border-r border-t-[#fff] border-l-[#fff] border-r-[#fff] border-[#004494] px-4 py-3">INDEL FIXED</th>
+                <th className="border-t border-l border-r border-t-[#fff] border-l-[#fff] border-r-[#fff] border-[#004494] px-4 py-3">INDEL EXTRA</th>
+                <th className="border-t border-l border-r border-t-[#fff] border-l-[#fff] border-r-[#fff] border-[#004494] px-4 py-3">INDEL MAX</th>
+                <th className="border-t border-l border-r border-t-[#fff] border-l-[#fff] border-r-[#fff] border-[#004494] px-4 py-3">INDEL HNI</th>
+              </tr>
+            </thead>
+            <tbody className="text-[#002B5C]">
+              <tr className="bg-white">
+                <td className="border border-[#004494] border-l border-l-[#fff] px-4 py-3 font-medium bg-[#DCEBFF]">LTV</td>
+                <td className="border border-[#004494] px-4 py-3">50%</td>
+                <td className="border border-[#004494] px-4 py-3">75%</td>
+                <td className="border border-[#004494] px-4 py-3">75%</td>
+                <td className="border border-[#004494] px-4 py-3">75%</td>
+                <td className="border border-[#004494] px-4 py-3">75%</td>
+                <td className="border border-[#004494] border-r border-r-[#fff] px-4 py-3">75%</td>
+              </tr>
+              <tr className="bg-[#F8FAFC]">
+                <td className="border border-[#004494] border-l border-l-[#fff] px-4 py-3 font-medium bg-[#DCEBFF]">Tenor</td>
+                <td className="border border-[#004494] px-4 py-3">365 DAYS</td>
+                <td className="border border-[#004494] px-4 py-3">365 DAYS</td>
+                <td className="border border-[#004494] px-4 py-3">365 DAYS</td>
+                <td className="border border-[#004494] px-4 py-3">365 DAYS</td>
+                <td className="border border-[#004494] px-4 py-3">365 DAYS</td>
+                <td className="border border-[#004494] border-r border-r-[#fff] px-4 py-3">365 DAYS</td>
+              </tr>
+              <tr className="bg-white">
+                <td className="border border-[#004494] border-l border-l-[#fff] px-4 py-3 font-medium bg-[#DCEBFF]">On Boarding Rate</td>
+                <td className="border border-[#004494] px-4 py-3">30.00%</td>
+                <td className="border border-[#004494] px-4 py-3">30.00%</td>
+                <td className="border border-[#004494] px-4 py-3">30.00%</td>
+                <td className="border border-[#004494] px-4 py-3">30.00%</td>
+                <td className="border border-[#004494] px-4 py-3">30.00%</td>
+                <td className="border border-[#004494] border-r border-r-[#fff] px-4 py-3">30.00%</td>
+              </tr>
+              <tr className="bg-[#F8FAFC]">
+                <td className="border border-[#004494] border-l border-l-[#fff] px-4 py-3 font-medium bg-[#DCEBFF]">Rebate</td>
+                <td className="border border-[#004494] border-l border-l-[#fff] px-4 py-3">21.25%</td>
+                <td className="border border-[#004494] px-4 py-3">12.00%</td>
+                <td className="border border-[#004494] px-4 py-3">11.00%</td>
+                <td className="border border-[#004494] px-4 py-3">9.00%</td>
+                <td className="border border-[#004494] px-4 py-3">6.00%</td>
+                <td className="border border-[#004494] border-r border-r-[#fff] px-4 py-3">19.00%</td>
+              </tr>
+              <tr className="bg-white">
+                <td className="border border-[#004494] border-l border-l-[#fff] px-4 py-3 font-medium bg-[#DCEBFF]">Effective Interest</td>
+                <td className="border border-[#004494] px-4 py-3">8.75%</td>
+                <td className="border border-[#004494] px-4 py-3">18.00%</td>
+                <td className="border border-[#004494] px-4 py-3">19.00%</td>
+                <td className="border border-[#004494] px-4 py-3">21.00%</td>
+                <td className="border border-[#004494] px-4 py-3">24.00%</td>
+                <td className="border border-[#004494] border-r border-r-[#fff] px-4 py-3">11.00%</td>
+              </tr>
+              <tr className="bg-white">
+                <td className="border border-[#004494] border-b border-b-[#fff] border-l border-l-[#fff] px-4 py-5 font-medium bg-[#DCEBFF]">Processing Fee</td>
+                <td className="border border-[#004494] border-b border-b-[#fff] px-4 py-5">Up to 50K Nil &gt; 50K to 1L - Rs. 25/- &gt; 1L - Rs. 50/-</td>
+                <td className="border border-[#004494] border-b border-b-[#fff] px-4 py-5">Up to 50K Nil &gt; 50K to 1L - Rs. 25/- &gt; 1L - Rs. 50/-</td>
+                <td className="border border-[#004494] border-b border-b-[#fff] px-4 py-5">Up to 50K Nil &gt; 50K to 1L - Rs. 25/- &gt; 1L - Rs. 50/-</td>
+                <td className="border border-[#004494] border-b border-b-[#fff] px-4 py-5">Up to 50K Nil &gt; 50K to 1L - Rs. 25/- &gt; 1L - Rs. 50/-</td>
+                <td className="border border-[#004494] border-b border-b-[#fff] px-4 py-5">Up to 50K Nil &gt; 50K to 1L - Rs. 25/- &gt; 1L - Rs. 50/-</td>
+                <td className="border border-[#004494] border-b border-b-[#fff] border-r border-r-[#fff] px-4 py-5">Up to 50K Nil &gt; 50K to 1L - Rs. 25/- &gt; 1L - Rs. 50/- </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
       </div>
     </section>
   );

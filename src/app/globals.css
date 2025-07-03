@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import url('~leaflet.markercluster/dist/MarkerCluster.css');
+@import url('~leaflet.markercluster/dist/MarkerCluster.Default.css');
 
 @theme {
   --font-amino: "Amino", sans-serif;
@@ -436,3 +438,12 @@
     border-radius: 10px;
   }
 }
+
+.filter-red {
+  filter: brightness(0) saturate(100%) invert(19%) sepia(90%) saturate(7486%) hue-rotate(357deg) brightness(103%) contrast(104%);
+}
+
+.filter-white {
+  filter: brightness(0) invert(1);
+}
+
