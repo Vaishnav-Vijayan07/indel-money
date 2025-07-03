@@ -6,9 +6,7 @@ import MobDifferentShadesIndelSlide from "@/components/features/about/MobDiffere
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/shades-of-indel`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "no-store",
-      //next: { revalidate: 600 },
+      cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();
     const shadesValues = result.data;
@@ -31,8 +29,7 @@ async function getMetaData() {
     if (result.status === "success") {
       return {
         title: meta?.meta_title || "Shades of indel | My Website",
-        description:
-          meta?.meta_description || "Explore the different shades of indel money, its history, milestones, and journey.",
+        description: meta?.meta_description || "Explore the different shades of indel money, its history, milestones, and journey.",
         keywords: meta?.meta_keywords || "indel, money, shades, history, milestones",
         error: null,
       };

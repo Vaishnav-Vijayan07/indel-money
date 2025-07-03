@@ -10,9 +10,7 @@ import MobBenefitsEmployee from "@/components/features/career/MobBenefitsEmploye
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/career`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "no-store",
-      //next: { revalidate: 600 },
+      cache: "no-store", // Ensure fresh data
     });
 
     const result = await response.json();

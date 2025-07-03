@@ -11,7 +11,7 @@ export default async function CareerDetail({ params }) {
   let error = null;
 
   try {
-    const response = await api.get(`/career/jobs/${DecodeId}`, { cache: "no-store", next: { revalidate: 600 } });
+    const response = await api.get(`/career/jobs/${DecodeId}`, { timeout: 5000 });
     if (!response.data.success) {
       error = response.data.message || "Failed to fetch job details";
     } else {

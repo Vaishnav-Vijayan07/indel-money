@@ -3,9 +3,7 @@ import ManagementTeam from "@/components/features/management-team/ManagementTeam
 async function fetchManagementData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/management`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "no-store",
-      //next: { revalidate: 600 },
+      cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();
 
@@ -20,10 +18,7 @@ async function fetchManagementData() {
 
 async function getMetaData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=management`, {
-      cache: "no-store",
-      //next: { revalidate: 600 },
-    });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=management`);
     const result = await response.json();
     const meta = result.data;
 

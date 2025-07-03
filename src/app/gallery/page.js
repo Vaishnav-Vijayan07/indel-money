@@ -12,9 +12,9 @@ async function fetchData(page = 1, type = "all", limit = 6) {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event-gallery?page=${page}&limit=${limit}&type=${type}`,
       {
-        // cache: "no-store", // Ensure fresh data
-        cache: "no-store",
-        //next: { revalidate: 600 },
+        cache: "no-store", // Ensure fresh data
+        // cache: "force-cache",
+        // next: { revalidate: 600 },
       }
     );
 

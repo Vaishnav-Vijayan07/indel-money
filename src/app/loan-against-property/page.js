@@ -6,20 +6,14 @@ import MobEligibility from "@/components/features/services/MobEligibility";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/loan-against-property`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "no-store",
-      //next: { revalidate: 600 },
+      cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();
     const cdData = result.data;
 
+
     if (result.status === "success") {
-      return {
-        contents: cdData?.cdLoanContent,
-        benfits: cdData?.cdLoanBenefits,
-        products: cdData?.cdLoanProducts,
-        error: result.message,
-      };
+      return { contents: cdData?.cdLoanContent, benfits: cdData?.cdLoanBenefits, products: cdData?.cdLoanProducts, error: result.message };
     }
     return { contents: null, benfits: null, products: null, error: result.message };
   } catch (error) {
