@@ -78,16 +78,16 @@ export default function DeskHeader({ headerData }) {
                 </div>
                 <div>
                   <ContactBox
-                    href={common?.icon_section_link ? common?.icon_section_link : "/branch-locator"}
-                    src="/images/icon-map.svg"
-                    title={common?.icon_section_text ? common?.icon_section_text : "Branch Locator"}
+                    href={common?.branch_locator_link ? common?.branch_locator_link : "/branch-locator"}
+                    src={ common?.branch_locator_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${common?.branch_locator_icon_web}` : "/images/icon-map.svg"}
+                    title={common?.branch_locator ? common?.branch_locator : "Branch Locator"}
                     alt="location"
                   />
                 </div>
                 <div>
                   <ContactBox
                     href={common?.toll_free_num ? `tel:${common?.toll_free_num}` : "tel:18004253990"}
-                    src="/images/icon-call.svg"
+                    src={ common?.toll_free_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${common?.toll_free_icon_web}` : "/images/icon-call.svg"}
                     title={common?.toll_free_num ? common?.toll_free_num : "1800 425 39 90"}
                     alt="call"
                   />
