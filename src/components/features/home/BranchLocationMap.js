@@ -111,6 +111,11 @@ const MapController = memo(({ selectedBranch, allBranchLocations, userLocation, 
     setIsMounted(true);
   }, []);
 
+  // Clear marker refs when allBranchLocations changes (due to filtering)
+  useEffect(() => {
+    markerRefs.current = {};
+  }, [allBranchLocations]);
+
   useEffect(() => {
     if (!isMounted || !map) return;
 
@@ -122,11 +127,45 @@ const MapController = memo(({ selectedBranch, allBranchLocations, userLocation, 
       // Default to Chennai if no user location or selected branch
       map.setView([13.0827, 80.2707], 11);
     }
+  }, [userLocation, map, isMounted]);
 
-    if (selectedBranch && markerRefs.current[selectedBranch?.id]) {
-      markerRefs.current[selectedBranch.id].openPopup();
-    }
-  }, [selectedBranch, userLocation, map, isMounted]);
+  // Separate useEffect for handling popup opening
+  useEffect(() => {
+    if (!isMounted || !map || !selectedBranch) return;
+
+    // Add a small delay to ensure marker is rendered
+    const timer = setTimeout(() => {
+      const marker = markerRefs.current[selectedBranch.id];
+      if (marker) {
+        // Close all open popups first
+        map.closePopup();
+        // Open the selected marker's popup
+        marker.openPopup();
+        // Center the map on the selected branch
+        map.setView([selectedBranch.latitude, selectedBranch.longitude], 13);
+      } else {
+        // If marker ref is not available, try to find and open popup by coordinates
+        const foundMarker = Object.values(markerRefs.current).find((marker) => {
+          if (marker && marker.getLatLng) {
+            const markerLatLng = marker.getLatLng();
+            return (
+              Math.abs(markerLatLng.lat - selectedBranch.latitude) < 0.0001 &&
+              Math.abs(markerLatLng.lng - selectedBranch.longitude) < 0.0001
+            );
+          }
+          return false;
+        });
+
+        if (foundMarker) {
+          map.closePopup();
+          foundMarker.openPopup();
+          map.setView([selectedBranch.latitude, selectedBranch.longitude], 13);
+        }
+      }
+    }, 150); // Increased delay to allow for marker cluster re-rendering
+
+    return () => clearTimeout(timer);
+  }, [selectedBranch, map, isMounted, allBranchLocations]);
 
   useEffect(() => {
     if (!isMounted) return;
@@ -188,7 +227,7 @@ const MapController = memo(({ selectedBranch, allBranchLocations, userLocation, 
       {userLocation && (
         <Circle
           center={[userLocation.latitude, userLocation.longitude]}
-          radius={selectedDistance * 1000} // 10 km in meters
+          radius={selectedDistance * 1000} // Convert km to meters
           pathOptions={{
             color: "#F30000",
             fillColor: "#F30000",
@@ -205,11 +244,27 @@ const MapController = memo(({ selectedBranch, allBranchLocations, userLocation, 
       >
         {allBranchLocations?.map((branch) => (
           <Marker
-            key={branch.id}
+            key={`marker-${branch.id}`} // More unique key to force re-render
             position={[branch.latitude, branch.longitude]}
             icon={mapPinIcon}
             ref={(ref) => {
-              if (ref) markerRefs.current[branch.id] = ref;
+              if (ref) {
+                markerRefs.current[branch.id] = ref;
+              }
+            }}
+            eventHandlers={{
+              add: () => {
+                // Ensure ref is set when marker is added to map
+                setTimeout(() => {
+                  if (selectedBranch?.id === branch.id) {
+                    const marker = markerRefs.current[branch.id];
+                    if (marker) {
+                      map.closePopup();
+                      marker.openPopup();
+                    }
+                  }
+                }, 50);
+              },
             }}
           >
             <Popup closeButton={false}>
