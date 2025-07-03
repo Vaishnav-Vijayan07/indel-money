@@ -301,6 +301,7 @@ export default function BranchLocationMap({ branchLocations: initialBranchLocati
           //   setBranchLocations(initialBranchLocations);
           // }
         },
+        
         (error) => {
           console.error("Geolocation error:", error);
           // Fallback to default center and initial branches
