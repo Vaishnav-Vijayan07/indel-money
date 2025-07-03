@@ -4,7 +4,7 @@ import NoContents from "@/components/NoContents";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/ombudsman`, {
-      cache: "no-store",
+      // cache: "no-store",
       //next: { revalidate: 600 },
     });
 
