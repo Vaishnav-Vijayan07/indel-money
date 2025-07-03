@@ -26,35 +26,83 @@ async function getMetaData() {
 
     if (result.status === "success") {
       return {
-        title: meta?.meta_title || "Our Directors | My Website",
-        description: meta?.meta_description || "Meet our management team and directors.",
-        keywords: meta?.meta_keywords || "management, directors, team",
+        title: meta?.meta_title || defaultMeta.title,
+        description: meta?.meta_description || defaultMeta.description,
+        keywords: meta?.meta_keywords || defaultMeta.keywords,
+        // Enhanced SEO fields
+        openGraph: {
+          title: meta?.og_title || meta?.meta_title || defaultMeta.title,
+          description: meta?.og_description || meta?.meta_description || defaultMeta.description,
+          images: meta?.og_image ? [{ url: meta.og_image, width: 1200, height: 630 }] : [],
+          type: "website",
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/board-of-directors`,
+        },
+        twitter: {
+          card: "summary_large_image",
+          title: meta?.twitter_title || meta?.meta_title || defaultMeta.title,
+          description: meta?.twitter_description || meta?.meta_description || defaultMeta.description,
+          images: meta?.twitter_image ? [meta.twitter_image] : [],
+        },
+        alternates: {
+          canonical: meta?.canonical_url || `${process.env.NEXT_PUBLIC_SITE_URL}/board-of-directors`,
+        },
         error: null,
       };
     }
     return {
-      title: "Our Directors | My Website",
-      description: "Meet our management team and directors.",
-      keywords: "management, directors, team",
-      error: result.message,
+      title: defaultMeta.title,
+      description: defaultMeta.description,
+      keywords: defaultMeta.keywords,
+      openGraph: {
+        title: defaultMeta.title,
+        description: defaultMeta.description,
+        type: "website",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/board-of-directors`,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: defaultMeta.title,
+        description: defaultMeta.description,
+      },
+      alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/board-of-directors`,
+      },
+      error: result.message || "No metadata found",
     };
   } catch (error) {
     return {
-      title: "Our Directors | My Website",
-      description: "Meet our management team and directors.",
-      keywords: "management, directors, team",
-      error: "Failed to fetch service data",
+      title: defaultMeta.title,
+      description: defaultMeta.description,
+      keywords: defaultMeta.keywords,
+      openGraph: {
+        title: defaultMeta.title,
+        description: defaultMeta.description,
+        type: "website",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/board-of-directors`,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: defaultMeta.title,
+        description: defaultMeta.description,
+      },
+      alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/board-of-directors`,
+      },
+
+      error: result.message || "No metadata found",
     };
   }
 }
 
 export async function generateMetadata() {
-  const { title, description, keywords } = await getMetaData();
-
+  const { title, description, keywords, twitter, openGraph, alternates } = await getMetaData();
   return {
     title,
     description,
     keywords,
+    twitter,
+    openGraph,
+    alternates,
   };
 }
 
