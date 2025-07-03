@@ -242,7 +242,7 @@ function DropdownMenu({ items, handleClose }) {
 const tabStyle =
   "group text-header1 capitalize hover:text-base2 w-full h-auto flex gap-[5px] justify-between transition-color duration-300 p-[15px] cursor-pointer";
 
-export default function MobNavMenu() {
+export default function MobNavMenu({logo, serverMediaPath}) {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const toggleDropdown = (dropdown) => {
@@ -275,7 +275,7 @@ export default function MobNavMenu() {
                 className="block transition-transform duration-300 hover:scale-105"
               >
                 <Image
-                  src="/icons/logo_sm.svg"
+                  src={logo ? `${serverMediaPath}${logo}` : "/icons/logo_sm.svg"}
                   alt="Logo"
                   width={145}
                   height={75}
