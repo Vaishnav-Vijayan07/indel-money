@@ -147,8 +147,8 @@ function EmployeeTestimonialsBox({ item, index }) {
         </div>
       </div>
       <div className="max-w-[90%] flex">
-        <div className="w-[45px] lg:w-[60px] 2xl:w-[80px] h-[45px] lg:h-[60px] 2xl:h-[80px] flex items-center justify-center min-sm:bg-base1 rounded-[10px_0_0_10px] lg:rounded-[15px_0_0_15px] 2xl:rounded-[20px_0_0_20px]">
-          <div className="group w-[45px] lg:w-[40px] 2xl:w-[60px] h-[45px] lg:h-[40px] 2xl:h-[60px] rounded-full overflow-hidden border-white border-1 border-solid max-sm:border-[#EE3824] relative z-0">
+        <div className="w-[60px] 2xl:w-[80px] h-[60px] 2xl:h-[80px] flex items-center justify-center min-sm:bg-base1 rounded-[10px_0_0_10px] lg:rounded-[15px_0_0_15px] 2xl:rounded-[20px_0_0_20px]">
+          <div className="group w-[40px] 2xl:w-[60px] h-[40px] 2xl:h-[60px] rounded-full overflow-hidden border-white border-1 border-solid max-sm:border-[#EE3824] relative z-0">
             <Image
               src={item?.avatar ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.avatar}` : "/images/employeeTestimonials-1.jpg"}
               alt={item?.image_alt ? item?.image_alt : "Employee Testimonials"}
@@ -159,15 +159,15 @@ function EmployeeTestimonialsBox({ item, index }) {
           </div>
         </div>
         <div className="flex flex-wrap max-sm:pl-[12px]">
-          <div className="w-full h-[20px] lg:h-[30px] 2xl:h-[40px] flex">
-            <div className="w-auto h-[20px] lg:h-[30px] 2xl:h-[40px] min-sm:bg-base1 rounded-[0_10px_0_0] lg:rounded-[0_15px_0_0] 2xl:rounded-[0_20px_0_0] inline-flex items-end pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]">
+          <div className="w-full :h-[30px] 2xl:h-[40px] flex">
+            <div className="w-auto h-[30px] 2xl:h-[40px] min-sm:bg-base1 rounded-[0_10px_0_0] lg:rounded-[0_15px_0_0] 2xl:rounded-[0_20px_0_0] inline-flex items-end pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]">
               <div className="text-[14px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-[1] font-medium text-white max-sm:text-[#4D4D4D] capitalize line-clamp-1">
                 {item.name}
               </div>
             </div>
           </div>
-          <div className="w-full h-[20px] lg:h-[30px] 2xl:h-[40px] flex">
-            <div className="w-auto h-[20px] lg:h-[30px] 2xl:h-[40px] min-sm:bg-base1 rounded-[0_10px_10px_0] lg:rounded-[0_15px_15px_0] 2xl:rounded-[0_20px_20px_0] inline-flex items-center pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]">
+          <div className="w-full h-[30px] 2xl:h-[40px] flex">
+            <div className="w-auto min-w-[80%] h-[30px] 2xl:h-[40px] min-sm:bg-base1 rounded-[0_10px_10px_0] lg:rounded-[0_15px_15px_0] 2xl:rounded-[0_20px_20px_0] inline-flex items-center pr-[10px] lg:pr-[15px] 2xl:pr-[20px] 3xl:pr-[30px]">
               <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1] font-medium text-white max-sm:text-[#4D4D4D] capitalize line-clamp-1">
                 {item.designation}
               </div>
@@ -296,7 +296,7 @@ export default function EmployeeTestimonials({
             </div>
           </div>
           <div className="w-full md:w-[calc(100%-268px)] lg:w-[calc(100%-368px)] xl:w-[calc(100%-520px)] 2xl:w-[calc(100%-676px)] 3xl:w-[calc(100%-820px)] lg:pl-[20px] xl:pl-[60px] 2xl:pl-[60px]">
-            <div className="max-sm:hidden w-full mb-[10px] lg:mb-[15px] 2xl:mb-[30px] flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
+            <div className="max-sm:hidden w-full mb-[10px] lg:mb-[15px] 2xl:mb-[30px] flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px] ">
               <div
                 className="text-title1 [&>span]:font-bold [&>span]:text-base2"
                 dangerouslySetInnerHTML={{ __html: testimonial_title ? testimonial_title : "<span>Employee &nbsp;Testimonials</span>" }}
@@ -305,9 +305,9 @@ export default function EmployeeTestimonials({
                 <Image src="/images/employeeTestimonials-delmt-1.svg" alt={"dfgdg"} fill sizes="80px" />
               </div>
             </div>
-            <div className="max-sm:hidden flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
+            <div className="max-sm:hidden flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px] items-center">
               <div className="flex-1">
-                <div className="text-sm1">
+                <div className="text-sm1 text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px]">
                   {testimonial_description ? testimonial_description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."}
                 </div>
               </div>
