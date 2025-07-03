@@ -5,7 +5,7 @@ async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/ombudsman`, {
       cache: "no-store",
-      next: { revalidate: 600 },
+      //next: { revalidate: 600 },
     });
 
     const result = await response.json();

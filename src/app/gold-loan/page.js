@@ -22,7 +22,7 @@ async function fetchGoldLoanData() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-loan`, {
       // cache: "no-store", // Ensure fresh data
       cache: "no-store",
-      next: { revalidate: 600 },
+      //next: { revalidate: 600 },
     });
     const result = await response.json();
     const goldloanData = result.data;

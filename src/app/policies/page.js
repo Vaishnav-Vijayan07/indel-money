@@ -8,7 +8,7 @@ async function fetchPolicyData(page = 1, limit = 10) {
       {
         // cache: "no-store", // or 'no-store' depending on your needs
         cache: "no-store",
-        next: { revalidate: 600 },
+        //next: { revalidate: 600 },
       }
     );
 

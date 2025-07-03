@@ -8,7 +8,7 @@ async function fetchBlogData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs/${slug}`, {
       cache: "no-store",
-      next: { revalidate: 600 },
+      //next: { revalidate: 600 },
     });
 
     if (!response.ok) {
