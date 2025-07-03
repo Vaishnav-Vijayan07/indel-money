@@ -25,31 +25,17 @@ const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLa
 const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: false });
 const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeModal"), { ssr: false });
 
-export default function Home({
-  initialData,
-  serviceBanner,
-  banner,
-  branchLocatorData,
-  initialError,
-}) {
+export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 
   return (
     <>
       {/* welcome contents*/}
-      {isMobile ? (
-        <MobWelcomeModal />
-      ) : banner || serviceBanner ? (
-        <WelcomeModal banner={banner} serviceBanner={serviceBanner} />
-      ) : null}
+      {isMobile ? <MobWelcomeModal /> : banner || serviceBanner ? <WelcomeModal banner={banner} serviceBanner={serviceBanner} /> : null}
 
       {/* banner section contents*/}
       <div className="hidden sm:block">
-        <HeroBanner
-          heroBanner={initialData?.heroBanner || []}
-          initialData={initialData}
-          announcement={initialData?.pageContent?.announcement_text}
-        />
+        <HeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} announcement={initialData?.pageContent?.announcement_text} />
       </div>
       <div className="block sm:hidden">
         <MobHeroBanner
@@ -61,18 +47,14 @@ export default function Home({
 
       {/* Dreams to Reality contents*/}
       <div className="hidden sm:block">
-        <DreamsToReality
-          initialData={initialData?.pageContent}
-          statsData={initialData?.homeStatistics}
-        />
+        <DreamsToReality initialData={initialData?.pageContent} statsData={initialData?.homeStatistics} />
       </div>
-      <div className="block sm:hidden">
-        {/* Develope api for smart money deals */}
-        <MobSmartMoneyDeals
-          title={initialData?.pageContent?.smart_deal_title}
-          deals={initialData?.smartMoneyDeals}
-        />
-      </div>
+      {initialData?.smartMoneyDeals?.length > 0 && (
+        <div className="block sm:hidden">
+          {/* Develope api for smart money deals */}
+          <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
+        </div>
+      )}
 
       {/* Gold loan contents*/}
       <div id="gold-loan-steps" className="hidden sm:block">
@@ -124,17 +106,10 @@ export default function Home({
 
       {/* Latest Updates contents*/}
       <div className="hidden sm:block">
-        <LatestUpdates
-          sliderItems={initialData?.blogs}
-          sliderTitle={initialData?.pageContent?.updates_section_title}
-          type="indel-money-cares"
-        />
+        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
       </div>
       <div className="block sm:hidden">
-        <MobLatestUpdates
-          sliderItems={initialData?.blogs}
-          sliderTitle={initialData?.pageContent?.updates_section_title}
-        />
+        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
       </div>
 
       {/* <div className="hidden sm:block">
