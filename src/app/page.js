@@ -32,7 +32,7 @@ async function fetchHomeData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/home`, {
       cache: "no-store",
-      next: { revalidate: 6000 },
+      // next: { revalidate: 60 },
       credentials: "include", // Ensures session cookie is sent
       headers: {
         "Content-Type": "application/json",
