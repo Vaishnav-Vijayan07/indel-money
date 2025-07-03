@@ -188,9 +188,12 @@ export default function EmployeeTestimonials({
   textTestimonials,
   videoTestimonials,
   title,
+  description,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState(0);
+
+  console.log("awards", awards);
 
   const handleImageClick = (index) => {
     if (swiperInstance) {
@@ -206,7 +209,7 @@ export default function EmployeeTestimonials({
             <AwardHighlightBox variant={"employeeTestimonials"} items={awards} />
           </div>
           <div className="sm:hidden block">
-            <MobAwardHighlight items={awards} title={title} />
+            <MobAwardHighlight items={awards} title={title} description={description} />
           </div>
         </div>
       </div>
