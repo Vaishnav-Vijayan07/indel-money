@@ -6,7 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true npm run build",
+    "lighthouse": "lighthouse http://localhost:3000 --view --chrome-flags=\"--headless\"",
+    "lighthouse-ci": "lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json --chrome-flags=\"--headless\"",
+    "perf": "npm run build && npm run start & sleep 5 && npm run lighthouse && kill %1",
+    "bundle-stats": "npx webpack-bundle-analyzer .next/static/chunks/*.js",
+    "size-check": "npm run build && du -sh .next/static/chunks/*",
+    "image-audit": "node scripts/image-audit.js",
+    "perf-budget": "node scripts/performance-budget.js",
+    "audit": "npm run analyze && npm run image-audit && npm run perf-budget"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
@@ -73,9 +82,13 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^15.3.4",
     "@types/node": "22.13.10",
     "@types/react": "19.0.11",
+    "chrome-launcher": "^1.2.0",
     "eslint": "^9",
-    "eslint-config-next": "15.1.3"
+    "eslint-config-next": "15.1.3",
+    "lighthouse": "^12.7.1",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }
