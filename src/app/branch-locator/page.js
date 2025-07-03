@@ -4,7 +4,7 @@ async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/branch-locator`, {
       // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
     const result = await response.json();

@@ -31,7 +31,7 @@ export async function generateMetadata() {
 async function fetchHomeData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/home`, {
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 6000 },
       credentials: "include", // Ensures session cookie is sent
       headers: {

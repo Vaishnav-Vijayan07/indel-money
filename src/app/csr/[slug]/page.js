@@ -13,7 +13,7 @@ const MobLatestUpdates = dynamic(() => import("@/components/features/csr/MobLate
 async function fetchCsrData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/csr/${slug}`, {
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
 

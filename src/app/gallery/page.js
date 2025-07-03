@@ -13,7 +13,7 @@ async function fetchData(page = 1, type = "all", limit = 6) {
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/event-gallery?page=${page}&limit=${limit}&type=${type}`,
       {
         // cache: "no-store", // Ensure fresh data
-        cache: "force-cache",
+        cache: "no-store",
         next: { revalidate: 600 },
       }
     );

@@ -86,7 +86,7 @@ export async function fetchContactData() {
 export async function fetchPolicyData(page = 1, limit = 10) {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/policies?page=${page}&limit=${limit}`, {
-            cache: 'no-store', // or 'force-cache' depending on your needs
+            cache: 'no-store', // or 'no-store' depending on your needs
         });
 
         // Check if the response is ok (status 200-299)
@@ -135,7 +135,7 @@ export async function fetchPolicyData(page = 1, limit = 10) {
 export async function fetchCorporateGoverneceData() {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/corporate-governance`, {
-            cache: 'no-store', // or 'force-cache' depending on your needs
+            cache: 'no-store', // or 'no-store' depending on your needs
         });
 
         // Check if the response is ok (status 200-299)
@@ -176,7 +176,7 @@ export async function fetchCorporateGoverneceData() {
 export async function fetchNcdData() {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/ncd-reports`, {
-            cache: 'no-store', // or 'force-cache' depending on your needs
+            cache: 'no-store', // or 'no-store' depending on your needs
         });
 
         // Check if the response is ok (status 200-299)
@@ -212,7 +212,7 @@ export async function fetchNcdData() {
 export async function fetchCreditRatingsData() {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/credit-ratings`, {
-            cache: 'no-store', // or 'force-cache' depending on your needs
+            cache: 'no-store', // or 'no-store' depending on your needs
         });
 
         // Check if the response is ok (status 200-299)
@@ -251,7 +251,7 @@ export async function fetchCreditRatingsData() {
 export async function fetchCsrData() {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/csr-details`, {
-            cache: 'no-store', // or 'force-cache' depending on your needs
+            cache: 'no-store', // or 'no-store' depending on your needs
         });
 
         // Check if the response is ok (status 200-299)

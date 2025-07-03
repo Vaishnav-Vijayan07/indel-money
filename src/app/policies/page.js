@@ -6,8 +6,8 @@ async function fetchPolicyData(page = 1, limit = 10) {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/policies?page=${page}&limit=${limit}`,
       {
-        // cache: "no-store", // or 'force-cache' depending on your needs
-        cache: "force-cache",
+        // cache: "no-store", // or 'no-store' depending on your needs
+        cache: "no-store",
         next: { revalidate: 600 },
       }
     );

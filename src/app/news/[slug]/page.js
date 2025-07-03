@@ -5,7 +5,7 @@ import RecentBlog from "@/components/features/blog/RecentBlog";
 async function fetchBlogData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news/${slug}`, {
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
 

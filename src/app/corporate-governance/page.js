@@ -3,8 +3,8 @@ import GoverenanceInfo from "../../components/features/investors/GoverenanceInfo
 async function fetchCorporateGoverneceData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/corporate-governance`, {
-      // cache: 'no-store', // or 'force-cache' depending on your needs
-      cache: "force-cache",
+      // cache: 'no-store', // or 'no-store' depending on your needs
+      cache: "no-store",
       next: { revalidate: 600 },
     });
 

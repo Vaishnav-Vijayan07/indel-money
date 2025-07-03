@@ -23,7 +23,7 @@ async function fetchCsrData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/csr?page=${page}&limit=${limit}`, {
       // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);

@@ -4,8 +4,8 @@ import CsrDetailsSection from "../../../components/features/investors/CsrDetails
 async function fetchCsrData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/csr-details`, {
-      // cache: 'no-store', // or 'force-cache' depending on your needs
-      cache: "force-cache",
+      // cache: 'no-store', // or 'no-store' depending on your needs
+      cache: "no-store",
       next: { revalidate: 600 },
     });
 

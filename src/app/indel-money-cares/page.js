@@ -5,7 +5,7 @@ async function fetchData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/indel-cares?page=${page}&limit=${limit}`, {
       // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
     const result = await response?.json();

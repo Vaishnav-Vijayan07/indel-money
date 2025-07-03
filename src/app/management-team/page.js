@@ -4,7 +4,7 @@ async function fetchManagementData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/management`, {
       // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
     const result = await response.json();
@@ -21,7 +21,7 @@ async function fetchManagementData() {
 async function getMetaData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=management`, {
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
     const result = await response.json();

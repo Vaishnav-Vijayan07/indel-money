@@ -5,7 +5,7 @@ async function fetchContactData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/contact`, {
       // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
 

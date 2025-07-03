@@ -6,7 +6,7 @@ async function fetchEventData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/indel-cares/${slug}`, {
       //   next: { revalidate: 600 },
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
 

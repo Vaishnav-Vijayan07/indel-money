@@ -4,7 +4,7 @@ import Report from "../../components/features/investors/Report";
 async function fetchReportData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/report`, {
-      cache: "force-cache",
+      cache: "no-store",
       next: { revalidate: 600 },
     });
 

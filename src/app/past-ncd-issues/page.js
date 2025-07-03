@@ -4,8 +4,8 @@ import NcdReports from "@/components/features/investors/NcdReports";
 async function fetchNcdData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/ncd-reports`, {
-      // cache: 'no-store', // or 'force-cache' depending on your needs
-      cache: "force-cache",
+      // cache: 'no-store', // or 'no-store' depending on your needs
+      cache: "no-store",
       next: { revalidate: 600 },
     });
 
