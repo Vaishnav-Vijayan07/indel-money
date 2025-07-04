@@ -129,7 +129,7 @@ export default function MobWelcomeModal() {
         <div className="w-full min-w-[380px] mx-auto bg-white rounded-[15px] p-[25px_20px]">
           <AlertDialogCancel
             onClick={handleClose}
-            className="focus:outline-0 flex gap-[4px] absolute z-0 top-[20px] right-[20px] transition-color cursor-pointer items-center"
+            className="focus:outline-0 flex gap-[4px] absolute z-0 top-[30px] right-[20px] transition-color cursor-pointer items-center"
           >
             <Image src="/images/icon-close.svg" alt="icon-close" width={10} height={10} />
           </AlertDialogCancel>
