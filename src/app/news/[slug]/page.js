@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import BlogDetail from "@/components/features/blog/BlogDetail";
 import RecentBlog from "@/components/features/blog/RecentBlog";
 import { defaultMeta } from "@/constants/constants";

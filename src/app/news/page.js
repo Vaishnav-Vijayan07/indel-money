@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import LatestNews from "@/pages/LatestNews";
 import AllNewsPage from "@/pages/AllNews";
 import { defaultMeta } from "@/constants/constants";

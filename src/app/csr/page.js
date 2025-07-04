@@ -1,4 +1,5 @@
-import dynamic from "next/dynamic";
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { Suspense, memo } from "react";
 import CSRItem from "@/components/csr/CsrItem";
@@ -11,14 +12,8 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { defaultMeta } from "@/constants/constants";
-
-const LatestUpdates = dynamic(() => import("@/components/features/home/LatestUpdates"), {
-  loading: () => <div>Loading slider...</div>,
-});
-const MobLatestUpdates = dynamic(() => import("@/components/features/csr/MobLatestUpdates.js"), {
-  loading: () => <div>Loading mobile slider...</div>,
-});
+import MobLatestUpdates from "../../components/features/home/MobLatestUpdates";
+import LatestUpdates from "../../components/features/home/LatestUpdates";
 
 async function fetchCsrData(page = 1, limit = 10) {
   try {

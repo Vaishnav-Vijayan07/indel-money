@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
+
+export const dynamic = "force-dynamic";
 import ContactBanner from "@/components/features/contact/ContactBanner";
 import WriteIntel from "@/components/features/contact/WriteIntel";
 import ContactFaq from "@/components/features/contact/ContactFaq";
 import { defaultMeta } from "@/constants/constants";
-
-const BranchLocator = dynamic(() => import("@/components/features/home/BranchLocator"));
+import BranchLocator from "../../components/features/home/BranchLocator";
 
 async function fetchContactsData() {
   try {

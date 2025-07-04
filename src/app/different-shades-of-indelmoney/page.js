@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import DifferentShadesIndelBanner from "@/components/features/about/DifferentShadesIndelBanner";
 import DifferentShadesIndelSlide from "@/components/features/about/DifferentShadesIndelSlide";
 
