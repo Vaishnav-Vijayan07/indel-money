@@ -5,8 +5,8 @@ export default function OurValues({ values, }) {
     return (
         <section className="w-full pt-[30px] xl:pt-[60px] 2xl:pt-[100px] pb-[30px] sm:pb-[50px] xl:pb-[30px] lg:pb-[40px] 2xl:pb-[70px] bg-[#17479E]">
             <div className="container">
-                <div className="relative flex flex-wrap -my-[12px] sm:-my-[15px] xl:-my-[20px] 2xl:-my-[30px] -mx-[10px] xl:-mx-[15px] 2xl:-mx-[20px]">
-                    <div className="absolute right-0 xl:right-auto xl:left-0 bottom-0 xl:bottom-auto xl:-top-[57px] z-1 max-w-[100%] md:max-w-[48%] h-auto max-sm:hidden">
+                <div className="relative flex flex-wrap">
+                    <div className="absolute right-0 lg:right-auto lg:left-0 bottom-0 lg:bottom-auto lg:top-[27%] xl:top-[0px] z-1 max-w-[100%] md:max-w-[48%] h-auto max-sm:hidden">
 
                         <Image
                             src="/images/bgText.svg"
@@ -28,7 +28,7 @@ export default function OurValues({ values, }) {
                         </div>
                     </div>
                     <div className="relative w-ful xl:w-[calc(100%-370px)] 2xl:w-[calc(100%-470px)] xl:pl-[30px] 2xl:pl-[50px]">
-                        <div className="w-full left-0 right-0 mx-auto max-w-[82%] -bottom-[10px] xl:-bottom-[75px] z-0 absolute">
+                        <div className="w-full left-0 right-0 mx-auto max-w-[82%] -bottom-[10px] xl:-bottom-[55px] z-0 absolute">
                             <Image
                                 src="/images/logoBg.png"
                                 alt="indel-logo"

@@ -17,12 +17,13 @@ async function fetchData() {
         contents: indelValues?.indelValueContent,
         values: indelValues?.indelValues,
         propositions: indelValues?.approachPropositions,
+        mobileBanners: indelValues?.mobileBanners,
         error: null,
       };
     }
-    return { contents: null, values: null, propositions: null, error: result.message };
+    return { contents: null, values: null, propositions: null, mobileBanners: null, error: result.message };
   } catch (error) {
-    return { contents: null, values: null, propositions: null, error: "Failed to fetch history data" };
+    return { contents: null, values: null, propositions: null, mobileBanners: null, error: "Failed to fetch history data" };
   }
 }
 
@@ -115,7 +116,7 @@ export async function generateMetadata() {
 }
 
 export default async function IndelValues() {
-  const { contents, values, propositions, error } = await fetchData();
+  const { contents, values, propositions, mobileBanners, error } = await fetchData();
 
   if (!contents || !values || !propositions) {
     return <div>Failed to fetch Indel Values data</div>;
@@ -127,7 +128,7 @@ export default async function IndelValues() {
         <IndelValueBanner image={contents?.banner_image} alt={contents?.image_alt} title={contents?.page_title} />
       </div>
       <div className="block sm:hidden">
-        <MobIndelValueBanner />
+        <MobIndelValueBanner mobileBanners={mobileBanners} />
       </div>
 
       {/* ManagementTeam contents */}
