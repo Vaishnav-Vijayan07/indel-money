@@ -27,7 +27,6 @@ const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeMod
 
 export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-
   return (
     <>
       {/* welcome contents*/}
@@ -65,7 +64,7 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
         />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoan title={"sample"} loanSteps={initialData?.loanSteps} />
+        <MobStepGoldLoan title={initialData?.pageContent?.step_title} loanSteps={initialData?.loanSteps} />
       </div>
 
       {/* Gold loan calculator*/}
