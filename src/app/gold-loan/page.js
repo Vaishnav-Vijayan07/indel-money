@@ -21,8 +21,8 @@ async function fetchGoldLoanData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-loan`, {
       // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
-      next: { revalidate: 600 },
+      // cache: "force-cache",
+      // next: { revalidate: 600 },
     });
     const result = await response.json();
     const goldloanData = result.data;
@@ -160,7 +160,7 @@ export default async function GoldLoan() {
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
   }
- return (
+  return (
     <>
       {/* Gold loan calculator contents*/}
       <div className="hidden sm:block">
@@ -171,6 +171,7 @@ export default async function GoldLoan() {
           gold_rate_text={contents?.gold_rate_text}
           banner_image={contents?.banner_image}
           alt={contents?.banner_alt}
+          banner_image_mobile={contents?.banner_image_mobile}
         />
       </div>
       <div className="block sm:hidden">
@@ -179,7 +180,7 @@ export default async function GoldLoan() {
           title={contents?.page_title}
           announcement_text={announcement?.text}
           gold_rate_text={contents?.gold_rate_text}
-          banner_image={contents?.banner_image}
+          banner_image={contents?.banner_image_mobile}
           alt={contents?.banner_alt}
         />
       </div>
