@@ -24,6 +24,7 @@ async function fetchData() {
         contents: careerData?.careersContent,
         gallery: careerData?.careerGallery,
         banners: careerData?.careerBanners,
+        mobileBanners: careerData?.mobileBanners,
         benefits: careerData?.empBenefits,
         awards: careerData?.awards,
         award_content: careerData?.awardContent,
@@ -151,7 +152,7 @@ export async function generateMetadata() {
 }
 
 export default async function Career() {
-  const { contents, banners, benefits, awards, award_content, gallery, testimonials, states, jobs, error } = await fetchData();
+  const { contents, banners,mobileBanners, benefits, awards, award_content, gallery, testimonials, states, jobs, error } = await fetchData();
 
   if (error) {
     return <div>{error}</div>;
@@ -159,7 +160,7 @@ export default async function Career() {
 
   return (
     <div className="w-full h-auto bg-linear-to-b from-base1/10 to-base2/10">
-      <CareerBanner banners={banners} />
+      <CareerBanner banners={banners} mobileBanners={mobileBanners} />
       <FindJob
         states={states}
         jobs={jobs}

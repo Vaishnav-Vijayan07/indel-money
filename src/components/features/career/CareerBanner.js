@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import Image from "next/image";
+import { useMediaQuery } from "@react-hook/media-query";
 
 import "./Career.css";
 
@@ -32,7 +33,9 @@ const slides = [
   },
 ];
 
-export default function CareerBanner({ banners }) {
+export default function CareerBanner({ banners,mobileBanners }) {
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+  const bannerItems = isMobile ? mobileBanners : banners;
   return (
     <section className="w-full block">
       <Swiper
@@ -50,7 +53,7 @@ export default function CareerBanner({ banners }) {
         spaceBetween={0}
         className="careerBannerSlide"
       >
-        {banners?.map((item, index) => (
+        {bannerItems?.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="w-full h-[565px] lg:h-[376px] xl:h-[420px] 2xl:h-[476px] 3xl:h-[568px] relative z-0 py-[30px] lg:py-[40px] 2xl:py-[50px] flex items-center max-sm:items-end after:content-[''] after:w-full after:h-[100%] after:absolute after:-z-1 after:top-0 after:left-0 after:block max-sm:after:bg-black/40 after:pointer-events-none">
               <Image
