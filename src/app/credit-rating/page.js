@@ -1,6 +1,7 @@
 import React from "react";
 import CreditRatings from "../../components/features/investors/CreditRatings";
 import { notFound } from "next/navigation";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchCreditRatingsData() {
   try {

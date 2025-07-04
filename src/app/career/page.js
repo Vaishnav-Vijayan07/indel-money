@@ -6,6 +6,7 @@ import FindJob from "@/components/features/career/FindJob";
 import MakeYourMove from "@/components/features/career/MakeYourMove";
 import BenefitsEmployee from "@/components/features/career/BenefitsEmployee";
 import MobBenefitsEmployee from "@/components/features/career/MobBenefitsEmployee";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchData() {
   try {

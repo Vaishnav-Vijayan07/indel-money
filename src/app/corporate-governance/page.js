@@ -1,4 +1,5 @@
 import GoverenanceInfo from "../../components/features/investors/GoverenanceInfo";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchCorporateGoverneceData() {
   try {

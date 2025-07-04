@@ -6,6 +6,7 @@ import Accolades from "../../components/features/about/Accolades";
 import Indelvalues from "../../components/features/about/IndelValuesInfo";
 import Investors from "../../components/features/about/InvestorsInfo";
 import LifeIndel from "../../components/features/about/LifeIndelInfo";
+import { defaultMeta } from "@/constants/constants";
 
 // MOBILE_VERSION
 import MobAboutFinacial from "../../components/features/about/MobAboutFinacial";

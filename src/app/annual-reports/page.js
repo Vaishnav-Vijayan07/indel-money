@@ -1,5 +1,7 @@
 import React from "react";
 import Report from "../../components/features/investors/Report";
+import { defaultMeta } from "@/constants/constants";
+
 
 async function fetchReportData() {
   try {

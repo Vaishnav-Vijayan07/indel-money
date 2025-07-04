@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import BlogDetail from "@/components/features/blog/BlogDetail";
 import RecentBlog from "@/components/features/blog/RecentBlog";
+import { defaultMeta } from "@/constants/constants";
 
 // Fetch blog data for a specific post
 async function fetchBlogData(slug) {
