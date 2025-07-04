@@ -17,7 +17,12 @@ const slides = [
 ];
 
 export default function AccoladesSlider({ accolades }) {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const navigation = {
+    nextEl: ".custom-next",
+    prevEl: ".custom-prev",
+  };
   return (
     <div className="w-full 3xl:px-[110px] lg:px-[70px] px-[20px]">
       <div className="relative w-full">

@@ -83,7 +83,7 @@ export default function MobLifeIndelInfo({ title, description, buttonText, butto
         {description ? renderHtml(description) : ""}
         <Link
           href={buttonLink || "#"}
-          className="group text-[12px] leading-none font-medium capitalize text-[#100f0f] flex items-center mt-[15px] hover:text-base1"
+          className="group text-[12px] leading-none font-bold capitalize text-[#100f0f] flex items-center mt-[15px] hover:text-base1"
         >
           {buttonText}
           <Image

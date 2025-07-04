@@ -55,17 +55,17 @@ export default function GoldLoanFaq({ faq_title, faqs }) {
                 className="flex justify-between w-full items-center font-medium text-left text-black 2xl:text-[1.25rem] xl:text[1rem] text-[0.8rem] cursor-pointer hover:no-underline transition-all duration-300 pb-[10px]"
                 onClick={() => toggleAccordion(index)}
               >
-                <div className="2xl:w-[calc(100%-33px)] w-[calc(100%-25px)] pr-2">
+                <div className="2xl:w-[calc(100%-33px)] w-[calc(100%-22px)] pr-2">
                   {faq.question}
                 </div>
                 {openIndex === index ? (
                   <Minus
-                    className="relative text-white bg-base2 rounded-full 2xl:w-[33px] 3xl:h-[33px] w-[22px] h-[22px] p-[3px] transition-all duration-300 xl:top-[25px]"
+                    className="relative text-white bg-base2 rounded-full 3xl:w-[33px] 3xl:h-[33px] w-[22px] h-[22px] transition-all duration-300 xl:top-[0]"
                     size={17}
                   />
                 ) : (
                   <Plus
-                    className="relative text-white bg-base2 rounded-full 2xl:w-[33px] 3xl:h-[33px] w-[22px] h-[22px] p-[3px] transition-all duration-300 xl:top-[25px]"
+                    className="relative text-white bg-base2 rounded-full 3xl:w-[33px] 3xl:h-[33px] w-[22px] h-[22px] transition-all duration-300 xl:top-[0]"
                     size={17}
                   />
                 )}

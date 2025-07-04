@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import PlaceholdersAndVanishInputDemo from "../../layout/footer/SubscribeForm";
-=======
 "use client";
 
 import PlaceholdersAndVanishInputDemo from "../footer/SubscribeForm";
->>>>>>> a1eed89f8abbd5d8dc58130a813add240c013a16
 import Image from "next/image";
 import Link from "next/link";
 import api from "../../../lib/api/axios";
@@ -111,7 +107,7 @@ function ContactBox({ href, src, title, alt }) {
       <span>
         <Image src={src} width={36} height={36} alt={alt} className="w-[15px] 4xs:w-[20px] sm:w-[20px] xl:w-[25px] 3xl:w-[30px] h-[auto] block" />
       </span>
-      <span className="text-[16px] lg:text-[20px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] font-medium group-hover:text-base2 transition-color duration-300">
+      <span className="text-[16px] lg:text-[18px] xl:text-[22px] 2xl:text-[25px] 3xl:text-[34px] font-medium group-hover:text-base2 transition-color duration-300">
         {title}
       </span>
     </a>
@@ -239,7 +235,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="w-full h-auto bg-[#c0dbff] rounded-[20px] sm:rounded-[15px] 3xl:rounded-[20px] p-[15px] 4xs:p-[20px] xs:p-[25px_25px] sm:p-[15px_20px] xl:p-[20px_40px] 2xl:px-[30px_60px] border-[1px] border-solid border-base1/10 flex items-center justify-center mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]">
+        <div className="w-full h-auto bg-[#c0dbff] rounded-[20px] sm:rounded-[15px] 3xl:rounded-[20px] p-[15px] 4xs:p-[20px] xs:p-[25px_25px]
+         sm:p-[15px_20px] xl:p-[20px_40px] 2xl:px-[30px_60px] border-[1px] border-solid border-base1/10 flex items-center justify-center mb-[20px] 
+         lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]">
           <div className="w-full h-auto flex flex-wrap items-center justify-between gap-[15px]">
             <div className="flex flex-wrap items-center max-sm:w-full gap-y-[10px] gap-x-[10px] 4xs:gap-x-[20px] sm:gap-x-[15px] 2xl:gap-x-[20px] 3xl:gap-x-[30px]">
               <div>
@@ -253,7 +251,7 @@ export default function Footer() {
                     href={item?.link ? item?.link : "#"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-[15px] 4xs:w-[20px] sm:w-[20px] xl:w-[20px] 3xl:w-[25px] h-auto aspect-square relative z-0 block transition-transform duration-300 hover:scale-105"
+                    className="w-[15px] 4xs:w-[20px] sm:w-[15px] 2xl:w-[20px] 3xl:w-[25px] h-auto aspect-square relative z-0 block transition-transform duration-300 hover:scale-105"
                   >
                     <Image
                       src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/goldIcon1.svg"}
