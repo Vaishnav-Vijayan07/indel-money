@@ -84,7 +84,7 @@ export default function OurValues({ propositions, title }) {
 
 export function ValueBox({ item, index, isExpanded, toggleReadMore }) {
   // Define character limit for preview
-  const PREVIEW_LIMIT = 150;
+  const PREVIEW_LIMIT = 400;
 
   // Check if description is long enough to need truncation
   const needsTruncation = item.description && item.description.length > PREVIEW_LIMIT;
