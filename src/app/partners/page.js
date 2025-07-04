@@ -4,9 +4,7 @@ import { defaultMeta } from "@/constants/constants";
 async function fetchPartnersData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/partners`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
-      next: { revalidate: 600 },
+      cache: "no-store", // Ensure fresh data
     });
     const result = await response?.json();
 
@@ -24,6 +22,8 @@ async function getMetaData() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=partners`);
     const result = await response.json();
     const meta = result.data;
+
+    
 
     if (result.status === "success") {
       return {

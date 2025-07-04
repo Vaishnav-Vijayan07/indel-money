@@ -162,7 +162,7 @@ export default function Footer({ content, icons }) {
             </div>
           </div>
           <div className="w-full lg:w-7/10 py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
-            <div className="w-full h-auto columns-2 sm:columns-4">
+            <div className="w-full h-auto columns-2 sm:columns-5">
               {navigations?.map((item, index) => (
                 <div
                   key={index}

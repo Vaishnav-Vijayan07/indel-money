@@ -5,10 +5,9 @@ import { defaultMeta } from "@/constants/constants";
 async function fetchContactData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/contact`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
-      next: { revalidate: 600 },
+      cache: "no-store", // Ensure fresh data
     });
+
 
     const result = await response.json();
     const contactData = result.data;
@@ -17,30 +16,33 @@ async function fetchContactData() {
       return {
         content: contactData?.content,
         contacts: contactData?.contact,
-        error: null,
+        error: null
       };
     }
     return {
       content: null,
       contacts: null,
-      error: result.message,
+      error: result.message
     };
   } catch (error) {
     return {
       content: null,
       contacts: null,
-      error: "Failed to fetch contact data",
+      error: "Failed to fetch contact data"
     };
   }
 }
 
+
 export default async function contact() {
-  const { content, contacts, error } = await fetchContactData();
+
+  const { content, contacts, error } = await fetchContactData()
 
   return (
     <>
       {/* contact*/}
       <Contact content={content} contacts={contacts} error={error} />
     </>
+
   );
 }

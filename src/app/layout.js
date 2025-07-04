@@ -18,7 +18,7 @@ export default async function RootLayout({ children }) {
   let footerIcons = [];
 
   try {
-    const res = await api.get("/web/footer", { cache: "force-cache", next: { revalidate: 600 } });
+    const res = await api.get("/web/footer", { cache: "no-store", next: { revalidate: 600 } });
     if (res.data.status === "success") {
       footerContent = res.data.data.content || "";
       footerIcons = res.data.data.icons || [];

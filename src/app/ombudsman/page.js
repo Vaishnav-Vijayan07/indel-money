@@ -5,8 +5,8 @@ import { defaultMeta } from "@/constants/constants";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/ombudsman`, {
-      cache: "force-cache",
-      next: { revalidate: 600 },
+      // cache: "no-store",
+      //next: { revalidate: 600 },
     });
 
     const result = await response.json();

@@ -9,9 +9,7 @@ const BranchLocator = dynamic(() => import("@/components/features/home/BranchLoc
 async function fetchContactsData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/contacts`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
-      next: { revalidate: 600 },
+      cache: "no-store", // Ensure fresh data
     });
     const result = await response.json();
 
@@ -26,13 +24,7 @@ async function fetchContactsData() {
     }
     return { contents: null, faqs: null, officeContacts: null, branchLocatorData: null, error: result.message };
   } catch (error) {
-    return {
-      contents: null,
-      faqs: null,
-      officeContacts: null,
-      branchLocatorData: null,
-      error: "Failed to fetch management data",
-    };
+    return { contents: null, faqs: null, officeContacts: null, branchLocatorData: null, error: "Failed to fetch management data" };
   }
 }
 

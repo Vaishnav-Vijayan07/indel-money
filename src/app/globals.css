@@ -1,5 +1,6 @@
 @import "tailwindcss";
-
+@import url('~leaflet.markercluster/dist/MarkerCluster.css');
+@import url('~leaflet.markercluster/dist/MarkerCluster.Default.css');
 @theme {
   --font-amino: "Amino", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
@@ -42,6 +43,7 @@
   }
 
   @media (min-width: 640px) {
+
     /* sm */
     :root {
       --container-x: var(--breakpoint-sm);
@@ -49,6 +51,7 @@
   }
 
   @media (min-width: 768px) {
+
     /* md */
     :root {
       --container-x: var(--breakpoint-md);
@@ -56,6 +59,7 @@
   }
 
   @media (min-width: 1024px) {
+
     /* lg */
     :root {
       --container-x: var(--breakpoint-lg);
@@ -66,6 +70,7 @@
   }
 
   @media (min-width: 1280px) {
+
     /* xl */
     :root {
       --container-x: var(--breakpoint-xl);
@@ -76,6 +81,7 @@
   }
 
   @media (min-width: 1536px) {
+
     /* 2xl */
     :root {
       --container-x: var(--breakpoint-2xl);
@@ -86,6 +92,7 @@
   }
 
   @media (min-width: 1920px) {
+
     /* 3xl */
     :root {
       --container-x: var(--breakpoint-3xl);
@@ -188,6 +195,15 @@
     border-color: #17479e;
   }
 
+  .columns-5 {
+    -moz-columns: 5;
+    columns: 5;
+  }
+
+  .gradient-stroke {
+    @apply bg-gradient-to-b from-[#4D8CFF] to-[#17479E];
+  }
+
   /* FONTS */
   .text-title1 {
     font-size: 20px;
@@ -212,6 +228,7 @@
   }
 
   @media (min-width: 640px) {
+
     /* sm */
     .text-title1 {
       font-size: 22px;
@@ -223,6 +240,7 @@
   }
 
   @media (min-width: 768px) {
+
     /* md */
     .text-title1 {
       font-size: 22px;
@@ -234,6 +252,7 @@
   }
 
   @media (min-width: 1024px) {
+
     /* lg */
     .text-title1 {
       font-size: 24px;
@@ -250,6 +269,7 @@
   }
 
   @media (min-width: 1280px) {
+
     /* xl */
     .text-title1 {
       font-size: 30px;
@@ -257,6 +277,7 @@
   }
 
   @media (min-width: 1536px) {
+
     /* 2xl */
     .text-title1 {
       font-size: 36px;
@@ -273,6 +294,7 @@
   }
 
   @media (min-width: 1920px) {
+
     /* 3xl */
     .text-title1 {
       font-size: 54px;
@@ -341,6 +363,7 @@
   }
 
   @media (min-width: 640px) {
+
     /* sm */
     .custom-container {
       max-width: 600px;
@@ -349,6 +372,7 @@
   }
 
   @media (min-width: 768px) {
+
     /* md */
     .custom-container {
       max-width: 750px;
@@ -356,6 +380,7 @@
   }
 
   @media (min-width: 1024px) {
+
     /* lg */
     .custom-container {
       max-width: 980px;
@@ -363,6 +388,7 @@
   }
 
   @media (min-width: 1280px) {
+
     /* xl */
     .custom-container {
       max-width: 1180px;
@@ -370,6 +396,7 @@
   }
 
   @media (min-width: 1536px) {
+
     /* 2xl */
     .custom-container {
       max-width: 1430px;
@@ -377,6 +404,7 @@
   }
 
   @media (min-width: 1920px) {
+
     /* 3xl */
     .custom-container {
       max-width: 1640px;
@@ -384,11 +412,9 @@
   }
 
   .bg-custom-gradient {
-    background: linear-gradient(
-      180deg,
-      rgba(23, 71, 158, 0.3) 0%,
-      rgba(235, 2, 8, 0.3) 100%
-    );
+    background: linear-gradient(180deg,
+        rgba(23, 71, 158, 0.3) 0%,
+        rgba(235, 2, 8, 0.3) 100%);
   }
 
   .custom-prev.swiper-button-disabled,
@@ -410,4 +436,12 @@
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%2384AFFFFF' stroke-width='2' stroke-dasharray='4%2c 4' stroke-dashoffset='8' stroke-linecap='square'/%3e%3c/svg%3e");
     border-radius: 10px;
   }
+}
+
+.filter-red {
+  filter: brightness(0) saturate(100%) invert(19%) sepia(90%) saturate(7486%) hue-rotate(357deg) brightness(103%) contrast(104%);
+}
+
+.filter-white {
+  filter: brightness(0) invert(1);
 }
