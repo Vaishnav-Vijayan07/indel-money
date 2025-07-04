@@ -2,6 +2,7 @@ import ServiceBanner from "@/components/features/services/ServiceBanner";
 import OtherGoldLoan from "@/components/features/services/OtherGoldLoan";
 import SmartMoneyDeal from "@/components/features/services/SmartMoneyDeal";
 import IndelRemit from "@/components/features/services/IndelRemit";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchManagementData() {
   try {

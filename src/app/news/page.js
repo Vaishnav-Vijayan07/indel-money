@@ -1,5 +1,6 @@
 import LatestNews from "@/pages/LatestNews";
 import AllNewsPage from "@/pages/AllNews";
+import { defaultMeta } from "@/constants/constants";
 
 async function getMetaData() {
   try {

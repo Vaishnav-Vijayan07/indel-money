@@ -35,7 +35,7 @@ const navigations = [
       { linkname: "Services", href: "/services" },
       // { linkname: "Loan Against Property", href: "/loan-against-property" },
       { linkname: "Gold Loan Schemes", href: "/gold-loan#scheme" },
-      { linkname: "E-Connect", href: "/loan-against-property" },
+      { linkname: "E-Connect", href: "https://econnect.indelmoney.com/payments/web-app/terms" },
     ],
   },
   {

@@ -2,6 +2,8 @@ import DifferentShadesIndelBanner from "@/components/features/about/DifferentSha
 import DifferentShadesIndelSlide from "@/components/features/about/DifferentShadesIndelSlide";
 
 import MobDifferentShadesIndelSlide from "@/components/features/about/MobDifferentShadesIndelSlide";
+import { defaultMeta } from "@/constants/constants";
+
 
 async function fetchData() {
   try {

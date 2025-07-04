@@ -1,4 +1,5 @@
 import BranchLocator from "../../components/features/home/BranchLocator";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchData() {
   try {

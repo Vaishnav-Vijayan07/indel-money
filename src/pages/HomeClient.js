@@ -39,7 +39,7 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
       </div>
       <div className="block sm:hidden">
         <MobHeroBanner
-          heroBanner={initialData?.heroBanner || []}
+          heroBanner={initialData?.mobileBanners || []}
           initialData={initialData}
           announcement={initialData?.pageContent?.announcement_text}
         />
