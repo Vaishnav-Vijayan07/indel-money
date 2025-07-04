@@ -14,6 +14,7 @@ import "./Home.css";
 import EnquiryForm from "@/components/common/EnquiryForm";
 
 export default function MobHeroBanner({ heroBanner, initialData, announcement }) {
+  console.log("heroBanner", heroBanner);
   return (
     <section className="w-full block relative z-0 overflow-hidden">
       <Swiper
@@ -34,7 +35,7 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement })
             className="relative z-0 flex! items-end before:absolute before:inset-0 before:-z-1 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full py-[calc(var(--marquee-y)+50px)]"
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
+              src={item?.image_mobile ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image_mobile}` : ""}
               alt={item.image_alt_text}
               fill
               sizes="100vw"
