@@ -11,39 +11,21 @@ import {
 } from "@/components/ui/custom-alert-dialog";
 import GoldLoanForm from "./GoldLoanForm";
 
-const fetchGoldTypes = async () => {
+async function fetchGoldCaratTypes() {
   try {
-    const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-types`);
-    if (data.success) {
-      return data.data?.map((type) => ({
-        label: type.gold_type_name,
-        value: type.id,
-      }));
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-carat-types`, {
+      cache: "no-store", // Ensure fresh data
+    });
+    const result = await response.json();
+    if (result.success) {
+      return result;
     } else {
-      toast.error("Failed to fetch gold types!");
-      return [];
+      data = [];
     }
   } catch (error) {
-    toast.error("gold types fetching failed!");
+    // toast.error("gold carat fetching failed!");
   }
-};
-
-const fetchGoldCaratTypes = async () => {
-  try {
-    const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-carat-types`);
-    if (data.success) {
-      return data.data?.map((type) => ({
-        label: type.name,
-        value: type.id,
-      }));
-    } else {
-      toast.error("Failed to fetch gold carat types!");
-      return [];
-    }
-  } catch (error) {
-    toast.error("gold carat fetching failed!");
-  }
-};
+}
 
 async function fetchData() {
   try {
@@ -61,7 +43,25 @@ async function fetchData() {
   }
 }
 
-function FloatingCalculator() {
+async function fetchGoldTypeData() {
+  console.log("triggered");
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-types`, {
+      cache: "no-store", // Ensure fresh data
+    });
+    const result = await response.json();
+
+    if (result.success) {
+      return { data: result.data, error: null };
+    }
+    return { data: null, error: result.message };
+  } catch (error) {
+    return { data: null, error: "Failed to fetch header data" };
+  }
+}
+
+function FloatingCalculator({ formattedGoldCaratTypes, formattedGoldTypes }) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -81,7 +81,7 @@ function FloatingCalculator() {
                 Gold Loan <span className="text-base2 font-bold">&nbsp;Calculator</span>
               </AlertDialogTitle>
             </div>
-            <GoldLoanForm />
+            <GoldLoanForm goldCaratTypes={formattedGoldCaratTypes} goldTypes={formattedGoldTypes} />
           </div>
         </div>
       </AlertDialogContent>
@@ -91,6 +91,9 @@ function FloatingCalculator() {
 
 export default async function FloatingButton() {
   const { buttons, error } = await fetchData();
+  const { data } = await fetchGoldTypeData();
+  const { data: formattedGoldCaratTypes } = await fetchGoldCaratTypes();
+  console.log("formattedGoldCaratTypes ===>", formattedGoldCaratTypes);
 
   if (error) {
     return <div>{error}</div>;
@@ -115,7 +118,16 @@ export default async function FloatingButton() {
       ))}
 
       <div>
-        <FloatingCalculator />
+        <FloatingCalculator
+          formattedGoldTypes={data?.map((type) => ({
+            label: type.gold_type_name,
+            value: type.id,
+          }))}
+          formattedGoldCaratTypes={formattedGoldCaratTypes?.map((type) => ({
+            label: type.name,
+            value: type.id,
+          }))}
+        />
       </div>
     </div>
   );
