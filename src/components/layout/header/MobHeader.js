@@ -149,7 +149,7 @@ export default function MobHeader({ socialLinks, links ,logo}) {
                     </Link>
                   </div> */}
                   <div>
-                    <MobNavMenu />
+                    <MobNavMenu logo={logo} serverMediaPath={serverMediaPath} />
                   </div>
                 </div>
               </div>

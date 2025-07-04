@@ -1,6 +1,7 @@
 import IndelHistory from "../../components/features/history/IndelHistory";
 import YearsInception from "../../components/features/history/YearsInception";
 import MobYearsInception from "../../components/features/history/MobYearsInception";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchHistoryData() {
   try {

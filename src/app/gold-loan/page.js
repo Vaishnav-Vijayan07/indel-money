@@ -16,6 +16,7 @@ import MobGoldLoanServices from "../../components/features/goldLoan/MobGoldLoanS
 import MobGoldLoanScheme from "../../components/features/goldLoan/MobGoldLoanScheme";
 import MobGoldLoanFaq from "../../components/features/goldLoan/MobGoldLoanFaq";
 import { title } from "process";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchGoldLoanData() {
   try {

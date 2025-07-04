@@ -1,6 +1,7 @@
 import Gallery from "@/components/features/gallery/Gallery";
 import MobGallery from "@/components/features/gallery/MobGallery";
 import NoContents from "@/components/NoContents";
+import { defaultMeta } from "@/constants/constants";
 
 const defaultGalleryMeta = {
   title: "Gallery | My Website",

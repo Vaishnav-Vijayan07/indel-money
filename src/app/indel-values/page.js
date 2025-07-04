@@ -2,6 +2,7 @@ import IndelValueBanner from "@/components/features/about/IndelValueBanner";
 import MobIndelValueBanner from "@/components/features/about/MobIndelValueBanner";
 import OurValues from "@/components/features/about/OurValues";
 import OurApproach from "@/components/features/about/OurApproach";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchData() {
   try {

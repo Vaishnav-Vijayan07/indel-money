@@ -1,6 +1,7 @@
 import LatestBlogs from "@/pages/LatestBlogs";
 import AllBlogsPage from "@/pages/AllBlogs";
 import { Suspense } from "react";
+import { defaultMeta } from "@/constants/constants";
 
 async function getMetaData() {
   const defaultMeta = {

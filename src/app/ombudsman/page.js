@@ -1,5 +1,6 @@
 import Ombudsman from "@/components/features/ombudsman/Ombudsman";
 import NoContents from "@/components/NoContents";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchData() {
   try {
