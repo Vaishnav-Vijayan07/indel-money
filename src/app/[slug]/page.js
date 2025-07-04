@@ -1,4 +1,5 @@
 import PrivacyPolicy from "@/components/features/privacy/PrivacyPolicy";
+const { notFound } = await import("next/navigation");
 
 async function fetchData(type) {
   try {
@@ -8,20 +9,23 @@ async function fetchData(type) {
 
     const result = await response.json();
     const PolicyData = result.policy;
+    console.log("result", result);
 
     if (result.status === "success") {
       return {
         content: PolicyData?.content,
         error: null,
       };
+    } else {
+      notFound();
     }
-    s;
 
     return {
       content: null,
       error: result.message,
     };
   } catch (error) {
+    notFound();
     return {
       content: null,
       error: "Failed to policy data",
