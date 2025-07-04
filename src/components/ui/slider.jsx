@@ -31,7 +31,7 @@ function Slider({
       max={max}
       className={cn(
         "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-        "my-[30px_20px] 2xl:my-[35px_20px] 3xl:my-[40px_20px]",
+        "my-[30px_20px] 2xl:my-[35px_20px] 3xl:my-[40px_20px] 5xl:my-[60px_20px]",
         className
       )}
       {...props}
@@ -55,7 +55,7 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
-          className="border-primary bg-background block size-3 2xl:size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-1 ring-base1 focus-visible:none focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 bg-base1 relative z-0 after:content-[attr(aria-valuenow)] after:absolute after:-z-1 after:-top-6 after:left-1/2 after:-translate-x-1/2 after:text-[10px] after:leading-none after:text-white after:text-center after:min-w-[60px] after:p-[4px_6px] after:rounded-[5px] after:bg-[#ee3824]"
+          className="border-primary bg-background block size-3 2xl:size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-1 ring-base1 focus-visible:none focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 bg-base1 relative z-0 after:content-[attr(aria-valuenow)] after:absolute after:-z-1 after:-top-6 after:left-1/2 after:-translate-x-1/2 after:text-[10px] 2xl:after:text-[14px] 3xl:after:text-[16px] after:leading-none after:text-white after:text-center after:min-w-[60px] after:p-[4px_6px] after:rounded-[5px] after:bg-[#ee3824]"
         />
       ))}
 
