@@ -28,7 +28,7 @@ async function fetchCsrData(page = 1, limit = 10) {
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const result = await response.json();
     if (result.status === "success") {
-    const { content, sliderItems, csr, pagination } = result?.data || {};
+    const { content, sliderItems, csr, pagination } = result.data || {};
       return {
         content,
         sliderData: sliderItems,
