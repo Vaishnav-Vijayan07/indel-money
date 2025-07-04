@@ -34,8 +34,6 @@ async function fetchBlogsData() {
   }
 }
 
-
-
 async function LatestBlogs() {
   const { content, blogs } = await fetchBlogsData();
   return (
@@ -49,7 +47,13 @@ async function LatestBlogs() {
         </div>
       </section>
       <div className="sm:hidden block">
-        <MobLatestUpdates />
+        <MobLatestUpdates
+          title={content?.title}
+          sliderItems={blogs || []}
+          sliderTitle={content?.slider_title || "Latest Updates"}
+          sliderButtonText={content?.slider_button_text || "View All"}
+          sliderButtonLink={content?.slider_button_link || "/blog"}
+        />
       </div>
       <div className="sm:block hidden">
         <LatestUpdates
