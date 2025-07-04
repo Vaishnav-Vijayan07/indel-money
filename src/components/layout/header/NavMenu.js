@@ -183,7 +183,7 @@ function MegaMenu({ items }) {
 }
 
 const tabStyle =
-  "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
+  "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2! group hover:[&*svg:rotate-45]";
 
 export default function NavMenu() {
   const [openDropdown, setOpenDropdown] = useState(null);

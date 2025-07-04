@@ -1,7 +1,7 @@
 import React from "react";
 import Policies from "../../components/features/investors/Policies";
 
-async function fetchPolicyData(page = 1, limit = 5) {
+async function fetchPolicyData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/policies?page=${page}&limit=${limit}`, {
       cache: "no-store", // or 'force-cache' depending on your needs

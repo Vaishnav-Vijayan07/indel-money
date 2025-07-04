@@ -2,11 +2,6 @@ import React from "react";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 
 function PaginationComponent({ totalPages, currentPage, onPageChange }) {
-  console.log("PaginationComponent rendered with:", {
-    totalPages,
-    currentPage,
-  });
-
   // Don't render if there's only one page or no pages
   if (totalPages <= 1) return null;
 
@@ -50,8 +45,6 @@ function PaginationComponent({ totalPages, currentPage, onPageChange }) {
 
   const visiblePages = totalPages <= 7 ? Array.from({ length: totalPages }, (_, i) => i + 1) : getVisiblePages();
 
-  console.log("Visible pages:", visiblePages);
-
   return (
     <Pagination className="sm:justify-end justify-start mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
       <PaginationContent>
@@ -77,8 +70,6 @@ function PaginationComponent({ totalPages, currentPage, onPageChange }) {
               <PaginationLink
                 isActive={page == currentPage}
                 onClick={() => {
-                  console.log(page);
-                  console.log(currentPage);
                   onPageChange(page);
                 }}
                 className="cursor-pointer"

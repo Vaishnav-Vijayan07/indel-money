@@ -17,7 +17,7 @@ export const fetchActiveJobsData = createAsyncThunk("jobs/fetchActiveJobs", asyn
     if (location) params.location = location
 
     try {
-        const response = await api.get("/web/career-active-jobs", { params: params }, { timeout: 5000 });
+        const response = await api.get("/web/career-active-jobs", { params: params });
         if (response.data.status !== "success") {
             return rejectWithValue(response.data.message || "Failed to fetch ActiveJobs data");
         }

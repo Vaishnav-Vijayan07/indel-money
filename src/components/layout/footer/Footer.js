@@ -1,40 +1,7 @@
-"use client";
-
 import PlaceholdersAndVanishInputDemo from "../footer/SubscribeForm";
 import Image from "next/image";
 import Link from "next/link";
-import api from "../../../lib/api/axios";
-
 import "./Footer.css";
-import { useEffect, useState } from "react";
-
-const socialmedias = [
-  {
-    href: "/",
-    src: "/images/icon-fb.svg",
-    alt: "fb",
-  },
-  {
-    href: "/",
-    src: "/images/icon-youtube.svg",
-    alt: "youtube",
-  },
-  {
-    href: "/",
-    src: "/images/icon-insta.svg",
-    alt: "insta",
-  },
-  {
-    href: "/",
-    src: "/images/icon-linkedin.svg",
-    alt: "linkedin",
-  },
-  {
-    href: "/",
-    src: "/images/icon-x.svg",
-    alt: "x",
-  },
-];
 
 const navigations = [
   {
@@ -85,9 +52,9 @@ const navigations = [
     links: [
       { linkname: "Privacy Policy", href: "/privacy-policy" },
       { linkname: "Disclaimer", href: "/disclaimer" },
-      { linkname: "Mobile App Policy", href: "/mobile-app-policy" },
-      { linkname: "Fair Practice Code", href: "/fair-practice-code" },
-      { linkname: "Terms & Conditions", href: "/terms-and-conditions" },
+      { linkname: "Mobile App Policy", href: "/mobile-app-privacy-policy-indel-money-private-limited" },
+      { linkname: "Fair Practice Code", href: "/fair-practices-code" },
+      { linkname: "Terms & Conditions", href: "/gold-loan-terms-and-conditions" },
       { linkname: "KYC Policy", href: "/kyc-policy" },
     ],
   },
@@ -118,39 +85,20 @@ function ExternalLinkBtn({ btn1, btn1_link, btn2, btn2_link }) {
   return (
     <div className="flex flex-wrap flex-col sm:flex-row gap-[10px] sm:gap-[10px] 2xl:gap-[15px] 3xl:gap-[20px]">
       <div>
-        <Link href={btn1_link ? btn1_link : "/"} className="btn btn-base1 w-[120px] sm:w-[100px] xl:w-[110px] 3xl:w-[160px]">
+        <a href={btn1_link ? btn1_link : "/"} target="_blank" className="btn btn-base1 w-[120px] sm:w-[100px] xl:w-[110px] 3xl:w-[160px]">
           {btn1 ? btn1 : "E Connect"}
-        </Link>
+        </a>
       </div>
       <div>
-        <Link href={btn2_link ? btn2_link : "/"} className="btn btn-base2 w-[120px] sm:w-[100px] xl:w-[110px] 3xl:w-[160px]">
+        <a href={btn2_link ? btn2_link : "/"} target="_blank" className="btn btn-base2 w-[120px] sm:w-[100px] xl:w-[110px] 3xl:w-[160px]">
           {btn2 ? btn2 : "Indel Remit"}
-        </Link>
+        </a>
       </div>
     </div>
   );
 }
 
-export default function Footer() {
-  const [footerData, setFooterData] = useState(null);
-  const [icons, setIcons] = useState([]);
-
-  const fetchFooterData = async () => {
-    try {
-      const { data } = await api.get("/web/footer", {});
-      if (data.status === "success" && data.data) {
-        setFooterData(data.data.content);
-        setIcons(data.data.icons);
-      }
-    } catch (error) {
-      console.error("Error fetching footer data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchFooterData();
-  }, []);
-
+export default function Footer({ content, icons }) {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full h-auto block bg-[#e6edf7] pt-[30px] lg:pt-[40px] xl:pt-[60px] 3xl:pt-[80px] pb-[15px] lg:pb-[20px] xl:pb-[30px] 3xl:pb-[40px]">
@@ -159,7 +107,7 @@ export default function Footer() {
           <div className="w-full lg:w-3/10 py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
             <div className="w-full h-auto block mb-4 xl:mb-6">
               <Image
-                src={footerData?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${footerData?.logo}` : "/images/logo-ft.svg"}
+                src={content?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content?.logo}` : "/images/logo-ft.svg"}
                 alt="logo"
                 width={360}
                 height={60}
@@ -167,49 +115,54 @@ export default function Footer() {
               />
             </div>
             <div className="w-full h-auto block mb-[10px] xl:mb-[15px]">
-              <div className="text-footer1 mb-[10px] 2xl:mb-[15px]">{footerData?.title}</div>
+              <div className="text-footer1 mb-[10px] 2xl:mb-[15px]">{content?.title}</div>
               <div className="text-footer2 leading-[1.3] mb-[10px] sm:mb-[15px]">
-                {footerData?.address
-                  ? footerData?.address
+                {content?.address
+                  ? content?.address
                   : "Indel Money Limited Office No. 301, Floor No. 3, Sai Arcade, N S Road, Mulund, West Mumbai - 400 080"}
               </div>
             </div>
             <div className="w-full h-auto block mb-[15px] xl:mb-[15px]">
               <div className="text-[14px] lg:text-[16px] 3xl:text-[20px] font-medium text-[#1b1b1b] flex gap-[10px] lg:gap-[15px] 3xl:gap-[20px] my-[10px] 3xl:my-[15px]">
-                <Image src="/images/icon-ft-call.svg" alt="call" width={16} height={16} className="w-[16px] h-auto aspect-1/1" />
-                <Link href="tel:18004253990" target="_blank" rel="noopener noreferrer" className="hover:text-base2 transition-color duration-300">
-                  {footerData?.toll_free_num ? footerData?.toll_free_num : "1800 4253 990"}
+                <Image src={"/images/icon-ft-call.svg"} alt="call" width={16} height={16} className="w-[16px] h-auto aspect-1/1" />
+                <Link
+                  href={content?.toll_free_num ? `tel:${content?.toll_free_num}` : "tel:18004253990"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-base2 transition-color duration-300"
+                >
+                  {content?.toll_free_num ? content?.toll_free_num : "1800 4253 990"}
                 </Link>
               </div>
               <div className="text-[14px] lg:text-[16px] 3xl:text-[20px] font-medium text-[#1b1b1b] flex gap-[10px] lg:gap-[15px] 3xl:gap-[20px] my-[10px] 3xl:my-[15px]">
                 <Image src="/images/icon-ft-email.svg" alt="mail" width={16} height={16} className="w-[16px] h-auto aspect-1/1" />
                 <Link
-                  href={footerData?.email ? `mailto:${footerData?.email}` : "mailto:care@indelmoney.com"}
+                  href={content?.email ? `mailto:${content?.email}` : "mailto:care@indelmoney.com"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-base2 transition-color duration-300"
                 >
-                  {footerData?.email ? footerData?.email : "care@indelmoney.com"}
+                  {content?.email ? content?.email : "care@indelmoney.com"}
                 </Link>
               </div>
             </div>
             <div className="w-full h-auto block sm:mb-[15px] xl:mb-[20px]">
               <h4 className="text-[14px] lg:text-[16px] 3xl:text-[18px] leading-none font-medium text-black mb-[15px] 3xl:mb-[20px]">
-                {footerData?.news_letter_title ? footerData?.news_letter_title : "Subscribe to our newsletter"}
+                {content?.news_letter_title ? content?.news_letter_title : "Subscribe to our newsletter"}
               </h4>
               <PlaceholdersAndVanishInputDemo />
             </div>
             <div className="w-full h-auto hidden sm:block">
               <ExternalLinkBtn
-                btn1={footerData?.button_1_text}
-                btn1_link={footerData?.button_1_link}
-                btn2={footerData?.button_2_text}
-                btn2_link={footerData?.button_2_link}
+                btn1={content?.button_1_text}
+                btn1_link={content?.button_1_link}
+                btn2={content?.button_2_text}
+                btn2_link={content?.button_2_link}
               />
             </div>
           </div>
           <div className="w-full lg:w-7/10 py-[10px] lg:py-0 lg:px-[20px] xl:px-[30px] 3xl:px-[35px]">
-            <div className="w-full h-auto columns-2 sm:columns-4">
+            <div className="w-full h-auto columns-2 sm:columns-5">
               {navigations?.map((item, index) => (
                 <div
                   key={index}
@@ -242,7 +195,7 @@ export default function Footer() {
             <div className="flex flex-wrap items-center max-sm:w-full gap-y-[10px] gap-x-[10px] 4xs:gap-x-[20px] sm:gap-x-[15px] 2xl:gap-x-[20px] 3xl:gap-x-[30px]">
               <div>
                 <div className="text-[16px] sm:text-[16px] lg:text-[20px] 3xl:text-[24px] font-medium text-black">
-                  {footerData?.social_media_text ? footerData?.social_media_text : "Follow Us on:"}
+                  {content?.social_media_text ? content?.social_media_text : "Follow Us on:"}
                 </div>
               </div>
               {icons?.map((item, index) => (
@@ -263,22 +216,22 @@ export default function Footer() {
                 </div>
               ))}
             </div>
-            <div>
-              <ContactBox
-                href={footerData?.icon_section_link ? footerData?.icon_section_link : "/branch-locator"}
-                src="/images/icon-map.svg"
-                title={footerData?.icon_section_text ? footerData?.icon_section_text : "Branch Locator"}
-                alt="location"
-              />
-            </div>
-            <div>
-              <ContactBox
-                href={footerData?.toll_free_num ? `tel:${footerData?.toll_free_num}` : "tel:18004253990"}
-                src="/images/icon-call.svg"
-                title={footerData?.toll_free_num ? footerData?.toll_free_num : "1800 425 39 90"}
-                alt="call"
-              />
-            </div>
+              <div>
+                  <ContactBox
+                    href={content?.branch_locator_link ? content?.branch_locator_link : "/branch-locator"}
+                    src={ content?.branch_locator_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content?.branch_locator_icon_web}` : "/images/icon-map.svg"}
+                    title={content?.branch_locator ? content?.branch_locator : "Branch Locator"}
+                    alt="location"
+                  />
+                </div>
+                <div>
+                  <ContactBox
+                    href={content?.toll_free_num ? `tel:${content?.toll_free_num}` : "tel:18004253990"}
+                    src={ content?.toll_free_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content?.toll_free_icon_web}` : "/images/icon-call.svg"}
+                    title={content?.toll_free_num ? content?.toll_free_num : "1800 425 39 90"}
+                    alt="call"
+                  />
+                </div>
           </div>
         </div>
         <div className="w-full h-auto pb-[15px] mb-[15px] border-b-[1px] border-solid border-black/20 flex flex-wrap sm:hidden">

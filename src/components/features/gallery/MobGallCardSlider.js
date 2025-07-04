@@ -11,61 +11,50 @@ const slides = [
   {
     src: "/images/gallSlide01.jpg",
     title: "0nam 2021",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages 1",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages 1",
   },
   {
     src: "/images/gallSlide02.jpg",
     title: "0nam 2022",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages 2",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages 2",
   },
   {
     src: "/images/gallSlide03.jpg",
     title: "0nam 2023",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages 3",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages 3",
   },
   {
     src: "/images/gallSlide04.jpg",
     title: "0nam 2024",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages 4",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages 4",
   },
   {
     src: "/images/gallSlide05.jpg",
     title: "0nam 2025",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages 5",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages 5",
   },
   {
     src: "/images/gallSlide02.jpg",
     title: "0nam 2026",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages 6",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages 6",
   },
   {
     src: "/images/gallSlide04.jpg",
     title: "0nam 2024",
-    description:
-      "There are many variations of passages of Lorem Ipsum available There are many variations of passages 7",
+    description: "There are many variations of passages of Lorem Ipsum available There are many variations of passages 7",
   },
 ];
 
-export default function MobGallCardSlider() {
+export default function MobGallCardSlider({ items }) {
   const [activeIndex, setActiveIndex] = useState(2);
   return (
     <div className="w-full flex flex-wrap justify-center items-center">
       <div className="container">
         <div className="w-full max-w-full relative overflow-hidden 4xs:px-[45px] px-[35px] py-[20px] bg-base1 rounded-[20px] bg-linear-to-br from-base1/80 to-base2/80 mb-[20px]">
           <div className="absolute inset-0 bg-white opacity-10 backdrop-blur-lg pointer-events-none rounded-[20px]" />
-          <h3 className="text-[16px] leading-[1.2] font-semibold text-center text-white uppercase">
-            {slides[activeIndex]?.title}
-          </h3>
+          <h3 className="text-[16px] leading-[1.2] font-semibold text-center text-white uppercase">{items?.[activeIndex]?.title}</h3>
           <span className="w-full max-w-[120px] h-[1px] bg-white block mx-auto my-[5px]"></span>
-          <p className="text-sm1 text-center text-white">
-            {slides[activeIndex]?.description}
-          </p>
+          <p className="text-sm1 text-center text-white">{items?.[activeIndex]?.description}</p>
         </div>
       </div>
       <style>{`
@@ -148,7 +137,7 @@ export default function MobGallCardSlider() {
         }}
         className="w-full max-w-full"
       >
-        {slides?.map((slide, index) => (
+        {items?.map((slide, index) => (
           <SwiperSlide
             key={index}
             className="w-full h-full GallRoundSlide not-[:where(.swiper-slide-visible)]:opacity-0 not-[:has(.swiper-slide-active)]:[.SwiprCntn]:opacity-0"
@@ -156,7 +145,7 @@ export default function MobGallCardSlider() {
             {({ isActive }) => (
               <div className="relative w-full 4xs:h-[180px] h-[160px] rounded-[13px] overflow-hidden shadow-lg">
                 <Image
-                  src={slide.src}
+                  src={slide?.gallery ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${slide?.gallery}` : "/images/gallSlide05.jpg"}
                   alt={`Slide ${index}`}
                   fill
                   sizes="112px"

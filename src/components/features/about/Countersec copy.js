@@ -13,7 +13,7 @@ const stylesForEven = `${boxStyle} md:h-[calc(100%-50px)]`;
 
 export default function CountersecCopy({ statsData }) {
 
-  console.log(statsData);
+  
   return (
     <div className="flex flex-wrap md:items-end -m-[5px] 3xl:-m-[10px] md:h-[260px] 2xl:h-[300px] 3xl:h-[370px]">
       {statsData?.map((item, index) => (

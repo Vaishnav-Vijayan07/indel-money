@@ -75,13 +75,7 @@ export default function LifeAtIndel({ pageContent, lifeAtIndel, image1, image2, 
               />
             )}
 
-            <div className="text-sm1 line-clamp-4 mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
-              {/* {{ Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged.}} */}
+            <div className="text-sm1 mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
               {pageContent?.life_section_description}
             </div>
             <div className="mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">

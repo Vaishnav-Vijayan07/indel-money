@@ -17,7 +17,11 @@ function ServiceBannerItem({ item }) {
     <div className="w-full h-auto flex flex-wrap items-center">
       <div className="w-[45px] 2xl:w-[55px] 3xl:w-[66px] aspect-square rounded-full flex items-center justify-center bg-[linear-gradient(156deg,#17479E_6%,#C63B3B_91%)]">
         <Image
-          src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/goldIcon1.svg"}
+          src={
+            item.icon
+              ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}`
+              : "/images/goldIcon1.svg"
+          }
           alt={item.title}
           width={30}
           height={30}
@@ -31,12 +35,23 @@ function ServiceBannerItem({ item }) {
   );
 }
 
-export default function ServiceBanner({ bannerIcons, title, announcement_text, gold_rate_text, banner_image, alt }) {
+export default function ServiceBanner({
+  bannerIcons,
+  title,
+  announcement_text,
+  gold_rate_text,
+  banner_image,
+  alt,
+}) {
   const [goldLiveRate] = useState(getRandomGoldRate());
   return (
     <section className="w-full relative overflow-hidden before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:-z-1 before:bg-[linear-gradient(90deg,rgba(0,0,0,0.5)_0%,rgba(102,102,102,0)_100%)]">
       <Image
-        src={banner_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner_image}` : "/images/goldloanBanner.webp"}
+        src={
+          banner_image
+            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner_image}`
+            : "/images/goldloanBanner.webp"
+        }
         alt={alt ? alt : "value-innerBanner"}
         fill
         sizes="100vw"
@@ -63,7 +78,11 @@ export default function ServiceBanner({ bannerIcons, title, announcement_text, g
           </div>
         </div>
       </div>
-      <HomeMarquee announcementText={announcement_text} goldRateLabel={gold_rate_text} goldRate={goldLiveRate} />
+      <HomeMarquee
+        announcementText={announcement_text}
+        goldRateLabel={gold_rate_text}
+        goldRate={goldLiveRate}
+      />
     </section>
   );
 }

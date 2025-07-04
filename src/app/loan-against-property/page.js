@@ -6,7 +6,8 @@ import MobEligibility from "@/components/features/services/MobEligibility";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/loan-against-property`, {
-      cache: "no-store", // Ensure fresh data
+      cache: "default", // Ensure fresh data
+      next: { revalidate: 60 }
     });
     const result = await response.json();
     const cdData = result.data;

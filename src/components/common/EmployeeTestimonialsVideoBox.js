@@ -10,7 +10,7 @@ import "lightgallery/css/lg-video.css";
 import Image from "next/image";
 
 export default function EmployeeTestimonialsVideoBox({ className, item }) {
-  console.log(item);
+  
   return (
     <div
       className={`${className} group w-full h-auto aspect-[526/360] overflow-hidden rounded-[10px] lg:rounded-[20px] 2xl:rounded-[24px] block relative z-0`}

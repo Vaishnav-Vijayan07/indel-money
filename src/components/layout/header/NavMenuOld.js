@@ -185,7 +185,7 @@ function MegaMenu({ items }) {
 const tabStyle =
   "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
 
-export default function NavMenu2() {
+export default function NavMenu() {
   const pathname = usePathname();
   return (
     

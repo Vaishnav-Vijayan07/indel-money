@@ -1,9 +1,10 @@
 import React from "react";
 import Report from "../../components/features/investors/Report";
+import api from "../../lib/api/axios";
 
 async function fetchReportData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/report`, {
+    const response = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/report`, {
       cache: "no-store", // Ensure fresh data
     });
 

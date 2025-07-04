@@ -2,108 +2,8 @@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/custom-sheet";
 import Image from "next/image";
 import Link from "next/link";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-
-// const GoldLoans = [
-//   {
-//     image: "/images/icon-goldloan-1.svg",
-//     alt: "item",
-//     title: "Gold Loan Steps",
-//     link: "/gold-loan#gold-loan-steps",
-//   },
-//   {
-//     image: "/images/icon-goldloan-2.svg",
-//     alt: "item",
-//     title: "Instant & hassle free Gold Loan",
-//     link: "/gold-loan#hassle-free",
-//   },
-//   {
-//     image: "/images/icon-goldloan-3.svg",
-//     alt: "item",
-//     title: "Our Easy Step Gold Loan",
-//     link: "/gold-loan#easy-step",
-//   },
-//   {
-//     image: "/images/icon-goldloan-4.svg",
-//     alt: "item",
-//     title: "Gold Loan Scheme",
-//     link: "/gold-loan#scheme",
-//   },
-// ];
-// const OtherLoans = [
-//   {
-//     image: "/images/icon-goldloan-1.svg",
-//     alt: "item",
-//     title: "Gold Loan",
-//     link: "/gold-loan",
-//   },
-//   {
-//     image: "/images/icon-goldloan-2.svg",
-//     alt: "item",
-//     title: "MSME Loan",
-//     link: "/msme-loan",
-//   },
-//   {
-//     image: "/images/icon-goldloan-3.svg",
-//     alt: "item",
-//     title: "consumer durable Loan",
-//     link: "/consumer-durable-loans",
-//   },
-//   {
-//     image: "/images/icon-goldloan-4.svg",
-//     alt: "item",
-//     title: "Loan against property",
-//     link: "/loan-against-property",
-//   },
-//   {
-//     image: "/images/icon-goldloan-1.svg",
-//     alt: "item",
-//     title: "Foreign exchange",
-//     link: "https://indelremit.com/",
-//   },
-// ];
-// const Careers = [
-//   {
-//     title: "life at indel",
-//     link: "/life-at-indel-money",
-//   },
-//   {
-//     title: "employee testimonial",
-//     link: "/emptestimonial",
-//   },
-//   {
-//     title: "current openings",
-//     link: "/active-jobs",
-//   },
-//   {
-//     title: "apply now",
-//     link: "/active-jobs",
-//   },
-// ];
-// const Abouts = [
-//   {
-//     title: "indel values",
-//     link: "/indel-values",
-//   },
-//   {
-//     title: "board of directors",
-//     link: "/about-indel-money",
-//   },
-//   {
-//     title: "management team",
-//     link: "/management-team",
-//   },
-//   {
-//     title: "partners",
-//     link: "/partners",
-//   },
-//   {
-//     title: "different shades of indel",
-//     link: "/different-shades-of-indelmoney",
-//   },
-// ];
 
 const GoldLoans = [
   {
@@ -230,12 +130,21 @@ const tabStyle =
 
 export default function MobNavMenu() {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
   const toggleDropdown = (dropdown) => {
     setOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
   };
 
+  // Auto-close on route change
+  useEffect(() => {
+    setOpen(false);
+    setOpenDropdown(null);
+  }, [pathname]);
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="outline-0">
         <div className="w-[30px] @sm:w-[38px] h-[30px] @sm:h-[38px] bg-base2 rounded-[4px] flex items-center justify-center">
           <Image src="/images/mob-navMenuIcon.svg" alt="nav" width={16} height={12} />
@@ -254,9 +163,7 @@ export default function MobNavMenu() {
           </div>
           <div className="py-[5px]">
             <div>
-              <div
-                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
-              >
+              <div className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
                 <span>Gold Loan</span>
                 <button
                   className={`${openDropdown === "goldLoan" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
@@ -266,26 +173,17 @@ export default function MobNavMenu() {
                   <Arrow />
                 </button>
               </div>
-              <div
-                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdown === "goldLoan" ? "max-h-full" : "max-h-0"
-                }`}
-              >
+              <div className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === "goldLoan" ? "max-h-full" : "max-h-0"}`}>
                 <DropdownMenu items={GoldLoans} />
               </div>
             </div>
             <div>
-              <Link
-                href={"/"}
-                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
-              >
+              <Link href={"/"} className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
                 <span>foreign exchange</span>
               </Link>
             </div>
             <div>
-              <div
-                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
-              >
+              <div className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
                 <span>other loan</span>
                 <button
                   className={`${openDropdown === "otherLoan" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
@@ -295,18 +193,12 @@ export default function MobNavMenu() {
                   <Arrow />
                 </button>
               </div>
-              <div
-                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdown === "otherLoan" ? "max-h-full" : "max-h-0"
-                }`}
-              >
+              <div className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === "otherLoan" ? "max-h-full" : "max-h-0"}`}>
                 <DropdownMenu items={OtherLoans} />
               </div>
             </div>
             <div>
-              <div
-                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
-              >
+              <div className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
                 <span>careers</span>
                 <button
                   className={`${openDropdown === "careers" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
@@ -316,18 +208,12 @@ export default function MobNavMenu() {
                   <Arrow />
                 </button>
               </div>
-              <div
-                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdown === "careers" ? "max-h-full" : "max-h-0"
-                }`}
-              >
+              <div className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === "careers" ? "max-h-full" : "max-h-0"}`}>
                 <DropdownMenu items={Careers} />
               </div>
             </div>
             <div>
-              <div
-                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
-              >
+              <div className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
                 <span>about</span>
                 <button
                   className={`${openDropdown === "abouts" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
@@ -337,27 +223,17 @@ export default function MobNavMenu() {
                   <Arrow />
                 </button>
               </div>
-              <div
-                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdown === "abouts" ? "max-h-full" : "max-h-0"
-                }`}
-              >
+              <div className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === "abouts" ? "max-h-full" : "max-h-0"}`}>
                 <DropdownMenu items={Abouts} />
               </div>
             </div>
             <div>
-              <Link
-                href={"/contact"}
-                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
-              >
+              <Link href={"/contact"} className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
                 <span>Contact us</span>
               </Link>
             </div>
             <div>
-              <Link
-                href={"/"}
-                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
-              >
+              <Link href={"/"} className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
                 <span>quick pay</span>
               </Link>
             </div>

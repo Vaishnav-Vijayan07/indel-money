@@ -59,6 +59,11 @@ export default function CareerForm({ jobId, isGeneral }) {
   const [isDraggingMobile, setIsDraggingMobile] = useState(false);
   const [isDraggingDesktop, setIsDraggingDesktop] = useState(false);
 
+  const truncateFilename = (filename, maxLength = 8) => {
+    if (!filename || filename.length <= maxLength) return filename;
+    return filename.substring(0, maxLength) + "....";
+  };
+
   // File type display helper
   const getFileTypeDisplay = (file, fileName) => {
     if (file) {
@@ -125,7 +130,7 @@ export default function CareerForm({ jobId, isGeneral }) {
   const fetchDropdowns = async () => {
     try {
       const { data } = await api.get("/career/jobs/dropdowns");
-      
+
       if (!data.success) throw new Error(data.message || "Failed to fetch dropdowns");
       setDropdowns(data.data || { locations: [], roles: [] });
       setDropdownsLoaded(true);
@@ -137,7 +142,6 @@ export default function CareerForm({ jobId, isGeneral }) {
 
   // Auto-fill form
   const autoFillForm = (data) => {
-    
     const validatedData = {
       name: data.name || "",
       phone: data.phone || "",
@@ -168,10 +172,10 @@ export default function CareerForm({ jobId, isGeneral }) {
   useEffect(() => {
     if (dropdownsLoaded) {
       const savedData = Cookies.get("applicantData");
-      
+
       if (savedData) {
         const parsedData = JSON.parse(savedData);
-        
+
         setEmail(parsedData.email);
         setSelectedFileName(parsedData.file || null);
         autoFillForm(parsedData);
@@ -185,12 +189,12 @@ export default function CareerForm({ jobId, isGeneral }) {
     try {
       setLoading(true);
       const { data } = await api.post("/web/careers/send-otp", { email: values.email });
-      
+
       if (!data.success) throw new Error(data.message || "Failed to send OTP");
       setEmail(values.email);
       form.setValue("email", values.email);
       setShowOtpInput(true);
-      
+
       toast.success("OTP sent to your email");
     } catch (error) {
       console.error("Error sending OTP:", error);
@@ -205,12 +209,11 @@ export default function CareerForm({ jobId, isGeneral }) {
     try {
       setLoading(true);
       const payload = { email, otp: values.otp.trim() };
-      
+
       const { data } = await api.post("/web/careers/verify-otp", payload);
-      
+
       if (!data.success) throw new Error(data.message || "Invalid OTP");
       if (data.data) {
-        console.log(data.data);
         autoFillForm(data.data);
         Cookies.set("applicantData", JSON.stringify(data.data), {
           expires: 7,
@@ -260,11 +263,11 @@ export default function CareerForm({ jobId, isGeneral }) {
 
     try {
       setLoading(true);
-      
+
       const response = await api.post(apiUrl, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      
+
       if (!response.data.success) throw new Error(response.data.message || "Failed to submit application");
 
       Cookies.set("applicantData", JSON.stringify({ ...values, file: selectedFile ? selectedFile.name : selectedFileName }), {
@@ -553,7 +556,6 @@ export default function CareerForm({ jobId, isGeneral }) {
                         placeholder="Enter your email"
                         {...field}
                         onFocus={() => {
-                          
                           setIsModalOpen(true);
                         }}
                         disabled={isOtpVerified}
@@ -745,11 +747,11 @@ export default function CareerForm({ jobId, isGeneral }) {
                             // disabled={!isOtpVerified}
                           />
                         </label>
-                        <span className="text-xs lg:text-xs 2xl:text-base leading-none font-normal text-gray-700 whitespace-nowrap text-ellipsis overflow-hidden flex-1 ml-1 lg:ml-1.5">
+                        <span className="text-xs lg:text-xs 2xl:text-base leading-none font-normal text-gray-700 whitespace-nowrap overflow-hidden text-ellipsis flex-1 ml-1 lg:ml-1.5">
                           {selectedFile
-                            ? `${selectedFile.name} (${getFileTypeDisplay(selectedFile, null)})`
+                            ? `${truncateFilename(selectedFile.name)} (${getFileTypeDisplay(selectedFile, null)})`
                             : selectedFileName
-                            ? `${selectedFileName.replace("uploads/job-applications/", "")} (${getFileTypeDisplay(
+                            ? `${truncateFilename(selectedFileName.replace("uploads/job-applications/", ""))} (${getFileTypeDisplay(
                                 null,
                                 selectedFileName
                               )})`
@@ -770,13 +772,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                 disabled={loading || !isOtpVerified}
               >
                 <span className="px-1 lg:px-3.5">{loading ? "Submitting..." : "Submit"}</span>
-                <Image
-                  src="/images/icon-careerBtn.svg"
-                  alt="careerBtn"
-                  width={40}
-                  height={40}
-                  className="w-5 lg:w-6 2xl:w-8 h-auto"
-                />
+                <Image src="/images/icon-careerBtn.svg" alt="careerBtn" width={40} height={40} className="w-5 lg:w-6 2xl:w-8 h-auto" />
               </Button>
             </div>
           </form>
@@ -848,7 +844,7 @@ export default function CareerForm({ jobId, isGeneral }) {
 //   const [isDraggingMobile, setIsDraggingMobile] = useState(false);
 //   const [isDraggingDesktop, setIsDraggingDesktop] = useState(false);
 
-//   
+//
 
 //   // Forms
 //   const emailForm = useForm({
@@ -882,7 +878,7 @@ export default function CareerForm({ jobId, isGeneral }) {
 //   const fetchDropdowns = async () => {
 //     try {
 //       const { data } = await api.get("/career/jobs/dropdowns");
-//       
+//
 //       if (!data.success) throw new Error(data.message || "Failed to fetch dropdowns");
 //       setDropdowns(data.data || { locations: [], roles: [] });
 //       setDropdownsLoaded(true);
@@ -894,7 +890,7 @@ export default function CareerForm({ jobId, isGeneral }) {
 
 //   // Auto-fill form
 //   const autoFillForm = (data) => {
-//     
+//
 //     const validatedData = {
 //       name: data.name || "",
 //       phone: data.phone || "",
@@ -925,11 +921,11 @@ export default function CareerForm({ jobId, isGeneral }) {
 //   useEffect(() => {
 //     if (dropdownsLoaded) {
 //       const savedData = Cookies.get("applicantData");
-//       
+//
 
 //       if (savedData) {
 //         const parsedData = JSON.parse(savedData);
-//         
+//
 //         setEmail(parsedData.email);
 //         setSelectedFileName(parsedData.file || null);
 //         autoFillForm(parsedData);
@@ -943,12 +939,12 @@ export default function CareerForm({ jobId, isGeneral }) {
 //     try {
 //       setLoading(true);
 //       const { data } = await api.post("/web/careers/send-otp", { email: values.email });
-//       
+//
 //       if (!data.success) throw new Error(data.message || "Failed to send OTP");
 //       setEmail(values.email);
 //       form.setValue("email", values.email);
 //       setShowOtpInput(true);
-//       
+//
 //       toast.success("OTP sent to your email");
 //     } catch (error) {
 //       console.error("Error sending OTP:", error);
@@ -963,9 +959,9 @@ export default function CareerForm({ jobId, isGeneral }) {
 //     try {
 //       setLoading(true);
 //       const payload = { email, otp: values.otp.trim() };
-//       
+//
 //       const { data } = await api.post("/web/careers/verify-otp", payload);
-//       
+//
 //       if (!data.success) throw new Error(data.message || "Invalid OTP");
 //       if (data.data) {
 //         autoFillForm(data.data);
@@ -1019,11 +1015,11 @@ export default function CareerForm({ jobId, isGeneral }) {
 
 //     try {
 //       setLoading(true);
-//       
+//
 //       const response = await api.post(apiUrl, formData, {
 //         headers: { "Content-Type": "multipart/form-data" },
 //       });
-//       
+//
 //       if (!response.data.success) throw new Error(response.data.message || "Failed to submit application");
 
 //       Cookies.set("applicantData", JSON.stringify({ ...values, file: null }), {
@@ -1312,7 +1308,7 @@ export default function CareerForm({ jobId, isGeneral }) {
 //                         placeholder="Enter your email"
 //                         {...field}
 //                         onFocus={() => {
-//                           
+//
 //                           setIsModalOpen(true);
 //                         }}
 //                         disabled={isOtpVerified}

@@ -1,54 +1,47 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useMediaQuery } from "@react-hook/media-query";
-
-import React from "react";
 // DESKTOP COMPONENTS
-import HeroBanner from "../components/features/home/HeroBanner";
-import DreamsToReality from "../components/features/home/DreamsToReality";
-import StepGoldLoan from "../components/features/home/StepGoldLoan";
-import StepGoldLoanCalculator from "../components/features/home/StepGoldLoanCalculator";
-import LifeAtIndel from "../components/features/home/LifeAtIndel";
-import LatestUpdates from "../components/features/home/LatestUpdates";
-import TrustedInvestment from "../components/features/home/TrustedInvestment";
-import BranchLocator from "../components/features/home/BranchLocator";
-import Innovations from "../components/features/home/Innovations";
-import FAQ from "../components/features/home/FAQ";
-import WelcomeModal from "../components/common/WelcomeModal";
-// MOBILE COMPONENTS
-import MobHeroBanner from "../components/features/home/MobHeroBanner";
-import MobSmartMoneyDeals from "../components/features/home/MobSmartMoneyDeals";
-import MobStepGoldLoan from "../components/features/home/MobStepGoldLoan";
-import MobStepGoldLoanCalculator from "../components/features/home/MobStepGoldLoanCalculator";
-import MobBranchLocator from "../components/features/home/MobBranchLocator";
-import MobJoinTeam from "../components/features/home/MobJoinTeam";
-import MobLatestUpdates from "../components/features/home/MobLatestUpdates";
-import MobInnovations from "../components/features/home/MobInnovations";
-import MobWelcomeModal from "../components/common/MobWelcomeModal";
+const HeroBanner = dynamic(() => import("../components/features/home/HeroBanner"), { ssr: true });
+const DreamsToReality = dynamic(() => import("../components/features/home/DreamsToReality"), { ssr: false });
+const StepGoldLoan = dynamic(() => import("../components/features/home/StepGoldLoan"), { ssr: false });
+const StepGoldLoanCalculator = dynamic(() => import("../components/features/home/StepGoldLoanCalculator"), { ssr: false });
+const LifeAtIndel = dynamic(() => import("../components/features/home/LifeAtIndel"), { ssr: false });
+const LatestUpdates = dynamic(() => import("../components/features/home/LatestUpdates"), { ssr: false });
+const TrustedInvestment = dynamic(() => import("../components/features/home/TrustedInvestment"), { ssr: false });
+const BranchLocator = dynamic(() => import("../components/features/home/BranchLocator"), { ssr: false });
+const Innovations = dynamic(() => import("../components/features/home/Innovations"), { ssr: false });
+const FAQ = dynamic(() => import("../components/features/home/FAQ"), { ssr: false });
+const WelcomeModal = dynamic(() => import("../components/common/WelcomeModal"), { ssr: false });
 
-export default function Home({ initialData, serviceBanner, banner,branchLocatorData, initialError }) {
+// MOBILE COMPONENTS
+const MobHeroBanner = dynamic(() => import("../components/features/home/MobHeroBanner"), { ssr: true });
+const MobSmartMoneyDeals = dynamic(() => import("../components/features/home/MobSmartMoneyDeals"), { ssr: false });
+const MobStepGoldLoan = dynamic(() => import("../components/features/home/MobStepGoldLoan"), { ssr: false });
+const MobStepGoldLoanCalculator = dynamic(() => import("../components/features/home/MobStepGoldLoanCalculator"), { ssr: false });
+const MobBranchLocator = dynamic(() => import("../components/features/home/MobBranchLocator"), { ssr: false });
+const MobJoinTeam = dynamic(() => import("../components/features/home/MobJoinTeam"), { ssr: false });
+const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLatestUpdates"), { ssr: false });
+const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: false });
+const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeModal"), { ssr: false });
+
+export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+
   return (
     <>
       {/* welcome contents*/}
-      {isMobile ? (
-        <MobWelcomeModal />
-      ) : banner || serviceBanner ? (
-        <WelcomeModal banner={banner} serviceBanner={serviceBanner} />
-      ) : null}
+      {isMobile ? <MobWelcomeModal /> : banner || serviceBanner ? <WelcomeModal banner={banner} serviceBanner={serviceBanner} /> : null}
 
       {/* banner section contents*/}
       <div className="hidden sm:block">
-        <HeroBanner
-          heroBanner={initialData?.heroBanner || []}
-          initialData={initialData}
-          announcement={initialData?.announcement?.text}
-        />
+        <HeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} announcement={initialData?.pageContent?.announcement_text} />
       </div>
       <div className="block sm:hidden">
         <MobHeroBanner
           heroBanner={initialData?.heroBanner || []}
           initialData={initialData}
-          announcement={initialData?.announcement?.text}
+          announcement={initialData?.pageContent?.announcement_text}
         />
       </div>
 
@@ -56,14 +49,20 @@ export default function Home({ initialData, serviceBanner, banner,branchLocatorD
       <div className="hidden sm:block">
         <DreamsToReality initialData={initialData?.pageContent} statsData={initialData?.homeStatistics} />
       </div>
-      <div className="block sm:hidden">
-        {/* Develope api for smart money deals */}
-        <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
-      </div>
+      {initialData?.smartMoneyDeals?.length > 0 && (
+        <div className="block sm:hidden">
+          {/* Develope api for smart money deals */}
+          <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
+        </div>
+      )}
 
       {/* Gold loan contents*/}
       <div id="gold-loan-steps" className="hidden sm:block">
-        <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
+        <StepGoldLoan
+          title={initialData?.pageContent?.step_title}
+          loanSteps={initialData?.loanSteps}
+          sectionTitle={initialData?.pageContent?.step_title}
+        />
       </div>
       <div className="block sm:hidden">
         <MobStepGoldLoan title={"sample"} loanSteps={initialData?.loanSteps} />
@@ -78,11 +77,10 @@ export default function Home({ initialData, serviceBanner, banner,branchLocatorD
       </div>
 
       {/* Branch locator contents*/}
-      <div className="hidden sm:block" id="branch-locator" >
-        <BranchLocator pageContent={branchLocatorData} variant={"home"} />
+      <div className="hidden sm:block" id="branch-locator">
+        <BranchLocator pageContent={branchLocatorData} variant={"home"} useQueryParams={false} />
       </div>
       <div className="block sm:hidden" id="branch-locator">
-        {/* Develope api for branch locator */}
         <MobBranchLocator pageContent={branchLocatorData} />
       </div>
 
@@ -108,11 +106,7 @@ export default function Home({ initialData, serviceBanner, banner,branchLocatorD
 
       {/* Latest Updates contents*/}
       <div className="hidden sm:block">
-        <LatestUpdates
-          sliderItems={initialData?.blogs}
-          sliderTitle={initialData?.pageContent?.updates_section_title}
-          type="indel-money-cares"
-        />
+        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
       </div>
       <div className="block sm:hidden">
         <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
