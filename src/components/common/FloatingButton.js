@@ -11,6 +11,40 @@ import {
 } from "@/components/ui/custom-alert-dialog";
 import GoldLoanForm from "./GoldLoanForm";
 
+const fetchGoldTypes = async () => {
+  try {
+    const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-types`);
+    if (data.success) {
+      return data.data?.map((type) => ({
+        label: type.gold_type_name,
+        value: type.id,
+      }));
+    } else {
+      toast.error("Failed to fetch gold types!");
+      return [];
+    }
+  } catch (error) {
+    toast.error("gold types fetching failed!");
+  }
+};
+
+const fetchGoldCaratTypes = async () => {
+  try {
+    const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-carat-types`);
+    if (data.success) {
+      return data.data?.map((type) => ({
+        label: type.name,
+        value: type.id,
+      }));
+    } else {
+      toast.error("Failed to fetch gold carat types!");
+      return [];
+    }
+  } catch (error) {
+    toast.error("gold carat fetching failed!");
+  }
+};
+
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/float-buttons`, {
