@@ -10,9 +10,9 @@ async function fetchCsrData() {
 
 
     const result = await response.json();
-    const data = result.data;
+    const data = result?.data;
 
-    if (result.status === "success") {
+    if (result?.status === "success") {
       return {
         contents: data?.content,
         actionPlans: data?.actionPlans,
