@@ -14,6 +14,7 @@ import Cookies from "js-cookie";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 // Schema Validation
 const baseSchema = {
@@ -47,6 +48,8 @@ const otpSchema = z.object({
 });
 
 export default function CareerForm({ jobId, isGeneral }) {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const [isOtpVerified, setIsOtpVerified] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -239,7 +242,15 @@ export default function CareerForm({ jobId, isGeneral }) {
       return;
     }
 
+    // Get reCAPTCHA token
+    if (!executeRecaptcha) {
+      toast.error("reCAPTCHA not ready. Please try again.");
+      return;
+    }
+    const recaptchaToken = await executeRecaptcha("job_application");
+
     const formData = new FormData();
+
     formData.append("applicant[name]", values.name);
     formData.append("applicant[email]", values.email);
     formData.append("applicant[phone]", values.phone);
@@ -249,6 +260,9 @@ export default function CareerForm({ jobId, isGeneral }) {
     formData.append("applicant[age]", values.age);
     formData.append("applicant[current_salary]", values.current_salary || "");
     formData.append("applicant[expected_salary]", values.expected_salary || "");
+    // Append reCAPTCHA token
+    formData.append("recaptchaToken", recaptchaToken);
+
     if (selectedFile) {
       formData.append("applicant[file]", selectedFile);
     }
@@ -751,10 +765,9 @@ export default function CareerForm({ jobId, isGeneral }) {
                           {selectedFile
                             ? `${truncateFilename(selectedFile.name)} (${getFileTypeDisplay(selectedFile, null)})`
                             : selectedFileName
-                            ? `${truncateFilename(selectedFileName.replace("uploads/job-applications/", ""))} (${getFileTypeDisplay(
-                                null,
-                                selectedFileName
-                              )})`
+                            ? `${truncateFilename(
+                                selectedFileName.replace("uploads/job-applications/", "")
+                              )} (${getFileTypeDisplay(null, selectedFileName)})`
                             : "No file chosen"}
                         </span>
                       </div>
@@ -772,7 +785,13 @@ export default function CareerForm({ jobId, isGeneral }) {
                 disabled={loading || !isOtpVerified}
               >
                 <span className="px-1 lg:px-3.5">{loading ? "Submitting..." : "Submit"}</span>
-                <Image src="/images/icon-careerBtn.svg" alt="careerBtn" width={40} height={40} className="w-5 lg:w-6 2xl:w-8 h-auto" />
+                <Image
+                  src="/images/icon-careerBtn.svg"
+                  alt="careerBtn"
+                  width={40}
+                  height={40}
+                  className="w-5 lg:w-6 2xl:w-8 h-auto"
+                />
               </Button>
             </div>
           </form>
