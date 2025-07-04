@@ -1,5 +1,12 @@
 "use client";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/custom-sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/custom-sheet";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -98,19 +105,26 @@ const Abouts = [
 
 const Arrow = () => {
   return (
-    <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-2 ml-0.5">
+    <svg
+      width="11"
+      height="6"
+      viewBox="0 0 11 6"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="size-2 ml-0.5"
+    >
       <path d="M5.5 6L10.2631 0.75H0.73686L5.5 6Z" fill="#2A2A2A" />
     </svg>
   );
 };
 
-function DropdownMenu({ items }) {
+function DropdownMenu({ items, handleClose }) {
   const pathname = usePathname();
   return (
     <ul className="flex flex-col py-[5px]">
       {items?.map((item, index) => (
         <li key={index}>
-          <Link href={item.link}>
+          <Link href={item.link} onClick={handleClose}>
             <div
               className={`${
                 pathname === item.link ? "text-base2" : ""
@@ -128,7 +142,8 @@ function DropdownMenu({ items }) {
 const tabStyle =
   "group text-header1 capitalize hover:text-base2 w-full h-auto flex gap-[5px] justify-between transition-color duration-300 p-[15px] cursor-pointer";
 
-export default function MobNavMenu() {
+export default function MobNavMenu({logo, serverMediaPath}) {
+  const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -136,104 +151,163 @@ export default function MobNavMenu() {
   const toggleDropdown = (dropdown) => {
     setOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
   };
-
-  // Auto-close on route change
-  useEffect(() => {
-    setOpen(false);
-    setOpenDropdown(null);
-  }, [pathname]);
+  const handleClose = () => setIsOpen(false);
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger className="outline-0">
         <div className="w-[30px] @sm:w-[38px] h-[30px] @sm:h-[38px] bg-base2 rounded-[4px] flex items-center justify-center">
-          <Image src="/images/mob-navMenuIcon.svg" alt="nav" width={16} height={12} />
+          <Image
+            src="/images/mob-navMenuIcon.svg"
+            alt="nav"
+            width={16}
+            height={12}
+          />
         </div>
       </SheetTrigger>
       <SheetContent side="left" className="bg-white">
         <SheetHeader className="p-0">
-          <SheetTitle className="sr-only">Indel Money</SheetTitle>
-          <SheetDescription className="sr-only">mobile navigation</SheetDescription>
+          <SheetTitle className="sr-only"></SheetTitle>
+          <SheetDescription className="sr-only">
+            mobile navigation
+          </SheetDescription>
           <div className="w-full h-[var(--header-y)] bg-white shadow-sm p-[15px] flex justify-between items-center">
             <div className="w-[40px] 4xs:w-[60px]">
-              <Link href="/" className="block transition-transform duration-300 hover:scale-105">
-                <Image src="/icons/logo_sm.svg" alt="Logo" width={145} height={75} />
+              <Link
+                href="/"
+                className="block transition-transform duration-300 hover:scale-105"
+              >
+                <Image
+                  src={logo ? `${serverMediaPath}${logo}` : "/icons/logo_sm.svg"}
+                  alt="Logo"
+                  width={145}
+                  height={75}
+                />
               </Link>
             </div>
           </div>
           <div className="py-[5px]">
             <div>
-              <div className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
+              <div
+                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
+              >
+                <Link href={"/gold-loan"} onClick={handleClose}>
                 <span>Gold Loan</span>
+                </Link>
                 <button
-                  className={`${openDropdown === "goldLoan" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${
+                    openDropdown === "goldLoan" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("goldLoan")}
                   aria-label="Toggle mobile menu"
                 >
                   <Arrow />
                 </button>
               </div>
-              <div className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === "goldLoan" ? "max-h-full" : "max-h-0"}`}>
-                <DropdownMenu items={GoldLoans} />
+              <div
+                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
+                  openDropdown === "goldLoan" ? "max-h-full" : "max-h-0"
+                }`}
+              >
+                <DropdownMenu items={GoldLoans} handleClose={handleClose} />
               </div>
             </div>
             <div>
-              <Link href={"/"} className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
+              <a
+                href={"https://indelremit.com/"}
+                onClick={handleClose}
+                target="_blank"
+                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
+              >
                 <span>foreign exchange</span>
-              </Link>
+              </a>
             </div>
             <div>
               <div className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
                 <span>other loan</span>
                 <button
-                  className={`${openDropdown === "otherLoan" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${
+                    openDropdown === "otherLoan" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("otherLoan")}
                   aria-label="Toggle mobile menu"
                 >
                   <Arrow />
                 </button>
               </div>
-              <div className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === "otherLoan" ? "max-h-full" : "max-h-0"}`}>
-                <DropdownMenu items={OtherLoans} />
+              <div
+                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
+                  openDropdown === "otherLoan" ? "max-h-full" : "max-h-0"
+                }`}
+              >
+                <DropdownMenu items={OtherLoans} handleClose={handleClose} />
               </div>
             </div>
             <div>
-              <div className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
-                <span>careers</span>
+              <div
+                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
+              >
+                <Link href={"/career"} onClick={handleClose}>
+                  <span>careers</span>
+                </Link>
                 <button
-                  className={`${openDropdown === "careers" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${
+                    openDropdown === "careers" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("careers")}
                   aria-label="Toggle mobile menu"
                 >
                   <Arrow />
                 </button>
               </div>
-              <div className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === "careers" ? "max-h-full" : "max-h-0"}`}>
-                <DropdownMenu items={Careers} />
+              <div
+                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
+                  openDropdown === "careers" ? "max-h-full" : "max-h-0"
+                }`}
+              >
+                <DropdownMenu items={Careers} handleClose={handleClose} />
               </div>
             </div>
             <div>
-              <div className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
-                <span>about</span>
+              <div
+                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
+              >
+                <Link href={"/about-indel-money"} onClick={handleClose}>
+                  <span>about</span>
+                </Link>
                 <button
-                  className={`${openDropdown === "abouts" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${
+                    openDropdown === "abouts" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("abouts")}
                   aria-label="Toggle mobile menu"
                 >
                   <Arrow />
                 </button>
               </div>
-              <div className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${openDropdown === "abouts" ? "max-h-full" : "max-h-0"}`}>
-                <DropdownMenu items={Abouts} />
+              <div
+                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
+                  openDropdown === "abouts" ? "max-h-full" : "max-h-0"
+                }`}
+              >
+                <DropdownMenu items={Abouts} handleClose={handleClose} />
               </div>
             </div>
             <div>
-              <Link href={"/contact"} className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
+              <Link
+                href={"/contact"}
+                onClick={handleClose}
+                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
+              >
                 <span>Contact us</span>
               </Link>
             </div>
             <div>
-              <Link href={"/"} className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
+              <Link
+                href={"/"}
+                onClick={handleClose}
+                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
+              >
                 <span>quick pay</span>
               </Link>
             </div>

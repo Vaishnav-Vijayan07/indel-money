@@ -1,5 +1,6 @@
 import ActiveJobsBanner from "@/components/features/career/ActiveJobsBanner";
 import ActiveJobsInfo from "@/components/features/career/ActiveJobsInfo";
+import { defaultMeta } from "@/constants/constants";
 
 async function getMetaData() {
   try {

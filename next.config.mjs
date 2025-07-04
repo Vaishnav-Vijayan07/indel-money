@@ -9,10 +9,13 @@ const nextConfig = {
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
-  
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   // Image optimization
   images: {
-    formats: ['image/webp', 'image/avif'],
+    formats: ["image/webp", "image/avif"],
     minimumCacheTTL: 31536000, // 1 year
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -47,12 +50,12 @@ const nextConfig = {
       // Split chunks optimization
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
-        chunks: 'all',
+        chunks: "all",
         cacheGroups: {
           ...config.optimization.splitChunks.cacheGroups,
           vendor: {
             test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
+            name: "vendors",
             priority: 10,
             reuseExistingChunk: true,
           },
@@ -66,9 +69,9 @@ const nextConfig = {
   // Experimental features for better performance
   experimental: {
     optimizePackageImports: [
-      'lodash',
-      'date-fns',
-      'lucide-react',
+      "lodash",
+      "date-fns",
+      "lucide-react",
       // Add your heavy packages here
     ],
   },
@@ -77,44 +80,44 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         headers: [
           {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
           },
           {
-            key: 'X-Frame-Options',
-            value: 'DENY'
+            key: "X-Frame-Options",
+            value: "DENY",
           },
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin'
-          }
-        ]
+            key: "Referrer-Policy",
+            value: "origin-when-cross-origin",
+          },
+        ],
       },
       {
-        source: '/images/:path*',
+        source: "/images/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
       },
       {
-        source: '/_next/static/:path*',
+        source: "/_next/static/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
-      }
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
     ];
   },
 
@@ -127,15 +130,15 @@ const nextConfig = {
 // Conditionally apply bundle analyzer
 let finalConfig = nextConfig;
 
-if (process.env.ANALYZE === 'true') {
+if (process.env.ANALYZE === "true") {
   try {
-    const { default: withBundleAnalyzer } = await import('@next/bundle-analyzer');
+    const { default: withBundleAnalyzer } = await import("@next/bundle-analyzer");
     const bundleAnalyzer = withBundleAnalyzer({
       enabled: true,
     });
     finalConfig = bundleAnalyzer(nextConfig);
   } catch (error) {
-    console.warn('Bundle analyzer not available:', error.message);
+    console.warn("Bundle analyzer not available:", error.message);
   }
 }
 

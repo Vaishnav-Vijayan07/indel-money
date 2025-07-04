@@ -35,7 +35,7 @@ const navigations = [
       { linkname: "Services", href: "/services" },
       // { linkname: "Loan Against Property", href: "/loan-against-property" },
       { linkname: "Gold Loan Schemes", href: "/gold-loan#scheme" },
-      { linkname: "E-Connect", href: "/loan-against-property" },
+      { linkname: "E-Connect", href: "https://econnect.indelmoney.com/payments/web-app/terms" },
     ],
   },
   {
@@ -119,6 +119,14 @@ export default function Footer({ content, icons }) {
               <div className="text-footer2 leading-[1.3] mb-[10px] sm:mb-[15px]">
                 {content?.address
                   ? content?.address
+                  : "Indel Money Limited Office No. 301, Floor No. 3, Sai Arcade, N S Road, Mulund, West Mumbai - 400 080"}
+              </div>
+            </div>
+            <div className="w-full h-auto block mb-[10px] xl:mb-[15px]">
+              <div className="text-footer1 mb-[10px] 2xl:mb-[15px]">{content?.address_title_2}</div>
+              <div className="text-footer2 leading-[1.3] mb-[10px] sm:mb-[15px]">
+                {content?.address_second
+                  ? content?.address_second
                   : "Indel Money Limited Office No. 301, Floor No. 3, Sai Arcade, N S Road, Mulund, West Mumbai - 400 080"}
               </div>
             </div>
@@ -216,22 +224,26 @@ export default function Footer({ content, icons }) {
                 </div>
               ))}
             </div>
-              <div>
-                  <ContactBox
-                    href={content?.branch_locator_link ? content?.branch_locator_link : "/branch-locator"}
-                    src={ content?.branch_locator_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content?.branch_locator_icon_web}` : "/images/icon-map.svg"}
-                    title={content?.branch_locator ? content?.branch_locator : "Branch Locator"}
-                    alt="location"
-                  />
-                </div>
-                <div>
-                  <ContactBox
-                    href={content?.toll_free_num ? `tel:${content?.toll_free_num}` : "tel:18004253990"}
-                    src={ content?.toll_free_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content?.toll_free_icon_web}` : "/images/icon-call.svg"}
-                    title={content?.toll_free_num ? content?.toll_free_num : "1800 425 39 90"}
-                    alt="call"
-                  />
-                </div>
+            <div>
+              <ContactBox
+                href={content?.branch_locator_link ? content?.branch_locator_link : "/branch-locator"}
+                src={
+                  content?.branch_locator_icon_web
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content?.branch_locator_icon_web}`
+                    : "/images/icon-map.svg"
+                }
+                title={content?.branch_locator ? content?.branch_locator : "Branch Locator"}
+                alt="location"
+              />
+            </div>
+            <div>
+              <ContactBox
+                href={content?.toll_free_num ? `tel:${content?.toll_free_num}` : "tel:18004253990"}
+                src={content?.toll_free_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${content?.toll_free_icon_web}` : "/images/icon-call.svg"}
+                title={content?.toll_free_num ? content?.toll_free_num : "1800 425 39 90"}
+                alt="call"
+              />
+            </div>
           </div>
         </div>
         <div className="w-full h-auto pb-[15px] mb-[15px] border-b-[1px] border-solid border-black/20 flex flex-wrap sm:hidden">

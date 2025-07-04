@@ -1,5 +1,6 @@
 import IndelCares from "@/pages/IndelCares";
 import { Suspense } from "react";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchData(page = 1, limit = 10) {
   try {

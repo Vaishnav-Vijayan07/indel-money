@@ -4,7 +4,7 @@ import WhyMsme from "@/components/features/msmeloan/WhyMsme";
 import WhoDoServe from "@/components/features/msmeloan/WhoDoServe";
 import MsmePresence from "@/components/features/msmeloan/MsmePresence";
 import GrownWithMsme from "@/components/features/msmeloan/GrownWithMsme";
-
+import { defaultMeta } from "@/constants/constants";
 import MobKickStartVenture from "@/components/features/msmeloan/MobKickStartVenture";
 import MobWhoDoServe from "@/components/features/msmeloan/MobWhoDoServe";
 

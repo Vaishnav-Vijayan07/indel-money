@@ -1,4 +1,5 @@
 import Testimonial from "@/pages/Testimonials";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchData(page = 1, limit = 10, type = "all") {
   try {

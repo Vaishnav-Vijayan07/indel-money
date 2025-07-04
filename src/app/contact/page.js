@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import ContactBanner from "@/components/features/contact/ContactBanner";
 import WriteIntel from "@/components/features/contact/WriteIntel";
 import ContactFaq from "@/components/features/contact/ContactFaq";
+import { defaultMeta } from "@/constants/constants";
 
 const BranchLocator = dynamic(() => import("@/components/features/home/BranchLocator"));
 

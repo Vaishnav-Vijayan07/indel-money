@@ -220,14 +220,15 @@ export default function NavMenu() {
       </MenubarMenu>
 
       <MenubarMenu>
-        <Link
+        <a
           href={"https://indelremit.com"}
+          target="_blank"
           className={`${
             pathname === "#" ? "" : ""
           } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
         >
           FOREIGN EXCHANGE
-        </Link>
+        </a>
       </MenubarMenu>
 
       <MenubarMenu

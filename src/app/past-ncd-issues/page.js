@@ -1,5 +1,6 @@
 import React from "react";
 import NcdReports from "@/components/features/investors/NcdReports";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchNcdData() {
     try {

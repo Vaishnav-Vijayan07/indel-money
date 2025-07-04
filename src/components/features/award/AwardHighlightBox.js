@@ -57,6 +57,7 @@ const slides = [
 ];
 
 export default function AwardHighlightBox({ variant = "default", items = slides }) {
+  console.log(items)
   return (
     <div className="relative z-0 w-full h-full block rounded-[35px] sm:bg-[#B7D0FF] bg-[#fff] sm:shadow-none  shadow-[0_0_15px_0_rgba(0,0,0,0.10)] p-[15px_20px] sm:p-[30px_30px] lg:p-[30px] 2xl:p-[40px_30px_40px_40px] 3xl:p-[80px_50px_50px_70px]">
       <Swiper
@@ -78,7 +79,7 @@ export default function AwardHighlightBox({ variant = "default", items = slides 
                   {variant === "employeeTestimonials" && (
                     <div className="text-title1 font-bold leading-none mb-[5px] lg:mb-[10px] text-[#f30000]">Awards</div>
                   )}
-                  <h5 className="sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[40px] text-black font-normal mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]  [&>span]:block [&>span]:text-[#EB0208] [&>span]:uppercase [&>span]:font-bold ">
+                  <h5 className="sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[32px] 3xl:text-[40px] text-black font-normal mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]  [&>span]:text-[#EB0208] [&>span]:uppercase [&>span]:font-bold ">
                     {item.title ? renderHtml(item.title) : ""}
                   </h5>
 

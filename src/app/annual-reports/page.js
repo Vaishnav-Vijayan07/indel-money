@@ -1,5 +1,7 @@
 import React from "react";
 import Report from "../../components/features/investors/Report";
+import { defaultMeta } from "@/constants/constants";
+
 import api from "../../lib/api/axios";
 
 async function fetchReportData() {
@@ -7,10 +9,8 @@ async function fetchReportData() {
     const response = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/report`, {
       cache: "no-store", // Ensure fresh data
     });
-
-    const result = await response.json();
+    const result = response.data;
     const reportData = result.data;
-
     if (result.status === "success") {
       return {
         content: reportData?.content,
@@ -37,6 +37,7 @@ async function fetchReportData() {
 export default async function report() {
 
   const { content, reports, returns, error } = await fetchReportData();
+
   if (!reports && !returns) {
     return <div>Failed to fetch report data</div>;
   }

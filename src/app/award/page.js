@@ -1,5 +1,6 @@
 import AwardClient from "@/pages/AwardClient";
 import NoContents from "@/components/NoContents";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchData() {
   try {

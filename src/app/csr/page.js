@@ -11,6 +11,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { defaultMeta } from "@/constants/constants";
 
 const LatestUpdates = dynamic(() => import("@/components/features/home/LatestUpdates"), {
   loading: () => <div>Loading slider...</div>,

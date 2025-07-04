@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import Image from "next/image";
+import { useMediaQuery } from "@react-hook/media-query";
 
 import "./Career.css";
 
@@ -33,6 +34,7 @@ const slides = [
 ];
 
 export default function CareerBanner({ banners }) {
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   return (
     <section className="w-full block">
       <Swiper
@@ -44,7 +46,7 @@ export default function CareerBanner({ banners }) {
         }}
         autoplay={{
           delay: 4000,
-          disableOnInteraction: false
+          disableOnInteraction: false,
         }}
         slidesPerView={1}
         spaceBetween={0}
@@ -54,12 +56,21 @@ export default function CareerBanner({ banners }) {
           <SwiperSlide key={index}>
             <div className="w-full h-[565px] lg:h-[376px] xl:h-[420px] 2xl:h-[476px] 3xl:h-[568px] relative z-0 py-[30px] lg:py-[40px] 2xl:py-[50px] flex items-center max-sm:items-end after:content-[''] after:w-full after:h-[100%] after:absolute after:-z-1 after:top-0 after:left-0 after:block max-sm:after:bg-black/40 after:pointer-events-none">
               <Image
-                src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/banner-career-1.jpg"}
-                alt={item?.image_alt ? item?.image_alt : "career"}
+                src={
+                  isMobile
+                    ? item?.image_mobile
+                      ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image_mobile}`
+                      : "/images/banner-career-1.jpg"
+                    : item?.image
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`
+                    : "/images/banner-career-1.jpg"
+                }
+                alt={item?.image_alt ? item.image_alt : "career"}
                 fill
                 sizes="1200px"
                 className="-z-1 object-cover"
               />
+
               <div className="container">
                 {/* <div className="max-sm:mb-[90px] max-sm:text-[28px] text-title2 font-bold text-white w-full lg:max-w-[420px] xl:max-w-[476px] 2xl:max-w-[576px] 3xl:max-w-[740px] mb-[4px] lg:mb-[6px] 2xl:mb-[10px]">
                   {item?.title
@@ -76,7 +87,10 @@ export default function CareerBanner({ banners }) {
                     })()
                     : null}
                 </div> */}
-                <div className="max-sm:mb-[90px] max-sm:text-[28px] text-title2 font-bold text-white w-full lg:max-w-[420px] xl:max-w-[476px] 2xl:max-w-[576px] 3xl:max-w-[740px] mb-[4px] lg:mb-[6px] 2xl:mb-[10px] [&>span]:text-base2" dangerouslySetInnerHTML={{ __html: item?.title ? item?.title : "Be Part of Our Transformative Team" }} />
+                <div
+                  className="max-sm:mb-[90px] max-sm:text-[28px] text-title2 font-bold text-white w-full lg:max-w-[420px] xl:max-w-[476px] 2xl:max-w-[576px] 3xl:max-w-[740px] mb-[4px] lg:mb-[6px] 2xl:mb-[10px] [&>span]:text-base2"
+                  dangerouslySetInnerHTML={{ __html: item?.title ? item?.title : "Be Part of Our Transformative Team" }}
+                />
 
                 <div className="w-full max-sm:hidden block">
                   <PageBreadcrumb variant="white" />
@@ -86,6 +100,6 @@ export default function CareerBanner({ banners }) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </section >
+    </section>
   );
 }

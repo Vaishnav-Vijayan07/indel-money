@@ -1,4 +1,5 @@
 import ManagementTeam from "@/components/features/management-team/ManagementTeam";
+import { defaultMeta } from "@/constants/constants";
 
 async function fetchManagementData() {
   try {
