@@ -2,7 +2,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
-import FloatingButton from "@/components/common/FloatingButton";
+import FloatingButton from "../components/common/FloatingButton";
 import { Toaster } from "react-hot-toast";
 import api from "../lib/api/axios";
 
