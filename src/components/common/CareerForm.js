@@ -14,7 +14,7 @@ import Cookies from "js-cookie";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 // Schema Validation
 const baseSchema = {
@@ -47,9 +47,8 @@ const otpSchema = z.object({
     .regex(/^\d{6}$/, { message: "OTP must be numeric." }),
 });
 
-export default function CareerForm({ jobId, isGeneral }) {
+function CareerFormInner({ jobId, isGeneral }) {
   const { executeRecaptcha } = useGoogleReCaptcha();
-
   const [isOtpVerified, setIsOtpVerified] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -242,12 +241,14 @@ export default function CareerForm({ jobId, isGeneral }) {
       return;
     }
 
-    // Get reCAPTCHA token
-    if (!executeRecaptcha) {
-      toast.error("reCAPTCHA not ready. Please try again.");
+    const recaptchaToken = await executeRecaptcha("job_form");
+    console.log("reCAPTCHA Token:", recaptchaToken);
+
+    if (!recaptchaToken) {
+      toast.error("Failed to get reCAPTCHA token. Please try again.");
+      setIsSubmitting(false);
       return;
     }
-    const recaptchaToken = await executeRecaptcha("job_application");
 
     const formData = new FormData();
 
@@ -261,7 +262,7 @@ export default function CareerForm({ jobId, isGeneral }) {
     formData.append("applicant[current_salary]", values.current_salary || "");
     formData.append("applicant[expected_salary]", values.expected_salary || "");
     // Append reCAPTCHA token
-    formData.append("recaptchaToken", recaptchaToken);
+    formData.append("recaptcha", recaptchaToken);
 
     if (selectedFile) {
       formData.append("applicant[file]", selectedFile);
@@ -798,5 +799,23 @@ export default function CareerForm({ jobId, isGeneral }) {
         </Form>
       </div>
     </div>
+  );
+}
+
+export default function CareerForm({ jobId, isGeneral }) {
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  return (
+    <GoogleReCaptchaProvider
+      reCaptchaKey={siteKey}
+      scriptProps={{
+        async: false,
+        defer: false,
+        appendTo: "head",
+        nonce: undefined,
+      }}
+    >
+      <CareerFormInner jobId={jobId} isGeneral={isGeneral} />
+    </GoogleReCaptchaProvider>
   );
 }

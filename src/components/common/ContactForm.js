@@ -250,35 +250,30 @@ function ContactFormInner() {
 
 // Main component that wraps the form with reCAPTCHA provider
 export default function ContactForm() {
-  const [isClient, setIsClient] = useState(false);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  // if (!isClient) {
+  //   return (
+  //     <div className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
+  //       <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
+  //         <div className="bg-white border-white rounded p-4 text-center">Loading form...</div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
-  if (!isClient) {
-    return (
-      <div className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
-        <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
-          <div className="bg-white border-white rounded p-4 text-center">Loading form...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!siteKey) {
-    console.error("reCAPTCHA site key is not defined");
-    return (
-      <div className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
-        <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
-          <div className="bg-white border-white rounded p-4 text-center text-red-600">
-            Configuration error. Please try again later.
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // if (!siteKey) {
+  //   console.error("reCAPTCHA site key is not defined");
+  //   return (
+  //     <div className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
+  //       <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
+  //         <div className="bg-white border-white rounded p-4 text-center text-red-600">
+  //           Configuration error. Please try again later.
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <GoogleReCaptchaProvider
