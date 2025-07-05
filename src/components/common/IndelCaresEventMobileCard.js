@@ -6,7 +6,7 @@ import { renderHtml } from "@/lib/utils/htmlParser"; // Assuming you have a util
 export default function IndelCaresEventMobileCard({ item, className }) {
   return (
     <Link
-      href={item?.href || "/"}
+      href={`/indel-money-cares/${item?.slug}`}
       className={`${
         className ? className : ""
       } group w-full h-full flex flex-wrap py-[5px] xl:py-[10px] 3xl:py-[15px] gap-[10px] xl:gap-[20px] 2xl:gap-[25px] 3xl:gap-[30px]`}

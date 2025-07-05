@@ -49,6 +49,7 @@ const slides = [
 ];
 
 export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blog" }) {
+  console.log("sliderItems", type);
   return (
     <section className="w-full py-[30px] bg-[#cae5f4] rounded-[20px_20px_0_0] overflow-hidden">
       <div className="container">
@@ -77,8 +78,8 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
               <SwiperSlide key={index}>
                 <div className="group w-full h-[220px] overflow-hidden rounded-[25px] block relative z-0">
                   <Image
-                    src={item.image}
-                    alt={item?.alt}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
+                    alt={item?.image_alt}
                     fill
                     sizes="380px"
                     className="transition-transform duration-300 object-cover group-hover:scale-105"

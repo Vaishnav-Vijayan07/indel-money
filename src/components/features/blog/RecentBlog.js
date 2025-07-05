@@ -26,7 +26,7 @@ const RecentBlog = ({ recentBlogs, type = "blog" }) => {
             {recentBlogs?.map((item, index) => (
               <SwiperSlide key={index}>
                 <Link href={`/${type}/${item.slug}`}>
-                  <BlogCard item={item} />
+                  <BlogCard item={item} type={type} />
                 </Link>
               </SwiperSlide>
             ))}
@@ -34,7 +34,7 @@ const RecentBlog = ({ recentBlogs, type = "blog" }) => {
         </div>
         <div className="sm:hidden flex flex-wrap">
           {recentBlogs?.map((item, index) => (
-            <MobBlogListCard key={index} item={item} className="w-full py-[10px]" />
+            <MobBlogListCard key={index} item={item} className="w-full py-[10px]" type={type} />
           ))}
         </div>
       </div>

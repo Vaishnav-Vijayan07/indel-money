@@ -47,7 +47,11 @@ async function LatestNews() {
         </div>
       </section>
       <div className="sm:hidden block">
-        <MobLatestUpdates />
+        <MobLatestUpdates
+          sliderItems={news || []}
+          sliderTitle={content?.slider_title || "Latest Updates"}
+          type="news"
+        />
       </div>
       <div className="sm:block hidden">
         <LatestUpdates
