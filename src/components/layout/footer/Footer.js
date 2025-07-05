@@ -70,7 +70,7 @@ const navigations = [
 
 function ContactBox({ href, src, title, alt }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-[10px] 3xl:gap-[15px]">
+    <a href={href} rel="noopener noreferrer" className="group flex items-center gap-[10px] 3xl:gap-[15px]">
       <span>
         <Image src={src} width={36} height={36} alt={alt} className="w-[15px] 4xs:w-[20px] sm:w-[20px] xl:w-[25px] 3xl:w-[30px] h-[auto] block" />
       </span>
@@ -99,6 +99,7 @@ function ExternalLinkBtn({ btn1, btn1_link, btn2, btn2_link }) {
 }
 
 export default function Footer({ content, icons }) {
+  console.log(content);
   const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full h-auto block bg-[#e6edf7] pt-[30px] lg:pt-[40px] xl:pt-[60px] 3xl:pt-[80px] pb-[15px] lg:pb-[20px] xl:pb-[30px] 3xl:pb-[40px]">

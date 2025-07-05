@@ -43,6 +43,7 @@ async function fetchData() {
   }
 }
 
+
 async function fetchGoldTypeData() {
   console.log("triggered");
 
@@ -117,7 +118,7 @@ export default async function FloatingButton() {
         </div>
       ))}
 
-      <div>
+      {/* <div>
         <FloatingCalculator
           formattedGoldTypes={data?.map((type) => ({
             label: type.gold_type_name,
@@ -128,7 +129,7 @@ export default async function FloatingButton() {
             value: type.id,
           }))}
         />
-      </div>
+      </div> */}
     </div>
   );
 }
