@@ -45,7 +45,7 @@ export default function MobAboutMessage({ messages }) {
                       src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/mob-ceo.png"}
                       alt={item.full_name}
                       fill
-                      className="aspect-square object-cover"
+                      className="aspect-square object-contain"
                     />
                   </div>
                   <div>
