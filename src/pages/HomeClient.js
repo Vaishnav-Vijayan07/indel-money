@@ -108,7 +108,7 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
         <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
       </div>
       <div className="block sm:hidden">
-        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
+        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
       </div>
 
       {/* <div className="hidden sm:block">

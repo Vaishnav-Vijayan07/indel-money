@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import CareerDetailInfo from "@/components/features/career/CareerDetailInfo";
 import api from "@/lib/api/axios";
 import { decodeId } from "@/lib/hashids";

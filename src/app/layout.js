@@ -1,5 +1,5 @@
-import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { Montserrat } from "next/font/google";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "../components/common/FloatingButton";

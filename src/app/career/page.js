@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import CareerBanner from "@/components/features/career/CareerBanner";
 import CareerLifeAtIndel from "@/components/features/career/CareerLifeAtIndel";
 import MobCareerLifeAtIndel from "@/components/features/career/MobCareerLifeAtIndel";

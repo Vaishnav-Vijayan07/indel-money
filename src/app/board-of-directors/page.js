@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import ManagementTeam from "@/components/features/management-team/ManagementTeam";
 import { defaultMeta } from "@/constants/constants";
 
