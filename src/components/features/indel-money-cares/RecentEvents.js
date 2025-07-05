@@ -34,7 +34,7 @@ const RecentEvents = ({ recentBlogs, type = "indel-money-cares" }) => {
         </div>
         <div className="sm:hidden flex flex-wrap">
           {recentBlogs?.map((item, index) => (
-            <MobBlogListCard key={index} item={item} className="w-full py-[10px]" />
+            <MobBlogListCard key={index} item={item} className="w-full py-[10px]" type={"indel-money-cares"} />
           ))}
         </div>
       </div>
