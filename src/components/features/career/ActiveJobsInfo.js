@@ -17,6 +17,7 @@ import {
 import LoadingCircleSpinner from "@/components/common/LoadingCircleSpinner";
 import api from "@/lib/api/axios";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function ActiveJobsInfo() {
   const searchParams = useSearchParams();
@@ -164,12 +165,8 @@ export default function ActiveJobsInfo() {
         <div className="w-full h-auto block mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
           <FindJobForm variant="activeJobs" />
           {hasActiveFilters() && (
-            <div className="mt-4">
-              <Button
-                variant="outline"
-                className="text-sm text-gray-600 border-gray-300 hover:bg-gray-100"
-                onClick={handleClearFilters}
-              >
+            <div className="mt-4 flex justify-center">
+              <Button variant="outline" className="text-sm text-gray-600 border-gray-300 hover:bg-gray-100 w-[430px]" onClick={handleClearFilters}>
                 Clear All Filters
               </Button>
             </div>
@@ -184,13 +181,10 @@ export default function ActiveJobsInfo() {
           <div className="text-red-500 text-center p-4">Error: {error}</div>
         ) : (
           <>
-            <div className="flex flex-wrap -mx-[4px] sm:-mx-[15px] lg:-mx-[20px] 2xl:-mx-[25px]">
-              {jobs.length > 0 ? (
-                jobs.map((item) => (
-                  <div
-                    key={item.id}
-                    className="w-full lg:w-1/2 p-[4px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_20px] 3xl:p-[20px_25px]"
-                  >
+            {jobs.length > 0 ? (
+              <div className="flex flex-wrap -mx-[4px] sm:-mx-[15px] lg:-mx-[20px] 2xl:-mx-[25px]">
+                {jobs.map((item) => (
+                  <div key={item.id} className="w-full lg:w-1/2 p-[4px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_20px] 3xl:p-[20px_25px]">
                     <div className="hidden sm:block">
                       <JobResultBox variant="activeJobs" item={item} />
                     </div>
@@ -198,11 +192,27 @@ export default function ActiveJobsInfo() {
                       <MobJobResultBox item={item} />
                     </div>
                   </div>
-                ))
-              ) : (
-                <div className="w-full text-center text-gray-500 p-4">No jobs found matching your criteria.</div>
-              )}
-            </div>
+                ))}
+              </div>
+            ) : hasActiveFilters() ? (
+              <div className="flex flex-col items-center">
+                <div className="w-full text-center text-gray-500 p-4">
+                  We would be marking our presence in your location soon. Please drop your resume so that we can call when we are there.
+                </div>
+                <Link
+                  href={"/career/#makemove"}
+                  className="btn btn-base2 max-w-full sm:max-w-xs lg:min-w-[160px] xl:max-w-[195px] 3xl:min-w-[220px]  hover:bg-[#cf2613]"
+                >
+                  Back to careers
+                </Link>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center">
+                <div className="w-full text-center text-gray-500 p-4">
+                 No Data
+                </div>
+              </div>
+            )}
             {pagination.total_pages > 1 && (
               <Pagination className="justify-start sm:justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
                 <PaginationContent>
