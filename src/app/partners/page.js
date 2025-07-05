@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import PartnersSection from "@/components/partners/Partners";
 import { defaultMeta } from "@/constants/constants";
 

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import GoverenanceInfo from "../../components/features/investors/GoverenanceInfo";
 import { defaultMeta } from "@/constants/constants";
 

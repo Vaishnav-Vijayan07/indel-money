@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import Testimonial from "@/pages/Testimonials";
 import { defaultMeta } from "@/constants/constants";
 

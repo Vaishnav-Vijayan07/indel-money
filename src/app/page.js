@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import HomeClient from "../pages/HomeClient";
 import { defaultMeta } from "@/constants/constants";
 

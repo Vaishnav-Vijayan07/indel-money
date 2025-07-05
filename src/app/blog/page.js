@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import LatestBlogs from "@/pages/LatestBlogs";
 import AllBlogsPage from "@/pages/AllBlogs";
 import { Suspense } from "react";

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import BranchLocator from "../../components/features/home/BranchLocator";
 import { defaultMeta } from "@/constants/constants";
 

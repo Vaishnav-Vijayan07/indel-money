@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import EventDetail from "@/components/features/indel-money-cares/EventDetail";
 import RecentEvents from "@/components/features/indel-money-cares/RecentEvents";
 

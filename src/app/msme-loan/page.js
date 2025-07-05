@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import KickStartVenture from "@/components/features/msmeloan/KickStartVenture";
 import LoansList from "@/components/features/msmeloan/LoansList";
 import WhyMsme from "@/components/features/msmeloan/WhyMsme";
