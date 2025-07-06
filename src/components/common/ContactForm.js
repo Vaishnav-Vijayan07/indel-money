@@ -85,7 +85,7 @@ function ContactFormInner() {
     try {
       // Execute reCAPTCHA
       const recaptchaToken = await executeRecaptcha("contact_form");
-      console.log("reCAPTCHA Token:", recaptchaToken);
+      
       
       if (!recaptchaToken) {
         toast.error("Failed to get reCAPTCHA token. Please try again.");

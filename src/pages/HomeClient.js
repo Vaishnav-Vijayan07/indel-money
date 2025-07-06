@@ -27,10 +27,16 @@ const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeMod
 
 export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+
   return (
     <>
       {/* welcome contents*/}
-      {isMobile ? <MobWelcomeModal /> : banner || serviceBanner ? <WelcomeModal banner={banner} serviceBanner={serviceBanner} /> : null}
+
+      {isMobile ? (
+        <MobWelcomeModal banner={banner} serviceBanner={serviceBanner} key={1} />
+      ) : (
+        <WelcomeModal banner={banner} serviceBanner={serviceBanner} key={2} />
+      )}
 
       {/* banner section contents*/}
       <div className="hidden sm:block">

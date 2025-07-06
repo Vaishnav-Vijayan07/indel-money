@@ -2,8 +2,8 @@ import Sliderbox from "./Sliderbox";
 import { renderHtml } from "@/lib/utils/htmlParser";
 
 export default function AboutSupermarket({ title, serviceImages, description, sub_title }) {
-  console.log(title)
-  console.log(description)
+  
+  
   return (
     <section className="relative  top-0 left-0 w-full h-full content-[''] bg-[linear-gradient(270deg,rgba(23,71,158,0.00)_3.16%,rgba(23,71,158,0.15)_97.06%)]">
       <div className="container">

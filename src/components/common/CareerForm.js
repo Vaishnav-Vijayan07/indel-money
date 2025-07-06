@@ -242,7 +242,7 @@ function CareerFormInner({ jobId, isGeneral }) {
     }
 
     const recaptchaToken = await executeRecaptcha("job_form");
-    console.log("reCAPTCHA Token:", recaptchaToken);
+    
 
     if (!recaptchaToken) {
       toast.error("Failed to get reCAPTCHA token. Please try again.");
