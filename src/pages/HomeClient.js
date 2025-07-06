@@ -81,10 +81,10 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
 
       {/* Gold loan calculator*/}
       <div id="calculator" className="hidden sm:block">
-        <StepGoldLoanCalculator />
+        <StepGoldLoanCalculator goldRate={goldRate} />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoanCalculator />
+        <MobStepGoldLoanCalculator goldRate={goldRate} />
       </div>
 
       {/* Branch locator contents*/}
