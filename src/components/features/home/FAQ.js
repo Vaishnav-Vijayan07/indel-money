@@ -5,6 +5,7 @@ import { Plus, Minus } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import api from "../../../lib/api/axios";
+import parse from "html-react-parser";
 
 export default function FAQ({ pageContents, type = "home" }) {
   const [openIndex, setOpenIndex] = useState(null);
@@ -12,7 +13,6 @@ export default function FAQ({ pageContents, type = "home" }) {
   const [loading, setLoading] = useState(true);
 
   console.log("FAQ Component Rendered with Type:", type);
-  
 
   // Fetch FAQs based on type
   useEffect(() => {
@@ -30,7 +30,6 @@ export default function FAQ({ pageContents, type = "home" }) {
         const result = await response.data;
 
         console.log("Fetched FAQs:", result);
-        
 
         if (result?.status === "success") {
           setFaqs(result.faqs || []);
@@ -84,7 +83,9 @@ export default function FAQ({ pageContents, type = "home" }) {
                   {pageContents?.faq_section_super_title}
                 </div>
                 <div className="flex items-center justify-between mb-2 pb-[30px] border-b-1 border-[rgba(0,0,0,0.68)]">
-                  <div className="text-black text-title1">{pageContents?.faq_section_title}</div>
+                  <div className="text-black text-title1 [&>span]:text-base2 [&>span]:font-bold">
+                    {pageContents?.faq_section_title}
+                  </div>
                 </div>
                 <div className="text-center py-8">
                   <div className="text-gray-600">Loading FAQs...</div>
