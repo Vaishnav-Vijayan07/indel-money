@@ -304,13 +304,13 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
           >
             SEARCH
           </Button>
-          {hasActiveFilters() && (
+          {hasActiveFilters && hasActiveFilters() && (
             <Button
               type="reset"
               size="sm"
               variant="outline"
               className="border-[#cf2613] text-[#cf2613] px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#ffe5e0] hover:text-[#b71c0c]"
-              onClick={() => [handleClearFilters(), form.reset()]}
+              onClick={() => [handleClearFilters && handleClearFilters(), form.reset()]}
             >
               CLEAR
             </Button>
