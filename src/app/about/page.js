@@ -1,12 +1,12 @@
 import React from "react";
-import Banner from "@/components/features/about/banner";
-import Finacial from "@/components/features/about/finacial"; 
+import Banner from "../../components/features/about/banner";
+// import Finacial from "@/components/features/about/finacial"; 
 // import Supermarket from "@/components/features/about/supermarket";
-import Message from "@/components/features/about/message";
+import Message from "../../components/features/about/message";
 // import Accolades from "@/components/features/about/accolades";
-import Indelvalues from "@/components/features/about/indelvalues";
-import Investors from "@/components/features/about/investors";  
-import Lifeindel from "@/components/features/about/lifeIndel";  
+import Indelvalues from "../../components/features/about/indelvalues";
+import Investors from "../../components/features/about/investors";  
+import Lifeindel from "../../components/features/about/lifeIndel";  
 
 export default function About() {
     return (
