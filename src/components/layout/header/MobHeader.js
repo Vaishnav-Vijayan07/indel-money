@@ -57,7 +57,7 @@ const quickactions = [
   },
 ];
 
-export default function MobHeader({ socialLinks, links ,logo}) {
+export default function MobHeader({ socialLinks, links, logo, title, modes }) {
   const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
@@ -116,7 +116,13 @@ export default function MobHeader({ socialLinks, links ,logo}) {
                     rel="noopener noreferrer"
                     className="w-[15px] h-auto aspect-square block transition-transform duration-300 hover:scale-105"
                   >
-                    <Image src={ item.icon ? `${serverMediaPath}${item.icon}` : "/images/mob-icon-call.svg"} alt="call" width={18} height={36} className="w-full h-full aspect-square object-contain" />
+                    <Image
+                      src={item.icon ? `${serverMediaPath}${item.icon}` : "/images/mob-icon-call.svg"}
+                      alt="call"
+                      width={18}
+                      height={36}
+                      className="w-full h-full aspect-square object-contain"
+                    />
                   </a>
                 </div>
               ))}
@@ -149,7 +155,7 @@ export default function MobHeader({ socialLinks, links ,logo}) {
                     </Link>
                   </div> */}
                   <div>
-                    <MobNavMenu logo={logo} serverMediaPath={serverMediaPath} />
+                    <MobNavMenu logo={logo} serverMediaPath={serverMediaPath} title={title} modes={modes} />
                   </div>
                 </div>
               </div>

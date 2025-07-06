@@ -36,7 +36,13 @@ export default async function Header() {
         <DeskHeader headerData={headerData} />
       </div>
       <div className="block lg:hidden">
-        <MobHeader socialLinks={socialLinks} logo={headerData?.content?.logo} links={links} />
+        <MobHeader
+          socialLinks={socialLinks}
+          logo={headerData?.content?.logo}
+          links={links}
+          title={headerData?.content?.button_1_text}
+          modes={headerData?.modes}
+        />
       </div>
     </>
   );
