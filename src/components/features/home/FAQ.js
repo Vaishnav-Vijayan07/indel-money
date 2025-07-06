@@ -84,7 +84,7 @@ export default function FAQ({ pageContents, type = "home" }) {
                 </div>
                 <div className="flex items-center justify-between mb-2 pb-[30px] border-b-1 border-[rgba(0,0,0,0.68)]">
                   <div className="text-black text-title1 [&>span]:text-base2 [&>span]:font-bold">
-                    {pageContents?.faq_section_title}
+                    {parse(pageContents?.faq_section_title)}
                   </div>
                 </div>
                 <div className="text-center py-8">
