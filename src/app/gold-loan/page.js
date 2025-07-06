@@ -68,6 +68,26 @@ async function fetchGoldLoanData() {
   }
 }
 
+async function fetchGoldRate() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-rate`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const result = await response.json();
+
+    if (result?.success && result?.goldRate) {
+      return { data: result.goldRate, error: null };
+    }
+
+    return { data: null, error: result?.message || "Invalid response from gold rate API" };
+  } catch (error) {
+    return { data: null, error: "Failed to fetch gold rate" };
+  }
+}
+
 async function getMetaData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=goldloan`);
@@ -159,6 +179,7 @@ export async function generateMetadata() {
 export default async function GoldLoan() {
   const { steps, contents, bannerIcons, schemes, faqs, features, GoldloanBenefits, announcement } = await fetchGoldLoanData();
   const flattenedFeatures = features?.flat()?.filter((item) => !item.is_center);
+  const { data: goldRateData, error: goldRateError } = await fetchGoldRate();
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
   }
@@ -174,6 +195,7 @@ export default async function GoldLoan() {
           banner_image={contents?.banner_image}
           alt={contents?.banner_alt}
           banner_image_mobile={contents?.banner_image_mobile}
+          goldRate={goldRateData}
         />
       </div>
       <div className="block sm:hidden">
@@ -184,6 +206,7 @@ export default async function GoldLoan() {
           gold_rate_text={contents?.gold_rate_text}
           banner_image={contents?.banner_image_mobile}
           alt={contents?.banner_alt}
+          goldRate={goldRateData}
         />
       </div>
 

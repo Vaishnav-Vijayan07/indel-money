@@ -25,7 +25,7 @@ const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLa
 const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: false });
 import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
-export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
+export default function Home({ initialData, serviceBanner, banner, branchLocatorData, goldRate }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 
   return (
@@ -40,13 +40,19 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
 
       {/* banner section contents*/}
       <div className="hidden sm:block">
-        <HeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} announcement={initialData?.pageContent?.announcement_text} />
+        <HeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.pageContent?.announcement_text}
+          goldRate={goldRate}
+        />
       </div>
       <div className="block sm:hidden">
         <MobHeroBanner
           heroBanner={initialData?.heroBanner || []}
           initialData={initialData}
           announcement={initialData?.pageContent?.announcement_text}
+          goldRate={goldRate}
         />
       </div>
 
@@ -111,10 +117,18 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
 
       {/* Latest Updates contents*/}
       <div className="hidden sm:block">
-        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
+        <LatestUpdates
+          sliderItems={initialData?.blogs}
+          sliderTitle={initialData?.pageContent?.updates_section_title}
+          type="indel-money-cares"
+        />
       </div>
       <div className="block sm:hidden">
-        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
+        <MobLatestUpdates
+          sliderItems={initialData?.blogs}
+          sliderTitle={initialData?.pageContent?.updates_section_title}
+          type="indel-money-cares"
+        />
       </div>
 
       {/* <div className="hidden sm:block">

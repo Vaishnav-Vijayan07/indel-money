@@ -173,7 +173,6 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "backend.indelmoney.com",
-        pathname: "/uploads/**",
       },
       {
         protocol: "http",

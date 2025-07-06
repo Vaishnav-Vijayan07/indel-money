@@ -24,13 +24,33 @@ async function fetchHomeData() {
   }
 }
 
+async function fetchGoldRate() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-rate`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const result = await response.json();
+
+    if (result?.success && result?.goldRate) {
+      return { data: result.goldRate, error: null };
+    }
+
+    return { data: null, error: result?.message || "Invalid response from gold rate API" };
+  } catch (error) {
+    return { data: null, error: "Failed to fetch gold rate" };
+  }
+}
+
 async function getMetaData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=home`);
     const result = await response.json();
     const meta = result.data;
 
-    
+    console.log("meta", meta);
 
     if (result.status === "success") {
       return {
@@ -116,6 +136,10 @@ export async function generateMetadata() {
 
 export default async function HomePage() {
   const { data, error } = await fetchHomeData();
+  const { data: goldRateData, error: goldRateError } = await fetchGoldRate();
+
+  console.log("Gold Rate Data:", goldRateData);
+
   return (
     <HomeClient
       initialData={data}
@@ -123,6 +147,7 @@ export default async function HomePage() {
       banner={data?.banner}
       branchLocatorData={data?.branchLocatorData}
       initialError={error}
+      goldRate={goldRateData}
     />
   );
 }
