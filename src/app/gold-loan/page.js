@@ -299,7 +299,7 @@ export default async function GoldLoan() {
         <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
+        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} type="goldloan" />
       </div>
     </>
   );

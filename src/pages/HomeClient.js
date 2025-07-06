@@ -145,7 +145,7 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
 
       {/* faq contents */}
       <div className="hidden sm:block">
-        <FAQ faqs={initialData?.faqs} pageContents={initialData?.pageContent} />
+        <FAQ faqs={initialData?.faqs} pageContents={initialData?.pageContent} type={"home"} />
       </div>
     </>
   );
