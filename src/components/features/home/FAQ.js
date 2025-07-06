@@ -4,11 +4,15 @@ import Link from "next/link";
 import { Plus, Minus } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import api from "../../../lib/api/axios";
 
 export default function FAQ({ pageContents, type = "home" }) {
   const [openIndex, setOpenIndex] = useState(null);
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  console.log("FAQ Component Rendered with Type:", type);
+  
 
   // Fetch FAQs based on type
   useEffect(() => {
@@ -25,7 +29,10 @@ export default function FAQ({ pageContents, type = "home" }) {
 
         const result = await response.data;
 
-        if (result.status === "success") {
+        console.log("Fetched FAQs:", result);
+        
+
+        if (result?.status === "success") {
           setFaqs(result.faqs || []);
         } else {
           throw new Error("Failed to fetch FAQs");
