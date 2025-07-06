@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 import IndelCares from "@/pages/IndelCares";
 
-async function fetchData(page = 1, limit = 10) {
+async function fetchData(page = 1, limit = 3) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/indel-cares?page=${page}&limit=${limit}`, {
       cache: "no-store", // Ensure fresh data
