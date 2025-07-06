@@ -99,7 +99,7 @@ function ExternalLinkBtn({ btn1, btn1_link, btn2, btn2_link }) {
 }
 
 export default function Footer({ content, icons }) {
-  console.log(content);
+  
   const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full h-auto block bg-[#e6edf7] pt-[30px] lg:pt-[40px] xl:pt-[60px] 3xl:pt-[80px] pb-[15px] lg:pb-[20px] xl:pb-[30px] 3xl:pb-[40px]">

@@ -193,7 +193,7 @@ export default function EmployeeTestimonials({
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState(0);
 
-  console.log("awards", awards);
+  
 
   const handleImageClick = (index) => {
     if (swiperInstance) {

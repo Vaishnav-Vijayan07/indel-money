@@ -39,23 +39,23 @@ function analyzeImages(dir) {
 }
 
 function generateImageReport() {
-  console.log('🔍 Analyzing images...\n');
+  
   
   const publicImages = analyzeImages(path.join(process.cwd(), 'public'));
   const srcImages = analyzeImages(path.join(process.cwd(), 'src'));
   
   const allImages = [...publicImages, ...srcImages];
   
-  console.log(`📊 Found ${allImages.length} images\n`);
+  
   
   // Large images report
   const largeImages = allImages.filter(img => img.isLarge);
   if (largeImages.length > 0) {
-    console.log('⚠️  Large images (>100KB):');
+    
     largeImages.forEach(img => {
-      console.log(`  - ${img.name} (${img.size}) - ${img.path}`);
+      
     });
-    console.log();
+    
   }
   
   // Format optimization suggestions
@@ -65,20 +65,20 @@ function generateImageReport() {
   );
   
   if (nonWebPImages.length > 0) {
-    console.log('💡 Consider converting to WebP:');
+    
     nonWebPImages.slice(0, 5).forEach(img => {
-      console.log(`  - ${img.name}`);
+      
     });
     if (nonWebPImages.length > 5) {
-      console.log(`  ... and ${nonWebPImages.length - 5} more`);
+      
     }
-    console.log();
+    
   }
   
   // Summary
   const totalSize = allImages.reduce((sum, img) => sum + img.sizeBytes, 0);
-  console.log(`📈 Total image size: ${(totalSize / 1024 / 1024).toFixed(2)} MB`);
-  console.log(`📊 Average image size: ${(totalSize / allImages.length / 1024).toFixed(2)} KB`);
+  
+  
 }
 
 generateImageReport();
@@ -96,7 +96,7 @@ const performanceBudget = {
 };
 
 async function runPerformanceAudit(url = 'http://localhost:3000') {
-  console.log('🚀 Starting performance audit...\n');
+  
   
   const chrome = await chromeLauncher.launch({
     chromeFlags: ['--headless', '--no-sandbox', '--disable-dev-shm-usage']
@@ -113,7 +113,7 @@ async function runPerformanceAudit(url = 'http://localhost:3000') {
     const runnerResult = await lighthouse(url, options);
     const audits = runnerResult.lhr.audits;
     
-    console.log('📊 Performance Budget Check:\n');
+    
     
     let passed = 0;
     let total = 0;
@@ -125,15 +125,15 @@ async function runPerformanceAudit(url = 'http://localhost:3000') {
         const status = actual <= budget ? '✅' : '❌';
         const unit = metric === 'cumulative-layout-shift' ? '' : 'ms';
         
-        console.log(`${status} ${metric}: ${actual}${unit} (budget: ${budget}${unit})`);
+        
         
         if (actual <= budget) passed++;
         total++;
       }
     }
     
-    console.log(`\n🎯 Performance Score: ${passed}/${total} metrics passed`);
-    console.log(`📈 Overall Performance Score: ${runnerResult.lhr.categories.performance.score * 100}/100`);
+    
+    
     
     // Opportunities
     const opportunities = Object.values(audits)
@@ -142,9 +142,9 @@ async function runPerformanceAudit(url = 'http://localhost:3000') {
       .slice(0, 3);
     
     if (opportunities.length > 0) {
-      console.log('\n💡 Top Optimization Opportunities:');
+      
       opportunities.forEach(opportunity => {
-        console.log(`  - ${opportunity.title}: ${opportunity.displayValue || 'N/A'}`);
+        
       });
     }
     
@@ -170,8 +170,8 @@ async function main() {
   
   const isServerRunning = await checkServer(url);
   if (!isServerRunning) {
-    console.log('⚠️  Server is not running at', url);
-    console.log('Please start your server first: npm run dev or npm run start');
+    
+    
     process.exit(1);
   }
   
@@ -182,7 +182,7 @@ main().catch(console.error);
 
 // scripts/api-audit.js
 async function auditAPI() {
-  console.log('🔍 Auditing API endpoints...\n');
+  
   
   const apiEndpoints = [
     '/api/loan-against-property',
@@ -200,19 +200,19 @@ async function auditAPI() {
       const contentLength = response.headers.get('content-length');
       const contentType = response.headers.get('content-type');
       
-      console.log(`📊 ${endpoint}:`);
-      console.log(`  Status: ${response.status}`);
-      console.log(`  Response Time: ${responseTime}ms`);
-      console.log(`  Size: ${contentLength ? `${contentLength} bytes` : 'Unknown'}`);
-      console.log(`  Type: ${contentType || 'Unknown'}`);
+      
+      
+      
+      
+      
       
       if (responseTime > 1000) {
-        console.log(`  ⚠️  Slow response (>1s)`);
+        
       }
       
-      console.log();
+      
     } catch (error) {
-      console.log(`❌ ${endpoint}: ${error.message}\n`);
+      
     }
   }
 }

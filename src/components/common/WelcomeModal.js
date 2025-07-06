@@ -99,7 +99,6 @@ function WelcomeBox({ item, index }) {
 }
 
 export default function WelcomeModal({ banner, serviceBanner }) {
-  
   const appear_in = banner?.banner_popup_appearence_time || serviceBanner?.banner_popup_appearence_time;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -157,7 +156,13 @@ export default function WelcomeModal({ banner, serviceBanner }) {
           <div className="flex flex-wrap gap-[15px] lg:gap-[20px] xl:gap-[30px] 2xl:gap-[40px] 3xl:gap-[50px] mb-[10px] sm:mb-[15px] lg:mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
             <div className="w-full max-w-[80px] sm:max-w-[90px] md:max-w-[100px] lg:max-w-[120px] xl:max-w-[140px] 2xl:max-w-[180px] 3xl:max-w-[280px] h-auto inline-block">
               <Image
-                src={banner?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.logo}` : serviceBanner?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${serviceBanner?.logo}` : "/icons/logo_sm.svg"}
+                src={
+                  banner?.logo
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.logo}`
+                    : serviceBanner?.logo
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${serviceBanner?.logo}`
+                    : "/icons/logo_sm.svg"
+                }
                 alt={banner?.image_alt ? banner?.image_alt : "alt"}
                 width={218}
                 height={112}
@@ -173,20 +178,22 @@ export default function WelcomeModal({ banner, serviceBanner }) {
               </div>
             </div>
           </div>
+          {/* Banner image - if banner exists */}
           {banner && (
-            <Link href={banner?.image_link ? banner?.image_link : "/"} className="w-full">
-              <Image
-                src={
-                  banner?.banner_popup_image
-                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.banner_popup_image}`
-                    : "/icons/logo_sm.svg"
-                }
-                width={1920}
-                height={1080}
-                alt={banner?.image_alt ? banner?.image_alt : "alt"}
-                className="w-full h-full object-cover"
-              />
-            </Link>
+            <div className="w-full mb-[20px] sm:mb-0">
+              <Link
+                href={banner?.image_link ? banner?.image_link : "/"}
+                className="block w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] 3xl:h-[500px] relative overflow-hidden rounded-[10px] lg:rounded-[15px] 2xl:rounded-[20px] group"
+              >
+                <Image
+                  src={banner?.banner_popup_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.banner_popup_image}` : "/icons/logo_sm.svg"}
+                  fill
+                  sizes="(max-width: 640px) 350px, (max-width: 768px) 608px, (max-width: 1024px) 736px, (max-width: 1280px) 864px, (max-width: 1536px) 1088px, (max-width: 1920px) 1312px, 1664px"
+                  alt={banner?.image_alt ? banner?.image_alt : "banner image"}
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </Link>
+            </div>
           )}
           {serviceBanner && (
             <div className="-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px] relative z-0 before:absolute before:inset-0 before:left-auto before:z-2 before:block before:bg-gradient-to-r before:to-white before:from-transparent before:w-[20px] before:h-full before:pointer-events-none before:xl:hidden">

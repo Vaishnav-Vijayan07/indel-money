@@ -32,7 +32,7 @@ async function fetchData() {
 }
 
 async function fetchGoldTypeData() {
-  console.log("triggered");
+  
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-types`, {
       cache: "no-store", // Ensure fresh data

@@ -23,7 +23,7 @@ import { renderHtml } from "@/lib/utils/htmlParser";
 // ];
 
 export default function AboutMessage({ messages }) {
-  console.log(messages);
+  
   return (
     <section className="py-[80px]">
       <div className="container">

@@ -23,14 +23,20 @@ const MobBranchLocator = dynamic(() => import("../components/features/home/MobBr
 const MobJoinTeam = dynamic(() => import("../components/features/home/MobJoinTeam"), { ssr: false });
 const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLatestUpdates"), { ssr: false });
 const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: false });
-const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeModal"), { ssr: false });
+import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
 export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+
   return (
     <>
       {/* welcome contents*/}
-      {isMobile ? <MobWelcomeModal /> : banner || serviceBanner ? <WelcomeModal banner={banner} serviceBanner={serviceBanner} /> : null}
+
+      {isMobile ? (
+        <MobWelcomeModal banner={banner} serviceBanner={serviceBanner} key={1} />
+      ) : (
+        <WelcomeModal banner={banner} serviceBanner={serviceBanner} key={2} />
+      )}
 
       {/* banner section contents*/}
       <div className="hidden sm:block">

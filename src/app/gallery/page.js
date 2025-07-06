@@ -145,7 +145,7 @@ export default async function GalleryPage({ searchParams }) {
 
   const { contents, medias, sliderItems, pagination, error } = await fetchData(page, type);
 
-  console.log(medias)
+  
 
   if (!contents || !medias || !sliderItems) {
     return <NoContents />;

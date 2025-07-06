@@ -41,7 +41,7 @@ async function getMetaData() {
     const result = await response.json();
     const meta = result.data;
 
-    console.log("meta", meta);
+    
 
     if (result.status === "success") {
       return {

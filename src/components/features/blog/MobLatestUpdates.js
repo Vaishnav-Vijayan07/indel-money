@@ -49,7 +49,7 @@ const slides = [
 ];
 
 export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blog" }) {
-  console.log("sliderItems", type);
+  
   return (
     <section className="w-full py-[30px] bg-[#cae5f4] rounded-[20px_20px_0_0] overflow-hidden">
       <div className="container">

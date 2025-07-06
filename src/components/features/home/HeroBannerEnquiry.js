@@ -27,7 +27,7 @@ const postEnquiryData = async (enquiryData) => {
       payload
     );
 
-    console.log("API Response:", data);
+    
 
     if (data?.status === "success" || data?.success) {
       toast.success("Enquiry submitted successfully!");
