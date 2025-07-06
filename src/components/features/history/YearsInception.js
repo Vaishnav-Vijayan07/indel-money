@@ -52,7 +52,7 @@ export default function YearsInception({ inceptionslides, title }) {
   const dotsRef = useRef([]);
   const [arrowPos, setArrowPos] = useState(0);
 
-  
+
 
   useEffect(() => {
     const activeDotIndex = Math.round((activeIndex / (inceptionslides?.length - 1)) * (12 - 1));
@@ -100,7 +100,7 @@ export default function YearsInception({ inceptionslides, title }) {
                       },
                     }}
                     modules={[Pagination, Mousewheel, Autoplay]}
-                    className="h-[400px] 2xl:h-[650px] 3xl:h-[750px]"
+                    className="h-[400px] 2xl:h-[650px] 3xl:h-[450px]"
                     onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                   >
                     {inceptionslides?.map((item, index) => (
@@ -109,14 +109,14 @@ export default function YearsInception({ inceptionslides, title }) {
                           <div className="w-[70px] 2xl:w-[100px] relative h-full">
                             <div className="text-white text-[55px] 2xl:text-[80px] 3xl:text-[93px] leading-none font-bold">{item?.year?.slice(2)}</div>
                             {index !== inceptionslides?.length - 1 && (
-                              <div className="absolute bg-white w-[2px] left-0 2xl:left-0 right-0 m-auto bottom-0 h-[calc(100%-70px)] 3xl:h-[calc(100%-100px)] before:content-[''] before:absolute before:top-0 before:left-[-5px] before:m-auto before:w-[12px] before:h-[12px] before:bg-white before:rounded-full">
+                              <div className="absolute bg-white w-[2px] left-0 2xl:left-0 right-0 m-auto bottom-0 h-[calc(100%-70px)] 3xl:h-[calc(100%-150px)] before:content-[''] before:absolute before:top-0 before:left-[-5px] before:m-auto before:w-[12px] before:h-[12px] before:bg-white before:rounded-full">
                                 <span className="absolute bottom-0 left-[-8px] m-auto bg-[#DCEBFF] w-[18px] h-[18px] rounded-full before:content-[''] before:absolute before:inset-0 before:m-auto before:w-[10px] before:h-[10px] before:bg-[#EB0208] before:rounded-full"></span>
                               </div>
                             )}
                           </div>
-                          <div className="w-[calc(100%-100px)] pl-[30px] 2xl:pl-[40px] 3xl:pl-[70px]">
-                            <div className="w-full h-full">
-                              <div className="rounded-[18px] 2xl:rounded-[24px] overflow-hidden w-full mb-[15px]">
+                          <div className="w-[calc(100%-100px)] pl-[30px] 2xl:pl-[40px] 3xl:pl-[70px] h-full flex flex-wrap item-center">
+                            <div className="w-full h-auto flex-col-reverse justify-center flex flex-wrap item-center">
+                              {/* <div className="rounded-[18px] 2xl:rounded-[24px] overflow-hidden w-full mb-[15px]">
                                 <Image
                                   src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
                                   alt={item?.title}
@@ -124,11 +124,12 @@ export default function YearsInception({ inceptionslides, title }) {
                                   height={250}
                                   className="w-full object-cover max-h-[175px] 3xl:max-h-[250px]"
                                 />
-                              </div>
+                              </div> */}
+                              <p className="text-white">{item?.description}</p>
                               <h3 className="text-[16px] 2xl:text-[20px] 3xl:text-[22px] text-white font-semibold mb-[5px] 2xl:mb-[10px]">
                                 {item?.title}
                               </h3>
-                              <p className="text-white">{item?.description}</p>
+
                             </div>
                           </div>
                         </div>

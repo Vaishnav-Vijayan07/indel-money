@@ -9,108 +9,8 @@ import {
 } from "@/components/ui/custom-sheet";
 import Image from "next/image";
 import Link from "next/link";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-
-// const GoldLoans = [
-//   {
-//     image: "/images/icon-goldloan-1.svg",
-//     alt: "item",
-//     title: "Gold Loan Steps",
-//     link: "/gold-loan#gold-loan-steps",
-//   },
-//   {
-//     image: "/images/icon-goldloan-2.svg",
-//     alt: "item",
-//     title: "Instant & hassle free Gold Loan",
-//     link: "/gold-loan#hassle-free",
-//   },
-//   {
-//     image: "/images/icon-goldloan-3.svg",
-//     alt: "item",
-//     title: "Our Easy Step Gold Loan",
-//     link: "/gold-loan#easy-step",
-//   },
-//   {
-//     image: "/images/icon-goldloan-4.svg",
-//     alt: "item",
-//     title: "Gold Loan Scheme",
-//     link: "/gold-loan#scheme",
-//   },
-// ];
-// const OtherLoans = [
-//   {
-//     image: "/images/icon-goldloan-1.svg",
-//     alt: "item",
-//     title: "Gold Loan",
-//     link: "/gold-loan",
-//   },
-//   {
-//     image: "/images/icon-goldloan-2.svg",
-//     alt: "item",
-//     title: "MSME Loan",
-//     link: "/msme-loan",
-//   },
-//   {
-//     image: "/images/icon-goldloan-3.svg",
-//     alt: "item",
-//     title: "consumer durable Loan",
-//     link: "/consumer-durable-loans",
-//   },
-//   {
-//     image: "/images/icon-goldloan-4.svg",
-//     alt: "item",
-//     title: "Loan against property",
-//     link: "/loan-against-property",
-//   },
-//   {
-//     image: "/images/icon-goldloan-1.svg",
-//     alt: "item",
-//     title: "Foreign exchange",
-//     link: "https://indelremit.com/",
-//   },
-// ];
-// const Careers = [
-//   {
-//     title: "life at indel",
-//     link: "/life-at-indel-money",
-//   },
-//   {
-//     title: "employee testimonial",
-//     link: "/emptestimonial",
-//   },
-//   {
-//     title: "current openings",
-//     link: "/active-jobs",
-//   },
-//   {
-//     title: "apply now",
-//     link: "/active-jobs",
-//   },
-// ];
-// const Abouts = [
-//   {
-//     title: "indel values",
-//     link: "/indel-values",
-//   },
-//   {
-//     title: "board of directors",
-//     link: "/about-indel-money",
-//   },
-//   {
-//     title: "management team",
-//     link: "/management-team",
-//   },
-//   {
-//     title: "partners",
-//     link: "/partners",
-//   },
-//   {
-//     title: "different shades of indel",
-//     link: "/different-shades-of-indelmoney",
-//   },
-// ];
 
 const GoldLoans = [
   {
@@ -251,6 +151,9 @@ const tabStyle =
 export default function MobNavMenu({logo, serverMediaPath}) {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
   const toggleDropdown = (dropdown) => {
     setOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
   };
@@ -326,9 +229,7 @@ export default function MobNavMenu({logo, serverMediaPath}) {
               </a>
             </div>
             <div>
-              <div
-                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
-              >
+              <div className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}>
                 <span>other loan</span>
                 <button
                   className={`${
