@@ -13,7 +13,7 @@ function MobCountBox({ count, title }) {
         </span>
         +
       </div>
-      <div className="text-[12px] leading-none font-medium line-clamp-1 text-white max-w-100% bg-base1 rounded-[32px] p-[8px_10px]">
+      <div className="text-[12px]  font-medium  text-white max-w-100% bg-base1 rounded-[32px] p-[8px_10px]">
         <span className="w-[10px] h-[10px] rounded-full bg-base2 mr-[4px] 4xs:mr-[8px] inline-block"></span>
         {title}
       </div>
