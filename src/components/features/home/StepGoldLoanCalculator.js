@@ -5,15 +5,14 @@ import GoldLoanForm from "../../common/GoldLoanForm";
 import EmiForm from "../../common/EmiForm";
 import { useEffect, useMemo, useState } from "react";
 import api from "@/lib/api/axios";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
-export default function StepGoldLoanCalculator({ className }) {
+export default function StepGoldLoanCalculator({ className, goldRate }) {
   const [goldCaratTypes, setGoldCaratTypes] = useState(null);
   const [goldTypes, setGoldTypes] = useState(null);
 
   const fetchGoldTypes = async () => {
     try {
-
       const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-types`);
       if (data.success) {
         setGoldTypes(data.data);
@@ -24,11 +23,10 @@ export default function StepGoldLoanCalculator({ className }) {
     } catch (error) {
       toast.error("gold types fetching failed!");
     }
-  }
+  };
 
   const fetchGoldCaratTypes = async () => {
     try {
-
       const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-carat-types`);
       if (data.success) {
         setGoldCaratTypes(data.data);
@@ -39,18 +37,18 @@ export default function StepGoldLoanCalculator({ className }) {
     } catch (error) {
       toast.error("gold carat fetching failed!");
     }
-  }
+  };
 
   useEffect(() => {
     fetchGoldTypes();
     fetchGoldCaratTypes();
-  }, [])
+  }, []);
 
   const formattedGoldTypes = useMemo(() => {
     if (goldTypes?.length > 0) {
-      return goldTypes?.map(type => ({
+      return goldTypes?.map((type) => ({
         label: type.gold_type_name,
-        value: type.id
+        value: type.id,
       }));
     }
     return [];
@@ -58,9 +56,9 @@ export default function StepGoldLoanCalculator({ className }) {
 
   const formattedGoldCaratTypes = useMemo(() => {
     if (goldCaratTypes?.length > 0) {
-      return goldCaratTypes?.map(type => ({
+      return goldCaratTypes?.map((type) => ({
         label: type.name,
-        value: type.id
+        value: type.id,
       }));
     }
     return [];
@@ -81,7 +79,7 @@ export default function StepGoldLoanCalculator({ className }) {
               <div className="text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] leading-none font-medium mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
                 Gold Loan Calculator
               </div>
-              <GoldLoanForm goldCaratTypes={formattedGoldCaratTypes} goldTypes={formattedGoldTypes} />
+              <GoldLoanForm goldCaratTypes={formattedGoldCaratTypes} goldTypes={formattedGoldTypes} goldRate={goldRate} />
             </motion.div>
           </div>
           <div className="w-full sm:w-1/2 p-[10px] lg:p-[15px] 2xl:p-[20px]">
@@ -95,7 +93,7 @@ export default function StepGoldLoanCalculator({ className }) {
               <div className="text-[14px] sm:text-[16px] lg:text-[18px] xl:text-[24px] 2xl:text-[28px] 3xl:text-[34px] leading-none font-medium mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
                 EMI Calculator
               </div>
-              <EmiForm />
+              <EmiForm goldRate={goldRate} />
             </motion.div>
           </div>
         </div>
