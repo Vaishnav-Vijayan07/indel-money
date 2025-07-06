@@ -98,12 +98,7 @@ export default function ActiveJobsInfo() {
   };
 
   const hasActiveFilters = () => {
-    return (
-      searchParams.get("state_id") ||
-      searchParams.get("district_id") ||
-      searchParams.get("location_id") ||
-      searchParams.get("role_id")
-    );
+    return searchParams.get("state_id") || searchParams.get("district_id") || searchParams.get("location_id") || searchParams.get("role_id");
   };
 
   const renderPaginationItems = () => {
@@ -194,10 +189,7 @@ export default function ActiveJobsInfo() {
             {jobs.length > 0 ? (
               <div className="flex flex-wrap -mx-[4px] sm:-mx-[15px] lg:-mx-[20px] 2xl:-mx-[25px]">
                 {jobs.map((item) => (
-                  <div
-                    key={item.id}
-                    className="w-full lg:w-1/2 p-[4px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_20px] 3xl:p-[20px_25px]"
-                  >
+                  <div key={item.id} className="w-full lg:w-1/2 p-[4px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_20px] 3xl:p-[20px_25px]">
                     <div className="hidden sm:block">
                       <JobResultBox variant="activeJobs" item={item} />
                     </div>
@@ -207,11 +199,10 @@ export default function ActiveJobsInfo() {
                   </div>
                 ))}
               </div>
-            ) : hasActiveFilters() ? (
+            ) : (
               <div className="flex flex-col items-center">
                 <div className="w-full text-center text-gray-500 p-4">
-                  We would be marking our presence in your location soon. Please drop your resume so that we can call when we are
-                  there.
+                  We would be marking our presence in your location soon. Please drop your resume so that we can call when we are there.
                 </div>
                 <Link
                   href={"/career/#makemove"}
@@ -219,10 +210,6 @@ export default function ActiveJobsInfo() {
                 >
                   Back to careers
                 </Link>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center">
-                <div className="w-full text-center text-gray-500 p-4">No Data</div>
               </div>
             )}
             {pagination.total_pages > 1 && (
