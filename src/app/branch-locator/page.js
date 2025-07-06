@@ -5,7 +5,9 @@ import { defaultMeta } from "@/constants/constants";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/branch-locator`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const branchData = result.data;

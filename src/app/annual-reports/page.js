@@ -8,7 +8,9 @@ import api from "../../lib/api/axios";
 async function fetchReportData() {
   try {
     const response = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/investors/report`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = response.data;
     const reportData = result.data;
@@ -17,26 +19,26 @@ async function fetchReportData() {
         content: reportData?.content,
         reports: reportData?.annualReports,
         returns: reportData?.annualReturn,
-        error: null
+        error: null,
       };
     }
     return {
       content: null,
       reports: null,
       returns: null,
-      error: result.message
+      error: result.message,
     };
   } catch (error) {
     return {
       content: null,
       reports: null,
-      returns: null, error: "Failed to fetch report data"
+      returns: null,
+      error: "Failed to fetch report data",
     };
   }
 }
 
 export default async function report() {
-
   const { content, reports, returns, error } = await fetchReportData();
 
   if (!reports && !returns) {
@@ -46,6 +48,5 @@ export default async function report() {
     <>
       <Report reports={reports} returns={returns} content={content} />
     </>
-
   );
 }

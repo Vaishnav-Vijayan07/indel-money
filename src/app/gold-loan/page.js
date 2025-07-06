@@ -22,9 +22,9 @@ import { defaultMeta } from "@/constants/constants";
 async function fetchGoldLoanData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-loan`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "no-store",
-      //next: { revalidate: 600 },
+      // cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const goldloanData = result.data;
@@ -71,6 +71,8 @@ async function fetchGoldLoanData() {
 async function fetchGoldRate() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-rate`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
       headers: {
         "Content-Type": "application/json",
       },

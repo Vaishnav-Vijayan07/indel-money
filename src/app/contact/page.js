@@ -1,4 +1,3 @@
-
 export const dynamic = "force-dynamic";
 import ContactBanner from "@/components/features/contact/ContactBanner";
 import WriteIntel from "@/components/features/contact/WriteIntel";
@@ -9,7 +8,9 @@ import BranchLocator from "../../components/features/home/BranchLocator";
 async function fetchContactsData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/contacts`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
 
@@ -24,7 +25,13 @@ async function fetchContactsData() {
     }
     return { contents: null, faqs: null, officeContacts: null, branchLocatorData: null, error: result.message };
   } catch (error) {
-    return { contents: null, faqs: null, officeContacts: null, branchLocatorData: null, error: "Failed to fetch management data" };
+    return {
+      contents: null,
+      faqs: null,
+      officeContacts: null,
+      branchLocatorData: null,
+      error: "Failed to fetch management data",
+    };
   }
 }
 
@@ -131,9 +138,18 @@ export default async function Contact() {
         contactDesc={contents?.description}
         helpText={contents?.help_title}
       />
-      <WriteIntel formTitle={contents?.form_title} formSubtitle={contents?.form_sub_title} contactImage={contents?.contact_image} />
+      <WriteIntel
+        formTitle={contents?.form_title}
+        formSubtitle={contents?.form_sub_title}
+        contactImage={contents?.contact_image}
+      />
       <BranchLocator variant="contact" pageContent={branchLocatorData} />
-      <ContactFaq faqs={faqs} officeContacts={officeContacts} faqTitle={contents?.faq_title} faqSuperTitle={contents?.faq_super_title} />
+      <ContactFaq
+        faqs={faqs}
+        officeContacts={officeContacts}
+        faqTitle={contents?.faq_title}
+        faqSuperTitle={contents?.faq_super_title}
+      />
     </>
   );
 }

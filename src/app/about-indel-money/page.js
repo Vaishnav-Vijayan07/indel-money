@@ -21,8 +21,9 @@ import MobLifeIndel from "../../components/features/about/MobLifeIndelInfo";
 async function fetchAboutData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/about`, {
-      cache: "no-store",
-      // next: { revalidate: 600 },
+      // cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
 
@@ -40,8 +41,6 @@ async function getMetaData() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=about`);
     const result = await response.json();
     const meta = result.data;
-
-    
 
     if (result.status === "success") {
       return {
