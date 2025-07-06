@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import ActiveJobsBanner from "@/components/features/career/ActiveJobsBanner";
 import ActiveJobsInfo from "@/components/features/career/ActiveJobsInfo";
 import { defaultMeta } from "@/constants/constants";

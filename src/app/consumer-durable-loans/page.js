@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import ConsumerDurable from "@/components/features/services/ConsumerDurable";
 import ProductCovered from "@/components/features/services/ProductCovered";
 import FeatureBenefit from "@/components/features/services/FeatureBenefit";

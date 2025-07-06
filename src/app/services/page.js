@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import ServiceBanner from "@/components/features/services/ServiceBanner";
 import OtherGoldLoan from "@/components/features/services/OtherGoldLoan";
 import SmartMoneyDeal from "@/components/features/services/SmartMoneyDeal";
