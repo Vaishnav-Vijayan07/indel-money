@@ -192,7 +192,12 @@ export default function Footer({ content, icons }) {
                 </div>
               ))}
               <div className="w-full h-auto block sm:hidden">
-                <ExternalLinkBtn />
+                <ExternalLinkBtn
+                  btn1={content?.button_1_text}
+                  btn1_link={content?.button_1_link}
+                  btn2={content?.button_2_text}
+                  btn2_link={content?.button_2_link}
+                />
               </div>
             </div>
           </div>
