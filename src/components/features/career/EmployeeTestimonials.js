@@ -142,7 +142,7 @@ function EmployeeTestimonialsBox({ item, index }) {
       <div className="w-full h-auto text-[12px] lg:text-[12px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-normal text-black py-[15px_10px] lg:py-[20px_15px] xl:py-[40px_20px] 2xl:py-[60px_40px]">
         {/* {item.description} */}
         {isExpanded ? item.testimonial : preview}
-        <div onClick={() => toggleReadMore(index)} className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px]">
+        <div onClick={() => toggleReadMore(index)} className="text-[13px] leading-none font-medium text-base1 capitalize my-[10px] cursor-pointer">
           {isExpanded ? "Show Less" : "Read More"}
         </div>
       </div>

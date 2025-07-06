@@ -30,16 +30,16 @@ export default function Annualreport({ reports, title, type = "report" }) {
                   href={`${process.env.NEXT_PUBLIC_BACKEND_URL}${report.file}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 md:max-lg:mt-[10px]"
+                  className="flex items-center space-x-2 md:max-lg:mt-[10px] group"
                 >
-                  <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black whitespace-nowrap sm:block hidden">View PDF</span>
+                  <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black whitespace-nowrap sm:block hidden group-hover:text-red-500">View PDF</span>
                   <div className="w-[20px] h-[20px] xl:w-[30px] xl:h-[30px] 3xl:w-[40px] 3xl:h-[40px] bg-red-500 rounded-full flex items-center justify-center">
                     <Image
                       src="/images/pdf-icon.svg"
                       alt="PDF Icon"
                       width={24}
                       height={24}
-                      className="w-[10px] h-[10px] xl:w-[15px] xl:h-[15px] 2xl:w-[20px] 2xl:h-[20px] 3xl:w-[24px] 3xl:h-[24px]"
+                      className="w-[10px] h-[10px] xl:w-[15px] xl:h-[15px] 2xl:w-[20px] 2xl:h-[20px] 3xl:w-[24px] 3xl:h-[24px] transition-all group-hover:scale-80"
                     />
                   </div>
                 </Link>
