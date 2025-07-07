@@ -293,9 +293,7 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
               <div
                 className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
               >
-                <Link href={"/gold-loan"} onClick={handleClose}>
-                  <span>{title ? title : "gold loan"}</span>
-                </Link>
+                <span>{title ? title : "quick pay "}</span>
                 <button
                   className={`${openDropdown === "goldLoan" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("quick")}
@@ -309,7 +307,7 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
                   openDropdown === "quick" ? "max-h-full" : "max-h-0"
                 }`}
               >
-                <DropdownMenu items={modes} handleClose={handleClose}  />
+                <DropdownMenu items={modes} handleClose={handleClose} />
               </div>
             </div>
           </div>
