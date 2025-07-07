@@ -1,11 +1,14 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import ActiveJobsBanner from "@/components/features/career/ActiveJobsBanner";
 import ActiveJobsInfo from "@/components/features/career/ActiveJobsInfo";
 import { defaultMeta } from "@/constants/constants";
 
 async function getMetaData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=listings`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=listings`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
     const result = await response.json();
     const meta = result.data;
 

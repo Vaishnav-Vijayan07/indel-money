@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import LatestBlogs from "@/pages/LatestBlogs";
 import AllBlogsPage from "@/pages/AllBlogs";
 import { Suspense } from "react";
@@ -12,7 +12,10 @@ async function getMetaData() {
   };
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=blog`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=blog`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+    });
     const result = await response.json();
     const meta = result?.data;
 

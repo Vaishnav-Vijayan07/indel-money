@@ -1,11 +1,14 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import LatestNews from "@/pages/LatestNews";
 import AllNewsPage from "@/pages/AllNews";
 import { defaultMeta } from "@/constants/constants";
 
 async function getMetaData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=news`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=news`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+    });
     const result = await response.json();
     const meta = result.data;
 

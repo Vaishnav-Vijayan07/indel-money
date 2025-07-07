@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import ServiceBanner from "../../components/features/goldLoan/ServiceBanner";
 import StepGoldLoan from "../../components/features/home/StepGoldLoan";
 import StepGoldLoanCalculator from "../../components/features/home/StepGoldLoanCalculator";
@@ -22,9 +22,9 @@ import { defaultMeta } from "@/constants/constants";
 async function fetchGoldLoanData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-loan`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "no-store",
-      //next: { revalidate: 600 },
+      // cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const goldloanData = result.data;
@@ -71,6 +71,8 @@ async function fetchGoldLoanData() {
 async function fetchGoldRate() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-rate`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
       headers: {
         "Content-Type": "application/json",
       },
@@ -299,7 +301,7 @@ export default async function GoldLoan() {
         <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
+        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} type="goldloan" />
       </div>
     </>
   );

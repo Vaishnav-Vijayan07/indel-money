@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import EventDetail from "@/components/features/indel-money-cares/EventDetail";
 import RecentEvents from "@/components/features/indel-money-cares/RecentEvents";
 
@@ -6,14 +6,15 @@ import RecentEvents from "@/components/features/indel-money-cares/RecentEvents";
 async function fetchEventData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/indel-cares/${slug}`, {
-    //   next: { revalidate: 60 },
+      //   next: { revalidate: 60 },
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const result = await response.json();
-    
 
     if (result.status === "success") {
       const { event, recentEvents } = result.data || {};

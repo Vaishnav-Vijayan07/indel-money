@@ -1,11 +1,13 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import ManagementTeam from "@/components/features/management-team/ManagementTeam";
 import { defaultMeta } from "@/constants/constants";
 
 async function fetchManagementData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/directors`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
 
@@ -20,7 +22,10 @@ async function fetchManagementData() {
 
 async function getMetaData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=directors`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=directors`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+    });
     const result = await response.json();
     const meta = result.data;
 

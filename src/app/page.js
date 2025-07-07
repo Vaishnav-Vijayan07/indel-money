@@ -1,12 +1,12 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import HomeClient from "../pages/HomeClient";
 import { defaultMeta } from "@/constants/constants";
 
 async function fetchHomeData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/home`, {
-      // cache: "force-cache",
-      // next: { revalidate: 6000 },
+      cache: "force-cache",
+      next: { revalidate: 600 },
       credentials: "include", // Ensures session cookie is sent
       headers: {
         "Content-Type": "application/json",

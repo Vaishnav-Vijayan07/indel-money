@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import ConsumerDurable from "@/components/features/services/ConsumerDurable";
 import ProductCovered from "@/components/features/services/ProductCovered";
 import FeatureBenefit from "@/components/features/services/FeatureBenefit";
@@ -8,15 +8,19 @@ import { defaultMeta } from "@/constants/constants";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/loan-against-property`, {
-      cache: "default", // Ensure fresh data
-      next: { revalidate: 60 }
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const cdData = result.data;
 
-
     if (result.status === "success") {
-      return { contents: cdData?.cdLoanContent, benfits: cdData?.cdLoanBenefits, products: cdData?.cdLoanProducts, error: result.message };
+      return {
+        contents: cdData?.cdLoanContent,
+        benfits: cdData?.cdLoanBenefits,
+        products: cdData?.cdLoanProducts,
+        error: result.message,
+      };
     }
     return { contents: null, benfits: null, products: null, error: result.message };
   } catch (error) {

@@ -1,12 +1,14 @@
 // import GalleryDetail from "@/components/features/gallery/gallerydetail";
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import GalleryDetail from "@/components/features/gallery/GalleryDetail";
 import GallerySlider from "../../../components/features/gallery/GallerySlider";
 
 async function fetchMoreGalleryItems(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/more-events?slug=${slug}`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
 
     const result = await response.json();
