@@ -108,10 +108,10 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes, goldRate }) {
               name="carat"
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
-                  <FormLabel className={labelStyle}>Carat</FormLabel>
+                  <FormLabel className={labelStyle}>Karat</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value} key={field.value}>
                     <SelectTrigger className="w-full bg-white border-white">
-                      <SelectValue placeholder="Carat" />
+                      <SelectValue placeholder="Karat" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border-white">
                       {goldCaratTypes?.map((carat) => (
