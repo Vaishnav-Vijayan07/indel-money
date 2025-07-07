@@ -35,13 +35,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
                 }}
               >
                 View All
-                <Image
-                  src="/images/icon-right.svg"
-                  width={7}
-                  height={13}
-                  alt="right"
-                  className="w-[4px] lg:w-[6px] ml-1 lg:ml-2"
-                />
+                <Image src="/images/icon-right.svg" width={7} height={13} alt="right" className="w-[4px] lg:w-[6px] ml-1 lg:ml-2" />
               </Link>
             </div>
             <LatestUpdatesSlide
@@ -81,13 +75,6 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
                     key={index}
                     className="group w-full h-[368px] sm:h-[420px] md:h-[490px] lg:h-[530px] xl:h-[586px] 2xl:h-[701px] 3xl:h-[854px] overflow-hidden block relative z-0"
                   >
-                    {/* <Image
-                      src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
-                      alt={item?.image}
-                      fill
-                      sizes="520px"
-                      className="w-full h-full transition-transform duration-300 object-cover group-hover:scale-105"
-                    /> */}
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
                       alt={item?.image_alt}
@@ -106,7 +93,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
                         {item?.title}
                       </div>
                       <Link
-                        href={`/${type}/${item?.slug}`}
+                        href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`  }
                         className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-bold text-white hover:text-base2 transition-color duration-300 uppercase flex items-center"
                       >
                         Read More

@@ -1,4 +1,4 @@
-//export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import React from "react";
 import Report from "../../components/features/investors/Report";
 import { defaultMeta } from "@/constants/constants";

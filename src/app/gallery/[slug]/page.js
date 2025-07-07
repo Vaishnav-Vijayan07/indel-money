@@ -1,5 +1,5 @@
 // import GalleryDetail from "@/components/features/gallery/gallerydetail";
-//export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import GalleryDetail from "@/components/features/gallery/GalleryDetail";
 import GallerySlider from "../../../components/features/gallery/GallerySlider";
 

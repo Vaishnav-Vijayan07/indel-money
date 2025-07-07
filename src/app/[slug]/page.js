@@ -1,4 +1,4 @@
-//export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import PrivacyPolicy from "@/components/features/privacy/PrivacyPolicy";
 import { notFound } from "next/navigation";
 

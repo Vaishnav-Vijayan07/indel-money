@@ -1,4 +1,4 @@
-//export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import IndelValueBanner from "@/components/features/about/IndelValueBanner";
 import MobIndelValueBanner from "@/components/features/about/MobIndelValueBanner";
 import OurValues from "@/components/features/about/OurValues";

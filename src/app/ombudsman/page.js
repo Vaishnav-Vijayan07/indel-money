@@ -1,4 +1,4 @@
-//export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import Ombudsman from "@/components/features/ombudsman/Ombudsman";
 import NoContents from "@/components/NoContents";
 import { defaultMeta } from "@/constants/constants";

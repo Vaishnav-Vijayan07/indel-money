@@ -5,12 +5,12 @@ import MobBlogListCard from "@/components/features/blog/MobBlogListCard";
 import Link from "next/link";
 import EventCard from "./EventCard";
 
-const RecentEvents = ({ recentBlogs, type = "indel-money-cares" }) => {
+const RecentEvents = ({ recentBlogs, title, type = "indel-money-cares" }) => {
   return (
     <section className="p-[5px_0_30px_0] sm:p-[10px_0_40px_0] 2xl:p-[35px_0_75px_0]">
       <div className="container">
         <div className="text-sm sm:text-lg md:text-xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl text-black font-medium 2xl:mb-[45px] sm:mb-[15px] mb-[10px]">
-          Recent Events
+          {title}
         </div>
         <div className="sm:block hidden">
           <Swiper

@@ -1,4 +1,4 @@
-//export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import IndelHistory from "../../components/features/history/IndelHistory";
 import YearsInception from "../../components/features/history/YearsInception";
 import MobYearsInception from "../../components/features/history/MobYearsInception";

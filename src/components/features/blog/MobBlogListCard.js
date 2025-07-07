@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function MobBlogListCard({ item, className, type = "blog" }) {
   return (
     <Link
-      href={`/${type}/${item?.slug}`}
+      href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`  }
       className={`${className ? className : ""} group w-full h-full flex gap-[10px] bg-white rounded-[10px] overflow-hidden`}
     >
       <div className="group w-[135px] 3xs:w-[165px] overflow-hidden rounded-[10px] relative z-0">

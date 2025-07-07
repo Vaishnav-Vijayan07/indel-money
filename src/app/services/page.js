@@ -1,4 +1,4 @@
-//export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import ServiceBanner from "@/components/features/services/ServiceBanner";
 import OtherGoldLoan from "@/components/features/services/OtherGoldLoan";
 import SmartMoneyDeal from "@/components/features/services/SmartMoneyDeal";
@@ -120,7 +120,7 @@ export async function generateMetadata() {
 export default async function Services() {
   const { serviceContent, services, serviceBenefit, error } = await fetchManagementData();
 
-  if (!serviceContent || !services) {
+  if ((!serviceContent && !services && !serviceBenefit) || error) {
     return <div>Failed to fetch about data</div>;
   }
 

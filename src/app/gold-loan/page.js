@@ -1,4 +1,4 @@
-//export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import ServiceBanner from "../../components/features/goldLoan/ServiceBanner";
 import StepGoldLoan from "../../components/features/home/StepGoldLoan";
 import StepGoldLoanCalculator from "../../components/features/home/StepGoldLoanCalculator";
