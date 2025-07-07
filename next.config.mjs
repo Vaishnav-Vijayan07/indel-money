@@ -13,6 +13,106 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
 
+  async redirects() {
+    return [
+      {
+        source: "/apply-for-job",
+        destination: "/career",
+        permanent: true,
+      },
+      {
+        source: "/author/indel",
+        destination: "/about-indel-money",
+        permanent: true,
+      },
+      {
+        source: "/life-at-indel-money",
+        destination: "/about-indel-money",
+        permanent: true,
+      },
+      {
+        source: "/category/gold-loan",
+        destination: "/gold-loan",
+        permanent: true,
+      },
+      {
+        source: "/gold-loans-near-me",
+        destination: "/gold-loan",
+        permanent: true,
+      },
+      {
+        source: "/category/uncategorized",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/details-of-key-managerial-personnel",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/downloads",
+        destination: "/investors/csr",
+        permanent: false,
+      },
+      {
+        source: "/hp-test",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/indel-remit",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/emptestimonial/:slug",
+        destination: "/emptestimonial",
+        permanent: true,
+      },
+      {
+        source: "/great-place-to-work",
+        destination: "/emptestimonial",
+        permanent: true,
+      },
+      {
+        source: "/ncd-issue",
+        destination: "/past-ncd-issues",
+        permanent: true,
+      },
+      {
+        source: "/video-gallery",
+        destination: "/gallery",
+        permanent: true,
+      },
+      {
+        source: "/secured-bonds",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/secured-bonds/:slug",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/public-issue-of-ncd",
+        destination: "/past-ncd-issues",
+        permanent: true,
+      },
+      {
+        source: "/public-issue-of-ncd/:slug",
+        destination: "/past-ncd-issues",
+        permanent: true,
+      },
+      {
+        source: "/loan-against-property-3",
+        destination: "/loan-against-property",
+        permanent: true,
+      },
+    ];
+  },
+
   // Image optimization
   images: {
     formats: ["image/webp", "image/avif"],
