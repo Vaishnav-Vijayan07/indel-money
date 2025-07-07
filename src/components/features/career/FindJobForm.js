@@ -23,7 +23,7 @@ const formSchema = z.object({
 const gridStyle =
   "w-full lg:w-[calc((100%-80px)/5)] xl:w-[calc((100%-140px)/5)] 2xl:w-[calc((100%-160px)/5)] 3xl:w-[calc((100%-220px)/5)] px-[5px] lg:px-[10px] 2xl:px-[15px] mb-[10px] lg:mb-0";
 
-export default function FindJobForm({ variant = "default", handleClearFilters, hasActiveFilters }) {
+export default function FindJobForm({ variant = "default", handleClearFilters, hasActiveFilters, button_link, button_text }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [states, setStates] = useState([]);
@@ -222,11 +222,7 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             name="district"
             render={({ field }) => (
               <FormItem>
-                <Select
-                  onValueChange={(value) => handleFormChange("district", value)}
-                  value={field.value || ""}
-                  disabled={!form.watch("state")}
-                >
+                <Select onValueChange={(value) => handleFormChange("district", value)} value={field.value || ""} disabled={!form.watch("state")}>
                   <SelectTrigger className="w-full max-w-full max-sm:h-[40px] bg-white border-white rounded-[12px] lg:rounded-[12px] 2xl:rounded-[16px]">
                     <SelectValue placeholder="-- Select your district --" />
                   </SelectTrigger>
@@ -250,11 +246,7 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             name="location"
             render={({ field }) => (
               <FormItem>
-                <Select
-                  onValueChange={(value) => handleFormChange("location", value)}
-                  value={field.value || ""}
-                  disabled={!form.watch("district")}
-                >
+                <Select onValueChange={(value) => handleFormChange("location", value)} value={field.value || ""} disabled={!form.watch("district")}>
                   <SelectTrigger className="text-ellipsis w-full max-w-full sm:h-full max-sm:h-[40px] bg-white border-white rounded-[11px]">
                     <SelectValue placeholder="-- Select your preferred location --" />
                   </SelectTrigger>
@@ -297,11 +289,7 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
         </div>
         {/* Button */}
         <div className={gridStyle + " flex gap-2"}>
-          <Button
-            type="submit"
-            size="sm"
-            className="bg-[#cf2613] text-white px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#b71c0c]"
-          >
+          <Button type="submit" size="sm" className="bg-[#cf2613] text-white px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#b71c0c]">
             SEARCH
           </Button>
           {hasActiveFilters && hasActiveFilters() && (
@@ -318,18 +306,12 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
         </div>
         <div className="max-sm:block mt-[8px] hidden w-full">
           <Link
-            href="/career-list"
+            href={button_link ? button_link : "/career-list"}
             className="text-[14px] leading-[1] font-bold text-white h-[40px] flex items-center justify-center bg-base2 rounded-[24px] p-[4px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
             onClick={() => form.reset()}
           >
-            <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">VIEW ALL</span>
-            <Image
-              src="/images/icon-careerBtn.svg"
-              alt="careerBtn"
-              width={40}
-              height="40"
-              className="w-[25px] h-auto aspect-4/4 block ml-[5px]"
-            />
+            <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">{button_text ? button_text : "View All"}</span>
+            <Image src="/images/icon-careerBtn.svg" alt="careerBtn" width={40} height="40" className="w-[25px] h-auto aspect-4/4 block ml-[5px]" />
           </Link>
         </div>
       </form>

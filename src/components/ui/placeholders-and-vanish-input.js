@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "../../lib/utils";
 import Image from "next/image";
 import api from "../../lib/api/axios";
+import toast from "react-hot-toast";
 
 export function PlaceholdersAndVanishInput({ type, placeholders }) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
@@ -62,8 +63,10 @@ export function PlaceholdersAndVanishInput({ type, placeholders }) {
     setLoading(true);
     try {
       const { data } = await api.post("/footer/news-letter-subs", payload);
+      toast.success("Contact form submitted successfully!");
     } catch (error) {
       console.error("Error posting news letter data:", error);
+      toast.error("Failed to submit contact form!");
     } finally {
       setLoading(false);
     }

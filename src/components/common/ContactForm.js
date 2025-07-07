@@ -20,6 +20,7 @@ const formSchema = z
       message: "Name must be at least 2 characters.",
     }),
     email: z.string().email({ message: "Invalid email address." }),
+    service_types: z.string().min(1, { message: "Please select a service type." }),
     phone: z.string().regex(/^\+?\d{10,15}$/, {
       message: "Phone number must be 10-15 digits.",
     }),
@@ -85,8 +86,7 @@ function ContactFormInner() {
     try {
       // Execute reCAPTCHA
       const recaptchaToken = await executeRecaptcha("contact_form");
-      
-      
+
       if (!recaptchaToken) {
         toast.error("Failed to get reCAPTCHA token. Please try again.");
         setIsSubmitting(false);
@@ -97,10 +97,7 @@ function ContactFormInner() {
       const cleanedData = Object.fromEntries(Object.entries(data).map(([key, value]) => [key, value === "" ? null : value]));
       const payload = { ...cleanedData, enquiry_type: "contact", recaptcha: recaptchaToken };
 
-      const { data: responseData } = await api.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/service-enquiries`,
-        payload
-      );
+      const { data: responseData } = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/service-enquiries`, payload);
 
       if (responseData.success) {
         toast.success("Contact form submitted successfully!");

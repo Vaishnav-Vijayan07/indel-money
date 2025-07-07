@@ -49,9 +49,12 @@ export default function OtherGoldLoan({ services }) {
 }
 
 function ServiceCard({ item }) {
+
+  console.log("item", item)
+
   return (
     <div className="group w-full h-full flex gap-[10px] xl:gap-[20px] 2xl:gap-[25px] 3xl:gap-[30px]">
-      <Link href={item?.slug} className="group w-[160px] lg:w-[200px] xl:w-[255px] 3xl:w-[400px] overflow-hidden rounded-[20px]">
+      <Link href={item?.slug ? item?.slug : "#"} className="group w-[160px] lg:w-[200px] xl:w-[255px] 3xl:w-[400px] overflow-hidden rounded-[20px]">
         <Image
           src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/OthrLoan01.jpg"}
           width={400}
@@ -72,7 +75,7 @@ function ServiceCard({ item }) {
         {/* LEARN MORE Link */}
         <div>
           <Link
-            href={item?.slug}
+            href={item?.slug ? item?.slug : "#"}
             className="text-[10px] lg:text-[11px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center mt-2 2xl:mt-3 hover:text-base2 transition-color duration-300"
           >
             LEARN MORE
