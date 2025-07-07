@@ -263,13 +263,6 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
               >
                 <DropdownMenu items={Abouts} handleClose={handleClose} />
               </div>
-              <div
-                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
-                  openDropdown === "abouts" ? "max-h-full" : "max-h-0"
-                }`}
-              >
-                <DropdownMenu items={modes} handleClose={handleClose} title={title} type="mode" />
-              </div>
             </div>
             <div>
               <Link
@@ -295,7 +288,7 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
               >
                 <span>{title ? title : "quick pay "}</span>
                 <button
-                  className={`${openDropdown === "goldLoan" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${openDropdown === "quick" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("quick")}
                   aria-label="Toggle mobile menu"
                 >
