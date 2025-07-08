@@ -136,6 +136,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "admin.indelmoney.com",
+      },
+       {
+        protocol: "https",
         hostname: "indelmoney.com",
       },
       {
