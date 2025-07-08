@@ -223,7 +223,8 @@ export default function Footer({ content, icons }) {
                     <Image
                       src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/goldIcon1.svg"}
                       alt={item?.title ? item?.title : "icon"}
-                      fill
+                      // fill
+                      width={15} height={15}
                       className="aspect-square object-contain m-auto"
                     />
                   </a>
