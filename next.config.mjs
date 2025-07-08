@@ -180,6 +180,13 @@ const nextConfig = {
       "lodash",
       "date-fns",
       "lucide-react",
+      "swiper",
+      "react-leaflet",
+      "react-intersection-observer",
+      "leaflet",
+      "leaflet.markercluster",
+      "lightgallery",
+
       // Add your heavy packages here
     ],
   },
