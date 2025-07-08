@@ -151,6 +151,8 @@
 
   p {
     text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
   }
 
   @media (min-width: 1024px) {
@@ -472,4 +474,3 @@
 .filter-white {
   filter: brightness(0) invert(1);
 }
-

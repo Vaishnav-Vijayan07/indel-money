@@ -40,7 +40,7 @@ export default function WhyMsme({ title, description, image, alt }) {
               </div>
             </div>
             <div className="w-full md:w-[55%] md:px-[15px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]">
-              <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold ">{parse(title)}</h2>
+              <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold text-left">{parse(title)}</h2>
               {/* <ul>
                 <li className="2xl:text-[20px] xl:text-[15px] lg:text-[14px] text-[13px] text-[#323232] relative sm:pl-[20px] before:content-[''] before:absolute before:top-[6px] 2xl:before:top-[10px] before:left-0 before:rounded-full before:bg-base1 before:w-[6px] 2xl:before:w-[8px] before:h-[6px] 2xl:before:h-[8px] sm:before:block before:hidden sm:mb-[3px] mb-[5px]">
                   Collateral based and non-collateral based structured loans.

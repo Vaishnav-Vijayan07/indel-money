@@ -101,7 +101,7 @@ export default function StockExchange({setContent}) {
                   }}
                   className={cn(
                     "text-xs lg:text-sm 2xl:text-base 3xl:text-lg px-4 xl:px-5 py-2 3xl:px-6 3xl:py-3 rounded-full font-bold transition-all text-white cursor-pointer truncate",
-                    activeYear?.fiscal_year === year?.fiscal_year ? "bg-base1" : "bg-[#85B6CF]"
+                    activeYear?.fiscal_year === year?.fiscal_year ? "bg-base1 pointer-events-none" : "bg-[#85B6CF]"
                   )}
                 >
                   {year?.fiscal_year}
@@ -114,7 +114,7 @@ export default function StockExchange({setContent}) {
           <Accordion type="single" collapsible value={openAccordion}>
             {years?.map((year) => (
               <AccordionItem key={year?.id} value={year?.fiscal_year} className="border-0">
-                <AccordionTrigger className="hidden border-0">{year?.fiscal_year}</AccordionTrigger>
+                <AccordionTrigger className="hidden border-0 ">{year?.fiscal_year}</AccordionTrigger>
                 <AccordionContent>
                   {/* Board Meeting Section */}
                   <div className="mb-[20px] xl:mb-[25px]">

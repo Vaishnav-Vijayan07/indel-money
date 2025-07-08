@@ -22,7 +22,7 @@ export default function InvestorsInfo({
         <div className="flex flex-wrap ">
           <div className="w-full lg:w-[calc(100%-550px)]  xl:w-[calc(100%-600px)] 2xl:w-[calc(100%-740px)] 3xl:w-[calc(100%-940px)] flex items-center max-lg:mb-[20px]">
             <div className="lg:max-w-[290px] xl:max-w-[400px] 2xl:max-w-[450px] 3xl:max-w-[570px]">
-              <div className="text-title1 font-medium xl:mb-[20px] mb-[10px]">{title}</div>
+              <div className="text-title1 font-medium xl:mb-[20px] mb-[10px] max-w-[370px]">{title}</div>
               <p className="w-full">{description ? renderHtml(description) : ""}</p>
               <Link
                 href={buttonLink}

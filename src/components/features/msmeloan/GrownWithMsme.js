@@ -47,7 +47,7 @@ export default function FAQ({ faqs, title, description }) {
         <div className="flex flex-wrap lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[40px]">
           <div className="w-full lg:w-[40%] 2xl:w-[40%] lg:border-r lg:border-r-[rgba(23,71,158,0.26)] pb-[30px] lg:pb-[0] lg:px-[15px] xl:px-[20px] 2xl:px-[40px] sm:block hidden">
             <div className="w-full">
-              <h2 className="text-title1 mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold">{parse(title)}</h2>
+              <h2 className="text-title1 mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold text-left">{parse(title)}</h2>
               <div className="text-sm1">{parse(description)}</div>
             </div>
           </div>
