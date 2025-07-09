@@ -1,16 +1,6 @@
 import CareerForm from "@/components/common/CareerForm";
 import "./Career.css";
-
-const jobResults = [
-  {
-    id: 0,
-    job_title: "senior accountant",
-    experience: "5 years",
-    location: "kochi, kerala",
-    job_description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. ",
-  },
-];
+import parse from "html-react-parser";
 
 function CareerDetailInfoBox({ children }) {
   return (
@@ -64,32 +54,8 @@ export default function CareerDetailInfo({ job }) {
                   JOB RESPONSIBILITIES
                 </div>
                 <div className="text-editor">
-                  <h4>Job Description</h4>
-                  {/* <ul>
-                    <li>Mobilization of Financial Products</li>
-                    <li>Effective communication/ follow up with prospective customers</li>
-                    <li>Marketing activities for assigned Area</li>
-                    <li>Accountable for meeting business targets month on month</li>
-                  </ul> */}
-
-                  {job?.job_description || "No job description provided."}
-                  <br />
-                  <h4>key Responsibilities and Accountabilities</h4>
-                  {/* <ul>
-                    <li>
-                      Acquisitions of new clients and re-activation of existing clients by selling wealth management products like
-                      debentures and Non-Convertible Debentures.
-                    </li>
-                    <li>Responsible for fulfilment of business targets.</li>
-                    <li>Have the direct to customer approach and build relationship with wide spread customers</li>
-                    <li>Acquisition and handling a group of HNI (High Net Worth Exclusive) Clients.</li>
-                    <li>Conduct HNI meets, customer interaction programs within the location.</li>
-                    <li>Responsible for the timely reporting of Business MIS.</li>
-                    <li>Plan and achieve a minimum target per month.</li>
-                    <li>Conduct Marketing activities for assigned Area</li>
-                  </ul> */}
-
-                  {job?.key_responsibility}
+                  {parse(job?.job_description) || "No job description provided."}
+                  {/* <h4>key Responsibilities and Accountabilities</h4> */}
                 </div>
               </div>
             </div>

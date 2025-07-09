@@ -36,18 +36,14 @@ export default function FindJob({ find_job_title, find_job_button_name, find_job
             dangerouslySetInnerHTML={{ __html: find_job_title ? find_job_title : "" }}
           />
 
-          {/* <div className="text-title1 font-bold [&>span]:font-bold  [&>span]:text-base2">
-                        Find Your
-                        <span className="font-bold text-base2">
-                            {""}   Ideal Job
-                        </span>
-                    </div> */}
           <div className="max-sm:hidden block">
             <Link
               href={find_job_button_link ? find_job_button_link : "/career-list"}
               className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-bold text-white h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[54px] flex items-center bg-base2 rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
             >
-              <span className="px-[5px] md:px-[10px] lg:px-[15px] 2xl:px-[20px]">{find_job_button_name ? find_job_button_name : "Apply Now"}</span>
+              <span className="px-[5px] md:px-[10px] lg:px-[15px] 2xl:px-[20px]">
+                {find_job_button_name ? find_job_button_name : "Apply Now"}
+              </span>
               <Image
                 src={"/images/icon-careerBtn.svg"}
                 alt="careerBtn"
@@ -65,13 +61,6 @@ export default function FindJob({ find_job_title, find_job_button_name, find_job
                 className="text-title1 font-bold [&>span]:text-base2 [&>span]:font-bold"
                 dangerouslySetInnerHTML={{ __html: find_job_title ? find_job_title : "" }}
               />
-
-              {/* <div className="text-title1 font-bold">
-                                Find Your
-                                <span className="font-bold text-base2">
-                                    {""}   Ideal Job
-                                </span>
-                            </div> */}
             </div>
             <FindJobForm
               button_text={find_job_button_name ? find_job_button_name : "Apply Now"}
