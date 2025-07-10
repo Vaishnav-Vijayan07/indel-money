@@ -35,7 +35,8 @@ export default function HomeSlider({ heroBanner }) {
             width={1920}
             height={1080}
             alt={item?.image_alt_text}
-            priority
+            priority={index === 0}
+            fetchPriority={index === 0 ? "high" : "auto"}
             className="w-full h-full object-cover"
           />
           <div className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
