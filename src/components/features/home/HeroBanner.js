@@ -1,10 +1,6 @@
 import HomeSlider from "../../features/home/HomeSlider";
 import HomeMarquee from "../../features/home/HomeMarquee";
 import HeroBannerEnquiry from "./HeroBannerEnquiry";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import axios from "axios";
-import api from "../../../lib/api/axios";
 
 export default function HeroBanner({ heroBanner, initialData, announcement, goldRate }) {
   return (
