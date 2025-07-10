@@ -116,6 +116,7 @@ const nextConfig = {
   // Image optimization
   images: {
     formats: ["image/webp", "image/avif"],
+    quality: 60,
     minimumCacheTTL: 31536000, // 1 year
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -138,7 +139,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "admin.indelmoney.com",
       },
-       {
+      {
         protocol: "https",
         hostname: "indelmoney.com",
       },
