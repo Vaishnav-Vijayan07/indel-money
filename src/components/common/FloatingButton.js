@@ -3,7 +3,8 @@ import FloatButton from "../../components/floatButtons/FloatButton";
 async function fetchGoldCaratTypes() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-carat-types`, {
-      cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     if (result.success) {
@@ -19,7 +20,8 @@ async function fetchGoldCaratTypes() {
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/float-buttons`, {
-      cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     if (result.status === "success") {
@@ -32,10 +34,10 @@ async function fetchData() {
 }
 
 async function fetchGoldTypeData() {
-  
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/gold-types`, {
-      cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     if (result.success) {
