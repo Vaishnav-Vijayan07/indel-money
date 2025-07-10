@@ -27,6 +27,8 @@ async function fetchHomeData() {
 async function fetchGoldRate() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-rate`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
       headers: {
         "Content-Type": "application/json",
       },
@@ -46,7 +48,10 @@ async function fetchGoldRate() {
 
 async function getMetaData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=home`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=home`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+    });
     const result = await response.json();
     const meta = result.data;
 
