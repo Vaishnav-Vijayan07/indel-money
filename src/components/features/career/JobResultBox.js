@@ -16,7 +16,7 @@ const options = {
 
 export default function JobResultBox({ item, variant = "default" }) {
   // Generate the job details URL
-  const jobUrl = `${process.env.NEXT_PUBLIC_BASE_URL || ""}/career-list/job-details/${encodeId(item?.id)}`;
+  const jobUrl = `${process.env.NEXT_PUBLIC_SITE_URL || ""}/career-list/job-details/${encodeId(item?.id)}`;
   const jobTitle = item?.role?.role_name || "Job Opportunity";
   const shareText = encodeURIComponent(`Check out this job opening: ${jobTitle}\n\n${jobUrl}`);
   const whatsappUrl = `https://wa.me/?text=${shareText}`;

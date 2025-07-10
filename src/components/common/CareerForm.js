@@ -89,16 +89,41 @@ function CareerFormInner({ jobId, isGeneral }) {
     return "";
   };
 
-  // Dynamic form schema
+  // // Dynamic form schema
+  // const formSchema = useMemo(() => {
+  //   return z.object({
+  //     ...baseSchema,
+  //     file:
+  //       selectedFile || selectedFileName
+  //         ? z.any().optional()
+  //         : z.any().refine((file) => file instanceof File, { message: "Please upload a resume." }),
+  //   });
+  // }, [selectedFile, selectedFileName]);
+
   const formSchema = useMemo(() => {
-    return z.object({
-      ...baseSchema,
-      file:
-        selectedFile || selectedFileName
-          ? z.any().optional()
-          : z.any().refine((file) => file instanceof File, { message: "Please upload a resume." }),
-    });
-  }, [selectedFile, selectedFileName]);
+    return z
+      .object({
+        ...baseSchema,
+        preferred_role_name: z.string().optional(), // Add this line
+        file:
+          selectedFile || selectedFileName
+            ? z.any().optional()
+            : z.any().refine((file) => file instanceof File, { message: "Please upload a resume." }),
+      })
+      .refine(
+        (data) => {
+          // Only require preferred_role_name if isGeneral and preferred_role is "Others"
+          if (isGeneral && data.preferred_role === "Others") {
+            return data.preferred_role_name && data.preferred_role_name.trim().length > 0;
+          }
+          return true;
+        },
+        {
+          message: "Please enter a role name.",
+          path: ["preferred_role_name"],
+        }
+      );
+  }, [selectedFile, selectedFileName, isGeneral]);
 
   // Forms
   const emailForm = useForm({
@@ -242,7 +267,6 @@ function CareerFormInner({ jobId, isGeneral }) {
     }
 
     const recaptchaToken = await executeRecaptcha("job_form");
-    
 
     if (!recaptchaToken) {
       toast.error("Failed to get reCAPTCHA token. Please try again.");
@@ -272,6 +296,7 @@ function CareerFormInner({ jobId, isGeneral }) {
     const apiUrl = isGeneral ? "/web/careers/general_application" : "/web/careers/job_application";
     if (isGeneral) {
       formData.append("general_application[role_id]", values.preferred_role);
+      formData.append("general_application[preferred_role_name]", values.preferred_role_name);
     } else {
       formData.append("job_application[job_id]", jobId || "");
     }
@@ -693,6 +718,28 @@ function CareerFormInner({ jobId, isGeneral }) {
                 )}
               />
             </div>
+            {console.log("NEXT_PUBLIC_ROLE_ID", process.env.NEXT_PUBLIC_ROLE_ID)}
+            {isGeneral && form.watch("preferred_role") == process.env.NEXT_PUBLIC_ROLE_ID && (
+              <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
+                <FormField
+                  control={form.control}
+                  name="preferred_role_name"
+                  render={({ field }) => (
+                    <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                      <FormControl>
+                        <Input
+                          className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="Enter Role Name"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-500 text-sm" />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            )}
+
             <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
               <FormField
                 control={form.control}
