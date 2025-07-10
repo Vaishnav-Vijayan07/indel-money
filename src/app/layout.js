@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
       <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
-        <Footer content={footerContent} icons={footerIcons} />
+        {/* <Footer content={footerContent} icons={footerIcons} /> */}
         <FloatingButton />
         <Toaster position="top-right" />
       </body>
