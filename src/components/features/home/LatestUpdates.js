@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import LatestUpdatesSlide from "../../common/LatestUpdatesSlide";
-import { motion } from "framer-motion";
 import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";

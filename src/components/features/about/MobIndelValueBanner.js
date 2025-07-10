@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Pagination, Autoplay } from "swiper/modules";
+import { EffectFade, Pagination } from "swiper/modules";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import "swiper/css";
 import "swiper/css/pagination";

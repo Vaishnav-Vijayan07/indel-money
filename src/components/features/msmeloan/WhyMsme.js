@@ -1,4 +1,3 @@
-import { renderStyledList } from "@/lib/utils/htmlParser";
 import Image from "next/image";
 import parse, { domToReact } from "html-react-parser";
 

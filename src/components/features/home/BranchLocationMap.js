@@ -6,7 +6,6 @@ import { useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Image from "next/image";
-import api from "@/lib/api/axios";
 
 // Dynamically import react-leaflet components to avoid SSR issues
 const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), { ssr: false });

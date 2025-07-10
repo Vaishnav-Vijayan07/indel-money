@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import EnquiryForm from "../../common/EnquiryForm";
 import api from "@/lib/api/axios";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function HeroBannerEnquiry() {
   const [open, setOpen] = useState(true);

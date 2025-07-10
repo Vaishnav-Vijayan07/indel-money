@@ -1,4 +1,3 @@
-import Image from "next/image";
 import parse from "html-react-parser";
 const titleStyle = "text-[14px] leading-normal font-medium text-black mb-[5px]";
 const boxStyle = "w-full h-auto bg-white rounded-[10px] border-dashed border-[1px] border-black mb-[10px] p-[15px]";

@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Image from "next/image";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/custom-tabs";
 import CardSlider from "@/components/features/gallery/CardSlider";

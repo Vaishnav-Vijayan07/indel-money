@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import Image from "next/image";
 import "./AwardHighlightBox.css";
 import { renderHtml } from "@/lib/utils/htmlParser";
-import { useState } from "react";
 
 const slides = [
   {

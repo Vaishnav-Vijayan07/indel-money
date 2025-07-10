@@ -1,7 +1,6 @@
 //export const dynamic = "force-dynamic";
 import React from "react";
 import Policies from "../../components/features/investors/Policies";
-import { defaultMeta } from "@/constants/constants";
 
 async function fetchPolicyData(page = 1, limit = 10) {
   try {

@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/custom-alert-dialog";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import FindJobForm from "./FindJobForm";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import JobResultBoxSlide from "./JobResultBoxSlide";
 
 function JobLocationBox({ item }) {

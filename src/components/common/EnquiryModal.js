@@ -1,13 +1,11 @@
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/custom-alert-dialog";
 import Image from "next/image";
 import EnquiryForm from "./EnquiryForm";

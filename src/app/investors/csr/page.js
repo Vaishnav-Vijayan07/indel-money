@@ -2,7 +2,6 @@
 
 import React from "react";
 import CsrDetailsSection from "../../../components/features/investors/CsrDetailsSection";
-import { defaultMeta } from "@/constants/constants";
 
 async function fetchCsrData() {
   try {

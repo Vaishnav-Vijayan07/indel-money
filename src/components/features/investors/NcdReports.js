@@ -1,9 +1,7 @@
 
-import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
 import Annualreport from "./AnnualReport";
-import Annualreturns from "./AnnualReturns";
 
 export default function NcdReports({ reports, content }) {
 

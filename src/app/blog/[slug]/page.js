@@ -1,5 +1,4 @@
 //export const dynamic = "force-dynamic";
-import Link from "next/link";
 import BlogDetail from "@/components/features/blog/BlogDetail";
 import RecentBlog from "@/components/features/blog/RecentBlog";
 

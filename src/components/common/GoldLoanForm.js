@@ -9,10 +9,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDes
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import EnquiryModal from "./EnquiryModal";
-import api from "@/lib/api/axios";
-import toast from "react-hot-toast";
 
 // Schema Validation
 const formSchema = z.object({

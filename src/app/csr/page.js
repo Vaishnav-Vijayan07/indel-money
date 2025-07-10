@@ -1,16 +1,10 @@
 //export const dynamic = "force-dynamic";
 
-import Link from "next/link";
 import { Suspense, memo } from "react";
 import CSRItem from "@/components/csr/CsrItem";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import {
   Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
 } from "@/components/ui/pagination";
 import MobLatestUpdates from "../../components/features/home/MobLatestUpdates";
 import LatestUpdates from "../../components/features/home/LatestUpdates";

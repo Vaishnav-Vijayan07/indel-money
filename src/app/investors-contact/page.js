@@ -1,7 +1,6 @@
 //export const dynamic = "force-dynamic";
 import React from "react";
 import Contact from "../../components/features/investors/Contact";
-import { defaultMeta } from "@/constants/constants";
 
 async function fetchContactData() {
   try {

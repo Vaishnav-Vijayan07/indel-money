@@ -1,5 +1,4 @@
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
-import Image from "next/image";
 
 export default function ServiceBanner({ page_super_title, page_title, image, alt }) {
   return (

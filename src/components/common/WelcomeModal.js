@@ -6,14 +6,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "../ui/custom-alert-dialog";
 
 import { useState, useEffect } from "react";

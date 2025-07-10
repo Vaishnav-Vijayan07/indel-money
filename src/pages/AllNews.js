@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import AllBlogs from "@/components/blog/AllBlogs";
 
 async function fetchAllNews(page = 1, limit = 10) {

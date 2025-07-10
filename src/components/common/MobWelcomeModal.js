@@ -3,14 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "../ui/custom-alert-dialog";
 
 import { useState, useEffect } from "react";

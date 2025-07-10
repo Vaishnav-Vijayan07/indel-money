@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/pagination";
 import LoadingCircleSpinner from "@/components/common/LoadingCircleSpinner";
 import api from "@/lib/api/axios";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function ActiveJobsInfo() {

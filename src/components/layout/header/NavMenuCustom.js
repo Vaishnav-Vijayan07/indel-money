@@ -1,12 +1,5 @@
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+
+
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
