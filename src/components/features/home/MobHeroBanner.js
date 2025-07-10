@@ -37,8 +37,8 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement, g
               alt={item.image_alt_text}
               fill
               sizes="100vw"
-              priority
-              fetchpriority="high"
+              priority={index === 0}
+              fetchPriority={index === 0 ? "high" : "auto"}
               className="-z-2 object-cover"
             />
             <div className="container">
