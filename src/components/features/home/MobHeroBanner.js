@@ -38,6 +38,7 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement, g
               fill
               sizes="100vw"
               priority
+              fetchpriority="high"
               className="-z-2 object-cover"
             />
             <div className="container">
