@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import ContactBanner from "@/components/features/contact/ContactBanner";
 import WriteIntel from "@/components/features/contact/WriteIntel";
 import ContactFaq from "@/components/features/contact/ContactFaq";

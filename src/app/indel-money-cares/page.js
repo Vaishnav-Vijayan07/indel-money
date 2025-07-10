@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import IndelCares from "@/pages/IndelCares";
 import { defaultMeta } from "@/constants/constants";
 

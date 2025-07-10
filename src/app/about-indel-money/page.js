@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 import AboutBanner from "../../components/features/about/AboutBanner";
 import AboutFinacial from "../../components/features/about/AboutFinacial";
 import AboutSupermarket from "../../components/features/about/AboutSupermarket";
