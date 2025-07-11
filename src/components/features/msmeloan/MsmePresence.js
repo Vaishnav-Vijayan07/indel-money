@@ -82,9 +82,9 @@ function PresenceBox({ item }) {
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="text-[13px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[20px] leading-normal text-center font-medium capitalize text-base1 w-full">
+      <h4 className="text-[13px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[20px] leading-normal text-center font-medium capitalize text-base1 w-full">
         {item.title}
-      </div>
+      </h4>
     </div>
   );
 }
