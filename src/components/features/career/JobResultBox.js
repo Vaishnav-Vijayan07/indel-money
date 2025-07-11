@@ -4,6 +4,7 @@ import Link from "next/link";
 import { encodeId } from "@/lib/hashids";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import parse, { domToReact } from "html-react-parser";
+import truncateText from "@/lib/truncate";
 
 const options = {
   replace: (domNode) => {
@@ -124,7 +125,7 @@ export default function JobResultBox({ item, variant = "default" }) {
           Job Description
         </div>
         <div className={`${variant === "default" ? "line-clamp-2" : ""} text-sm1 text-[#4d4d4d]`}>
-          {parse(item.job_description, options) || "No job description provided."}
+          {parse(truncateText(item.job_description), options) || "No job description provided."}
         </div>
       </div>
     </div>

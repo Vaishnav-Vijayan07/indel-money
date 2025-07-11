@@ -98,8 +98,6 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
     if (!isDropdownsLoaded) return;
 
     const state = searchParams.get("state_id") || "";
-    const district = searchParams.get("district_id") || "";
-    const location = searchParams.get("location_id") || "";
     const role = searchParams.get("role_id") || "";
 
     // Set state and role immediately (they're already loaded)
@@ -183,6 +181,7 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
         } w-full flex flex-wrap items-center rounded-[20px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_15px] sm:p-[15px_10px] lg:p-[20px_10px] 2xl:p-[25px_10px]`}
       >
         <div className="w-full lg:w-[80px] xl:w-[140px] 2xl:w-[160px] 3xl:w-[220px] px-[5px] lg:px-[10px] 2xl:px-[15px] mb-[10px] lg:mb-0 max-sm:hidden">
+        {/* <div className="w-full lg:w-[80px] xl:w-[100px] 2xl:w-[100px] 3xl:w-[100px] px-[5px] lg:px-[10px] 2xl:px-[15px] mb-[10px] lg:mb-0 max-sm:hidden"> */}
           <div
             className={`${
               variant === "activeJobs" ? "text-[#4b4b4b]" : "text-white"
@@ -200,7 +199,7 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
               <FormItem>
                 <Select onValueChange={(value) => handleFormChange("state", value)} value={field.value || ""}>
                   <SelectTrigger className="w-full max-w-full max-sm:h-[40px] bg-white border-white rounded-[12px] lg:rounded-[12px] 2xl:rounded-[16px]">
-                    <SelectValue placeholder="-- Select your state --" />
+                    <SelectValue placeholder="-- Select state --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
                     {states.map((state) => (
@@ -222,9 +221,13 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             name="district"
             render={({ field }) => (
               <FormItem>
-                <Select onValueChange={(value) => handleFormChange("district", value)} value={field.value || ""} disabled={!form.watch("state")}>
+                <Select
+                  onValueChange={(value) => handleFormChange("district", value)}
+                  value={field.value || ""}
+                  disabled={!form.watch("state")}
+                >
                   <SelectTrigger className="w-full max-w-full max-sm:h-[40px] bg-white border-white rounded-[12px] lg:rounded-[12px] 2xl:rounded-[16px]">
-                    <SelectValue placeholder="-- Select your district --" />
+                    <SelectValue placeholder="-- Select district --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
                     {districts?.map((district) => (
@@ -246,9 +249,13 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             name="location"
             render={({ field }) => (
               <FormItem>
-                <Select onValueChange={(value) => handleFormChange("location", value)} value={field.value || ""} disabled={!form.watch("district")}>
+                <Select
+                  onValueChange={(value) => handleFormChange("location", value)}
+                  value={field.value || ""}
+                  disabled={!form.watch("district")}
+                >
                   <SelectTrigger className="text-ellipsis w-full max-w-full sm:h-full max-sm:h-[40px] bg-white border-white rounded-[11px]">
-                    <SelectValue placeholder="-- Select your preferred location --" />
+                    <SelectValue placeholder="-- Select location --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white">
                     {locations.map((location) => (
@@ -272,10 +279,10 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
               <FormItem>
                 <Select onValueChange={(value) => handleFormChange("role", value)} value={field.value || ""}>
                   <SelectTrigger className="w-full max-w-full max-sm:h-[40px] bg-white border-white rounded-[12px] lg:rounded-[12px] 2xl:rounded-[16px]">
-                    <SelectValue placeholder="-- Select role --" />
+                    <SelectValue placeholder="-- Select dept. --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
-                    {roles.map((role) => (
+                    {roles?.map((role) => (
                       <SelectItem key={String(role?.value)} value={String(role?.value)}>
                         {role?.label || "-"}
                       </SelectItem>
@@ -289,7 +296,11 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
         </div>
         {/* Button */}
         <div className={gridStyle + " flex gap-2"}>
-          <Button type="submit" size="sm" className="bg-[#cf2613] text-white px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#b71c0c]">
+          <Button
+            type="submit"
+            size="sm"
+            className="bg-[#cf2613] text-white px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#b71c0c]"
+          >
             SEARCH
           </Button>
           {hasActiveFilters && hasActiveFilters() && (
@@ -311,7 +322,13 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             onClick={() => form.reset()}
           >
             <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">{button_text ? button_text : "View All"}</span>
-            <Image src="/images/icon-careerBtn.svg" alt="careerBtn" width={40} height="40" className="w-[25px] h-auto aspect-4/4 block ml-[5px]" />
+            <Image
+              src="/images/icon-careerBtn.svg"
+              alt="careerBtn"
+              width={40}
+              height="40"
+              className="w-[25px] h-auto aspect-4/4 block ml-[5px]"
+            />
           </Link>
         </div>
       </form>
