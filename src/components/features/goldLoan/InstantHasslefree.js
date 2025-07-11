@@ -64,7 +64,7 @@ export default function InstantHasslefree({ title, description, hassle_free_imag
               Instant & hassle free <br />
               <span className="text-base2 font-bold">Gold Loan</span>
             </div> */}
-            <div
+            <h2
               className="text-title1 font-normal text-black mb-[15px] 2xl:mb-[30px] 3xl:mb-[40px] [&>span]:text-base2 [&>span]:font-bold"
               dangerouslySetInnerHTML={{ __html: title ? title : "Instant & hassle free <br></br> <span>Gold Loan</span>" }}
             />

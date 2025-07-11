@@ -16,9 +16,9 @@ function ServiceBannerItem({ item }) {
           className="w-full h-full max-w-[15px] xl:max-w-[20px] 3xl:max-w-[30px] object-contain"
         />
       </div>
-      <div className="w-[calc(100%-45px)] xl:w-[calc(100%-55px)] 3xl:w-[calc(100%-66px)] pl-[10px] 4xs:pl-[20px] text-[13px] 2xl:text-[16px] 3xl:text-[18px] font-medium leading-[1.2] text-white">
+      <h3 className="w-[calc(100%-45px)] xl:w-[calc(100%-55px)] 3xl:w-[calc(100%-66px)] pl-[10px] 4xs:pl-[20px] text-[13px] 2xl:text-[16px] 3xl:text-[18px] font-medium leading-[1.2] text-white">
         {item.title}
-      </div>
+      </h3>
     </div>
   );
 }
