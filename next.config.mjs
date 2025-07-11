@@ -502,7 +502,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/02/Record-date-intimation-to-BSE.pdf",
-        destination: "",
+        destination: "/about",
         permanent: true,
       },
       {
