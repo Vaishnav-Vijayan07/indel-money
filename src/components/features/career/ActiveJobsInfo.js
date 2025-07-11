@@ -181,7 +181,7 @@ export default function ActiveJobsInfo() {
           <>
             {jobs.length > 0 ? (
               <div className="flex flex-wrap -mx-[4px] sm:-mx-[15px] lg:-mx-[20px] 2xl:-mx-[25px]">
-                {jobs.map((item) => (
+                {jobs?.map((item) => (
                   <div
                     key={item.id}
                     className="w-full lg:w-1/2 p-[4px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_20px] 3xl:p-[20px_25px]"
