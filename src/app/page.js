@@ -77,7 +77,7 @@ async function getMetaData() {
           images: meta?.twitter_image ? [meta.twitter_image] : [],
         },
         alternates: {
-          canonical: meta?.canonical_url || `${process.env.NEXT_PUBLIC_SITE_URL}/home`,
+          canonical: meta?.canonical_url || `${process.env.NEXT_PUBLIC_SITE_URL}`,
         },
         error: null,
       };
