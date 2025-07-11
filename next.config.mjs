@@ -147,7 +147,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2022/03/Board-Meeting-Intimation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -157,22 +157,22 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2022/03/Interest-Payment-Intimation-01012022.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/03/Interest-Payment-Intimation-01022022.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/03/Interest-payment-intimation-March.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/03/Interest-payment-intimation-to-BSE-01.12.2021.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -182,12 +182,12 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2022/03/Q3-Financial-Results_compressed.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/03/Record-date-intimation-02122022033054.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -202,7 +202,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2022/03/Record-Date-Intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -217,22 +217,22 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2022/04/Interest-Payment_05-04-22.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/05/Interest-payment-confirmation-to-BSE-.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/05/Record-date-intimation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/06/INDEL_KYC_Policy_Final_02_Aug_2021.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -317,22 +317,22 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2022/09/Board-Meeting-Intimation-503-and-521.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/09/Financial-result.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/09/Interest-payment-date-intimation-August-2022.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2022/09/outcome.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -342,7 +342,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2022/12/Financial_Result_Sep 2022.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -382,22 +382,22 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/01/Financial-results.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/01/Interest payment date intimation_October 2022.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/01/Interest-payment-date-intimation_December-2022.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/01/Interest-payment-date-intimation-_-November-2022.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -482,17 +482,17 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/02/Details-of-key-managerial-personnel.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/02/Interest-Payment-Date-Intimation_Sep-2022.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/02/Interest-payment-date-intimation-to-BSE_Jan-2023.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -502,7 +502,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/02/Record-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -527,7 +527,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/03/Interest-payment-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -552,7 +552,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/04/Interest-Payment-Confirmation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -572,27 +572,27 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/04/Quater-1_-574-Intimation_Revised.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/04/Record-date-intimation-to-BSE_Redemption.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/04/Record-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/04/Record-Date-Intimation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/05/Auditors-Report.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -602,12 +602,12 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/05/Covering-letter_BM-Initmation_Posepone.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/05/Indel Money-Limited-Prospectus.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -617,7 +617,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/05/Interest-payment-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -637,7 +637,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/05/Redemption-payment-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -657,7 +657,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/06/Interest-payment-date-intimation-to-BSE-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -667,7 +667,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/06/Record-date-intimation-to-BSE-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -677,7 +677,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/07/Interest-and-Priciple-payment-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -687,7 +687,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/07/Record-date-intimation-to-BSE-2.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -707,12 +707,12 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/08/Financials-Quater1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/08/Interest-payment-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -722,17 +722,17 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/08/Quater-1_575-Payment.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/08/Record-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/09/AGM-BM-Intimation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -742,7 +742,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/09/AR_21-22.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -782,7 +782,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/09/Interest-payment-date-intimation-to-BSE-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -797,7 +797,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/09/Record-date-intimation-to-BSE-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -807,7 +807,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/10/Interest-payment-date-intimation-to-BSE_Merged.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -822,17 +822,17 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/10/Q2_574_Intimation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/10/Quater-2_575-Payment.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/10/Quater-3_-574-Intimation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -842,17 +842,17 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/11/Covering-letter_BM-Initmation_06.11.2023.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/11/Financials-Quarter 2.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/11/Interest-payment-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -867,12 +867,12 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/11/Record-date-intimation-to-BSE-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/11/Record-date-intimation-to-BSE.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -887,22 +887,22 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2023/12/Interest-payment-date-intimation-to-BSE-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2023/12/Record-date-intimation-to-BSE-Revised.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/01/2__Indel-Money-Ltd_-Abridged_Jan-2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/01/Interest-paid-confirmation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -912,7 +912,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/01/Record-Date-Intimation_Revised.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -922,7 +922,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/02/BM-Initmation_Dec-Board-Meeting.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -932,7 +932,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/02/FS-with-Limited-review.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -942,7 +942,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/02/Interest-paid-confirmation_Jan-24.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -962,52 +962,52 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/02/Record-date-intimation-to-BSE_Feb-2024-to-upload-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/02/RISK-MANAAGEMENT-POLICY.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/03/BSE Intimation_Record date (for April Interest)_Indel Money.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/03/Interest-paid-confirmation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/04/Interest Payment confirmation.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/04/Quater_2_Payment.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/05/BSE intimation 2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/05/Interest Payment Confirmation to BSE _02_05_2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/05/Record date intimation to BSE_for May interest 2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/05/Record date intimation to BSE-(June).pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1017,7 +1017,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/06/Financial-Result.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1027,32 +1027,32 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/06/Outcome of BM _30May2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/07/2. Record date intimation to BSE-(July) -revised -Indel Money.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/08/1.-Interest-Payment-Confirmation-to-BSE-01050627-June-IML.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/08/4.-Record-date-intimation-to-BSE-July-04-23Indel-Money-for-August.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/08/5.-Interest-Payment-Confirmation-to-BSE-0119August-IML-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/08/6.-Record-date-intimation-to-BSE-August-02Indel-Money-for-September-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1062,12 +1062,12 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/08/Disclosure on Liquidity Risk/Public disclosure on liquidity Risk_March 2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/08/Financial Results June 2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1092,12 +1092,12 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/09/1.-Interest-Payment-Confirmation-to-BSE-02-September-5-September-IML.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/09/2.-Record-date-intimation-to-BSE-September-03Indel-Money-for-October.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1107,22 +1107,22 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/09/Indel-Money-Limited-Prospectus -27092024-Unsigned.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/10/Abridged Prospectus.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/10/Indel Money-Limited-Prospectus-8102024- Signed.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/10/Interest Payment Confirmation to BSE 01.10.2024sd (1).pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1132,12 +1132,12 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/11/COVERING-LETTER_BM-INTIMATION_November.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2024/11/CSR Policy.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1147,7 +1147,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/11/Financial-Results-and-Annexures.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1157,7 +1157,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/11/Interest-Payment-Intimation_BSE_October.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1182,7 +1182,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2024/11/Record-Date-Intimation_-October.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1197,7 +1197,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2025/02/1.-Board-Meeting-Intimation_01.02.2025.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1207,17 +1207,17 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2025/02/3.-Record-date-intimation_November-2024-1.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2025/02/4.-Interest-Payment-Confirmation-November-2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2025/02/5.-Record-Date-Intimation-December-2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1232,7 +1232,7 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2025/02/6.-Interest-Payment-Confirmation-December2024__compressed.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1247,17 +1247,17 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2025/02/Disclosure-on-Liquidity-Risk-as-of-December-2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2025/02/Disclosure-on-Liquidity-Risk-as-of-June-2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2025/02/Disclosure-on-Liquidity-Risk-as-of-September-2024.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1307,17 +1307,17 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2025/04/20250413_9_compressed-compressed.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2025/05/1.Record-Date_Intimation_January_2025.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2025/05/2.-Interest-Payment-Intimation_January_2025_compressed.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1327,17 +1327,17 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2025/05/3.-Record-Date_Intimation_February_2025_.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2025/05/4.-Interest-Payment-Intimation_February_2025_.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2025/05/5.-Record-Date_Intimation_March_2025.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
@@ -1347,12 +1347,12 @@ const nextConfig = {
       },
       {
         source: "/wp-content/uploads/2025/05/7.-Record-Date_Intimation_April_2025.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/2025/05/8.-Interest-Payment-Intimation_April_2025_compressed.pdf",
-        destination: "/about",
+        destination: "/about-indel-money",
         permanent: true,
       },
       {
