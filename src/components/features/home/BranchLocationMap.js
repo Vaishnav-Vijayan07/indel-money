@@ -385,9 +385,9 @@ export default function BranchLocationMap({
         </MapContainer>
       </div>
       <div className="w-full sm:w-[220px] lg:w-[260px] xl:w-[320px] 2xl:w-[420px] sm:h-full bg-base1 relative z-0 max-sm:shadow-[0_0_25px_0_rgba(238,56,36,0.20)] before:absolute before:inset-0 before:top-auto before:z-2 before:block before:bg-gradient-to-t before:to-transparent before:from-base1 before:w-full before:h-[20px] lg:before:h-[30px] before:pointer-events-none">
-        <h2 className="text-[16px] lg:text-[18px] 2xl:text-[22px] text-white font-bold p-[20px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_30px] border-b-[1px] border-solid border-white/80">
+        <h3 className="text-[16px] lg:text-[18px] 2xl:text-[22px] text-white font-bold p-[20px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_30px] border-b-[1px] border-solid border-white/80">
           {nearbyBranchLocations?.length} {hasActiveFilters ? "Branches" : "Branches Near You"}
-        </h2>
+        </h3>
         <div className="max-sm:p-[20px] overflow-y-auto max-h-[280px] sm:max-h-[calc(100%-49px)] lg:max-h-[calc(100%-49px)] 2xl:max-h-[calc(100%-65px)]">
           {nearbyBranchLocations?.map((branch) => (
             <div
@@ -398,9 +398,9 @@ export default function BranchLocationMap({
               onClick={() => handleBranchClick(branch)}
             >
               <div className="flex items-center justify-between mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
-                <h3 className="text-[14px] lg:text-[16px] 2xl:text-[18px] leading-none line-clamp-1 text-white font-bold">
+                <h4 className="text-[14px] lg:text-[16px] 2xl:text-[18px] leading-none line-clamp-1 text-white font-bold">
                   {branch.name}
-                </h3>
+                </h4>
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${branch?.latitude},${branch?.longitude}`}
                   target="_blank"
