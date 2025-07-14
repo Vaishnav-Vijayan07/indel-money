@@ -33,11 +33,3 @@ export default async function CareerDetail({ params }) {
 
   return <CareerDetailInfo job={job} />;
 }
-
-// import CareerDetailInfo from "@/components/features/career/CareerDetailInfo";
-
-// export default async function CareerDetail({ params }) {
-//   const { id } = await params;
-
-//   return <CareerDetailInfo />;
-// }
