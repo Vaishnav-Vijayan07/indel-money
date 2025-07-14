@@ -36,7 +36,7 @@ export default function ActiveJobsInfo() {
     setError(null);
     try {
       const query = new URLSearchParams(params).toString();
-      const response = await api.get(`/career/jobs?${query}`, { timeout: 5000 });
+      const response = await api.get(`/career/jobs/filtered?${query}`, { timeout: 5000 });
       if (!response.data.success) {
         setError(response.data.message || "Failed to fetch jobs");
         setJobs([]);
