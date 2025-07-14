@@ -6,7 +6,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { z } from "zod";
 import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import api from "@/lib/api/axios";
@@ -23,7 +29,13 @@ const formSchema = z.object({
 const gridStyle =
   "w-full lg:w-[calc((100%-80px)/5)] xl:w-[calc((100%-140px)/5)] 2xl:w-[calc((100%-160px)/5)] 3xl:w-[calc((100%-220px)/5)] px-[5px] lg:px-[10px] 2xl:px-[15px] mb-[10px] lg:mb-0";
 
-export default function FindJobForm({ variant = "default", handleClearFilters, hasActiveFilters, button_link, button_text }) {
+export default function FindJobForm({
+  variant = "default",
+  handleClearFilters,
+  hasActiveFilters,
+  button_link,
+  button_text,
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [states, setStates] = useState([]);
@@ -71,9 +83,12 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
       return Promise.resolve();
     }
     try {
-      const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/locations/by_district_state`, {
-        params: { state_id, district_id },
-      });
+      const { data } = await api.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/career/locations/by_district_state`,
+        {
+          params: { state_id, district_id },
+        }
+      );
       setLocations(data.data || []);
       return Promise.resolve();
     } catch (error) {
@@ -165,10 +180,20 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
       role_id: role,
     };
     // Filter out empty values
-    const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value !== ""));
+    const filteredParams = Object.fromEntries(
+      Object.entries(params).filter(([_, value]) => value !== "")
+    );
     const query = new URLSearchParams(filteredParams).toString();
     router.push(query ? `/career-list?${query}` : "/career-list");
   }
+
+  // convert to Sentance Case
+  const toSentenceCase = (str = "") =>
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
 
   useEffect(() => {
     fetchStatesAndRoles();
@@ -198,14 +223,20 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             name="state"
             render={({ field }) => (
               <FormItem>
-                <Select onValueChange={(value) => handleFormChange("state", value)} value={field.value || ""}>
+                <Select
+                  onValueChange={(value) => handleFormChange("state", value)}
+                  value={field.value || ""}
+                >
                   <SelectTrigger className="w-full max-w-full max-sm:h-[40px] bg-white border-white rounded-[12px] lg:rounded-[12px] 2xl:rounded-[16px]">
                     <SelectValue placeholder="-- Select your state --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
                     {states.map((state) => (
-                      <SelectItem key={String(state?.value)} value={String(state?.value)}>
-                        {state?.label || "-"}
+                      <SelectItem
+                        key={String(state?.value)}
+                        value={String(state?.value)}
+                      >
+                        {toSentenceCase(state?.label) || "-"}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -222,14 +253,21 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             name="district"
             render={({ field }) => (
               <FormItem>
-                <Select onValueChange={(value) => handleFormChange("district", value)} value={field.value || ""} disabled={!form.watch("state")}>
+                <Select
+                  onValueChange={(value) => handleFormChange("district", value)}
+                  value={field.value || ""}
+                  disabled={!form.watch("state")}
+                >
                   <SelectTrigger className="w-full max-w-full max-sm:h-[40px] bg-white border-white rounded-[12px] lg:rounded-[12px] 2xl:rounded-[16px]">
                     <SelectValue placeholder="-- Select your district --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
                     {districts?.map((district) => (
-                      <SelectItem key={String(district?.district_name)} value={String(district?.id)}>
-                        {district?.district_name || "-"}
+                      <SelectItem
+                        key={String(district?.district_name)}
+                        value={String(district?.id)}
+                      >
+                        {toSentenceCase(district?.district_name) || "-"}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -246,14 +284,21 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             name="location"
             render={({ field }) => (
               <FormItem>
-                <Select onValueChange={(value) => handleFormChange("location", value)} value={field.value || ""} disabled={!form.watch("district")}>
+                <Select
+                  onValueChange={(value) => handleFormChange("location", value)}
+                  value={field.value || ""}
+                  disabled={!form.watch("district")}
+                >
                   <SelectTrigger className="text-ellipsis w-full max-w-full sm:h-full max-sm:h-[40px] bg-white border-white rounded-[11px]">
                     <SelectValue placeholder="-- Select your preferred location --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white">
                     {locations.map((location) => (
-                      <SelectItem key={String(location?.location_name)} value={String(location?.id)}>
-                        {location?.location_name || "-"}
+                      <SelectItem
+                        key={String(location?.location_name)}
+                        value={String(location?.id)}
+                      >
+                        {toSentenceCase(location?.location_name) || "-"}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -270,14 +315,20 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             name="role"
             render={({ field }) => (
               <FormItem>
-                <Select onValueChange={(value) => handleFormChange("role", value)} value={field.value || ""}>
+                <Select
+                  onValueChange={(value) => handleFormChange("role", value)}
+                  value={field.value || ""}
+                >
                   <SelectTrigger className="w-full max-w-full max-sm:h-[40px] bg-white border-white rounded-[12px] lg:rounded-[12px] 2xl:rounded-[16px]">
                     <SelectValue placeholder="-- Select role --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
                     {roles.map((role) => (
-                      <SelectItem key={String(role?.value)} value={String(role?.value)}>
-                        {role?.label || "-"}
+                      <SelectItem
+                        key={String(role?.value)}
+                        value={String(role?.value)}
+                      >
+                        {toSentenceCase(role?.label) || "-"}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -289,7 +340,11 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
         </div>
         {/* Button */}
         <div className={gridStyle + " flex gap-2"}>
-          <Button type="submit" size="sm" className="bg-[#cf2613] text-white px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#b71c0c]">
+          <Button
+            type="submit"
+            size="sm"
+            className="bg-[#cf2613] text-white px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#b71c0c]"
+          >
             SEARCH
           </Button>
           {hasActiveFilters && hasActiveFilters() && (
@@ -298,7 +353,10 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
               size="sm"
               variant="outline"
               className="border-[#cf2613] text-[#cf2613] px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#ffe5e0] hover:text-[#b71c0c]"
-              onClick={() => [handleClearFilters && handleClearFilters(), form.reset()]}
+              onClick={() => [
+                handleClearFilters && handleClearFilters(),
+                form.reset(),
+              ]}
             >
               CLEAR
             </Button>
@@ -310,8 +368,16 @@ export default function FindJobForm({ variant = "default", handleClearFilters, h
             className="text-[14px] leading-[1] font-bold text-white h-[40px] flex items-center justify-center bg-base2 rounded-[24px] p-[4px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
             onClick={() => form.reset()}
           >
-            <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">{button_text ? button_text : "View All"}</span>
-            <Image src="/images/icon-careerBtn.svg" alt="careerBtn" width={40} height="40" className="w-[25px] h-auto aspect-4/4 block ml-[5px]" />
+            <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">
+              {button_text ? button_text : "View All"}
+            </span>
+            <Image
+              src="/images/icon-careerBtn.svg"
+              alt="careerBtn"
+              width={40}
+              height="40"
+              className="w-[25px] h-auto aspect-4/4 block ml-[5px]"
+            />
           </Link>
         </div>
       </form>

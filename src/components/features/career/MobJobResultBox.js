@@ -3,6 +3,15 @@ import Link from "next/link";
 import JobResultAlert from "./JobResultAlert";
 
 export default function MobJobResultBox({ item }) {
+
+  // convert to Sentance Case
+  const toSentenceCase = (str) => {
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+  };
   return (
     <div className="group w-full h-auto bg-white rounded-[10px] p-[15px] 4xs:p-[20px] shadow-[0_0_15px_0_rgba(0,0,0,0.1)] transition-all duration-300 hover:bg-[#c7e0ff] hover:border-base1/05">
       <div className="text-[16px] font-bold leading-none text-black w-full block mb-[12px]"> {item?.role?.role_name}</div>
@@ -10,7 +19,7 @@ export default function MobJobResultBox({ item }) {
         <div>
           <div className="text-[12px] leading-none font-medium text-[#484877] w-fit h-auto bg-[#cedfff] rounded-[100px] flex items-center gap-[4px] p-[8px_10px]">
             <Image src={"/images/icon-location.svg"} alt="location" width={10} height={14} />
-            {item?.location?.location_name}
+            {toSentenceCase(item?.location?.location_name)}
           </div>
         </div>
         <div>

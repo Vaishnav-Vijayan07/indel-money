@@ -371,6 +371,16 @@ function CareerFormInner({ jobId, isGeneral }) {
     isDesktop ? setIsDraggingDesktop(false) : setIsDraggingMobile(false);
   };
 
+
+const toTitleCase = (str = "") =>
+  str
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, " ")
+    .replace(/\b\w/g, c => c.toUpperCase());
+
+
+
   return (
     <div className="p-4">
       <Toaster position="top-right" />
@@ -623,7 +633,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       <SelectContent className="bg-white border-gray-300">
                         {dropdowns.locations.map((location) => (
                           <SelectItem key={location?.value} value={String(location?.value)}>
-                            {location?.label || "-"}
+                            {toTitleCase(location?.label) || "-"}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -708,7 +718,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       <SelectContent className="bg-white border-gray-300">
                         {dropdowns.roles.map((role) => (
                           <SelectItem key={role?.value} value={String(role?.value)}>
-                            {role?.label || "-"}
+                            {toTitleCase(role?.label) || "-"}
                           </SelectItem>
                         ))}
                       </SelectContent>
