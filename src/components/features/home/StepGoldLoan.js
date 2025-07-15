@@ -8,7 +8,7 @@ export default function StepGoldLoan({ title, loanSteps, className, hideTitle = 
     <section className={`${className} w-full pt-[20px] md:pt-[30px] 2xl:pt-[60px]`}>
       <div className="container">
         {!hideTitle && (
-          <div
+          <h2
             className="text-title1 font-normal mb-[15px] lg:mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
             dangerouslySetInnerHTML={{ __html: title ? title : "" }}
           />
@@ -69,7 +69,7 @@ export default function StepGoldLoan({ title, loanSteps, className, hideTitle = 
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                 >
                   <div className="relative flex justify-between w-full">
-                    <motion.div
+                    <motion.h3
                       className="bg-base2 text-white px-4 py-2 rounded-lg 
                       3xl:text-[1.8rem] xl:text-[1.2rem] lg:text-[1rem] text-[0.8rem] font-bold"
                       initial={{ opacity: 0, y: -20 }}
@@ -78,7 +78,7 @@ export default function StepGoldLoan({ title, loanSteps, className, hideTitle = 
                       transition={{ duration: 0.5, delay: index * 0.3 }}
                     >
                       {step.title}
-                    </motion.div>
+                    </motion.h3>
 
                     {index !== loanSteps.length - 1 && (
                       <motion.div

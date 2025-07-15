@@ -10,6 +10,14 @@ function CareerDetailInfoBox({ children }) {
   );
 }
 
+  // convert to Sentance Case
+  const toSentenceCase = (str) => {
+    return str
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+  };
 export default function CareerDetailInfo({ job }) {
   return (
     <section className="w-full h-auto py-[30px] lg:py-[50px_80px]">
@@ -43,7 +51,7 @@ export default function CareerDetailInfo({ job }) {
                           fill="#17479E"
                         />
                       </svg>
-                      {job?.location?.location_name || "Location not specified"}
+                      {toSentenceCase(job?.location?.location_name) || "Location not specified"}
                     </CareerDetailInfoBox>
                   </div>
                 </div>

@@ -50,18 +50,38 @@ export default function BranchForm({
     }
   };
 
+
+  // convert to Sentance Case
+  const toSentenceCase = (str) => {
+    return str
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+  };
+
+  
   return (
-    <form className="flex flex-wrap -mx-[10px] sm:-mx-[10px] 2xl:-mx-[15px]" onSubmit={handleSubmit}>
+    <form
+      className="flex flex-wrap -mx-[10px] sm:-mx-[10px] 2xl:-mx-[15px]"
+      onSubmit={handleSubmit}
+    >
       {/* State */}
       <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
-        <Select value={selectedState} onValueChange={(value) => onValueChange("state", value)}>
+        <Select
+          value={selectedState}
+          onValueChange={(value) => onValueChange("state", value)}
+        >
           <SelectTrigger className="w-full bg-[#e7eff9] border-[#e7eff9]">
             <SelectValue placeholder="Select State" />
           </SelectTrigger>
           <SelectContent className="bg-[#e7eff9] border-[#e7eff9]">
             {states?.map((state) => (
-              <SelectItem key={state?.id?.toString()} value={state?.id?.toString()}>
-                {state?.state_name}
+              <SelectItem
+                key={state?.id?.toString()}
+                value={state?.id?.toString()}
+              >
+                {toSentenceCase(state?.state_name)}
               </SelectItem>
             ))}
           </SelectContent>
@@ -70,14 +90,20 @@ export default function BranchForm({
 
       {/* District */}
       <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
-        <Select value={selectedDistrict} onValueChange={(value) => onValueChange("district", value)}>
+        <Select
+          value={selectedDistrict}
+          onValueChange={(value) => onValueChange("district", value)}
+        >
           <SelectTrigger className="w-full bg-[#e7eff9] border-[#e7eff9]">
             <SelectValue placeholder="Select District" />
           </SelectTrigger>
           <SelectContent className="bg-[#e7eff9] border-[#e7eff9]">
             {districts?.map((district) => (
-              <SelectItem key={district?.id?.toString()} value={district?.id?.toString()}>
-                {district?.district_name}
+              <SelectItem
+                key={district?.id?.toString()}
+                value={district?.id?.toString()}
+              >
+                {toSentenceCase(district?.district_name)}
               </SelectItem>
             ))}
           </SelectContent>
@@ -86,14 +112,20 @@ export default function BranchForm({
 
       {/* Location */}
       <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
-        <Select value={selectedLocation} onValueChange={(value) => onValueChange("location", value)}>
+        <Select
+          value={selectedLocation}
+          onValueChange={(value) => onValueChange("location", value)}
+        >
           <SelectTrigger className="w-full bg-[#e7eff9] border-[#e7eff9]">
             <SelectValue placeholder="Select Location" />
           </SelectTrigger>
           <SelectContent className="bg-[#e7eff9] border-[#e7eff9]">
             {locations?.map((location) => (
-              <SelectItem key={location?.id?.toString()} value={location?.id?.toString()}>
-                {location?.location_name}
+              <SelectItem
+                key={location?.id?.toString()}
+                value={location?.id?.toString()}
+              >
+                {toSentenceCase(location?.location_name)}
               </SelectItem>
             ))}
           </SelectContent>
@@ -102,7 +134,10 @@ export default function BranchForm({
 
       {/* Distance */}
       <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
-        <Select onOpenChange={onOpenChange} onValueChange={(value) => onValueChange("distance", value)}>
+        <Select
+          onOpenChange={onOpenChange}
+          onValueChange={(value) => onValueChange("distance", value)}
+        >
           <SelectTrigger className="w-full bg-[#e7eff9] border-[#e7eff9]">
             <SelectValue placeholder="Select Distance" />
           </SelectTrigger>
@@ -119,7 +154,10 @@ export default function BranchForm({
       {/* Buttons */}
       <div className="w-full md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px] flex items-center justify-center md:justify-end gap-2">
         {isMobile && useQueryParams && (
-          <Button type="submit" className="btn btn-base2 max-w-[140px] lg:max-w-[160px] xl:max-w-[180px] 3xl:max-w-[220px]">
+          <Button
+            type="submit"
+            className="btn btn-base2 max-w-[140px] lg:max-w-[160px] xl:max-w-[180px] 3xl:max-w-[220px]"
+          >
             SEARCH
           </Button>
         )}
