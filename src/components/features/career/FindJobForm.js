@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import api from "@/lib/api/axios";
 import { useEffect, useState, useCallback } from "react";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 // Schema Validation
 const formSchema = z.object({
@@ -188,12 +189,6 @@ export default function FindJobForm({
   }
 
   // convert to Sentance Case
-  const toSentenceCase = (str = "") =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
 
   useEffect(() => {
     fetchStatesAndRoles();

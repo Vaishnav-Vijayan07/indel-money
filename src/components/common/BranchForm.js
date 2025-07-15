@@ -1,5 +1,5 @@
 "use client";
-
+import { startCase, toLower } from "lodash";
 import * as React from "react";
 import {
   Select,
@@ -10,6 +10,7 @@ import {
 } from "../../components/ui/select";
 import { Button } from "../ui/button";
 import { usePathname, useRouter } from "next/navigation";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 export default function BranchForm({
   states,
@@ -43,7 +44,7 @@ export default function BranchForm({
   const handleClearFilter = (e) => {
     e.preventDefault();
     onValueChange("clear", true);
-    
+
     // Only navigate with query params if useQueryParams is true
     if (isMobile && useQueryParams) {
       router.push(pathname);
@@ -51,16 +52,6 @@ export default function BranchForm({
   };
 
 
-  // convert to Sentance Case
-  const toSentenceCase = (str) => {
-    return str
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
-  };
-
-  
   return (
     <form
       className="flex flex-wrap -mx-[10px] sm:-mx-[10px] 2xl:-mx-[15px]"

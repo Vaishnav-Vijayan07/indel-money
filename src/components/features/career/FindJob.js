@@ -3,16 +3,9 @@ import Link from "next/link";
 import FindJobForm from "./FindJobForm";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import JobResultBoxSlide from "./JobResultBoxSlide";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 function JobLocationBox({ item }) {
-  // convert to Sentance Case
-  const toSentenceCase = (str) => {
-    return str
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
-  };
   return (
     <Link
       href={`/career-list?state_id=${item.id}`}

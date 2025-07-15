@@ -4,6 +4,7 @@ import Link from "next/link";
 import { encodeId } from "@/lib/hashids";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import parse, { domToReact } from "html-react-parser";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 const options = {
   replace: (domNode) => {
@@ -22,14 +23,7 @@ export default function JobResultBox({ item, variant = "default" }) {
   const whatsappUrl = `https://wa.me/?text=${shareText}`;
   const emailUrl = `mailto:?subject=${encodeURIComponent("Job Opportunity: " + jobTitle)}&body=${shareText}`;
 
-  // convert to Sentance Case
-  const toSentenceCase = (str) => {
-    return str
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
-  };
+ 
   return (
     <div
       className={`${

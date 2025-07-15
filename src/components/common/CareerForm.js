@@ -15,6 +15,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 // Schema Validation
 const baseSchema = {
@@ -372,15 +373,6 @@ function CareerFormInner({ jobId, isGeneral }) {
   };
 
 
-const toTitleCase = (str = "") =>
-  str
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, " ")
-    .replace(/\b\w/g, c => c.toUpperCase());
-
-
-
   return (
     <div className="p-4">
       <Toaster position="top-right" />
@@ -633,7 +625,7 @@ const toTitleCase = (str = "") =>
                       <SelectContent className="bg-white border-gray-300">
                         {dropdowns.locations.map((location) => (
                           <SelectItem key={location?.value} value={String(location?.value)}>
-                            {toTitleCase(location?.label) || "-"}
+                            {toSentenceCase(location?.label) || "-"}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -718,7 +710,7 @@ const toTitleCase = (str = "") =>
                       <SelectContent className="bg-white border-gray-300">
                         {dropdowns.roles.map((role) => (
                           <SelectItem key={role?.value} value={String(role?.value)}>
-                            {toTitleCase(role?.label) || "-"}
+                            {toSentenceCase(role?.label) || "-"}
                           </SelectItem>
                         ))}
                       </SelectContent>
