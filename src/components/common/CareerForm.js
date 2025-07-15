@@ -753,7 +753,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         type="number"
                         step="0.01"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Current Salary (Month)"
+                        placeholder="Current Monthly Salary"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
@@ -774,7 +774,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         type="number"
                         step="0.01"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Expected Salary (Month)"
+                        placeholder="Expected Monthly Salary"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
