@@ -36,14 +36,15 @@ export default function ActiveJobsInfo() {
     setError(null);
     try {
       const query = new URLSearchParams(params).toString();
-      const response = await api.get(`/career/jobs?${query}`, { timeout: 5000 });
+      const response = await api.get(`/web/career-active-jobs?${query}`, { timeout: 5000 });
       if (!response.data.success) {
         setError(response.data.message || "Failed to fetch jobs");
         setJobs([]);
         setPagination({ current_page: 1, per_page: 6, total: 0, total_pages: 1 });
       } else {
-        const allJobs = response.data.data || [];
+        const allJobs = response.data.data.jobs || [];
         // Validate job objects
+        console.log(allJobs);
         const validJobs = allJobs.filter(
           (job) =>
             job &&
