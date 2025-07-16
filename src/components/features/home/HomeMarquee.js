@@ -9,7 +9,7 @@ export default function HomeMarquee({
 }) {
   return (
     <div className="w-full h-[var(--marquee-y)] flex flex-wrap items-center bg-[#b7d0ff]">
-      <div className="w-[240px] lg:w-[220px] 2xl:w-[300px] 3xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
+      <h2 className="w-[240px] lg:w-[220px] 2xl:w-[300px] 3xl:w-[340px] h-[var(--marquee-y)] flex items-center justify-center text-sm1 text-white font-medium bg-gradient-to-r from-base1 to-base2">
         <Image
           src={"/images/marquee-1.png"}
           width={25}
@@ -19,7 +19,7 @@ export default function HomeMarquee({
           priority={true}
         />
         {goldRateLabel} - {goldRate} Rs /-
-      </div>
+      </h2>
       <div className="w-[calc(100%-240px)] lg:w-[calc(100%-220px)] 2xl:w-[calc(100%-300px)] 3xl:w-[calc(100%-340px)]">
         <Marquee speed={80} pauseOnHover={true} className="text-sm1">
           {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s

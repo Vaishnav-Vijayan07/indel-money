@@ -11,7 +11,6 @@ export default function FAQ({ pageContents, type = "home" }) {
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log("FAQ Component Rendered with Type:", type);
 
   // Fetch FAQs based on type
   useEffect(() => {
@@ -78,9 +77,9 @@ export default function FAQ({ pageContents, type = "home" }) {
             </motion.div>
             <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-340px)] 2xl:w-[calc(100%-520px)] 3xl:w-[calc(100%-550px)] lg:pl-[30px] xl:pl-[50px] 3xl:pl-[70px]">
               <div className="contentBx w-full">
-                <div className="font-bold text-black mb-1 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">
+                <h3 className="font-bold text-black mb-1 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">
                   {pageContents?.faq_section_super_title}
-                </div>
+                </h3>
                 <div className="flex items-center justify-between mb-2 pb-[30px] border-b-1 border-[rgba(0,0,0,0.68)]">
                   <div className="text-black text-title1 [&>span]:text-base2 [&>span]:font-bold">
                     {parse(pageContents?.faq_section_title)}

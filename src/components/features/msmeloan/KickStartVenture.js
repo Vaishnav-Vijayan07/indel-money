@@ -17,9 +17,9 @@ export default function KickStartVenture({
       <div className="container">
         <div className="flex flex-wrap lg:-mx-[40px]">
           <div className="w-full lg:w-5/10 lg:px-[40px] relative before:content-[''] before:hidden lg:before:block before:absolute before:h-full before:w-[1px] before:top-[0] before:right-0 before:bg-[rgba(22,69,156,0.26)] before:opacity-25">
-            <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] font-medium 2xl:font-normal [&>span]:text-base2 [&>span]:font-bold">
+            <h1 className="text-title1 mb-[15px] 2xl:mb-[20px] font-medium 2xl:font-normal [&>span]:text-base2 [&>span]:font-bold">
               {title ? parse(title) : "Kickstart your new venture with our MSME loan"}
-            </h2>
+            </h1>
 
             <div className="w-full xl:w-[85%] 2xl:w-[100%]">
               <div className="text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px] sm:mb-[15px] xl:mb-[20px] text-[#1E1E1E] font-medium 2xl:font-normal leading-normal">
@@ -40,9 +40,9 @@ export default function KickStartVenture({
           </div>
           {/* only in Desktop view ie;above 640px */}
           <div className="w-full lg:w-5/10 lg:px-[40px] sm:p-0 p-[25px] sm:pt-[30px] lg:pt-0">
-            <div className="text-base1 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] font-medium 2xl:font-normal leading-normal lg:pl-[30px]">
+            <h2 className="text-base1 text-[18px] md:text-[20px] lg:text-[22px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] font-medium 2xl:font-normal leading-normal lg:pl-[30px]">
               {our_offering_title ? our_offering_title : "Our Offerings"}
-            </div>
+            </h2>
             <div className="text-sm1 mb-[15px] xl:mb-[20px] max-w-[90%] lg:pl-[30px]">
               {our_offering_description
                 ? our_offering_description

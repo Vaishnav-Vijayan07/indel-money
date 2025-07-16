@@ -19,7 +19,7 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center">
           {/* Title */}
-          <div
+          <h2
             className="w-full xl:w-[calc(100%-700px)] 2xl:w-[calc(100%-950px)] 3xl:w-[calc(100%-1020px)] text-black text-title1 font-normal max-xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold"
             dangerouslySetInnerHTML={{ __html: scheme_title || "" }}
           />
@@ -44,12 +44,12 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
             >
               {schemes?.map((type, index) => (
                 <SwiperSlide key={index}>
-                  <div
+                  <h4
                     className={`w-full h-[40px] 2xl:h-[50px] 3xl:h-[60px] text-[12px] 2xl:text-[16px] 3xl:text-[18px] px-[10px] font-bold flex items-center justify-center rounded-[100px] cursor-pointer transition-all duration-300
                                         ${activeIndex === index ? "bg-base1 text-white thumbActive" : "bg-[#CFDFFE] text-black"}`}
                   >
                     {type}
-                  </div>
+                  </h4>
                 </SwiperSlide>
               ))}
             </Swiper>

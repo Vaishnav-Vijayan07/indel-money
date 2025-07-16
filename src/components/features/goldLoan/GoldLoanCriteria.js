@@ -13,22 +13,22 @@ export default function GoldLoanCriteria({ title, description, identityProof, el
         <div className="flex flex-wrap">
           <div className="w-full lg:w-[50%]">
             <div className="lg:pr-[60px]">
-              <div
+              <h2
                 className="text-black text-title1 font-normal mb-[20px] 2xlmb-[30px] 3xl:mb-[40px] [&>span]:text-base2 [&>span]:font-bold"
                 dangerouslySetInnerHTML={{ __html: title ? title : "" }}
               />
               <div className="mb-[10px]">
-                <div className={titleStyle}>{eligibilityTitle}</div>
+                <h3 className={titleStyle}>{eligibilityTitle}</h3>
                 <p>{description}</p>
               </div>
               <div className="mb-[10px]">
-                <div className={titleStyle}>{documentationTitle}</div>
+                <h3 className={titleStyle}>{documentationTitle}</h3>
                 <p>{documentationDescription}</p>
               </div>
               <div className="flex flex-wrap lg:max-w-[730px] -mx-[5px] lg:-mx-[10px] 2xl:-mx-[15px]">
                 <div className="w-[50%] p-[5px] lg:p-[10px] 2xl:p-[15px]">
                   <div className="w-full h-full bg-white rounded-[24px] p-[20px] 2xl:p-[25px]">
-                    <div className={titleStyle2}>{identityProofTitle ? identityProofTitle : "Identity Proof:"}</div>
+                    <h4 className={titleStyle2}>{identityProofTitle ? identityProofTitle : "Identity Proof:"}</h4>
                     <ul>
                       {identityProof ? (
                         identityProof.split(",")?.map((item, index) => (
@@ -50,7 +50,7 @@ export default function GoldLoanCriteria({ title, description, identityProof, el
                 </div>
                 <div className="w-[50%] p-[5px] lg:p-[10px] 2xl:p-[15px]">
                   <div className="w-full h-full bg-white rounded-[24px] p-[20px] 2xl:p-[25px]">
-                    <div className={titleStyle2}>{addressProofTitle ? addressProofTitle : "Address Proof:"}</div>
+                    <h4 className={titleStyle2}>{addressProofTitle ? addressProofTitle : "Address Proof:"}</h4>
                     <ul>
                       {addressProof ? (
                         addressProof.split(",")?.map((item, index) => (

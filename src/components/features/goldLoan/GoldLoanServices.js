@@ -34,9 +34,9 @@ export default function GoldLoanServices({ features }) {
                             className="w-full h-full object-contain"
                           />
                         </div>
-                        <div className="text-[18px] lg:text-[20px] 2xl:text-[22px] 3xl:text-[30px] font-medium leading-[1.3] text-base1 w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] pl-[10px] 2xl:pl-[15px] 3xl:pl-[30px]">
+                        <h3 className="text-[18px] lg:text-[20px] 2xl:text-[22px] 3xl:text-[30px] font-medium leading-[1.3] text-base1 w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] pl-[10px] 2xl:pl-[15px] 3xl:pl-[30px]">
                           {service.title}
-                        </div>
+                        </h3>
                       </div>
                       <p>{service.description}</p>
                     </div>
