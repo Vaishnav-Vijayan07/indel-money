@@ -90,17 +90,6 @@ function CareerFormInner({ jobId, isGeneral }) {
     return "";
   };
 
-  // // Dynamic form schema
-  // const formSchema = useMemo(() => {
-  //   return z.object({
-  //     ...baseSchema,
-  //     file:
-  //       selectedFile || selectedFileName
-  //         ? z.any().optional()
-  //         : z.any().refine((file) => file instanceof File, { message: "Please upload a resume." }),
-  //   });
-  // }, [selectedFile, selectedFileName]);
-
   const formSchema = useMemo(() => {
     return z
       .object({
@@ -693,34 +682,35 @@ function CareerFormInner({ jobId, isGeneral }) {
                 )}
               />
             </div>
-            <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
-              <FormField
-                control={form.control}
-                name="preferred_role"
-                render={({ field }) => (
-                  <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      // disabled={!isOtpVerified}
-                    >
-                      <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                        <SelectValue placeholder="Preferred Role" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white border-gray-300">
-                        {dropdowns.roles.map((role) => (
-                          <SelectItem key={role?.value} value={String(role?.value)}>
-                            {toSentenceCase(role?.label) || "-"}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage className="text-red-500 text-sm" />
-                  </FormItem>
-                )}
-              />
-            </div>
-            {console.log("NEXT_PUBLIC_ROLE_ID", process.env.NEXT_PUBLIC_ROLE_ID)}
+            {isGeneral && (
+              <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
+                <FormField
+                  control={form.control}
+                  name="preferred_role"
+                  render={({ field }) => (
+                    <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value}
+                        // disabled={!isOtpVerified}
+                      >
+                        <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                          <SelectValue placeholder="Preferred Role" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white border-gray-300">
+                          {dropdowns.roles.map((role) => (
+                            <SelectItem key={role?.value} value={String(role?.value)}>
+                              {role?.label || "-"}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage className="text-red-500 text-sm" />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            )}
             {isGeneral && form.watch("preferred_role") == process.env.NEXT_PUBLIC_ROLE_ID && (
               <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
                 <FormField

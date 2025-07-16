@@ -4,6 +4,7 @@ import Link from "next/link";
 import { encodeId } from "@/lib/hashids";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import parse, { domToReact } from "html-react-parser";
+import truncateText from "@/lib/truncate";
 import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 const options = {
@@ -120,13 +121,16 @@ export default function JobResultBox({ item, variant = "default" }) {
           {variant === "default" && `Location: ${toSentenceCase(item?.location?.location_name)}`}
           {variant === "activeJobs" && `Experience: ${item.experience}`}
         </div>
+        <div className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-medium text-[#484877] mb-[5px] lg:mb-[10px] 2xl:mb-[20px]">
+          {variant === "activeJobs" && `Location: ${item?.location?.location_name}`}
+        </div>
       </div>
       <div className="w-full h-auto block">
         <div className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-bold text-[#4b4b4b] mb-[4px] lg:mb-[6px] 2xl:mb-[10px]">
           Job Description
         </div>
         <div className={`${variant === "default" ? "line-clamp-2" : ""} text-sm1 text-[#4d4d4d]`}>
-          {parse(item.job_description, options) || "No job description provided."}
+          {parse(truncateText(item.job_description), options) || "No job description provided."}
         </div>
       </div>
     </div>
