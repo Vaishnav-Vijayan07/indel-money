@@ -37,20 +37,11 @@ const baseSchema = {
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   phone: z
     .string()
-    .min(10, { message: "Phone number must be at least 10 digits." }),
+    .regex(/^\d{10}$/,{ message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
   preferred_location: z
     .string()
     .min(1, { message: "Please select a location." }),
-  current_location: z
-    .string()
-    .min(1, { message: "Please enter your current location." }),
-  referred_employee_name: z.string().optional(),
-  employee_referral_code: z.string().optional(),
-  age: z
-    .string()
-    .regex(/^\d+$/, { message: "Age must be a number." })
-    .min(1, { message: "Please enter your age." }),
   preferred_role: z
     .string()
     .min(1, { message: "Please select a preferred role." }),
@@ -59,14 +50,15 @@ const baseSchema = {
     .min(1, { message: "Please select a notice period." }),
   current_salary: z
     .string()
-    .regex(/^\d+(\.\d{1,2})?$/, {
-      message: "Invalid salary format (e.g., 50000.00).",
+    .regex(/^\d{5,}$/, {
+      message: "Must be at least 5 digits and no decimals.",
     })
     .optional(),
+
   expected_salary: z
     .string()
-    .regex(/^\d+(\.\d{1,2})?$/, {
-      message: "Invalid salary format (e.g., 60000.00).",
+    .regex(/^\d{5,}$/, {
+      message: "Must be at least 5 digits and no decimals.",
     })
     .optional(),
 };
@@ -502,7 +494,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                                     {...field}
                                   />
                                 </FormControl>
-                                <FormMessage className="text-red-500 text-sm" />
+                                <FormMessage className="text-red-500 text-xs" />
                               </FormItem>
                             )}
                           />
@@ -561,7 +553,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                                     {...field}
                                   />
                                 </FormControl>
-                                <FormMessage className="text-red-500 text-sm" />
+                                <FormMessage className="text-red-500 text-xs" />
                               </FormItem>
                             )}
                           />
@@ -677,7 +669,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -697,7 +689,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -720,7 +712,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         disabled={isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -739,7 +731,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       // disabled={!isOtpVerified}
                     />
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -770,7 +762,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -789,7 +781,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -808,7 +800,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -828,7 +820,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -859,7 +851,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                           ))}
                         </SelectContent>
                       </Select>
-                      <FormMessage className="text-red-500 text-sm" />
+                      <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )}
                 />
@@ -880,7 +872,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                           // disabled={!isOtpVerified}
                         />
                       </FormControl>
-                      <FormMessage className="text-red-500 text-sm" />
+                      <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )}
                 />
@@ -916,7 +908,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         </SelectItem>
                       </SelectContent>
                     </Select>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -930,14 +922,15 @@ function CareerFormInner({ jobId, isGeneral }) {
                     <FormControl>
                       <Input
                         type="number"
-                        step="0.01"
+                        inputMode="numeric"
+                        pattern="\d*"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Current Monthly Salary*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -951,14 +944,15 @@ function CareerFormInner({ jobId, isGeneral }) {
                     <FormControl>
                       <Input
                         type="number"
-                        step="0.01"
+                        inputMode="numeric"
+                        pattern="\d*"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Expected Monthly Salary*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -1016,7 +1010,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         </span>
                       </div>
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
