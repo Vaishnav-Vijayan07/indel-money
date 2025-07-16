@@ -19,7 +19,7 @@ const options = {
 export default function JobResultBox({ item, variant = "default" }) {
   // Generate the job details URL
   const jobUrl = `${process.env.NEXT_PUBLIC_SITE_URL || ""}/career-list/job-details/${encodeId(item?.id)}`;
-  const jobTitle = item?.role?.role_name || "Job Opportunity";
+  const jobTitle = item?.job_title || "Job Opportunity";
   const shareText = encodeURIComponent(`Check out this job opening: ${jobTitle}\n\n${jobUrl}`);
   const whatsappUrl = `https://wa.me/?text=${shareText}`;
   const emailUrl = `mailto:?subject=${encodeURIComponent("Job Opportunity: " + jobTitle)}&body=${shareText}`;
@@ -35,7 +35,7 @@ export default function JobResultBox({ item, variant = "default" }) {
         <div className="flex flex-wrap items-center mb-[4px] xl:mb-[6px] 2xl:mb-[8px]">
           <div className="w-1/2">
             <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-bold leading-none text-black">
-              {item?.role?.role_name}
+              {item?.job_title}
             </div>
           </div>
           <div className="w-1/2 flex justify-end items-center gap-[5px] lg:gap-[10px] 2xl:gap-[20px]">
