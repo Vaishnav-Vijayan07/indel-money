@@ -23,6 +23,7 @@ const baseSchema = {
   phone: z.string().min(10, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
   preferred_location: z.string().min(1, { message: "Please select a location." }),
+  current_location: z.string().min(1, { message: "Please enter your current location." }),
   referred_employee_name: z.string().optional(),
   employee_referral_code: z.string().optional(),
   age: z.string().regex(/^\d+$/, { message: "Age must be a number." }).min(1, { message: "Please enter your age." }),
@@ -133,6 +134,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       phone: "",
       email: "",
       preferred_location: "",
+      current_location: "",
       referred_employee_name: "",
       employee_referral_code: "",
       age: "",
@@ -166,6 +168,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       preferred_location: dropdowns.locations.some((loc) => loc.value.toString() === data.preferred_location?.toString())
         ? data.preferred_location.toString()
         : "",
+        current_location: data.current_location || "",
       referred_employee_name: data.referred_employee_name || "",
       employee_referral_code: data.employee_referral_code || "",
       age: data.age?.toString() || "",
@@ -270,6 +273,7 @@ function CareerFormInner({ jobId, isGeneral }) {
     formData.append("applicant[email]", values.email);
     formData.append("applicant[phone]", values.phone);
     formData.append("applicant[preferred_location]", values.preferred_location);
+      formData.append("applicant[current_location]", values.current_location);
     formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
     formData.append("applicant[employee_referral_code]", values.employee_referral_code || "");
     formData.append("applicant[age]", values.age);
@@ -597,33 +601,53 @@ function CareerFormInner({ jobId, isGeneral }) {
                 )}
               />
             </div>
-            <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
-              <FormField
-                control={form.control}
-                name="preferred_location"
-                render={({ field }) => (
-                  <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      // disabled={!isOtpVerified}
-                    >
-                      <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                        <SelectValue placeholder="Preferred Location" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white border-gray-300">
-                        {dropdowns.locations.map((location) => (
-                          <SelectItem key={location?.value} value={String(location?.value)}>
-                            {toSentenceCase(location?.label) || "-"}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage className="text-red-500 text-sm" />
-                  </FormItem>
-                )}
-              />
-            </div>
+  <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
+  {/* Current Location Field */}
+  <FormField
+    control={form.control}
+    name="current_location"
+    render={({ field }) => (
+      <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+        <Input
+          {...field}
+          type="text"
+          placeholder="Current Location"
+          className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+          // disabled={!isOtpVerified}
+        />
+        <FormMessage className="text-red-500 text-sm" />
+      </FormItem>
+    )}
+  />
+    </div>
+  < div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
+  {/* Preferred Location Field */}
+  <FormField
+    control={form.control}
+    name="preferred_location"
+    render={({ field }) => (
+      <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+        <Select
+          onValueChange={field.onChange}
+          value={field.value}
+          // disabled={!isOtpVerified}
+        >
+          <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+            <SelectValue placeholder="Preferred Location" />
+          </SelectTrigger>
+          <SelectContent className="bg-white border-gray-300">
+            {dropdowns.locations.map((location) => (
+              <SelectItem key={location?.value} value={String(location?.value)}>
+                {toSentenceCase(location?.label) || "-"}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <FormMessage className="text-red-500 text-sm" />
+      </FormItem>
+    )}
+  />
+</div>
             <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
               <FormField
                 control={form.control}
@@ -695,7 +719,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       >
                         <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                          <SelectValue placeholder="Preferred Role" />
+                          <SelectValue placeholder="Department" />
                         </SelectTrigger>
                         <SelectContent className="bg-white border-gray-300">
                           {dropdowns.roles.map((role) => (
