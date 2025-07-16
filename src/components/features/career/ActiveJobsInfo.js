@@ -42,9 +42,8 @@ export default function ActiveJobsInfo() {
         setJobs([]);
         setPagination({ current_page: 1, per_page: 6, total: 0, total_pages: 1 });
       } else {
-        const allJobs = response.data.data.jobs || [];
+        const allJobs = response.data.data || [];
         // Validate job objects
-        console.log(allJobs);
         const validJobs = allJobs.filter(
           (job) =>
             job &&
