@@ -28,6 +28,7 @@ const baseSchema = {
   employee_referral_code: z.string().optional(),
   age: z.string().regex(/^\d+$/, { message: "Age must be a number." }).min(1, { message: "Please enter your age." }),
   preferred_role: z.string().min(1, { message: "Please select a preferred role." }),
+  notice_period: z.string().min(1, { message: "Please select a notice period." }),
   current_salary: z
     .string()
     .regex(/^\d+(\.\d{1,2})?$/, { message: "Invalid salary format (e.g., 50000.00)." })
@@ -139,6 +140,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       employee_referral_code: "",
       age: "",
       preferred_role: isGeneral ? "" : jobId?.toString() || "",
+      notice_period: "",
       current_salary: "",
       expected_salary: "",
       file: null,
@@ -177,6 +179,7 @@ function CareerFormInner({ jobId, isGeneral }) {
           ? data.preferred_role?.toString() || ""
           : ""
         : jobId?.toString() || "",
+        notice_period: data.notice_period || "",
       current_salary: data.current_salary?.toString() || "",
       expected_salary: data.current_salary?.toString() || "",
       file: null,
@@ -277,6 +280,7 @@ function CareerFormInner({ jobId, isGeneral }) {
     formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
     formData.append("applicant[employee_referral_code]", values.employee_referral_code || "");
     formData.append("applicant[age]", values.age);
+    formData.append("applicant[notice_period]", values.notice_period);
     formData.append("applicant[current_salary]", values.current_salary || "");
     formData.append("applicant[expected_salary]", values.expected_salary || "");
     // Append reCAPTCHA token
@@ -755,7 +759,33 @@ function CareerFormInner({ jobId, isGeneral }) {
                 />
               </div>
             )}
-
+<div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
+  <FormField
+    control={form.control}
+    name="notice_period"
+    render={({ field }) => (
+      <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+        <Select
+          onValueChange={field.onChange}
+          value={field.value}
+          // disabled={!isOtpVerified}
+        >
+          <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+            <SelectValue placeholder="Notice Period" />
+          </SelectTrigger>
+          <SelectContent className="bg-white border-gray-300">
+            <SelectItem value="Less than 15 days">Less than 15 days</SelectItem>
+            <SelectItem value="15 to 30 days">15 to 30 days</SelectItem>
+            <SelectItem value="30 days">30 days</SelectItem>
+            <SelectItem value="60 to 90 days">60 to 90 days</SelectItem>
+            <SelectItem value="More than 90 days">More than 90 days</SelectItem>
+          </SelectContent>
+        </Select>
+        <FormMessage className="text-red-500 text-sm" />
+      </FormItem>
+    )}
+  />
+</div>
             <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
               <FormField
                 control={form.control}
