@@ -613,7 +613,9 @@ function CareerFormInner({ jobId, isGeneral }) {
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            onSubmit={form.handleSubmit(onSubmit, (errors) => {
+              console.log("❌ Form Errors:", errors);
+            })}
             className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5"
           >
             <div
@@ -670,7 +672,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                     <FormControl>
                       <Input
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Name"
+                        placeholder="Name*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
@@ -690,7 +692,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       <Input
                         type="tel"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Phone Number"
+                        placeholder="Phone Number*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
@@ -710,7 +712,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       <Input
                         type="email"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Enter your email"
+                        placeholder="Enter your email*"
                         {...field}
                         onFocus={() => {
                           setIsModalOpen(true);
@@ -755,7 +757,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       // disabled={!isOtpVerified}
                     >
                       <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                        <SelectValue placeholder="Preferred Location" />
+                        <SelectValue placeholder="Preferred Location*" />
                       </SelectTrigger>
                       <SelectContent className="bg-white border-gray-300">
                         {dropdowns.locations.map((location) => (
@@ -844,7 +846,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       >
                         <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                          <SelectValue placeholder="Department" />
+                          <SelectValue placeholder="Department*" />
                         </SelectTrigger>
                         <SelectContent className="bg-white border-gray-300">
                           {dropdowns.roles.map((role) => (
@@ -896,14 +898,22 @@ function CareerFormInner({ jobId, isGeneral }) {
                       // disabled={!isOtpVerified}
                     >
                       <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                        <SelectValue placeholder="Notice Period" />
+                        <SelectValue placeholder="Notice Period*" />
                       </SelectTrigger>
-                     <SelectContent className="bg-white border-gray-300">
-                        <SelectItem value="Less than 15 days">Less than 15 days</SelectItem>
-                        <SelectItem value="15 to 30 days">15 to 30 days</SelectItem>
+                      <SelectContent className="bg-white border-gray-300">
+                        <SelectItem value="Less than 15 days">
+                          Less than 15 days
+                        </SelectItem>
+                        <SelectItem value="15 to 30 days">
+                          15 to 30 days
+                        </SelectItem>
                         <SelectItem value="30 days">30 days</SelectItem>
-                        <SelectItem value="60 to 90 days">60 to 90 days</SelectItem>
-                        <SelectItem value="More than 90 days">More than 90 days</SelectItem>
+                        <SelectItem value="60 to 90 days">
+                          60 to 90 days
+                        </SelectItem>
+                        <SelectItem value="More than 90 days">
+                          More than 90 days
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage className="text-red-500 text-sm" />
@@ -922,7 +932,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         type="number"
                         step="0.01"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Current Monthly Salary"
+                        placeholder="Current Monthly Salary*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
@@ -943,7 +953,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         type="number"
                         step="0.01"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Expected Monthly Salary"
+                        placeholder="Expected Monthly Salary*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
@@ -977,7 +987,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                             height={21}
                           />
                           <span className="font-medium ml-1 lg:ml-1.5">
-                            Upload Resume
+                            Upload Resume*
                           </span>
                           <input
                             type="file"
