@@ -4,9 +4,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 import api from "@/lib/api/axios";
@@ -14,28 +26,48 @@ import Cookies from "js-cookie";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 // Schema Validation
 const baseSchema = {
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  phone: z.string().min(10, { message: "Phone number must be at least 10 digits." }),
+  phone: z
+    .string()
+    .min(10, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
-  preferred_location: z.string().min(1, { message: "Please select a location." }),
-  current_location: z.string().min(1, { message: "Please enter your current location." }),
+  preferred_location: z
+    .string()
+    .min(1, { message: "Please select a location." }),
+  current_location: z
+    .string()
+    .min(1, { message: "Please enter your current location." }),
   referred_employee_name: z.string().optional(),
   employee_referral_code: z.string().optional(),
-  age: z.string().regex(/^\d+$/, { message: "Age must be a number." }).min(1, { message: "Please enter your age." }),
-  preferred_role: z.string().min(1, { message: "Please select a preferred role." }),
-  notice_period: z.string().min(1, { message: "Please select a notice period." }),
+  age: z
+    .string()
+    .regex(/^\d+$/, { message: "Age must be a number." })
+    .min(1, { message: "Please enter your age." }),
+  preferred_role: z
+    .string()
+    .min(1, { message: "Please select a preferred role." }),
+  notice_period: z
+    .string()
+    .min(1, { message: "Please select a notice period." }),
   current_salary: z
     .string()
-    .regex(/^\d+(\.\d{1,2})?$/, { message: "Invalid salary format (e.g., 50000.00)." })
+    .regex(/^\d+(\.\d{1,2})?$/, {
+      message: "Invalid salary format (e.g., 50000.00).",
+    })
     .optional(),
   expected_salary: z
     .string()
-    .regex(/^\d+(\.\d{1,2})?$/, { message: "Invalid salary format (e.g., 60000.00)." })
+    .regex(/^\d+(\.\d{1,2})?$/, {
+      message: "Invalid salary format (e.g., 60000.00).",
+    })
     .optional(),
 };
 
@@ -57,7 +89,11 @@ function CareerFormInner({ jobId, isGeneral }) {
   const [email, setEmail] = useState("");
   const [showOtpInput, setShowOtpInput] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [dropdowns, setDropdowns] = useState({ locations: [], roles: [] });
+  const [dropdowns, setDropdowns] = useState({
+    locations: [],
+    roles: [],
+    notice_periods: [],
+  });
   const [dropdownsLoaded, setDropdownsLoaded] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFileName, setSelectedFileName] = useState(null);
@@ -100,13 +136,18 @@ function CareerFormInner({ jobId, isGeneral }) {
         file:
           selectedFile || selectedFileName
             ? z.any().optional()
-            : z.any().refine((file) => file instanceof File, { message: "Please upload a resume." }),
+            : z.any().refine((file) => file instanceof File, {
+                message: "Please upload a resume.",
+              }),
       })
       .refine(
         (data) => {
           // Only require preferred_role_name if isGeneral and preferred_role is "Others"
-          if (isGeneral && data.preferred_role === "Others") {
-            return data.preferred_role_name && data.preferred_role_name.trim().length > 0;
+          if (isGeneral) {
+            return (
+              data.preferred_role_name &&
+              data.preferred_role_name.trim().length > 0
+            );
           }
           return true;
         },
@@ -152,8 +193,11 @@ function CareerFormInner({ jobId, isGeneral }) {
     try {
       const { data } = await api.get("/career/jobs/dropdowns");
 
-      if (!data.success) throw new Error(data.message || "Failed to fetch dropdowns");
-      setDropdowns(data.data || { locations: [], roles: [] });
+      if (!data.success)
+        throw new Error(data.message || "Failed to fetch dropdowns");
+      setDropdowns(
+        data.data || { locations: [], roles: [], notice_periods: [] }
+      );
       setDropdownsLoaded(true);
     } catch (error) {
       console.error("Error fetching dropdowns:", error);
@@ -167,19 +211,27 @@ function CareerFormInner({ jobId, isGeneral }) {
       name: data.name || "",
       phone: data.phone || "",
       email: data.email || "",
-      preferred_location: dropdowns.locations.some((loc) => loc.value.toString() === data.preferred_location?.toString())
+      preferred_location: dropdowns.locations.some(
+        (loc) => loc.value.toString() === data.preferred_location?.toString()
+      )
         ? data.preferred_location.toString()
         : "",
-        current_location: data.current_location || "",
+      current_location: data.current_location || "",
       referred_employee_name: data.referred_employee_name || "",
       employee_referral_code: data.employee_referral_code || "",
       age: data.age?.toString() || "",
       preferred_role: isGeneral
-        ? dropdowns.roles.some((role) => role.value.toString() === data.preferred_role?.toString())
+        ? dropdowns.roles.some(
+            (role) => role.value.toString() === data.preferred_role?.toString()
+          )
           ? data.preferred_role?.toString() || ""
           : ""
         : jobId?.toString() || "",
-        notice_period: data.notice_period || "",
+      notice_period: dropdowns.notice_periods.some(
+        (period) => period.value.toString() === data.notice_period?.toString()
+      )
+        ? data.notice_period.toString()
+        : "",
       current_salary: data.current_salary?.toString() || "",
       expected_salary: data.current_salary?.toString() || "",
       file: null,
@@ -211,7 +263,9 @@ function CareerFormInner({ jobId, isGeneral }) {
   const handleEmailSubmit = async (values) => {
     try {
       setLoading(true);
-      const { data } = await api.post("/web/careers/send-otp", { email: values.email });
+      const { data } = await api.post("/web/careers/send-otp", {
+        email: values.email,
+      });
 
       if (!data.success) throw new Error(data.message || "Failed to send OTP");
       setEmail(values.email);
@@ -276,9 +330,15 @@ function CareerFormInner({ jobId, isGeneral }) {
     formData.append("applicant[email]", values.email);
     formData.append("applicant[phone]", values.phone);
     formData.append("applicant[preferred_location]", values.preferred_location);
-      formData.append("applicant[current_location]", values.current_location);
-    formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
-    formData.append("applicant[employee_referral_code]", values.employee_referral_code || "");
+    formData.append("applicant[current_location]", values.current_location);
+    formData.append(
+      "applicant[referred_employee_name]",
+      values.referred_employee_name || ""
+    );
+    formData.append(
+      "applicant[employee_referral_code]",
+      values.employee_referral_code || ""
+    );
     formData.append("applicant[age]", values.age);
     formData.append("applicant[notice_period]", values.notice_period);
     formData.append("applicant[current_salary]", values.current_salary || "");
@@ -291,10 +351,15 @@ function CareerFormInner({ jobId, isGeneral }) {
     }
     formData.append("applicant[is_active]", "true");
 
-    const apiUrl = isGeneral ? "/web/careers/general_application" : "/web/careers/job_application";
+    const apiUrl = isGeneral
+      ? "/web/careers/general_application"
+      : "/web/careers/job_application";
     if (isGeneral) {
       formData.append("general_application[role_id]", values.preferred_role);
-      formData.append("general_application[preferred_role_name]", values.preferred_role_name);
+      formData.append(
+        "general_application[preferred_role_name]",
+        values.preferred_role_name
+      );
     } else {
       formData.append("job_application[job_id]", jobId || "");
     }
@@ -306,12 +371,22 @@ function CareerFormInner({ jobId, isGeneral }) {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      if (!response.data.success) throw new Error(response.data.message || "Failed to submit application");
+      if (!response.data.success)
+        throw new Error(
+          response.data.message || "Failed to submit application"
+        );
 
-      Cookies.set("applicantData", JSON.stringify({ ...values, file: selectedFile ? selectedFile.name : selectedFileName }), {
-        expires: 7,
-        sameSite: "strict",
-      });
+      Cookies.set(
+        "applicantData",
+        JSON.stringify({
+          ...values,
+          file: selectedFile ? selectedFile.name : selectedFileName,
+        }),
+        {
+          expires: 7,
+          sameSite: "strict",
+        }
+      );
 
       // form.reset();
       setSelectedFile(null);
@@ -323,7 +398,9 @@ function CareerFormInner({ jobId, isGeneral }) {
       toast.success("Application submitted successfully!");
     } catch (err) {
       console.error("Error submitting form:", err);
-      toast.error(err.response.data.error.message || "Failed to submit application.");
+      toast.error(
+        err.response.data.error.message || "Failed to submit application."
+      );
     } finally {
       setLoading(false);
     }
@@ -369,7 +446,6 @@ function CareerFormInner({ jobId, isGeneral }) {
     isDesktop ? setIsDraggingDesktop(false) : setIsDraggingMobile(false);
   };
 
-
   return (
     <div className="p-4">
       <Toaster position="top-right" />
@@ -400,13 +476,19 @@ function CareerFormInner({ jobId, isGeneral }) {
                 leaveTo="opacity-0"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title as="h3" className="text-lg font-semibold text-gray-900">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-semibold text-gray-900"
+                  >
                     Verify Your Email
                   </Dialog.Title>
                   <div className="mt-4">
                     {!showOtpInput ? (
                       <Form {...emailForm} key="email-form">
-                        <form onSubmit={emailForm.handleSubmit(handleEmailSubmit)} className="space-y-4">
+                        <form
+                          onSubmit={emailForm.handleSubmit(handleEmailSubmit)}
+                          className="space-y-4"
+                        >
                           <FormField
                             control={emailForm.control}
                             name="email"
@@ -437,8 +519,19 @@ function CareerFormInner({ jobId, isGeneral }) {
                                   fill="none"
                                   viewBox="0 0 24 24"
                                 >
-                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z" />
+                                  <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                  />
+                                  <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z"
+                                  />
                                 </svg>
                                 Sending OTP...
                               </span>
@@ -450,7 +543,10 @@ function CareerFormInner({ jobId, isGeneral }) {
                       </Form>
                     ) : (
                       <Form {...otpForm} key="otp-form">
-                        <form onSubmit={otpForm.handleSubmit(handleOtpSubmit)} className="space-y-4">
+                        <form
+                          onSubmit={otpForm.handleSubmit(handleOtpSubmit)}
+                          className="space-y-4"
+                        >
                           <FormField
                             control={otpForm.control}
                             name="otp"
@@ -482,8 +578,19 @@ function CareerFormInner({ jobId, isGeneral }) {
                                   fill="none"
                                   viewBox="0 0 24 24"
                                 >
-                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z" />
+                                  <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                  />
+                                  <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z"
+                                  />
                                 </svg>
                                 Verifying...
                               </span>
@@ -505,7 +612,10 @@ function CareerFormInner({ jobId, isGeneral }) {
       {/* Main Form */}
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5"
+          >
             <div
               className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${
                 isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
@@ -523,7 +633,9 @@ function CareerFormInner({ jobId, isGeneral }) {
                     height={16}
                     className="w-[14px] lg:w-[24px] filter brightness-0 invert"
                   />
-                  <span className="font-medium ml-1 lg:ml-1.5 text-white">Choose</span>
+                  <span className="font-medium ml-1 lg:ml-1.5 text-white">
+                    Upload Resume
+                  </span>
                   <input
                     type="file"
                     name="file"
@@ -536,9 +648,15 @@ function CareerFormInner({ jobId, isGeneral }) {
               </div>
               <div className="text-xs leading-normal font-normal pl-[10px] lg:pl-[14px] text-gray-700 truncate">
                 {selectedFile
-                  ? `${selectedFile.name} (${getFileTypeDisplay(selectedFile, null)})`
+                  ? `${selectedFile.name} (${getFileTypeDisplay(
+                      selectedFile,
+                      null
+                    )})`
                   : selectedFileName
-                  ? `${selectedFileName.replace("uploads/job-applications/", "")} (${getFileTypeDisplay(null, selectedFileName)})`
+                  ? `${selectedFileName.replace(
+                      "uploads/job-applications/",
+                      ""
+                    )} (${getFileTypeDisplay(null, selectedFileName)})`
                   : "No file chosen"}
               </div>
             </div>
@@ -605,53 +723,56 @@ function CareerFormInner({ jobId, isGeneral }) {
                 )}
               />
             </div>
-  <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
-  {/* Current Location Field */}
-  <FormField
-    control={form.control}
-    name="current_location"
-    render={({ field }) => (
-      <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-        <Input
-          {...field}
-          type="text"
-          placeholder="Current Location"
-          className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-          // disabled={!isOtpVerified}
-        />
-        <FormMessage className="text-red-500 text-sm" />
-      </FormItem>
-    )}
-  />
-    </div>
-  < div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
-  {/* Preferred Location Field */}
-  <FormField
-    control={form.control}
-    name="preferred_location"
-    render={({ field }) => (
-      <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-        <Select
-          onValueChange={field.onChange}
-          value={field.value}
-          // disabled={!isOtpVerified}
-        >
-          <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-            <SelectValue placeholder="Preferred Location" />
-          </SelectTrigger>
-          <SelectContent className="bg-white border-gray-300">
-            {dropdowns.locations.map((location) => (
-              <SelectItem key={location?.value} value={String(location?.value)}>
-                {toSentenceCase(location?.label) || "-"}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <FormMessage className="text-red-500 text-sm" />
-      </FormItem>
-    )}
-  />
-</div>
+            <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
+              {/* Current Location Field */}
+              <FormField
+                control={form.control}
+                name="current_location"
+                render={({ field }) => (
+                  <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                    <Input
+                      {...field}
+                      type="text"
+                      placeholder="Current Location"
+                      className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      // disabled={!isOtpVerified}
+                    />
+                    <FormMessage className="text-red-500 text-sm" />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
+              {/* Preferred Location Field */}
+              <FormField
+                control={form.control}
+                name="preferred_location"
+                render={({ field }) => (
+                  <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value}
+                      // disabled={!isOtpVerified}
+                    >
+                      <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                        <SelectValue placeholder="Preferred Location" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white border-gray-300">
+                        {dropdowns.locations.map((location) => (
+                          <SelectItem
+                            key={location?.value}
+                            value={String(location?.value)}
+                          >
+                            {toSentenceCase(location?.label) || "-"}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage className="text-red-500 text-sm" />
+                  </FormItem>
+                )}
+              />
+            </div>
             <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
               <FormField
                 control={form.control}
@@ -711,7 +832,7 @@ function CareerFormInner({ jobId, isGeneral }) {
               />
             </div>
             {isGeneral && (
-              <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
+              <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
                 <FormField
                   control={form.control}
                   name="preferred_role"
@@ -727,7 +848,10 @@ function CareerFormInner({ jobId, isGeneral }) {
                         </SelectTrigger>
                         <SelectContent className="bg-white border-gray-300">
                           {dropdowns.roles.map((role) => (
-                            <SelectItem key={role?.value} value={String(role?.value)}>
+                            <SelectItem
+                              key={role?.value}
+                              value={String(role?.value)}
+                            >
                               {role?.label || "-"}
                             </SelectItem>
                           ))}
@@ -739,8 +863,8 @@ function CareerFormInner({ jobId, isGeneral }) {
                 />
               </div>
             )}
-            {isGeneral && form.watch("preferred_role") == process.env.NEXT_PUBLIC_ROLE_ID && (
-              <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
+            {isGeneral && (
+              <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
                 <FormField
                   control={form.control}
                   name="preferred_role_name"
@@ -749,8 +873,9 @@ function CareerFormInner({ jobId, isGeneral }) {
                       <FormControl>
                         <Input
                           className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                          placeholder="Enter Role Name"
+                          placeholder="Preferred Role"
                           {...field}
+                          // disabled={!isOtpVerified}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500 text-sm" />
@@ -759,33 +884,33 @@ function CareerFormInner({ jobId, isGeneral }) {
                 />
               </div>
             )}
-<div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
-  <FormField
-    control={form.control}
-    name="notice_period"
-    render={({ field }) => (
-      <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-        <Select
-          onValueChange={field.onChange}
-          value={field.value}
-          // disabled={!isOtpVerified}
-        >
-          <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-            <SelectValue placeholder="Notice Period" />
-          </SelectTrigger>
-          <SelectContent className="bg-white border-gray-300">
-            <SelectItem value="Less than 15 days">Less than 15 days</SelectItem>
-            <SelectItem value="15 to 30 days">15 to 30 days</SelectItem>
-            <SelectItem value="30 days">30 days</SelectItem>
-            <SelectItem value="60 to 90 days">60 to 90 days</SelectItem>
-            <SelectItem value="More than 90 days">More than 90 days</SelectItem>
-          </SelectContent>
-        </Select>
-        <FormMessage className="text-red-500 text-sm" />
-      </FormItem>
-    )}
-  />
-</div>
+            <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
+              <FormField
+                control={form.control}
+                name="notice_period"
+                render={({ field }) => (
+                  <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value}
+                      // disabled={!isOtpVerified}
+                    >
+                      <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                        <SelectValue placeholder="Notice Period" />
+                      </SelectTrigger>
+                     <SelectContent className="bg-white border-gray-300">
+                        <SelectItem value="Less than 15 days">Less than 15 days</SelectItem>
+                        <SelectItem value="15 to 30 days">15 to 30 days</SelectItem>
+                        <SelectItem value="30 days">30 days</SelectItem>
+                        <SelectItem value="60 to 90 days">60 to 90 days</SelectItem>
+                        <SelectItem value="More than 90 days">More than 90 days</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage className="text-red-500 text-sm" />
+                  </FormItem>
+                )}
+              />
+            </div>
             <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
               <FormField
                 control={form.control}
@@ -844,9 +969,16 @@ function CareerFormInner({ jobId, isGeneral }) {
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
                     <FormControl>
                       <div className="flex items-center">
-                        <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[100px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[6px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
-                          <Image src="/images/icon-upload.svg" alt="icon-upload" width={26} height={21} />
-                          <span className="font-medium ml-1 lg:ml-1.5">Choose</span>
+                        <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[100px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[10px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
+                          <Image
+                            src="/images/icon-upload.svg"
+                            alt="icon-upload"
+                            width={26}
+                            height={21}
+                          />
+                          <span className="font-medium ml-1 lg:ml-1.5">
+                            Upload Resume
+                          </span>
                           <input
                             type="file"
                             accept=".pdf,.jpeg,.png"
@@ -857,11 +989,19 @@ function CareerFormInner({ jobId, isGeneral }) {
                         </label>
                         <span className="text-xs lg:text-xs 2xl:text-base leading-none font-normal text-gray-700 whitespace-nowrap overflow-hidden text-ellipsis flex-1 ml-1 lg:ml-1.5">
                           {selectedFile
-                            ? `${truncateFilename(selectedFile.name)} (${getFileTypeDisplay(selectedFile, null)})`
+                            ? `${truncateFilename(
+                                selectedFile.name
+                              )} (${getFileTypeDisplay(selectedFile, null)})`
                             : selectedFileName
                             ? `${truncateFilename(
-                                selectedFileName.replace("uploads/job-applications/", "")
-                              )} (${getFileTypeDisplay(null, selectedFileName)})`
+                                selectedFileName.replace(
+                                  "uploads/job-applications/",
+                                  ""
+                                )
+                              )} (${getFileTypeDisplay(
+                                null,
+                                selectedFileName
+                              )})`
                             : "No file chosen"}
                         </span>
                       </div>
@@ -878,7 +1018,9 @@ function CareerFormInner({ jobId, isGeneral }) {
                 type="submit"
                 disabled={loading || !isOtpVerified}
               >
-                <span className="px-1 lg:px-3.5">{loading ? "Submitting..." : "Submit"}</span>
+                <span className="px-1 lg:px-3.5">
+                  {loading ? "Submitting..." : "Submit"}
+                </span>
                 <Image
                   src="/images/icon-careerBtn.svg"
                   alt="careerBtn"
