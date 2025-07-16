@@ -31,7 +31,7 @@ const toggleBtnStyle =
 
 export default function GoldLoanForm({ goldCaratTypes, goldTypes, goldRate }) {
   const [submittedData, setSubmittedData] = useState({});
-  const [reductionPercent, setReductionPercent] = useState(7);
+  const [reductionPercent, setReductionPercent] = useState(25);
 
   // Define form
   const form = useForm({
@@ -57,11 +57,9 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes, goldRate }) {
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-
-  function handleRefresh(){
+  function handleRefresh() {
     form.setValue("gold_amount", "");
   }
-
 
   // Handle form submission
   function onSubmit(values) {
@@ -94,7 +92,6 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes, goldRate }) {
     const weightInGm = unit === "kg" ? weight * 1000 : weight;
     return (weightInGm * finalRate).toFixed(2);
   }, [goldAmount, finalRate, unit]);
-
 
   return (
     <>
