@@ -140,7 +140,7 @@ export default function QuarterlyReportSection({ setContent }) {
                                 </td>
                                 <td className="text-[14px] 2xl:text-[18px] 3xl:text-[20px] text-[#1F1B1B] pl-[30px] xl:pl-[55px] 3xl:pl-[76px] pr-[10px] py-[12px] 3xl:py-[18px] border-r border-r-[rgba(32,35,102,0.12)]">
                                   <Link
-                                    href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${stock?.file}`}
+                                    href={`${process.env.NEXT_PUBLIC_BACKEND_URL}${stock?.file}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-[10px] xl:text-[12px] 3xl:text-[16px] flex items-center space-x-2 text-[#1F1B1B] hover:text-red-600"
