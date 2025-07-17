@@ -38,7 +38,10 @@ export default function OtherGoldLoan({ services }) {
       <div className="container">
         <div className="relative z-1 flex flex-wrap -my-[25px] -mx-[10px] lg:-mx-[15px] 2xl:-mx-[20px] 3xl:-mx-[30px]">
           {services?.map((item, index) => (
-            <div key={index} className="w-full md:w-1/2 py-[15px] 2xl:py-[25px] px-[10px] lg:px-[15px] 2xl:px-[20px] 3xl:px-[30px]">
+            <div
+              key={index}
+              className="w-full md:w-1/2 py-[15px] 2xl:py-[25px] px-[10px] lg:px-[15px] 2xl:px-[20px] 3xl:px-[30px]"
+            >
               <ServiceCard item={item} />
             </div>
           ))}
@@ -49,12 +52,12 @@ export default function OtherGoldLoan({ services }) {
 }
 
 function ServiceCard({ item }) {
-
-  console.log("item", item)
-
   return (
     <div className="group w-full h-full flex gap-[10px] xl:gap-[20px] 2xl:gap-[25px] 3xl:gap-[30px]">
-      <Link href={item?.slug ? item?.slug : "#"} className="group w-[160px] lg:w-[200px] xl:w-[255px] 3xl:w-[400px] overflow-hidden rounded-[20px]">
+      <Link
+        href={item?.slug ? item?.slug : "#"}
+        className="group w-[160px] lg:w-[200px] xl:w-[255px] 3xl:w-[400px] overflow-hidden rounded-[20px]"
+      >
         <Image
           src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/OthrLoan01.jpg"}
           width={400}

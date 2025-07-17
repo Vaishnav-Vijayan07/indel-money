@@ -9,19 +9,12 @@ async function fetchManagementData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/our-services`, {
       // cache: "no-store", // Ensure fresh data
-      // cache: "force-cache",
-      // next: { revalidate: 600 },
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
 
-    console.log("Fetching service data from:", `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/our-services`,
-      response
-    );
-    
     const result = await response.json();
     const serviceData = result.data;
-
-    console.log("Service Data:", serviceData);
-    
 
     if (result.status === "success") {
       return {
@@ -127,12 +120,6 @@ export async function generateMetadata() {
 
 export default async function Services() {
   const { serviceContent, services, serviceBenefit, error } = await fetchManagementData();
-
-  console.log("Service Content:", serviceContent);
-  console.log("Services:", services);
-  console.log("Service Benefit:", serviceBenefit);
-  console.log("Error:", error);
-  
 
   if ((!serviceContent && !services && !serviceBenefit) || error) {
     return <div>Failed to fetch service data</div>;
