@@ -2,37 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function OtherGoldLoan({ services }) {
-  const slides = [
-    {
-      image: "/images/OthrLoan01.jpg",
-      alt: "loan-1",
-      title: "MSME LOAN",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at massa neque. Aliquam mi dui, ultricies vitae vehicula at, feugiat et ipsum. Nunc vel ante id neque ultricies rutrum.",
-    },
-    {
-      image: "/images/OthrLoan02.jpg",
-      alt: "loan-2",
-      title: "CONSUMER DURABLE  LOAN",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at massa neque. Aliquam mi dui, ultricies vitae vehicula at, feugiat et ipsum. Nunc vel ante id neque ultricies rutrum.",
-    },
-    {
-      image: "/images/OthrLoan03.jpg",
-      alt: "loan-3",
-      title: "LOAN AGAINST PROPERTY",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at massa neque. Aliquam mi dui, ultricies vitae vehicula at, feugiat et ipsum. Nunc vel ante id neque ultricies rutrum.",
-    },
-    {
-      image: "/images/OthrLoan04.jpg",
-      alt: "loan-4",
-      title: "FOREIGN EXCHANGE",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at massa neque. Aliquam mi dui, ultricies vitae vehicula at, feugiat et ipsum. Nunc vel ante id neque ultricies rutrum.",
-    },
-  ];
-
   return (
     <section className="relative z-1 w-full pb-[40px] xl:pb-[40px] 2xl:pb-[90px]">
       <div className="container">
