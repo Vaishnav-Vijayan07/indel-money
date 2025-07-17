@@ -32,12 +32,20 @@ import {
 } from "react-google-recaptcha-v3";
 import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
+const noticePeriod = [
+  "Less than 15 days",
+  "15 to 30 days",
+  "30 days",
+  "60 to 90 days",
+  "More than 90 days",
+];
+
 // Schema Validation
 const baseSchema = {
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   phone: z
     .string()
-    .regex(/^\d{10}$/,{ message: "Phone number must be at least 10 digits." }),
+    .regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
   preferred_location: z
     .string()
@@ -46,8 +54,9 @@ const baseSchema = {
     .string()
     .min(1, { message: "Please select a preferred role." }),
   notice_period: z
-    .string()
-    .min(1, { message: "Please select a notice period." }),
+    .enum(noticePeriod, {
+      errorMap: () => ({ message: "Please select a valid notice period." }),
+    }),
   current_salary: z
     .string()
     .regex(/^\d{5,}$/, {
@@ -84,7 +93,6 @@ function CareerFormInner({ jobId, isGeneral }) {
   const [dropdowns, setDropdowns] = useState({
     locations: [],
     roles: [],
-    notice_periods: [],
   });
   const [dropdownsLoaded, setDropdownsLoaded] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -187,9 +195,7 @@ function CareerFormInner({ jobId, isGeneral }) {
 
       if (!data.success)
         throw new Error(data.message || "Failed to fetch dropdowns");
-      setDropdowns(
-        data.data || { locations: [], roles: [], notice_periods: [] }
-      );
+      setDropdowns(data.data || { locations: [], roles: [] });
       setDropdownsLoaded(true);
     } catch (error) {
       console.error("Error fetching dropdowns:", error);
@@ -219,17 +225,19 @@ function CareerFormInner({ jobId, isGeneral }) {
           ? data.preferred_role?.toString() || ""
           : ""
         : jobId?.toString() || "",
-      notice_period: dropdowns.notice_periods.some(
-        (period) => period.value.toString() === data.notice_period?.toString()
-      )
-        ? data.notice_period.toString()
-        : "",
+     notice_period: noticePeriod.includes(data.notice_period)
+      ? data.notice_period
+      : "",
       current_salary: data.current_salary?.toString() || "",
-      expected_salary: data.current_salary?.toString() || "",
+      expected_salary: data.expected_salary?.toString() || "",
       file: null,
     };
-    form.reset(validatedData);
+    form.reset(validatedData)
+    
+    ;
   };
+
+
 
   // Check cookies
   useEffect(() => {
@@ -605,9 +613,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit, (errors) => {
-              console.log("❌ Form Errors:", errors);
-            })}
+            onSubmit={form.handleSubmit(onSubmit)}
             className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5"
           >
             <div
@@ -867,7 +873,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       <FormControl>
                         <Input
                           className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                          placeholder="Preferred Role"
+                          placeholder="Preferred Role*"
                           {...field}
                           // disabled={!isOtpVerified}
                         />
@@ -893,19 +899,9 @@ function CareerFormInner({ jobId, isGeneral }) {
                         <SelectValue placeholder="Notice Period*" />
                       </SelectTrigger>
                       <SelectContent className="bg-white border-gray-300">
-                        <SelectItem value="Less than 15 days">
-                          Less than 15 days
-                        </SelectItem>
-                        <SelectItem value="15 to 30 days">
-                          15 to 30 days
-                        </SelectItem>
-                        <SelectItem value="30 days">30 days</SelectItem>
-                        <SelectItem value="60 to 90 days">
-                          60 to 90 days
-                        </SelectItem>
-                        <SelectItem value="More than 90 days">
-                          More than 90 days
-                        </SelectItem>
+                        {noticePeriod.map((notice) => (
+                          <SelectItem key={notice} value={notice}>{notice}</SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                     <FormMessage className="text-red-500 text-xs" />

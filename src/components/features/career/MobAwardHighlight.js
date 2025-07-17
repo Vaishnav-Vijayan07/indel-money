@@ -116,7 +116,7 @@ export default function MobAwardHighlight({items, title, description}) {
               </div>
               {index === activeIndex && (
                 <div className="w-full max-w-[95%] h-[60px] mx-auto overflow-hidden rounded-b-[24px] relative z-0">
-                  <Image src="/images/mob-awards-delmt.jpg" alt={item?.alt} fill sizes="175px" className="object-cover object-top" />
+                  <Image src="/images/mob-awards-delmt.jpg" alt={item?.alt|| "award image"} fill sizes="175px" className="object-cover object-top" />
                 </div>
               )}
             </div>
