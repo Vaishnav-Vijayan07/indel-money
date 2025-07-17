@@ -5,6 +5,8 @@ import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "../components/common/FloatingButton";
 import { Toaster } from "react-hot-toast";
 import api from "../lib/api/axios";
+import { GoogleTagManager } from '@next/third-parties/google'
+
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -29,6 +31,7 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
       <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
