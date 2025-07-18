@@ -63,10 +63,10 @@ export function PlaceholdersAndVanishInput({ type, placeholders }) {
     setLoading(true);
     try {
       const { data } = await api.post("/footer/news-letter-subs", payload);
-      toast.success("Contact form submitted successfully!");
+      toast.success(data.message);
     } catch (error) {
       console.error("Error posting news letter data:", error);
-      toast.error("Failed to submit contact form!");
+      toast.error(error.response?.data?.message || "Failed to submit Enquiry form!");
     } finally {
       setLoading(false);
     }

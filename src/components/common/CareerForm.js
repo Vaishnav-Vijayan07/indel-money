@@ -17,28 +17,42 @@ import toast, { Toaster } from "react-hot-toast";
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
+const noticePeriod = [
+  "Less than 15 days",
+  "15 to 30 days",
+  "30 days",
+  "60 to 90 days",
+  "More than 90 days",
+];
+
 // Schema Validation
 const baseSchema = {
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  phone: z.string().min(10, { message: "Phone number must be at least 10 digits." }),
+  phone: z
+    .string()
+    .regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
-  preferred_location: z.string().min(1, { message: "Please select a location." }),
-  current_location: z.string().min(1, { message: "Please enter your current location." }),
-  referred_employee_name: z.string().optional(),
-  employee_referral_code: z.string().optional(),
-  age: z.string().regex(/^\d+$/, { message: "Age must be a number." }).min(1, { message: "Please enter your age." }),
-  preferred_role: z.string().min(1, { message: "Please select a preferred role." }),
-  notice_period: z.string().min(1, { message: "Please select a notice period." }),
+  preferred_location: z
+    .string()
+    .min(1, { message: "Please select a location." }),
+  preferred_role: z
+    .string()
+    .min(1, { message: "Please select a preferred role." }),
+  notice_period: z
+    .enum(noticePeriod, {
+      errorMap: () => ({ message: "Please select a valid notice period." }),
+    }),
   current_salary: z
     .string()
-    .regex(/^\d+(\.\d{1,2})?$/, {
-      message: "Invalid salary format (e.g., 50000.00).",
+    .regex(/^\d{5,}$/, {
+      message: "Must be at least 5 digits and no decimals.",
     })
     .optional(),
+
   expected_salary: z
     .string()
-    .regex(/^\d+(\.\d{1,2})?$/, {
-      message: "Invalid salary format (e.g., 60000.00).",
+    .regex(/^\d{5,}$/, {
+      message: "Must be at least 5 digits and no decimals.",
     })
     .optional(),
 };
@@ -64,7 +78,6 @@ function CareerFormInner({ jobId, isGeneral }) {
   const [dropdowns, setDropdowns] = useState({
     locations: [],
     roles: [],
-    notice_periods: [],
   });
   const [dropdownsLoaded, setDropdownsLoaded] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -162,8 +175,9 @@ function CareerFormInner({ jobId, isGeneral }) {
     try {
       const { data } = await api.get("/career/jobs/dropdowns");
 
-      if (!data.success) throw new Error(data.message || "Failed to fetch dropdowns");
-      setDropdowns(data.data || { locations: [], roles: [], notice_periods: [] });
+      if (!data.success)
+        throw new Error(data.message || "Failed to fetch dropdowns");
+      setDropdowns(data.data || { locations: [], roles: [] });
       setDropdownsLoaded(true);
     } catch (error) {
       console.error("Error fetching dropdowns:", error);
@@ -189,15 +203,19 @@ function CareerFormInner({ jobId, isGeneral }) {
           ? data.preferred_role?.toString() || ""
           : ""
         : jobId?.toString() || "",
-      notice_period: dropdowns.notice_periods.some((period) => period.value.toString() === data.notice_period?.toString())
-        ? data.notice_period.toString()
-        : "",
+     notice_period: noticePeriod.includes(data.notice_period)
+      ? data.notice_period
+      : "",
       current_salary: data.current_salary?.toString() || "",
-      expected_salary: data.current_salary?.toString() || "",
+      expected_salary: data.expected_salary?.toString() || "",
       file: null,
     };
-    form.reset(validatedData);
+    form.reset(validatedData)
+    
+    ;
   };
+
+
 
   // Check cookies
   useEffect(() => {
@@ -440,7 +458,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                                     {...field}
                                   />
                                 </FormControl>
-                                <FormMessage className="text-red-500 text-sm" />
+                                <FormMessage className="text-red-500 text-xs" />
                               </FormItem>
                             )}
                           />
@@ -485,7 +503,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                                     {...field}
                                   />
                                 </FormControl>
-                                <FormMessage className="text-red-500 text-sm" />
+                                <FormMessage className="text-red-500 text-xs" />
                               </FormItem>
                             )}
                           />
@@ -525,7 +543,10 @@ function CareerFormInner({ jobId, isGeneral }) {
       {/* Main Form */}
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit, (errors) => {})} className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5"
+          >
             <div
               className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${
                 isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
@@ -577,7 +598,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -597,7 +618,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -620,7 +641,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         disabled={isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -639,7 +660,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       // disabled={!isOtpVerified}
                     />
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -667,7 +688,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -686,7 +707,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -705,7 +726,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -725,7 +746,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -753,7 +774,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                           ))}
                         </SelectContent>
                       </Select>
-                      <FormMessage className="text-red-500 text-sm" />
+                      <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )}
                 />
@@ -769,12 +790,12 @@ function CareerFormInner({ jobId, isGeneral }) {
                       <FormControl>
                         <Input
                           className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                          placeholder="Preferred Role"
+                          placeholder="Preferred Role*"
                           {...field}
                           // disabled={!isOtpVerified}
                         />
                       </FormControl>
-                      <FormMessage className="text-red-500 text-sm" />
+                      <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )}
                 />
@@ -795,14 +816,12 @@ function CareerFormInner({ jobId, isGeneral }) {
                         <SelectValue placeholder="Notice Period*" />
                       </SelectTrigger>
                       <SelectContent className="bg-white border-gray-300">
-                        <SelectItem value="Less than 15 days">Less than 15 days</SelectItem>
-                        <SelectItem value="15 to 30 days">15 to 30 days</SelectItem>
-                        <SelectItem value="30 days">30 days</SelectItem>
-                        <SelectItem value="60 to 90 days">60 to 90 days</SelectItem>
-                        <SelectItem value="More than 90 days">More than 90 days</SelectItem>
+                        {noticePeriod.map((notice) => (
+                          <SelectItem key={notice} value={notice}>{notice}</SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -816,14 +835,15 @@ function CareerFormInner({ jobId, isGeneral }) {
                     <FormControl>
                       <Input
                         type="number"
-                        step="0.01"
+                        inputMode="numeric"
+                        pattern="\d*"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Current Monthly Salary*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -837,14 +857,15 @@ function CareerFormInner({ jobId, isGeneral }) {
                     <FormControl>
                       <Input
                         type="number"
-                        step="0.01"
+                        inputMode="numeric"
+                        pattern="\d*"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Expected Monthly Salary*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -865,9 +886,16 @@ function CareerFormInner({ jobId, isGeneral }) {
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
                     <FormControl>
                       <div className="flex items-center">
-                        <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[100px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[10px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
-                          <Image src="/images/icon-upload.svg" alt="icon-upload" width={26} height={21} />
-                          <span className="font-medium ml-1 lg:ml-1.5">Upload Resume*</span>
+                        <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[110px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[10px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
+                          <Image
+                            src="/images/icon-upload.svg"
+                            alt="icon-upload"
+                            width={26}
+                            height={21}
+                          />
+                          <span className="font-medium ml-1 lg:ml-1.5">
+                            Upload Resume*
+                          </span>
                           <input
                             type="file"
                             accept=".pdf,.jpeg,.png"
@@ -887,7 +915,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         </span>
                       </div>
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />

@@ -22,7 +22,7 @@ export default function MobGoldLoanFaq({ faqs, faq_title }) {
   return (
     <section className="w-full block py-[30px] bg-[#f0faff] px-[var(--container-padding)]">
       <div className="text-[12px] leading-none font-bold text-black mb-[5px]">FAQ</div>
-      <div className="text-title1 mb-[15px] [&>span]:text-base2 [&>span]:font-bold">{faq_title}</div>
+      <h3 className="text-title1 mb-[15px] [&>span]:text-base2 [&>span]:font-bold">{faq_title}</h3>
       <FaqAccordion items={faqs} />
     </section>
   );
