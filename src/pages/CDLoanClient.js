@@ -1,12 +1,13 @@
 //export const dynamic = "force-dynamic";
 "use client";
-import ConsumerDurable from "@/components/features/services/ConsumerDurable";
-import ProductCovered from "@/components/features/services/ProductCovered";
-import FeatureBenefit from "@/components/features/services/FeatureBenefit";
-import MobEligibility from "@/components/features/services/MobEligibility";
+import dynamic from "next/dynamic";
 import { useMediaQuery } from "@react-hook/media-query";
+const ConsumerDurable = dynamic(() => import("@/components/features/services/ConsumerDurable"), { ssr: true });
+const ProductCovered = dynamic(() => import("@/components/features/services/ProductCovered"), { ssr: false });
+const FeatureBenefit = dynamic(() => import("@/components/features/services/FeatureBenefit"), { ssr: false });
+const MobEligibility = dynamic(() => import("@/components/features/services/MobEligibility"), { ssr: false });
 
-export default function CDLoanClient({contents, benfits, products, initialIsMobile}) {
+export default function CDLoanClient({ contents, benfits, products, initialIsMobile }) {
   const isMobileViewport = useMediaQuery("only screen and (max-width: 768px)");
   // Combine server-side and client-side detection (client takes precedence after hydration)
   const isMobile = typeof window !== "undefined" ? isMobileViewport : initialIsMobile;
