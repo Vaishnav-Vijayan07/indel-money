@@ -12,6 +12,7 @@ async function fetchManagementData() {
       cache: "force-cache",
       next: { revalidate: 600 },
     });
+
     const result = await response.json();
     const serviceData = result.data;
 
@@ -121,7 +122,7 @@ export default async function Services() {
   const { serviceContent, services, serviceBenefit, error } = await fetchManagementData();
 
   if ((!serviceContent && !services && !serviceBenefit) || error) {
-    return <div>Failed to fetch about data</div>;
+    return <div>Failed to fetch service data</div>;
   }
 
   return (

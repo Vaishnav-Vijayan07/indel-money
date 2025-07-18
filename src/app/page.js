@@ -55,8 +55,6 @@ async function getMetaData() {
     const result = await response.json();
     const meta = result.data;
 
-    console.log("meta", meta);
-
     if (result.status === "success") {
       return {
         title: meta?.meta_title || defaultMeta.title,
@@ -142,8 +140,6 @@ export async function generateMetadata() {
 export default async function HomePage() {
   const { data, error } = await fetchHomeData();
   const { data: goldRateData, error: goldRateError } = await fetchGoldRate();
-
-  console.log("Gold Rate Data:", goldRateData);
 
   return (
     <HomeClient

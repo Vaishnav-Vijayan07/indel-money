@@ -5,8 +5,7 @@ import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "../components/common/FloatingButton";
 import { Toaster } from "react-hot-toast";
 import api from "../lib/api/axios";
-import { GoogleTagManager } from '@next/third-parties/google'
-
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
