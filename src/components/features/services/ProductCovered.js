@@ -21,59 +21,19 @@ const options = {
   },
 };
 
-export default function ({ products, title, image, criteriaIcon, criteriaTitle, criteriaDescription, criteriaNote }) {
-
-
-  const slides = [
-    {
-      icon: "/images/proIcon01.svg",
-      alt: "proIcon-1",
-      benefit: "TV",
-    },
-    {
-      icon: "/images/proIcon02.svg",
-      alt: "proIcon-1",
-      benefit: "Refrigerator",
-    },
-    {
-      icon: "/images/proIcon03.svg",
-      alt: "proIcon-1",
-      benefit: "Mobile Phones",
-    },
-    {
-      icon: "/images/proIcon04.svg",
-      alt: "proIcon-1",
-      benefit: "AC",
-    },
-    {
-      icon: "/images/proIcon05.svg",
-      alt: "proIcon-1",
-      benefit: "Washing Machine",
-    },
-    {
-      icon: "/images/proIcon06.svg",
-      alt: "proIcon-1",
-      benefit: "Gas Top Stove",
-    },
-    {
-      icon: "/images/proIcon07.svg",
-      alt: "proIcon-1",
-      benefit: "Sewing Machine",
-    },
-    {
-      icon: "/images/proIcon08.svg",
-      alt: "proIcon-1",
-      benefit: "Mixer Grinders",
-    },
-  ];
+export default function ({ products, title, image, criteriaIcon, criteriaTitle, criteriaDescription, criteriaNote, isMobile }) {
+  console.log("ProductCovered isMobile:", criteriaDescription);
+  
   return (
     <section className="w-full relative sm:bg-[#C0DBFF] bg-[#E5F6FF] sm:rounded-[0] rounded-[20px] py-[20px] md:p-0">
       <div className="absolute hidden md:block bg-[#D4E6FF] left-0 top-0 w-[50%] h-full z-0"></div>
       <div className="container">
         <div className="flex flex-wrap">
           <div className="relative w-full flex flex-wrap flex-col-reverse lg:flex-row md:w-[calc(100%-285px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-590px)] sm:bg-[#D4E6FF] overflow-hidden rounded-[36px] md:rounded-tl-[0] md:rounded-bl-[0] pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[90px] sm:pr-[30px] 2xl:pr-[45px] 3xl:pr-[55px] pb-[30px] xl:pb-[40px] 2xl:pb-[50px] sm:pl-[20px] md:pl-0">
-            <div className="group w-full max-lg:mt-[15px] lg:absolute lg:right-[20px] lg:2xl:right-[35px] lg:3xl:right-[55px] lg:bottom-[40px] lg:max-w-[350px] xl:max-w-[420px] 
-             overflow-hidden h-auto">
+            <div
+              className="group w-full max-lg:mt-[15px] lg:absolute lg:right-[20px] lg:2xl:right-[35px] lg:3xl:right-[55px] lg:bottom-[40px] lg:max-w-[350px] xl:max-w-[420px] 
+             overflow-hidden h-auto"
+            >
               <Image
                 src={image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${image}` : "/images/proCoveredImg.png"}
                 alt="productCover"
@@ -99,29 +59,31 @@ export default function ({ products, title, image, criteriaIcon, criteriaTitle, 
               </div>
             </div>
           </div>
-          <div className="w-full md:w-[285px] xl:w-[400px] 2xl:w-[500px] 3xl:w-[590px] pl-[25px] xl:pl-[45px] 2xl:pl-[55px] 3xl:pl-[75px] pb-[30px] xl:pb-[40px] 2xl:pb-[60px] pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[90px] bg-[#C0DBFF] relative z-1 sm:block hidden">
-            <div className="flex items-center mb-[10px] 2xl:mb-[20px]">
-              <div className="w-[40px] xl:w-[50px] 2xl:w-[60px] 3xl:w-[72px] h-[40px] xl:h-[50px] 2xl:h-[60px] 3xl:h-[72px] bg-[#EB0208] p-[5px] xl:p-[8px] 2xl:p-[12px] rounded-full border-3 2xl:border-5 border-white overflow-hidden">
-                <Image
-                  src={criteriaIcon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${criteriaIcon}` : "/images/criteriaIcon.svg"}
-                  alt="lifeintelImg"
-                  width={735}
-                  height={390}
-                  className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
-                />
+          {!isMobile && (
+            <div className="w-full md:w-[285px] xl:w-[400px] 2xl:w-[500px] 3xl:w-[590px] pl-[25px] xl:pl-[45px] 2xl:pl-[55px] 3xl:pl-[75px] pb-[30px] xl:pb-[40px] 2xl:pb-[60px] pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[90px] bg-[#C0DBFF] relative z-1 sm:block hidden">
+              <div className="flex items-center mb-[10px] 2xl:mb-[20px]">
+                <div className="w-[40px] xl:w-[50px] 2xl:w-[60px] 3xl:w-[72px] h-[40px] xl:h-[50px] 2xl:h-[60px] 3xl:h-[72px] bg-[#EB0208] p-[5px] xl:p-[8px] 2xl:p-[12px] rounded-full border-3 2xl:border-5 border-white overflow-hidden">
+                  <Image
+                    src={criteriaIcon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${criteriaIcon}` : "/images/criteriaIcon.svg"}
+                    alt="lifeintelImg"
+                    width={735}
+                    height={390}
+                    className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
+                  />
+                </div>
+                <h2 className="text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-normal text-[#141414] pl-[15px] [&>span]:text-base2 [&>span]:font-bold">
+                  {criteriaTitle ? parse(criteriaTitle) : "Eligibility Criteria"}
+                </h2>
               </div>
-              <h2 className="text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-normal text-[#141414] pl-[15px] [&>span]:text-base2 [&>span]:font-bold">
-                {criteriaTitle ? parse(criteriaTitle) : "Eligibility Criteria"}
-              </h2>
-            </div>
-            {parse(criteriaDescription, options)}
+              {parse(criteriaDescription, options)}
 
-            <div className="text-sm1 font-medium max-w-[70%]">
-              {criteriaNote
-                ? criteriaNote
-                : "Note: The eligibility criteria may vary based on the lender's policies and the applicant's financial profile."}
+              <div className="text-sm1 font-medium max-w-[70%]">
+                {criteriaNote
+                  ? criteriaNote
+                  : "Note: The eligibility criteria may vary based on the lender's policies and the applicant's financial profile."}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

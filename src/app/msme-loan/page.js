@@ -1,13 +1,10 @@
 //export const dynamic = "force-dynamic";
-import KickStartVenture from "@/components/features/msmeloan/KickStartVenture";
-import LoansList from "@/components/features/msmeloan/LoansList";
-import WhyMsme from "@/components/features/msmeloan/WhyMsme";
-import WhoDoServe from "@/components/features/msmeloan/WhoDoServe";
-import MsmePresence from "@/components/features/msmeloan/MsmePresence";
-import GrownWithMsme from "@/components/features/msmeloan/GrownWithMsme";
-import MobKickStartVenture from "@/components/features/msmeloan/MobKickStartVenture";
-import MobWhoDoServe from "@/components/features/msmeloan/MobWhoDoServe";
+import MsmeLoanClient from "@/pages/MsmeClient";
+import { headers } from "next/headers";
 
+function isMobileDevice(userAgent) {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+}
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/msme`, {
@@ -93,66 +90,25 @@ export async function generateMetadata() {
 export default async function MsmeLoan() {
   const { contents, offerings, faqs, loanTypes, industries, audience, error } = await fetchData();
 
+  const headersList = await headers();
+  const userAgent = headersList.get("user-agent") || "";
+  const isMobile = isMobileDevice(userAgent);
+
+  console.log("MSME Loan Page - User Agent:", userAgent, isMobile ? "Mobile" : "Desktop");
+
   if (error) {
     return <div>Failed to fetch MSME data</div>;
   }
 
   return (
-    <>
-      {/* KickStartVenture contents*/}
-      <div className="hidden sm:block">
-        <KickStartVenture
-          title={contents?.title}
-          sub_title={contents?.sub_title}
-          description={contents?.description}
-          button_text={contents?.button_text}
-          button_url={contents?.button_url}
-          our_offering_title={contents?.our_offering_title}
-          our_offering_description={contents?.our_offering_description}
-          offerings={offerings}
-        />
-      </div>
-      {/* WhoDoServe Mobile contents*/}
-      <div className="block sm:hidden">
-        <MobKickStartVenture
-          title={contents?.title}
-          sub_title={contents?.sub_title}
-          button_text={contents?.button_text}
-          button_url={contents?.button_url}
-          our_offering_title={contents?.our_offering_title}
-          offerings={offerings}
-        />
-      </div>
-
-      {/* LoanSlider contents*/}
-      <LoansList loanTypes={loanTypes} />
-
-      {/* WhyMsme contents*/}
-      <WhyMsme
-        title={contents?.why_msme_loan_title}
-        description={contents?.why_msme_loan_description}
-        image={contents?.why_msme_loan_image}
-        alt={contents?.image_alt}
-      />
-
-      {/* WhoDoServe contents*/}
-      <div className="hidden sm:block">
-        <WhoDoServe audience={audience} who_do_serve_title={contents?.who_do_serve_title} />
-      </div>
-      {/* WhoDoServe Mobile contents*/}
-      <div className="block sm:hidden">
-        <MobWhoDoServe audience={audience} who_do_serve_title={contents?.who_do_serve_title} />
-      </div>
-
-      {/* MsmePresence contents*/}
-      <MsmePresence title={contents?.about_msme_title} description={contents?.about_msme_description} audience={industries} />
-
-      {/* Grown With Msme contents*/}
-      <GrownWithMsme
-        faqs={faqs}
-        title={contents?.msme_loan_overview_title}
-        description={contents?.msme_loan_overview_description}
-      />
-    </>
+    <MsmeLoanClient
+      contents={contents}
+      offerings={offerings}
+      faqs={faqs}
+      loanTypes={loanTypes}
+      industries={industries}
+      audience={audience}
+      initialIsMobile={isMobile}
+    />
   );
 }
