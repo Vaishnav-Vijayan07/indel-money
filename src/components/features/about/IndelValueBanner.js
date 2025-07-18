@@ -9,9 +9,9 @@ export default function IndelValueBanner({ image, alt, title }) {
    <section className="relative w-full overflow-hidden">
         <div className="sm:relative absolute w-full h-full md:h-[280px] lg:h-[340px] xl:h-[365px] 2xl:h-[460px] 3xl:h-[560px]">
           <picture className="block w-full h-full">
-            <source media="(min-width: 640px)" srcSet={image ? `${serverMediaPath}${image}` : "/images/valueBannerDesk.jpg"} />
+            <source media="(min-width: 640px)" srcSet={image ? `${serverMediaPath}${image}` : "/images/valueBannerMb.jpg"} />
             <img
-              src={image ? `${serverMediaPath}${image}` : "/images/valueBannerMb.jpg"}
+              src={image ? `${serverMediaPath}${image}` : "/images/valueBannerDesk.jpg"}
               width={640}
               height={500}
               alt={alt ? alt : "value-innerBanner"}
