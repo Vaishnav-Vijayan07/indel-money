@@ -5,7 +5,6 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import Link from "next/link";
-import { renderHtml } from "@/lib/utils/htmlParser";
 
 const awards = [
   {

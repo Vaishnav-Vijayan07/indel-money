@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
-import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
+import { EffectCoverflow } from "swiper/modules";
 import Image from "next/image";
 
 const slides = [

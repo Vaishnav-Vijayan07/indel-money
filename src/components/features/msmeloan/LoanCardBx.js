@@ -26,9 +26,15 @@ export default function LoanCardBx({ item, variant = "default" }) {
           />
         </div>
         <div className="w-full sm:pt-0">
-          <h5 className="text-[16px] sm:text-[18px] xl:text-[20px] 2xl:text-[22px] 3xl:text-[30px] text-base1 font-bold mb-[10px] sm:mb-[2px] line-clamp-1">
+          {
+            variant !== "default" ?
+                 <h4 className="text-[16px] sm:text-[18px] xl:text-[20px] 2xl:text-[22px] 3xl:text-[30px] text-base1 font-bold mb-[10px] sm:mb-[2px] line-clamp-1">
             {item?.title || "Default Title"}
-          </h5>
+          </h4>:     <h3 className="text-[16px] sm:text-[18px] xl:text-[20px] 2xl:text-[22px] 3xl:text-[30px] text-base1 font-bold mb-[10px] sm:mb-[2px] line-clamp-1">
+            {item?.title || "Default Title"}
+          </h3>
+          }
+      
           {item?.title2 && (
             <div className="text-[12px] sm:text-[14px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[20px] text-[#1E1E1E] font-normal mb-[15px] line-clamp-1">
               {item.title2}

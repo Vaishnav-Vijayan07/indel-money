@@ -9,11 +9,11 @@ function BlogItem({ item, index, type = "blog" }) {
   return (
     <div key={index} className="w-full md:w-1/2 p-[6px_4px] lg:p-[10px_15px] 2xl:p-[30px_35px]">
       <div className="sm:hidden block">
-        <MobBlogListCard item={item} />
+        <MobBlogListCard item={item} type={type} />
       </div>
       <div className="sm:block hidden">
-        <Link href={`/${type}/${item?.slug}`}>
-          <BlogCard item={item} />
+        <Link href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`}>
+          <BlogCard item={item} type={type} />
         </Link>
       </div>
     </div>

@@ -1,4 +1,6 @@
-import CareerDetailInfo from "@/components/features/career/CareerDetailInfo";
+//export const dynamic = "force-dynamic";
+// import CareerDetailInfo from "@/components/features/career/CareerDetailInfo";
+import CareerDetailInfo from "../../../../components/features/career/CareerDetailInfo";
 import api from "@/lib/api/axios";
 import { decodeId } from "@/lib/hashids";
 
@@ -11,7 +13,11 @@ export default async function CareerDetail({ params }) {
   let error = null;
 
   try {
-    const response = await api.get(`/career/jobs/${DecodeId}`, { timeout: 5000 });
+    const response = await api.get(`/career/jobs/${DecodeId}`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+      timeout: 5000,
+    });
     if (!response.data.success) {
       error = response.data.message || "Failed to fetch job details";
     } else {
@@ -27,11 +33,3 @@ export default async function CareerDetail({ params }) {
 
   return <CareerDetailInfo job={job} />;
 }
-
-// import CareerDetailInfo from "@/components/features/career/CareerDetailInfo";
-
-// export default async function CareerDetail({ params }) {
-//   const { id } = await params;
-
-//   return <CareerDetailInfo />;
-// }

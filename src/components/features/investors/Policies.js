@@ -3,15 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+
+
 import PaginationComponent from "../../Pagination";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useCallback } from "react";

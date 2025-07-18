@@ -1,5 +1,4 @@
 "use client";
-import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import Image from "next/image";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/custom-tabs";

@@ -20,6 +20,7 @@ const formSchema = z
       message: "Name must be at least 2 characters.",
     }),
     email: z.string().email({ message: "Invalid email address." }),
+    service_types: z.string().min(1, { message: "Please select a service type." }),
     phone: z.string().regex(/^\+?\d{10,15}$/, {
       message: "Phone number must be 10-15 digits.",
     }),
@@ -85,8 +86,7 @@ function ContactFormInner() {
     try {
       // Execute reCAPTCHA
       const recaptchaToken = await executeRecaptcha("contact_form");
-      console.log("reCAPTCHA Token:", recaptchaToken);
-      
+
       if (!recaptchaToken) {
         toast.error("Failed to get reCAPTCHA token. Please try again.");
         setIsSubmitting(false);
@@ -97,16 +97,13 @@ function ContactFormInner() {
       const cleanedData = Object.fromEntries(Object.entries(data).map(([key, value]) => [key, value === "" ? null : value]));
       const payload = { ...cleanedData, enquiry_type: "contact", recaptcha: recaptchaToken };
 
-      const { data: responseData } = await api.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/service-enquiries`,
-        payload
-      );
+      const { data: responseData } = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/service-enquiries`, payload);
 
       if (responseData.success) {
         toast.success("Contact form submitted successfully!");
         form.reset(); // Reset form on success
       } else {
-        toast.error(responseData.message || "Failed to submit contact form!");
+        toast.error(responseData?.message || "Failed to submit contact form!");
       }
     } catch (error) {
       console.error("Form submission error:", error);
@@ -250,35 +247,30 @@ function ContactFormInner() {
 
 // Main component that wraps the form with reCAPTCHA provider
 export default function ContactForm() {
-  const [isClient, setIsClient] = useState(false);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  // if (!isClient) {
+  //   return (
+  //     <div className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
+  //       <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
+  //         <div className="bg-white border-white rounded p-4 text-center">Loading form...</div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
-  if (!isClient) {
-    return (
-      <div className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
-        <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
-          <div className="bg-white border-white rounded p-4 text-center">Loading form...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!siteKey) {
-    console.error("reCAPTCHA site key is not defined");
-    return (
-      <div className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
-        <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
-          <div className="bg-white border-white rounded p-4 text-center text-red-600">
-            Configuration error. Please try again later.
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // if (!siteKey) {
+  //   console.error("reCAPTCHA site key is not defined");
+  //   return (
+  //     <div className="flex flex-wrap -mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
+  //       <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px]">
+  //         <div className="bg-white border-white rounded p-4 text-center text-red-600">
+  //           Configuration error. Please try again later.
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <GoogleReCaptchaProvider

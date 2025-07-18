@@ -1,17 +1,19 @@
+//export const dynamic = "force-dynamic";
 import KickStartVenture from "@/components/features/msmeloan/KickStartVenture";
 import LoansList from "@/components/features/msmeloan/LoansList";
 import WhyMsme from "@/components/features/msmeloan/WhyMsme";
 import WhoDoServe from "@/components/features/msmeloan/WhoDoServe";
 import MsmePresence from "@/components/features/msmeloan/MsmePresence";
 import GrownWithMsme from "@/components/features/msmeloan/GrownWithMsme";
-import { defaultMeta } from "@/constants/constants";
 import MobKickStartVenture from "@/components/features/msmeloan/MobKickStartVenture";
 import MobWhoDoServe from "@/components/features/msmeloan/MobWhoDoServe";
 
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/msme`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const msmeData = result.data;
@@ -146,7 +148,11 @@ export default async function MsmeLoan() {
       <MsmePresence title={contents?.about_msme_title} description={contents?.about_msme_description} audience={industries} />
 
       {/* Grown With Msme contents*/}
-      <GrownWithMsme faqs={faqs} title={contents?.msme_loan_overview_title} description={contents?.msme_loan_overview_description} />
+      <GrownWithMsme
+        faqs={faqs}
+        title={contents?.msme_loan_overview_title}
+        description={contents?.msme_loan_overview_description}
+      />
     </>
   );
 }

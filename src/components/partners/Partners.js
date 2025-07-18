@@ -1,5 +1,4 @@
 "use client";
-import { navigationItems } from "@/constants/constants";
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import PageBreadcrumb from "../common/PageBreadcrumb";
 import Image from "next/image";

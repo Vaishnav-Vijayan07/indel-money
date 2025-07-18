@@ -23,41 +23,78 @@ const MobBranchLocator = dynamic(() => import("../components/features/home/MobBr
 const MobJoinTeam = dynamic(() => import("../components/features/home/MobJoinTeam"), { ssr: false });
 const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLatestUpdates"), { ssr: false });
 const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: false });
-const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeModal"), { ssr: false });
+import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
-export default function Home({ initialData, serviceBanner, banner, branchLocatorData, initialError }) {
-  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+export default function Home({ initialData, serviceBanner, banner, branchLocatorData, goldRate, initialIsMobile }) {
+  // const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+
+  // Use media query for client-side viewport detection
+  const isMobileViewport = useMediaQuery("only screen and (max-width: 768px)");
+  // Combine server-side and client-side detection (client takes precedence after hydration)
+  const isMobile = typeof window !== "undefined" ? isMobileViewport : initialIsMobile;
 
   return (
     <>
       {/* welcome contents*/}
-      {isMobile ? <MobWelcomeModal /> : banner || serviceBanner ? <WelcomeModal banner={banner} serviceBanner={serviceBanner} /> : null}
+
+      {isMobile ? (
+        <MobWelcomeModal banner={banner} serviceBanner={serviceBanner} key={1} />
+      ) : (
+        <WelcomeModal banner={banner} serviceBanner={serviceBanner} key={2} />
+      )}
 
       {/* banner section contents*/}
-      <div className="hidden sm:block">
-        <HeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} announcement={initialData?.pageContent?.announcement_text} />
+      {/* <div className="hidden sm:block">
+        <HeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.pageContent?.announcement_text}
+          goldRate={goldRate}
+        />
       </div>
       <div className="block sm:hidden">
         <MobHeroBanner
           heroBanner={initialData?.heroBanner || []}
           initialData={initialData}
           announcement={initialData?.pageContent?.announcement_text}
+          goldRate={goldRate}
         />
-      </div>
+      </div> */}
+
+      {isMobile ? (
+        <MobHeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.pageContent?.announcement_text}
+          goldRate={goldRate}
+        />
+      ) : (
+        <HeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.pageContent?.announcement_text}
+          goldRate={goldRate}
+        />
+      )}
+
+      {isMobile ? (
+        <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
+      ) : (
+        <DreamsToReality initialData={initialData?.pageContent} statsData={initialData?.homeStatistics} />
+      )}
 
       {/* Dreams to Reality contents*/}
-      <div className="hidden sm:block">
+      {/* <div className="hidden sm:block">
         <DreamsToReality initialData={initialData?.pageContent} statsData={initialData?.homeStatistics} />
       </div>
       {initialData?.smartMoneyDeals?.length > 0 && (
         <div className="block sm:hidden">
-          {/* Develope api for smart money deals */}
           <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
         </div>
-      )}
+      )} */}
 
       {/* Gold loan contents*/}
-      <div id="gold-loan-steps" className="hidden sm:block">
+      {/* <div id="gold-loan-steps" className="hidden sm:block">
         <StepGoldLoan
           title={initialData?.pageContent?.step_title}
           loanSteps={initialData?.loanSteps}
@@ -65,27 +102,45 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
         />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoan title={"sample"} loanSteps={initialData?.loanSteps} />
-      </div>
+        <MobStepGoldLoan title={initialData?.pageContent?.step_title} loanSteps={initialData?.loanSteps} />
+      </div> */}
+
+      {isMobile ? (
+        <MobStepGoldLoan title={initialData?.pageContent?.step_title} loanSteps={initialData?.loanSteps} />
+      ) : (
+        <StepGoldLoan
+          title={initialData?.pageContent?.step_title}
+          loanSteps={initialData?.loanSteps}
+          sectionTitle={initialData?.pageContent?.step_title}
+        />
+      )}
 
       {/* Gold loan calculator*/}
-      <div id="calculator" className="hidden sm:block">
-        <StepGoldLoanCalculator />
+      {/* <div id="calculator" className="hidden sm:block">
+        <StepGoldLoanCalculator goldRate={goldRate} />
       </div>
       <div className="block sm:hidden">
-        <MobStepGoldLoanCalculator />
-      </div>
+        <MobStepGoldLoanCalculator goldRate={goldRate} />
+      </div> */}
+
+      {isMobile ? <MobStepGoldLoanCalculator goldRate={goldRate} /> : <StepGoldLoanCalculator goldRate={goldRate} />}
 
       {/* Branch locator contents*/}
-      <div className="hidden sm:block" id="branch-locator">
+      {/* <div className="hidden sm:block" id="branch-locator">
         <BranchLocator pageContent={branchLocatorData} variant={"home"} useQueryParams={false} />
       </div>
       <div className="block sm:hidden" id="branch-locator">
         <MobBranchLocator pageContent={branchLocatorData} />
-      </div>
+      </div> */}
+
+      {isMobile ? (
+        <MobBranchLocator pageContent={branchLocatorData} />
+      ) : (
+        <BranchLocator pageContent={branchLocatorData} variant={"home"} useQueryParams={false} />
+      )}
 
       {/* Life at Indel contents*/}
-      <div className="hidden sm:block">
+      {/* <div className="hidden sm:block">
         <LifeAtIndel
           pageContent={initialData?.pageContent}
           lifeAtIndel={initialData?.lifeAtIndel}
@@ -102,31 +157,77 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
           image2={initialData?.pageContent?.life_section_image2}
           image3={initialData?.pageContent?.life_section_image3}
         />
-      </div>
+      </div> */}
+
+      {isMobile ? (
+        <MobJoinTeam
+          pageContent={initialData?.pageContent}
+          lifeAtIndel={initialData?.lifeAtIndel}
+          image1={initialData?.pageContent?.life_section_image1}
+          image2={initialData?.pageContent?.life_section_image2}
+          image3={initialData?.pageContent?.life_section_image3}
+        />
+      ) : (
+        <LifeAtIndel
+          pageContent={initialData?.pageContent}
+          lifeAtIndel={initialData?.lifeAtIndel}
+          image1={initialData?.pageContent?.life_section_image1}
+          image2={initialData?.pageContent?.life_section_image2}
+          image3={initialData?.pageContent?.life_section_image3}
+        />
+      )}
 
       {/* Latest Updates contents*/}
-      <div className="hidden sm:block">
-        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
+      {/* <div className="hidden sm:block">
+        <LatestUpdates
+          sliderItems={initialData?.blogs}
+          sliderTitle={initialData?.pageContent?.updates_section_title}
+          type="indel-money-cares"
+        />
       </div>
       <div className="block sm:hidden">
-        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} />
-      </div>
+        <MobLatestUpdates
+          sliderItems={initialData?.blogs}
+          sliderTitle={initialData?.pageContent?.updates_section_title}
+          type="indel-money-cares"
+        />
+      </div> */}
+
+      {isMobile ? (
+        <MobLatestUpdates
+          sliderItems={initialData?.blogs}
+          sliderTitle={initialData?.pageContent?.updates_section_title}
+          type="indel-money-cares"
+        />
+      ) : (
+        <LatestUpdates
+          sliderItems={initialData?.blogs}
+          sliderTitle={initialData?.pageContent?.updates_section_title}
+          type="indel-money-cares"
+        />
+      )}
 
       {/* <div className="hidden sm:block">
         <TrustedInvestment pageContent={initialData?.pageContent} />
       </div> */}
 
       {/* Innovations*/}
-      <div className="hidden sm:block">
+      {/* <div className="hidden sm:block">
         <Innovations pageContent={initialData?.pageContent} />
       </div>
       <div className="block sm:hidden">
         <MobInnovations pageContent={initialData?.pageContent} />
-      </div>
+      </div> */}
+
+      {isMobile ? (
+        <MobInnovations pageContent={initialData?.pageContent} />
+      ) : (
+        <Innovations pageContent={initialData?.pageContent} />
+      )}
 
       {/* faq contents */}
       <div className="hidden sm:block">
-        <FAQ faqs={initialData?.faqs} pageContents={initialData?.pageContent} />
+        <FAQ faqs={initialData?.faqs} pageContents={initialData?.pageContent} type={"home"} />
       </div>
     </>
   );

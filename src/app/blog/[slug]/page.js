@@ -1,14 +1,14 @@
-import dynamic from "next/dynamic";
-import Link from "next/link";
+//export const dynamic = "force-dynamic";
 import BlogDetail from "@/components/features/blog/BlogDetail";
 import RecentBlog from "@/components/features/blog/RecentBlog";
-import { defaultMeta } from "@/constants/constants";
 
 // Fetch blog data for a specific post
 async function fetchBlogData(slug) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs/${slug}`, {
-      next: { revalidate: 60 },
+      // next: { revalidate: 60 },
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
 
     if (!response.ok) {
@@ -17,20 +17,22 @@ async function fetchBlogData(slug) {
     const result = await response.json();
 
     if (result.status === "success") {
-      const { blog, recentBlogs } = result.data || {};
+      const { blog, recentBlogs, title } = result.data || {};
       return {
         data: blog,
         recentBlogs,
+        title,
         error: null,
       };
     }
     return {
       data: null,
       recentBlogs: null,
+      title: null,
       error: result.message,
     };
   } catch (error) {
-    return { data: null, recentBlogs: null, error: "Failed to fetch blog data" };
+    return { data: null, title: null, recentBlogs: null, error: "Failed to fetch blog data" };
   }
 }
 
@@ -127,7 +129,7 @@ export async function generateMetadata({ params }) {
 
 export default async function Blog({ params }) {
   const { slug } = await params;
-  const { data: blogData, recentBlogs, error: blogError } = await fetchBlogData(slug);
+  const { data: blogData, recentBlogs, title, error: blogError } = await fetchBlogData(slug);
 
   // Handle error state for blog data
   if (blogError || !blogData) {
@@ -142,7 +144,7 @@ export default async function Blog({ params }) {
   return (
     <>
       <BlogDetail data={blogData} />
-      <RecentBlog recentBlogs={recentBlogs} error={blogError} />
+      <RecentBlog recentBlogs={recentBlogs} error={blogError} title={title} />
     </>
   );
 }

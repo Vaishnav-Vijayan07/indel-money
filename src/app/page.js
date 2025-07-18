@@ -1,11 +1,17 @@
+//export const dynamic = "force-dynamic";
+import { headers } from "next/headers";
 import HomeClient from "../pages/HomeClient";
 import { defaultMeta } from "@/constants/constants";
+
+function isMobileDevice(userAgent) {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+}
 
 async function fetchHomeData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/home`, {
-      // cache: "force-cache",
-      // next: { revalidate: 6000 },
+      cache: "force-cache",
+      next: { revalidate: 600 },
       credentials: "include", // Ensures session cookie is sent
       headers: {
         "Content-Type": "application/json",
@@ -23,13 +29,36 @@ async function fetchHomeData() {
   }
 }
 
+async function fetchGoldRate() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-rate`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const result = await response.json();
+
+    if (result?.success && result?.goldRate) {
+      return { data: result.goldRate, error: null };
+    }
+
+    return { data: null, error: result?.message || "Invalid response from gold rate API" };
+  } catch (error) {
+    return { data: null, error: "Failed to fetch gold rate" };
+  }
+}
+
 async function getMetaData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=home`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=home`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+    });
     const result = await response.json();
     const meta = result.data;
-
-    console.log("meta", meta);
 
     if (result.status === "success") {
       return {
@@ -51,7 +80,7 @@ async function getMetaData() {
           images: meta?.twitter_image ? [meta.twitter_image] : [],
         },
         alternates: {
-          canonical: meta?.canonical_url || `${process.env.NEXT_PUBLIC_SITE_URL}/home`,
+          canonical: meta?.canonical_url || `${process.env.NEXT_PUBLIC_SITE_URL}`,
         },
         error: null,
       };
@@ -115,6 +144,14 @@ export async function generateMetadata() {
 
 export default async function HomePage() {
   const { data, error } = await fetchHomeData();
+  const { data: goldRateData, error: goldRateError } = await fetchGoldRate();
+  // Analyze device from User-Agent
+  const headersList = headers();
+  const userAgent = headersList.get("user-agent") || "";
+  const isMobile = isMobileDevice(userAgent);
+
+  console.log(`User is on ${isMobile ? "mobile" : "desktop"} device`);
+
   return (
     <HomeClient
       initialData={data}
@@ -122,6 +159,8 @@ export default async function HomePage() {
       banner={data?.banner}
       branchLocatorData={data?.branchLocatorData}
       initialError={error}
+      goldRate={goldRateData}
+      initialIsMobile={isMobile}
     />
   );
 }

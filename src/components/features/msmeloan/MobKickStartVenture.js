@@ -42,9 +42,9 @@ export default function MobKickStartVenture({ title, sub_title, button_text, but
     <section className="w-full block py-[20px]">
       <div className="container">
         <div className="w-full relative before:content-[''] before:hidden lg:before:block before:absolute before:h-full before:w-[1px] before:top-0 before:right-0 before:bg-[rgba(22,69,156,0.26)] before:opacity-25">
-          <h2 className="text-title1 font-medium mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
+          <h1 className="text-title1 font-medium mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
             {title ? renderHtml(title) : "Kickstart your new venture with our MSME loan"}
-          </h2>
+          </h1>
           <div className="text-[14px] leading-normal font-medium text-[#1e1e1e] mb-[15px]">
             {sub_title ? sub_title : "Empowering MSMEs and Entrepreneurs with Tailored Financial Solutions"}
           </div>
@@ -52,7 +52,7 @@ export default function MobKickStartVenture({ title, sub_title, button_text, but
       </div>
       <div className="w-full bg-[#e2efff] rounded-[20px] py-[20px_15px] block">
         <div className="container">
-          <div className="text-[18px] leading-none font-medium text-base1 mb-[15px]">{our_offering_title ? our_offering_title : "Our Offerings"}</div>
+          <h2 className="text-[18px] leading-none font-medium text-base1 mb-[15px]">{our_offering_title ? our_offering_title : "Our Offerings"}</h2>
           <div className="w-full h-auto bg-white rounded-[10px] overflow-hidden p-[15px] mb-[15px]">
             {offerings?.map((item) => (
               <div key={item.id} className="group w-full h-auto flex flex-wrap py-[8px]">

@@ -9,10 +9,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDes
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import EnquiryModal from "./EnquiryModal";
-import api from "@/lib/api/axios";
-import toast from "react-hot-toast";
 
 // Schema Validation
 const formSchema = z.object({
@@ -31,10 +29,9 @@ const labelStyle = "text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[18px] l
 const toggleBtnStyle =
   "text-[10px] lg:text-[12px] 2xl:text-[14px] text-center leading-[1.2] font-normal text-white w-[40px] lg:w-[45px] 2xl:w-[54px] h-[20px] lg:h-[20px] 2xl:h-[26px] rounded-[4px] lg:rounded-[6px] flex items-center justify-center cursor-pointer transition-colors duration-300";
 
-export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
+export default function GoldLoanForm({ goldCaratTypes, goldTypes, goldRate }) {
   const [submittedData, setSubmittedData] = useState({});
-  const [goldRate, setGoldRate] = useState(0);
-  const [reductionPercent, setReductionPercent] = useState(7);
+  const [reductionPercent, setReductionPercent] = useState(25);
 
   // Define form
   const form = useForm({
@@ -60,11 +57,9 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-
-  function handleRefresh(){
+  function handleRefresh() {
     form.setValue("gold_amount", "");
   }
-
 
   // Handle form submission
   function onSubmit(values) {
@@ -98,14 +93,6 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
     return (weightInGm * finalRate).toFixed(2);
   }, [goldAmount, finalRate, unit]);
 
-  useEffect(() => {
-    // Simulate fetching a fake gold rate
-    const min = 6000;
-    const max = 8000;
-    const rand = min + Math.random() * (max - min);
-    setGoldRate(rand.toFixed(0));
-  }, []);
-
   return (
     <>
       <Form {...form}>
@@ -116,10 +103,10 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes }) {
               name="carat"
               render={({ field }) => (
                 <FormItem className="mb-2 xl:mb-3 3xl:mb-4">
-                  <FormLabel className={labelStyle}>Carat</FormLabel>
+                  <FormLabel className={labelStyle}>Karat</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value} key={field.value}>
                     <SelectTrigger className="w-full bg-white border-white">
-                      <SelectValue placeholder="Carat" />
+                      <SelectValue placeholder="Karat" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border-white">
                       {goldCaratTypes?.map((carat) => (

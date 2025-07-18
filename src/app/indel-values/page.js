@@ -1,3 +1,4 @@
+//export const dynamic = "force-dynamic";
 import IndelValueBanner from "@/components/features/about/IndelValueBanner";
 import MobIndelValueBanner from "@/components/features/about/MobIndelValueBanner";
 import OurValues from "@/components/features/about/OurValues";
@@ -7,7 +8,9 @@ import { defaultMeta } from "@/constants/constants";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/indel-values`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const indelValues = result.data;
@@ -29,7 +32,10 @@ async function fetchData() {
 
 async function getMetaData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=indelValues`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=indelValues`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+    });
     const result = await response.json();
     const meta = result.data;
 

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import parse from "html-react-parser";
 const titleStyle = "text-[14px] leading-normal font-medium text-black mb-[5px]";
 const boxStyle = "w-full h-auto bg-white rounded-[10px] border-dashed border-[1px] border-black mb-[10px] p-[15px]";
@@ -17,16 +16,16 @@ export default function MobGoldLoanCriteria({
   return (
     <section className="w-full block py-[30px] bg-[linear-gradient(90deg,#CDDFFF_1%,#FFD2D2_99%)]">
       <div className="container">
-        <div className="text-title1 mb-[20px] [&>span]:text-base2 [&>span]:font-bold">{parse(title)}</div>
+        <h2 className="text-title1 mb-[20px] [&>span]:text-base2 [&>span]:font-bold">{parse(title)}</h2>
         <div className={boxStyle}>
-          <div className={titleStyle}>Eligibility</div>
+          <h3 className={titleStyle}>Eligibility</h3>
           <p>{parse(description)}</p>
         </div>
         <div className={boxStyle}>
-          <div className={titleStyle}>Documentation</div>
+          <h3 className={titleStyle}>Documentation</h3>
           <p>Please ensure you carry the following documents (Original) for easing the process of your gold loan application.</p>
           <div className="w-full h-auto bg-white rounded-[10px] p-[20px_18px] shadow-[0_0_4px_0_rgba(0,0,0,0.1)] my-[10px]">
-            <div className={`${titleStyle} font-bold`}>{idProofTitle}:</div>
+            <h4 className={`${titleStyle} font-bold`}>{idProofTitle}:</h4>
             <ul className="columns-2">
               {identityProof.split(",").map((item, index) => (
                 <li key={index} className={listStyle}>
@@ -36,7 +35,7 @@ export default function MobGoldLoanCriteria({
             </ul>
           </div>
           <div className="w-full h-auto bg-white rounded-[10px] p-[20px_18px] shadow-[0_0_4px_0_rgba(0,0,0,0.1)] my-[10px]">
-            <div className={`${titleStyle} font-bold`}>{addressProofTitle}:</div>
+            <h4 className={`${titleStyle} font-bold`}>{addressProofTitle}:</h4>
             <ul className="columns-2">
               {addressProof.split(",").map((item, index) => (
                 <li key={index} className={listStyle}>

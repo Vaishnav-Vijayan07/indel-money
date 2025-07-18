@@ -1,34 +1,25 @@
-import dynamic from "next/dynamic";
-import Link from "next/link";
+//export const dynamic = "force-dynamic";
+
 import { Suspense, memo } from "react";
 import CSRItem from "@/components/csr/CsrItem";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import {
   Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
 } from "@/components/ui/pagination";
-import { defaultMeta } from "@/constants/constants";
-
-const LatestUpdates = dynamic(() => import("@/components/features/home/LatestUpdates"), {
-  loading: () => <div>Loading slider...</div>,
-});
-const MobLatestUpdates = dynamic(() => import("@/components/features/csr/MobLatestUpdates.js"), {
-  loading: () => <div>Loading mobile slider...</div>,
-});
+import MobLatestUpdates from "../../components/features/home/MobLatestUpdates";
+import LatestUpdates from "../../components/features/home/LatestUpdates";
 
 async function fetchCsrData(page = 1, limit = 10) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/csr?page=${page}&limit=${limit}`, {
-      cache: "no-store", // Ensure fresh data
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const result = await response.json();
     if (result.status === "success") {
-    const { content, sliderItems, csr, pagination } = result.data || {};
+      const { content, sliderItems, csr, pagination } = result.data || {};
       return {
         content,
         sliderData: sliderItems,
@@ -45,7 +36,6 @@ async function fetchCsrData(page = 1, limit = 10) {
       error: result.message,
     };
   } catch (error) {
-    
     return {
       content: null,
       sliderData: null,
@@ -67,7 +57,7 @@ const PaginationItems = memo(({ currentPage, totalPages }) => {
 });
 
 export default async function CSR({ searchParams }) {
-  const page = await parseInt(searchParams?.page) || 1;
+  const page = (await parseInt(searchParams?.page)) || 1;
   const limit = 10;
   const { content, csr, sliderData, pagination, error } = await fetchCsrData(page, limit);
   // if (error) {
@@ -75,7 +65,7 @@ export default async function CSR({ searchParams }) {
   //     <div className="container py-10">
   //       <h1>Error Loading CSR</h1>
   //       <p>{error}</p>
-  //       <button onClick={() => window.location.reload()} className="mt-4 
+  //       <button onClick={() => window.location.reload()} className="mt-4
   // }
 
   if (!content && !csr && !sliderData) {
@@ -86,7 +76,6 @@ export default async function CSR({ searchParams }) {
       </div>
     );
   }
-
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -114,9 +103,9 @@ export default async function CSR({ searchParams }) {
         <div className="container">
           <div className="text-sm sm:text-lg md:text-xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl text-black font-medium mb-[15px]">
             {content?.all_csr_title || "All csr"}
-        </div>
+          </div>
           <div className="flex flex-wrap -mx-[4px] lg:-mx-[15px] sm:border-b sm:border-b-[rgb(0,0,0,18%)] 2xl:-mx-[35px] sm:pb-[20px] 2xl:pb-[50px] 2xl:mb-[40px] sm:mb-[20px]">
-            {Array.isArray(csr) &&csr?.length > 0 ? (
+            {Array.isArray(csr) && csr?.length > 0 ? (
               csr?.map((item, index) => <CSRItem index={index} key={item.id || index} item={item} />)
             ) : (
               <p>No csr available.</p>

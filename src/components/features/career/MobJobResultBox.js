@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import JobResultAlert from "./JobResultAlert";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 export default function MobJobResultBox({ item }) {
   return (
@@ -10,7 +11,7 @@ export default function MobJobResultBox({ item }) {
         <div>
           <div className="text-[12px] leading-none font-medium text-[#484877] w-fit h-auto bg-[#cedfff] rounded-[100px] flex items-center gap-[4px] p-[8px_10px]">
             <Image src={"/images/icon-location.svg"} alt="location" width={10} height={14} />
-            {item?.location?.location_name}
+            {toSentenceCase(item?.location?.location_name)}
           </div>
         </div>
         <div>

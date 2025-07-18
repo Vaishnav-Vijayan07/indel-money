@@ -5,7 +5,7 @@ export default function MobHomeMarquee({ announcementText, goldRateLabel, goldRa
   return (
     <div className="w-full absolute z-1 bottom-0 left-0 right-0">
       <div className="container">
-        <div className="w-full text-sm1 leading-none text-white flex items-center gap-[6px] mb-[10px]">
+        <h2 className="w-full text-sm1 leading-none text-white flex items-center gap-[6px] mb-[10px]">
           <Image
             src={"/images/mob-marquee-1.svg"}
             alt={"coin"}
@@ -16,7 +16,7 @@ export default function MobHomeMarquee({ announcementText, goldRateLabel, goldRa
           {/* Gold rate */}
           {goldRateLabel}
           <span className="font-medium text-black p-[6px_10px] bg-[#e8c002] rounded-[20px]">&#8377; {goldRate}</span>
-        </div>
+        </h2>
       </div>
       <div className="w-full h-[var(--marquee-y)] bg-base1 flex items-center">
         <div className="w-full max-w-[calc(100%-((100%-var(--container-x))/2))] pr-0 mr-0 ml-auto pl-[var(--container-padding)]">

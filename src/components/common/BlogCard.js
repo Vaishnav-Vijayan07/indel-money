@@ -23,7 +23,7 @@ function BlogCard({ item, className, index, type = "blog" }) {
         />
       </div>
       <div className="w-[calc(100%-127px)] sm:w-[calc(100%-160px)] lg:w-[calc(100%-180px)] xl:w-[calc(100%-220px)] 2xl:w-[calc(100%-240px)] 3xl:w-[calc(100%-320px)] py-1 3xl:py-2">
-        {((type === "blog" || type == "vertical") && item?.createdAt) || item?.posted_on ? (
+        {((type === "blog" || type == "vertical" || type == "news") && item?.createdAt) || item?.posted_on ? (
           <div className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] text-[#505050] line-clamp-1 mb-0.5 3xl:mb-1 transition-transform duration-300 group-hover:text-base2">
             {formatPostDate(type === "blog" || type == "vertical" ? item?.posted_on : item?.createdAt)}
           </div>
@@ -39,7 +39,7 @@ function BlogCard({ item, className, index, type = "blog" }) {
           className="text-[13px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-[1.3] text-black font-bold line-clamp-2 mb-1 3xl:mb-3"
           dangerouslySetInnerHTML={{ __html: item?.title ? item?.title : "" }}
         />
-        {type == "blog" ? (
+        {(type == "blog" || type == "news" ) ? (
           <div
             className="text-[12px] xl:text-[12px] 2xl:text-[14px] 3xl:text-[18px] leading-[1.3] text-[#2d2d2d] font-normal line-clamp-2 sm:line-clamp-4"
             dangerouslySetInnerHTML={{ __html: item?.image_description ? item?.image_description : "" }}

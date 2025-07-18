@@ -14,25 +14,46 @@ import Cookies from "js-cookie";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
+
+const noticePeriod = [
+  "Less than 15 days",
+  "15 to 30 days",
+  "30 days",
+  "60 to 90 days",
+  "More than 90 days",
+];
 
 // Schema Validation
 const baseSchema = {
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  phone: z.string().min(10, { message: "Phone number must be at least 10 digits." }),
+  phone: z
+    .string()
+    .regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
-  preferred_location: z.string().min(1, { message: "Please select a location." }),
-  referred_employee_name: z.string().optional(),
-  employee_referral_code: z.string().optional(),
-  age: z.string().regex(/^\d+$/, { message: "Age must be a number." }).min(1, { message: "Please enter your age." }),
-  preferred_role: z.string().min(1, { message: "Please select a preferred role." }),
+  preferred_location: z
+    .string()
+    .min(1, { message: "Please select a location." }),
+  preferred_role: z
+    .string()
+    .min(1, { message: "Please select a preferred role." }),
+  notice_period: z
+    .enum(noticePeriod, {
+      errorMap: () => ({ message: "Please select a valid notice period." }),
+    }),
   current_salary: z
     .string()
-    .regex(/^\d+(\.\d{1,2})?$/, { message: "Invalid salary format (e.g., 50000.00)." })
+    .regex(/^\d{5,}$/, {
+      message: "Must be at least 5 digits and no decimals.",
+    })
     .optional(),
+
   expected_salary: z
     .string()
-    .regex(/^\d+(\.\d{1,2})?$/, { message: "Invalid salary format (e.g., 60000.00)." })
+    .regex(/^\d{5,}$/, {
+      message: "Must be at least 5 digits and no decimals.",
+    })
     .optional(),
 };
 
@@ -47,15 +68,17 @@ const otpSchema = z.object({
     .regex(/^\d{6}$/, { message: "OTP must be numeric." }),
 });
 
-export default function CareerForm({ jobId, isGeneral }) {
+function CareerFormInner({ jobId, isGeneral }) {
   const { executeRecaptcha } = useGoogleReCaptcha();
-
   const [isOtpVerified, setIsOtpVerified] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [showOtpInput, setShowOtpInput] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [dropdowns, setDropdowns] = useState({ locations: [], roles: [] });
+  const [dropdowns, setDropdowns] = useState({
+    locations: [],
+    roles: [],
+  });
   const [dropdownsLoaded, setDropdownsLoaded] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFileName, setSelectedFileName] = useState(null);
@@ -90,16 +113,32 @@ export default function CareerForm({ jobId, isGeneral }) {
     return "";
   };
 
-  // Dynamic form schema
   const formSchema = useMemo(() => {
-    return z.object({
-      ...baseSchema,
-      file:
-        selectedFile || selectedFileName
-          ? z.any().optional()
-          : z.any().refine((file) => file instanceof File, { message: "Please upload a resume." }),
-    });
-  }, [selectedFile, selectedFileName]);
+    return z
+      .object({
+        ...baseSchema,
+        preferred_role_name: z.string().optional(), // Add this line
+        file:
+          selectedFile || selectedFileName
+            ? z.any().optional()
+            : z.any().refine((file) => file instanceof File, {
+                message: "Please upload a resume.",
+              }),
+      })
+      .refine(
+        (data) => {
+          // Only require preferred_role_name if isGeneral and preferred_role is "Others"
+          if (isGeneral) {
+            return data.preferred_role_name && data.preferred_role_name.trim().length > 0;
+          }
+          return true;
+        },
+        {
+          message: "Please enter a role name.",
+          path: ["preferred_role_name"],
+        }
+      );
+  }, [selectedFile, selectedFileName, isGeneral]);
 
   // Forms
   const emailForm = useForm({
@@ -119,10 +158,12 @@ export default function CareerForm({ jobId, isGeneral }) {
       phone: "",
       email: "",
       preferred_location: "",
+      current_location: "",
       referred_employee_name: "",
       employee_referral_code: "",
       age: "",
       preferred_role: isGeneral ? "" : jobId?.toString() || "",
+      notice_period: "",
       current_salary: "",
       expected_salary: "",
       file: null,
@@ -134,7 +175,8 @@ export default function CareerForm({ jobId, isGeneral }) {
     try {
       const { data } = await api.get("/career/jobs/dropdowns");
 
-      if (!data.success) throw new Error(data.message || "Failed to fetch dropdowns");
+      if (!data.success)
+        throw new Error(data.message || "Failed to fetch dropdowns");
       setDropdowns(data.data || { locations: [], roles: [] });
       setDropdownsLoaded(true);
     } catch (error) {
@@ -152,6 +194,7 @@ export default function CareerForm({ jobId, isGeneral }) {
       preferred_location: dropdowns.locations.some((loc) => loc.value.toString() === data.preferred_location?.toString())
         ? data.preferred_location.toString()
         : "",
+      current_location: data.current_location || "",
       referred_employee_name: data.referred_employee_name || "",
       employee_referral_code: data.employee_referral_code || "",
       age: data.age?.toString() || "",
@@ -160,12 +203,19 @@ export default function CareerForm({ jobId, isGeneral }) {
           ? data.preferred_role?.toString() || ""
           : ""
         : jobId?.toString() || "",
+     notice_period: noticePeriod.includes(data.notice_period)
+      ? data.notice_period
+      : "",
       current_salary: data.current_salary?.toString() || "",
-      expected_salary: data.current_salary?.toString() || "",
+      expected_salary: data.expected_salary?.toString() || "",
       file: null,
     };
-    form.reset(validatedData);
+    form.reset(validatedData)
+    
+    ;
   };
+
+
 
   // Check cookies
   useEffect(() => {
@@ -191,7 +241,9 @@ export default function CareerForm({ jobId, isGeneral }) {
   const handleEmailSubmit = async (values) => {
     try {
       setLoading(true);
-      const { data } = await api.post("/web/careers/send-otp", { email: values.email });
+      const { data } = await api.post("/web/careers/send-otp", {
+        email: values.email,
+      });
 
       if (!data.success) throw new Error(data.message || "Failed to send OTP");
       setEmail(values.email);
@@ -242,12 +294,13 @@ export default function CareerForm({ jobId, isGeneral }) {
       return;
     }
 
-    // Get reCAPTCHA token
-    if (!executeRecaptcha) {
-      toast.error("reCAPTCHA not ready. Please try again.");
+    const recaptchaToken = await executeRecaptcha("job_form");
+
+    if (!recaptchaToken) {
+      toast.error("Failed to get reCAPTCHA token. Please try again.");
+      setIsSubmitting(false);
       return;
     }
-    const recaptchaToken = await executeRecaptcha("job_application");
 
     const formData = new FormData();
 
@@ -255,13 +308,15 @@ export default function CareerForm({ jobId, isGeneral }) {
     formData.append("applicant[email]", values.email);
     formData.append("applicant[phone]", values.phone);
     formData.append("applicant[preferred_location]", values.preferred_location);
+    formData.append("applicant[current_location]", values.current_location);
     formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
     formData.append("applicant[employee_referral_code]", values.employee_referral_code || "");
     formData.append("applicant[age]", values.age);
+    formData.append("applicant[notice_period]", values.notice_period);
     formData.append("applicant[current_salary]", values.current_salary || "");
     formData.append("applicant[expected_salary]", values.expected_salary || "");
     // Append reCAPTCHA token
-    formData.append("recaptchaToken", recaptchaToken);
+    formData.append("recaptcha", recaptchaToken);
 
     if (selectedFile) {
       formData.append("applicant[file]", selectedFile);
@@ -271,6 +326,7 @@ export default function CareerForm({ jobId, isGeneral }) {
     const apiUrl = isGeneral ? "/web/careers/general_application" : "/web/careers/job_application";
     if (isGeneral) {
       formData.append("general_application[role_id]", values.preferred_role);
+      formData.append("general_application[preferred_role_name]", values.preferred_role_name);
     } else {
       formData.append("job_application[job_id]", jobId || "");
     }
@@ -284,10 +340,17 @@ export default function CareerForm({ jobId, isGeneral }) {
 
       if (!response.data.success) throw new Error(response.data.message || "Failed to submit application");
 
-      Cookies.set("applicantData", JSON.stringify({ ...values, file: selectedFile ? selectedFile.name : selectedFileName }), {
-        expires: 7,
-        sameSite: "strict",
-      });
+      Cookies.set(
+        "applicantData",
+        JSON.stringify({
+          ...values,
+          file: selectedFile ? selectedFile.name : selectedFileName,
+        }),
+        {
+          expires: 7,
+          sameSite: "strict",
+        }
+      );
 
       // form.reset();
       setSelectedFile(null);
@@ -388,6 +451,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                             render={({ field }) => (
                               <FormItem>
                                 <FormControl>
+                                  {/* <label className="sr-only"> Mail</label> */}
                                   <Input
                                     type="email"
                                     className="bg-gray-50 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
@@ -395,7 +459,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                                     {...field}
                                   />
                                 </FormControl>
-                                <FormMessage className="text-red-500 text-sm" />
+                                <FormMessage className="text-red-500 text-xs" />
                               </FormItem>
                             )}
                           />
@@ -440,7 +504,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                                     {...field}
                                   />
                                 </FormControl>
-                                <FormMessage className="text-red-500 text-sm" />
+                                <FormMessage className="text-red-500 text-xs" />
                               </FormItem>
                             )}
                           />
@@ -480,7 +544,10 @@ export default function CareerForm({ jobId, isGeneral }) {
       {/* Main Form */}
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5"
+          >
             <div
               className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${
                 isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
@@ -498,7 +565,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                     height={16}
                     className="w-[14px] lg:w-[24px] filter brightness-0 invert"
                   />
-                  <span className="font-medium ml-1 lg:ml-1.5 text-white">Choose</span>
+                  <span className="font-medium ml-1 lg:ml-1.5 text-white">Upload Resume</span>
                   <input
                     type="file"
                     name="file"
@@ -527,12 +594,12 @@ export default function CareerForm({ jobId, isGeneral }) {
                     <FormControl>
                       <Input
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Name"
+                        placeholder="Name*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -547,12 +614,12 @@ export default function CareerForm({ jobId, isGeneral }) {
                       <Input
                         type="tel"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Phone Number"
+                        placeholder="Phone Number*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -567,7 +634,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                       <Input
                         type="email"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Enter your email"
+                        placeholder="Enter your email*"
                         {...field}
                         onFocus={() => {
                           setIsModalOpen(true);
@@ -575,12 +642,32 @@ export default function CareerForm({ jobId, isGeneral }) {
                         disabled={isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
             </div>
-            <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
+            <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
+              {/* Current Location Field */}
+              <FormField
+                control={form.control}
+                name="current_location"
+                render={({ field }) => (
+                  <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                    <Input
+                      {...field}
+                      type="text"
+                      placeholder="Current Location"
+                      className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      // disabled={!isOtpVerified}
+                    />
+                    <FormMessage className="text-red-500 text-xs" />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
+              {/* Preferred Location Field */}
               <FormField
                 control={form.control}
                 name="preferred_location"
@@ -592,17 +679,17 @@ export default function CareerForm({ jobId, isGeneral }) {
                       // disabled={!isOtpVerified}
                     >
                       <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                        <SelectValue placeholder="Preferred Location" />
+                        <SelectValue placeholder="Preferred Location*" />
                       </SelectTrigger>
                       <SelectContent className="bg-white border-gray-300">
                         {dropdowns.locations.map((location) => (
                           <SelectItem key={location?.value} value={String(location?.value)}>
-                            {location?.label || "-"}
+                            {toSentenceCase(location?.label) || "-"}
                           </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -621,7 +708,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -640,7 +727,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -660,15 +747,65 @@ export default function CareerForm({ jobId, isGeneral }) {
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
             </div>
+            {isGeneral && (
+              <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
+                <FormField
+                  control={form.control}
+                  name="preferred_role"
+                  render={({ field }) => (
+                    <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value}
+                        // disabled={!isOtpVerified}
+                      >
+                        <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                          <SelectValue placeholder="Department*" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white border-gray-300">
+                          {dropdowns.roles.map((role) => (
+                            <SelectItem key={role?.value} value={String(role?.value)}>
+                              {role?.label || "-"}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage className="text-red-500 text-xs" />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            )}
+            {isGeneral && (
+              <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
+                <FormField
+                  control={form.control}
+                  name="preferred_role_name"
+                  render={({ field }) => (
+                    <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                      <FormControl>
+                        <Input
+                          className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                          placeholder="Preferred Role*"
+                          {...field}
+                          // disabled={!isOtpVerified}
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-500 text-xs" />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            )}
             <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
               <FormField
                 control={form.control}
-                name="preferred_role"
+                name="notice_period"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
                     <Select
@@ -677,17 +814,15 @@ export default function CareerForm({ jobId, isGeneral }) {
                       // disabled={!isOtpVerified}
                     >
                       <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                        <SelectValue placeholder="Preferred Role" />
+                        <SelectValue placeholder="Notice Period*" />
                       </SelectTrigger>
                       <SelectContent className="bg-white border-gray-300">
-                        {dropdowns.roles.map((role) => (
-                          <SelectItem key={role?.value} value={String(role?.value)}>
-                            {role?.label || "-"}
-                          </SelectItem>
+                        {noticePeriod.map((notice) => (
+                          <SelectItem key={notice} value={notice}>{notice}</SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -701,14 +836,15 @@ export default function CareerForm({ jobId, isGeneral }) {
                     <FormControl>
                       <Input
                         type="number"
-                        step="0.01"
+                        inputMode="numeric"
+                        pattern="\d*"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Current Salary (Month)"
+                        placeholder="Current Monthly Salary*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -722,14 +858,15 @@ export default function CareerForm({ jobId, isGeneral }) {
                     <FormControl>
                       <Input
                         type="number"
-                        step="0.01"
+                        inputMode="numeric"
+                        pattern="\d*"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Expected Salary (Month)"
+                        placeholder="Expected Monthly Salary*"
                         {...field}
                         // disabled={!isOtpVerified}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -750,9 +887,16 @@ export default function CareerForm({ jobId, isGeneral }) {
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
                     <FormControl>
                       <div className="flex items-center">
-                        <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[100px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[6px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
-                          <Image src="/images/icon-upload.svg" alt="icon-upload" width={26} height={21} />
-                          <span className="font-medium ml-1 lg:ml-1.5">Choose</span>
+                        <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[110px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[10px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
+                          <Image
+                            src="/images/icon-upload.svg"
+                            alt="icon-upload"
+                            width={26}
+                            height={21}
+                          />
+                          <span className="font-medium ml-1 lg:ml-1.5">
+                            Upload Resume*
+                          </span>
                           <input
                             type="file"
                             accept=".pdf,.jpeg,.png"
@@ -772,7 +916,7 @@ export default function CareerForm({ jobId, isGeneral }) {
                         </span>
                       </div>
                     </FormControl>
-                    <FormMessage className="text-red-500 text-sm" />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
@@ -798,5 +942,23 @@ export default function CareerForm({ jobId, isGeneral }) {
         </Form>
       </div>
     </div>
+  );
+}
+
+export default function CareerForm({ jobId, isGeneral }) {
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  return (
+    <GoogleReCaptchaProvider
+      reCaptchaKey={siteKey}
+      scriptProps={{
+        async: false,
+        defer: false,
+        appendTo: "head",
+        nonce: undefined,
+      }}
+    >
+      <CareerFormInner jobId={jobId} isGeneral={isGeneral} />
+    </GoogleReCaptchaProvider>
   );
 }

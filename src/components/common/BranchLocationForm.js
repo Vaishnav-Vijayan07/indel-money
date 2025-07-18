@@ -9,13 +9,14 @@ export default function BranchLocationForm() {
     const [distance, setDistance] = useState("");
 
     const handleSearch = () => {
-        
+
     };
 
     return (
         <form action="/search">
             <div className="bg-white shadow-lg rounded-[30px] px-[50px] py-[30px] flex gap-[30px] mb-[35px]">
                 <div className="basis-1/5">
+                    <label className="sr-only"> Select State</label>
                     <select
                         className="px-[10px] py-[20px] border rounded-[10px] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] h-[48px]"
                         value={state}
@@ -27,6 +28,7 @@ export default function BranchLocationForm() {
                     </select>
                 </div>
                 <div className="basis-1/5">
+                    <label className="sr-only"> District</label>
                     <select
                         className="px-[10px] py-[20px] border rounded-[10px] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] h-[48px]"
                         value={district}
@@ -38,6 +40,7 @@ export default function BranchLocationForm() {
                     </select>
                 </div>
                 <div className="basis-1/5">
+                    <label className="sr-only"> Location</label>
                     <select
                         className="px-[10px] py-[20px] border rounded-[10px] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] h-[48px]"
                         value={location}
@@ -49,6 +52,7 @@ export default function BranchLocationForm() {
                     </select>
                 </div>
                 <div className="basis-1/5">
+                    <label className="sr-only"> Distance</label>
                     <select
                         className="px-[10px] py-[20px] border rounded-[10px] bg-[#E7EFF9] text-[rgba(50,50,50,0.60)] h-[48px]"
                         value={distance}

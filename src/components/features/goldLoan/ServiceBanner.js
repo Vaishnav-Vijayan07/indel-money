@@ -2,16 +2,7 @@
 import PageBreadcrumb from "../../common/PageBreadcrumb";
 import Image from "next/image";
 import HomeMarquee from "../home/HomeMarquee";
-import { useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
-
-// Generate a random gold rate between 7000 and 8000
-const getRandomGoldRate = () => {
-  const min = 7000;
-  const max = 8000;
-  const rand = min + Math.random() * (max - min);
-  return rand.toFixed(0);
-};
 
 function ServiceBannerItem({ item }) {
   return (
@@ -25,16 +16,15 @@ function ServiceBannerItem({ item }) {
           className="w-full h-full max-w-[15px] xl:max-w-[20px] 3xl:max-w-[30px] object-contain"
         />
       </div>
-      <div className="w-[calc(100%-45px)] xl:w-[calc(100%-55px)] 3xl:w-[calc(100%-66px)] pl-[10px] 4xs:pl-[20px] text-[13px] 2xl:text-[16px] 3xl:text-[18px] font-medium leading-[1.2] text-white">
+      <h3 className="w-[calc(100%-45px)] xl:w-[calc(100%-55px)] 3xl:w-[calc(100%-66px)] pl-[10px] 4xs:pl-[20px] text-[13px] 2xl:text-[16px] 3xl:text-[18px] font-medium leading-[1.2] text-white">
         {item.title}
-      </div>
+      </h3>
     </div>
   );
 }
 
-export default function ServiceBanner({ bannerIcons, title, announcement_text, gold_rate_text, banner_image, banner_image_mobile, alt }) {
+export default function ServiceBanner({ bannerIcons, title, announcement_text, gold_rate_text, banner_image, banner_image_mobile, alt, goldRate }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-  const [goldLiveRate] = useState(getRandomGoldRate());
   return (
     <section className="w-full relative overflow-hidden before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:-z-1 before:bg-[linear-gradient(90deg,rgba(0,0,0,0.5)_0%,rgba(102,102,102,0)_100%)]">
       {isMobile ? (
@@ -76,7 +66,7 @@ export default function ServiceBanner({ bannerIcons, title, announcement_text, g
           </div>
         </div>
       </div>
-      <HomeMarquee announcementText={announcement_text} goldRateLabel={gold_rate_text} goldRate={goldLiveRate} />
+      <HomeMarquee announcementText={announcement_text} goldRateLabel={gold_rate_text} goldRate={goldRate} />
     </section>
   );
 }

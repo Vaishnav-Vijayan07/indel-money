@@ -3,8 +3,6 @@ import {
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import Image from "next/image";
@@ -131,7 +129,7 @@ function DropdownMenu({ items }) {
     <ul className="flex flex-col p-[5px] 3xl:p-[10px] w-[180px] lg:w-[200px] 2xl:w-[240px]">
       {items.map((item, index) => (
         <li key={index}>
-          <Link href={item.link} legacyBehavior passHref>
+          <Link href={item.link} passHref>
             <MenubarItem>
               <div
                 className={`${
@@ -154,7 +152,7 @@ function MegaMenu({ items }) {
     <ul className="grid md:grid-cols-2 p-[10px] 3xl:p-[15px] w-[360px] lg:w-[420px] 2xl:w-[576px] 3xl:w-[600px]">
       {items.map((item, index) => (
         <li key={index}>
-          <Link href={item.link} legacyBehavior passHref>
+          <Link href={item.link} passHref>
             <MenubarItem className="p-0">
               <div className="group flex flex-row items-center p-[10px] 3xl:p-[10px] cursor-pointer">
                 <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">

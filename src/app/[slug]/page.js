@@ -1,15 +1,17 @@
+//export const dynamic = "force-dynamic";
 import PrivacyPolicy from "@/components/features/privacy/PrivacyPolicy";
-const { notFound } = await import("next/navigation");
+import { notFound } from "next/navigation";
 
 async function fetchData(type) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/policies?type=${type}`, {
       cache: "no-store", // Ensure fresh data
+      // cache: "force-cache",
+      // next: { revalidate: 60 },
     });
 
     const result = await response.json();
     const PolicyData = result.policy;
-    console.log("result", result);
 
     if (result.status === "success") {
       return {

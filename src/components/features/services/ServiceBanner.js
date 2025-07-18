@@ -1,5 +1,4 @@
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
-import Image from "next/image";
 
 export default function ServiceBanner({ page_super_title, page_title, image, alt }) {
   return (
@@ -38,18 +37,12 @@ export default function ServiceBanner({ page_super_title, page_title, image, alt
             <PageBreadcrumb />
           </div>
         </div>
-        <div className="relative sm:hidden block w-full h-auto">
+        {/* <div className="relative sm:hidden block w-full h-auto">
           <div className="w-full max-w-[320px] 4xs:max-w-[400px] h-auto aspect-[400/280] absolute z-0 -right-[var(--container-padding)] bottom-[120px]">
             <Image src="/images/redBgElement.png" alt="value-image" fill sizes="400px" className="object-cover" />
           </div>
-          {/* <Image
-            src="/images/serviceBannerPic.png"
-            alt="value-image"
-            width={395}
-            height={500}
-            className="aspect-[395/500] object-cover relative max-w-[395px] ml-auto"
-          /> */}
-        </div>
+         
+        </div> */}
       </div>
     </section>
   );

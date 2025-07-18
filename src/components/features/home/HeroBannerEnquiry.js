@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import EnquiryForm from "../../common/EnquiryForm";
 import api from "@/lib/api/axios";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function HeroBannerEnquiry() {
   const [open, setOpen] = useState(true);
@@ -27,7 +27,7 @@ const postEnquiryData = async (enquiryData) => {
       payload
     );
 
-    console.log("API Response:", data);
+    
 
     if (data?.status === "success" || data?.success) {
       toast.success("Enquiry submitted successfully!");
@@ -88,9 +88,9 @@ const postEnquiryData = async (enquiryData) => {
           open ? "max-sm:rounded-tl-[10px]" : "rounded-tl-0"
         } w-full h-auto relative bg-[#c0dbff] rounded-tr-[10px] rounded-br-[10px] rounded-bl-[10px] rounded-tl-0 p-[30px_20px_20px] 4xs:p-[40px_30px_30px] sm:p-[10px_15px] lg:p-[20px_20px] 3xl:p-[20px_35px]`}
       >
-        <div className="text-[20px] sm:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[24px] leading-[1.2] font-medium text-black mb-[15px] 4xs:mb-[30px] sm:mb-2 xl:mb-3 3xl:mb-4">
+        <h2 className="text-[20px] sm:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[24px] leading-[1.2] font-medium text-black mb-[15px] 4xs:mb-[30px] sm:mb-2 xl:mb-3 3xl:mb-4">
           Select the type of service you are looking for?
-        </div>
+        </h2>
 
         <div
           className={`${

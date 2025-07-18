@@ -16,10 +16,10 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
   return (
     <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
       {/* Old design start */}
-      <div className="container mx-auto px-4 hidden">
+      <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center">
           {/* Title */}
-          <div
+          <h2
             className="w-full xl:w-[calc(100%-700px)] 2xl:w-[calc(100%-950px)] 3xl:w-[calc(100%-1020px)] text-black text-title1 font-normal max-xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold"
             dangerouslySetInnerHTML={{ __html: scheme_title || "" }}
           />
@@ -44,12 +44,12 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
             >
               {schemes?.map((type, index) => (
                 <SwiperSlide key={index}>
-                  <div
-                    className={`w-full h-[40px] 2xl:h-[50px] 3xl:h-[60px] text-[12px] 2xl:text-[16px] 3xl:text-[18px] px-[10px] font-bold flex items-center justify-center rounded-[100px] cursor-pointer transition-all duration-300
+                  <h4
+                    className={`w-full h-[40px] 2xl:h-[50px] 3xl:h-[60px] text-[12px] 2xl:text-[16px] 3xl:text-[18px] px-[10px] font-bold flex items-center justify-center rounded-[100px] cursor-pointer transition-all duration-300 text-center
                                         ${activeIndex === index ? "bg-base1 text-white thumbActive" : "bg-[#CFDFFE] text-black"}`}
                   >
                     {type}
-                  </div>
+                  </h4>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -102,7 +102,7 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
         </div>
       </div>
       {/* Old design end */}
-      <div className="container">
+      {/* <div className="container">
         <div
           className="w-full xl:w-[calc(100%-700px)] 2xl:w-[calc(100%-950px)] 3xl:w-[calc(100%-1020px)] text-black text-title1 font-normal mb-[40px] [&>span]:text-base2 [&>span]:font-bold"
           dangerouslySetInnerHTML={{ __html: scheme_title || "" }}
@@ -180,7 +180,7 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
         </div>
 
 
-      </div>
+      </div> */}
     </section>
   );
 }

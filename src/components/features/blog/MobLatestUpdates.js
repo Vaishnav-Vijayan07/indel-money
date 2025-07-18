@@ -77,8 +77,8 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
               <SwiperSlide key={index}>
                 <div className="group w-full h-[220px] overflow-hidden rounded-[25px] block relative z-0">
                   <Image
-                    src={item.image}
-                    alt={item?.alt}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
+                    alt={item?.image_alt}
                     fill
                     sizes="380px"
                     className="transition-transform duration-300 object-cover group-hover:scale-105"
@@ -87,7 +87,7 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
                     <div className="text-[12px] text-white line-clamp-1 mb-[2px]"> {item?.posted_on ? formatPostDate(item?.posted_on) : ""}</div>
                     <div className="text-[16px] leading-[1.2] text-white font-bold line-clamp-2 mb-[10px]">{item.title}</div>
                     <Link
-                      href={`/${type}/${item?.slug}`}
+                      href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`}
                       className="text-[12px] leading-none font-bold text-white uppercase hover:text-base2 transition-color duration-300 flex items-center"
                     >
                       Read More
@@ -136,7 +136,10 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
           >
             {sliderItems?.map((item, index) => (
               <SwiperSlide key={index}>
-                <Link href={`/${type}/${item?.slug}`} className="group w-full h-auto block bg-white p-[10px] rounded-[16px]">
+                <Link
+                  href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`}
+                  className="group w-full h-auto block bg-white p-[10px] rounded-[16px]"
+                >
                   <div className="w-full h-[100px] rounded-[16px] overflow-hidden relative z-0 mb-[12px]">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}

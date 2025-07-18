@@ -1,3 +1,4 @@
+//export const dynamic = "force-dynamic";
 import AboutBanner from "../../components/features/about/AboutBanner";
 import AboutFinacial from "../../components/features/about/AboutFinacial";
 import AboutSupermarket from "../../components/features/about/AboutSupermarket";
@@ -20,8 +21,9 @@ import MobLifeIndel from "../../components/features/about/MobLifeIndelInfo";
 async function fetchAboutData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/about`, {
-      cache: "no-store",
-      // next: { revalidate: 600 },
+      // cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
 
@@ -39,8 +41,6 @@ async function getMetaData() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=about`);
     const result = await response.json();
     const meta = result.data;
-
-    console.log("meta", meta);
 
     if (result.status === "success") {
       return {

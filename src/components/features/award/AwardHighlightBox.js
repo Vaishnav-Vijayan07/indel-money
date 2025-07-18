@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import Image from "next/image";
 import "./AwardHighlightBox.css";
 import { renderHtml } from "@/lib/utils/htmlParser";
-import { useState } from "react";
 
 const slides = [
   {
@@ -57,7 +56,7 @@ const slides = [
 ];
 
 export default function AwardHighlightBox({ variant = "default", items = slides }) {
-  console.log(items)
+  
   return (
     <div className="relative z-0 w-full h-full block rounded-[35px] sm:bg-[#B7D0FF] bg-[#fff] sm:shadow-none  shadow-[0_0_15px_0_rgba(0,0,0,0.10)] p-[15px_20px] sm:p-[30px_30px] lg:p-[30px] 2xl:p-[40px_30px_40px_40px] 3xl:p-[80px_50px_50px_70px]">
       <Swiper

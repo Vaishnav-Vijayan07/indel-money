@@ -3,11 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
-import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
+import { EffectCoverflow, Navigation } from "swiper/modules";
 import "./gallery.css";
 import Image from "next/image";
 import { useState } from "react";
-import Link from "next/link";
 
 const slides = [
   {

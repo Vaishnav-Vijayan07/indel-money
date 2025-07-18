@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Mousewheel } from "swiper/modules";
 import "swiper/css";
@@ -113,9 +112,9 @@ export default function MobYearsInception({ inceptionslides, title, years }) {
                             </div>
                           )}
                         </div>
-                        <div className="w-[calc(100%-30px)] 4xs:w-[calc(100%-40px)] pl-[10px] 4xs:pl-[20px]">
-                          <div className="w-full h-auto">
-                            <div className="w-full h-auto mb-[10px]">
+                        <div className="w-[calc(100%-30px)] 4xs:w-[calc(100%-40px)] pl-[10px] 4xs:pl-[20px] h-full flex flex-wrap item-center">
+                          <div className="w-full h-auto flex-col-reverse justify-center flex flex-wrap item-center">
+                            {/* <div className="w-full h-auto mb-[10px]">
                               <Image
                                 src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/history1.jpg"}
                                 alt={item?.image_alt ? item?.image_alt : "History Image"}
@@ -123,7 +122,7 @@ export default function MobYearsInception({ inceptionslides, title, years }) {
                                 height={140}
                                 className="rounded-[18px] object-cover"
                               />
-                            </div>
+                            </div> */}
                             <h3 className="text-[14px] 4xs:text-[15px] leading-[1.2] text-white font-semibold mb-[5px]">{item?.title}</h3>
                             <p className="max-4xs:text-[12px] text-white">{item?.description}</p>
                           </div>

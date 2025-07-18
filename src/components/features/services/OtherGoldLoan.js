@@ -2,43 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function OtherGoldLoan({ services }) {
-  const slides = [
-    {
-      image: "/images/OthrLoan01.jpg",
-      alt: "loan-1",
-      title: "MSME LOAN",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at massa neque. Aliquam mi dui, ultricies vitae vehicula at, feugiat et ipsum. Nunc vel ante id neque ultricies rutrum.",
-    },
-    {
-      image: "/images/OthrLoan02.jpg",
-      alt: "loan-2",
-      title: "CONSUMER DURABLE  LOAN",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at massa neque. Aliquam mi dui, ultricies vitae vehicula at, feugiat et ipsum. Nunc vel ante id neque ultricies rutrum.",
-    },
-    {
-      image: "/images/OthrLoan03.jpg",
-      alt: "loan-3",
-      title: "LOAN AGAINST PROPERTY",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at massa neque. Aliquam mi dui, ultricies vitae vehicula at, feugiat et ipsum. Nunc vel ante id neque ultricies rutrum.",
-    },
-    {
-      image: "/images/OthrLoan04.jpg",
-      alt: "loan-4",
-      title: "FOREIGN EXCHANGE",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at massa neque. Aliquam mi dui, ultricies vitae vehicula at, feugiat et ipsum. Nunc vel ante id neque ultricies rutrum.",
-    },
-  ];
-
   return (
     <section className="relative z-1 w-full pb-[40px] xl:pb-[40px] 2xl:pb-[90px]">
       <div className="container">
         <div className="relative z-1 flex flex-wrap -my-[25px] -mx-[10px] lg:-mx-[15px] 2xl:-mx-[20px] 3xl:-mx-[30px]">
           {services?.map((item, index) => (
-            <div key={index} className="w-full md:w-1/2 py-[15px] 2xl:py-[25px] px-[10px] lg:px-[15px] 2xl:px-[20px] 3xl:px-[30px]">
+            <div
+              key={index}
+              className="w-full md:w-1/2 py-[15px] 2xl:py-[25px] px-[10px] lg:px-[15px] 2xl:px-[20px] 3xl:px-[30px]"
+            >
               <ServiceCard item={item} />
             </div>
           ))}
@@ -51,7 +23,10 @@ export default function OtherGoldLoan({ services }) {
 function ServiceCard({ item }) {
   return (
     <div className="group w-full h-full flex gap-[10px] xl:gap-[20px] 2xl:gap-[25px] 3xl:gap-[30px]">
-      <Link href="/" className="group w-[160px] lg:w-[200px] xl:w-[255px] 3xl:w-[400px] overflow-hidden rounded-[20px]">
+      <Link
+        href={item?.slug ? item?.slug : "#"}
+        className="group w-[160px] lg:w-[200px] xl:w-[255px] 3xl:w-[400px] overflow-hidden rounded-[20px]"
+      >
         <Image
           src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/OthrLoan01.jpg"}
           width={400}
@@ -72,7 +47,7 @@ function ServiceCard({ item }) {
         {/* LEARN MORE Link */}
         <div>
           <Link
-            href="/"
+            href={item?.slug ? item?.slug : "#"}
             className="text-[10px] lg:text-[11px] 2xl:text-[14px] 3xl:text-[16px] font-normal flex items-center mt-2 2xl:mt-3 hover:text-base2 transition-color duration-300"
           >
             LEARN MORE

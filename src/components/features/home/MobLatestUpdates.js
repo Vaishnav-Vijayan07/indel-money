@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import "./Home.css";
+import { formatPostDate } from "../../../lib/utils";
 
 const slides = [
   {
@@ -48,19 +49,13 @@ const slides = [
 ];
 
 export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blog" }) {
-
-  
-
   return (
     <section className="w-full py-[30px] bg-[#cae5f4] rounded-[20px_20px_0_0] overflow-hidden">
       <div className="container">
         <div className="mb-[25px]">
           <div className="flex justify-between items-center gap-2 mb-[15px] @sm:mb-[20px]">
             <h3 className="text-title1 font-medium text-black">{sliderTitle}</h3>
-            <Link
-              href="/blogs"
-              className="text-[12px] leading-none font-bold flex items-center hover:text-base2 transition-color duration-300"
-            >
+            <Link href={type} className="text-[12px] leading-none font-bold flex items-center hover:text-base2 transition-color duration-300">
               VIEW ALL
               <Image src="/images/icon-right.svg" width={5} height={9} alt="right" className="ml-[5px]" />
             </Link>
@@ -86,7 +81,7 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
                     className="transition-transform duration-300 object-cover group-hover:scale-105"
                   />
                   <div className="w-full h-auto absolute inset-0 top-auto p-[20px] bg-gradient-to-t from-black/80 to-transparent">
-                    <div className="text-[12px] text-white line-clamp-1 mb-[2px]">{item.date}</div>
+                    <div className="text-[12px] text-white line-clamp-1 mb-[2px]">{item.event_date ? formatPostDate(item.event_date) : ""}</div>
                     <div className="text-[16px] leading-[1.2] text-white font-bold line-clamp-2 mb-[10px]">{item.title}</div>
                     <Link
                       href={`/${type}/${item?.slug}`}
@@ -149,9 +144,12 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
                     />
                   </div>
                   <div className="w-full h-auto">
-                    <div className="text-[10px] leading-none font-normal text-[#505050] line-clamp-1 mb-[2px]">{item.date}</div>
+                    <div className="text-[10px] leading-none font-normal text-[#505050] line-clamp-1 mb-[2px]">
+                      {" "}
+                      {formatPostDate(item?.event_date)}
+                    </div>
                     <div className="text-[12px] leading-[1.2] text-black font-medium line-clamp-2 mb-[5px]">{item.title}</div>
-                    <div className="text-[10px] leading-[1.4] text-[#2d2d2d] font-normal line-clamp-3 mb-[5px]">{item.title}</div>
+                    <div className="text-[10px] leading-[1.4] text-[#2d2d2d] font-normal line-clamp-3 mb-[5px]">{item.description}</div>
                   </div>
                 </Link>
               </SwiperSlide>

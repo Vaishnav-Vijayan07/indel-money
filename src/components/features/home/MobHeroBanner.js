@@ -11,10 +11,8 @@ import "swiper/css/effect-fade";
 import Link from "next/link";
 
 import "./Home.css";
-import EnquiryForm from "@/components/common/EnquiryForm";
 
-export default function MobHeroBanner({ heroBanner, initialData, announcement }) {
-  console.log("heroBanner", heroBanner);
+export default function MobHeroBanner({ heroBanner, initialData, announcement, goldRate }) {
   return (
     <section className="w-full block relative z-0 overflow-hidden">
       <Swiper
@@ -39,14 +37,15 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement })
               alt={item.image_alt_text}
               fill
               sizes="100vw"
-              priority
+              priority={index === 0}
+              fetchPriority={index === 0 ? "high" : "auto"}
               className="-z-2 object-cover"
             />
             <div className="container">
               <div className="max-w-full">
-                <h1 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[10px] 4xs:mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
+                <h2 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[10px] 4xs:mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
                   {item?.title ? renderHtml(item.title) : ""}
-                </h1>
+                </h2>
                 <Link href={item?.button_link} className="btn btn-base2 max-w-[130px]">
                   {item?.button_text}
                 </Link>
@@ -59,6 +58,7 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement })
         announcementText={announcement}
         goldRateLabel={initialData?.pageContent?.gold_rate_label}
         goldRateIcon={initialData?.pageContent?.gold_rate_icon}
+        goldRate={goldRate}
       />
       <HeroBannerEnquiry />
     </section>

@@ -29,7 +29,7 @@ const LatestUpdatesSlide = memo(({ slides, className, type = "blog" }) => {
             key={index}
             className="h-[calc(420px/3)]! lg:h-[calc(440px/3)]! xl:h-[calc(468px/3)]! 2xl:h-[calc(576px/3)]! 3xl:h-[calc(700px/3)]!"
           >
-            <Link href={`/${type}/${item?.slug}`} prefetch={false}>
+            <Link href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`  } prefetch={false}>
               {type == "indel-money-cares" ? (
                 <EventCard className={className} item={item} type={type} />
               ) : (

@@ -113,4 +113,9 @@ export const defaultMeta = {
     description: "Find the nearest branch of Indel Money.",
     keywords: "branch locator, nearby branch, location finder",
   },
+  indelcares: {
+    title: "Indel Money Cares | Indel Money",
+    description: "Discover how Indel Money is committed to corporate social responsibility and community well-being.",
+    keywords: "Indel Money Cares, CSR, community support, social responsibility, Indel Money initiatives",
+  },
 };

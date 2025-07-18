@@ -1,3 +1,4 @@
+//export const dynamic = "force-dynamic";
 import ServiceBanner from "../../components/features/goldLoan/ServiceBanner";
 import StepGoldLoan from "../../components/features/home/StepGoldLoan";
 import StepGoldLoanCalculator from "../../components/features/home/StepGoldLoanCalculator";
@@ -15,15 +16,14 @@ import MobInstantHasslefree from "../../components/features/goldLoan/MobInstantH
 import MobGoldLoanServices from "../../components/features/goldLoan/MobGoldLoanServices";
 import MobGoldLoanScheme from "../../components/features/goldLoan/MobGoldLoanScheme";
 import MobGoldLoanFaq from "../../components/features/goldLoan/MobGoldLoanFaq";
-import { title } from "process";
 import { defaultMeta } from "@/constants/constants";
 
 async function fetchGoldLoanData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-loan`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "no-store",
-      //next: { revalidate: 600 },
+      // cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 600 },
     });
     const result = await response.json();
     const goldloanData = result.data;
@@ -64,6 +64,28 @@ async function fetchGoldLoanData() {
       GoldloanBenefits: null,
       error: "Failed to fetch service data",
     };
+  }
+}
+
+async function fetchGoldRate() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/gold-rate`, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const result = await response.json();
+
+    if (result?.success && result?.goldRate) {
+      return { data: result.goldRate, error: null };
+    }
+
+    return { data: null, error: result?.message || "Invalid response from gold rate API" };
+  } catch (error) {
+    return { data: null, error: "Failed to fetch gold rate" };
   }
 }
 
@@ -158,6 +180,7 @@ export async function generateMetadata() {
 export default async function GoldLoan() {
   const { steps, contents, bannerIcons, schemes, faqs, features, GoldloanBenefits, announcement } = await fetchGoldLoanData();
   const flattenedFeatures = features?.flat()?.filter((item) => !item.is_center);
+  const { data: goldRateData, error: goldRateError } = await fetchGoldRate();
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
   }
@@ -173,6 +196,7 @@ export default async function GoldLoan() {
           banner_image={contents?.banner_image}
           alt={contents?.banner_alt}
           banner_image_mobile={contents?.banner_image_mobile}
+          goldRate={goldRateData}
         />
       </div>
       <div className="block sm:hidden">
@@ -183,6 +207,7 @@ export default async function GoldLoan() {
           gold_rate_text={contents?.gold_rate_text}
           banner_image={contents?.banner_image_mobile}
           alt={contents?.banner_alt}
+          goldRate={goldRateData}
         />
       </div>
 
@@ -275,7 +300,7 @@ export default async function GoldLoan() {
         <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
       </div>
       <div className="block sm:hidden">
-        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
+        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} type="goldloan" />
       </div>
     </>
   );
