@@ -1,6 +1,11 @@
 //export const dynamic = "force-dynamic";
+import { headers } from "next/headers";
 import HomeClient from "../pages/HomeClient";
 import { defaultMeta } from "@/constants/constants";
+
+function isMobileDevice(userAgent) {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+}
 
 async function fetchHomeData() {
   try {
@@ -140,6 +145,12 @@ export async function generateMetadata() {
 export default async function HomePage() {
   const { data, error } = await fetchHomeData();
   const { data: goldRateData, error: goldRateError } = await fetchGoldRate();
+  // Analyze device from User-Agent
+  const headersList = headers();
+  const userAgent = headersList.get("user-agent") || "";
+  const isMobile = isMobileDevice(userAgent);
+
+  console.log(`User is on ${isMobile ? "mobile" : "desktop"} device`);
 
   return (
     <HomeClient
@@ -149,6 +160,7 @@ export default async function HomePage() {
       branchLocatorData={data?.branchLocatorData}
       initialError={error}
       goldRate={goldRateData}
+      initialIsMobile={isMobile}
     />
   );
 }
