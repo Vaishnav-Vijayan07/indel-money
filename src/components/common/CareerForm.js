@@ -55,11 +55,17 @@ const baseSchema = {
       message: "Must be at least 5 digits and no decimals.",
     })
     .optional(),
-  age: z
-    .preprocess(
-      (val) => (val === "" || val === null || val === undefined ? null : Number(val)),
-      z.number().int({ message: "Age must be an integer" }).min(1, { message: "Age must be at least 1" }).nullable().optional()
-    ),
+   age: z.preprocess(
+    (val) => {
+      // Treat empty, null, undefined as invalid (not optional)
+      if (val === "" || val === null || val === undefined) return "invalid";
+      const num = Number(val);
+      return isNaN(num) ? "invalid" : num;
+    },
+    z
+      .number({ invalid_type_error: "Enter a valid age" })
+  ).optional()
+
   }
 
 const emailSchema = z.object({
