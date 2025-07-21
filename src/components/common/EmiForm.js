@@ -140,7 +140,7 @@ export default function EmiForm() {
           </div>
           <div className="w-full mt-[15px] lg:mt-[20px] 2xl:mt-[30px]">
             <Button
-              className="btn btn-base2 max-w-[100px] lg:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[160px uppercase ml-auto"
+              className="btn btn-base1 max-w-[100px] lg:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[160px uppercase ml-auto"
               type="submit"
             >
               apply now

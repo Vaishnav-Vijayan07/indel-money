@@ -57,7 +57,7 @@ export default function FAQ({ title, description, type = "msme" }) {
             </div>
           </div>
           <div className="w-full lg:w-[60%] 2xl:w-[60%] lg:px-[15px] xl:px-[20px] 2xl:px-[40px]">
-            <div className="contentBx w-full">
+            <div className="contentBx overflow-y-auto xl:max-h-[630px] 3xl:max-h-[600px] w-full">
               <h3 className="font-bold text-black mb-2 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">FAQ</h3>
               <div className="flex items-center justify-between mb-5 pb-[20px] border-b-1 border-[rgba(0,0,0,0.68)]">
                 <h3 className="text-title1 text-black">

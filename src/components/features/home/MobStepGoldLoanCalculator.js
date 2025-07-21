@@ -80,7 +80,7 @@ export default function MobStepGoldLoan({ goldRate }) {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="goldloan">
-            <div className="w-full h-auto p-[30px_25px] bg-[#c0dbff] rounded-[0_20px_20px_20px]">
+            <div className="w-full h-auto p-[30px_25px] bg-[#808080] rounded-[0_20px_20px_20px]">
               <GoldLoanForm goldCaratTypes={formattedGoldCaratTypes} goldTypes={formattedGoldTypes} goldRate={goldRate} />
             </div>
           </TabsContent>

@@ -175,7 +175,7 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
 
         {/* Submit Button */}
         <Button
-          className="btn btn-base2 ml-auto block max-w-[100px] sm:max-w-[80px] lg:max-w-[75px] xl:max-w-[95px] 2xl:max-w-[115px] 3xl:max-w-[140px]"
+          className="btn btn-base1 ml-auto block max-w-[100px] sm:max-w-[80px] lg:max-w-[75px] xl:max-w-[95px] 2xl:max-w-[115px] 3xl:max-w-[140px]"
           type="submit"
         >
           {isSubmitting ? "Submitting..." : "Submit"}

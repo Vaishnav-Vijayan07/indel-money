@@ -45,53 +45,6 @@ export default function FAQ({ pageContents, type = "home" }) {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // Loading state
-  if (loading) {
-    return (
-      <section className="w-full 2xl:pt-[100px] 2xl:pb-[100px] md:pt-[60px] md:pb-[60px] pt-[40px] pb-[40px]">
-        <div className="container">
-          <div className="flex flex-wrap">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="w-full lg:w-[320px] xl:w-[340px] 2xl:w-[520px] 3xl:w-[550px] max-lg:mb-5"
-            >
-              <div className="w-full overflow-hidden rounded-[35px]">
-                <Image
-                  src={
-                    pageContents?.faq_section_image
-                      ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${pageContents?.faq_section_image}`
-                      : "/images/faqImg.webp"
-                  }
-                  alt="aboutImg"
-                  width={550}
-                  height={610}
-                  className="w-full h-full object-cover duration-450 transition-all group hover:scale-[1.1] "
-                />
-              </div>
-            </motion.div>
-            <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-340px)] 2xl:w-[calc(100%-520px)] 3xl:w-[calc(100%-550px)] lg:pl-[30px] xl:pl-[50px] 3xl:pl-[70px]">
-              <div className="contentBx w-full">
-                <h3 className="font-bold text-black mb-1 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">
-                  {pageContents?.faq_section_super_title}
-                </h3>
-                <div className="flex items-center justify-between mb-2 pb-[30px] border-b-1 border-[rgba(0,0,0,0.68)]">
-                  <div className="text-black text-title1 [&>span]:text-base2 [&>span]:font-bold">
-                    {parse(pageContents?.faq_section_title)}
-                  </div>
-                </div>
-                <div className="text-center py-8">
-                  <div className="text-gray-600">Loading FAQs...</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="w-full 2xl:pt-[100px] 2xl:pb-[100px] md:pt-[60px] md:pb-[60px] pt-[40px] pb-[40px]">
@@ -119,7 +72,7 @@ export default function FAQ({ pageContents, type = "home" }) {
             </div>
           </motion.div>
           <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-340px)] 2xl:w-[calc(100%-520px)] 3xl:w-[calc(100%-550px)] lg:pl-[30px] xl:pl-[50px] 3xl:pl-[70px]">
-            <div className="contentBx w-full">
+            <div className="contentBx w-full overflow-y-auto h-[640px]">
               <div className="font-bold text-black mb-1 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">
                 {pageContents?.faq_section_super_title}
               </div>
