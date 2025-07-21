@@ -64,6 +64,7 @@ const baseSchema = {
     },
     z
       .number({ invalid_type_error: "Enter a valid age" })
+      .max(99, "Enter a valid age")
   ).optional()
 
   }
