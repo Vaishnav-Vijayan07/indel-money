@@ -1390,6 +1390,16 @@ const nextConfig = {
         destination: "https://backend.indelmoney.com/uploads/investors/policies/1751284473343.pdf",
         permanent: true,
       },
+      {
+        source: "/careers/branch",
+        destination: "/career",
+        permanent: true,
+      },
+      {
+        source: "/career/customer-service-executive/",
+        destination: "/career",
+        permanent: true,
+      },
     ];
   },
 
