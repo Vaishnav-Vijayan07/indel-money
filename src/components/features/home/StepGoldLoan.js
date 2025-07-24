@@ -21,15 +21,13 @@ export default function StepGoldLoan({ title, loanSteps, className, hideTitle = 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
+              transition={{ duration: 0.6, delay: index * 0.2 }} >
               <div>
                 {/* Arrow - Animated & Hides for last step */}
                 {index !== loanSteps.length - 1 && (
                   <div
-                    className={`absolute left-[110px] md:left-[130px] lg:left-[145px] xl:left-[180px] 2xl:left-[260px] 3xl:left-[265px] max-w-[110px] w-full md:max-w-[140px] lg:max-w-[160px] xl:max-w-[220px]  2xl:max-w-[260px] 3xl:max-w-[380px]   ${
-                      index % 2 === 1 ? "rotate-x-[-180deg] top-1/4" : "top-[30px]"
-                    }`}
+                    className={`absolute left-[110px] md:left-[130px] lg:left-[145px] xl:left-[180px] 2xl:left-[260px] 3xl:left-[265px] max-w-[110px] w-full md:max-w-[140px] lg:max-w-[160px] xl:max-w-[220px]  2xl:max-w-[260px] 3xl:max-w-[380px]   ${index % 2 === 1 ? "rotate-x-[-180deg] top-1/4" : "top-[30px]"
+                      }`}
                   >
                     <Image
                       src="/images/ArrowGold.webp"
@@ -44,13 +42,24 @@ export default function StepGoldLoan({ title, loanSteps, className, hideTitle = 
                 {/* Step Circle - Animated */}
                 <motion.div
                   className="2xl:w-[240px] 2xl:h-[240px] xl:w-[160px] xl:h-[160px] lg:w-[130px] lg:h-[130px] w-[100px] h-[100px] 
-                    lg:p-[35px] p-[15px] rounded-full flex items-center justify-center overflow-hidden group 
-                     bg-gradient-to-b from-transparent to-[#C0DBFF]"
+                    lg:p-[35px] p-[15px] rounded-full flex items-center justify-center group 
+                     bg-gradient-to-b from-transparent to-[#C0DBFF] relative"
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                >
+                  transition={{ duration: 0.5, delay: index * 0.2 }}>
+                  <div className="absolute left-0 top-0 2xl:text-[76px] xl::text-[66px] md:text-[56px] text-[46px] text-base1 font-extrabold text-nunito z-[5]">
+                    1
+                  </div>
+                  <div className="absolute -left-[20px] 2xl:-left-[25px] right-0 -bottom-[35px] 2xl:-bottom-[10px] m-auto h-auto w-[calc(100%+40px)] 2xl:w-[calc(100%+50px)] z-[4]">
+                    <Image
+                      src={"/images/step-bg.png"}
+                      alt="404-image"
+                      width={800}
+                      height={480}
+                      className="w-full h-full object-contain transition-transform duration-600"
+                    />
+                  </div>
                   <Image
                     src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${step.icon_url}`}
                     alt={step.title}

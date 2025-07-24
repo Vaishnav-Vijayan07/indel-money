@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Nunito } from "next/font/google";
 import { Montserrat } from "next/font/google";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
@@ -11,6 +12,13 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-montserrat",
+  display: "swap",
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-nunito",
   display: "swap",
 });
 
@@ -31,7 +39,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
-      <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
+      <body className={`${montserrat.variable} ${nunito.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         <Footer content={footerContent} icons={footerIcons} />

@@ -59,11 +59,12 @@ export default function BranchForm({
     >
       {/* State */}
       <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
+        <label className="sr-only">Select State</label>
         <Select
           value={selectedState}
           onValueChange={(value) => onValueChange("state", value)}
         >
-          <SelectTrigger className="w-full bg-[#e7eff9] border-[#e7eff9]">
+          <SelectTrigger className="w-full bg-[#e7eff9] border-[]">
             <SelectValue placeholder="Select State" />
           </SelectTrigger>
           <SelectContent className="bg-[#e7eff9] border-[#e7eff9]">
@@ -81,6 +82,7 @@ export default function BranchForm({
 
       {/* District */}
       <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
+        <label className="sr-only"> District</label>
         <Select
           value={selectedDistrict}
           onValueChange={(value) => onValueChange("district", value)}
@@ -103,6 +105,7 @@ export default function BranchForm({
 
       {/* Location */}
       <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
+        <label className="sr-only"> Location</label>
         <Select
           value={selectedLocation}
           onValueChange={(value) => onValueChange("location", value)}
@@ -125,6 +128,7 @@ export default function BranchForm({
 
       {/* Distance */}
       <div className="w-1/2 md:w-1/5 p-[6px_10px] sm:p-[10px] 2xl:p-[15px]">
+        <label className="sr-only"> Distance</label>
         <Select
           onOpenChange={onOpenChange}
           onValueChange={(value) => onValueChange("distance", value)}
@@ -155,8 +159,7 @@ export default function BranchForm({
         <Button
           type="button"
           onClick={handleClearFilter}
-          className="btn btn-base2 max-w-[140px] lg:max-w-[160px] xl:max-w-[180px] 3xl:max-w-[220px]"
-        >
+          className="btn btn-base2 max-w-[140px] lg:max-w-[160px] xl:max-w-[180px] 3xl:max-w-[220px]" >
           CLEAR FILTER
         </Button>
       </div>

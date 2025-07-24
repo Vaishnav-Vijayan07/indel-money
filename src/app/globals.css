@@ -6,11 +6,13 @@
 @theme {
   --font-amino: "Amino", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
+  --font-nunito: "Nunito", sans-serif;
 
   --color-base1: #17479e;
   --color-base2: #ee3824;
   --color-base3: #b7d0ff;
   --color-base4: #114e87;
+  --color-base5: rgba(128, 128, 128, .75);
 
   --breakpoint-5xs: 20rem;
   /* 320px */
@@ -193,7 +195,11 @@
   }
 
   .btn-base2 {
-    background-color: #ee3824;
+    background-color: rgba(128, 128, 128, .5);
+  }
+
+  .textGrey {
+    color: rgba(128, 128, 128, .75);
   }
 
   .btn-base2:hover {
@@ -472,4 +478,3 @@
 .filter-white {
   filter: brightness(0) invert(1);
 }
-

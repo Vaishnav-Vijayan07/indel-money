@@ -28,7 +28,7 @@ export default function DreamsToReality({ initialData, statsData }) {
             />
             {/* Welcome to <span className="text-base4 ">INDEL MONEY</span> */}
             <h2
-              className="text-title1 font-medium mb-[10px] xl:mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold"
+              className="text-title1 text-base5 font-medium mb-[10px] xl:mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold"
               dangerouslySetInnerHTML={{ __html: initialData?.about_title }}
             />
             {/* From{" "}
@@ -64,8 +64,8 @@ export default function DreamsToReality({ initialData, statsData }) {
                 {/* Our Story */}
                 {initialData?.about_button_name}
               </span>
-              <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[40px] 3xl:w-[48px] 3xl:h-[48px] rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:text-white">
-                <Image src="/images/about-btn.svg" width={48} height={48} alt="about btn" />
+              <div className="relative z-10 flex items-center justify-center w-[10px] h-[10px] rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:text-white">
+                <Image src="/images/icon-right.svg" width={10} height={10} alt="about btn" />
               </div>
             </Link>
           </motion.div>

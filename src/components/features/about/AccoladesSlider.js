@@ -28,7 +28,7 @@ export default function AccoladesSlider({ accolades }) {
       <div className="relative w-full">
         {/* Custom Navigation Buttons */}
         <button className="custom-prev absolute top-1/2 xl:left-[-80px] md:left-[-50px] left-[-40px] transform -translate-y-1/2 2xl:w-[40px] 2xl:h-[40px] w-[35px] h-[35px] flex items-center justify-center text-white rounded-full shadow-md transition-all duration-300 cursor-pointer rotate-180 opacity-100 swiper-button-disabled:opacity-50">
-          <svg viewBox="0 0 37 37" fill="none">
+          <svg viewBox="0 0 37 37" fill="none" className="2xl:w-[40px] 2xl:h-[40px] w-[35px] h-[35px]">
             <circle cx="18.5" cy="18.5" r="18.5" fill="url(#prev-gradient)" />
             <path
               d="M21.125 23.375L19.9875 22.1969L22.8719 19.3125H13V17.6875H22.8719L19.9875 14.8031L21.125 13.625L26 18.5L21.125 23.375Z"

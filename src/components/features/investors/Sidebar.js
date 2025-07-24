@@ -20,7 +20,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-full md:bg-[#B7D0FF] md:rounded-[25px] overflow-hidden h-full">
+    <aside className="w-full md:bg-[#B7D0FF] md:rounded-[25px] overflow-hidden md:sticky md:top-[100px] h-full md:h-fit">
       <ul className="py-[15px] sm:py-[25px] 3xl:py-[30px] md:block flex flex-wrap sm:m-0 -m-[5px]">
         {menuItems?.map((item, index) => {
           const isActive = pathname === item.link;

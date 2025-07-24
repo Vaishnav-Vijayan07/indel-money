@@ -465,6 +465,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                             render={({ field }) => (
                               <FormItem>
                                 <FormControl>
+                                  {/* <label className="sr-only"> Mail</label> */}
                                   <Input
                                     type="email"
                                     className="bg-gray-50 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
