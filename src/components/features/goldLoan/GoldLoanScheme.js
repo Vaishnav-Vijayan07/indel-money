@@ -14,7 +14,7 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
   const schemeDetails = goldLoanSchemes?.goldLoanSchemeDetails || [];
 
   return (
-    <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
+    <section className="py-[35px] xl:py-[45px] 2xl:py-[65px] bg-[rgba(128,128,128,.2)]">
       {/* Old design start */}
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center">

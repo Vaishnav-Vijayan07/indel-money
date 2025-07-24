@@ -49,7 +49,7 @@ export default function ServiceBanner({ bannerIcons, title, announcement_text, g
         <div className="w-full">
           <div className="max-w-[600px] xl:max-w-[655px] md:max-w-[755px] lg:max-w-[840px] mb-[40px]">
             <h1
-              className="text-[32px] sm:text-[32px] md:text-[40px] lg:text-[44px] xl:text-[60px] 2xl:text-[84px] 3xl:text-[96px] font-normal leading-none text-white mb-[10px] lg:mb-[15px] [&>span]:text-base2 [&>span]:font-bold"
+              className="text-[32px] sm:text-[30px] md:text-[36px] lg:text-[44px] xl:text-[50px] 2xl:text-[60px] 3xl:text-[70px] font-normal leading-none text-white mb-[10px] lg:mb-[15px] [&>span]:text-base2 [&>span]:font-bold"
               dangerouslySetInnerHTML={{ __html: title ? title : "" }}
             />
 
