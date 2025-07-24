@@ -55,7 +55,19 @@ const baseSchema = {
       message: "Must be at least 5 digits and no decimals.",
     })
     .optional(),
-};
+   age: z.preprocess(
+    (val) => {
+      // Treat empty, null, undefined as invalid (not optional)
+      if (val === "" || val === null || val === undefined) return "invalid";
+      const num = Number(val);
+      return isNaN(num) ? "invalid" : num;
+    },
+    z
+      .number({ invalid_type_error: "Enter a valid age" })
+      .max(99, "Enter a valid age")
+  ).optional()
+
+  }
 
 const emailSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -308,10 +320,12 @@ function CareerFormInner({ jobId, isGeneral }) {
     formData.append("applicant[email]", values.email);
     formData.append("applicant[phone]", values.phone);
     formData.append("applicant[preferred_location]", values.preferred_location);
-    formData.append("applicant[current_location]", values.current_location);
+    formData.append("applicant[current_location]", values.current_location || "");
     formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
     formData.append("applicant[employee_referral_code]", values.employee_referral_code || "");
-    formData.append("applicant[age]", values.age);
+    if (values.age !== null && !isNaN(values.age) && values.age > 0) {
+        formData.append("applicant[age]", values.age.toString());
+      }
     formData.append("applicant[notice_period]", values.notice_period);
     formData.append("applicant[current_salary]", values.current_salary || "");
     formData.append("applicant[expected_salary]", values.expected_salary || "");
@@ -359,7 +373,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       emailForm.reset();
       otpForm.reset();
       setShowOtpInput(false);
-      toast.success("Application submitted successfully!");
+      toast.success(response.data.message);
     } catch (err) {
       console.error("Error submitting form:", err);
       toast.error(err.response.data.error.message || "Failed to submit application.");
