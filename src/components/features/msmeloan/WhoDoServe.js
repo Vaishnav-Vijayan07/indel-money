@@ -49,7 +49,8 @@ export default function WhoDoServe({ audience, who_do_serve_title }) {
             delay: 4000,
             disableOnInteraction: false,
           }}
-          pagination={{ clickable: false }}
+          loop={audience?.length > 2}
+          pagination={{ clickable: true }}
           breakpoints={{
             640: { slidesPerView: 2 },
             768: { slidesPerView: 2, spaceBetween: 20 },

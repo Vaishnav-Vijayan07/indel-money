@@ -116,7 +116,7 @@ const Arrow = () => {
       viewBox="0 0 11 6"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="size-2 ml-0.5 transition duration-300 group-data-[state=open]:rotate-180"
+      className="size-2 ml-0.5 transition duration-300 group-data-[state=open]:rotate-180 group-hover:rotate-180"
     >
       <path d="M5.5 6L10.2631 0.75H0.73686L5.5 6Z" fill="#2A2A2A" />
     </svg>
