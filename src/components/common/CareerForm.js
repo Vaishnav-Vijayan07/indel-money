@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -451,7 +452,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                             render={({ field }) => (
                               <FormItem>
                                 <FormControl>
-                                  {/* <label className="sr-only"> Mail</label> */}
+                                  <Label className="text-black"> Mail</Label>
                                   <Input
                                     type="email"
                                     className="bg-gray-50 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
@@ -496,6 +497,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                             render={({ field }) => (
                               <FormItem>
                                 <FormControl>
+                                   <Label className="text-black"> Mail</Label>
                                   <Input
                                     type="text"
                                     inputMode="numeric"
@@ -508,6 +510,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                               </FormItem>
                             )}
                           />
+                          9745829432
                           <Button
                             type="submit"
                             className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700"
@@ -591,6 +594,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                 name="name"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                     <Label className="text-black"> Mail</Label>
                     <FormControl>
                       <Input
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
@@ -630,6 +634,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                     <Label className="text-black"> Mail</Label>
                     <FormControl>
                       <Input
                         type="email"
