@@ -91,9 +91,11 @@ export default function StepGoldLoan({ title, loanSteps, className, hideTitle = 
 
                     {index !== loanSteps.length - 1 && (
                       <motion.div
-                        className="border border-black border-dashed top-[18px] 3xl:top-[30px] h-[1px] w-full absolute left-[calc((100%-55px))] md:left-[calc((100%-30px))] lg:left-[calc((100%-125px))] xl:left-[calc((100%-120px))] 2xl:left-[calc((100%-50px))] 3xl:left-[calc((100%-130px))] before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-[-1px] before:w-[10px] before:h-[10px] before:bg-base1 before:rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "100%" }}
+                        className="border border-black border-dashed top-[18px] 3xl:top-[30px] h-[1px] w-full md:w-[calc(100%-30px)] xl:w-full absolute left-[calc((100%-55px))] md:left-[calc((100%-20px))]
+                         lg:left-[calc((100%-100px))] xl:left-[calc((100%-100px))] 2xl:left-[calc((100%-50px))] 3xl:left-[calc((100%-130px))] 
+                         before:content'' before:absolute before:top-0 before:bottom-0 before:m-auto before:left-[-1px] before:w-[10px] before:h-[10px]
+                          before:bg-base1 before:rounded-full"
+                       
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.5, delay: index * 0.3 }}
                       >

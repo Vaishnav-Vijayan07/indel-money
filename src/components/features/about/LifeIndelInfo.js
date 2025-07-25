@@ -118,7 +118,9 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
                 className="group btn btn-base1 relative z-0 fle gap-2 items-center justify-between mt-[15px] lg:mt-[30px] w-fit min-w-[150px] 2xl:min-w-[200px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[60px] rounded-full bg-base2 text-white font-bold transition-all duration-300 overflow-hidden shadow-lg hover:bg-base1"
               >
                 <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px]">{buttonText}</span>
-                <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] xl:w-[40px] 2xl:h-[40px] 3xl:w-[48px] 3xl:h-[48px] bg-base1 rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:bg-red-600 group-hover:text-white">
+                <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[40px] 
+                3xl:w-[48px] 3xl:h-[48px] bg-base1 rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2
+                 group-hover:bg-red-600 group-hover:text-white">
                   <svg viewBox="0 0 13 11" className="max-w-[15px]">
                     <path
                       d="M8.125 10.375L6.9875 9.19687L9.87187 6.3125H0V4.6875H9.87187L6.9875 1.80312L8.125 0.625L13 5.5L8.125 10.375Z"

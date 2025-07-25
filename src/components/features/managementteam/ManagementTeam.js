@@ -135,8 +135,8 @@ function TeamBox({ item }) {
             />
           </div>
           <div className="mt-[20px]">
-            <div className="text-footer-1 mb-[10px] sm:font-medium font-bold sm:text-left text-center">{item.name}</div>
-            <div className="text-sm-1 sm:text-left text-center">{item.title}</div>
+            <div className="text-footer-1 mb-[10px] sm:font-medium font-bold sm:text-left text-center break-words">{item.name}</div>
+            <div className="text-sm-1 sm:text-left text-center break-words">{item.title}</div>
           </div>
         </div>
       </AlertDialogTrigger>

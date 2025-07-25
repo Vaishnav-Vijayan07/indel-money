@@ -61,7 +61,7 @@ export default function IndelValuesInfo({ links }) {
                   <div className="text-[18px] 2xl:text-[25px] 3xl:text-[30px] font-medium 3xl:mb-[15px] mb-[10px] text-base1 leading-[1.2]">
                     {item.title}
                   </div>
-                  <p className="max-w-[350px]">{item.description}</p>
+                  <p className="max-w-[350px] line-clamp-10">{item.description}</p>
                 </div>
                 <Link
                   href={item.button_link || "/"}
