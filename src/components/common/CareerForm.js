@@ -496,8 +496,8 @@ function CareerFormInner({ jobId, isGeneral }) {
                             name="otp"
                             render={({ field }) => (
                               <FormItem>
+                                   {/* <Label className="text-black"> Mail</Label> */}
                                 <FormControl>
-                                   <Label className="text-black"> Mail</Label>
                                   <Input
                                     type="text"
                                     inputMode="numeric"
