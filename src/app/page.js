@@ -145,8 +145,8 @@ export async function generateMetadata() {
 export default async function HomePage() {
   const { data, error } = await fetchHomeData();
   const { data: goldRateData, error: goldRateError } = await fetchGoldRate();
-  // Analyze device from User-Agent
-  const headersList = headers();
+  
+  const headersList = await headers(); // ✅ await here
   const userAgent = headersList.get("user-agent") || "";
   const isMobile = isMobileDevice(userAgent);
 
