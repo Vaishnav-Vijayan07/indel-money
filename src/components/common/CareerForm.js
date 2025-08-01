@@ -945,7 +945,7 @@ function CareerFormInner({ jobId, isGeneral }) {
               <Button
                 className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-white w-full max-w-[140px] lg:max-w-[160px] 2xl:max-w-[180px] 3xl:max-w-[200px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[50px] 3xl:h-[55px] flex items-center justify-between bg-base2 rounded-[20px] lg:rounded-[30px] 2xl:rounded-[40px] 3xl:rounded-[60px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
                 type="submit"
-                disabled={loading || !isOtpVerified}
+                // disabled={loading || !isOtpVerified}
               >
                 <span className="px-1 lg:px-3.5">{loading ? "Submitting..." : "Submit"}</span>
                 <Image
