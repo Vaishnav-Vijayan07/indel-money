@@ -191,7 +191,7 @@ export default function WelcomeModal({ banner, serviceBanner }) {
             </div>
           )}
           {serviceBanner && (
-            <div className="-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px] relative z-0 before:absolute before:inset-0 before:left-auto before:z-2 before:block before:bg-gradient-to-r before:to-white before:from-transparent before:w-[20px] before:h-full before:pointer-events-none before:xl:hidden">
+            <div className="-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px] relative z-0 max-h-[315px] overflow-y-scroll before:absolute before:inset-0 before:left-auto before:z-2 before:block before:bg-gradient-to-r before:to-white before:from-transparent before:w-[20px] before:h-full before:pointer-events-none before:xl:hidden">
               <Swiper
                 slidesPerView={"auto"}
                 spaceBetween={0}

@@ -148,7 +148,7 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger className="outline-0">
-        <div className="w-[30px] @sm:w-[38px] h-[30px] @sm:h-[38px] bg-base2 rounded-[4px] flex items-center justify-center">
+        <div className="w-[60px] @sm:w-[38px] h-[30px] @sm:h-[38px] bg-base2 rounded-[4px] flex items-center justify-center">
           <Image src="/images/mob-navMenuIcon.svg" alt="nav" width={16} height={12} />
         </div>
       </SheetTrigger>
@@ -157,7 +157,7 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
           <SheetTitle className="sr-only"></SheetTitle>
           <SheetDescription className="sr-only">mobile navigation</SheetDescription>
           <div className="w-full h-[var(--header-y)] bg-white shadow-sm p-[15px] flex justify-between items-center">
-            <div className="w-[40px] 4xs:w-[60px]">
+            <div className="w-[80px] 4xs:w-[90px]">
               <Link href="/" className="block transition-transform duration-300 hover:scale-105">
                 <Image src={logo ? `${serverMediaPath}${logo}` : "/icons/logo_sm.svg"} alt="Logo" width={145} height={75} />
               </Link>

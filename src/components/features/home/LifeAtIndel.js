@@ -86,7 +86,7 @@ export default function LifeAtIndel({ pageContent, lifeAtIndel, image1, image2, 
                 <Link
                   // href="/"
                   href={pageContent?.life_section_button_link_1 || "#"}
-                  className="btn btn-base2 min-w-[200px] lg:min-w-[180px] xl:min-w-[220px] 3xl:min-w-[280px]"
+                  className="btn btn-base1 min-w-[200px] lg:min-w-[180px] xl:min-w-[220px] 3xl:min-w-[280px]"
                 >
                   {/* TAKE ME TO CAREERS PAGE */}
                   {pageContent?.life_section_button_name_1}
@@ -96,7 +96,7 @@ export default function LifeAtIndel({ pageContent, lifeAtIndel, image1, image2, 
                 <Link
                   // href="/"
                   href={pageContent?.life_section_button_link_2 || "#"}
-                  className="btn btn-base2 min-w-[120px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[180px]"
+                  className="btn btn-base1 min-w-[120px] lg:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[180px]"
                 >
                   {/* VISIT GALLERY */}
                   {pageContent?.life_section_button_name_2}

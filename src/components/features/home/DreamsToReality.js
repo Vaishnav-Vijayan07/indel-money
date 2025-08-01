@@ -11,8 +11,17 @@ export default function DreamsToReality({ initialData, statsData }) {
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="w-full pt-[40px] md:pt-[60px] lg:pt-[80px] 2xl:pt-[120px] 3xl:pt-[160px] pb-[20px] md:pb-[30px] lg:pb-[40px] 3xl:pb-[60px] overflow-hidden"
+      className="w-full pt-[40px] md:pt-[60px] lg:pt-[80px] 2xl:pt-[120px] 3xl:pt-[160px] pb-[20px] md:pb-[30px] lg:pb-[40px] 3xl:pb-[60px] overflow-hidden relative"
     >
+      <div className="top-[45%] absolute -right-[6%] m-auto h-auto w-[20%] z-[4]">
+        <Image
+          src={"/images/outline.png"}
+          alt="404-image"
+          width={165}
+          height={65}
+          className="w-full h-full object-contain transition-transform duration-600"
+        />
+      </div>
       <div className="container">
         <div className="flex w-full flex-wrap">
           <motion.div
@@ -64,8 +73,8 @@ export default function DreamsToReality({ initialData, statsData }) {
                 {/* Our Story */}
                 {initialData?.about_button_name}
               </span>
-              <div className="relative z-10 flex items-center justify-center w-[10px] h-[10px] rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:text-white">
-                <Image src="/images/icon-right.svg" width={10} height={10} alt="about btn" />
+              <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] rounded-full bg-white text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:text-white">
+                <Image src="/images/icon-right.svg" width={10} height={10} alt="about btn" className="w-[10px] h-[10px] m-auto" />
               </div>
             </Link>
           </motion.div>

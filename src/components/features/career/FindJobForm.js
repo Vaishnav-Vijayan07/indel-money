@@ -359,17 +359,9 @@ export default function FindJobForm({
             className="text-[14px] leading-[1] font-bold text-white h-[40px] flex items-center justify-center bg-base2 rounded-[24px] p-[4px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
             onClick={() => form.reset()}
           >
-            <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">
+            <span className="px-[10px] md:px-[10px] lg:px-[15px] xl:px-[20px]">
               {button_text ? button_text : "View All"}
             </span>
-            <Image
-              src="/images/icon-careerBtn.svg"
-              alt="careerBtn"
-              width={40}
-              height="40"
-              className="w-[25px] h-auto aspect-4/4 block ml-[5px]"
-            />
-            <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">{button_text ? button_text : "View All"}</span>
             <Image
               src="/images/icon-careerBtn.svg"
               alt="careerBtn"

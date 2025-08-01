@@ -59,7 +59,7 @@ export default function DeskHeader({ headerData }) {
       >
         <div className="container">
           <div className="flex items-center">
-            <div className="w-[60px] xl:w-[90px] 2xl:w-[120px] 3xl:w-[140px]">
+            <div className="w-[95px] lg:w-[75px] xl:w-[120px] 2xl:w-[140px] 3xl:w-[160px]">
               <Link href="/" className="inline-block transition-transform duration-300 hover:scale-105">
                 <Image
                   src={header?.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${header?.logo}` : "/icons/logo_sm.svg"}
@@ -69,7 +69,7 @@ export default function DeskHeader({ headerData }) {
                 />
               </Link>
             </div>
-            <nav className="w-[calc(100%-60px)] xl:w-[calc(100%-90px)] 2xl:w-[calc(100%-120px)] 3xl:w-[calc(100%-140px)] flex justify-end">
+            <nav className="w-[calc(100%-75px)] xl:w-[calc(100%-120px)] 2xl:w-[calc(100%-140px)] 3xl:w-[calc(100%-160px)] flex justify-end">
               <div className="flex items-center gap-[6px] xl:gap-[10px] 2xl:gap-[14px] 3xl:gap-[14px]">
                 <div>
                   {/* <NavMenu /> */}
@@ -139,7 +139,7 @@ export default function DeskHeader({ headerData }) {
                 </div>
                 <div>
                   <DropdownMenu>
-                    <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px] cursor-pointer">
+                    <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[85px] xl:min-w-[90px] 2xl:min-w-[115px] 3xl:min-w-[140px] cursor-pointer">
                       {header?.button_1_text ? header?.button_1_text : "Quick Pay"}
                       <Image
                         src="/images/icon-dropdown.svg"

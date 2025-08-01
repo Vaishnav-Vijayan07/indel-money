@@ -29,6 +29,7 @@ const gallery = [
     src: "/images/careerLifeAtIndel-5.jpg",
     alt: "careerLifeAtIndel",
   },
+  
 ];
 
 function ImageBox({ item }) {
@@ -53,6 +54,7 @@ export default function CareerLifeAtIndel({
   gallery_button_link,
   gallery,
 }) {
+  const galleryItems = gallery.slice(0, 5)
   return (
     <section className="w-full block py-[20px_20px] lg:py-[40px_30px] 2xl:py-[60px_40px] 3xl:py-[80px_50px] relative z-0">
       <div className="container">
@@ -89,7 +91,7 @@ export default function CareerLifeAtIndel({
             <div className="flex flex-wrap -mx-[4px] lg:mx-0 lg:-my-[6px] 2xl:-my-[10px]">
               {/* First div: items 0,1 */}
               <div className="w-[30%]">
-                {gallery?.slice(0, 2)?.map((item, index) => (
+                {galleryItems?.slice(0, 2)?.map((item, index) => (
                   <div
                     key={item.id}
                     className="w-full h-[176px] lg:h-[220px] 2xl:h-[240px] 3xl:h-[320px] [&:nth-child(2)]:h-[180px] lg:[&:nth-child(2)]:h-[240px] 2xl:[&:nth-child(2)]:h-[320px] 3xl:[&:nth-child(2)]:h-[360px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
@@ -101,7 +103,7 @@ export default function CareerLifeAtIndel({
 
               {/* Second div: items 2,3 */}
               <div className="w-[35%]">
-                {gallery?.slice(2, 4)?.map((item, index) => (
+                {galleryItems?.slice(2, 4)?.map((item, index) => (
                   <div
                     key={item.id}
                     className="w-full h-[135px] lg:h-[160px] 2xl:h-[200px] 3xl:h-[240px] [&:nth-child(2)]:h-[220px] lg:[&:nth-child(2)]:h-[300px] 2xl:[&:nth-child(2)]:h-[360px] 3xl:[&:nth-child(2)]:h-[440px] p-[4px] lg:p-[6px] 2xl:p-[10px]"
@@ -112,16 +114,16 @@ export default function CareerLifeAtIndel({
               </div>
 
               {/* Third div: item 4 */}
-              {gallery?.length > 4 && (
+              {galleryItems?.length > 4 && (
                 <div className="w-[35%]">
-                  <div key={gallery[4].id} className="w-full h-[355px] lg:h-[460px] 2xl:h-[560px] 3xl:h-[680px] p-[4px] lg:p-[6px] 2xl:p-[10px]">
-                    <ImageBox item={gallery[4]} />
+                  <div key={galleryItems[4].id} className="w-full h-[355px] lg:h-[460px] 2xl:h-[560px] 3xl:h-[680px] p-[4px] lg:p-[6px] 2xl:p-[10px]">
+                    <ImageBox item={galleryItems[4]} />
                   </div>
                 </div>
               )}
 
               {/* Items > 4: separate divs */}
-              {gallery?.slice(5)?.map((item) => (
+              {galleryItems?.slice(5)?.map((item) => (
                 <div key={item.id} className="w-[25%]">
                   <div className="w-full h-[120px] lg:h-[180px] 2xl:h-[200px] 3xl:h-[240px] p-[4px] lg:p-[6px] 2xl:p-[10px]">
                     <ImageBox item={item} />

@@ -99,7 +99,7 @@ export default function YearsInception({ inceptionslides, title }) {
                       },
                     }}
                     modules={[Pagination, Mousewheel, Autoplay]}
-                    className="h-[400px] 2xl:h-[650px] 3xl:h-[450px]"
+                    className="h-[430px] 2xl:h-[650px] 3xl:h-[600px]"
                     onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                   >
                     {inceptionslides?.map((item, index) => (
@@ -114,8 +114,8 @@ export default function YearsInception({ inceptionslides, title }) {
                             )}
                           </div>
                           <div className="w-[calc(100%-100px)] pl-[30px] 2xl:pl-[40px] 3xl:pl-[70px] h-full flex flex-wrap item-center">
-                            <div className="w-full h-auto flex-col-reverse justify-center flex flex-wrap item-center">
-                              {/* <div className="rounded-[18px] 2xl:rounded-[24px] overflow-hidden w-full mb-[15px]">
+                            <div className="w-full h-auto justify-center flex flex-wrap item-center">
+                              <div className="rounded-[18px] 2xl:rounded-[24px] overflow-hidden w-full mb-[15px]">
                                 <Image
                                   src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
                                   alt={item?.title}
@@ -123,7 +123,7 @@ export default function YearsInception({ inceptionslides, title }) {
                                   height={250}
                                   className="w-full object-cover max-h-[175px] 3xl:max-h-[250px]"
                                 />
-                              </div> */}
+                              </div>
                               <p className="text-white">{item?.description}</p>
                               <h3 className="text-[16px] 2xl:text-[20px] 3xl:text-[22px] text-white font-semibold mb-[5px] 2xl:mb-[10px]">
                                 {item?.title}

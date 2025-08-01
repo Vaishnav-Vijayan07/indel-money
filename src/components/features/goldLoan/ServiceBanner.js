@@ -49,13 +49,14 @@ export default function ServiceBanner({ bannerIcons, title, announcement_text, g
         <div className="w-full">
           <div className="max-w-[600px] xl:max-w-[655px] md:max-w-[755px] lg:max-w-[840px] mb-[40px]">
             <h1
-              className="text-[32px] sm:text-[32px] md:text-[40px] lg:text-[44px] xl:text-[60px] 2xl:text-[84px] 3xl:text-[96px] font-normal leading-none text-white mb-[10px] lg:mb-[15px] [&>span]:text-base2 [&>span]:font-bold"
+              className="text-[20px] sm:text-[30px] md:text-[30px] lg:text-[36px] xl:text-[40px] 2xl:text-[50px] 3xl:text-[60px] font-normal leading-none text-white mb-[10px] lg:mb-[15px] [&>span]:text-base1 [&>span]:font-bold"
+              
               dangerouslySetInnerHTML={{ __html: title ? title : "" }}
             />
 
             <PageBreadcrumb variant="white" />
           </div>
-          <div className="w-full relative z-1">
+          <div className="w-full relative z-1">                 
             <ul className="max-w-[500px] 2xl:max-w-[600px] 3xl:max-w-[700px] flex flex-wrap -m-[10px] 3xl:-m-[15px]">
               {bannerIcons?.map((item, index) => (
                 <li key={index} className="w-1/2 p-[10px] 3xl:p-[15px]">

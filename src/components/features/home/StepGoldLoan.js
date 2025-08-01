@@ -48,16 +48,16 @@ export default function StepGoldLoan({ title, loanSteps, className, hideTitle = 
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}>
-                  <div className="absolute left-0 top-0 2xl:text-[76px] xl::text-[66px] md:text-[56px] text-[46px] text-base1 font-extrabold text-nunito z-[5]">
-                    {index + 1}
+                  <div className="absolute left-0 top-0 2xl:text-[115px] xl::text-[100px] md:text-[90px] text-[76px] text-base1 font-extrabold font-nunito z-[5] h-fit">
+                    {index+1}
                   </div>
-                  <div className="absolute -left-[20px] 2xl:-left-[25px] right-0 -bottom-[35px] 2xl:-bottom-[10px] m-auto h-auto w-[calc(100%+40px)] 2xl:w-[calc(100%+50px)] z-[4]">
+                  <div className="absolute -left-[18px] 2xl:-left-[22px] right-0 -bottom-[10px] m-auto h-auto w-[calc(100%+40px)] 2xl:w-[calc(100%+50px)] z-[4]">
                     <Image
-                      src={"/images/step-bg.png"}
+                      src={"/images/step1-bg.svg"}
                       alt="404-image"
                       width={800}
                       height={480}
-                      className="w-full h-full object-contain transition-transform duration-600"
+                      className="object-contain transition-transform duration-600"
                     />
                   </div>
                   <Image
