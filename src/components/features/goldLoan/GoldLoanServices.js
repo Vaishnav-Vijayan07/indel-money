@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function GoldLoanServices({ features }) {
   return (
-    <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] relative">
-      <div className="bottom-[20%] absolute -right-[8%] m-auto h-auto w-[15%] z-[4]">
+    <section className="w-full overrflow-hidden block py-[30px] lg:py-[40px] 2xl:py-[60px] 3xl:py-[80px] relative">
+      <div className="bottom-[13%] absolute -right-[8%] m-auto h-auto w-[19%] z-[1]">
         <Image
           src={"/images/outline.png"}
           alt="404-image"
@@ -47,11 +47,11 @@ export default function GoldLoanServices({ features }) {
                             className="w-full h-full object-contain"
                           />
                         </div>
-                        <h3 className="text-[18px] lg:text-[20px] 2xl:text-[22px] 3xl:text-[30px] font-medium leading-[1.3] text-base1 w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] pl-[10px] 2xl:pl-[15px] 3xl:pl-[30px]">
+                        <h3 className="text-[18px] lg:text-[20px] 2xl:text-[22px] 3xl:text-[30px] font-medium leading-[1.3] text-base1 w-[calc(100%-30px)] 2xl:w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] pl-[10px] 2xl:pl-[15px] 3xl:pl-[30px] relative z-[1]">
                           {service.title}
                         </h3>
                       </div>
-                      <p>{service.description}</p>
+                      <p className="relative z-[1]">{service.description}</p>
                     </div>
                   )}
                 </div>

@@ -132,7 +132,7 @@ export default function MobHeader({ socialLinks, links, logo, title, modes }) {
         <div className="w-full h-[calc(100%-30px)] @sm:h-[calc(100%-40px)] flex items-center">
           <div className="container">
             <div className="flex items-center">
-              <div className="w-[60px] @sm:w-[80px]">
+              <div className="w-[90px] @sm:w-[80px]">
                 <Link href="/" className="block transition-transform duration-300 hover:scale-105">
                   <Image src={logo ? `${serverMediaPath}${logo}` : "/icons/logo_sm.svg"} alt="Indel Logo" width={145} height={75} />
                 </Link>

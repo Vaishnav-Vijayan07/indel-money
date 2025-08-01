@@ -68,7 +68,7 @@
     :root {
       --container-x: var(--breakpoint-lg);
       --container-padding: 5rem;
-      --header-y: 60px;
+      --header-y: 70px;
       --marquee-y: 40px;
     }
   }
@@ -79,7 +79,7 @@
     :root {
       --container-x: var(--breakpoint-xl);
       --container-padding: 6rem;
-      --header-y: 70px;
+      --header-y: 80px;
       --marquee-y: 30px;
     }
   }
@@ -90,7 +90,7 @@
     :root {
       --container-x: var(--breakpoint-2xl);
       --container-padding: 7rem;
-      --header-y: 80px;
+      --header-y: 90px;
       --marquee-y: 40px;
     }
   }
@@ -132,7 +132,7 @@
 
 @layer components {
   .btn {
-    font-size: 12px;
+    font-size: 10px;
     line-height: 1;
     font-weight: 500;
     text-transform: uppercase;
@@ -157,7 +157,7 @@
 
   @media (min-width: 1024px) {
     .btn {
-      font-size: 11px;
+      font-size: 10px;
       height: 30px;
       border-radius: 50px;
       -webkit-border-radius: 50px;
@@ -166,8 +166,8 @@
 
   @media (min-width: 1280px) {
     .btn {
-      font-size: 12px;
-      height: 34px;
+      font-size: 10px;
+      height: 30px;
     }
   }
 
