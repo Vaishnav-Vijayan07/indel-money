@@ -45,7 +45,7 @@ export default function CareerDetailInfo({ job }) {
                           fill="#17479E"
                         />
                       </svg>
-                      {toSentenceCase(job?.location?.location_name) || "Location not specified"}
+                      {toSentenceCase(job?.locations?.map((loc) => loc.location_name).join(", ")) || "Location not specified"}
                     </CareerDetailInfoBox>
                   </div>
                 </div>
