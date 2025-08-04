@@ -6,6 +6,7 @@ import GoldLoanCriteria from "../../components/features/goldLoan/GoldLoanCriteri
 import InstantHasslefree from "../../components/features/goldLoan/InstantHasslefree";
 import GoldLoanServices from "../../components/features/goldLoan/GoldLoanServices";
 import GoldLoanScheme from "../../components/features/goldLoan/GoldLoanScheme";
+import GoldLoanFaqTab from "../../components/features/goldLoan/GoldLoanFaqTab";
 import GoldLoanFaq from "../../components/features/goldLoan/GoldLoanFaq";
 
 import MobServiceBanner from "../../components/features/goldLoan/MobServiceBanner";
@@ -294,6 +295,8 @@ export default async function GoldLoan() {
       <div className="block sm:hidden">
         <MobGoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
       </div>
+
+      <GoldLoanFaqTab />
 
       {/* faq contents */}
       <div className="hidden sm:block">

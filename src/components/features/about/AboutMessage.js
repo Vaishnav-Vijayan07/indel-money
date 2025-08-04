@@ -38,19 +38,19 @@ export default function AboutMessage({ messages }) {
                         }`}
           >
             {/* Left Section */}
-            <div className="w-[150px] 3xl:w-[180px]">
+            <div className="w-[250px] 3xl:w-[350px]">
               <div
                 className={`w-full h-full rounded-[20px] overflow-hidden pt-[25px] flex flex-col justify-between
                                 ${index % 2 === 0 ? "bg-[#EE3824]" : "bg-base1"}`}
               >
-                <div className="3xl:text-[30px] 2xl:text-[26px] text-[18px] mb-[10px] text-white text-center leading-none">{item.short_title}</div>
-                <div className="w-full max-w-[180px]">
+                <div className="3xl:text-[30px] 2xl:text-[26px] xl:text-[23px] text-[18px] mb-[10px] text-white text-center leading-none">{item.short_title}</div>
+                <div className="w-full max-w-[350px]">
                   <Image
                     src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : "/images/ceo.png"}
                     alt={item.full_name}
                     width={180}
                     height={180}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto object-cover object-top max-h-[200px] 2xl:max-h-[220px]"
                   />
                 </div>
               </div>
@@ -58,7 +58,7 @@ export default function AboutMessage({ messages }) {
 
             {/* Right Section */}
             <div
-              className={`w-[calc(100%-150px)] 3xl:w-[calc(100%-180px)] ${
+              className={`w-[calc(100%-250px)] 3xl:w-[calc(100%-350px)] ${
                 index % 2 === 0 ? "3xl:pl-[60px] 2xl:pl-[50px] pl-[30px]" : "3xl:pr-[60px] 2xl:pr-[50px] pr-[30px] text-right"
               } 3xl:py-[50px] py-[30px]`}
             >

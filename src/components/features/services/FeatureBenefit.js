@@ -61,7 +61,7 @@ export default function FeatureBenefit({ benefits, title, image }) {
   ];
 
   return (
-    <section className="w-full sm:bg-gradient-to-r sm:from-[rgba(243,0,0,0.00)] sm:via-transparent sm:to-[rgba(235,2,8,0.10)] bg-[#E5F6FF] py-[20px] lg:py-0 sm:mt-0 mt-[20px] sm:rounded-[0px] rounded-[20px]">
+    <section className="w-full sm:bg-gradient-to-r sm:from-[rgba(243,0,0,0.00)] sm:via-transparent sm:to-[rgba(235,2,8,0.10)] bg-[#E5F6FF] py-[20px] lg:py-[40px] sm:mt-0 mt-[20px] sm:rounded-[0px] rounded-[20px]">
       <div className="max-w-[var(--container-x)] lg:max-w-[calc(100%-(100%-var(--container-x))/2)] mx-auto lg:ml-[0] px-[var(--container-padding,1rem)] lg:pl-[0]">
         <div className="w-full flex flex-wrap flex-col-reverse lg:flex-row">
           <div className="group h-full lg:h-auto w-full lg:w-[400px] xl:w-[470px] 2xl:w-[690px] overflow-hidden rounded-[36px] lg:rounded-tl-none lg:rounded-bl-none sm:block hidden">

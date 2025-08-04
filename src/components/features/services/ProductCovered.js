@@ -67,11 +67,12 @@ export default function ({ products, title, image, criteriaIcon, criteriaTitle, 
     },
   ];
   return (
-    <section className="w-full relative sm:bg-[#C0DBFF] bg-[#E5F6FF] sm:rounded-[0] rounded-[20px] py-[20px] md:p-0">
-      <div className="absolute hidden md:block bg-[#D4E6FF] left-0 top-0 w-[50%] h-full z-0"></div>
+    <section className="w-full relative sm:bg-[#C0DBFF] bg-[#E5F6FF] sm:rounded-[0] rounded-[20px] py-[20px] md:py-[30px]">
+      {/* <div className="absolute hidden md:block bg-[#D4E6FF] left-0 top-0 w-[50%] h-full z-0"></div> */}
       <div className="container">
         <div className="flex flex-wrap">
-          <div className="relative w-full flex flex-wrap flex-col-reverse lg:flex-row md:w-[calc(100%-285px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-590px)] sm:bg-[#D4E6FF] overflow-hidden rounded-[36px] md:rounded-tl-[0] md:rounded-bl-[0] pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[90px] sm:pr-[30px] 2xl:pr-[45px] 3xl:pr-[55px] pb-[30px] xl:pb-[40px] 2xl:pb-[50px] sm:pl-[20px] md:pl-0">
+          <div className="relative w-full flex flex-wrap flex-col-reverse lg:flex-row md:w-[calc(100%-285px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-590px)] sm:bg-[#fff] rounded-[36px] md:rounded-tl-[0] md:rounded-bl-[0] pt-[30px] xl:pt-[30px] 2xl:pt-[50px] 3xl:pt-[60px] sm:pr-[30px] 2xl:pr-[45px] 3xl:pr-[55px] pb-[30px] xl:pb-[40px] 2xl:pb-[50px] sm:pl-[20px] md:pl-0">
+           <div className="absolute hidden md:block bg-[#fff] -left-[50%] top-0 w-[50%] h-full z-1"></div>
             <div className="group w-full max-lg:mt-[15px] lg:absolute lg:right-[20px] lg:2xl:right-[35px] lg:3xl:right-[55px] lg:bottom-[40px] lg:max-w-[350px] xl:max-w-[420px] 
              overflow-hidden h-auto">
               <Image

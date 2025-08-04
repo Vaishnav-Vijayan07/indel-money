@@ -2,7 +2,6 @@
 import { headers } from "next/headers";
 import HomeClient from "../pages/HomeClient";
 import { defaultMeta } from "@/constants/constants";
-
 function isMobileDevice(userAgent) {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 }
