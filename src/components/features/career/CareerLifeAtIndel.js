@@ -3,34 +3,6 @@ import Link from "next/link";
 import "./Career.css";
 import { renderHtml } from "@/lib/utils/htmlParser";
 
-const gallery = [
-  {
-    id: 0,
-    src: "/images/careerLifeAtIndel-1.jpg",
-    alt: "careerLifeAtIndel",
-  },
-  {
-    id: 1,
-    src: "/images/careerLifeAtIndel-2.jpg",
-    alt: "careerLifeAtIndel",
-  },
-  {
-    id: 2,
-    src: "/images/careerLifeAtIndel-3.jpg",
-    alt: "careerLifeAtIndel",
-  },
-  {
-    id: 3,
-    src: "/images/careerLifeAtIndel-4.jpg",
-    alt: "careerLifeAtIndel",
-  },
-  {
-    id: 4,
-    src: "/images/careerLifeAtIndel-5.jpg",
-    alt: "careerLifeAtIndel",
-  },
-  
-];
 
 function ImageBox({ item }) {
   return (
@@ -54,7 +26,7 @@ export default function CareerLifeAtIndel({
   gallery_button_link,
   gallery,
 }) {
-  const galleryItems = gallery.slice(0, 5)
+  const galleryItems = gallery?.slice(0, 5)
   return (
     <section className="w-full block py-[20px_20px] lg:py-[40px_30px] 2xl:py-[60px_40px] 3xl:py-[80px_50px] relative z-0">
       <div className="container">

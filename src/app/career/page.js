@@ -12,13 +12,16 @@ import { defaultMeta } from "@/constants/constants";
 async function fetchData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/career`, {
-      // cache: "no-store", // Ensure fresh data
-      cache: "force-cache",
-      next: { revalidate: 600 },
+      cache: "no-store", // Ensure fresh data
+      // cache: "force-cache",
+      // next: { revalidate: 600 },
     });
 
     const result = await response.json();
-    const careerData = result.data;
+    const careerData = result?.data;
+
+    console.log("result ===>", result);
+    
 
     if (result.status === "success") {
       return {
@@ -161,6 +164,9 @@ export default async function Career() {
     return <div>{error}</div>;
   }
 
+  console.log("Jobs ==>", jobs);
+  
+
   return (
     <div className="w-full h-auto bg-linear-to-b from-base1/10 to-base2/10">
       <CareerBanner banners={banners} />
@@ -205,8 +211,8 @@ export default async function Career() {
         <MobBenefitsEmployee benefits={benefits} benefits_title={contents?.benefits_title} />
       </div>
       <EmployeeTestimonials
-        textTestimonials={testimonials.textTestimonials}
-        videoTestimonials={testimonials.imageTestimonials}
+        textTestimonials={testimonials?.textTestimonials}
+        videoTestimonials={testimonials?.imageTestimonials}
         awards={awards}
         testimonial_button_link={contents?.testimonial_button_link}
         testimonial_button_name={contents?.testimonial_button_name}
