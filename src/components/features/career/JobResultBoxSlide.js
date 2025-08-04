@@ -18,7 +18,7 @@ export default function JobResultBoxSlide({ jobResults }) {
       className="jobResultBoxSlide [--slide-y:270px] lg:[--slide-y:276px] xl:[--slide-y:340px] 2xl:[--slide-y:430px] 3xl:[--slide-y:540px] h-[var(--slide-y)]"
     >
       {jobResults?.map((item, index) => (
-        <SwiperSlide key={index} className="h-[calc(var(--slide-y)/2)]!">
+        <SwiperSlide key={index} className="h-[calc(var(--slide-y)/2)]! mb-[25px]">
           <JobResultBox item={item} />
         </SwiperSlide>
       ))}
