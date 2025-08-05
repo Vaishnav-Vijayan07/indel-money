@@ -39,7 +39,7 @@ export default function ActiveJobsInfo() {
       const queryParams = { ...params, limit: pagination.limit };
       const query = new URLSearchParams(queryParams).toString();
       // Update API endpoint to match cURL command
-      const response = await api.get(`http://localhost:7700/api/career/jobs/filtered?${query}`, { timeout: 5000 });
+      const response = await api.get(`/career/jobs/filtered?${query}`, { timeout: 5000 });
       if (!response.data.success) {
         setError(response.data.message || "Failed to fetch jobs");
         setJobs([]);
