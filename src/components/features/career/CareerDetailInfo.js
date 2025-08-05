@@ -46,7 +46,7 @@ export default function CareerDetailInfo({ job }) {
                           fill="#17479E"
                         />
                       </svg>
-                      {toSentenceCase(job?.locationDisplay) || "Location not specified"}
+                      {job?.locationDisplay || "Location not specified"}
                     </CareerDetailInfoBox>
                   </div>
                 </div>
