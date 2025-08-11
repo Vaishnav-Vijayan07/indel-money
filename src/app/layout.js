@@ -6,7 +6,6 @@ import FloatingButton from "../components/common/FloatingButton";
 import { Toaster } from "react-hot-toast";
 import api from "../lib/api/axios";
 import { GoogleTagManager } from "@next/third-parties/google";
-import Script from "next/script";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -31,38 +30,13 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} /> */}
-      <head>
-        {/* Google Tag Manager */}
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-KK6CGGLZ');
-            `,
-          }}
-        />
-      </head>
-
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
       <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         <Footer content={footerContent} icons={footerIcons} />
         <FloatingButton />
         <Toaster position="top-right" />
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-KK6CGGLZ"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
-        </noscript>
       </body>
     </html>
   );
