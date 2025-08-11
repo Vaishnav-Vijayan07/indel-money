@@ -6,6 +6,7 @@ import FloatingButton from "../components/common/FloatingButton";
 import { Toaster } from "react-hot-toast";
 import api from "../lib/api/axios";
 import { GoogleTagManager } from "@next/third-parties/google";
+import GTMTracker from "./gtm-tracker";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default async function RootLayout({ children }) {
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        <GTMTracker />
       </body>
     </html>
   );
