@@ -13,6 +13,7 @@ function CareerDetailInfoBox({ children }) {
 
  
 export default function CareerDetailInfo({ job }) {
+
   return (
     <section className="w-full h-auto py-[30px] lg:py-[50px_80px]">
       <div className="container">
@@ -28,7 +29,7 @@ export default function CareerDetailInfo({ job }) {
                 </div>
                 <div className="flex flex-wrap gap-[5px] sm:gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
                   <div>
-                    <CareerDetailInfoBox>Experience: {parseInt(job?.experience) || "Not specified"}</CareerDetailInfoBox>
+                    <CareerDetailInfoBox>Experience: {job?.experience || "Not specified"}</CareerDetailInfoBox>
                   </div>
                   <div>
                     <CareerDetailInfoBox>
