@@ -32,8 +32,6 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
-      <GoogleAnalytics gaId={process.env.GA_TRACKING_ID} />
-
       <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
@@ -50,6 +48,7 @@ export default async function RootLayout({ children }) {
           />
         </noscript>
       </body>
+      <GoogleAnalytics gaId={process.env.GA_TRACKING_ID} />
     </html>
   );
 }
