@@ -15,6 +15,12 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
+export const metadata = {
+  verification: {
+    google: "jn0CklXpu_AaWbnMxezEgzKzUVV59B4fl955GETW2GU",
+  },
+};
+
 export default async function RootLayout({ children }) {
   let footerContent = "";
   let footerIcons = [];
