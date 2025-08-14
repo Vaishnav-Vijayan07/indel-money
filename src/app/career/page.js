@@ -157,9 +157,6 @@ export async function generateMetadata() {
 export default async function Career() {
   const { contents, banners, benefits, awards, gallery, testimonials, states, jobs, error } = await fetchData();
 
-  console.log("banner ==>", banners);
-  
-
   if (error) {
     return <div>{error}</div>;
   }
