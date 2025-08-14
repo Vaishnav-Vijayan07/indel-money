@@ -3,8 +3,8 @@ import Image from "next/image";
 import CareerForm from "@/components/common/CareerForm";
 import "./Career.css";
 import parse from "html-react-parser";
-import { toSentenceCase } from "@/lib/utils/toSentenceCase";
-
+import { encodeId } from "@/lib/hashids";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 function CareerDetailInfoBox({ children }) {
   return (
     <div className="text-[13px] sm:text-[14px] lg:text-[16px] 2xl:text-[18px] leading-none font-normal text-[#484877] w-full h-[35px] lg:h-[50px] border-[1px] border-dashed border-[linear-gradient(to right, #ff0, #f00) 1] rounded-[10px] flex items-center p-[8px_10px] lg:p-[10px_20px]">
