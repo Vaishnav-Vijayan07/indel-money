@@ -10,12 +10,14 @@ import toast from "react-hot-toast";
 
 function JobLocationBox({ item }) {
   const handleClick = (e) => {
+
     if (!item?.is_active) {
       // e.preventDefault();
       // You can add your toast message logic here
       toast.error(
         "Currently we are not operational. Please send your resume. Once we are operational we will contact you back.",
         {
+          duration: 10000, // 10s (or Infinity)
           style: {
             fontSize: "12px", // smaller text
             padding: "6px 10px", // smaller padding

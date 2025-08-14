@@ -1,8 +1,13 @@
+"use client";
+import Image from "next/image";
 import CareerForm from "@/components/common/CareerForm";
 import "./Career.css";
 import parse from "html-react-parser";
 import { toSentenceCase } from "@/lib/utils/toSentenceCase";
- 
+import { encodeId } from "@/lib/hashids";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import Link from "next/link";
+
 function CareerDetailInfoBox({ children }) {
   return (
     <div className="text-[13px] sm:text-[14px] lg:text-[16px] 2xl:text-[18px] leading-none font-normal text-[#484877] w-full h-[35px] lg:h-[50px] border-[1px] border-dashed border-[linear-gradient(to right, #ff0, #f00) 1] rounded-[10px] flex items-center p-[8px_10px] lg:p-[10px_20px]">
@@ -11,16 +16,96 @@ function CareerDetailInfoBox({ children }) {
   );
 }
 
- 
 export default function CareerDetailInfo({ job }) {
+  const jobUrl = `${
+    process.env.NEXT_PUBLIC_SITE_URL || ""
+  }/career-list/job-details/${encodeId(job?.id)}`;
+  const jobTitle = job?.job_title || "Job Opportunity";
+  const shareText = encodeURIComponent(
+    `Check out this job opening: ${jobTitle}\n\n${jobUrl}`
+  );
+  const whatsappUrl = `https://wa.me/?text=${shareText}`;
+  const emailUrl = `mailto:?subject=${encodeURIComponent(
+    "Job Opportunity: " + jobTitle
+  )}&body=${shareText}`;
 
   return (
     <section className="w-full h-auto py-[30px] lg:py-[50px_80px]">
       <div className="container">
         <div className="w-full h-auto p-[10px] sm:p-[30px] lg:p-[50px] rounded-[30px] bg-linear-to-r from-base1/10 to-base2/10">
           <div className="w-full h-auto bg-white rounded-[20px] overflow-hidden">
-            <div className="text-[16px] sm:text-[20px] lg:text-[24px] 2xl:text-[28px] leading-none font-bold text-black w-full sm:max-w-[260px] lg:max-w-[320px] 2xl:max-w-[380px] p-[20px_20px] sm:p-[25px_40px] lg:p-[35px_50px] bg-linear-to-r from-base1/50 via-base2/50 to-transparent mt-[15px] lg:mt-[30px]">
-              APPLY FOR
+            <div className="flex justify-between items-center w-full">
+              <div className="text-[16px] sm:text-[20px] lg:text-[24px] 2xl:text-[28px] leading-none font-bold text-black w-full sm:max-w-[260px] lg:max-w-[320px] 2xl:max-w-[380px] p-[20px_20px] sm:p-[25px_40px] lg:p-[35px_50px] bg-linear-to-r from-base1/50 via-base2/50 to-transparent mt-[15px] lg:mt-[30px]">
+                APPLY FOR
+              </div>
+              <div className="w-1/2 flex justify-end items-center gap-[5px] lg:gap-[10px] 2xl:gap-[20px] mx-8">
+                {/* Share Dropdown using Radix UI */}
+                <div className="relative">
+                  <DropdownMenu.Root>
+                    <DropdownMenu.Trigger asChild>
+                      {/* Your original Share button styles */}
+                      <button
+                        className="text-[12px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[26px] font-normal leading-none text-[#484877] w-full h-auto flex items-center gap-[2px] lg:gap-[4px] 2xl:gap-[6px] hover:text-base1 bg-transparent border-none outline-none"
+                        style={{ cursor: "pointer" }}
+                        aria-label="Share"
+                        type="button"
+                      >
+                        <Image
+                          src="/images/icon-share.svg"
+                          alt="share"
+                          width={20}
+                          height={20}
+                          className="w-[10px] lg:w-[15px] 2xl:w-[20px] h-auto aspect-4/4 block"
+                        />
+                        Share
+                      </button>
+                    </DropdownMenu.Trigger>
+                    <DropdownMenu.Portal>
+                      <DropdownMenu.Content
+                        side="bottom"
+                        align="end"
+                        className="z-50 min-w-[180px] rounded-lg border border-gray-200 bg-white p-1 shadow-lg"
+                        style={{ marginTop: 8 }}
+                      >
+                        <DropdownMenu.Item asChild>
+                          <a
+                            href={whatsappUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-800 hover:bg-gray-100 transition-colors"
+                          >
+                            <Image
+                              src="/images/floating-whatsapp.svg"
+                              alt="WhatsApp"
+                              width={18}
+                              height={18}
+                              className="w-[18px] h-[18px]"
+                            />
+                            Share via WhatsApp
+                          </a>
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item asChild>
+                          <a
+                            href={emailUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-800 hover:bg-gray-100 transition-colors"
+                          >
+                            <Image
+                              src="/images/floating-mail.svg"
+                              alt="Email"
+                              width={18}
+                              height={18}
+                              className="w-[18px] h-[18px]"
+                            />
+                            Share via Email
+                          </a>
+                        </DropdownMenu.Item>
+                      </DropdownMenu.Content>
+                    </DropdownMenu.Portal>
+                  </DropdownMenu.Root>
+                </div>
+              </div>
             </div>
             <div className="w-full h-auto p-[10px_20px_0] sm:p-[30px_30px_0] lg:p-[50px_50px_0]">
               <div className="w-full h-auto mb-[30px] lg:mb-[40px] 2xl:mb-[60px]">
@@ -29,7 +114,9 @@ export default function CareerDetailInfo({ job }) {
                 </div>
                 <div className="flex flex-wrap gap-[5px] sm:gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
                   <div>
-                    <CareerDetailInfoBox>Experience: {job?.experience || "Not specified"}</CareerDetailInfoBox>
+                    <CareerDetailInfoBox>
+                      Experience: {job?.experience || "Not specified"}
+                    </CareerDetailInfoBox>
                   </div>
                   <div>
                     <CareerDetailInfoBox>
@@ -46,7 +133,8 @@ export default function CareerDetailInfo({ job }) {
                           fill="#17479E"
                         />
                       </svg>
-                      {toSentenceCase(job?.location?.location_name) || "Location not specified"}
+                      {toSentenceCase(job?.location?.location_name) ||
+                        "Location not specified"}
                     </CareerDetailInfoBox>
                   </div>
                 </div>
@@ -57,7 +145,8 @@ export default function CareerDetailInfo({ job }) {
                   JOB RESPONSIBILITIES
                 </div>
                 <div className="text-editor">
-                  {parse(job?.job_description) || "No job description provided."}
+                  {parse(job?.job_description) ||
+                    "No job description provided."}
                   {/* <h4>key Responsibilities and Accountabilities</h4> */}
                 </div>
               </div>
