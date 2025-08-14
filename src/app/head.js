@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 export default function Head() {
   return (
     <>
@@ -8,6 +6,7 @@ export default function Head() {
       <link rel="preload" as="style" href="/css/e2ad796c6400005a.css" />
       <link rel="preload" as="style" href="/css/a3a748e1f1052924.css" />
       <link rel="canonical" href="https://www.indelmoney.com" />
+      <meta name="google-site-verification" content="jn0CklXpu_AaWbnMxezEgzKzUVV59B4fl955GETW2GU" />
     </>
   );
 }

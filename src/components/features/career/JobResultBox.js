@@ -26,7 +26,6 @@ export default function JobResultBox({ item, variant = "default" }) {
 
   console.log(item);
 
-
   return (
     <div
       className={`${
@@ -124,8 +123,8 @@ export default function JobResultBox({ item, variant = "default" }) {
           {variant === "activeJobs" && `Experience: ${item.experience}`}
         </div>
         <div className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-medium text-[#484877] mb-[5px] lg:mb-[10px] 2xl:mb-[20px]">
-          {variant === "default" && `Location: ${toSentenceCase(item?.location?.location_name)}`}
-          {variant === "activeJobs" && `Location: ${item?.location?.location_name}`}
+          {variant === "default" && `Location: ${item?.locationDisplay}`}
+          {variant === "activeJobs" && `Location: ${item?.locationDisplay}`}
         </div>
       </div>
       <div className="w-full h-auto block">

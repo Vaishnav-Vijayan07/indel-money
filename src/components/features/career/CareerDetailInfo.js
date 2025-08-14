@@ -4,9 +4,6 @@ import CareerForm from "@/components/common/CareerForm";
 import "./Career.css";
 import parse from "html-react-parser";
 import { toSentenceCase } from "@/lib/utils/toSentenceCase";
-import { encodeId } from "@/lib/hashids";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import Link from "next/link";
 
 function CareerDetailInfoBox({ children }) {
   return (
@@ -133,8 +130,7 @@ export default function CareerDetailInfo({ job }) {
                           fill="#17479E"
                         />
                       </svg>
-                      {toSentenceCase(job?.location?.location_name) ||
-                        "Location not specified"}
+                      {job?.locationDisplay || "Location not specified"}
                     </CareerDetailInfoBox>
                   </div>
                 </div>

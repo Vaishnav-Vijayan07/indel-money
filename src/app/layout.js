@@ -6,6 +6,7 @@ import FloatingButton from "../components/common/FloatingButton";
 import { Toaster } from "react-hot-toast";
 import api from "../lib/api/axios";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -13,6 +14,12 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   display: "swap",
 });
+
+export const metadata = {
+  verification: {
+    google: "jn0CklXpu_AaWbnMxezEgzKzUVV59B4fl955GETW2GU",
+  },
+};
 
 export default async function RootLayout({ children }) {
   let footerContent = "";
@@ -37,7 +44,17 @@ export default async function RootLayout({ children }) {
         <Footer content={footerContent} icons={footerIcons} />
         <FloatingButton />
         <Toaster position="top-right" />
+
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
       </body>
+      <GoogleAnalytics gaId={process.env.GA_TRACKING_ID} />
     </html>
   );
 }
