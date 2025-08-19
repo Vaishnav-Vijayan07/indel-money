@@ -95,7 +95,7 @@ export default function ManagementTeam({ pageContent, teams }) {
       <div className="container flex flex-wrap">
         <div className="flex flex-wrap mb-[60px]">
           <div className="w-full md:w-[45%] 2xl:w-[40%]">
-            <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
+            <h2 className="text-title1 text-[#5e5959bf] mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
               {pageContent?.title ? renderHtml(pageContent?.title) : "Management Team"}
             </h2>
           </div>

@@ -62,7 +62,7 @@ export default function CsrInfo() {
                         <Sidebar />
                     </div>
                     <div className="w-full md:w-[calc(100%-270px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
-                        <div className="text-black text-title1 font-medium mb-[15px] 2xl:mb-[20px] 3xlmb-[30px]">CSR</div>
+                        <div className="text-[#5e5959bf]  text-title1 font-medium mb-[15px] 2xl:mb-[20px] 3xlmb-[30px]">CSR</div>
                         {/* Board Meeting Section */}
                         <div className="mb-[20px] xl:mb-[25px]">
                             <div className="text-[18px] lg:text-[26px] xl:text-[28px] 2xl:text-[32px] 3xl:text-[42px] font-medium text-black mb-[20px] xl:mb-[25px]">

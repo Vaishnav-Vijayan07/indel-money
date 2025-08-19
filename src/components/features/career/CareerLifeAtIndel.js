@@ -50,8 +50,8 @@ export default function CareerLifeAtIndel({
   gallery_title,
   gallery_sub_title,
   gallery_description,
-  gallery_button_text,
-  gallery_button_link,
+  // gallery_button_text,
+  // gallery_button_link,
   gallery,
 }) {
   const galleryItems = gallery.slice(0, 5)
@@ -60,7 +60,7 @@ export default function CareerLifeAtIndel({
       <div className="container">
         <div className="flex items-center justify-between mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
           <div className="lg:max-w-[320px] xl:max-w-[376px] 2xl:max-w-[468px] 3xl:max-w-[576px]">
-            <div className="text-title1 font-bold mb-[10px] lg:mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
+            <div className="text-title1 text-[#5e5959bf] font-bold mb-[10px] lg:mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
               {gallery_title ? renderHtml(gallery_title) : "Life at Indel"}
             </div>
             <div className="text-sm1 ">
@@ -70,12 +70,12 @@ export default function CareerLifeAtIndel({
             </div>
           </div>
           <div>
-            <Link
+            {/* <Link
               href={gallery_button_link ? gallery_button_link : "/"}
               className="btn btn-base2 min-w-[120px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[140px] 3xl:min-w-[180px] cursor-pointer"
             >
               {gallery_button_text ? gallery_button_text : "Learn More"}
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

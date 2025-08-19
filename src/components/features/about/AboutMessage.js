@@ -23,7 +23,7 @@ import { renderHtml } from "@/lib/utils/htmlParser";
 // ];
 
 export default function AboutMessage({ messages }) {
-  
+
   return (
     <section className="py-[80px]">
       <div className="container">
@@ -31,11 +31,10 @@ export default function AboutMessage({ messages }) {
           <div
             key={index}
             className={`flex flex-wrap w-full h-full rounded-[30px] overflow-hidden mb-[30px]
-                        ${
-                          index % 2 === 0
-                            ? "bg-gradient-to-r from-[rgba(238,56,36,0.2)] via-[rgba(190,45,29,0.1)] to-[rgba(255,255,255,0)]"
-                            : "bg-gradient-to-l from-[rgba(23,71,158,0.2)] via-[rgba(23,71,158,0.12)] to-[rgba(23,71,158,0)] flex-row-reverse"
-                        }`}
+                        ${index % 2 === 0
+                ? "bg-gradient-to-r from-[rgba(238,56,36,0.2)] via-[rgba(190,45,29,0.1)] to-[rgba(255,255,255,0)]"
+                : "bg-gradient-to-l from-[rgba(23,71,158,0.2)] via-[rgba(23,71,158,0.12)] to-[rgba(23,71,158,0)] flex-row-reverse"
+              }`}
           >
             {/* Left Section */}
             <div className="w-[250px] 3xl:w-[350px]">
@@ -50,7 +49,7 @@ export default function AboutMessage({ messages }) {
                     alt={item.full_name}
                     width={180}
                     height={180}
-                    className="w-full h-auto object-cover object-top max-h-[200px] 2xl:max-h-[220px]"
+                    className="w-full h-auto object-cover object-top max-h-[200px] 2xl:max-h-[250px]"
                   />
                 </div>
               </div>
@@ -58,12 +57,18 @@ export default function AboutMessage({ messages }) {
 
             {/* Right Section */}
             <div
-              className={`w-[calc(100%-250px)] 3xl:w-[calc(100%-350px)] ${
-                index % 2 === 0 ? "3xl:pl-[60px] 2xl:pl-[50px] pl-[30px]" : "3xl:pr-[60px] 2xl:pr-[50px] pr-[30px] text-right"
-              } 3xl:py-[50px] py-[30px]`}
+              className={`w-[calc(100%-250px)] 3xl:w-[calc(100%-350px)] ${index % 2 === 0 ? "3xl:pl-[60px] 2xl:pl-[50px] pl-[30px]" : "3xl:pr-[60px] 2xl:pr-[50px] pr-[30px] text-right"
+                } 3xl:py-[50px] py-[30px]`}
             >
-              <div className="text-title1 mb-[25px] [&>span]:font-bold [&>span]:text-base2">{item?.title ? renderHtml(item?.title) : ""}</div>
-              {item?.description ? renderHtml(item?.description) : ""}
+              <div className="text-title1 text-[#5e5959bf] mb-[25px] [&>span]:font-bold [&>span]:text-base2">{item?.title ? renderHtml(item?.title) : ""}</div>
+              <div
+                className={`typography flex flex-wrap -m-[10px] [&>*]:w-[100%] [&>*]:xl:w-[50%] [&>*]:p-[10px] [&_p,&_li]:3xl:text-[18px] [&_p,&_li]:text-sm1
+    ${index % 2 !== 0 ? "[&>p:only-child]:flex [&>p:only-child]:flex-row-reverse [&>p:only-child]:text-right [&>p:only-child]:ml-auto" : ""}`
+                }
+              >
+                {item?.description ? renderHtml(item?.description) : ""}
+                {/* {item?.description ? renderHtml(item?.description) : ""} */}
+              </div>
               <div className="mt-[30px]">
                 <div className="text-[16px] xl:text-[18px] 3xl:text-[24px] text-[#0B0B0B] font-medium mb-[5px]">{item.full_name}</div>
                 <div className="text-[14px] xl:text-[16px] 3xl:text-[18px] text-[#33538C] font-normal">{item.designation}</div>

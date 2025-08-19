@@ -5,7 +5,7 @@ export default function MobStepGoldLoan({ title, className, loanSteps }) {
   return (
     <section className={`${className} w-full py-[20px_0]`}>
       <div className="container">
-        <h2 className="text-title1 text-center mb-[10px] 2xl:mb-[15px] [&>span]:text-base2 [&>span]:font-bold">{title ? parse(title) : ""}</h2>
+        <h2 className="text-title1 text-center mb-[10px] 2xl:mb-[15px] text-[#5e5959bf] [&>span]:text-base2 [&>span]:font-bold">{title ? parse(title) : ""}</h2>
         <div className="flex flex-wrap">
           {loanSteps?.map((item, index) => (
             <div key={index} className="w-full py-[10px]">

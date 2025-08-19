@@ -6,7 +6,7 @@ export default function Disclosure({ contents, type = "disclosure" }) {
     const file = type == "disclosure" ? contents?.disclosure_file : contents?.csr_policy_doc
     return (
         <section className="pt-[25px] 3xl:pt-[50px]">
-            <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{type == "disclosure" ? contents.disclosure_title : contents.csr_policy_title}</div>
+            <div className="text-[#5e5959bf]  text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{type == "disclosure" ? contents.disclosure_title : contents.csr_policy_title}</div>
 
             <div className="flex items-center justify-between px-[15px] sm:px-[25px] py-[15px] 3xl:px-[35px] 3xl:py-[25px] bg-[#DCEAFB] rounded-[16px] 3xl:rounded-[24px] overflow-hidden">
                 <span className="text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[24px] font-medium text-black">

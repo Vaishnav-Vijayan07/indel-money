@@ -49,7 +49,7 @@ export default function GoldLoanFaq({ faq_title, type = "goldloan" }) {
     <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
       <div className="container">
         <h3
-          className="text-black text-title1 font-normal mb-[20px] [&>span]:text-base2 [&>span]:font-bold"
+          className="text-[#5e5959bf] text-title1 font-normal mb-[20px] [&>span]:text-base2 [&>span]:font-bold"
           dangerouslySetInnerHTML={{ __html: faq_title ? faq_title : "" }}
         />
 

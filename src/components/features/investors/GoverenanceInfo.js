@@ -45,7 +45,7 @@ export default function GoverenanceInfo({ contents, pdfItems }) {
             <Sidebar />
           </div>
           <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
-            <div className="text-black text-title1 font-medium mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
+            <div className="text-[#5e5959bf]  text-title1 font-medium mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
               {contents?.corporate_governance_title ? contents?.corporate_governance_title : "corporate governance title"}
             </div>
 

@@ -1,5 +1,4 @@
 "use client";
-import { startCase, toLower } from "lodash";
 import * as React from "react";
 import {
   Select,
@@ -70,10 +69,10 @@ export default function BranchForm({
           <SelectContent className="bg-[#e7eff9] border-[#e7eff9]">
             {states?.map((state) => (
               <SelectItem
-                key={state?.id?.toString()}
-                value={state?.id?.toString()}
+                key={state?.value?.toString()}
+                value={state?.value?.toString()}
               >
-                {toSentenceCase(state?.state_name)}
+                {toSentenceCase(state?.label)}
               </SelectItem>
             ))}
           </SelectContent>

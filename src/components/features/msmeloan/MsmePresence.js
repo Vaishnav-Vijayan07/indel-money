@@ -99,7 +99,7 @@ export default function MsmePresence({ title, description, audience }) {
         <div className="flex flex-wrap md:-mx-[15px] lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[30px]">
           <div className="w-full lg:w-[45%] 2xl:w-[40%] md:px-[15px] pb-[30px] lg:pb-[0] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]">
             <div className="w-full">
-              <h2 className="text-title1 mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold">{parse(title)}</h2>
+              <h2 className="text-title1 text-[#5e5959bf] mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold">{parse(title)}</h2>
               <div className="text-sm1 w-full xl:w-[85%] 2xl:w-[82%] sm:block hidden">
                 {parse(description)}
               </div>

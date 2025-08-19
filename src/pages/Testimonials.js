@@ -86,7 +86,7 @@ export default function Testimonial({ testimonials, pagination, contents }) {
     <section className="w-full block 2xl:p-[50px_0_75px] xl:p-[40px_0_50px] p-[20px_0]">
       <div className="container">
         <div className="mb-[15px] lg:mb-[20px] 2xl:mb-[40px] 3xl:mb-[60px] flex flex-wrap">
-          <div className="text-title1 w-full xl:w-[40%] xl:pr-[20px] 2xl:pr-[60px] 3xl:pr-[80px] [&>span]:text-base2 [&>span]:font-bold">
+          <div className="text-title1 text-[#5e5959bf] w-full xl:w-[40%] xl:pr-[20px] 2xl:pr-[60px] 3xl:pr-[80px] [&>span]:text-base2 [&>span]:font-bold">
             {contents?.title ? renderHtml(contents?.title) : "Testimonials"}
             <PageBreadcrumb />
           </div>

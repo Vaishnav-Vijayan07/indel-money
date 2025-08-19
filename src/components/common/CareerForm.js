@@ -56,7 +56,19 @@ const baseSchema = {
       message: "Must be at least 5 digits and no decimals.",
     })
     .optional(),
-};
+  age: z.preprocess(
+    (val) => {
+      // Treat empty, null, undefined as invalid (not optional)
+      if (val === "" || val === null || val === undefined) return "invalid";
+      const num = Number(val);
+      return isNaN(num) ? "invalid" : num;
+    },
+    z
+      .number({ invalid_type_error: "Enter a valid age" })
+      .max(99, "Enter a valid age")
+  ).optional()
+
+}
 
 const emailSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -123,8 +135,8 @@ function CareerFormInner({ jobId, isGeneral }) {
           selectedFile || selectedFileName
             ? z.any().optional()
             : z.any().refine((file) => file instanceof File, {
-                message: "Please upload a resume.",
-              }),
+              message: "Please upload a resume.",
+            }),
       })
       .refine(
         (data) => {
@@ -204,16 +216,16 @@ function CareerFormInner({ jobId, isGeneral }) {
           ? data.preferred_role?.toString() || ""
           : ""
         : jobId?.toString() || "",
-     notice_period: noticePeriod.includes(data.notice_period)
-      ? data.notice_period
-      : "",
+      notice_period: noticePeriod.includes(data.notice_period)
+        ? data.notice_period
+        : "",
       current_salary: data.current_salary?.toString() || "",
       expected_salary: data.expected_salary?.toString() || "",
       file: null,
     };
     form.reset(validatedData)
-    
-    ;
+
+      ;
   };
 
 
@@ -309,10 +321,12 @@ function CareerFormInner({ jobId, isGeneral }) {
     formData.append("applicant[email]", values.email);
     formData.append("applicant[phone]", values.phone);
     formData.append("applicant[preferred_location]", values.preferred_location);
-    formData.append("applicant[current_location]", values.current_location);
+    formData.append("applicant[current_location]", values.current_location || "");
     formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
     formData.append("applicant[employee_referral_code]", values.employee_referral_code || "");
-    formData.append("applicant[age]", values.age);
+    if (values.age !== null && !isNaN(values.age) && values.age > 0) {
+      formData.append("applicant[age]", values.age.toString());
+    }
     formData.append("applicant[notice_period]", values.notice_period);
     formData.append("applicant[current_salary]", values.current_salary || "");
     formData.append("applicant[expected_salary]", values.expected_salary || "");
@@ -360,7 +374,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       emailForm.reset();
       otpForm.reset();
       setShowOtpInput(false);
-      toast.success("Application submitted successfully!");
+      toast.success(response.data.message);
     } catch (err) {
       console.error("Error submitting form:", err);
       toast.error(err.response.data.error.message || "Failed to submit application.");
@@ -414,7 +428,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       <Toaster position="top-right" />
       {/* Email Verification Modal */}
       <Transition appear show={isModalOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-50" onClose={() => {}}>
+        <Dialog as="div" className="relative z-50" onClose={() => { }}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -496,7 +510,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                             name="otp"
                             render={({ field }) => (
                               <FormItem>
-                                   {/* <Label className="text-black"> Mail</Label> */}
+                                {/* <Label className="text-black"> Mail</Label> */}
                                 <FormControl>
                                   <Input
                                     type="text"
@@ -552,9 +566,8 @@ function CareerFormInner({ jobId, isGeneral }) {
             className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5"
           >
             <div
-              className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${
-                isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
-              }`}
+              className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
+                }`}
               onDragOver={(e) => handleDragOver(e, false)}
               onDragLeave={(e) => handleDragLeave(e, false)}
               onDrop={(e) => handleDrop(e, false)}
@@ -575,7 +588,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                     accept=".pdf,.jpeg,.png"
                     className="hidden"
                     onChange={handleFileChange}
-                    // disabled={!isOtpVerified}
+                  // disabled={!isOtpVerified}
                   />
                 </label>
               </div>
@@ -583,8 +596,8 @@ function CareerFormInner({ jobId, isGeneral }) {
                 {selectedFile
                   ? `${selectedFile.name} (${getFileTypeDisplay(selectedFile, null)})`
                   : selectedFileName
-                  ? `${selectedFileName.replace("uploads/job-applications/", "")} (${getFileTypeDisplay(null, selectedFileName)})`
-                  : "No file chosen"}
+                    ? `${selectedFileName.replace("uploads/job-applications/", "")} (${getFileTypeDisplay(null, selectedFileName)})`
+                    : "No file chosen"}
               </div>
             </div>
 
@@ -594,13 +607,13 @@ function CareerFormInner({ jobId, isGeneral }) {
                 name="name"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                     <Label className="text-black"> Mail</Label>
+                    <Label className="text-black"> Mail</Label>
                     <FormControl>
                       <Input
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Name*"
                         {...field}
-                        // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -620,7 +633,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Phone Number*"
                         {...field}
-                        // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -634,7 +647,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                     <Label className="text-black"> Mail</Label>
+                    <Label className="text-black"> Mail</Label>
                     <FormControl>
                       <Input
                         type="email"
@@ -664,7 +677,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       type="text"
                       placeholder="Current Location"
                       className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                      // disabled={!isOtpVerified}
+                    // disabled={!isOtpVerified}
                     />
                     <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
@@ -681,7 +694,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                     <Select
                       onValueChange={field.onChange}
                       value={field.value}
-                      // disabled={!isOtpVerified}
+                    // disabled={!isOtpVerified}
                     >
                       <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                         <SelectValue placeholder="Preferred Location*" />
@@ -710,7 +723,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Referred Employee Name"
                         {...field}
-                        // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -729,7 +742,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Employee Referral Code"
                         {...field}
-                        // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -749,7 +762,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Age"
                         {...field}
-                        // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -767,7 +780,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                       <Select
                         onValueChange={field.onChange}
                         value={field.value}
-                        // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                       >
                         <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                           <SelectValue placeholder="Department*" />
@@ -798,7 +811,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                           className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                           placeholder="Preferred Role*"
                           {...field}
-                          // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500 text-xs" />
@@ -816,7 +829,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                     <Select
                       onValueChange={field.onChange}
                       value={field.value}
-                      // disabled={!isOtpVerified}
+                    // disabled={!isOtpVerified}
                     >
                       <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                         <SelectValue placeholder="Notice Period*" />
@@ -846,7 +859,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Current Monthly Salary*"
                         {...field}
-                        // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -868,7 +881,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Expected Monthly Salary*"
                         {...field}
-                        // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -878,9 +891,8 @@ function CareerFormInner({ jobId, isGeneral }) {
             </div>
 
             <div
-              className={`max-sm:hidden w-full md:w-[calc(100%-100px)] lg:w-[calc(100%-120px)] xl:w-[calc(100%-140px)] 2xl:w-[calc(100%-180px)] 3xl:w-[calc(100%-200px)] px-[4px] lg:px-[6px] 2xl:px-[10px] mb-[10px] lg:mb-0 ${
-                isDraggingDesktop ? "border-2 border-blue-500 rounded-lg" : ""
-              }`}
+              className={`max-sm:hidden w-full md:w-[calc(100%-100px)] lg:w-[calc(100%-120px)] xl:w-[calc(100%-140px)] 2xl:w-[calc(100%-180px)] 3xl:w-[calc(100%-200px)] px-[4px] lg:px-[6px] 2xl:px-[10px] mb-[10px] lg:mb-0 ${isDraggingDesktop ? "border-2 border-blue-500 rounded-lg" : ""
+                }`}
               onDragOver={(e) => handleDragOver(e, true)}
               onDragLeave={(e) => handleDragLeave(e, true)}
               onDrop={(e) => handleDrop(e, true)}
@@ -907,17 +919,17 @@ function CareerFormInner({ jobId, isGeneral }) {
                             accept=".pdf,.jpeg,.png"
                             className="hidden"
                             onChange={handleFileChange}
-                            // disabled={!isOtpVerified}
+                          // disabled={!isOtpVerified}
                           />
                         </label>
                         <span className="text-xs lg:text-xs 2xl:text-base leading-none font-normal text-gray-700 whitespace-nowrap overflow-hidden text-ellipsis flex-1 ml-1 lg:ml-1.5">
                           {selectedFile
                             ? `${truncateFilename(selectedFile.name)} (${getFileTypeDisplay(selectedFile, null)})`
                             : selectedFileName
-                            ? `${truncateFilename(
+                              ? `${truncateFilename(
                                 selectedFileName.replace("uploads/job-applications/", "")
                               )} (${getFileTypeDisplay(null, selectedFileName)})`
-                            : "No file chosen"}
+                              : "No file chosen"}
                         </span>
                       </div>
                     </FormControl>
@@ -928,19 +940,23 @@ function CareerFormInner({ jobId, isGeneral }) {
             </div>
 
             <div className="w-full md:w-[100px] lg:w-[120px] xl:w-[140px] 2xl:w-[180px] 3xl:w-[200px] px-[4px] lg:px-[6px] 2xl:px-[10px]">
+
               <Button
-                className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-white w-full max-w-[140px] lg:max-w-[160px] 2xl:max-w-[180px] 3xl:max-w-[200px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[50px] 3xl:h-[55px] flex items-center justify-between bg-base2 rounded-[20px] lg:rounded-[30px] 2xl:rounded-[40px] 3xl:rounded-[60px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
+                className="group text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-white w-full max-w-[140px] lg:max-w-[160px] 2xl:max-w-[180px] 3xl:max-w-[200px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[50px] 3xl:h-[55px] flex items-center justify-between bg-base1 rounded-[20px] lg:rounded-[30px] 2xl:rounded-[40px] 3xl:rounded-[60px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
                 type="submit"
-                disabled={loading || !isOtpVerified}
+              // disabled={loading || !isOtpVerified}
               >
                 <span className="px-1 lg:px-3.5">{loading ? "Submitting..." : "Submit"}</span>
-                <Image
-                  src="/images/icon-careerBtn.svg"
-                  alt="careerBtn"
-                  width={40}
-                  height={40}
-                  className="w-5 lg:w-6 2xl:w-8 h-auto"
-                />
+                <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px]
+                 2xl:w-[40px] 2xl:h-[40px] 3xl:w-[35px] 
+                3xl:h-[35px] bg-base2 rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-1 group-hover:bg-base1  group-hover:text-white">
+                  <svg viewBox="0 0 13 11" className="max-w-[15px]">
+                    <path
+                      d="M8.125 10.375L6.9875 9.19687L9.87187 6.3125H0V4.6875H9.87187L6.9875 1.80312L8.125 0.625L13 5.5L8.125 10.375Z"
+                      fill="white"
+                    />
+                  </svg>
+                </div>
               </Button>
             </div>
           </form>

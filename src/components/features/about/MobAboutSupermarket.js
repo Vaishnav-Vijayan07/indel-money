@@ -28,7 +28,7 @@ export default function MobAboutSupermarket({ serviceImages, description, title 
   return (
     <section className="w-full py-[25px_35px] rounded-[10px] bg-[#eef9ff]">
       <div className="container">
-        <div className="text-title1 max-w-[220px] mb-[20px] [&>span]:font-bold [&>span]:text-base2">{title ? renderHtml(title) : ""}</div>
+        <div className="text-title1 text-[#5e5959bf] max-w-[220px] mb-[20px] [&>span]:font-bold [&>span]:text-base2">{title ? renderHtml(title) : ""}</div>
         <div className="rounded-[24px] mb-[20px] overflow-hidden">
           <Swiper
             modules={[Autoplay]}

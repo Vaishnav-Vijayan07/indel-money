@@ -32,7 +32,7 @@ export default function MobWhoDoServe({ audience, who_do_serve_title }) {
   return (
     <section className="w-full py-[20px] md:py-[20px] xl:pt-[30px] 2xl:py-[50px] 3xl:py-[70px]">
       <div className="container">
-        <h2 className="text-title1 mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold">
+        <h2 className="text-title1 text-[#5e5959bf] mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold">
           {who_do_serve_title ? renderHtml(who_do_serve_title) : ""}
         </h2>
         <div className="w-full -mx-[6px] flex flex-wrap">

@@ -37,7 +37,7 @@ export default function WhoDoServe({ audience, who_do_serve_title }) {
     <section className="w-full block py-[20px] md:py-[20px] xl:pt-[30px] 2xl:py-[50px] 3xl:py-[70px]">
       <div className="container">
         <h2
-          className="text-title1 mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
+          className="text-title1 text-[#5e5959bf]  mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
           dangerouslySetInnerHTML={{ __html: who_do_serve_title ? who_do_serve_title : "" }}
         />
 

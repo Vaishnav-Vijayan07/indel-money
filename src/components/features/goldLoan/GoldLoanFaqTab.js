@@ -276,7 +276,7 @@ export default function GoldLoanFaqTab({ faq_title }) {
         <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
             <div className="container">
                 <h2
-                    className="w-full text-black text-title1 font-normal xl:mb-[30px] mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
+                    className="w-full text-[#5e5959bf] text-title1 font-normal xl:mb-[30px] mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
                     Frequently Asked <span> Questions</span>
                 </h2>
                 <div className="w-full 2xl:py-[30px] xl:py-[20px] lg:py-[15px] py-[10px] bg-[#E7EFF9] rounded-[24px]">

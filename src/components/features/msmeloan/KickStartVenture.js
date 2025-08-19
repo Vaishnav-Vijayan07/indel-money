@@ -17,7 +17,7 @@ export default function KickStartVenture({
       <div className="container">
         <div className="flex flex-wrap lg:-mx-[40px]">
           <div className="w-full lg:w-5/10 lg:px-[40px] relative before:content-[''] before:hidden lg:before:block before:absolute before:h-full before:w-[1px] before:top-[0] before:right-0 before:bg-[rgba(22,69,156,0.26)] before:opacity-25">
-            <h1 className="text-title1 mb-[15px] 2xl:mb-[20px] font-medium 2xl:font-normal [&>span]:text-base2 [&>span]:font-bold">
+            <h1 className="text-title1 text-[#5e5959bf] mb-[15px] 2xl:mb-[20px] font-medium 2xl:font-normal [&>span]:text-base2 [&>span]:font-bold">
               {title ? parse(title) : "Kickstart your new venture with our MSME loan"}
             </h1>
 

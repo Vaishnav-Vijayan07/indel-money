@@ -32,7 +32,7 @@ export default function DreamsToReality({ initialData, statsData }) {
             className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-540px)] 3xl:w-[calc(100%-610px)] lg:pr-[40px] xl:pr-[70px] 2xl:pr-[120px] mb-4"
           >
             <h1
-              className="text-[12px] lg:text-[12px] xl:text-[14px] 3xl:text-[18px] font-medium text-[#1e1e1e] [&>span]:text-base4"
+              className="text-[12px] text-[#666262bf] lg:text-[12px] xl:text-[14px] 3xl:text-[18px] font-medium [&>span]:text-base4"
               dangerouslySetInnerHTML={{ __html: initialData?.about_super_title ? initialData?.about_super_title : "" }}
             />
             {/* Welcome to <span className="text-base4 ">INDEL MONEY</span> */}

@@ -6,9 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./History.css";
-import Image from 'next/image';
-
-
+import Image from "next/image";
 const slides = [
   {
     year: "1986",
@@ -124,11 +122,11 @@ export default function YearsInception({ inceptionslides, title }) {
                                   alt={item?.title}
                                   width={400}
                                   height={250}
-                                  className="w-full object-cover max-h-[175px] 3xl:max-h-[250px]"
+                                  className="w-full object-cover max-h-[175px] 3xl:max-h-[250px] mb-2 mt-1"
                                 />
                               </div>
-                              <p className="text-white">{item?.description}</p>
-                              <h3 className="text-[16px] 2xl:text-[20px] 3xl:text-[22px] text-left text-white font-semibold mb-[5px] 2xl:mb-[10px]">
+                              <p className="text-white w-[400px]">{item?.description}</p>
+                              <h3 className="text-[16px] 2xl:text-[20px] 3xl:text-[22px] text-white font-semibold mb-[5px] 2xl:mb-[10px]">
                                 {item?.title}
                               </h3>
 

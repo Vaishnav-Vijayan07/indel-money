@@ -57,7 +57,7 @@ export default function MobLatestUpdates() {
       <div className="container">
         <div className="mb-[25px]">
           <div className="flex justify-between items-center gap-2 mb-[15px] @sm:mb-[20px]">
-            <h3 className="text-title1 font-medium text-black">CSR</h3>
+            <h3 className="text-title1 text-[#5e5959bf] font-medium">CSR</h3>
             <Link
               href="/"
               className="text-[12px] leading-none font-bold flex items-center hover:text-base2 transition-color duration-300"
@@ -120,7 +120,7 @@ export default function MobLatestUpdates() {
         </div>
         <div>
           <div className="flex justify-between items-center gap-2 mb-[15px] @sm:mb-[20px]">
-            <h3 className="text-title1 font-medium text-black max-w-[75%]">CSR Activity</h3>
+            <h3 className="text-title1 font-medium text-[#5e5959bf] max-w-[75%]">CSR Activity</h3>
           </div>
           <Swiper
             modules={[Autoplay, Pagination]}

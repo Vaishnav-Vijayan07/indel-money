@@ -54,7 +54,7 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
       <div className="container">
         <div className="mb-[25px]">
           <div className="flex justify-between items-center gap-2 mb-[15px] @sm:mb-[20px]">
-            <h3 className="text-title1 font-medium text-black">{sliderTitle}</h3>
+            <h3 className="text-title1 font-medium text-[#5e5959bf]">{sliderTitle}</h3>
             <Link href={type} className="text-[12px] leading-none font-bold flex items-center hover:text-base2 transition-color duration-300">
               VIEW ALL
               <Image src="/images/icon-right.svg" width={5} height={9} alt="right" className="ml-[5px]" />
@@ -104,7 +104,7 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
         </div>
         <div>
           <div className="flex justify-between items-center gap-2 mb-[15px] @sm:mb-[20px]">
-            <h3 className="text-title1 font-medium text-black max-w-[75%]">CSR Activity</h3>
+            <h3 className="text-title1 font-medium text-[#5e5959bf] max-w-[75%]">CSR Activity</h3>
           </div>
           <Swiper
             modules={[Autoplay, Pagination]}

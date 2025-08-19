@@ -27,7 +27,7 @@ export default function MobLifeIndelInfo({ title, description, buttonText, butto
   return (
     <section className="w-full py-[40px_50px] block overflow-hidden">
       <div className="container">
-        <div className="text-title1 font-medium text-center mb-[10px] [&>span]:text-base2 [&>span]:font-bold">{title ? renderHtml(title) : ""}</div>
+        <div className="text-title1 text-[#5e5959bf] font-medium text-center mb-[10px] [&>span]:text-base2 [&>span]:font-bold">{title ? renderHtml(title) : ""}</div>
         <div className="relative py-[30px] 4xs:py-[40px] xs:py-[50px]">
           <div className="relative w-[200px] 4xs:w-[240px] h-auto aspect-240/300 mx-auto">
             {lifeImages?.map((src, index) => {

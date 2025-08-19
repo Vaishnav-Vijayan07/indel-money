@@ -6,7 +6,7 @@ export default function Annualreport({ reports, title, type = "report" }) {
 
   return (
     <section className="pb-[25px] 3xl:pb-[50px]">
-      <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{title}</div>
+      <div className="text-[#5e5959bf]  text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{title}</div>
       {isDataPresent ? (
         <div className="grid grid-cols-2 md:grid-cols-2 gap-2 xl:gap-4 3xl:gap-6">
           {reports?.map((report, index) => (

@@ -37,7 +37,7 @@ export default function TrustedInvestment({ pageContent }) {
             transition={{ duration: 0.5 }}
             className="w-full md:w-[55%] 2xl:w-[60%] md:px-[15px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]"
           >
-            <h2 className="text-title1 mb-[15px] 2xl:mb-[20px]">
+            <h2 className="text-title1 text-[#5e5959bf] mb-[15px] 2xl:mb-[20px]">
               {/* Your Trusted <br></br> Investment Opportunity */}
               {pageContent?.investment_title}
             </h2>

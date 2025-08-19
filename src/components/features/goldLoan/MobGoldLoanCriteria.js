@@ -16,7 +16,7 @@ export default function MobGoldLoanCriteria({
   return (
     <section className="w-full block py-[30px] bg-[linear-gradient(90deg,#CDDFFF_1%,#FFD2D2_99%)]">
       <div className="container">
-        <h2 className="text-title1 mb-[20px] [&>span]:text-base2 [&>span]:font-bold">{parse(title)}</h2>
+        <h2 className="text-title1 text-[#5e5959bf] mb-[20px] [&>span]:text-base2 [&>span]:font-bold">{parse(title)}</h2>
         <div className={boxStyle}>
           <h3 className={titleStyle}>Eligibility</h3>
           <p>{parse(description)}</p>

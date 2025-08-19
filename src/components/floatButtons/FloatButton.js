@@ -11,9 +11,8 @@ function FloatButton({ buttons, formattedGoldCaratTypes, formattedGoldTypes }) {
   const pathname = usePathname();
 
   // Define routes where you don't want the floating button
-  const hideFloatingButtonRoutes = ["/career"];
-
-  const shouldHideFloatingButton = hideFloatingButtonRoutes.includes(pathname);
+  const shouldHideFloatingButton =
+    pathname === "/career" || pathname.startsWith("/career-list/job-details/");
 
   return (
     !shouldHideFloatingButton && (
@@ -24,13 +23,25 @@ function FloatButton({ buttons, formattedGoldCaratTypes, formattedGoldTypes }) {
               href={button?.link ? button?.link : "/"}
               className="w-[25px] lg:w-[30px] 2xl:w-[40px] 3xl:w-[46px] aspect-square rounded-full relative z-0 block transition-all duration-300 hover:scale-105 shadow-[0_5px_10px_rgba(0,0,0,0.10)]"
             >
-              <Image src={button?.icon ? `${serverMediaPath}${button?.icon}` : "/images/floating-call.svg"} alt="call" fill sizes="46px" />
+              <Image
+                src={
+                  button?.icon
+                    ? `${serverMediaPath}${button?.icon}`
+                    : "/images/floating-call.svg"
+                }
+                alt="call"
+                fill
+                sizes="46px"
+              />
             </Link>
           </div>
         ))}
 
         <div>
-          <Calculator formattedGoldCaratTypes={formattedGoldCaratTypes} formattedGoldTypes={formattedGoldTypes} />
+          <Calculator
+            formattedGoldCaratTypes={formattedGoldCaratTypes}
+            formattedGoldTypes={formattedGoldTypes}
+          />
         </div>
       </div>
     )

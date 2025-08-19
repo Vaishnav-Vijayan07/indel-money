@@ -56,7 +56,7 @@ const OtherLoans = [
     title: "consumer durable Loan",
     link: "/consumer-durable-loans",
   },
-    {
+  {
     image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Loan Against Property",
@@ -129,12 +129,11 @@ function DropdownMenu({ items }) {
     <ul className="flex flex-col p-[5px] 3xl:p-[10px] w-[180px] lg:w-[200px] 2xl:w-[240px]">
       {items?.map((item, index) => (
         <li key={index}>
-          <Link href={item.link}  passHref>
+          <Link href={item.link} passHref>
             <MenubarItem>
               <div
-                className={`${
-                  pathname === item.link ? "text-base2" : ""
-                } text-header1 hover:text-base2! capitalize cursor-pointer transition-color duration-300`}
+                className={`${pathname === item.link ? "text-base2" : ""
+                  } text-header1 hover:text-base2! capitalize cursor-pointer transition-color duration-300`}
               >
                 {item.title}
               </div>
@@ -155,7 +154,7 @@ function MegaMenu({ items }) {
           <Link href={item.link} passHref>
             <MenubarItem className="p-0">
               <div className="group flex flex-row items-center p-[10px] 3xl:p-[10px] cursor-pointer">
-                <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
+                <div className="w-[40px] h-[40px] bg-base1 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
                   <Image
                     src={item.image}
                     width={28}
@@ -165,9 +164,8 @@ function MegaMenu({ items }) {
                   />
                 </div>
                 <div
-                  className={`${
-                    pathname === item.link ? "text-base2" : ""
-                  } w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 capitalize pl-[5px] lg:pl-[8px] 3xl:pl-[10px] group-hover:text-base2! transition-color duration-300`}
+                  className={`${pathname === item.link ? "text-base2" : ""
+                    } w-[calc(100%-40px)] 3xl:w-[calc(100%-60px)] text-header1 capitalize pl-[5px] lg:pl-[8px] 3xl:pl-[10px] group-hover:text-base2! transition-color duration-300`}
                 >
                   {item.title}
                 </div>
@@ -221,9 +219,8 @@ export default function NavMenu() {
         <a
           href={"https://indelremit.com"}
           target="_blank"
-          className={`${
-            pathname === "#" ? "" : ""
-          } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
+          className={`${pathname === "#" ? "" : ""
+            } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
         >
           FOREIGN EXCHANGE
         </a>

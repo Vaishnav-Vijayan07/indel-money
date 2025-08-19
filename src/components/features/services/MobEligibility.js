@@ -37,7 +37,7 @@ export default function ({ criteriaIcon, criteriaTitle, criteriaDescription, cri
                   className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
                 />
               </div>
-              <h2 className="text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-normal text-[#141414] pl-[15px] [&>span]:text-base2 [&>span]:font-bold">
+              <h2 className="text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-normal text-[#5e5959bf] pl-[15px] [&>span]:text-base2 [&>span]:font-bold">
                 {criteriaTitle ? parse(criteriaTitle) : "Eligibility Criteria"}
               </h2>
             </div>
