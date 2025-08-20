@@ -56,7 +56,19 @@ const baseSchema = {
       message: "Must be at least 5 digits and no decimals.",
     })
     .optional(),
-};
+   age: z.preprocess(
+    (val) => {
+      // Treat empty, null, undefined as invalid (not optional)
+      if (val === "" || val === null || val === undefined) return "invalid";
+      const num = Number(val);
+      return isNaN(num) ? "invalid" : num;
+    },
+    z
+      .number({ invalid_type_error: "Enter a valid age" })
+      .max(99, "Enter a valid age")
+  ).optional()
+
+  }
 
 const emailSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -309,10 +321,12 @@ function CareerFormInner({ jobId, isGeneral }) {
     formData.append("applicant[email]", values.email);
     formData.append("applicant[phone]", values.phone);
     formData.append("applicant[preferred_location]", values.preferred_location);
-    formData.append("applicant[current_location]", values.current_location);
+    formData.append("applicant[current_location]", values.current_location || "");
     formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
     formData.append("applicant[employee_referral_code]", values.employee_referral_code || "");
-    formData.append("applicant[age]", values.age);
+    if (values.age !== null && !isNaN(values.age) && values.age > 0) {
+        formData.append("applicant[age]", values.age.toString());
+      }
     formData.append("applicant[notice_period]", values.notice_period);
     formData.append("applicant[current_salary]", values.current_salary || "");
     formData.append("applicant[expected_salary]", values.expected_salary || "");
@@ -360,7 +374,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       emailForm.reset();
       otpForm.reset();
       setShowOtpInput(false);
-      toast.success("Application submitted successfully!");
+      toast.success(response.data.message);
     } catch (err) {
       console.error("Error submitting form:", err);
       toast.error(err.response.data.error.message || "Failed to submit application.");
@@ -931,7 +945,7 @@ function CareerFormInner({ jobId, isGeneral }) {
               <Button
                 className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-white w-full max-w-[140px] lg:max-w-[160px] 2xl:max-w-[180px] 3xl:max-w-[200px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[50px] 3xl:h-[55px] flex items-center justify-between bg-base2 rounded-[20px] lg:rounded-[30px] 2xl:rounded-[40px] 3xl:rounded-[60px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
                 type="submit"
-                disabled={loading || !isOtpVerified}
+                // disabled={loading || !isOtpVerified}
               >
                 <span className="px-1 lg:px-3.5">{loading ? "Submitting..." : "Submit"}</span>
                 <Image

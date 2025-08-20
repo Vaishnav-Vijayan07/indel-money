@@ -50,8 +50,8 @@ export default function CareerLifeAtIndel({
   gallery_title,
   gallery_sub_title,
   gallery_description,
-  gallery_button_text,
-  gallery_button_link,
+  // gallery_button_text,
+  // gallery_button_link,
   gallery,
 }) {
   const galleryItems = gallery.slice(0, 5)
@@ -70,12 +70,12 @@ export default function CareerLifeAtIndel({
             </div>
           </div>
           <div>
-            <Link
+            {/* <Link
               href={gallery_button_link ? gallery_button_link : "/"}
               className="btn btn-base2 min-w-[120px] lg:min-w-[100px] xl:min-w-[120px] 2xl:min-w-[140px] 3xl:min-w-[180px] cursor-pointer"
             >
               {gallery_button_text ? gallery_button_text : "Learn More"}
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

@@ -1,19 +1,43 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import FindJobForm from "./FindJobForm";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import JobResultBoxSlide from "./JobResultBoxSlide";
 import { toSentenceCase } from "@/lib/utils/toSentenceCase";
+import toast from "react-hot-toast";
 
 function JobLocationBox({ item }) {
+  const handleClick = (e) => {
+
+    if (!item?.is_active) {
+      // e.preventDefault();
+      // You can add your toast message logic here
+      toast.error(
+        "Currently we are not operational. Please send your resume. Once we are operational we will contact you back.",
+        {
+          duration: 10000, // 10s (or Infinity)
+          style: {
+            fontSize: "12px", // smaller text
+            padding: "6px 10px", // smaller padding
+            minHeight: "unset", // avoid default height
+          },
+        }
+      );
+      return;
+    }
+  };
+
   return (
     <Link
-      href={`/career-list?state_id=${item.id}`}
+      href={item?.is_active ? `/career-list?state_id=${item.id}` : "#makemove"}
+      onClick={handleClick}
       className={`${
         item.is_active
-          ? "group opacity-100 grayscale-0 cursor-pointer"
-          : "opacity-80 grayscale-100 cursor-default"
-      } w-full h-auto aspect-220/160 bg-white rounded-[7px] sm:rounded-[15px] lg:rounded-[20px] 2xl:rounded-[24px] overflow-hidden block relative z-0`}
+          ? "group opacity-100 grayscale-0"
+          : "opacity-80 grayscale-100"
+      } w-full h-auto aspect-220/160 bg-white rounded-[7px] sm:rounded-[15px] cursor-pointer lg:rounded-[20px] 2xl:rounded-[24px] overflow-hidden block relative z-0`}
     >
       <Image
         src={
@@ -32,7 +56,6 @@ function JobLocationBox({ item }) {
     </Link>
   );
 }
-
 export default function FindJob({
   find_job_title,
   find_job_button_name,
@@ -45,12 +68,11 @@ export default function FindJob({
       <div className="container">
         <div className="flex justify-between mb-[10px] lg:mb-[15px] 2xl:mb-[20px] max-sm:hidden">
           <div
-            className="text-title1 font-bold [&>span]:font-bold  [&>span]:text-base2 "
+            className="text-title1 font-bold [&>span]:font-bold [&>span]:text-base2"
             dangerouslySetInnerHTML={{
               __html: find_job_title ? find_job_title : "",
             }}
           />
-
           <div className="max-sm:hidden block">
             <Link
               href={
@@ -103,7 +125,6 @@ export default function FindJob({
                     </div>
                   ))}
                 </div>
-                {/* <ScrollBar className="right-[calc(100%+15px)]!" /> */}
               </ScrollArea>
             </div>
             <div className="w-full lg:w-[368px] xl:w-[468px] 2xl:w-[576px] 3xl:w-[700px] lg:pl-[20px] 2xl:pl-[30px] max-sm:hidden block">

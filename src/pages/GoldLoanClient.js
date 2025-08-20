@@ -89,7 +89,7 @@ export default function GoldLoanClient({
       ) : (
         <StepGoldLoan
           className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]"
-          hideTitle={true}
+          hideTitle={false}
           loanSteps={steps}
           title={contents?.gold_loan_step_title}
         />
