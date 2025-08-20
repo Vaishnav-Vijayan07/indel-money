@@ -21,7 +21,7 @@ export default function MobInvestorsInfo({
   return (
     <section className="w-full py-[30px] bg-[#d4e7ff]">
       <div className="container">
-        <div className="text-title1 capitalize font-medium mb-[10px]">{title}</div>
+        <div className="text-title1 text-[#5e5959bf] capitalize font-medium mb-[10px]">{title}</div>
         <div className="flex [--delmt-x:10px] mb-[10px]">
           <div className="w-[calc((100%/3)+var(--delmt-x))]">
             <div className={mobInvestorsBxStyle}>

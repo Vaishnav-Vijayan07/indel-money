@@ -16,7 +16,7 @@ export default function SmartMoneyDeal({
         <div className="flex flex-wrap mb-[25px] 2xl:mb-[30px]">
           <div className="w-full md:w-[45%] xl:w-[40%]">
             <h2
-              className="text-title1 md:pb-[0] pb-[12px] [&>span]:text-base2 [&>span]:font-bold"
+              className="text-title1 text-[#5e5959bf] md:pb-[0] pb-[12px] [&>span]:text-base2 [&>span]:font-bold"
               dangerouslySetInnerHTML={{ __html: deals_title ? deals_title : "Smart Money Deal" }}
             />
           </div>

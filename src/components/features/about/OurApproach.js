@@ -50,7 +50,7 @@ export default function OurValues({ propositions, title }) {
     <section className="w-full py-[40px_30px] xl:py-[50px_50px] 2xl:py-[60px_70px] 3xl:py-[80px_100px]">
       <div className="max-w-[var(--container-x)] lg:max-w-[calc(100%-(100%-var(--container-x))/2)] mx-auto lg:mr-[0] px-[var(--container-padding,1rem)] lg:pr-[0]">
         <h1
-          className="text-title1 font-medium sm:font-normal text-[#1E1E1E] mb-[20px] sm:mb-[30px] 2xl:mb-[50px] [&>span]:text-base2 [&>span]:font-bold"
+          className="text-title1 font-medium sm:font-normal text-[#5e5959bf]  mb-[20px] sm:mb-[30px] 2xl:mb-[50px] [&>span]:text-base2 [&>span]:font-bold"
           dangerouslySetInnerHTML={{ __html: title ? title : "Our Approach <br></br> <span>Proposition</span>" }}
         />
 
@@ -107,7 +107,7 @@ export function ValueBox({ item, index, isExpanded, toggleReadMore }) {
             className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"
           />
         </div>
-        <div className="w-[calc(100%-39px)] sm:w-[calc(100%-35px)] 2xl:w-[calc(100%-45px)] pl-[7px] sm:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px] text-black font-medium 2xl:font-normal leading-[1.1] text-[16px] 3xs:text-[20px] sm:text-[16px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[25px] line-clamp-2">
+        <div className="w-[calc(100%-39px)] sm:w-[calc(100%-35px)] 2xl:w-[calc(100%-45px)] pl-[7px] sm:pl-[15px] 2xl:pl-[20px] 3xl:pl-[25px] text-[#5e5959bf] font-medium 2xl:font-normal leading-[1.1] text-[16px] 3xs:text-[20px] sm:text-[16px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[25px] line-clamp-2">
           {item.title}
         </div>
       </div>

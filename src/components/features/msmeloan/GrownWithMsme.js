@@ -52,15 +52,15 @@ export default function FAQ({ title, description, type = "msme" }) {
         <div className="flex flex-wrap lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[40px]">
           <div className="w-full lg:w-[40%] 2xl:w-[40%] lg:border-r lg:border-r-[rgba(23,71,158,0.26)] pb-[30px] lg:pb-[0] lg:px-[15px] xl:px-[20px] 2xl:px-[40px] sm:block hidden">
             <div className="w-full">
-              <h2 className="text-title1 mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold text-left">{parse(title)}</h2>
+              <h2 className="text-title1 text-[#5e5959bf]  mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold text-left">{parse(title)}</h2>
               <div className="text-sm1">{parse(description)}</div>
             </div>
           </div>
           <div className="w-full lg:w-[60%] 2xl:w-[60%] lg:px-[15px] xl:px-[20px] 2xl:px-[40px]">
             <div className="contentBx overflow-y-auto xl:max-h-[660px] 3xl:max-h-[700px] w-full">
-              <h3 className="font-bold text-black mb-2 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">FAQ</h3>
+              <h3 className="font-bold text-[#5e5959bf] mb-2 xl:text-[20px] lg:text-[18px] text-[16px] uppercase">FAQ</h3>
               <div className="flex items-center justify-between mb-5 pb-[20px] border-b-1 border-[rgba(0,0,0,0.68)]">
-                <h3 className="text-title1 text-black">
+                <h3 className="text-title1 text-[#5e5959bf] ">
                   Frequently asked <span className="text-base2 font-bold">&nbsp;Questions</span>
                 </h3>
               </div>

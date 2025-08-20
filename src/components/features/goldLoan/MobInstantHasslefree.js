@@ -45,7 +45,7 @@ export default function MobInstantHasslefree({ title, description, hassle_free_i
   return (
     <section className="w-full block py-[25px] bg-[linear-gradient(90deg,#CDDFFF_1%,#FFD2D2_99%)] rounded-[20px]">
       <div className="container">
-        <h2 className="text-title1 text-black mb-[15px] [&>span]:text-base2 [&>span]:font-bold">{parse(title)}</h2>
+        <h2 className="text-title1 text-[#5e5959bf] mb-[15px] [&>span]:text-base2 [&>span]:font-bold">{parse(title)}</h2>
         <div className="group w-full h-auto aspect-[380/190] overflow-hidden rounded-[30px] relative z-0 mb-[15px]">
           <Image
             src={hassle_free_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${hassle_free_image}` : "/images/loanImag1.webp"}

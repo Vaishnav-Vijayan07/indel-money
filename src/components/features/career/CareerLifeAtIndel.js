@@ -60,7 +60,7 @@ export default function CareerLifeAtIndel({
       <div className="container">
         <div className="flex items-center justify-between mb-[15px] lg:mb-[20px] 2xl:mb-[30px]">
           <div className="lg:max-w-[320px] xl:max-w-[376px] 2xl:max-w-[468px] 3xl:max-w-[576px]">
-            <div className="text-title1 font-bold mb-[10px] lg:mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
+            <div className="text-title1 text-[#5e5959bf] font-bold mb-[10px] lg:mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
               {gallery_title ? renderHtml(gallery_title) : "Life at Indel"}
             </div>
             <div className="text-sm1 ">

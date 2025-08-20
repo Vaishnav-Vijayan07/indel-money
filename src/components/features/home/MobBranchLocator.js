@@ -160,7 +160,7 @@ export default function MobBranchLocator({ pageContent }) {
   return (
     <section className="w-full py-[30px_15px] mb-[30px] bg-white shadow-[0_0_150px_0_rgba(0,0,0,0.25)] rounded-[10px_10px_0_0]">
       <div className="container">
-        <h2 className="text-title1 mb-[10px] 2xl:mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
+        <h2 className="text-title1 text-[#5e5959bf] mb-[10px] 2xl:mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
           {pageContent?.title ? renderHtml(pageContent?.title) : "Find Your Nearest Branch"}
         </h2>
         <BranchForm

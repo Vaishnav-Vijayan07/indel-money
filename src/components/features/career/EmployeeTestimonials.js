@@ -218,7 +218,7 @@ export default function EmployeeTestimonials({
           <div className="max-sm:block hidden w-full mb-[20px]">
             <div className="w-full mb-[10px] flex flex-wrap gap-[10px]">
               <div
-                className="text-title1 [&>span]:font-bold [&>span]:text-base2"
+                className="text-title1 text-[#5e5959bf] [&>span]:font-bold [&>span]:text-base2"
                 dangerouslySetInnerHTML={{ __html: testimonial_title ? testimonial_title : "<span>Employee &nbsp;Testimonials</span>" }}
               />
 
@@ -301,7 +301,7 @@ export default function EmployeeTestimonials({
           <div className="w-full md:w-[calc(100%-268px)] lg:w-[calc(100%-368px)] xl:w-[calc(100%-520px)] 2xl:w-[calc(100%-676px)] 3xl:w-[calc(100%-820px)] lg:pl-[20px] xl:pl-[60px] 2xl:pl-[60px]">
             <div className="max-sm:hidden w-full mb-[8px] lg:mb-[5px] 2xl:mb-[20px] flex flex-wrap gap-[10px] lg:gap-[15px] 2xl:gap-[20px] ">
               <div
-                className="text-title1 [&>span]:font-bold [&>span]:text-base2"
+                className="text-title1 text-[#5e5959bf] [&>span]:font-bold [&>span]:text-base2"
                 dangerouslySetInnerHTML={{ __html: testimonial_title ? testimonial_title : "<span>Employee &nbsp;Testimonials</span>" }}
               />
               <div className="w-[30px] lg:w-[50px] 2xl:w-[60px] 3xl:w-[80px] h-auto aspect-4/4 relative z-0">

@@ -42,7 +42,7 @@ export default function MobKickStartVenture({ title, sub_title, button_text, but
     <section className="w-full block py-[20px]">
       <div className="container">
         <div className="w-full relative before:content-[''] before:hidden lg:before:block before:absolute before:h-full before:w-[1px] before:top-0 before:right-0 before:bg-[rgba(22,69,156,0.26)] before:opacity-25">
-          <h2 className="text-title1 font-medium mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
+          <h2 className="text-title1 text-[#5e5959bf] font-medium mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
             {title ? renderHtml(title) : "Kickstart your new venture with our MSME loan"}
           </h2>
           <div className="text-[14px] leading-normal font-medium text-[#1e1e1e] mb-[15px]">

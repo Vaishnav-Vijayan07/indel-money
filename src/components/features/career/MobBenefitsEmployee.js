@@ -50,7 +50,7 @@ export default function BenefitsEmployee({ benefits, benefits_title }) {
   return (
     <section className="w-full block py-[30px_0] overflow-hidden">
       <div className="container">
-        <div className="text-title1 font-medium capitalize mb-[15px] [&>span]:font-bold [&>span]:text-base2">
+        <div className="text-title1 text-[#5e5959bf] font-medium capitalize mb-[15px] [&>span]:font-bold [&>span]:text-base2">
           {benefits_title ? renderHtml(benefits_title) : ""}
         </div>
         <Swiper

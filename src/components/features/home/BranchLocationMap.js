@@ -41,7 +41,7 @@ import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 // Custom popup content component
 const CustomPopup = memo(({ branch }) => (
   <div className="popup-content w-[260px] lg:w-[320px] 2xl:w-[376px]">
-    <h3 className="text-[14px] lg:text-[16px] 2xl:text-[18px] font-bold line-clamp-1 text-[#1B1B1B] mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
+    <h3 className="text-[14px] lg:text-[16px] 2xl:text-[18px] font-bold line-clamp-1 text-[#666262bf] mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
       {toSentenceCase(branch?.name)}
     </h3>
     <div className="flex items-start mb-[5px] lg:mb-[10px] 2xl:mb-[15px] flex-wrap">
@@ -175,7 +175,7 @@ const MapController = memo(
                 const markerLatLng = marker.getLatLng();
                 return (
                   Math.abs(markerLatLng.lat - selectedBranch.latitude) <
-                    0.0001 &&
+                  0.0001 &&
                   Math.abs(markerLatLng.lng - selectedBranch.longitude) < 0.0001
                 );
               }
@@ -298,7 +298,7 @@ const MapController = memo(
               }}
             >
               <Popup closeButton={false}>
-                <CustomPopup  branch={branch} />
+                <CustomPopup branch={branch} />
               </Popup>
             </Marker>
           ))}
@@ -315,9 +315,8 @@ const BranchLocationsInfo = memo(({ item, type, selectedBranch, branch }) => {
       <Image
         src="/icons/location.svg"
         alt="location"
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
-          selectedBranch === branch ? "filter-white" : "filter-red"
-        }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "filter-white" : "filter-red"
+          }`}
         width={12}
         height={16}
       />
@@ -326,9 +325,8 @@ const BranchLocationsInfo = memo(({ item, type, selectedBranch, branch }) => {
       <Image
         src="/icons/mobile.svg"
         alt="mobile"
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
-          selectedBranch === branch ? "filter-white" : "filter-red"
-        }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "filter-white" : "filter-red"
+          }`}
         width={12}
         height={16}
       />
@@ -337,9 +335,8 @@ const BranchLocationsInfo = memo(({ item, type, selectedBranch, branch }) => {
       <Image
         src="/icons/mail.svg"
         alt="email"
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
-          selectedBranch === branch ? "filter-white" : "filter-red"
-        }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "filter-white" : "filter-red"
+          }`}
         width={12}
         height={16}
       />
@@ -348,9 +345,8 @@ const BranchLocationsInfo = memo(({ item, type, selectedBranch, branch }) => {
       <Image
         src="/icons/phone.svg"
         alt="phone"
-        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${
-          selectedBranch === branch ? "filter-white" : "filter-red"
-        }`}
+        className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square mt-[1px] 2xl:mt-[2px] ${selectedBranch === branch ? "filter-white" : "filter-red"
+          }`}
         width={20}
         height={20}
       />
@@ -434,12 +430,12 @@ export default function BranchLocationMap({
           {nearbyBranchLocations?.map((branch) => (
             <div
               key={branch.id}
-              className={`max-sm:bg-[#7E94BC]/50 max-sm:rounded-[10px] max-sm:mb-[12px] last:mb-0 p-[15px_10px] sm:p-[10px_10px] lg:p-[20px_15px] 2xl:p-[20px_30px] cursor-pointer sm:border-b-[1px] border-solid border-white/10 loclist ${
-                selectedBranch?.id === branch.id
+              className={`max-sm:bg-[#7E94BC]/50 max-sm:rounded-[10px] max-sm:mb-[12px] last:mb-0 p-[15px_10px] sm:p-[10px_10px] lg:p-[20px_15px] 2xl:p-[20px_30px] cursor-pointer sm:border-b-[1px] border-solid border-white/10 loclist ${selectedBranch?.id === branch.id
                   ? "bg-[#f30000] max-sm:bg-[#f30000] active"
                   : "hover:bg-blue-700"
-              }`}
-              onClick={() => {handleBranchClick(branch)
+                }`}
+              onClick={() => {
+                handleBranchClick(branch)
               }}
             >
               <div className="flex items-center justify-between mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
@@ -457,11 +453,10 @@ export default function BranchLocationMap({
                     alt="direction"
                     width={14}
                     height={14}
-                    className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square transition ${
-                      selectedBranch?.id === branch.id
+                    className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square transition ${selectedBranch?.id === branch.id
                         ? "filter-white"
                         : "filter-red"
-                    }`}
+                      }`}
                   />
                 </a>
               </div>

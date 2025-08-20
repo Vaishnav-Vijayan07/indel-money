@@ -10,7 +10,7 @@ export default function ContactBanner({ contactTitle, contactDesc, trollFreeNum,
         <div className="flex flex-wrap sm:justify-between mt-[5px] sm:mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
           <div className="w-full lg:max-w-[420px] xl:max-w-[476px] 2xl:max-w-[576px] 3xl:max-w-[700px] pr-[15px]">
             <div
-              className="text-title1 mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
+              className="text-title1 text-[#5e5959bf] mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
               dangerouslySetInnerHTML={{ __html: contactTitle ? contactTitle : "" }}
             />
 

@@ -44,7 +44,7 @@ export default function BenefitsEmployee({ benefits, benefits_title }) {
   return (
     <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[50px]">
       <div className="container">
-        <div className="text-title1 font-medium capitalize flex items-center mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[40px]">
+        <div className="text-title1 text-[#5e5959bf] font-medium capitalize flex items-center mb-[10px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[40px]">
           <Image
             src={"/images/icon-contact-tle.svg"}
             alt="contact tle"
@@ -52,7 +52,7 @@ export default function BenefitsEmployee({ benefits, benefits_title }) {
             height={50}
             className="w-[30px] xl:w-[40px] 2xl:w-[50px] inline aspect-square mr-[10px] lg:mr-[15px] 2xl:mr-[20px]"
           />
-          <div className="[&>span]:font-bold [&>span]:text-base2">{benefits_title ? renderHtml(benefits_title) : ""}</div>
+          <div className="text-[#5e5959bf] [&>span]:font-bold [&>span]:text-base2">{benefits_title ? renderHtml(benefits_title) : ""}</div>
         </div>
         <div className="flex flex-wrap -mx-[5px] sm:-mx-[10px] lg:-mx-[15px] xl:-mx-[30px] 2xl:-mx-[40px]">
           {benefits?.map((item, index) => (

@@ -17,7 +17,7 @@ export default function ConsumerDurable({
     <section className="w-full pt-[30px] 2xl:pt-[50px]  2xl:pb-[70px] md:pb-[40px] sm:pt-[30px] sm:pb-[30px] pb-[20px]">
       <div className="container">
         <div className="w-full sm:pb-[20px] lg:pb-[40px] 2xl:pb-[60px]">
-          <h1 className="text-title2 text-black mb-[15px] 2xl:mb-[20px] [&>span]:text-base2  [&>span]:font-bold">
+          <h1 className="text-title2 text-[#5e5959bf] mb-[15px] 2xl:mb-[20px] [&>span]:text-base2  [&>span]:font-bold">
             {page_title ? renderHtml(page_title) : ""}
           </h1>
 
@@ -38,7 +38,7 @@ export default function ConsumerDurable({
             </div>
           </div>
           <div className="w-full md:w-[52%] 2xl:w-[54%] md:px-[15px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px]">
-            <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] font-bold [&>span]:text-base2  [&>span]:font-bold">
+            <h2 className="text-title1 text-[#5e5959bf] mb-[15px] 2xl:mb-[20px] font-bold [&>span]:text-base2  [&>span]:font-bold">
               {loan_offer_title ? renderHtml(loan_offer_title) : "Consumer Durable Loan"}
             </h2>
 

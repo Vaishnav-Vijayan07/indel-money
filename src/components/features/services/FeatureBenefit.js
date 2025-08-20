@@ -17,7 +17,7 @@ export default function FeatureBenefit({ benefits, title, image }) {
           </div>
           <div className="flex flex-wrap content-between w-full lg:w-[calc(100%-400px)] xl:w-[calc(100%-470px)] 2xl:w-[calc(100%-690px)] lg:p-[25px] xl:p-[30px] 2xl:p-[40px] 3xl:p-[55px]">
             <div className="w-full pb-[20px] lg:pb-[0]">
-              <h2 className="text-title1 [&>span]:text-base2 [&>span]:font-bold">{title ? renderHtml(title) : ""}</h2>
+              <h2 className="text-title1 text-[#5e5959bf] [&>span]:text-base2 [&>span]:font-bold">{title ? renderHtml(title) : ""}</h2>
 
               <div className="w-full sm:rounded-[36px] rounded-[15px] overflow-hidden mt-[15px] xl:mt-[25px]">
                 <div className="relative w-full sm:bg-[#DCEAFB] bg-[#fff] py-[30px] px-[25px] xl:p-[40px] 2xl:p-[50px]">
@@ -68,7 +68,7 @@ function FeatureBenefitBox({ item }) {
             className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"
           />
         </div>
-        <div className="text-[13px] 2xl:text-[14px] 3xl:text-[17px] leading-[1.4] font-normal text-[#151515] w-[calc(100%-25px)] pl-[10px] 2xl:pl-[15px]">
+        <div className="text-[13px] 2xl:text-[14px] 3xl:text-[17px] leading-[1.4] font-normal text-[#5e5959bf] w-[calc(100%-25px)] pl-[10px] 2xl:pl-[15px]">
           {item.title}
         </div>
       </div>

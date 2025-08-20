@@ -12,7 +12,7 @@ export default function AnnualReturns({ returns, title, type = "returns" }) {
     const isDataPresent = returns?.length > 0;
     return (
         <section>
-            <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{title}</div>
+            <div className="text-[#5e5959bf]  text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{title}</div>
             {
                 !isDataPresent ? (
                     <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black-400 italic">

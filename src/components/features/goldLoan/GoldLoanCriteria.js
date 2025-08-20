@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-const titleStyle = "text-[16px] lg:text-[20px] 2xl:text-[26px] 3xl:text-[28px] leading-normal font-bold text-black mb-[5px] lg:mb-[10px]";
-const titleStyle2 = "text-[12px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] leading-normal font-bold text-black mb-[10px] lg:mb-[15px]";
+const titleStyle = "text-[16px] lg:text-[20px] 2xl:text-[26px] 3xl:text-[28px] leading-normal font-bold text-[#5e5959bf] mb-[5px] lg:mb-[10px]";
+const titleStyle2 = "text-[12px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] leading-normal font-bold text-[#5e5959bf] mb-[10px] lg:mb-[15px]";
 const listStyle =
   "text-[12px] 2xl:text-[16px] 3xl:text-[18px] text-black relative pl-[15px] lg:pl-[20px] before:content-[''] before:absolute before:top-[4px] before:left-0 before:rounded-full before:bg-base2 before:w-[8px] before:h-[8px] mb-[5px]";
 
@@ -14,7 +14,7 @@ export default function GoldLoanCriteria({ title, description, identityProof, el
           <div className="w-full lg:w-[50%]">
             <div className="lg:pr-[60px]">
               <h2
-                className="text-black text-title1 font-normal mb-[20px] 2xlmb-[30px] 3xl:mb-[40px] [&>span]:text-base2 [&>span]:font-bold"
+                className="text-[#5e5959bf] text-title1 font-normal mb-[20px] 2xlmb-[30px] 3xl:mb-[40px] [&>span]:text-base2 [&>span]:font-bold"
                 dangerouslySetInnerHTML={{ __html: title ? title : "" }}
               />
               <div className="mb-[10px]">

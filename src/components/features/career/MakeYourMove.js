@@ -22,7 +22,7 @@ export default function MakeYourMove({ make_your_move_title, make_your_move_desc
             <div>
               <div className="w-full pt-[10px] mb-[12px] lg:mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]">
                 <div
-                  className="text-[17px] sm:text-[22px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[48px] leading-normal text-black font-bold flex items-center mb-[5px] lg:mb-[5px] 2xl:mb-[15px] [&>span]:text-base2 [&>span]:font-bold"
+                  className="text-[17px] sm:text-[22px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[48px] leading-normal text-[#5e5959bf] font-bold flex items-center mb-[5px] lg:mb-[5px] 2xl:mb-[15px] [&>span]:text-base2 [&>span]:font-bold"
                   dangerouslySetInnerHTML={{ __html: make_your_move_title ? make_your_move_title : "Title" }}
                 />
                 <div className="text-sm1  max-sm:hidden">{make_your_move_description ? make_your_move_description : "Description"}</div>

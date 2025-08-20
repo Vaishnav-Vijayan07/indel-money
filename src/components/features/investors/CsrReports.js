@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function CsrReports({ data, title }) {
     return (
         <section>
-            <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{title}</div>
+            <div className="text-[#5e5959bf]  text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{title}</div>
             <div className="overflow-auto w-full">
                 <table className="w-full border-collapse rounded-[16px] sm:rounded-[20px] px-[55px] 3xl:px-[76px] bg-[#D4E6FF] overflow-hidden">
 

@@ -31,7 +31,7 @@ export default function MobWhoDoServe() {
   return (
     <section className="w-full py-[20px] md:py-[20px] xl:pt-[30px] 2xl:py-[50px] 3xl:py-[70px]">
       <div className="container">
-        <h2 className="text-title1 mb-[20px] 2xl:mb-[30px]">
+        <h2 className="text-title1 text-[#5e5959bf] mb-[20px] 2xl:mb-[30px]">
           Who Do
           <span className="text-base2 font-bold">&nbsp;Serve</span>
         </h2>

@@ -357,7 +357,7 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-title1 w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-600px)] xl:pr-[40px] 2xl:pr-[60px] 3xl:pr-[80px] [&>span]:text-base2 [&>span]:font-bold"
+              className="text-title1 text-[#666262bf] w-full lg:w-[calc(100%-468px)] xl:w-[calc(100%-500px)] 2xl:w-[calc(100%-600px)] 3xl:w-[calc(100%-600px)] xl:pr-[40px] 2xl:pr-[60px] 3xl:pr-[80px] [&>span]:text-base2 [&>span]:font-bold"
             >
               {pageContent?.title ? renderHtml(pageContent?.title) : ""}
             </motion.h2>

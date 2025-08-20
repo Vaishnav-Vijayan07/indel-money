@@ -116,8 +116,6 @@ export default function YearsInception({ inceptionslides, title }) {
                           <div className="w-[calc(100%-100px)] pl-[30px] 2xl:pl-[40px] 3xl:pl-[70px] h-full flex flex-wrap item-center">
                             <div className="w-full h-auto justify-start flex flex-wrap item-center">
                               <div className="rounded-[18px] 2xl:rounded-[24px] overflow-hidden w-full mb-[15px] justify-center flex item-center">
-                            <div className="w-full h-auto flex-col-reverse justify-center flex flex-wrap item-center">
-                              <div className="rounded-[18px] 2xl:rounded-[24px] overflow-hidden w-full mb-[15px]">
                                 <Image
                                 
                                   src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}

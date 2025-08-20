@@ -40,7 +40,7 @@ export default function MobKickStartVenture() {
     <section className="w-full block py-[20px]">
       <div className="container">
         <div className="w-full relative before:content-[''] before:hidden lg:before:block before:absolute before:h-full before:w-[1px] before:top-0 before:right-0 before:bg-[rgba(22,69,156,0.26)] before:opacity-25">
-          <h2 className="text-title1 font-medium mb-[15px]">
+          <h2 className="text-title1 text-[#5e5959bf] font-medium mb-[15px]">
             Kickstart your new venture <br></br>
             with our
             <span className="text-base2 font-bold">&nbsp;Loan Against Property loan</span>

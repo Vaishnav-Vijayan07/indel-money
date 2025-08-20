@@ -189,7 +189,7 @@ export default function Gallery({ title = "Gallery", description = "", medias = 
         "
         >
           <div className="w-full md:w-[30%] xl:w-[20%] 2xl:w-[26%]">
-            <h1 className="text-title1">
+            <h1 className="text-title1 text-[#5e5959bf] ">
               <span className="text-base2 font-bold">{title}</span>
             </h1>
             <PageBreadcrumb />

@@ -27,7 +27,7 @@ export default function WriteIntel({ formTitle, formSubtitle,contactImage }) {
                     height={50}
                     className="w-[20px] 4xs:w-[30px] lg:w-[40px] 2xl:w-[50px] inline mr-[5px] lg:mr-[15px] 2xl:mr-[20px]"
                   />
-                  <div className="[&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: formTitle ? formTitle : "" }} />
+                  <div className="text-[#5e5959bf] [&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: formTitle ? formTitle : "" }} />
                 </div>
                 <div className="text-sm1">{formSubtitle}</div>
               </div>

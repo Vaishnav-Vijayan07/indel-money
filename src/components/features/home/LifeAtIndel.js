@@ -70,7 +70,7 @@ export default function LifeAtIndel({ pageContent, lifeAtIndel, image1, image2, 
           >
             {pageContent?.life_section_title && (
               <h2
-                className="text-title1 [&>span]:text-base2 [&>span]:font-bold"
+                className="text-title1 text-[#5e5959bf] [&>span]:text-base2 [&>span]:font-bold"
                 dangerouslySetInnerHTML={{ __html: pageContent.life_section_title }}
               />
             )}

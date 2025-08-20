@@ -218,7 +218,7 @@ function PartnersSection({ content, initialError, partners = [] }) {
           <main className="w-full sm:w-[calc(100%-220px)] lg:w-[calc(100%-320px)] xl:w-[calc(100%-420px)] 2xl:w-[calc(100%-476px)] 3xl:w-[calc(100%-576px)] px-[10px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px] 3xl:px-[35px]">
             {/* Active Tab Header */}
             <div className="flex items-center justify-between mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">
-              <h2 className="text-title1 font-medium">{activeTab?.title || "Partners"}</h2>
+              <h2 className="text-title1  text-[#5e5959bf] font-medium">{activeTab?.title || "Partners"}</h2>
             </div>
 
             {/* Content Area */}

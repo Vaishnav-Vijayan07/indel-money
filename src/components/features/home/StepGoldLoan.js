@@ -9,7 +9,7 @@ export default function StepGoldLoan({ title, loanSteps, className, hideTitle = 
       <div className="container">
         {!hideTitle && (
           <h2
-            className="text-title1 font-normal mb-[15px] lg:mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
+            className="text-title1 text-[#666262bf] font-normal mb-[15px] lg:mb-[20px] 2xl:mb-[30px] [&>span]:text-base2 [&>span]:font-bold"
             dangerouslySetInnerHTML={{ __html: title ? title : "" }}
           />
         )}

@@ -29,11 +29,10 @@ export default function ({ products, title, image, criteriaIcon, criteriaTitle, 
       {/* <div className="absolute hidden md:block bg-[#D4E6FF] left-0 top-0 w-[50%] h-full z-0"></div> */}
       <div className="container">
         <div className="flex flex-wrap">
-          <div className="relative w-full flex flex-wrap flex-col-reverse lg:flex-row md:w-[calc(100%-285px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-590px)] sm:bg-[#D4E6FF] overflow-hidden rounded-[36px] md:rounded-tl-[0] md:rounded-bl-[0] pt-[30px] xl:pt-[40px] 2xl:pt-[70px] 3xl:pt-[90px] sm:pr-[30px] 2xl:pr-[45px] 3xl:pr-[55px] pb-[30px] xl:pb-[40px] 2xl:pb-[50px] sm:pl-[20px] md:pl-0">
-            <div
-              className="group w-full max-lg:mt-[15px] lg:absolute lg:right-[20px] lg:2xl:right-[35px] lg:3xl:right-[55px] lg:bottom-[40px] lg:max-w-[350px] xl:max-w-[420px] 
-             overflow-hidden h-auto"
-            >
+          <div className="relative w-full flex flex-wrap flex-col-reverse lg:flex-row md:w-[calc(100%-285px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-590px)] sm:bg-[#fff] rounded-[36px] md:rounded-tl-[0] md:rounded-bl-[0] pt-[30px] xl:pt-[30px] 2xl:pt-[50px] 3xl:pt-[60px] sm:pr-[30px] 2xl:pr-[45px] 3xl:pr-[55px] pb-[30px] xl:pb-[40px] 2xl:pb-[50px] sm:pl-[20px] md:pl-0">
+           <div className="absolute hidden md:block bg-[#fff] -left-[50%] top-0 w-[50%] h-full z-1"></div>
+            <div className="group w-full max-lg:mt-[15px] lg:absolute lg:right-[20px] lg:2xl:right-[35px] lg:3xl:right-[55px] lg:bottom-[40px] lg:max-w-[350px] xl:max-w-[420px] 
+             overflow-hidden h-auto">
               <Image
                 src={image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${image}` : "/images/proCoveredImg.png"}
                 alt="productCover"
@@ -43,7 +42,7 @@ export default function ({ products, title, image, criteriaIcon, criteriaTitle, 
               />
             </div>
             <div className="w-full lg::max-w-[180px] lg:max-w-[210px] xl:max-w-[236px] 2xl:max-w-[325px] relative z-1 sm:mb-0 mb-[40px]">
-              <h2 className="font-normal text-black leading-normal text-[18px] md:text-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px] [&>span]:text-base2 [&>span]:font-bold">
+              <h2 className="font-normal text-[#5e5959bf] leading-normal text-[18px] md:text-[20px] lg:text-[24px] xl:text-[28px] 2xl:text-[34px] 3xl:text-[40px] mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px] [&>span]:text-base2 [&>span]:font-bold">
                 {title ? parse(title) : "Product Covered"}
               </h2>
 
@@ -71,7 +70,7 @@ export default function ({ products, title, image, criteriaIcon, criteriaTitle, 
                     className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-[1.05]"
                   />
                 </div>
-                <h2 className="text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-normal text-[#141414] pl-[15px] [&>span]:text-base2 [&>span]:font-bold">
+                <h2 className="text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-normal text-[#5e5959bf] pl-[15px] [&>span]:text-base2 [&>span]:font-bold">
                   {criteriaTitle ? parse(criteriaTitle) : "Eligibility Criteria"}
                 </h2>
               </div>

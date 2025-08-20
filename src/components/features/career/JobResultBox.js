@@ -28,9 +28,8 @@ export default function JobResultBox({ item, variant = "default" }) {
 
   return (
     <div
-      className={`${
-        variant === "activeJobs" ? "hover:shadow-[0_15px_30px_rgba(23,71,158,0.10)]" : ""
-      } group w-full h-auto bg-[#dceafb] border-1 border-[#dceafb] rounded-[15px] lg:rounded-[20px] xl:rounded-[25px] 2xl:rounded-[30px] 3xl:rounded-[36px] p-[10px_20px] lg:p-[10px_15px] xl:p-[18px_25px] 2xl:p-[20px_30px] 3xl:p-[25px_30px] hover:bg-[#c7e0ff] hover:border-base1/05 transition-all duration-300`}
+      className={`${variant === "activeJobs" ? "hover:shadow-[0_15px_30px_rgba(23,71,158,0.10)]" : ""
+        } group w-full h-auto bg-[#dceafb] border-1 border-[#dceafb] rounded-[15px] lg:rounded-[20px] xl:rounded-[25px] 2xl:rounded-[30px] 3xl:rounded-[36px] p-[10px_20px] lg:p-[10px_15px] xl:p-[18px_25px] 2xl:p-[20px_30px] 3xl:p-[25px_30px] hover:bg-[#c7e0ff] hover:border-base1/05 transition-all duration-300`}
     >
       <div className="w-full h-auto block border-b-[1px] border-dashed border-[#7670b3] mb-[8px] xl:mb-[10px] 2xl:mb-[20px]">
         <div className="flex flex-wrap items-center mb-[4px] xl:mb-[6px] 2xl:mb-[8px]">
@@ -102,18 +101,28 @@ export default function JobResultBox({ item, variant = "default" }) {
             </div>
             <div>
               {/* <JobResultAlert /> */}
+
+
+
               <Link
                 href={`/career-list/job-details/${encodeId(item?.id)}`}
-                className="text-[12px] 4xs:text-[14px] sm:text-[10px] xl:text-[11px] 2xl:text-[12px] 3xl:text-[16px] leading-none font-bold text-white w-full max-4xs:max-w-[110px] h-[30px] 4xs:h-[35px] sm:h-[25px] lg:h-[25px] xl:h-[30px] 2xl:h-[35px] 3xl:h-[48px] flex items-center bg-base2 rounded-[10px] sm:rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[10px] sm:p-[4px] xl:p-[6px] 2xl:p-[8px] cursor-pointer transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
+                className="text-[12px] 4xs:text-[14px] sm:text-[10px] xl:text-[11px] 2xl:text-[12px] 3xl:text-[16px] leading-none font-bold text-white w-full max-4xs:max-w-[110px] h-[30px] 4xs:h-[35px] sm:h-[25px] lg:h-[25px] xl:h-[30px] 2xl:h-[35px] 3xl:h-[48px] flex items-center bg-base1 rounded-[10px] sm:rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[10px] sm:p-[4px] xl:p-[6px] 2xl:p-[8px] cursor-pointer transition-color duration-300 group-hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
               >
-                <span className="pr-[4px] sm:px-[2px] lg:px-[4px] 2xl:px-[6px]">Apply Now</span>
-                <Image
-                  src="/images/icon-careerBtn.svg"
-                  alt="careerBtn"
-                  width={30}
-                  height={30}
-                  className="w-[20px] 4xs:w-[25px] sm:w-[15px] lg:w-[15px] xl:w-[20px] 2xl:w-[25px] 3xl:w-[30px] h-auto aspect-4/4 block"
-                />
+                {/* <span className="pr-[4px] sm:px-[2px] lg:px-[4px] 2xl:px-[6px]"></span> */}
+                <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-10px] px-[5px]
+                 md:px-[10px] lg:px-[15px] 2xl:px-[20px]">
+                  Apply Now
+                </span>
+                <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px]
+                 2xl:w-[40px] 2xl:h-[40px] 3xl:w-[35px] 
+                3xl:h-[35px] bg-base2 rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-1 group-hover:bg-base1  group-hover:text-white">
+                  <svg viewBox="0 0 13 11" className="max-w-[15px]">
+                    <path
+                      d="M8.125 10.375L6.9875 9.19687L9.87187 6.3125H0V4.6875H9.87187L6.9875 1.80312L8.125 0.625L13 5.5L8.125 10.375Z"
+                      fill="white"
+                    />
+                  </svg>
+                </div>
               </Link>
             </div>
           </div>
