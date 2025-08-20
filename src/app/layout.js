@@ -16,6 +16,13 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-nunito",
+  display: "swap",
+});
+
 export const metadata = {
   verification: {
     google: "jn0CklXpu_AaWbnMxezEgzKzUVV59B4fl955GETW2GU",
