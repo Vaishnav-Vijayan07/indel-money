@@ -25,7 +25,7 @@ const RecentBlog = ({ recentBlogs, title, type = "blog" }) => {
           >
             {recentBlogs?.map((item, index) => (
               <SwiperSlide key={index}>
-                <Link href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`  }>
+                <Link href={type == "news" ? `/${type}/${item?.slug}` : `/${type}/${item?.slug}`  }>
                   <BlogCard item={item} type={type} />
                 </Link>
               </SwiperSlide>

@@ -87,7 +87,7 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
                     <div className="text-[12px] text-white line-clamp-1 mb-[2px]"> {item?.posted_on ? formatPostDate(item?.posted_on) : ""}</div>
                     <div className="text-[16px] leading-[1.2] text-white font-bold line-clamp-2 mb-[10px]">{item.title}</div>
                     <Link
-                      href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`}
+                      href={ `/${type}/${item?.slug}`}
                       className="text-[12px] leading-none font-bold text-white uppercase hover:text-base2 transition-color duration-300 flex items-center"
                     >
                       Read More
@@ -137,7 +137,7 @@ export default function MobLatestUpdates({ sliderItems, sliderTitle, type = "blo
             {sliderItems?.map((item, index) => (
               <SwiperSlide key={index}>
                 <Link
-                  href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`}
+                  href={`/${type}/${item?.slug}`}
                   className="group w-full h-auto block bg-white p-[10px] rounded-[16px]"
                 >
                   <div className="w-full h-[100px] rounded-[16px] overflow-hidden relative z-0 mb-[12px]">

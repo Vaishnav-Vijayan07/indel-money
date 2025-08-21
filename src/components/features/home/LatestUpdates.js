@@ -92,7 +92,7 @@ export default function LatestUpdates({ sliderItems, sliderTitle, type = "blog" 
                         {item?.title}
                       </div>
                       <Link
-                        href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`  }
+                        href={ `/${type}/${item?.slug}`  }
                         className="text-[12px] lg:text-[12px] 2xl:text-[14px] 3xl:text-[16px] font-bold text-white hover:text-base2 transition-color duration-300 uppercase flex items-center"
                       >
                         Read More
