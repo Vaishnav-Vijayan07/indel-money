@@ -10,7 +10,7 @@ export default function Disclosure({ contents, type = "disclosure" }) {
 
             <div className="flex items-center justify-between px-[15px] sm:px-[25px] py-[15px] 3xl:px-[35px] 3xl:py-[25px] bg-[#DCEAFB] rounded-[16px] 3xl:rounded-[24px] overflow-hidden">
                 <span className="text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[24px] font-medium text-black">
-                    {contents.disclosure_title ? contents.disclosure_title : "Liquidity Risk Disclosure"}
+                    {type == "disclosure" ? contents.disclosure_title : contents.csr_policy_doc_title}
                 </span>
                 {
                     file ? (
