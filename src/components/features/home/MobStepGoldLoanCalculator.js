@@ -69,23 +69,25 @@ export default function MobStepGoldLoan({ goldRate }) {
       <div className="container">
         <Tabs defaultValue="goldloan" className="w-full gap-0 my-[20px]">
           <TabsList className="w-full p-0">
-            <TabsTrigger value="goldloan" className={`${TabsTriggerStyle} before:left-full data-[state=active]:bg-[rgba(128,128,128,1)]`}>
+            <TabsTrigger value="goldloan" className={`${TabsTriggerStyle} before:left-full
+             data-[state=active]:bg-[#80808033]`}>
               Gold Loan Calculator
             </TabsTrigger>
             <TabsTrigger
               value="emicalculator"
-              className={`${TabsTriggerStyle} before:right-full before:scale-x-[-1] data-[state=active]:bg-[#a8a4a4] before:shadow-[-5px_5px_0_0_#a8a4a4]`}
+              className={`${TabsTriggerStyle} before:right-full before:scale-x-[-1] 
+              data-[state=active]:bg-[#80808033] before:shadow-[-5px_5px_0_0_#80808033]`}
             >
               EMI Calculator
             </TabsTrigger>
           </TabsList>
           <TabsContent value="goldloan">
-            <div className="w-full h-auto p-[30px_25px] bg-[#808080] rounded-[0_20px_20px_20px]">
+            <div className="w-full h-auto p-[30px_25px] bg-[#80808033] rounded-[0_20px_20px_20px]">
               <GoldLoanForm goldCaratTypes={formattedGoldCaratTypes} goldTypes={formattedGoldTypes} goldRate={goldRate} />
             </div>
           </TabsContent>
           <TabsContent value="emicalculator">
-            <div className="w-full h-auto p-[30px_25px] bg-[#a8a4a4] rounded-[20px_0_20px_20px]">
+            <div className="w-full h-auto p-[30px_25px] bg-[#80808033] rounded-[20px_0_20px_20px]">
               <EmiForm />
             </div>
           </TabsContent>
