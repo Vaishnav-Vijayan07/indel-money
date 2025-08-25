@@ -32,6 +32,7 @@ const baseSchema = {
     .string()
     .regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
+   current_location:z.string().optional(),
   preferred_location: z
     .string()
     .min(1, { message: "Please select a location." }),
