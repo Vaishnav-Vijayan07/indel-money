@@ -24,8 +24,6 @@ export default function JobResultBox({ item, variant = "default" }) {
   const whatsappUrl = `https://wa.me/?text=${shareText}`;
   const emailUrl = `mailto:?subject=${encodeURIComponent("Job Opportunity: " + jobTitle)}&body=${shareText}`;
 
-  console.log(item);
-
   return (
     <div
       className={`${
