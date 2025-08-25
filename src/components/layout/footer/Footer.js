@@ -273,9 +273,9 @@ export default function Footer({ content, icons }) {
           <div className="text-footer2 hidden md:block">CIN: U65990MH1986PLC040897</div>
           <div className="text-footer2 flex whitespace-nowrap gap-1">
             Designed By:
-            <a href={"https:www.intersmart.in/"} target="_blank" rel="noopener noreferrer" className="">
+            <Link href={"https://www.intersmartsolution.com/"} target="_blank" rel="noopener noreferrer" className="">
               <Image src={"/images/intersmart.svg"} alt={"intersmart"} width={104} height={16} className="aspect-104/16 inline" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
