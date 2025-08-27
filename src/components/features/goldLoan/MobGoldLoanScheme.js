@@ -22,8 +22,7 @@ export default function MobGoldLoanScheme({ goldLoanSchemes, scheme_title }) {
                   activeIndex === index ? "bg-base1 font-bold text-white" : "bg-[#CFDFFE] font-normal text-black"
                 } text-[12px] leading-none w-full h-auto p-[10px_20px] rounded-[10px] cursor-pointer transition-background duration-300 hover:bg-base3
                                         `}
-                onClick={() => setActiveIndex(index)}
-              >
+                onClick={() => setActiveIndex(index)} >
                 {item}
               </h4>
             </div>
@@ -35,10 +34,10 @@ export default function MobGoldLoanScheme({ goldLoanSchemes, scheme_title }) {
           {schemeDetails[activeIndex]?.map((item, index) => (
             <SwiperSlide key={index} className="max-w-[150px] p-[5px]">
               <div className="group w-full h-auto bg-white rounded-[18px] overflow-hidden shadow-[0_0_5px_0_rgba(0,0,0,0.2)]">
-                <div className="text-[14px] leading-none font-medium text-center text-[#5e5959bf] w-full h-auto bg-[#cde2ff] p-[15px_10px]">
+                <div className="text-[14px] leading-none font-medium text-center text-[#1F1B1B] w-full h-auto bg-[#cde2ff] p-[15px_10px]">
                   {item?.title}
                 </div>
-                <div className="text-[16px] leading-[1.2] font-bold text-center text-base1 p-[15px_10px]">{item?.value}</div>
+                <div className="text-[16px] leading-[1.2] font-bold text-center text-[#fff] p-[15px_10px] bg-[#5e5959bf]">{item?.value}</div>
               </div>
             </SwiperSlide>
           ))}

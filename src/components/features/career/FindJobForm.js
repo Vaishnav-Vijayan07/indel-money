@@ -334,7 +334,7 @@ export default function FindJobForm({
           <Button
             type="submit"
             size="sm"
-            className="bg-[#cf2613] text-white px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#b71c0c]"
+            className="bg-base1 text-white px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#b71c0c]"
           >
             SEARCH
           </Button>
@@ -356,7 +356,7 @@ export default function FindJobForm({
         <div className="max-sm:block mt-[8px] hidden w-full">
           <Link
             href={button_link ? button_link : "/career-list"}
-            className="text-[14px] leading-[1] font-bold text-white h-[40px] flex items-center justify-center bg-base2 rounded-[24px] p-[4px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
+            className="text-[14px] leading-[1] font-bold text-white h-[40px] flex items-center justify-center bg-base1 rounded-[24px] p-[4px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
             onClick={() => form.reset()}
           >
             <span className="px-[10px] md:px-[10px] lg:px-[15px] xl:px-[20px]">

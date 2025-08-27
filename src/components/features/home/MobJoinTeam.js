@@ -111,7 +111,7 @@ export default function MobJoinTeam({pageContent, lifeAtIndel, image1, image2, i
                       alt={item?.alt ? item?.alt : item?.image_alt}
                       width={170}
                       height={220}
-                      className="aspect-170/220 rounded-[24px] mx-auto"
+                      className="w-full max-w-[170px] h-auto rounded-[24px] mx-auto"
                     />
                   </div>
                 </div>
