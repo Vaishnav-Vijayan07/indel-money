@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import JobResultBox from "./JobResultBox";
 
 export default function JobResultBoxSlide({ jobResults }) {
-  console.log(jobResults);
   return (
     <Swiper
       modules={[Autoplay]}

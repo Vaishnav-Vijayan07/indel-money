@@ -24,8 +24,6 @@ export default function JobResultBox({ item, variant = "default" }) {
   const whatsappUrl = `https://wa.me/?text=${shareText}`;
   const emailUrl = `mailto:?subject=${encodeURIComponent("Job Opportunity: " + jobTitle)}&body=${shareText}`;
 
-  console.log(item);
-
   return (
     <div
       className={`${variant === "activeJobs" ? "hover:shadow-[0_15px_30px_rgba(23,71,158,0.10)]" : ""

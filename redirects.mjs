@@ -3056,21 +3056,21 @@ export default [
     destination: "/news",
     permanent: true,
   },
-  {
-    source: "/news/indel-money-aims-to-double-its-aum-to-rs-4000-cr-in-fy267",
-    destination: "/news",
-    permanent: true,
-  },
-  {
-    source: "/news/indel-money-reports-52-growth-in-assets-under-management-and-10-profit-increase",
-    destination: "/news",
-    permanent: true,
-  },
-  {
-    source: "/news/indel-money-aims-to-double-its-aum-to-rs-4000-cr-in-fy26-1",
-    destination: "/news",
-    permanent: true,
-  },
+  // {
+  //   source: "/news/indel-money-aims-to-double-its-aum-to-rs-4000-cr-in-fy267",
+  //   destination: "/news",
+  //   permanent: true,
+  // },
+  // {
+  //   source: "/news/indel-money-reports-52-growth-in-assets-under-management-and-10-profit-increase",
+  //   destination: "/news",
+  //   permanent: true,
+  // },
+  // {
+  //   source: "/news/indel-money-aims-to-double-its-aum-to-rs-4000-cr-in-fy26-1",
+  //   destination: "/news",
+  //   permanent: true,
+  // },
   {
     source: "/news/11",
     destination: "/news",
@@ -3128,11 +3128,11 @@ export default [
     destination: "/news",
     permanent: true,
   },
-  {
-    source: "/news/gold-loan-nbfc-post-10-growth-in-profit-at-61-crore-in-fy25",
-    destination: "/news",
-    permanent: true,
-  },
+  // {
+  //   source: "/news/gold-loan-nbfc-post-10-growth-in-profit-at-61-crore-in-fy25",
+  //   destination: "/news",
+  //   permanent: true,
+  // },
   {
     source: "/new-news/consumer-durable-loans",
     destination: "/news",

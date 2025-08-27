@@ -3,9 +3,9 @@ import BlogDetail from "@/components/features/blog/BlogDetail";
 import RecentBlog from "@/components/features/blog/RecentBlog";
 
 // Fetch news data for a specific post
-async function fetchBlogData(id) {
+async function fetchBlogData(slug) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/news/${slug}`, {
       cache: "force-cache",
       next: { revalidate: 600 },
     });
@@ -35,14 +35,14 @@ async function fetchBlogData(id) {
   }
 }
 
-const defaultMetadata = (id = "") => ({
+const defaultMetadata = (slug = "") => ({
   title: "News Post | My Website",
   description: "Read our latest news post.",
   keywords: "news, post, update",
   openGraph: {
     title: "News Post | My Website",
     description: "Read our latest news post.",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${id}`,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug}`,
     type: "article",
     images: [
       {
@@ -60,13 +60,13 @@ const defaultMetadata = (id = "") => ({
     images: [`${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`],
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${id}`,
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug}`,
   },
 });
 
-async function getMetaData(id) {
+async function getMetaData(slug) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta-id?page=newsItem&id=${id}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta-slug?page=newsItem&slug=${slug}`);
     const result = await response.json();
     const meta = result.data;
 
@@ -90,46 +90,50 @@ async function getMetaData(id) {
 
 // Generate dynamic metadata
 export async function generateMetadata({ params }) {
-  const { id } = await params;
-  const { meta, error } = await getMetaData(id);
+  const { slug } = await params;
+  const { meta, error } = await getMetaData(slug);
+
 
   if (!meta || error) {
-    return defaultMetadata(id);
+    return defaultMetadata(slug);
   }
   return {
-    title: meta?.meta_title || defaultMetadata(id).title,
-    description: meta?.meta_description || meta?.description || defaultMetadata(id).description,
-    keywords: meta?.meta_keywords || defaultMetadata(id).keywords,
+    title: meta?.meta_title || defaultMetadata(slug).title,
+    description: meta?.meta_description || meta?.description || defaultMetadata(slug).description,
+    keywords: meta?.meta_keywords || defaultMetadata(slug).keywords,
     openGraph: {
-      title: meta?.meta_title || meta?.title || defaultMetadata(id).openGraph.title,
-      description: meta?.meta_description || meta?.description || defaultMetadata(id).openGraph.description,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${id}`,
+      title: meta?.meta_title || meta?.title || defaultMetadata(slug).openGraph.title,
+      description: meta?.meta_description || meta?.description || defaultMetadata(slug).openGraph.description,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug}`,
       type: "article",
       images: [
         {
-          url: meta?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${meta.image}` : defaultMetadata(id).openGraph.images[0].url,
+          url: meta?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${meta.image}` : defaultMetadata(slug).openGraph.images[0].url,
           width: 1200,
           height: 630,
-          alt: meta?.image_alt || meta?.title || defaultMetadata(id).openGraph.images[0].alt,
+          alt: meta?.image_alt || meta?.title || defaultMetadata(slug).openGraph.images[0].alt,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: meta?.title || defaultMetadata(id).twitter.title,
-      description: meta?.meta_description || meta?.description || defaultMetadata(id).twitter.description,
-      images: [meta?.meta_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${meta.meta_image}` : defaultMetadata(id).twitter.images[0]],
+      title: meta?.title || defaultMetadata(slug).twitter.title,
+      description: meta?.meta_description || meta?.description || defaultMetadata(slug).twitter.description,
+      images: [meta?.meta_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${meta.meta_image}` : defaultMetadata(slug).twitter.images[0]],
     },
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${id}`,
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug}`,
     },
   };
 }
 
 export default async function News({ params }) {
-  const { id } = await params; // params is already an object, no need to await
-  const { data: newsData, recentNews, title, error } = await fetchBlogData(id);
+  const { slug } = params; 
+  console.log(params)
+  console.log("slug:", slug);
+  const { data: newsData, recentNews, title, error } = await fetchBlogData(slug);
 
+  
   // Handle error state for news data
   if (error || !newsData) {
     return (

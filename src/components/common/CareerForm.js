@@ -33,6 +33,7 @@ const baseSchema = {
     .string()
     .regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
+   current_location:z.string().optional(),
   preferred_location: z
     .string()
     .min(1, { message: "Please select a location." }),
@@ -97,6 +98,12 @@ function CareerFormInner({ jobId, isGeneral }) {
   const [selectedFileName, setSelectedFileName] = useState(null);
   const [isDraggingMobile, setIsDraggingMobile] = useState(false);
   const [isDraggingDesktop, setIsDraggingDesktop] = useState(false);
+
+// 1. ADD NEW STATE VARIABLES (add these to your existing state declarations)
+const [verifiedEmail, setVerifiedEmail] = useState(""); // Store the verified email
+const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track current email in form
+
+
 
   const truncateFilename = (filename, maxLength = 8) => {
     if (!filename || filename.length <= maxLength) return filename;
@@ -244,6 +251,8 @@ function CareerFormInner({ jobId, isGeneral }) {
 
         setEmail(parsedData.email);
         setSelectedFileName(parsedData.file || null);
+        setVerifiedEmail(parsedData.email); // Set verified email
+        setCurrentEmailInForm(parsedData.email); // Set current form email
         autoFillForm(parsedData);
         setIsOtpVerified(true);
       }
@@ -290,6 +299,8 @@ function CareerFormInner({ jobId, isGeneral }) {
       }
       setIsOtpVerified(true);
       setIsModalOpen(false);
+      setVerifiedEmail(email); // Store the verified email
+      setCurrentEmailInForm(email); // 
       toast.success("OTP verified successfully");
     } catch (error) {
       console.error("Error verifying OTP:", error);
@@ -299,8 +310,49 @@ function CareerFormInner({ jobId, isGeneral }) {
     }
   };
 
+const handleEmailChange = (newEmail) => {
+  setCurrentEmailInForm(newEmail);
+  
+  // If email is different from verified email, mark as not verified and clear cookie
+  if (newEmail !== verifiedEmail) {
+    setIsOtpVerified(false);
+    
+    // Clear the cookie when email changes
+    Cookies.remove("applicantData");
+    
+    // Reset file selection since cookie data is cleared
+    setSelectedFile(null);
+    setSelectedFileName(null);
+    
+    // Reset verification states
+    setVerifiedEmail("");
+    setShowOtpInput(false);
+    
+    // Set the new email and open the modal for verification
+    setEmail(newEmail);
+    setIsModalOpen(true);
+    
+    // Reset the email form with the new email
+    emailForm.reset({ email: newEmail });
+    
+
+  } else {
+    // If email matches verified email, mark as verified
+    setIsOtpVerified(true);
+  }
+};
+
+
   // Handle form submission
   const onSubmit = async (values) => {
+    // Check if email has changed and needs re-verification
+  if (values.email !== verifiedEmail && !isOtpVerified) {
+    toast.error("Please verify your email before submitting the form.");
+    setEmail(values.email); // Set the new email for OTP
+    setIsModalOpen(true);
+    return;
+  }
+
     if (!isOtpVerified) {
       toast.error("Please verify OTP before submitting the form.");
       setIsModalOpen(true);
@@ -314,9 +366,9 @@ function CareerFormInner({ jobId, isGeneral }) {
       setIsSubmitting(false);
       return;
     }
+    console.log("email address  ", values.email);
 
     const formData = new FormData();
-
     formData.append("applicant[name]", values.name);
     formData.append("applicant[email]", values.email);
     formData.append("applicant[phone]", values.phone);
@@ -654,10 +706,18 @@ function CareerFormInner({ jobId, isGeneral }) {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Enter your email*"
                         {...field}
-                        onFocus={() => {
-                          setIsModalOpen(true);
+                        onChange={(e) => {
+                          field.onChange(e);
+                          handleEmailChange(e.target.value);
                         }}
-                        disabled={isOtpVerified}
+
+                        onFocus={() => {
+                           if (!isOtpVerified || field.value !== verifiedEmail) {
+                            setEmail(field.value);
+                            setIsModalOpen(true);
+                           }
+                        }}
+                        // disabled={isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
