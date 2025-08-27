@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -18,21 +17,14 @@ import toast, { Toaster } from "react-hot-toast";
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
-const noticePeriod = [
-  "Less than 15 days",
-  "15 to 30 days",
-  "30 days",
-  "60 to 90 days",
-  "More than 90 days",
-];
+const noticePeriod = ["Less than 15 days", "15 to 30 days", "30 days", "60 to 90 days", "More than 90 days"];
 
 // Schema Validation
 const baseSchema = {
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  phone: z
-    .string()
-    .regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
+  phone: z.string().regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
+<<<<<<< HEAD
    current_location:z.string().optional(),
   preferred_location: z
     .string()
@@ -44,6 +36,13 @@ const baseSchema = {
     .enum(noticePeriod, {
       errorMap: () => ({ message: "Please select a valid notice period." }),
     }),
+=======
+  preferred_location: z.string().min(1, { message: "Please select a location." }),
+  preferred_role: z.string().min(1, { message: "Please select a preferred role." }),
+  notice_period: z.enum(noticePeriod, {
+    errorMap: () => ({ message: "Please select a valid notice period." }),
+  }),
+>>>>>>> b2e38b1fc4f207b6370e66fe373250ef73a62596
   current_salary: z
     .string()
     .regex(/^\d{5,}$/, {
@@ -57,19 +56,15 @@ const baseSchema = {
       message: "Must be at least 5 digits and no decimals.",
     })
     .optional(),
-  age: z.preprocess(
-    (val) => {
+  age: z
+    .preprocess((val) => {
       // Treat empty, null, undefined as invalid (not optional)
       if (val === "" || val === null || val === undefined) return "invalid";
       const num = Number(val);
       return isNaN(num) ? "invalid" : num;
-    },
-    z
-      .number({ invalid_type_error: "Enter a valid age" })
-      .max(99, "Enter a valid age")
-  ).optional()
-
-}
+    }, z.number({ invalid_type_error: "Enter a valid age" }).max(99, "Enter a valid age"))
+    .optional(),
+};
 
 const emailSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -142,8 +137,8 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
           selectedFile || selectedFileName
             ? z.any().optional()
             : z.any().refine((file) => file instanceof File, {
-              message: "Please upload a resume.",
-            }),
+                message: "Please upload a resume.",
+              }),
       })
       .refine(
         (data) => {
@@ -195,8 +190,7 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
     try {
       const { data } = await api.get("/career/jobs/dropdowns");
 
-      if (!data.success)
-        throw new Error(data.message || "Failed to fetch dropdowns");
+      if (!data.success) throw new Error(data.message || "Failed to fetch dropdowns");
       setDropdowns(data.data || { locations: [], roles: [] });
       setDropdownsLoaded(true);
     } catch (error) {
@@ -223,19 +217,13 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
           ? data.preferred_role?.toString() || ""
           : ""
         : jobId?.toString() || "",
-      notice_period: noticePeriod.includes(data.notice_period)
-        ? data.notice_period
-        : "",
+      notice_period: noticePeriod.includes(data.notice_period) ? data.notice_period : "",
       current_salary: data.current_salary?.toString() || "",
       expected_salary: data.expected_salary?.toString() || "",
       file: null,
     };
-    form.reset(validatedData)
-
-      ;
+    form.reset(validatedData);
   };
-
-
 
   // Check cookies
   useEffect(() => {
@@ -480,7 +468,7 @@ const handleEmailChange = (newEmail) => {
       <Toaster position="top-right" />
       {/* Email Verification Modal */}
       <Transition appear show={isModalOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-50" onClose={() => { }}>
+        <Dialog as="div" className="relative z-50" onClose={() => {}}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -518,7 +506,6 @@ const handleEmailChange = (newEmail) => {
                             render={({ field }) => (
                               <FormItem>
                                 <FormControl>
-                                  <Label className="text-black"> Mail</Label>
                                   <Input
                                     type="email"
                                     className="bg-gray-50 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
@@ -562,7 +549,6 @@ const handleEmailChange = (newEmail) => {
                             name="otp"
                             render={({ field }) => (
                               <FormItem>
-                                {/* <Label className="text-black"> Mail</Label> */}
                                 <FormControl>
                                   <Input
                                     type="text"
@@ -576,7 +562,6 @@ const handleEmailChange = (newEmail) => {
                               </FormItem>
                             )}
                           />
-                          9745829432
                           <Button
                             type="submit"
                             className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700"
@@ -613,13 +598,11 @@ const handleEmailChange = (newEmail) => {
       {/* Main Form */}
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5">
             <div
-              className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
-                }`}
+              className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${
+                isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
+              }`}
               onDragOver={(e) => handleDragOver(e, false)}
               onDragLeave={(e) => handleDragLeave(e, false)}
               onDrop={(e) => handleDrop(e, false)}
@@ -640,7 +623,7 @@ const handleEmailChange = (newEmail) => {
                     accept=".pdf,.jpeg,.png"
                     className="hidden"
                     onChange={handleFileChange}
-                  // disabled={!isOtpVerified}
+                    // disabled={!isOtpVerified}
                   />
                 </label>
               </div>
@@ -648,8 +631,8 @@ const handleEmailChange = (newEmail) => {
                 {selectedFile
                   ? `${selectedFile.name} (${getFileTypeDisplay(selectedFile, null)})`
                   : selectedFileName
-                    ? `${selectedFileName.replace("uploads/job-applications/", "")} (${getFileTypeDisplay(null, selectedFileName)})`
-                    : "No file chosen"}
+                  ? `${selectedFileName.replace("uploads/job-applications/", "")} (${getFileTypeDisplay(null, selectedFileName)})`
+                  : "No file chosen"}
               </div>
             </div>
 
@@ -659,13 +642,12 @@ const handleEmailChange = (newEmail) => {
                 name="name"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <Label className="text-black"> Mail</Label>
                     <FormControl>
                       <Input
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Name*"
                         {...field}
-                      // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -685,7 +667,7 @@ const handleEmailChange = (newEmail) => {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Phone Number*"
                         {...field}
-                      // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -699,7 +681,6 @@ const handleEmailChange = (newEmail) => {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <Label className="text-black"> Mail</Label>
                     <FormControl>
                       <Input
                         type="email"
@@ -737,7 +718,7 @@ const handleEmailChange = (newEmail) => {
                       type="text"
                       placeholder="Current Location"
                       className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                    // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                     />
                     <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
@@ -754,7 +735,7 @@ const handleEmailChange = (newEmail) => {
                     <Select
                       onValueChange={field.onChange}
                       value={field.value}
-                    // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                     >
                       <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                         <SelectValue placeholder="Preferred Location*" />
@@ -783,7 +764,7 @@ const handleEmailChange = (newEmail) => {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Referred Employee Name"
                         {...field}
-                      // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -802,7 +783,7 @@ const handleEmailChange = (newEmail) => {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Employee Referral Code"
                         {...field}
-                      // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -822,7 +803,7 @@ const handleEmailChange = (newEmail) => {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Age"
                         {...field}
-                      // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -840,7 +821,7 @@ const handleEmailChange = (newEmail) => {
                       <Select
                         onValueChange={field.onChange}
                         value={field.value}
-                      // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                       >
                         <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                           <SelectValue placeholder="Department*" />
@@ -871,7 +852,7 @@ const handleEmailChange = (newEmail) => {
                           className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                           placeholder="Preferred Role*"
                           {...field}
-                        // disabled={!isOtpVerified}
+                          // disabled={!isOtpVerified}
                         />
                       </FormControl>
                       <FormMessage className="text-red-500 text-xs" />
@@ -889,14 +870,16 @@ const handleEmailChange = (newEmail) => {
                     <Select
                       onValueChange={field.onChange}
                       value={field.value}
-                    // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                     >
                       <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                         <SelectValue placeholder="Notice Period*" />
                       </SelectTrigger>
                       <SelectContent className="bg-white border-gray-300">
                         {noticePeriod.map((notice) => (
-                          <SelectItem key={notice} value={notice}>{notice}</SelectItem>
+                          <SelectItem key={notice} value={notice}>
+                            {notice}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -919,7 +902,7 @@ const handleEmailChange = (newEmail) => {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Current Monthly Salary*"
                         {...field}
-                      // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -941,7 +924,7 @@ const handleEmailChange = (newEmail) => {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Expected Monthly Salary*"
                         {...field}
-                      // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -951,8 +934,9 @@ const handleEmailChange = (newEmail) => {
             </div>
 
             <div
-              className={`max-sm:hidden w-full md:w-[calc(100%-100px)] lg:w-[calc(100%-120px)] xl:w-[calc(100%-140px)] 2xl:w-[calc(100%-180px)] 3xl:w-[calc(100%-200px)] px-[4px] lg:px-[6px] 2xl:px-[10px] mb-[10px] lg:mb-0 ${isDraggingDesktop ? "border-2 border-blue-500 rounded-lg" : ""
-                }`}
+              className={`max-sm:hidden w-full md:w-[calc(100%-100px)] lg:w-[calc(100%-120px)] xl:w-[calc(100%-140px)] 2xl:w-[calc(100%-180px)] 3xl:w-[calc(100%-200px)] px-[4px] lg:px-[6px] 2xl:px-[10px] mb-[10px] lg:mb-0 ${
+                isDraggingDesktop ? "border-2 border-blue-500 rounded-lg" : ""
+              }`}
               onDragOver={(e) => handleDragOver(e, true)}
               onDragLeave={(e) => handleDragLeave(e, true)}
               onDrop={(e) => handleDrop(e, true)}
@@ -965,31 +949,24 @@ const handleEmailChange = (newEmail) => {
                     <FormControl>
                       <div className="flex items-center">
                         <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[110px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[10px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
-                          <Image
-                            src="/images/icon-upload.svg"
-                            alt="icon-upload"
-                            width={26}
-                            height={21}
-                          />
-                          <span className="font-medium ml-1 lg:ml-1.5">
-                            Upload Resume*
-                          </span>
+                          <Image src="/images/icon-upload.svg" alt="icon-upload" width={26} height={21} />
+                          <span className="font-medium ml-1 lg:ml-1.5">Upload Resume*</span>
                           <input
                             type="file"
                             accept=".pdf,.jpeg,.png"
                             className="hidden"
                             onChange={handleFileChange}
-                          // disabled={!isOtpVerified}
+                            // disabled={!isOtpVerified}
                           />
                         </label>
                         <span className="text-xs lg:text-xs 2xl:text-base leading-none font-normal text-gray-700 whitespace-nowrap overflow-hidden text-ellipsis flex-1 ml-1 lg:ml-1.5">
                           {selectedFile
                             ? `${truncateFilename(selectedFile.name)} (${getFileTypeDisplay(selectedFile, null)})`
                             : selectedFileName
-                              ? `${truncateFilename(
+                            ? `${truncateFilename(
                                 selectedFileName.replace("uploads/job-applications/", "")
                               )} (${getFileTypeDisplay(null, selectedFileName)})`
-                              : "No file chosen"}
+                            : "No file chosen"}
                         </span>
                       </div>
                     </FormControl>
@@ -1000,23 +977,19 @@ const handleEmailChange = (newEmail) => {
             </div>
 
             <div className="w-full md:w-[100px] lg:w-[120px] xl:w-[140px] 2xl:w-[180px] 3xl:w-[200px] px-[4px] lg:px-[6px] 2xl:px-[10px]">
-
               <Button
-                className="group text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-white w-full max-w-[140px] lg:max-w-[160px] 2xl:max-w-[180px] 3xl:max-w-[200px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[50px] 3xl:h-[55px] flex items-center justify-between bg-base1 rounded-[20px] lg:rounded-[30px] 2xl:rounded-[40px] 3xl:rounded-[60px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
+                className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-[1] font-bold text-white w-full max-w-[140px] lg:max-w-[160px] 2xl:max-w-[180px] 3xl:max-w-[200px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[50px] 3xl:h-[55px] flex items-center justify-between bg-base2 rounded-[20px] lg:rounded-[30px] 2xl:rounded-[40px] 3xl:rounded-[60px] p-[4px] lg:p-[6px] 2xl:p-[8px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
                 type="submit"
-              // disabled={loading || !isOtpVerified}
+                // disabled={loading || !isOtpVerified}
               >
                 <span className="px-1 lg:px-3.5">{loading ? "Submitting..." : "Submit"}</span>
-                <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px]
-                 2xl:w-[40px] 2xl:h-[40px] 3xl:w-[35px] 
-                3xl:h-[35px] bg-base2 rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-1 group-hover:bg-base1  group-hover:text-white">
-                  <svg viewBox="0 0 13 11" className="max-w-[15px]">
-                    <path
-                      d="M8.125 10.375L6.9875 9.19687L9.87187 6.3125H0V4.6875H9.87187L6.9875 1.80312L8.125 0.625L13 5.5L8.125 10.375Z"
-                      fill="white"
-                    />
-                  </svg>
-                </div>
+                <Image
+                  src="/images/icon-careerBtn.svg"
+                  alt="careerBtn"
+                  width={40}
+                  height={40}
+                  className="w-5 lg:w-6 2xl:w-8 h-auto"
+                />
               </Button>
             </div>
           </form>
