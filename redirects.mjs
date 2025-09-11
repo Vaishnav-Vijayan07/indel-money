@@ -3056,21 +3056,6 @@ export default [
     destination: "/news",
     permanent: true,
   },
-  // {
-  //   source: "/news/indel-money-aims-to-double-its-aum-to-rs-4000-cr-in-fy267",
-  //   destination: "/news",
-  //   permanent: true,
-  // },
-  // {
-  //   source: "/news/indel-money-reports-52-growth-in-assets-under-management-and-10-profit-increase",
-  //   destination: "/news",
-  //   permanent: true,
-  // },
-  // {
-  //   source: "/news/indel-money-aims-to-double-its-aum-to-rs-4000-cr-in-fy26-1",
-  //   destination: "/news",
-  //   permanent: true,
-  // },
   {
     source: "/news/11",
     destination: "/news",
@@ -3246,6 +3231,157 @@ export default [
   {
     source: "/news/page/9/different-shades-of-indelmoney",
     destination: "/news",
+    permanent: true,
+  },
+  {
+    source: "/privacy-policy/blog",
+    destination: "/privacy-policy",
+    permanent: true,
+  },
+  {
+    source: "/custom-events/privacy-policy",
+    destination: "/privacy-policy",
+    permanent: true,
+  },
+  {
+    source: "/testimonials/privacy-policy",
+    destination: "/privacy-policy",
+    permanent: true,
+  },
+  {
+    source: "/index.php/privacy-policy/",
+    destination: "/privacy-policy",
+    permanent: true,
+  },
+  {
+    source: "/blog-categories/privacy-policy",
+    destination: "/blog",
+    permanent: true,
+  },
+  {
+    source: "/blog-post/branch",
+    destination: "/blog",
+    permanent: true,
+  },
+  {
+    source: "/gallery",
+    destination: "/gallery",
+    permanent: true,
+  },
+  {
+    source: "/video/indel-money-corporate-video",
+    destination: "/gallery",
+    permanent: true,
+  },
+  {
+    source: "/video-gallery/privacy-policy",
+    destination: "/gallery",
+    permanent: true,
+  },
+  {
+    source: "/csr-gallery/blog",
+    destination: "/gallery",
+    permanent: true,
+  },
+  {
+    source: "/gallery-test/blog",
+    destination: "/gallery",
+    permanent: true,
+  },
+
+  {
+    source: "/career/digital-marketing-manager",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/marketing-executive",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/telesales-hindi-proficient",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/branch-manager2",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/forex-senior-executive-operations-coimbatore",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/forex-senior-executive-coimbatore",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/careers/index.php/team",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/careers/index.php/employee-speak",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/careers/index.php/events",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/careers/index.php/msme",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/careers/index.php/about",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/marketing-executive/different-shades-of-indelmoney",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/careers/index.php/new-news",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/asset-liability-channel-manager/different-shades-of-indelmoney",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/forex-senior-executive-coimbatore/different-shades-of-indelmoney",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/senior-executive",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/senior-executive-operations",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/forex-customer-service-executive",
+    destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/career/business-analyst",
+    destination: "/career",
     permanent: true,
   },
 ];
