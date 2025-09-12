@@ -33,12 +33,14 @@ const baseSchema = {
     .regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
    current_location:z.string().optional(),
-  preferred_location: z
-    .string()
-    .min(1, { message: "Please select a location." }),
+  preferred_locations: z
+    .array(z.string())
+    .min(1, { message: "Please select at least one location." }),
   preferred_role: z
     .string()
     .min(1, { message: "Please select a preferred role." }),
+  referred_employee_name: z.string().optional(),
+  employee_referral_code: z.string().optional(),
   notice_period: z
     .enum(noticePeriod, {
       errorMap: () => ({ message: "Please select a valid notice period." }),
@@ -176,7 +178,7 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
       name: "",
       phone: "",
       email: "",
-      preferred_location: "",
+      preferred_locations: [],
       current_location: "",
       referred_employee_name: "",
       employee_referral_code: "",
@@ -206,22 +208,23 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
 
   // Auto-fill form
   const autoFillForm = (data) => {
+    console.log("AutoFill Data:", data);
+    console.log("isGeneral:", isGeneral);
+    console.log("jobId:", jobId);
+    
     const validatedData = {
       name: data.name || "",
       phone: data.phone || "",
       email: data.email || "",
-      preferred_location: dropdowns.locations.some((loc) => loc.value.toString() === data.preferred_location?.toString())
-        ? data.preferred_location.toString()
-        : "",
+      preferred_locations: data.preferred_locations || [],
       current_location: data.current_location || "",
       referred_employee_name: data.referred_employee_name || "",
       employee_referral_code: data.employee_referral_code || "",
       age: data.age?.toString() || "",
       preferred_role: isGeneral
-        ? dropdowns.roles.some((role) => role.value.toString() === data.preferred_role?.toString())
-          ? data.preferred_role?.toString() || ""
-          : ""
+        ? data.preferred_role?.toString() || ""
         : jobId?.toString() || "",
+      preferred_role_name: data.preferred_role_name || "",
      notice_period: noticePeriod.includes(data.notice_period)
       ? data.notice_period
       : "",
@@ -229,9 +232,12 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
       expected_salary: data.expected_salary?.toString() || "",
       file: null,
     };
-    form.reset(validatedData)
     
-    ;
+    console.log("Validated Data preferred_role:", validatedData.preferred_role);
+    console.log("Validated Data preferred_role_name:", validatedData.preferred_role_name);
+    console.log("Validated Data referred_employee_name:", validatedData.referred_employee_name);
+    console.log("Validated Data employee_referral_code:", validatedData.employee_referral_code);
+    form.reset(validatedData);
   };
 
 
@@ -371,7 +377,10 @@ const handleEmailChange = (newEmail) => {
     formData.append("applicant[name]", values.name);
     formData.append("applicant[email]", values.email);
     formData.append("applicant[phone]", values.phone);
-    formData.append("applicant[preferred_location]", values.preferred_location);
+    // Append preferred locations as array
+    values.preferred_locations.forEach(location => {
+      formData.append("applicant[preferred_locations][]", location);
+    });
     formData.append("applicant[current_location]", values.current_location || "");
     formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
     formData.append("applicant[employee_referral_code]", values.employee_referral_code || "");
@@ -406,12 +415,20 @@ const handleEmailChange = (newEmail) => {
 
       if (!response.data.success) throw new Error(response.data.message || "Failed to submit application");
 
+      const cookieData = {
+        ...values,
+        file: selectedFile ? selectedFile.name : selectedFileName,
+      };
+      
+      console.log("Saving to cookie:", cookieData);
+      console.log("preferred_role being saved:", cookieData.preferred_role);
+      console.log("preferred_role_name being saved:", cookieData.preferred_role_name);
+      console.log("referred_employee_name being saved:", cookieData.referred_employee_name);
+      console.log("employee_referral_code being saved:", cookieData.employee_referral_code);
+      
       Cookies.set(
         "applicantData",
-        JSON.stringify({
-          ...values,
-          file: selectedFile ? selectedFile.name : selectedFileName,
-        }),
+        JSON.stringify(cookieData),
         {
           expires: 7,
           sameSite: "strict",
@@ -740,33 +757,77 @@ const handleEmailChange = (newEmail) => {
               />
             </div>
             <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
-              {/* Preferred Location Field */}
+              {/* Preferred Locations Field */}
               <FormField
                 control={form.control}
-                name="preferred_location"
+                name="preferred_locations"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value}
+                    <select
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 text-xs bg-white"
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (value && value !== "") {
+                          const currentValues = field.value || [];
+                          if (!currentValues.includes(value)) {
+                            field.onChange([...currentValues, value]);
+                          }
+                          e.target.value = ""; // Reset select
+                        }
+                      }}
                       // disabled={!isOtpVerified}
                     >
-                      <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                        <SelectValue placeholder="Preferred Location*" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white border-gray-300">
-                        {dropdowns.locations.map((location) => (
-                          <SelectItem key={location?.value} value={String(location?.value)}>
-                            {toSentenceCase(location?.label) || "-"}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                      <option value="">Preferred Locations*</option>
+                      {dropdowns.locations.map((location) => (
+                        <option key={location?.value} value={String(location?.value)}>
+                          {toSentenceCase(location?.label) || "-"}
+                        </option>
+                      ))}
+                    </select>
                     <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )}
               />
             </div>
+            
+            {/* Selected Preferred Locations Display */}
+            <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
+              <FormField
+                control={form.control}
+                name="preferred_locations"
+                render={({ field }) => (
+                  <div className="mb-2 xl:mb-3 2xl:mb-4">
+                    {field.value && field.value.length > 0 && (
+                      <div className="border border-gray-300 rounded-md p-2">
+                        <div className="flex flex-wrap gap-1">
+                          {field.value.map((locationId) => {
+                            const location = dropdowns.locations.find(loc => String(loc.value) === locationId);
+                            return (
+                              <span
+                                key={locationId}
+                                className="inline-flex items-center px-2 py-1 rounded text-xs bg-gray-100 text-gray-700"
+                              >
+                                {toSentenceCase(location?.label) || locationId}
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    field.onChange(field.value.filter(v => v !== locationId));
+                                  }}
+                                  className="ml-1 text-gray-500 hover:text-gray-700"
+                                >
+                                  ×
+                                </button>
+                              </span>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              />
+            </div>
+            
             <div className="w-1/2 px-1 lg:px-1.5 2xl:px-2.5">
               <FormField
                 control={form.control}
