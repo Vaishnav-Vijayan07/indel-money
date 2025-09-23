@@ -52,7 +52,7 @@ export default function MobKickStartVenture({ title, sub_title, button_text, but
       </div>
       <div className="w-full bg-[#e2efff] rounded-[20px] py-[20px_15px] block">
         <div className="container">
-          <div className="text-[18px] leading-none font-medium text-base1 mb-[15px]">{our_offering_title ? our_offering_title : "Our Offerings"}</div>
+          <h2 className="text-[18px] leading-none font-medium text-base1 mb-[15px]">{our_offering_title ? our_offering_title : "Our Offerings"}</h2>
           <div className="w-full h-auto bg-white rounded-[10px] overflow-hidden p-[15px] mb-[15px]">
             {offerings?.map((item) => (
               <div key={item.id} className="group w-full h-auto flex flex-wrap py-[8px]">

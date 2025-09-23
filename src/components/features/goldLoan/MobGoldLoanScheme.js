@@ -13,11 +13,11 @@ export default function MobGoldLoanScheme({ goldLoanSchemes, scheme_title }) {
   return (
     <section className="w-full block py-[15px_30px]">
       <div className="container">
-        <div className="text-title1 mb-[15px] [&>span]:text-base2 [&>span]:font-bold">{parse(scheme_title)}</div>
+        <h2 className="text-title1 mb-[15px] [&>span]:text-base2 [&>span]:font-bold">{parse(scheme_title)}</h2>
         <div className="flex flex-wrap gap-[4px] 4xs:gap-[8px] xs:gap-[10px]">
           {schemes?.map((item, index) => (
             <div key={index}>
-              <div
+              <h4
                 className={`${
                   activeIndex === index ? "bg-base1 font-bold text-white" : "bg-[#CFDFFE] font-normal text-black"
                 } text-[12px] leading-none w-full h-auto p-[10px_20px] rounded-[10px] cursor-pointer transition-background duration-300 hover:bg-base3
@@ -25,7 +25,7 @@ export default function MobGoldLoanScheme({ goldLoanSchemes, scheme_title }) {
                 onClick={() => setActiveIndex(index)}
               >
                 {item}
-              </div>
+              </h4>
             </div>
           ))}
         </div>

@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import api from "@/lib/api/axios";
 import { useEffect, useState, useCallback } from "react";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 // Schema Validation
 const formSchema = z.object({
@@ -186,12 +187,6 @@ export default function FindJobForm({
   }
 
   // convert to Sentance Case
-  const toSentenceCase = (str = "") =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
 
   useEffect(() => {
     fetchStatesAndRoles();
@@ -322,12 +317,9 @@ export default function FindJobForm({
                     <SelectValue placeholder="-- Select dept. --" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-white">
-                    {roles.map((role) => (
-                      <SelectItem
-                        key={String(role?.value)}
-                        value={String(role?.value)}
-                      >
-                        {toSentenceCase(role?.label) || "-"}
+                    {roles?.map((role) => (
+                      <SelectItem key={String(role?.value)} value={String(role?.value)}>
+                        {role?.label || "-"}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -367,6 +359,16 @@ export default function FindJobForm({
             className="text-[14px] leading-[1] font-bold text-white h-[40px] flex items-center justify-center bg-base2 rounded-[24px] p-[4px] transition-color duration-300 hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
             onClick={() => form.reset()}
           >
+            <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">
+              {button_text ? button_text : "View All"}
+            </span>
+            <Image
+              src="/images/icon-careerBtn.svg"
+              alt="careerBtn"
+              width={40}
+              height="40"
+              className="w-[25px] h-auto aspect-4/4 block ml-[5px]"
+            />
             <span className="px-[10px] md:px-[10px] lg:px-[15px] px-[20px]">{button_text ? button_text : "View All"}</span>
             <Image
               src="/images/icon-careerBtn.svg"

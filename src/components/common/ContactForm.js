@@ -103,7 +103,7 @@ function ContactFormInner() {
         toast.success("Contact form submitted successfully!");
         form.reset(); // Reset form on success
       } else {
-        toast.error(responseData.message || "Failed to submit contact form!");
+        toast.error(responseData?.message || "Failed to submit contact form!");
       }
     } catch (error) {
       console.error("Form submission error:", error);

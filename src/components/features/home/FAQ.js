@@ -11,7 +11,6 @@ export default function FAQ({ pageContents, type = "home" }) {
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
   // Fetch FAQs based on type
   useEffect(() => {
     const fetchFaqs = async () => {
@@ -26,8 +25,6 @@ export default function FAQ({ pageContents, type = "home" }) {
         });
 
         const result = await response.data;
-
-        console.log("Fetched FAQs:", result);
 
         if (result?.status === "success") {
           setFaqs(result.faqs || []);

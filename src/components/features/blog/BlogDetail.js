@@ -38,14 +38,14 @@ const BlogDetail = ({ data }) => {
           </div>
           {data?.image_description ? renderHtml(data?.image_description) : ""}
           <br />
-          <Image
+          {/* <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${data?.second_image}`}
             alt={"bg"}
             width={360}
             height={460}
             className="w-full mt-4 h-full object-cover transition-transform duration-600 group-hover:scale-[1.05] sm:block hidden"
           />
-          <br />
+          <br /> */}
           {data?.second_image_description ? renderHtml(data?.second_image_description) : ""}
         </div>
       </div>

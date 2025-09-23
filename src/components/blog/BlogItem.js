@@ -12,7 +12,7 @@ function BlogItem({ item, index, type = "blog" }) {
         <MobBlogListCard item={item} type={type} />
       </div>
       <div className="sm:block hidden">
-        <Link href={type == "news" ? `/${type}/page/${item?.id}` : `/${type}/${item?.slug}`}>
+        <Link href={`/${type}/${item?.slug}`}>
           <BlogCard item={item} type={type} />
         </Link>
       </div>

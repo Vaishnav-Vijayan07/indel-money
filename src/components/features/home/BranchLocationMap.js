@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect, memo, useCallback } from "react";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 import dynamic from "next/dynamic";
 import { useMap } from "react-leaflet";
 import L from "leaflet";
@@ -8,19 +9,37 @@ import "leaflet/dist/leaflet.css";
 import Image from "next/image";
 
 // Dynamically import react-leaflet components to avoid SSR issues
-const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), { ssr: false });
-const TileLayer = dynamic(() => import("react-leaflet").then((mod) => mod.TileLayer), { ssr: false });
-const Marker = dynamic(() => import("react-leaflet").then((mod) => mod.Marker), { ssr: false });
-const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), { ssr: false });
-const Circle = dynamic(() => import("react-leaflet").then((mod) => mod.Circle), { ssr: false });
-const MarkerClusterGroup = dynamic(() => import("react-leaflet-markercluster").then((mod) => mod.default), { ssr: false });
+const MapContainer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.MapContainer),
+  { ssr: false }
+);
+const TileLayer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.TileLayer),
+  { ssr: false }
+);
+const Marker = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Marker),
+  { ssr: false }
+);
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
+  ssr: false,
+});
+const Circle = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Circle),
+  { ssr: false }
+);
+const MarkerClusterGroup = dynamic(
+  () => import("react-leaflet-markercluster").then((mod) => mod.default),
+  { ssr: false }
+);
 
 // Import leaflet.markercluster CSS
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
+
 // Custom popup content component
-const CustomPopup = memo(({ branch, toSentenceCase }) => (
+const CustomPopup = memo(({ branch }) => (
   <div className="popup-content w-[260px] lg:w-[320px] 2xl:w-[376px]">
     <h3 className="text-[14px] lg:text-[16px] 2xl:text-[18px] font-bold line-clamp-1 text-[#1B1B1B] mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
       {toSentenceCase(branch?.name)}
@@ -101,76 +120,88 @@ const CustomPopup = memo(({ branch, toSentenceCase }) => (
 ));
 
 // MapController component
-const MapController = memo(({ selectedBranch, allBranchLocations, userLocation, selectedDistance,toSentenceCase }) => {
-  const map = useMap();
-  const markerRefs = useRef({});
-  const [isMounted, setIsMounted] = useState(false);
+const MapController = memo(
+  ({
+    selectedBranch,
+    allBranchLocations,
+    userLocation,
+    selectedDistance,
+  }) => {
+    const map = useMap();
+    const markerRefs = useRef({});
+    const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
 
-  // Clear marker refs when allBranchLocations changes (due to filtering)
-  useEffect(() => {
-    markerRefs.current = {};
-  }, [allBranchLocations]);
+    // Clear marker refs when allBranchLocations changes (due to filtering)
+    useEffect(() => {
+      markerRefs.current = {};
+    }, [allBranchLocations]);
 
-  useEffect(() => {
-    if (!isMounted || !map) return;
+    useEffect(() => {
+      if (!isMounted || !map) return;
 
-    if (userLocation) {
-      map.setView([userLocation.latitude, userLocation.longitude], 11);
-    } else if (selectedBranch?.latitude && selectedBranch?.longitude) {
-      map.setView([selectedBranch.latitude, selectedBranch.longitude], 11);
-    } else {
-      // Default to Chennai if no user location or selected branch
-      map.setView([13.0827, 80.2707], 11);
-    }
-  }, [userLocation, map, isMounted]);
-
-  // Separate useEffect for handling popup opening
-  useEffect(() => {
-    if (!isMounted || !map || !selectedBranch) return;
-
-    // Add a small delay to ensure marker is rendered
-    const timer = setTimeout(() => {
-      const marker = markerRefs.current[selectedBranch.id];
-      if (marker) {
-        // Close all open popups first
-        map.closePopup();
-        // Open the selected marker's popup
-        marker.openPopup();
-        // Center the map on the selected branch
-        map.setView([selectedBranch.latitude, selectedBranch.longitude], 13);
+      if (userLocation) {
+        map.setView([userLocation.latitude, userLocation.longitude], 11);
+      } else if (selectedBranch?.latitude && selectedBranch?.longitude) {
+        map.setView([selectedBranch.latitude, selectedBranch.longitude], 11);
       } else {
-        // If marker ref is not available, try to find and open popup by coordinates
-        const foundMarker = Object.values(markerRefs.current).find((marker) => {
-          if (marker && marker.getLatLng) {
-            const markerLatLng = marker.getLatLng();
-            return (
-              Math.abs(markerLatLng.lat - selectedBranch.latitude) < 0.0001 &&
-              Math.abs(markerLatLng.lng - selectedBranch.longitude) < 0.0001
+        // Default to Chennai if no user location or selected branch
+        map.setView([13.0827, 80.2707], 11);
+      }
+    }, [userLocation, map, isMounted]);
+
+    // Separate useEffect for handling popup opening
+    useEffect(() => {
+      if (!isMounted || !map || !selectedBranch) return;
+
+      // Add a small delay to ensure marker is rendered
+      const timer = setTimeout(() => {
+        const marker = markerRefs.current[selectedBranch.id];
+        if (marker) {
+          // Close all open popups first
+          map.closePopup();
+          // Open the selected marker's popup
+          marker.openPopup();
+          // Center the map on the selected branch
+          map.setView([selectedBranch.latitude, selectedBranch.longitude], 13);
+        } else {
+          // If marker ref is not available, try to find and open popup by coordinates
+          const foundMarker = Object.values(markerRefs.current).find(
+            (marker) => {
+              if (marker && marker.getLatLng) {
+                const markerLatLng = marker.getLatLng();
+                return (
+                  Math.abs(markerLatLng.lat - selectedBranch.latitude) <
+                    0.0001 &&
+                  Math.abs(markerLatLng.lng - selectedBranch.longitude) < 0.0001
+                );
+              }
+              return false;
+            }
+          );
+
+          if (foundMarker) {
+            map.closePopup();
+            foundMarker.openPopup();
+            map.setView(
+              [selectedBranch.latitude, selectedBranch.longitude],
+              13
             );
           }
-          return false;
-        });
-
-        if (foundMarker) {
-          map.closePopup();
-          foundMarker.openPopup();
-          map.setView([selectedBranch.latitude, selectedBranch.longitude], 13);
         }
-      }
-    }, 150); // Increased delay to allow for marker cluster re-rendering
+      }, 150); // Increased delay to allow for marker cluster re-rendering
 
-    return () => clearTimeout(timer);
-  }, [selectedBranch, map, isMounted, allBranchLocations]);
+      return () => clearTimeout(timer);
+    }, [selectedBranch, map, isMounted, allBranchLocations]);
 
-  useEffect(() => {
-    if (!isMounted) return;
+    useEffect(() => {
+      if (!isMounted) return;
 
-    const style = document.createElement("style");
-    style.innerHTML = `
+      const style = document.createElement("style");
+      style.innerHTML = `
       .leaflet-popup-content-wrapper {
           border-radius: 24px;
           padding: 0;
@@ -206,75 +237,76 @@ const MapController = memo(({ selectedBranch, allBranchLocations, userLocation, 
           color: white;
       }
     `;
-    document.head.appendChild(style);
+      document.head.appendChild(style);
 
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, [isMounted]);
+      return () => {
+        document.head.removeChild(style);
+      };
+    }, [isMounted]);
 
-  if (!isMounted || !L) return null;
+    if (!isMounted || !L) return null;
 
-  const mapPinIcon = L.icon({
-    iconUrl: "/images/map-pin.png",
-    iconSize: [27, 36],
-    iconAnchor: [13, 36],
-  });
+    const mapPinIcon = L.icon({
+      iconUrl: "/images/map-pin.png",
+      iconSize: [27, 36],
+      iconAnchor: [13, 36],
+    });
 
-  return (
-    <>
-      {userLocation && (
-        <Circle
-          center={[userLocation.latitude, userLocation.longitude]}
-          radius={selectedDistance * 1000} // Convert km to meters
-          pathOptions={{
-            color: "#F30000",
-            fillColor: "#F30000",
-            fillOpacity: 0.2,
-            weight: 2,
-          }}
-        />
-      )}
-      <MarkerClusterGroup
-        showCoverageOnHover={true}
-        spiderfyOnMaxZoom={true}
-        removeOutsideVisibleBounds={true}
-        maxClusterRadius={50}
-      >
-        {allBranchLocations?.map((branch) => (
-          <Marker
-            key={`marker-${branch.id}`} // More unique key to force re-render
-            position={[branch.latitude, branch.longitude]}
-            icon={mapPinIcon}
-            ref={(ref) => {
-              if (ref) {
-                markerRefs.current[branch.id] = ref;
-              }
+    return (
+      <>
+        {userLocation && (
+          <Circle
+            center={[userLocation.latitude, userLocation.longitude]}
+            radius={selectedDistance * 1000} // Convert km to meters
+            pathOptions={{
+              color: "#F30000",
+              fillColor: "#F30000",
+              fillOpacity: 0.2,
+              weight: 2,
             }}
-            eventHandlers={{
-              add: () => {
-                // Ensure ref is set when marker is added to map
-                setTimeout(() => {
-                  if (selectedBranch?.id === branch.id) {
-                    const marker = markerRefs.current[branch.id];
-                    if (marker) {
-                      map.closePopup();
-                      marker.openPopup();
+          />
+        )}
+        <MarkerClusterGroup
+          showCoverageOnHover={true}
+          spiderfyOnMaxZoom={true}
+          removeOutsideVisibleBounds={true}
+          maxClusterRadius={50}
+        >
+          {allBranchLocations?.map((branch) => (
+            <Marker
+              key={`marker-${branch.id}`} // More unique key to force re-render
+              position={[branch.latitude, branch.longitude]}
+              icon={mapPinIcon}
+              ref={(ref) => {
+                if (ref) {
+                  markerRefs.current[branch.id] = ref;
+                }
+              }}
+              eventHandlers={{
+                add: () => {
+                  // Ensure ref is set when marker is added to map
+                  setTimeout(() => {
+                    if (selectedBranch?.id === branch.id) {
+                      const marker = markerRefs.current[branch.id];
+                      if (marker) {
+                        map.closePopup();
+                        marker.openPopup();
+                      }
                     }
-                  }
-                }, 50);
-              },
-            }}
-          >
-            <Popup closeButton={false}>
-              <CustomPopup toSentenceCase={toSentenceCase} branch={branch} />
-            </Popup>
-          </Marker>
-        ))}
-      </MarkerClusterGroup>
-    </>
-  );
-});
+                  }, 50);
+                },
+              }}
+            >
+              <Popup closeButton={false}>
+                <CustomPopup  branch={branch} />
+              </Popup>
+            </Marker>
+          ))}
+        </MarkerClusterGroup>
+      </>
+    );
+  }
+);
 
 // BranchLocationsInfo component
 const BranchLocationsInfo = memo(({ item, type, selectedBranch, branch }) => {
@@ -372,23 +404,20 @@ export default function BranchLocationMap({
   if (!isMounted) return <div>Loading map...</div>;
 
 
-  // convert to Sentance Case
-  const toSentenceCase = (str) => {
-    return str
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
-  };
-
-
   return (
     <div className="w-full h-[376px] sm:h-[510px] 2xl:h-[670px] relative z-1 flex flex-wrap rounded-[10px] sm:rounded-[16px] overflow-hidden">
       <div className="w-full sm:w-[calc(100%-220px)] lg:w-[calc(100%-260px)] xl:w-[calc(100%-320px)] 2xl:w-[calc(100%-420px)] max-sm:h-[620px] h-full relative z-0">
-        <MapContainer center={mapCenter} zoom={12} className="absolute z-0 inset-0" style={{ height: "100%", width: "100%" }}>
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="© OpenStreetMap contributors" />
+        <MapContainer
+          center={mapCenter}
+          zoom={12}
+          className="absolute z-0 inset-0"
+          style={{ height: "100%", width: "100%" }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="© OpenStreetMap contributors"
+          />
           <MapController
-          toSentenceCase={toSentenceCase}
             selectedBranch={selectedBranch}
             allBranchLocations={allBranchLocations}
             userLocation={userLocation}
@@ -398,20 +427,24 @@ export default function BranchLocationMap({
       </div>
       <div className="w-full sm:w-[220px] lg:w-[260px] xl:w-[320px] 2xl:w-[420px] sm:h-full bg-base1 relative z-0 max-sm:shadow-[0_0_25px_0_rgba(238,56,36,0.20)] before:absolute before:inset-0 before:top-auto before:z-2 before:block before:bg-gradient-to-t before:to-transparent before:from-base1 before:w-full before:h-[20px] lg:before:h-[30px] before:pointer-events-none">
         <h3 className="text-[16px] lg:text-[18px] 2xl:text-[22px] text-white font-bold p-[20px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_30px] border-b-[1px] border-solid border-white/80">
-          {nearbyBranchLocations?.length} {hasActiveFilters ? "Branches" : "Branches Near You"}
+          {nearbyBranchLocations?.length}{" "}
+          {hasActiveFilters ? "Branches" : "Branches Near You"}
         </h3>
         <div className="max-sm:p-[20px] overflow-y-auto max-h-[280px] sm:max-h-[calc(100%-49px)] lg:max-h-[calc(100%-49px)] 2xl:max-h-[calc(100%-65px)]">
           {nearbyBranchLocations?.map((branch) => (
             <div
               key={branch.id}
               className={`max-sm:bg-[#7E94BC]/50 max-sm:rounded-[10px] max-sm:mb-[12px] last:mb-0 p-[15px_10px] sm:p-[10px_10px] lg:p-[20px_15px] 2xl:p-[20px_30px] cursor-pointer sm:border-b-[1px] border-solid border-white/10 loclist ${
-                selectedBranch?.id === branch.id ? "bg-[#f30000] max-sm:bg-[#f30000] active" : "hover:bg-blue-700"
+                selectedBranch?.id === branch.id
+                  ? "bg-[#f30000] max-sm:bg-[#f30000] active"
+                  : "hover:bg-blue-700"
               }`}
-              onClick={() => handleBranchClick(branch)}
+              onClick={() => {handleBranchClick(branch)
+              }}
             >
               <div className="flex items-center justify-between mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
                 <h4 className="text-[14px] lg:text-[16px] 2xl:text-[18px] leading-none line-clamp-1 text-white font-bold">
-                  {toSentenceCase(branch.name)}
+                  {toSentenceCase(branch?.name)}
                 </h4>
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${branch?.latitude},${branch?.longitude}`}
@@ -425,7 +458,9 @@ export default function BranchLocationMap({
                     width={14}
                     height={14}
                     className={`w-[12px] lg:w-[14px] 2xl:w-[16px] aspect-square transition ${
-                      selectedBranch?.id === branch.id ? "filter-white" : "filter-red"
+                      selectedBranch?.id === branch.id
+                        ? "filter-white"
+                        : "filter-red"
                     }`}
                   />
                 </a>
@@ -439,10 +474,20 @@ export default function BranchLocationMap({
                 />
               )}
               {branch.phone_no && (
-                <BranchLocationsInfo type="phone" item={branch.phone_no} selectedBranch={selectedBranch?.id} branch={branch.id} />
+                <BranchLocationsInfo
+                  type="phone"
+                  item={branch.phone_no}
+                  selectedBranch={selectedBranch?.id}
+                  branch={branch.id}
+                />
               )}
               {branch.email && (
-                <BranchLocationsInfo type="email" item={branch.email} selectedBranch={selectedBranch?.id} branch={branch.id} />
+                <BranchLocationsInfo
+                  type="email"
+                  item={branch.email}
+                  selectedBranch={selectedBranch?.id}
+                  branch={branch.id}
+                />
               )}
               {branch.mobile_no && (
                 <BranchLocationsInfo

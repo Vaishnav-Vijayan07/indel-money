@@ -1,65 +1,7 @@
 import Image from "next/image";
-import {renderHtml} from "@/lib/utils/htmlParser";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 export default function FeatureBenefit({ benefits, title, image }) {
-  const slides = [
-    {
-      icon: "/images/ftrB-01.svg",
-      alt: "value-1",
-      benefit: "No Interest",
-    },
-    {
-      icon: "/images/ftrB-02.svg",
-      alt: "value-2",
-      benefit: "Up to 100% finance",
-    },
-    {
-      icon: "/images/ftrB-03.svg",
-      alt: "value-3",
-      benefit: "No down-payment",
-    },
-    {
-      icon: "/images/ftrB-04.svg",
-      alt: "value-4",
-      benefit: "A wide range of consumer products covered",
-    },
-    {
-      icon: "/images/ftrB-05.svg",
-      alt: "value-5",
-      benefit: "No processing fee",
-    },
-    {
-      icon: "/images/ftrB-06.svg",
-      alt: "value-6",
-      benefit: "Many products can be purchased with one loan",
-    },
-    {
-      icon: "/images/ftrB-07.svg",
-      alt: "value-6",
-      benefit: "No cost EMI & with flexibile repayment modes",
-    },
-    {
-      icon: "/images/ftrB-08.svg",
-      alt: "value-6",
-      benefit: "Complete transparency",
-    },
-    {
-      icon: "/images/ftrB-09.svg",
-      alt: "value-6",
-      benefit: "No pre-closure charges",
-    },
-    {
-      icon: "/images/ftrB-010.svg",
-      alt: "value-6",
-      benefit: "Multiple payment options & schedules",
-    },
-    {
-      icon: "/images/ftrB-011.svg",
-      alt: "value-6",
-      benefit: "Easy documentation",
-    },
-  ];
-
   return (
     <section className="w-full sm:bg-gradient-to-r sm:from-[rgba(243,0,0,0.00)] sm:via-transparent sm:to-[rgba(235,2,8,0.10)] bg-[#E5F6FF] py-[20px] lg:py-0 sm:mt-0 mt-[20px] sm:rounded-[0px] rounded-[20px]">
       <div className="max-w-[var(--container-x)] lg:max-w-[calc(100%-(100%-var(--container-x))/2)] mx-auto lg:ml-[0] px-[var(--container-padding,1rem)] lg:pl-[0]">

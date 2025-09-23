@@ -30,9 +30,9 @@ export default function MobGoldLoanServices({ features }) {
                         <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}`} alt={item?.image_alt} fill sizes="30px" className="object-contain" />
                       </div>
                       <div className="w-[calc(100%-25px)] 4xs:w-[calc(100%-30px)] pl-[10px]">
-                        <div className="text-[16px] 4xs:text-[20px] leading-none font-medium text-base1 line-clamp-2">
+                        <h3 className="text-[16px] 4xs:text-[20px] leading-none font-medium text-base1 line-clamp-2">
                           {item?.title}
-                        </div>
+                        </h3>
                       </div>
                     </div>
                     <div className="line-clamp-3">

@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import {
   Select,
@@ -10,6 +9,7 @@ import {
 } from "../../components/ui/select";
 import { Button } from "../ui/button";
 import { usePathname, useRouter } from "next/navigation";
+import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 
 export default function BranchForm({
   states,
@@ -43,7 +43,7 @@ export default function BranchForm({
   const handleClearFilter = (e) => {
     e.preventDefault();
     onValueChange("clear", true);
-    
+
     // Only navigate with query params if useQueryParams is true
     if (isMobile && useQueryParams) {
       router.push(pathname);
@@ -51,16 +51,6 @@ export default function BranchForm({
   };
 
 
-  // convert to Sentance Case
-  const toSentenceCase = (str) => {
-    return str
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
-  };
-
-  
   return (
     <form
       className="flex flex-wrap -mx-[10px] sm:-mx-[10px] 2xl:-mx-[15px]"
@@ -78,10 +68,10 @@ export default function BranchForm({
           <SelectContent className="bg-[#e7eff9] border-[#e7eff9]">
             {states?.map((state) => (
               <SelectItem
-                key={state?.id?.toString()}
-                value={state?.id?.toString()}
+                key={state?.value?.toString()}
+                value={state?.value?.toString()}
               >
-                {toSentenceCase(state?.state_name)}
+                {toSentenceCase(state?.label)}
               </SelectItem>
             ))}
           </SelectContent>
