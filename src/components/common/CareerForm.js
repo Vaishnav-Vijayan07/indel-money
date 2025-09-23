@@ -1012,13 +1012,13 @@ function CareerFormInner({ jobId, isGeneral }) {
 
                                 if (selectedStates.length === 1) {
                                   return selectedStates[0];
-                                } else if (selectedStates.length <= 4) {
+                                } else if (selectedStates.length <= 3) {
                                   return selectedStates.join(", ");
                                 } else {
                                   return `${selectedStates
-                                    .slice(0, 4)
+                                    .slice(0, 3)
                                     .join(", ")}... (+${
-                                    selectedStates.length - 4
+                                    selectedStates.length - 3
                                   } more)`;
                                 }
                               })()
