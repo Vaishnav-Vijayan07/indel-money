@@ -33,11 +33,12 @@ const PDFViewerAlert = ({ isOpen, onOpenChange, disclaimer, onAgree, onDisagree,
             </svg>
           </AlertDialogCancel>
           {/* Header */}
-          <div className="flex flex-wrap gap-[15px] lg:gap-[20px] xl:gap-[30px] 2xl:gap-[40px] 3xl:gap-[50px] mb-[20px] lg:mb-[30px] 2xl:mb-[40px] flex-shrink-0">
-            <div className="w-full max-w-[60px] sm:max-w-[70px] md:max-w-[80px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[180px] h-auto inline-block">
-              <img src={logoSrc} alt="Logo" className="w-full h-auto object-contain" />
-            </div>
+          <div className="flex flex-wrap gap-[15px] lg:gap-[20px] xl:gap-[30px] 2xl:gap-[40px] 3xl:gap-[50px] mb-[20px] lg:mb-[30px] 2xl:mb-[40px] flex-shrink-0 items-center justify-center">
+            <AlertDialogTitle className="text-center text-[18px] sm:text-[24px] md:text-[30px] lg:text-[38px] xl:text-[44px] 2xl:text-[56px] 3xl:text-[64px] leading-none  mt-[2px] 2xl:mt-[4px] mb-[4px] 2xl:mb-[6px]">
+              Disclaimer
+            </AlertDialogTitle>
           </div>
+
           {/* PDF Content - Full Height */}
           <div className="flex-1 overflow-auto mb-[20px] lg:mb-[30px] 2xl:mb-[40px]">
             <div
