@@ -113,9 +113,10 @@ export const defaultMeta = {
     description: "Find the nearest branch of Indel Money.",
     keywords: "branch locator, nearby branch, location finder",
   },
-  indelcares: {
-    title: "Indel Money Cares | Indel Money",
-    description: "Discover how Indel Money is committed to corporate social responsibility and community well-being.",
-    keywords: "Indel Money Cares, CSR, community support, social responsibility, Indel Money initiatives",
-  },
+ncdPage: {
+  title: "National Career Program | Indel Education",
+  description: "Learn about the National Career Program (NCD) by Indel Education, empowering students and professionals with career guidance, training, and opportunities.",
+  keywords: "National Career Program, NCD, career guidance, training, skill development, Indel Education",
+},
+
 };
