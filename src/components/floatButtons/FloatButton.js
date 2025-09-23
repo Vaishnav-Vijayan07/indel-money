@@ -12,7 +12,7 @@ function FloatButton({ buttons, formattedGoldCaratTypes, formattedGoldTypes }) {
 
   // Define routes where you don't want the floating button
   const shouldHideFloatingButton =
-    pathname === "/career" || pathname.startsWith("/career-list/job-details/");
+    pathname === "/career" || pathname.startsWith("/career-list/job-details/") || pathname.startsWith("/career-list");
 
   return (
     !shouldHideFloatingButton && (

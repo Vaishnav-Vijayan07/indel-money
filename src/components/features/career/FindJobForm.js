@@ -338,20 +338,20 @@ export default function FindJobForm({
           >
             SEARCH
           </Button>
-          {hasActiveFilters && hasActiveFilters() && (
-            <Button
-              type="reset"
-              size="sm"
-              variant="outline"
-              className="border-[#cf2613] text-[#cf2613] px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#ffe5e0] hover:text-[#b71c0c]"
-              onClick={() => [
-                handleClearFilters && handleClearFilters(),
-                form.reset(),
-              ]}
-            >
-              CLEAR
-            </Button>
-          )}
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            className="bg-white border-[#cf2613] text-[#cf2613] px-4 py-2 rounded-[8px] min-w-[80px] hover:bg-[#ffe5e0] hover:text-[#b71c0c]"
+            onClick={() => {
+              form.reset();
+              if (handleClearFilters) {
+                handleClearFilters();
+              }
+            }}
+          >
+            CLEAR
+          </Button>
         </div>
         <div className="max-sm:block mt-[8px] hidden w-full">
           <Link

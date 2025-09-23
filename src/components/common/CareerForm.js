@@ -67,8 +67,8 @@ const baseSchema = {
   referred_employee_name: z.string().optional(),
   employee_referral_code: z.string().optional(),
   notice_period: z.enum(noticePeriod, {
-    errorMap: () => ({ message: "Please select a valid notice period." }),
-  }),
+      errorMap: () => ({ message: "Please select a valid notice period." }),
+    }),
   current_salary: z
     .string()
     .regex(/^\d{5,}$/, {
@@ -126,9 +126,9 @@ function CareerFormInner({ jobId, isGeneral }) {
   const [isDraggingMobile, setIsDraggingMobile] = useState(false);
   const [isDraggingDesktop, setIsDraggingDesktop] = useState(false);
 
-  // 1. ADD NEW STATE VARIABLES (add these to your existing state declarations)
-  const [verifiedEmail, setVerifiedEmail] = useState(""); // Store the verified email
-  const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track current email in form
+// 1. ADD NEW STATE VARIABLES (add these to your existing state declarations)
+const [verifiedEmail, setVerifiedEmail] = useState(""); // Store the verified email
+const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track current email in form
 
   const truncateFilename = (filename, maxLength = 8) => {
     if (!filename || filename.length <= maxLength) return filename;
@@ -277,7 +277,7 @@ function CareerFormInner({ jobId, isGeneral }) {
     console.log("AutoFill Data:", data);
     console.log("isGeneral:", isGeneral);
     console.log("jobId:", jobId);
-
+    
     const validatedData = {
       name: data.name || "",
       phone: data.phone || "",
@@ -292,14 +292,14 @@ function CareerFormInner({ jobId, isGeneral }) {
         ? data.preferred_role?.toString() || ""
         : jobId?.toString() || "",
       preferred_role_name: data.preferred_role_name || "",
-      notice_period: noticePeriod.includes(data.notice_period)
-        ? data.notice_period
-        : "",
+     notice_period: noticePeriod.includes(data.notice_period)
+      ? data.notice_period
+      : "",
       current_salary: data.current_salary?.toString() || "",
       expected_salary: data.expected_salary?.toString() || "",
       file: null,
     };
-
+    
     console.log("Validated Data preferred_role:", validatedData.preferred_role);
     console.log(
       "Validated Data preferred_role_name:",
@@ -422,7 +422,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       setIsOtpVerified(true);
       setIsModalOpen(false);
       setVerifiedEmail(email); // Store the verified email
-      setCurrentEmailInForm(email); //
+      setCurrentEmailInForm(email); // 
       toast.success("OTP verified successfully");
     } catch (error) {
       console.error("Error verifying OTP:", error);
@@ -432,45 +432,46 @@ function CareerFormInner({ jobId, isGeneral }) {
     }
   };
 
-  const handleEmailChange = (newEmail) => {
-    setCurrentEmailInForm(newEmail);
+const handleEmailChange = (newEmail) => {
+  setCurrentEmailInForm(newEmail);
+  
+  // If email is different from verified email, mark as not verified and clear cookie
+  if (newEmail !== verifiedEmail) {
+    setIsOtpVerified(false);
+    
+    // Clear the cookie when email changes
+    Cookies.remove("applicantData");
+    
+    // Reset file selection since cookie data is cleared
+    setSelectedFile(null);
+    setSelectedFileName(null);
+    
+    // Reset verification states
+    setVerifiedEmail("");
+    setShowOtpInput(false);
+    
+    // Set the new email and open the modal for verification
+    setEmail(newEmail);
+    setIsModalOpen(true);
+    
+    // Reset the email form with the new email
+    emailForm.reset({ email: newEmail });
+  } else {
+    // If email matches verified email, mark as verified
+    setIsOtpVerified(true);
+  }
+};
 
-    // If email is different from verified email, mark as not verified and clear cookie
-    if (newEmail !== verifiedEmail) {
-      setIsOtpVerified(false);
-
-      // Clear the cookie when email changes
-      Cookies.remove("applicantData");
-
-      // Reset file selection since cookie data is cleared
-      setSelectedFile(null);
-      setSelectedFileName(null);
-
-      // Reset verification states
-      setVerifiedEmail("");
-      setShowOtpInput(false);
-
-      // Set the new email and open the modal for verification
-      setEmail(newEmail);
-      setIsModalOpen(true);
-
-      // Reset the email form with the new email
-      emailForm.reset({ email: newEmail });
-    } else {
-      // If email matches verified email, mark as verified
-      setIsOtpVerified(true);
-    }
-  };
 
   // Handle form submission
   const onSubmit = async (values) => {
     // Check if email has changed and needs re-verification
-    if (values.email !== verifiedEmail && !isOtpVerified) {
-      toast.error("Please verify your email before submitting the form.");
-      setEmail(values.email); // Set the new email for OTP
-      setIsModalOpen(true);
-      return;
-    }
+  if (values.email !== verifiedEmail && !isOtpVerified) {
+    toast.error("Please verify your email before submitting the form.");
+    setEmail(values.email); // Set the new email for OTP
+    setIsModalOpen(true);
+    return;
+  }
 
     if (!isOtpVerified) {
       toast.error("Please verify OTP before submitting the form.");
@@ -512,8 +513,8 @@ function CareerFormInner({ jobId, isGeneral }) {
       values.employee_referral_code || ""
     );
     if (values.age !== null && !isNaN(values.age) && values.age > 0) {
-      formData.append("applicant[age]", values.age.toString());
-    }
+        formData.append("applicant[age]", values.age.toString());
+      }
     formData.append("applicant[notice_period]", values.notice_period);
     formData.append("applicant[current_salary]", values.current_salary || "");
     formData.append("applicant[expected_salary]", values.expected_salary || "");
@@ -554,7 +555,7 @@ function CareerFormInner({ jobId, isGeneral }) {
         ...values,
         file: selectedFile ? selectedFile.name : selectedFileName,
       };
-
+      
       console.log("Saving to cookie:", cookieData);
       console.log("preferred_role being saved:", cookieData.preferred_role);
       console.log(
@@ -571,8 +572,8 @@ function CareerFormInner({ jobId, isGeneral }) {
       );
 
       Cookies.set("applicantData", JSON.stringify(cookieData), {
-        expires: 7,
-        sameSite: "strict",
+          expires: 7,
+          sameSite: "strict",
       });
 
       // form.reset();
@@ -642,50 +643,50 @@ function CareerFormInner({ jobId, isGeneral }) {
           <div className="w-full min-w-[340px] sm:min-w-[360px] md:min-w-[376px] lg:min-w-[420px] xl:min-w-[468px] 2xl:min-w-[576px] 3xl:min-w-[668px] bg-[#dceafb] rounded-[15px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_25px] lg:p-[20px_30px] xl:p-[30px_50px] 2xl:p-[40px_60px] 3xl:p-[50px_80px] relative z-0">
             <AlertDialogHeader>
               <AlertDialogTitle className="text-[18px] sm:text-[22px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[48px] text-black font-bold flex items-center mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
-                Verify Your Email
+                    Verify Your Email
               </AlertDialogTitle>
               <AlertDialogDescription className="sr-only">
                 Please verify your email address to continue with the
                 application.
               </AlertDialogDescription>
 
-              <div className="mt-4">
-                {!showOtpInput ? (
-                  <Form {...emailForm} key="email-form">
+                  <div className="mt-4">
+                    {!showOtpInput ? (
+                      <Form {...emailForm} key="email-form">
                     <form
                       onSubmit={emailForm.handleSubmit(handleEmailSubmit)}
                       className="space-y-4"
                     >
-                      <FormField
-                        control={emailForm.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormControl>
-                              <Input
-                                type="email"
+                          <FormField
+                            control={emailForm.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <Input
+                                    type="email"
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-base1 focus:border-transparent text-gray-900 text-sm bg-white"
                                 placeholder="Enter your email address"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage className="text-red-500 text-xs" />
-                          </FormItem>
-                        )}
-                      />
-                      <Button
-                        type="submit"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage className="text-red-500 text-xs" />
+                              </FormItem>
+                            )}
+                          />
+                          <Button
+                            type="submit"
                         className="w-full bg-base1 text-white hover:bg-base1/90 transition-colors duration-300 py-2 px-4 rounded-md font-medium"
-                        disabled={loading}
-                      >
-                        {loading ? (
+                            disabled={loading}
+                          >
+                            {loading ? (
                           <span className="flex items-center justify-center">
-                            <svg
-                              className="animate-spin h-5 w-5 mr-2 text-white"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                            >
+                                <svg
+                                  className="animate-spin h-5 w-5 mr-2 text-white"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                >
                               <circle
                                 className="opacity-25"
                                 cx="12"
@@ -699,17 +700,17 @@ function CareerFormInner({ jobId, isGeneral }) {
                                 fill="currentColor"
                                 d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z"
                               />
-                            </svg>
-                            Sending OTP...
-                          </span>
-                        ) : (
-                          "Send OTP"
-                        )}
-                      </Button>
-                    </form>
-                  </Form>
-                ) : (
-                  <Form {...otpForm} key="otp-form">
+                                </svg>
+                                Sending OTP...
+                              </span>
+                            ) : (
+                              "Send OTP"
+                            )}
+                          </Button>
+                        </form>
+                      </Form>
+                    ) : (
+                      <Form {...otpForm} key="otp-form">
                     <form
                       onSubmit={otpForm.handleSubmit(handleOtpSubmit)}
                       className="space-y-4"
@@ -718,38 +719,38 @@ function CareerFormInner({ jobId, isGeneral }) {
                         We've sent a 6-digit verification code to{" "}
                         <strong>{email}</strong>
                       </div>
-                      <FormField
-                        control={otpForm.control}
-                        name="otp"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormControl>
-                              <Input
-                                type="text"
-                                inputMode="numeric"
+                          <FormField
+                            control={otpForm.control}
+                            name="otp"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <Input
+                                    type="text"
+                                    inputMode="numeric"
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-base1 focus:border-transparent text-gray-900 text-sm bg-white text-center text-lg tracking-widest"
                                 placeholder="Enter 6-digit OTP"
                                 maxLength="6"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage className="text-red-500 text-xs" />
-                          </FormItem>
-                        )}
-                      />
-                      <Button
-                        type="submit"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage className="text-red-500 text-xs" />
+                              </FormItem>
+                            )}
+                          />
+                          <Button
+                            type="submit"
                         className="w-full bg-base1 text-white hover:bg-base1/90 transition-colors duration-300 py-2 px-4 rounded-md font-medium"
-                        disabled={loading}
-                      >
-                        {loading ? (
+                            disabled={loading}
+                          >
+                            {loading ? (
                           <span className="flex items-center justify-center">
-                            <svg
-                              className="animate-spin h-5 w-5 mr-2 text-white"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                            >
+                                <svg
+                                  className="animate-spin h-5 w-5 mr-2 text-white"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                >
                               <circle
                                 className="opacity-25"
                                 cx="12"
@@ -763,13 +764,13 @@ function CareerFormInner({ jobId, isGeneral }) {
                                 fill="currentColor"
                                 d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z"
                               />
-                            </svg>
-                            Verifying...
-                          </span>
-                        ) : (
-                          "Verify OTP"
-                        )}
-                      </Button>
+                                </svg>
+                                Verifying...
+                              </span>
+                            ) : (
+                              "Verify OTP"
+                            )}
+                          </Button>
                       <button
                         type="button"
                         onClick={() => setShowOtpInput(false)}
@@ -777,10 +778,10 @@ function CareerFormInner({ jobId, isGeneral }) {
                       >
                         Change Email Address
                       </button>
-                    </form>
-                  </Form>
-                )}
-              </div>
+                        </form>
+                      </Form>
+                    )}
+                  </div>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel
@@ -797,7 +798,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                 />
               </AlertDialogCancel>
             </AlertDialogFooter>
-          </div>
+            </div>
         </AlertDialogContent>
       </AlertDialog>
 
@@ -918,10 +919,10 @@ function CareerFormInner({ jobId, isGeneral }) {
                           handleEmailChange(e.target.value);
                         }}
                         onFocus={() => {
-                          if (!isOtpVerified || field.value !== verifiedEmail) {
+                           if (!isOtpVerified || field.value !== verifiedEmail) {
                             setEmail(field.value);
                             setIsModalOpen(true);
-                          }
+                           }
                         }}
                         // disabled={isOtpVerified}
                       />
@@ -968,7 +969,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Enter age"
                         {...field}
-                        // disabled={!isOtpVerified}
+                      // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -1004,7 +1005,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                                     const state = dropdowns.states.find(
                                       (st) => String(st.value) === stateId
                                     );
-                                    return (
+                            return (
                                       toSentenceCase(state?.label) || stateId
                                     );
                                   }
@@ -1066,10 +1067,10 @@ function CareerFormInner({ jobId, isGeneral }) {
                                   String(state.value)
                                 );
                                 return (
-                                  <button
+                                <button
                                     key={state.value}
-                                    type="button"
-                                    onClick={() => {
+                                  type="button"
+                                  onClick={() => {
                                       const currentValues = field.value || [];
                                       if (isSelected) {
                                         // Deselect if already selected
@@ -1095,7 +1096,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                                   >
                                     <span>
                                       {toSentenceCase(state.label) || "-"}
-                                    </span>
+                              </span>
                                     {isSelected && (
                                       <svg
                                         className="w-4 h-4 text-blue-600"
@@ -1115,14 +1116,14 @@ function CareerFormInner({ jobId, isGeneral }) {
                             ) : stateSearchTerm ? (
                               <div className="px-3 py-2 text-xs text-gray-500">
                                 No states match "{stateSearchTerm}"
-                              </div>
+                        </div>
                             ) : (
                               <div className="px-3 py-2 text-xs text-gray-500">
                                 No states available
-                              </div>
-                            )}
+                      </div>
+                    )}
                           </div>
-                        </div>
+                  </div>
                       )}
                     </div>
                     <FormMessage className="text-red-500 text-xs" />
@@ -1130,7 +1131,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                 )}
               />
             </div>
-
+            
             <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
               {/* Preferred Locations Field */}
               <FormField
@@ -1141,7 +1142,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                   const hasSelectedStates = selectedStates.length > 0;
 
                   return (
-                    <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                  <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
                       <label className="text-[10px] text-gray-600 font-medium block">
                         Preferred Locations*
                       </label>
@@ -1301,8 +1302,8 @@ function CareerFormInner({ jobId, isGeneral }) {
                             </div>
                           )}
                       </div>
-                      <FormMessage className="text-red-500 text-xs" />
-                    </FormItem>
+                    <FormMessage className="text-red-500 text-xs" />
+                  </FormItem>
                   );
                 }}
               />
@@ -1568,6 +1569,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                 />
               </Button>
             </div>
+
           </form>
         </Form>
       </div>
