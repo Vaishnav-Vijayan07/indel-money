@@ -7,6 +7,8 @@ import Image from "next/image";
 export default function NCData({ reports, title, type = "report", disclaimer }) {
   const isDataPresent = reports?.length > 0;
 
+  console.log("Disclaimer:", disclaimer);
+
   // State for modal
   const [isPDFModalOpen, setIsPDFModalOpen] = useState(false);
   const [selectedReport, setSelectedReport] = useState(null);
