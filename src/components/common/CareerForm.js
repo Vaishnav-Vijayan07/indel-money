@@ -222,14 +222,63 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
   // Fetch dropdowns
   const fetchDropdowns = async () => {
     try {
-      const { data } = await api.get("/career/jobs/dropdowns");
+      let endpoint = "/career/jobs/dropdowns";
+      
+      // If jobId is provided, fetch job-specific states and locations
+      if (jobId && !isGeneral) {
+        endpoint = `/career/jobs/${jobId}/dropdowns`;
+      }
+      
+      const { data } = await api.get(endpoint);
 
       if (!data.success)
         throw new Error(data.message || "Failed to fetch dropdowns");
-      setDropdowns(data.data || { locations: [], roles: [], states: [] });
+      
+      // If job-specific data is available, use it; otherwise fallback to all data
+      const dropdownData = data.data || { locations: [], roles: [], states: [] };
+      
+      // If job-specific states are available, use them; otherwise use all states
+      let states = dropdownData.job_states || dropdownData.states || [];
+      let locations = dropdownData.job_locations || dropdownData.locations || [];
+      const roles = dropdownData.roles || [];
+      
+      // Ensure states have the correct format (value and label)
+      if (states.length > 0 && states[0].id && !states[0].value) {
+        states = states.map(state => ({
+          value: state.id,
+          label: state.state_name || state.name || state.label
+        }));
+      }
+      
+      // Ensure locations have the correct format (id and location_name)
+      if (locations.length > 0 && locations[0].id) {
+        // Locations are already in the correct format
+        locations = locations;
+      }
+      
+      setDropdowns({
+        states: states,
+        locations: locations,
+        roles: roles
+      });
       setDropdownsLoaded(true);
     } catch (error) {
       console.error("Error fetching dropdowns:", error);
+      
+      // Fallback to general dropdowns if job-specific fails
+      if (jobId && !isGeneral) {
+        try {
+          const { data } = await api.get("/career/jobs/dropdowns");
+          if (data.success) {
+            setDropdowns(data.data || { locations: [], roles: [], states: [] });
+            setDropdownsLoaded(true);
+            return;
+          }
+        } catch (fallbackError) {
+          console.error("Error fetching fallback dropdowns:", fallbackError);
+        }
+      }
+      
       toast.error("Failed to load dropdown options");
     }
   };
@@ -244,9 +293,15 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
     try {
       setLocationsLoading(true);
       const stateIdsParam = stateIds.join(",");
-      const { data } = await api.get(
-        `/career/locations/by_state?state_ids=${stateIdsParam}`
-      );
+      
+      let endpoint = `/career/locations/by_state?state_ids=${stateIdsParam}`;
+      
+      // If jobId is provided, fetch job-specific locations
+      if (jobId && !isGeneral) {
+        endpoint = `/career/jobs/${jobId}/locations/by_state?state_ids=${stateIdsParam}`;
+      }
+      
+      const { data } = await api.get(endpoint);
 
       if (!data.success)
         throw new Error(data.message || "Failed to fetch locations");
@@ -254,6 +309,23 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
       setDropdowns((prev) => ({ ...prev, locations: data.data || [] }));
     } catch (error) {
       console.error("Error fetching locations by states:", error);
+      
+      // Fallback to general locations if job-specific fails
+      if (jobId && !isGeneral) {
+        try {
+          const stateIdsParam = stateIds.join(",");
+          const { data } = await api.get(
+            `/career/locations/by_state?state_ids=${stateIdsParam}`
+          );
+          if (data.success) {
+            setDropdowns((prev) => ({ ...prev, locations: data.data || [] }));
+            return;
+          }
+        } catch (fallbackError) {
+          console.error("Error fetching fallback locations:", fallbackError);
+        }
+      }
+      
       toast.error("Failed to load locations for selected states");
     } finally {
       setLocationsLoading(false);
@@ -262,7 +334,7 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
 
   // Filter states based on search term
   const filteredStates = dropdowns.states.filter((state) =>
-    state.label?.toLowerCase().includes(stateSearchTerm.toLowerCase())
+    (state.label || state.state_name || state.name)?.toLowerCase().includes(stateSearchTerm.toLowerCase())
   );
 
   // Filter locations based on search term
@@ -375,11 +447,23 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
         setSelectedFileName(parsedData.file || null);
         setVerifiedEmail(parsedData.email); // Set verified email
         setCurrentEmailInForm(parsedData.email); // Set current form email
+        
+        // Don't auto-fill states and locations for job-specific applications
+        if (jobId && !isGeneral) {
+          // Remove states and locations from auto-fill data
+          const filteredData = { ...parsedData };
+          delete filteredData.preferred_states;
+          delete filteredData.preferred_locations;
+          autoFillForm(filteredData);
+        } else {
+          // Auto-fill everything for general applications
         autoFillForm(parsedData);
+        }
+        
         setIsOtpVerified(true);
       }
     }
-  }, [dropdownsLoaded]);
+  }, [dropdownsLoaded, jobId, isGeneral]);
 
   // Handle email submission
   const handleEmailSubmit = async (values) => {
@@ -413,11 +497,27 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
 
       if (!data.success) throw new Error(data.message || "Invalid OTP");
       if (data.data) {
+        // Don't auto-fill states and locations for job-specific applications
+        if (jobId && !isGeneral) {
+          // Remove states and locations from auto-fill data
+          const filteredData = { ...data.data };
+          delete filteredData.preferred_states;
+          delete filteredData.preferred_locations;
+          autoFillForm(filteredData);
+          
+          // Save filtered data to cookie
+          Cookies.set("applicantData", JSON.stringify(filteredData), {
+            expires: 7,
+            sameSite: "strict",
+          });
+        } else {
+          // Auto-fill everything for general applications
         autoFillForm(data.data);
         Cookies.set("applicantData", JSON.stringify(data.data), {
           expires: 7,
           sameSite: "strict",
         });
+        }
       }
       setIsOtpVerified(true);
       setIsModalOpen(false);
@@ -1000,16 +1100,16 @@ const handleEmailChange = (newEmail) => {
                         <span className="text-gray-500 truncate">
                           {field.value && field.value.length > 0
                             ? (() => {
-                                const selectedStates = field.value.map(
-                                  (stateId) => {
-                                    const state = dropdowns.states.find(
-                                      (st) => String(st.value) === stateId
-                                    );
+                                 const selectedStates = field.value.map(
+                                   (stateId) => {
+                                     const state = dropdowns.states.find(
+                                       (st) => String(st.value) === stateId
+                                     );
                             return (
-                                      toSentenceCase(state?.label) || stateId
-                                    );
-                                  }
-                                );
+                                       toSentenceCase(state?.label || state?.state_name || state?.name) || stateId
+                                     );
+                                   }
+                                 );
 
                                 if (selectedStates.length === 1) {
                                   return selectedStates[0];
@@ -1094,8 +1194,8 @@ const handleEmailChange = (newEmail) => {
                                         : "text-gray-900"
                                     }`}
                                   >
-                                    <span>
-                                      {toSentenceCase(state.label) || "-"}
+                                     <span>
+                                       {toSentenceCase(state.label || state.state_name || state.name) || "-"}
                               </span>
                                     {isSelected && (
                                       <svg

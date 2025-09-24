@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function NCData({ reports, title, type = "report", disclaimer }) {
+  console.log("disclaimer", disclaimer);
+  
   const isDataPresent = reports?.length > 0;
 
   console.log("Disclaimer:", disclaimer);
@@ -15,7 +17,7 @@ export default function NCData({ reports, title, type = "report", disclaimer }) 
 
   const handlePDFClick = (report) => {
     // Check if the report has showDisclaimer field and it's true
-    if (report.show_disclaimer === true) {
+    if (report.show_disclaimer == true) {
       setSelectedReport(report);
       setIsPDFModalOpen(true);
     } else {
