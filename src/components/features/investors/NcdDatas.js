@@ -5,12 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function NCData({ reports, title, type = "report", disclaimer }) {
-  console.log("disclaimer", disclaimer);
-  
   const isDataPresent = reports?.length > 0;
 
-  console.log("Disclaimer:", disclaimer);
-
+  console.log(reports)
   // State for modal
   const [isPDFModalOpen, setIsPDFModalOpen] = useState(false);
   const [selectedReport, setSelectedReport] = useState(null);
@@ -98,7 +95,7 @@ export default function NCData({ reports, title, type = "report", disclaimer }) 
         <PDFViewerAlert
           isOpen={isPDFModalOpen}
           onOpenChange={setIsPDFModalOpen}
-          disclaimer={disclaimer || "<p>No disclaimer available.</p>"}
+          disclaimer={selectedReport.disclaimer}
           onAgree={handleAgree}
           onDisagree={handleDisagree}
         />
