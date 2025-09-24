@@ -4,10 +4,9 @@ import PDFViewerAlert from "@/components/common/DisclaimerAlert";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function NCData({ reports, title, type = "report", disclaimer }) {
+export default function NCData({ reports, title, type = "report" }) {
   const isDataPresent = reports?.length > 0;
 
-  console.log(reports)
   // State for modal
   const [isPDFModalOpen, setIsPDFModalOpen] = useState(false);
   const [selectedReport, setSelectedReport] = useState(null);
