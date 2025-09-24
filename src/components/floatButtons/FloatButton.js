@@ -12,8 +12,7 @@ function FloatButton({ buttons, formattedGoldCaratTypes, formattedGoldTypes }) {
 
   // Define routes where you don't want the floating button
   const shouldHideFloatingButton =
-    pathname === "/career" || pathname.startsWith("/career-list/job-details/");
-
+    pathname === "/career" || pathname.startsWith("/career-list/job-details/") || pathname.startsWith("/career-list");
   return (
     !shouldHideFloatingButton && (
       <div className="max-sm:hidden flex flex-wrap flex-col gap-[4px] lg:gap-[6px] 2xl:gap-[10px] fixed z-4 top-[50%] right-[40px] translate-y-[-50%]">

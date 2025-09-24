@@ -37,6 +37,8 @@ export default async function report() {
     return <div>Failed to fetch report data</div>;
   }
 
+  console.log(reports);
+
   return (
     <>
       <NcdReports reports={reports} content={contents} />

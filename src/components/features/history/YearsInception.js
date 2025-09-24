@@ -126,9 +126,9 @@ export default function YearsInception({ inceptionslides, title }) {
                                 />
                               </div>
                               <p className="text-white w-[400px]">{item?.description}</p>
-                              <h3 className="text-[16px] 2xl:text-[20px] 3xl:text-[22px] text-white font-semibold mb-[5px] 2xl:mb-[10px]">
+                              {/* <h3 className="text-[16px] 2xl:text-[20px] 3xl:text-[22px] text-white font-semibold mb-[5px] 2xl:mb-[10px]">
                                 {item?.title}
-                              </h3>
+                              </h3> */}
 
                             </div>
                           </div>

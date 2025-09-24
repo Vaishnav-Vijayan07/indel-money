@@ -32,7 +32,7 @@ export default function JobResultBox({ item, variant = "default" }) {
       <div className="w-full h-auto block border-b-[1px] border-dashed border-[#7670b3] mb-[8px] xl:mb-[10px] 2xl:mb-[20px]">
         <div className="flex flex-wrap items-center mb-[4px] xl:mb-[6px] 2xl:mb-[8px]">
           <div className="w-1/2">
-            <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-bold leading-none text-black">
+            <div className="text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[22px] font-bold leading-none text-black line-clamp-1">
               {item?.job_title}
             </div>
           </div>
@@ -104,15 +104,15 @@ export default function JobResultBox({ item, variant = "default" }) {
 
               <Link
                 href={`/career-list/job-details/${encodeId(item?.id)}`}
-                className="text-[12px] 4xs:text-[14px] sm:text-[10px] xl:text-[11px] 2xl:text-[12px] 3xl:text-[16px] leading-none font-bold text-white w-full max-4xs:max-w-[110px] h-[30px] 4xs:h-[35px] sm:h-[25px] lg:h-[25px] xl:h-[30px] 2xl:h-[35px] 3xl:h-[48px] flex items-center bg-base1 rounded-[10px] sm:rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[10px] sm:p-[4px] xl:p-[6px] 2xl:p-[8px] cursor-pointer transition-color duration-300 group-hover:bg-base2/80 hover:[&>*-translate-x-[5px]]"
+                className="text-[12px] 4xs:text-[14px] sm:text-[10px] xl:text-[11px] 2xl:text-[12px] 3xl:text-[16px] leading-none font-bold text-white w-full max-4xs:max-w-[110px] h-[30px] 4xs:h-[35px] sm:h-[35px] lg:h-[32px] xl:h-[32px] 2xl:h-[40px] 3xl:h-[48px] flex items-center bg-base1 rounded-[10px] sm:rounded-[20px] lg:rounded-[40px] 2xl:rounded-[80px] 3xl:rounded-[100px] p-[10px] sm:p-[4px] xl:p-[6px] 2xl:p-[8px] cursor-pointer transition-color duration-300 group-hover:bg-base2/80 hover:[&>*-translate-x-[5px]] "
               >
                 {/* <span className="pr-[4px] sm:px-[2px] lg:px-[4px] 2xl:px-[6px]"></span> */}
                 <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-10px] px-[5px]
                  md:px-[10px] lg:px-[15px] 2xl:px-[20px]">
                   Apply Now
                 </span>
-                <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px]
-                 2xl:w-[40px] 2xl:h-[40px] 3xl:w-[35px] 
+                <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[25px] lg:h-[25px]
+                 2xl:w-[40px] 2xl:h-[35px] 3xl:w-[35px] 
                 3xl:h-[35px] bg-base2 rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-1 group-hover:bg-base1  group-hover:text-white">
                   <svg viewBox="0 0 13 11" className="max-w-[15px]">
                     <path
@@ -129,7 +129,7 @@ export default function JobResultBox({ item, variant = "default" }) {
           {variant === "default" && `Experience: ${item.experience}`}
           {variant === "activeJobs" && `Experience: ${item.experience}`}
         </div>
-        <div className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-medium text-[#484877] mb-[5px] lg:mb-[10px] 2xl:mb-[20px]">
+        <div className="text-[12px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-medium text-[#484877] mb-[5px] lg:mb-[10px] 2xl:mb-[20px] line-clamp-2">
           {variant === "default" && `Location: ${item?.locationDisplay}`}
           {variant === "activeJobs" && `Location: ${item?.locationDisplay}`}
         </div>

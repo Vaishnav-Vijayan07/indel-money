@@ -32,7 +32,9 @@ export default function Annualreport({ reports, title, type = "report" }) {
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 md:max-lg:mt-[10px] group"
                 >
-                  <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black whitespace-nowrap sm:block hidden group-hover:text-red-500">View PDF</span>
+                  <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black whitespace-nowrap sm:block hidden group-hover:text-red-500">
+                    View PDF
+                  </span>
                   <div className="w-[20px] h-[20px] xl:w-[30px] xl:h-[30px] 3xl:w-[40px] 3xl:h-[40px] bg-red-500 rounded-full flex items-center justify-center">
                     <Image
                       src="/images/pdf-icon.svg"
