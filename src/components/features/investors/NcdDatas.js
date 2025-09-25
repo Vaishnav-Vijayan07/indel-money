@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import PDFViewerAlert from "@/components/common/DisclaimerAlert";
-import Link from "next/link";
 import Image from "next/image";
 
 export default function NCData({ reports, title, type = "report" }) {
