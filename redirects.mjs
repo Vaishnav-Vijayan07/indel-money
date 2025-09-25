@@ -59,6 +59,11 @@ export default [
     destination: "/emptestimonial",
     permanent: true,
   },
+  // {
+  // source: "/ncd-issue",
+  //destination: "/past-ncd-issues",
+  // permanent: true,
+  //},
   {
     source: "/video-gallery",
     destination: "/gallery",
@@ -1769,11 +1774,11 @@ export default [
     destination: "/",
     permanent: true,
   },
-  // {
-  //   source: "/ncd-issue//1000",
-  //   destination: "/",
-  //   permanent: true,
-  // },
+  {
+    source: "/ncd-issue//1000",
+    destination: "/",
+    permanent: true,
+  },
   {
     source: "/author/indel",
     destination: "/",
