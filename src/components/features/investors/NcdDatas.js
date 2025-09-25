@@ -1,12 +1,9 @@
 "use client";
 import { useState } from "react";
 import PDFViewerAlert from "@/components/common/DisclaimerAlert";
-import Link from "next/link";
 import Image from "next/image";
 
-export default function NCData({ reports, title, type = "report", disclaimer }) {
-  console.log("disclaimer", disclaimer);
-  
+export default function NCData({ reports, title, type = "report" }) {
   const isDataPresent = reports?.length > 0;
 
   // State for modal
@@ -96,7 +93,7 @@ export default function NCData({ reports, title, type = "report", disclaimer }) 
         <PDFViewerAlert
           isOpen={isPDFModalOpen}
           onOpenChange={setIsPDFModalOpen}
-          disclaimer={disclaimer || "<p>No disclaimer available.</p>"}
+          disclaimer={selectedReport.disclaimer}
           onAgree={handleAgree}
           onDisagree={handleDisagree}
         />
