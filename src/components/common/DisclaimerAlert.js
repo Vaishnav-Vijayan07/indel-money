@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogTitle } from "../ui/custom-alert-dialog";
 import parse from "html-react-parser";
 
