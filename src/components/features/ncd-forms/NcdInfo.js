@@ -1,5 +1,6 @@
 "use client";
 
+import { renderHtml } from "@/lib/utils/htmlParser";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -229,7 +230,7 @@ export default function NcdInfo({content}) {
             <div className="flex-1 min-h-[375px] lg:max-h-[300px] bg-white overflow-hidden">
               <div className="h-full bg-white bg-opacity-90 p-6 rounded-lg overflow-y-auto">
                 <p className="text-gray-800 text-sm leading-relaxed py-4">
-                  {content?.content}     
+                  {renderHtml(content?.content)}     
                 </p>
               </div>
             </div>
