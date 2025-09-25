@@ -60,11 +60,6 @@ export default [
     permanent: true,
   },
   {
-    source: "/ncd-issue",
-    destination: "/past-ncd-issues",
-    permanent: true,
-  },
-  {
     source: "/video-gallery",
     destination: "/gallery",
     permanent: true,
@@ -1774,11 +1769,11 @@ export default [
     destination: "/",
     permanent: true,
   },
-  {
-    source: "/ncd-issue//1000",
-    destination: "/",
-    permanent: true,
-  },
+  // {
+  //   source: "/ncd-issue//1000",
+  //   destination: "/",
+  //   permanent: true,
+  // },
   {
     source: "/author/indel",
     destination: "/",
