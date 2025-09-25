@@ -3,12 +3,13 @@
 "use client";
 
 export default function ContactForm({ isMobile = false }) {
+    
   return (
     <div
       className={`${
         isMobile
-          ? "w-full bg-blue-700 p-4 sm:p-6"
-          : "w-full lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl lg:w-[40%] bg-blue-700 p-4 sm:p-6 md:p-8"
+          ? "w-full bg-[#17479e] lg:p-6"
+          : "w-full lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl lg:w-[40%] bg-[#17479e] p-4 sm:p-6 md:p-8"
       } flex flex-col justify-start ${
         isMobile ? "min-h-[500px]" : "min-h-[600px] lg:min-h-0"
       }`}
@@ -80,10 +81,12 @@ export default function ContactForm({ isMobile = false }) {
                     outline: 0 !important;
                     }
                     .zcwf_lblLeft .zcwf_col_fld input[ type  = text], input[ type  = password], .zcwf_lblLeft .zcwf_col_fld textarea{
-                    width: 60%;
+                    width: 100%;
                     border: 1px solid  #c0c6cc !important;
                     resize: vertical;
                     border-radius: 2px;
+                    font-size: 12px;
+                    padding: 6px;
                     float: left;
                     }
                     .zcwf_lblLeft .zcwf_col_lab{
@@ -97,7 +100,7 @@ export default function ContactForm({ isMobile = false }) {
                     }
                     .zcwf_lblLeft .zcwf_col_fld{
                     float: left;
-                    width: 68%;
+                    width: 100%;
                     padding: 0px 6px 0px;
                     position: relative;
                     margin-top: 5px;
@@ -109,7 +112,7 @@ export default function ContactForm({ isMobile = false }) {
                     .dIB {display: inline-block;
                     }
                     .zcwf_lblLeft .zcwf_col_fld_slt{
-                    width: 60%;
+                    width: 100%;
                     border: 1px solid  #ccc;
                     background:  #fff;
                     border-radius: 4px;
@@ -144,7 +147,8 @@ export default function ContactForm({ isMobile = false }) {
                     font-weight: bold;
                     border-radius: 50%;
                     }
-                    .zcwf_lblLeft .zcwf_row {margin: 15px 0px;
+                    .zcwf_lblLeft .zcwf_row {
+                    margin: 15px 0px;
                     }
                     .zcwf_lblLeft .formsubmit{
                     margin-right: 5px;
