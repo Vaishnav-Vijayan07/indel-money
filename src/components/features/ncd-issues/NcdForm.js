@@ -3,7 +3,6 @@
 "use client";
 
 export default function ContactForm({ isMobile = false }) {
-    
   return (
     <div
       className={`${
@@ -53,7 +52,7 @@ export default function ContactForm({ isMobile = false }) {
                     }
                     .formsubmit.zcwf_button{
                         color: white !important;
-                        background: transparent linear-gradient(0deg, #0279FF 0%, #00A3F3 100%);
+                        background: #17479e;
                     }
                     #crmWebToEntityForm.zcwf_lblLeft{
                         width: 100%;
@@ -117,9 +116,9 @@ export default function ContactForm({ isMobile = false }) {
                     background:  #fff;
                     border-radius: 4px;
                     font-size: 12px;
+                    padding: 6px 5px;
                     float: left;
                     resize: vertical;
-                    padding: 2px 5px;
                     }
                     .zcwf_lblLeft .zcwf_row:after, .zcwf_lblLeft .zcwf_col_fld:after{
                     content: '';

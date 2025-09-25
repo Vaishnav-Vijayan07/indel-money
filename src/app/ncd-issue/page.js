@@ -1,4 +1,4 @@
-import NcdInfo from "@/components/features/ncd-forms/NcdInfo";
+import NcdInfo from "@/components/features/ncd-issues/NcdInfo";
 import NoContents from "@/components/NoContents";
 import { defaultMeta } from "@/constants/constants";
 
