@@ -1,21 +1,37 @@
+//export const dynamic = "force-dynamic";
+import Image from "next/image";
 import Link from "next/link";
-export default function NcdThankYouPage() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-50 p-6">
-      <div className="max-w-md w-full bg-white shadow-lg rounded-2xl p-8 text-center">
-        <h1 className="text-2xl font-bold text-blue-700 mb-4">
-          🎉 Thank You for Applying!
-        </h1>
-        <p className="text-gray-700 mb-6">
-          Your application for <strong>Indel Money NCD</strong> has been submitted successfully.  
-          Our team will get in touch with you shortly.
-        </p>
 
+export default function NcdThankYou() {
+  return (
+    <div className="flex h-screen items-center justify-center flex-col py-[30px] xl:py-[40px] 2xl:py-[90px]">
+      <div className="m-auto">
+        <div className="relative group w-full h-fit max-w-[300px] md:max-w-[400px] xl:max-w-[520px] 2xl:max-w-[600px] 3xl:max-w-[800px] 2xl:rounded-[36px] xl:rounded-[30px] md:rounded-[30px] rounded-[18px] overflow-hidden aspect-800/480 m-auto">
+          <div className="absolute left-0 top-0 w-full h-auto sm:hidden block">
+            <Image
+              src={"/images/404Elemnt.png"}
+              alt="404-image"
+              width={382}
+              height={145}
+              className="w-full h-full object-contain transition-transform duration-600"
+            />
+          </div>
+          <Image
+            src={"/images/NCD_Thankyou-removebg-preview.png"}
+            alt="Thank you"
+                width={800}
+            height={480}F
+            className="w-full h-full object-contain transition-transform duration-600"
+          />
+        </div>
+        <h1 className="text-title1 mb-[15px] md:mb-[20px] xl:mb-[30px] 2xl:mb-[40px] font-bold mt-[30px] 2xl:mt-[60px] text-center">
+          Thank You for applying <br></br> NCD Form
+        </h1>
         <Link
           href="/"
-          className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+          className="btn btn-base1 w-fit min-w-[120px] lg:min-w-[150px] xl:min-w-[170px] 2xl:min-w-[215px] m-auto mt-0 sm:flex hidden"
         >
-          Go Back to Home
+          back to home
         </Link>
       </div>
     </div>

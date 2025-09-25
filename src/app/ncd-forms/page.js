@@ -109,7 +109,6 @@ export async function generateMetadata() {
 export default async function NcdPage() {
   const { data, error } = await fetchNcdData();
 
-  console.log(error)
 
   if (!data) {
     return <NoContents />;
