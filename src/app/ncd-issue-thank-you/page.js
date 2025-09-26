@@ -17,7 +17,7 @@ export default function NcdThankYou() {
             />
           </div>
           <Image
-            src={"/images/NCD_Thankyou.png"}
+            src={"/images/NCD_Thankyou-removebg-preview.png"}
             alt="Thank you"
             width={800}
             height={480}
