@@ -211,7 +211,7 @@ const ContactForm = ({ isMobile = false }) => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4  flex justify-center items-center  text-black font-sans bg-[#17479e]">
+    <div className="w-full max-w-2xl mx-auto p-4  flex justify-center items-start  text-black font-sans bg-[#17479e]">
       <div className="space-y-4 bg-white p-4 sm:p-6 md:p-8">
         {/* Form Title */}
         <div className="font-bold text-lg mb-4 text-black">Request a Callback</div>
