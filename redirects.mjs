@@ -59,11 +59,11 @@ export default [
     destination: "/emptestimonial",
     permanent: true,
   },
-  {
-    source: "/ncd-issue",
-    destination: "/past-ncd-issues",
-    permanent: true,
-  },
+  // {
+  //   source: "/ncd-issue",
+  //   destination: "/past-ncd-issues",
+  //   permanent: true,
+  // },
   {
     source: "/video-gallery",
     destination: "/gallery",
