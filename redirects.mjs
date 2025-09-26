@@ -59,11 +59,11 @@ export default [
     destination: "/emptestimonial",
     permanent: true,
   },
-  // {
-  // source: "/ncd-issue",
-  //destination: "/past-ncd-issues",
-  // permanent: true,
-  //},
+  {
+    source: "/ncd-issue",
+    destination: "/past-ncd-issues",
+    permanent: true,
+  },
   {
     source: "/video-gallery",
     destination: "/gallery",
@@ -2847,8 +2847,7 @@ export default [
     permanent: true,
   },
   {
-    source:
-      "/news/mr-umesh-mohanan-is-lauded-by-asiaone-magazine-and-is-going-to-be-recognized-with-indias-greatest-leaders-2020-21-awards",
+    source: "/news/mr-umesh-mohanan-is-lauded-by-asiaone-magazine-and-is-going-to-be-recognized-with-indias-greatest-leaders-2020-21-awards",
     destination: "/news",
     permanent: true,
   },
@@ -3051,8 +3050,7 @@ export default [
     permanent: true,
   },
   {
-    source:
-      "/news/undefined/news/indel-money-partners-with-indusind-bank-for-indias-first-conventional-gold-loan-co-lending-partnership-4",
+    source: "/news/undefined/news/indel-money-partners-with-indusind-bank-for-indias-first-conventional-gold-loan-co-lending-partnership-4",
     destination: "/news",
     permanent: true,
   },
@@ -3083,8 +3081,7 @@ export default [
     permanent: true,
   },
   {
-    source:
-      "/news/undefined/news/indel-money-partners-with-indusind-bank-for-indias-first-conventional-gold-loan-co-lending-partnership-40",
+    source: "/news/undefined/news/indel-money-partners-with-indusind-bank-for-indias-first-conventional-gold-loan-co-lending-partnership-40",
     destination: "/news",
     permanent: true,
   },

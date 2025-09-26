@@ -3,16 +3,11 @@
 "use client";
 
 export default function ContactForm({ isMobile = false }) {
-    
   return (
     <div
       className={`${
-        isMobile
-          ? "w-full bg-[#17479e] lg:p-6"
-          : "w-full lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl lg:w-[40%] bg-[#17479e] p-4 sm:p-6 md:p-8"
-      } flex flex-col justify-start ${
-        isMobile ? "min-h-[500px]" : "min-h-[600px] lg:min-h-0"
-      }`}
+        isMobile ? "w-full bg-[#17479e] lg:p-6" : "w-full lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl lg:w-[40%] bg-[#17479e] p-4 sm:p-6 md:p-8"
+      } flex flex-col justify-start ${isMobile ? "min-h-[500px]" : "min-h-[600px] lg:min-h-0"}`}
     >
       <div className="max-w-md mx-auto w-full lg:max-w-none">
         {/* Zoho Form Integration */}

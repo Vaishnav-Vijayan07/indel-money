@@ -64,6 +64,7 @@ const navigations = [
       { linkname: "Contact Us", href: "/contact" },
       { linkname: "Careers", href: "/career" },
       { linkname: "EMI Calculator", href: "/#calculator" },
+      // { linkname: "NCD Issues", href: "/ncd-issue" },
     ],
   },
 ];
@@ -99,7 +100,6 @@ function ExternalLinkBtn({ btn1, btn1_link, btn2, btn2_link }) {
 }
 
 export default function Footer({ content, icons }) {
-  
   const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full h-auto block bg-[#e6edf7] pt-[30px] lg:pt-[40px] xl:pt-[60px] 3xl:pt-[80px] pb-[15px] lg:pb-[20px] xl:pb-[30px] 3xl:pb-[40px]">
@@ -202,9 +202,11 @@ export default function Footer({ content, icons }) {
             </div>
           </div>
         </div>
-        <div className="w-full h-auto bg-[#c0dbff] rounded-[20px] sm:rounded-[15px] 3xl:rounded-[20px] p-[15px] 4xs:p-[20px] xs:p-[25px_25px]
+        <div
+          className="w-full h-auto bg-[#c0dbff] rounded-[20px] sm:rounded-[15px] 3xl:rounded-[20px] p-[15px] 4xs:p-[20px] xs:p-[25px_25px]
          sm:p-[15px_20px] xl:p-[20px_40px] 2xl:px-[30px_60px] border-[1px] border-solid border-base1/10 flex items-center justify-center mb-[20px] 
-         lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]">
+         lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]"
+        >
           <div className="w-full h-auto flex flex-wrap items-center justify-between gap-[15px]">
             <div className="flex flex-wrap items-center max-sm:w-full gap-y-[10px] gap-x-[10px] 4xs:gap-x-[20px] sm:gap-x-[15px] 2xl:gap-x-[20px] 3xl:gap-x-[30px]">
               <div>
@@ -224,7 +226,8 @@ export default function Footer({ content, icons }) {
                       src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/goldIcon1.svg"}
                       alt={item?.title ? item?.title : "icon"}
                       // fill
-                      width={15} height={15}
+                      width={15}
+                      height={15}
                       className="aspect-square object-contain m-auto"
                     />
                   </a>

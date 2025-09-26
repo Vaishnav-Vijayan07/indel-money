@@ -19,18 +19,16 @@ export default function NcdThankYou() {
           <Image
             src={"/images/NCD_Thankyou-removebg-preview.png"}
             alt="Thank you"
-                width={800}
-            height={480}F
+            width={800}
+            height={480}
+            F
             className="w-full h-full object-contain transition-transform duration-600"
           />
         </div>
         <h1 className="text-title1 mb-[15px] md:mb-[20px] xl:mb-[30px] 2xl:mb-[40px] font-bold mt-[30px] 2xl:mt-[60px] text-center">
           Thank You for applying <br></br> NCD Form
         </h1>
-        <Link
-          href="/"
-          className="btn btn-base1 w-fit min-w-[120px] lg:min-w-[150px] xl:min-w-[170px] 2xl:min-w-[215px] m-auto mt-0 sm:flex hidden"
-        >
+        <Link href="/" className="btn btn-base1 w-fit min-w-[120px] lg:min-w-[150px] xl:min-w-[170px] 2xl:min-w-[215px] m-auto mt-0 sm:flex hidden">
           back to home
         </Link>
       </div>

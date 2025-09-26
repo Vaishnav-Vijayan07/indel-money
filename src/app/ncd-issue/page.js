@@ -1,4 +1,4 @@
-import NcdInfo from "@/components/features/ncd-forms/NcdInfo";
+import NcdInfo from "@/components/features/ncd-issues/NcdInfo";
 import NoContents from "@/components/NoContents";
 import { defaultMeta } from "@/constants/constants";
 
@@ -9,10 +9,8 @@ async function fetchNcdData() {
       next: { revalidate: 600 }, // revalidate cache every 10 minutes
     });
 
-    
     const result = await res.json();
 
-    console.log(res)
     if (result.status === "success") {
       return {
         data: result.data,
@@ -108,7 +106,6 @@ export async function generateMetadata() {
 
 export default async function NcdPage() {
   const { data, error } = await fetchNcdData();
-
 
   if (!data) {
     return <NoContents />;
