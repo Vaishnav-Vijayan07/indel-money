@@ -64,7 +64,7 @@ const navigations = [
       { linkname: "Contact Us", href: "/contact" },
       { linkname: "Careers", href: "/career" },
       { linkname: "EMI Calculator", href: "/#calculator" },
-      // { linkname: "NCD Issues", href: "/ncd-issue" },
+      { linkname: "NCD Issues", href: "/ncd-issue" },
     ],
   },
 ];
