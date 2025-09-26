@@ -11,7 +11,6 @@ async function fetchNcdData() {
 
     const result = await res.json();
 
-    console.log(res);
     if (result.status === "success") {
       return {
         data: result.data,

@@ -12,7 +12,6 @@ const PDFViewerAlert = ({ isOpen, onOpenChange, disclaimer, onAgree, onDisagree,
 
 
 
-console.log("parsed disclaimer: ",parse(disclaimer).props.children)
 
   const handleAgree = () => {
     onAgree();
@@ -53,7 +52,7 @@ console.log("parsed disclaimer: ",parse(disclaimer).props.children)
                 maxHeight: "calc(90vh - 280px)",
               }}
             >
-              <div className="w-full p-4 sm:p-6 lg:p-8">{parse(disclaimer).props.children !== undefined ? parse(disclaimer) : <p>No disclaimer available.</p>}</div>
+              <div className="w-full p-4 sm:p-6 lg:p-8">{parse(disclaimer)}</div>
             </div>
           </div>
 

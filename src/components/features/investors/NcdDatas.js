@@ -93,7 +93,7 @@ export default function NCData({ reports, title, type = "report" }) {
         <PDFViewerAlert
           isOpen={isPDFModalOpen}
           onOpenChange={setIsPDFModalOpen}
-          disclaimer={selectedReport.disclaimer}
+          disclaimer={selectedReport.disclaimer || "No disclaimer available."}
           onAgree={handleAgree}
           onDisagree={handleDisagree}
         />
