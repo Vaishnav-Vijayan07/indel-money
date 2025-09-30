@@ -61,7 +61,7 @@ export default [
   },
   // {
   //   source: "/ncd-issue",
-  //   destination: "/past-ncd-issues",
+  //   destination: "/ncd",
   //   permanent: true,
   // },
   {
@@ -81,12 +81,12 @@ export default [
   },
   {
     source: "/public-issue-of-ncd",
-    destination: "/past-ncd-issues",
+    destination: "/ncd",
     permanent: true,
   },
   {
     source: "/public-issue-of-ncd/:slug",
-    destination: "/past-ncd-issues",
+    destination: "/ncd",
     permanent: true,
   },
   {
