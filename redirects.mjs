@@ -89,6 +89,11 @@ export default [
     destination: "/ncd",
     permanent: true,
   },
+    {
+    source: "/past-ncd-issues",
+    destination: "/ncd",
+    permanent: true,
+  },
   {
     source: "/loan-against-property-3",
     destination: "/loan-against-property",
