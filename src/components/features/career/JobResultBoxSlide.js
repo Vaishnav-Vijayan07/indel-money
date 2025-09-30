@@ -14,7 +14,7 @@ export default function JobResultBoxSlide({ jobResults }) {
       slidesPerView={"auto"}
       spaceBetween={0}
       rewind={true}
-      className="jobResultBoxSlide [--slide-y:270px] lg:[--slide-y:276px] xl:[--slide-y:340px] 2xl:[--slide-y:430px] 3xl:[--slide-y:540px] h-[var(--slide-y)]"
+      className="jobResultBoxSlide [--slide-y:270px] lg:[--slide-y:276px] xl:[--slide-y:380px] 2xl:[--slide-y:480px] 3xl:[--slide-y:580px] h-[var(--slide-y)]"
     >
       {jobResults?.map((item, index) => (
         <SwiperSlide key={index} className="h-[calc(var(--slide-y)/2)]! mb-[25px]">
