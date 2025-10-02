@@ -3,7 +3,7 @@ import { useState } from "react";
 import PDFViewerAlert from "@/components/common/DisclaimerAlert";
 import Image from "next/image";
 
-export default function NCData({ reports, title, type = "report" }) {
+export default function NCData({ reports, title, type = "report", content }) {
   const isDataPresent = reports?.length > 0;
 
   // State for modal
@@ -113,14 +113,14 @@ export default function NCData({ reports, title, type = "report" }) {
             <button
               onClick={() =>
                 window.open(
-                  "https://asba.indelmoney.com/asbaform/",
+                  content?.ncd_button_link || "https://asba.indelmoney.com/asbaform/",
                   "_blank",
                   "noopener,noreferrer"
                 )
               }
               className="px-[30px] xl:px-[40px] 3xl:px-[50px] py-[12px] xl:py-[15px] 3xl:py-[18px] bg-red-500 hover:bg-red-600 text-white text-[14px] xl:text-[16px] 3xl:text-[20px] font-medium rounded-lg transition-colors duration-200 shadow-md"
             >
-              Application Form
+              {content?.ncd_button_text || "Application Section"}
             </button>
           </div>
         )}

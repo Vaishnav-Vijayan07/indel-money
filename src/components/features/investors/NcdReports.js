@@ -38,7 +38,7 @@ export default function NcdReports({ reports, content }) {
             <Sidebar />
           </div>
           <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
-            <NCData reports={reports} title={content?.ncd_title} type="ncd" />
+            <NCData reports={reports} title={content?.ncd_title} type="ncd" content={content} />
           </div>
         </div>
       </div>
