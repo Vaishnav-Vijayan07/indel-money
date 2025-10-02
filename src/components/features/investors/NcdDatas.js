@@ -3,8 +3,16 @@ import { useState } from "react";
 import PDFViewerAlert from "@/components/common/DisclaimerAlert";
 import Image from "next/image";
 
-export default function NCData({ reports, title, type = "report", content }) {
-  const isDataPresent = reports?.length > 0;
+export default function NCData({ reports, currentReports, pastReports, title, type = "report", content }) {
+  // State for view toggle (only for NCD type)
+  const [showPastNCDs, setShowPastNCDs] = useState(false);
+
+  // Determine which reports to display
+  const displayReports = type === "ncd"
+    ? (showPastNCDs ? pastReports : currentReports)
+    : reports;
+
+  const isDataPresent = displayReports?.length > 0;
 
   // State for modal
   const [isPDFModalOpen, setIsPDFModalOpen] = useState(false);
@@ -54,7 +62,7 @@ export default function NCData({ reports, title, type = "report", content }) {
 
         {isDataPresent ? (
           <div className="grid grid-cols-2 md:grid-cols-2 gap-2 xl:gap-4 3xl:gap-6">
-            {reports?.map((report, index) => (
+            {displayReports?.map((report, index) => (
               <div
                 key={index}
                 className="flex flex-col py-[10px] 4xs:py-[15px] sm:py-[25px] px-[10px] 4xs:px-[12px] sm:px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] rounded-2xl bg-gradient-to-r from-blue-300 to-red-300 shadow-md"
@@ -108,20 +116,33 @@ export default function NCData({ reports, title, type = "report", content }) {
           </span>
         )}
 
-        {type === "ncd" && isDataPresent && (
-          <div className="mt-[25px] xl:mt-[30px] 3xl:mt-[40px]">
-            <button
-              onClick={() =>
-                window.open(
-                  content?.ncd_button_link || "https://asba.indelmoney.com/asbaform/",
-                  "_blank",
-                  "noopener,noreferrer"
-                )
-              }
-              className="px-[30px] xl:px-[40px] 3xl:px-[50px] py-[12px] xl:py-[15px] 3xl:py-[18px] bg-red-500 hover:bg-red-600 text-white text-[14px] xl:text-[16px] 3xl:text-[20px] font-medium rounded-lg transition-colors duration-200 shadow-md"
-            >
-              {content?.ncd_button_text || "Application Section"}
-            </button>
+        {type === "ncd" && (currentReports?.length > 0 || pastReports?.length > 0) && (
+          <div className="mt-[25px] xl:mt-[30px] 3xl:mt-[40px] space-y-[15px] xl:space-y-[20px]">
+            {/* Application Section Button */}
+            <div>
+              <button
+                onClick={() =>
+                  window.open(
+                    content?.ncd_button_link || "https://asba.indelmoney.com/asbaform/",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+                className="px-[30px] xl:px-[40px] 3xl:px-[50px] py-[12px] xl:py-[15px] 3xl:py-[18px] bg-red-500 hover:bg-red-600 text-white text-[14px] xl:text-[16px] 3xl:text-[20px] font-medium rounded-lg transition-colors duration-200 shadow-md"
+              >
+                {content?.ncd_button_text || "Application Section"}
+              </button>
+            </div>
+
+            {/* Toggle Button for Past/Current NCDs */}
+            <div className="flex justify-center">
+              <button
+                onClick={() => setShowPastNCDs(!showPastNCDs)}
+                className="px-[30px] xl:px-[40px] 3xl:px-[50px] py-[12px] xl:py-[15px] 3xl:py-[18px] bg-blue-500 hover:bg-blue-600 text-white text-[14px] xl:text-[16px] 3xl:text-[20px] font-medium rounded-lg transition-colors duration-200 shadow-md"
+              >
+                {showPastNCDs ? "Current NCD Issues" : "Past NCD Issues"}
+              </button>
+            </div>
           </div>
         )}
       </section>
