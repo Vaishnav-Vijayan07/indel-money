@@ -8,7 +8,7 @@ import api from "@/lib/api/axios";
 import toast from "react-hot-toast";
 
 export default function HeroBannerEnquiry() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [serviceTypes, setServiceTypes] = useState([]);
 
 const postEnquiryData = async (enquiryData) => {
