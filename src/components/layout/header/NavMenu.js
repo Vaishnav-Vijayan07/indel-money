@@ -101,7 +101,7 @@ const Abouts = [
     link: "/different-shades-of-indelmoney",
   },
   {
-    title: "FOREIGN EXCHANGE",
+    title: "foreign exchange",
     link: "https://indelremit.com",
     target: "_blank",
   },
