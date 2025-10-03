@@ -160,11 +160,11 @@ export default function MobHeader({ socialLinks, links, logo, title, modes }) {
                     </Link>
                   </div> */}
                   <a
-                    href={"https://indelremit.com"}
+                    href={"https://asba.indelmoney.com/asbaform"}
                     target="_blank"
                     className="btn btn-base2 max-w-[150px] "
                   >
-                    FOREIGN EXCHANGE
+                    Apply for NCD
                   </a>
                   <div>
                     <MobNavMenu logo={logo} serverMediaPath={serverMediaPath} title={title} modes={modes} />
