@@ -134,7 +134,12 @@ export default function MobHeader({ socialLinks, links, logo, title, modes }) {
             <div className="flex items-center">
               <div className="w-[60px] @sm:w-[80px]">
                 <Link href="/" className="block transition-transform duration-300 hover:scale-105">
-                  <Image src={logo ? `${serverMediaPath}${logo}` : "/icons/logo_sm.svg"} alt="Indel Logo" width={145} height={75} />
+                  <Image
+                    src={logo ? `${serverMediaPath}${logo}` : "/icons/logo_sm.svg"}
+                    alt="Indel Logo"
+                    width={145}
+                    height={75}
+                  />
                 </Link>
               </div>
               <div className="w-[calc(100%-60px)] @sm:w-[calc(100%-80px)]">
@@ -154,6 +159,13 @@ export default function MobHeader({ socialLinks, links, logo, title, modes }) {
                       <Image src="/images/mob-icon-saving.svg" alt="saving" width={18} height={18} />
                     </Link>
                   </div> */}
+                  <a
+                    href={"https://indelremit.com"}
+                    target="_blank"
+                    className="btn btn-base2 max-w-[150px] "
+                  >
+                    FOREIGN EXCHANGE
+                  </a>
                   <div>
                     <MobNavMenu logo={logo} serverMediaPath={serverMediaPath} title={title} modes={modes} />
                   </div>
