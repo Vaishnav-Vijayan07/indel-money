@@ -1,11 +1,5 @@
 "use client";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -56,7 +50,7 @@ const OtherLoans = [
     title: "consumer durable Loan",
     link: "/consumer-durable-loans",
   },
-    {
+  {
     image: "/images/icon-goldloan-4.svg",
     alt: "item",
     title: "Loan Against Property",
@@ -106,6 +100,11 @@ const Abouts = [
     title: "different shades of indel",
     link: "/different-shades-of-indelmoney",
   },
+  {
+    title: "FOREIGN EXCHANGE",
+    link: "https://indelremit.com",
+    target: "_blank",
+  },
 ];
 
 const Arrow = () => {
@@ -129,7 +128,7 @@ function DropdownMenu({ items }) {
     <ul className="flex flex-col p-[5px] 3xl:p-[10px] w-[180px] lg:w-[200px] 2xl:w-[240px]">
       {items?.map((item, index) => (
         <li key={index}>
-          <Link href={item.link}  passHref>
+          <Link href={item.link} passHref>
             <MenubarItem>
               <div
                 className={`${
@@ -195,14 +194,8 @@ export default function NavMenu() {
       onMouseLeave={handleMouseLeave}
       className="flex gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px] h-[var(--header-y)] lg:px-[10px] 2xl:px-[15px] 3xl:px-[20px] border-none shadow-none"
     >
-      <MenubarMenu
-        open={openDropdown === "goldloan"}
-        onOpenChange={(open) => setOpenDropdown(open ? "goldloan" : null)}
-      >
-        <div
-          onMouseEnter={() => handleMouseEnter("goldloan")}
-          className="relative"
-        >
+      <MenubarMenu open={openDropdown === "goldloan"} onOpenChange={(open) => setOpenDropdown(open ? "goldloan" : null)}>
+        <div onMouseEnter={() => handleMouseEnter("goldloan")} className="relative">
           <div className="flex">
             <MenubarTrigger className={tabStyle}>
               <Link href={"/gold-loan"} className={tabStyle}>
@@ -217,7 +210,7 @@ export default function NavMenu() {
         </div>
       </MenubarMenu>
 
-      <MenubarMenu>
+      {/* <MenubarMenu>
         <a
           href={"https://indelremit.com"}
           target="_blank"
@@ -227,16 +220,10 @@ export default function NavMenu() {
         >
           FOREIGN EXCHANGE
         </a>
-      </MenubarMenu>
+      </MenubarMenu> */}
 
-      <MenubarMenu
-        open={openDropdown === "otherloan"}
-        onOpenChange={(open) => setOpenDropdown(open ? "otherloan" : null)}
-      >
-        <div
-          onMouseEnter={() => handleMouseEnter("otherloan")}
-          className="relative"
-        >
+      <MenubarMenu open={openDropdown === "otherloan"} onOpenChange={(open) => setOpenDropdown(open ? "otherloan" : null)}>
+        <div onMouseEnter={() => handleMouseEnter("otherloan")} className="relative">
           <MenubarTrigger className={tabStyle}>
             <span>other loan</span>
             <Arrow />
@@ -247,14 +234,8 @@ export default function NavMenu() {
         </div>
       </MenubarMenu>
 
-      <MenubarMenu
-        open={openDropdown === "careers"}
-        onOpenChange={(open) => setOpenDropdown(open ? "careers" : null)}
-      >
-        <div
-          onMouseEnter={() => handleMouseEnter("careers")}
-          className="relative"
-        >
+      <MenubarMenu open={openDropdown === "careers"} onOpenChange={(open) => setOpenDropdown(open ? "careers" : null)}>
+        <div onMouseEnter={() => handleMouseEnter("careers")} className="relative">
           <div className="flex">
             <MenubarTrigger className={tabStyle}>
               <Link href={"/career"} className={tabStyle}>
@@ -269,14 +250,8 @@ export default function NavMenu() {
         </div>
       </MenubarMenu>
 
-      <MenubarMenu
-        open={openDropdown === "about"}
-        onOpenChange={(open) => setOpenDropdown(open ? "about" : null)}
-      >
-        <div
-          onMouseEnter={() => handleMouseEnter("about")}
-          className="relative"
-        >
+      <MenubarMenu open={openDropdown === "about"} onOpenChange={(open) => setOpenDropdown(open ? "about" : null)}>
+        <div onMouseEnter={() => handleMouseEnter("about")} className="relative">
           <div className="flex">
             <MenubarTrigger className={tabStyle}>
               <Link href={"/about-indel-money"} className={tabStyle}>

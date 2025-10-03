@@ -78,7 +78,11 @@ export default function DeskHeader({ headerData }) {
                 <div>
                   <ContactBox
                     href={common?.branch_locator_link ? common?.branch_locator_link : "/branch-locator"}
-                    src={ common?.branch_locator_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${common?.branch_locator_icon_web}` : "/images/icon-map.svg"}
+                    src={
+                      common?.branch_locator_icon_web
+                        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${common?.branch_locator_icon_web}`
+                        : "/images/icon-map.svg"
+                    }
                     title={common?.branch_locator ? common?.branch_locator : "Branch Locator"}
                     alt="location"
                   />
@@ -86,7 +90,11 @@ export default function DeskHeader({ headerData }) {
                 <div>
                   <ContactBox
                     href={common?.toll_free_num ? `tel:${common?.toll_free_num}` : "tel:18004253990"}
-                    src={ common?.toll_free_icon_web ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${common?.toll_free_icon_web}` : "/images/icon-call.svg"}
+                    src={
+                      common?.toll_free_icon_web
+                        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${common?.toll_free_icon_web}`
+                        : "/images/icon-call.svg"
+                    }
                     title={common?.toll_free_num ? common?.toll_free_num : "1800 425 39 90"}
                     alt="call"
                   />
@@ -173,8 +181,20 @@ export default function DeskHeader({ headerData }) {
                   </DropdownMenu>
                 </div>
                 <div>
-                  <Link href={header?.button_2_link || '#'} className="btn btn-base2 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px]">
+                  <Link
+                    href={header?.button_2_link || "#"}
+                    className="btn btn-base2 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px]"
+                  >
                     {header?.button_2_text ? header?.button_2_text : "Contact Us"}
+                  </Link>
+                </div>
+
+                <div>
+                  <Link
+                    href={"https://asba.indelmoney.com/asbaform"}
+                    className="btn btn-base2 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px] px-2"
+                    >
+                    {"Apply for NCD"}
                   </Link>
                 </div>
               </div>
