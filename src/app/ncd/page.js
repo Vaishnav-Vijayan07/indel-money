@@ -16,32 +16,35 @@ async function fetchNcdData() {
     if (result.status === "success") {
       return {
         contents: data?.content,
-        reports: data?.reports,
+        currentReports: data?.currentReports || [],
+        pastReports: data?.pastReports || [],
         error: null,
       };
     }
     return {
       contents: null,
-      reports: null,
+      currentReports: [],
+      pastReports: [],
       error: result.message,
     };
   } catch (error) {
-    return { reports: null, error: "Failed to fetch ncd data" };
+    return { contents: null, currentReports: [], pastReports: [], error: "Failed to fetch ncd data" };
   }
 }
 
 export default async function report() {
-  const { contents, reports, error } = await fetchNcdData();
+  const { contents, currentReports, pastReports, error } = await fetchNcdData();
 
-  if (!contents && !reports) {
+  if (!contents && currentReports.length === 0 && pastReports.length === 0) {
     return <div>Failed to fetch report data</div>;
   }
 
-  console.log(reports);
+  console.log("Current Reports:", currentReports);
+  console.log("Past Reports:", pastReports);
 
   return (
     <>
-      <NcdReports reports={reports} content={contents} />
+      <NcdReports currentReports={currentReports} pastReports={pastReports} content={contents} />
     </>
   );
 }
