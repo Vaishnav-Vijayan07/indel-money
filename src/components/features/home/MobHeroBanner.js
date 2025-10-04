@@ -33,15 +33,17 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement, g
             // className="relative z-0 flex! items-end before:absolute before:inset-0 before:-z-1 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full py-[calc(var(--marquee-y)+50px)]"
             className="relative z-0 flex! items-end"
           >
-            <Image
-              src={item?.image_mobile ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image_mobile}` : ""}
-              alt={item.image_alt_text}
-              fill
-              sizes="100vw"
-              priority={index === 0}
-              fetchPriority={index === 0 ? "high" : "auto"}
-              className="-z-2 object-cover"
-            />
+            <Link href={item?.button_link || "#"} aria-label={item?.image_alt_text || `Slide ${index + 1}`}>
+              <Image
+                src={item?.image_mobile ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image_mobile}` : ""}
+                alt={item.image_alt_text}
+                fill
+                sizes="100vw"
+                priority={index === 0}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                className="-z-2 object-cover"
+              />
+            </Link>
             <div className="container">
               <div className="max-w-full">
                 <h2 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[10px] 4xs:mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
