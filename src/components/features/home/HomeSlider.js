@@ -28,17 +28,23 @@ export default function HomeSlider({ heroBanner }) {
       {heroBanner?.map((item, index) => (
         <SwiperSlide
           key={index}
-          className="relative z-0 before:absolute before:inset-0 before:block before:bg-gradient-to-r before:from-[rgba(0,0,0,0.6)] before:to-transparent before:w-full before:h-full"
+          // className="relative z-0 before:absolute before:inset-0 before:block before:bg-gradient-to-r before:from-[rgba(0,0,0,0.6)] before:to-transparent before:w-full before:h-full"
+          className="relative z-0"
         >
-          <Image
-            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
-            width={1920}
-            height={1080}
-            alt={item?.image_alt_text}
-            priority={index === 0}
-            fetchPriority={index === 0 ? "high" : "auto"}
-            className="w-full h-full object-cover"
-          />
+          <Link
+            href={item?.button_link || "#"}
+            aria-label={item?.image_alt_text || `Slide ${index + 1}`}
+          >
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}`}
+              width={1920}
+              height={1080}
+              alt={item?.image_alt_text}
+              priority={index === 0}
+              fetchPriority={index === 0 ? "high" : "auto"}
+              className="w-full h-full object-cover"
+            />
+          </Link>
           <div className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className="w-full max-w-[320px] lg:max-w-[376px] xl:max-w-[400px] 2xl:max-w-[450px] 3xl:max-w-[576px]">
               <h2
@@ -46,12 +52,12 @@ export default function HomeSlider({ heroBanner }) {
                 dangerouslySetInnerHTML={{ __html: item.title ? item.title : "" }}
               />
 
-              <Link
+              {/* <Link
                 href={item?.button_link}
                 className="btn btn-base2 max-w-[130px] lg:max-w-[100px] xl:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[160px]"
               >
                 {item?.button_text}
-              </Link>
+              </Link> */}
             </div>
           </div>
         </SwiperSlide>
