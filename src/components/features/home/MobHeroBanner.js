@@ -30,7 +30,8 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement, g
         {heroBanner?.map((item, index) => (
           <SwiperSlide
             key={index}
-            className="relative z-0 flex! items-end before:absolute before:inset-0 before:-z-1 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full py-[calc(var(--marquee-y)+50px)]"
+            // className="relative z-0 flex! items-end before:absolute before:inset-0 before:-z-1 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full py-[calc(var(--marquee-y)+50px)]"
+            className="relative z-0 flex! items-end"
           >
             <Image
               src={item?.image_mobile ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image_mobile}` : ""}
@@ -46,9 +47,9 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement, g
                 <h2 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[10px] 4xs:mb-[15px] [&>span]:text-base2 [&>span]:font-bold">
                   {item?.title ? renderHtml(item.title) : ""}
                 </h2>
-                <Link href={item?.button_link} className="btn btn-base2 max-w-[130px]">
+                {/* <Link href={item?.button_link} className="btn btn-base2 max-w-[130px]">
                   {item?.button_text}
-                </Link>
+                </Link> */}
               </div>
             </div>
           </SwiperSlide>
