@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useUtmTracker } from "@/hooks/useUtmTracker";
+import { useUtmTracker, captureUtmParams } from "@/hooks/useUtmTracker";
 
-const ContactForm = ({ isMobile = false }) => {
-  // Capture UTM parameters from URL
-  const utmParams = useUtmTracker();
+const ContactForm = ({ isMobile = false, showDebug = false }) => {
+  // Capture UTM parameters from URL (enable debug in dev mode)
+  const utmParams = useUtmTracker(true);
 
   const [formData, setFormData] = useState({
     NAME: "",
@@ -134,6 +134,9 @@ const ContactForm = ({ isMobile = false }) => {
   };
 
   const submitToZoho = async () => {
+    // Capture UTM parameters at submission time for reliability
+    const currentUtmParams = captureUtmParams(true); // Enable debug logging
+
     // Create a hidden form and submit it
     const form = document.createElement("form");
     form.method = "POST";
@@ -151,13 +154,21 @@ const ContactForm = ({ isMobile = false }) => {
       COBJ8CF1: formData.COBJ8CF1,
       Email: formData.Email,
       COBJ8CF6: formData.COBJ8CF6,
-      COBJ8CF16: utmParams.campaign, // Campaign Name from UTM
-      COBJ8CF17: utmParams.source, // Campaign Source from UTM
-      COBJ8CF18: utmParams.medium, // Campaign Medium from UTM
-      COBJ8CF19: utmParams.referralUrl, // Full Referral URL
+      COBJ8CF16: currentUtmParams.campaign, // Campaign Name from UTM
+      COBJ8CF17: currentUtmParams.source, // Campaign Source from UTM
+      COBJ8CF18: currentUtmParams.medium, // Campaign Medium from UTM
+      COBJ8CF19: currentUtmParams.referralUrl, // Full Referral URL
       aG9uZXlwb3Q: "", // Honeypot
       zc_gad: "",
     };
+
+    // Debug: Log the fields being submitted
+    console.log("Zoho Form Submission Data:", {
+      campaign: fields.COBJ8CF16,
+      source: fields.COBJ8CF17,
+      medium: fields.COBJ8CF18,
+      referralUrl: fields.COBJ8CF19,
+    });
 
     Object.keys(fields).forEach((key) => {
       const input = document.createElement("input");
@@ -217,6 +228,22 @@ const ContactForm = ({ isMobile = false }) => {
   return (
     <div className="w-full max-w-2xl mx-auto p-4  flex justify-center items-start  text-black font-sans bg-[#17479e]">
       <div className="space-y-4 bg-white p-4 sm:p-6 md:p-8">
+        {/* Debug Panel - Remove this in production */}
+        {(showDebug || process.env.NODE_ENV === "development") && (
+          <div className="mb-4 p-3 bg-yellow-50 border-2 border-yellow-400 rounded text-xs">
+            <div className="font-bold text-yellow-800 mb-2">🔍 UTM Debug Panel (Dev Only)</div>
+            <div className="space-y-1 text-gray-700">
+              <div><strong>Campaign:</strong> {utmParams.campaign}</div>
+              <div><strong>Source:</strong> {utmParams.source}</div>
+              <div><strong>Medium:</strong> {utmParams.medium}</div>
+              <div className="break-all"><strong>Referral URL:</strong> {utmParams.referralUrl}</div>
+            </div>
+            <div className="mt-2 text-xs text-yellow-700">
+              ℹ️ Open browser console (F12) to see detailed logs
+            </div>
+          </div>
+        )}
+
         {/* Form Title */}
         <div className="font-bold text-lg mb-4 text-black">Request a Callback</div>
 
