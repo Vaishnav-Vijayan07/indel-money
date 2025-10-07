@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useUtmTracker } from "@/hooks/useUtmTracker";
 
 const ContactForm = ({ isMobile = false }) => {
+  // Capture UTM parameters from URL
+  const utmParams = useUtmTracker();
+
   const [formData, setFormData] = useState({
     NAME: "",
     COBJ8CF1: "", // Mobile
@@ -147,10 +151,10 @@ const ContactForm = ({ isMobile = false }) => {
       COBJ8CF1: formData.COBJ8CF1,
       Email: formData.Email,
       COBJ8CF6: formData.COBJ8CF6,
-      COBJ8CF16: "NCD 5",
-      COBJ8CF17: "Direct",
-      COBJ8CF18: "Direct",
-      COBJ8CF19: "https://indelmoney.com/ncd-issue/",
+      COBJ8CF16: utmParams.campaign, // Campaign Name from UTM
+      COBJ8CF17: utmParams.source, // Campaign Source from UTM
+      COBJ8CF18: utmParams.medium, // Campaign Medium from UTM
+      COBJ8CF19: utmParams.referralUrl, // Full Referral URL
       aG9uZXlwb3Q: "", // Honeypot
       zc_gad: "",
     };
