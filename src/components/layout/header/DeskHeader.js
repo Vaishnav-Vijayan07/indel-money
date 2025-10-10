@@ -87,7 +87,7 @@ export default function DeskHeader({ headerData }) {
                     alt="location"
                   />
                 </div>
-                <div>
+                {/* <div>
                   <ContactBox
                     href={common?.toll_free_num ? `tel:${common?.toll_free_num}` : "tel:18004253990"}
                     src={
@@ -98,7 +98,7 @@ export default function DeskHeader({ headerData }) {
                     title={common?.toll_free_num ? common?.toll_free_num : "1800 425 39 90"}
                     alt="call"
                   />
-                </div>
+                </div> */}
                 <div>
                   <a
                     href={header?.apple_dowload_link ? header?.apple_dowload_link : "/"}
