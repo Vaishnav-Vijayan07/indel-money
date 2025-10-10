@@ -1,5 +1,12 @@
 "use client";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/custom-sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/custom-sheet";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -102,9 +109,31 @@ const Abouts = [
   },
 ];
 
+const Investors = [
+  {
+    title: "Investors Report",
+    link: "/annual-reports",
+  },
+  {
+    title: "Ombudsman Scheme",
+    link: "/ombudsman",
+  },
+  {
+    title: "NCD",
+    link: "/ncd",
+  },
+];
+
 const Arrow = () => {
   return (
-    <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-2 ml-0.5">
+    <svg
+      width="11"
+      height="6"
+      viewBox="0 0 11 6"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="size-2 ml-0.5"
+    >
       <path d="M5.5 6L10.2631 0.75H0.73686L5.5 6Z" fill="#2A2A2A" />
     </svg>
   );
@@ -149,17 +178,34 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger className="outline-0">
         <div className="w-[30px] @sm:w-[38px] h-[30px] @sm:h-[38px] bg-base2 rounded-[4px] flex items-center justify-center">
-          <Image src="/images/mob-navMenuIcon.svg" alt="nav" width={16} height={12} />
+          <Image
+            src="/images/mob-navMenuIcon.svg"
+            alt="nav"
+            width={16}
+            height={12}
+          />
         </div>
       </SheetTrigger>
       <SheetContent side="left" className="bg-white">
         <SheetHeader className="p-0">
           <SheetTitle className="sr-only"></SheetTitle>
-          <SheetDescription className="sr-only">mobile navigation</SheetDescription>
+          <SheetDescription className="sr-only">
+            mobile navigation
+          </SheetDescription>
           <div className="w-full h-[var(--header-y)] bg-white shadow-sm p-[15px] flex justify-between items-center">
             <div className="w-[40px] 4xs:w-[60px]">
-              <Link href="/" className="block transition-transform duration-300 hover:scale-105">
-                <Image src={logo ? `${serverMediaPath}${logo}` : "/icons/logo_sm.svg"} alt="Logo" width={145} height={75} />
+              <Link
+                href="/"
+                className="block transition-transform duration-300 hover:scale-105"
+              >
+                <Image
+                  src={
+                    logo ? `${serverMediaPath}${logo}` : "/icons/logo_sm.svg"
+                  }
+                  alt="Logo"
+                  width={145}
+                  height={75}
+                />
               </Link>
             </div>
           </div>
@@ -172,7 +218,9 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
                   <span>Gold Loan</span>
                 </Link>
                 <button
-                  className={`${openDropdown === "goldLoan" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${
+                    openDropdown === "goldLoan" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("goldLoan")}
                   aria-label="Toggle mobile menu"
                 >
@@ -203,7 +251,9 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
               >
                 <span>other loan</span>
                 <button
-                  className={`${openDropdown === "otherLoan" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${
+                    openDropdown === "otherLoan" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("otherLoan")}
                   aria-label="Toggle mobile menu"
                 >
@@ -226,7 +276,9 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
                   <span>careers</span>
                 </Link>
                 <button
-                  className={`${openDropdown === "careers" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${
+                    openDropdown === "careers" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("careers")}
                   aria-label="Toggle mobile menu"
                 >
@@ -249,7 +301,9 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
                   <span>about</span>
                 </Link>
                 <button
-                  className={`${openDropdown === "abouts" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${
+                    openDropdown === "abouts" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("abouts")}
                   aria-label="Toggle mobile menu"
                 >
@@ -264,6 +318,31 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
                 <DropdownMenu items={Abouts} handleClose={handleClose} />
               </div>
             </div>
+
+            <div>
+              <div
+                className={`${tabStyle} relative z-0 before:content-[''] before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-[calc(100%-30px)] before:h-[1px] before:bg-gray-200 before:block before:mx-auto`}
+              >
+                <span>Investors</span>
+                <button
+                  className={`${
+                    openDropdown === "investors" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
+                  onClick={() => toggleDropdown("investors")}
+                  aria-label="Toggle mobile menu"
+                >
+                  <Arrow />
+                </button>
+              </div>
+              <div
+                className={`w-full bg-base1/10 overflow-hidden transition-all duration-300 ease-in-out ${
+                  openDropdown === "investors" ? "max-h-full" : "max-h-0"
+                }`}
+              >
+                <DropdownMenu items={Investors} handleClose={handleClose} />
+              </div>
+            </div>
+
             <div>
               <Link
                 href={"/contact"}
@@ -288,7 +367,9 @@ export default function MobNavMenu({ logo, serverMediaPath, title, modes }) {
               >
                 <span>{title ? title : "quick pay "}</span>
                 <button
-                  className={`${openDropdown === "quick" ? "rotate-180" : "rotate-0"} focus:outline-none transform-center`}
+                  className={`${
+                    openDropdown === "quick" ? "rotate-180" : "rotate-0"
+                  } focus:outline-none transform-center`}
                   onClick={() => toggleDropdown("quick")}
                   aria-label="Toggle mobile menu"
                 >

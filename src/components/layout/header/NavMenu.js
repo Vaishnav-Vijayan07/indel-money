@@ -107,6 +107,22 @@ const Abouts = [
   },
 ];
 
+const Investors = [
+  {
+    title: "Investors Report",
+    link: "/annual-reports",
+  },
+  {
+    title: "Ombudsman Scheme",
+    link: "/ombudsman",
+  },
+  {
+    title: "NCD",
+    link: "/ncd",
+  },
+];
+
+
 const Arrow = () => {
   return (
     <svg
@@ -265,6 +281,23 @@ export default function NavMenu() {
           </MenubarContent>
         </div>
       </MenubarMenu>
+
+      <MenubarMenu open={openDropdown === "investors"} onOpenChange={(open) => setOpenDropdown(open ? "investors" : null)}>
+        <div onMouseEnter={() => handleMouseEnter("investors")} className="relative">
+          <div className="flex">
+            <MenubarTrigger className={tabStyle}>
+              <span>Investors</span>
+              <Arrow />
+            </MenubarTrigger>
+          </div>
+          <MenubarContent className="border-[#e4e4e4] bg-white p-0">
+            <DropdownMenu items={Investors} />
+          </MenubarContent>
+        </div>
+      </MenubarMenu>
+      
     </Menubar>
+
+    
   );
 }
