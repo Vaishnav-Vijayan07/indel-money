@@ -189,14 +189,14 @@ export default function DeskHeader({ headerData }) {
                   </Link>
                 </div>
 
-                <div>
+                {/* <div>
                   <Link
                     href={"https://asba.indelmoney.com/asbaform"}
                     className="btn btn-base2 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px] px-2"
                     >
                     {"Apply for NCD"}
                   </Link>
-                </div>
+                </div> */}
               </div>
             </nav>
           </div>
