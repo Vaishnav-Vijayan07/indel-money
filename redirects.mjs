@@ -89,7 +89,7 @@ export default [
     destination: "/ncd",
     permanent: true,
   },
-    {
+  {
     source: "/past-ncd-issues",
     destination: "/ncd",
     permanent: true,
@@ -3263,11 +3263,6 @@ export default [
   {
     source: "/blog-post/branch",
     destination: "/blog",
-    permanent: true,
-  },
-  {
-    source: "/gallery",
-    destination: "/gallery",
     permanent: true,
   },
   {
