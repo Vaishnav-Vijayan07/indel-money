@@ -100,11 +100,11 @@ const Abouts = [
     title: "different shades of indel",
     link: "/different-shades-of-indelmoney",
   },
-  {
-    title: "foreign exchange",
-    link: "https://indelremit.com",
-    target: "_blank",
-  },
+  // {
+  //   title: "foreign exchange",
+  //   link: "https://indelremit.com",
+  //   target: "_blank",
+  // },
 ];
 
 const Investors = [
@@ -121,7 +121,6 @@ const Investors = [
     link: "/ncd",
   },
 ];
-
 
 const Arrow = () => {
   return (
@@ -171,13 +170,7 @@ function MegaMenu({ items }) {
             <MenubarItem className="p-0">
               <div className="group flex flex-row items-center p-[10px] 3xl:p-[10px] cursor-pointer">
                 <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
-                  <Image
-                    src={item.image}
-                    width={28}
-                    height={28}
-                    alt={item?.alt}
-                    className="w-full h-full block max-w-2/4 object-contain"
-                  />
+                  <Image src={item.image} width={28} height={28} alt={item?.alt} className="w-full h-full block max-w-2/4 object-contain" />
                 </div>
                 <div
                   className={`${
@@ -226,17 +219,15 @@ export default function NavMenu() {
         </div>
       </MenubarMenu>
 
-      {/* <MenubarMenu>
+      <MenubarMenu>
         <a
           href={"https://indelremit.com"}
           target="_blank"
-          className={`${
-            pathname === "#" ? "" : ""
-          } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
+          className={`${pathname === "#" ? "" : ""} text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
         >
           FOREIGN EXCHANGE
         </a>
-      </MenubarMenu> */}
+      </MenubarMenu>
 
       <MenubarMenu open={openDropdown === "otherloan"} onOpenChange={(open) => setOpenDropdown(open ? "otherloan" : null)}>
         <div onMouseEnter={() => handleMouseEnter("otherloan")} className="relative">
@@ -295,9 +286,6 @@ export default function NavMenu() {
           </MenubarContent>
         </div>
       </MenubarMenu>
-      
     </Menubar>
-
-    
   );
 }
