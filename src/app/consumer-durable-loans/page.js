@@ -124,8 +124,6 @@ export async function generateMetadata() {
 export default async function CDLoan() {
   const { contents, benfits, products, error } = await fetchData();
 
-  console.log("CDLoan contents:", contents);
-
   const headersList = await headers(); // ✅ await here
   const userAgent = headersList.get("user-agent") || "";
   const isMobile = isMobileDevice(userAgent);

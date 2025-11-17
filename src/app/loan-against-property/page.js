@@ -15,8 +15,6 @@ async function fetchData() {
     const result = await response.json();
     const cdData = result.data;
 
-    console.log("cdData ===>", cdData);
-
     if (result.status === "success") {
       return {
         contents: cdData?.cdLoanContent,

@@ -12,7 +12,6 @@ export default function LAPClient({ contents, benfits, products, initialIsMobile
   // Combine server-side and client-side detection (client takes precedence after hydration)
   const isMobile = typeof window !== "undefined" ? isMobileViewport : initialIsMobile;
 
-  console.log("LAPClient isMobile:", isMobile);
   return (
     <>
       {/* ConsumerDurable contents */}

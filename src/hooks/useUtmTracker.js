@@ -39,7 +39,6 @@ export function captureUtmParams(debug = false) {
     };
 
     if (debug) {
-      console.log("UTM Parameters Captured:", params);
     }
 
     return params;

@@ -94,8 +94,6 @@ export default async function MsmeLoan() {
   const userAgent = headersList.get("user-agent") || "";
   const isMobile = isMobileDevice(userAgent);
 
-  console.log("MSME Loan Page - User Agent:", userAgent, isMobile ? "Mobile" : "Desktop");
-
   if (error) {
     return <div>Failed to fetch MSME data</div>;
   }

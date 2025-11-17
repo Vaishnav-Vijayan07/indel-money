@@ -6,6 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import { EffectCoverflow } from "swiper/modules";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const slides = [
   {
@@ -47,6 +48,13 @@ const slides = [
 
 export default function MobGallCardSlider({ items }) {
   const [activeIndex, setActiveIndex] = useState(2);
+
+  const router = useRouter();
+
+  const handleSlideClick = (slug) => {
+    router.push(`/gallery/${slug}`);
+  };
+
   return (
     <div className="w-full flex flex-wrap justify-center items-center">
       <div className="container">
@@ -143,7 +151,10 @@ export default function MobGallCardSlider({ items }) {
             className="w-full h-full GallRoundSlide not-[:where(.swiper-slide-visible)]:opacity-0 not-[:has(.swiper-slide-active)]:[.SwiprCntn]:opacity-0"
           >
             {({ isActive }) => (
-              <div className="relative w-full 4xs:h-[180px] h-[160px] rounded-[13px] overflow-hidden shadow-lg">
+              <div
+                className="relative w-full 4xs:h-[180px] h-[160px] rounded-[13px] overflow-hidden shadow-lg"
+                // onClick={() => handleSlideClick(slide?.slug)}
+              >
                 <Image
                   src={slide?.gallery ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${slide?.gallery}` : "/images/gallSlide05.jpg"}
                   alt={`Slide ${index}`}

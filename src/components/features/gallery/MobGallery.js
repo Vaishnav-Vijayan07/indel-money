@@ -53,9 +53,13 @@ const GALLERY_FILTERS = [
 ];
 
 const GalleryItem = ({ item, width, height }) => {
-  
+  const router = useRouter();
   const [currentImage, setCurrentImage] = useState(0);
   const [hovered, setHovered] = useState(false);
+
+  const handleClick = () => {
+    router.push(`/gallery/${item.slug}`);
+  };
 
   useEffect(() => {
     let interval;
@@ -74,6 +78,7 @@ const GalleryItem = ({ item, width, height }) => {
       className="group relative rounded-[20px] overflow-hidden w-full h-full"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => handleClick(item)}
     >
       <div className="relative w-full h-full">
         {item?.thumbnails?.map((img, index) => (
@@ -210,20 +215,15 @@ export default function MobGallery({ title = "Gallery", medias = [], sliderItems
             <MobGallCardSlider items={sliderItems} />
           </div>
           <div className="container mx-auto flex flex-wrap">
-            {slides?.map((group, index) => {
-              const gallClass = index % 2 === 0 ? "flex-col" : "flex-col-reverse";
-              return (
-                <div key={index} className={`${gallClass} w-full mb-[8px] 3xs:h-[170px] h-[150px] flex flex-wrap`}>
-                  <div className="flex flex-wrap w-full h-full">
-                    {group.slice(0, 1)?.map((item, i) => (
-                      <div key={i} className="w-full mb-4 h-full">
-                        <GalleryItem item={item} width={380} height={150} />
-                      </div>
-                    ))}
+            {medias?.map((item, i) => (
+              <div key={i} className={`flex-col w-full mb-[8px] 3xs:h-[170px] h-[150px] flex flex-wrap`}>
+                <div className="flex flex-wrap w-full h-full">
+                  <div key={i} className="w-full mb-4 h-full">
+                    <GalleryItem item={item} width={380} height={150} />
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </TabsContent>
 
@@ -233,20 +233,15 @@ export default function MobGallery({ title = "Gallery", medias = [], sliderItems
             <MobGallCardSlider items={sliderItems} />
           </div>
           <div className="container mx-auto flex flex-wrap">
-            {slides?.map((group, index) => {
-              const gallClass = index % 2 === 0 ? "flex-col" : "flex-col-reverse";
-              return (
-                <div key={index} className={`${gallClass} w-full mb-[8px] 3xs:h-[170px] h-[150px] flex flex-wrap`}>
-                  <div className="flex flex-wrap w-full h-full">
-                    {group.slice(0, 1)?.map((item, i) => (
-                      <div key={i} className="w-full mb-4 h-full">
-                        <GalleryItem item={item} width={380} height={150} />
-                      </div>
-                    ))}
+            {medias?.map((item, i) => (
+              <div key={i} className={`flex-col w-full mb-[8px] 3xs:h-[170px] h-[150px] flex flex-wrap`}>
+                <div className="flex flex-wrap w-full h-full">
+                  <div className="w-full mb-4 h-full">
+                    <GalleryItem item={item} width={380} height={150} />
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </TabsContent>
 
@@ -256,21 +251,15 @@ export default function MobGallery({ title = "Gallery", medias = [], sliderItems
             <MobGallCardSlider items={sliderItems} />
           </div>
           <div className="container mx-auto flex flex-wrap">
-            {slides?.map((group, index) => {
-              const gallClass = index % 2 === 0 ? "flex-col" : "flex-col-reverse";
-
-              return (
-                <div key={index} className={`${gallClass} w-full mb-[8px] h-[150px] flex flex-wrap`}>
-                  <div className="flex flex-wrap w-full h-full">
-                    {group.slice(0, 1)?.map((item, i) => (
-                      <div key={i} className="w-full mb-4 h-full">
-                        <GalleryItem item={item} width={380} height={150} />
-                      </div>
-                    ))}
+            {medias?.map((item, i) => (
+              <div key={i} className={`flex-col w-full mb-[8px] h-[150px] flex flex-wrap`}>
+                <div className="flex flex-wrap w-full h-full">
+                  <div className="w-full mb-4 h-full">
+                    <GalleryItem item={item} width={380} height={150} />
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </TabsContent>
       </Tabs>

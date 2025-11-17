@@ -22,8 +22,6 @@ const options = {
 };
 
 export default function ({ products, title, image, criteriaIcon, criteriaTitle, criteriaDescription, criteriaNote, isMobile }) {
-  console.log("ProductCovered isMobile:", criteriaDescription);
-  
   return (
     <section className="w-full relative sm:bg-[#C0DBFF] bg-[#E5F6FF] sm:rounded-[0] rounded-[20px] py-[20px] md:p-0">
       <div className="absolute hidden md:block bg-[#D4E6FF] left-0 top-0 w-[50%] h-full z-0"></div>

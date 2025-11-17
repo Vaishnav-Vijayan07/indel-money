@@ -4,30 +4,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 import api from "@/lib/api/axios";
 import Cookies from "js-cookie";
 import toast, { Toaster } from "react-hot-toast";
-import {
-  GoogleReCaptchaProvider,
-  useGoogleReCaptcha,
-} from "react-google-recaptcha-v3";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { toSentenceCase } from "@/lib/utils/toSentenceCase";
 import {
   AlertDialog,
@@ -39,36 +24,22 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/custom-alert-dialog";
 
-const noticePeriod = [
-  "Less than 15 days",
-  "15 to 30 days",
-  "30 days",
-  "60 to 90 days",
-  "More than 90 days",
-];
+const noticePeriod = ["Less than 15 days", "15 to 30 days", "30 days", "60 to 90 days", "More than 90 days"];
 
 // Schema Validation
 const baseSchema = {
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  phone: z
-    .string()
-    .regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
+  phone: z.string().regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
   current_location: z.string().optional(),
-  preferred_locations: z
-    .array(z.string())
-    .min(1, { message: "Please select at least one location." }),
-  preferred_states: z
-    .array(z.string())
-    .min(1, { message: "Please select at least one state." }),
-  preferred_role: z
-    .string()
-    .min(1, { message: "Please select a preferred role." }),
+  preferred_locations: z.array(z.string()).min(1, { message: "Please select at least one location." }),
+  preferred_states: z.array(z.string()).min(1, { message: "Please select at least one state." }),
+  preferred_role: z.string().min(1, { message: "Please select a preferred role." }),
   referred_employee_name: z.string().optional(),
   employee_referral_code: z.string().optional(),
   notice_period: z.enum(noticePeriod, {
-      errorMap: () => ({ message: "Please select a valid notice period." }),
-    }),
+    errorMap: () => ({ message: "Please select a valid notice period." }),
+  }),
   current_salary: z
     .string()
     .regex(/^\d{5,}$/, {
@@ -126,9 +97,9 @@ function CareerFormInner({ jobId, isGeneral }) {
   const [isDraggingMobile, setIsDraggingMobile] = useState(false);
   const [isDraggingDesktop, setIsDraggingDesktop] = useState(false);
 
-// 1. ADD NEW STATE VARIABLES (add these to your existing state declarations)
-const [verifiedEmail, setVerifiedEmail] = useState(""); // Store the verified email
-const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track current email in form
+  // 1. ADD NEW STATE VARIABLES (add these to your existing state declarations)
+  const [verifiedEmail, setVerifiedEmail] = useState(""); // Store the verified email
+  const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track current email in form
 
   const truncateFilename = (filename, maxLength = 8) => {
     if (!filename || filename.length <= maxLength) return filename;
@@ -174,10 +145,7 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
         (data) => {
           // Only require preferred_role_name if isGeneral and preferred_role is "Others"
           if (isGeneral) {
-            return (
-              data.preferred_role_name &&
-              data.preferred_role_name.trim().length > 0
-            );
+            return data.preferred_role_name && data.preferred_role_name.trim().length > 0;
           }
           return true;
         },
@@ -223,48 +191,47 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
   const fetchDropdowns = async () => {
     try {
       let endpoint = "/career/jobs/dropdowns";
-      
+
       // If jobId is provided, fetch job-specific states and locations
       if (jobId && !isGeneral) {
         endpoint = `/career/jobs/${jobId}/dropdowns`;
       }
-      
+
       const { data } = await api.get(endpoint);
 
-      if (!data.success)
-        throw new Error(data.message || "Failed to fetch dropdowns");
-      
+      if (!data.success) throw new Error(data.message || "Failed to fetch dropdowns");
+
       // If job-specific data is available, use it; otherwise fallback to all data
       const dropdownData = data.data || { locations: [], roles: [], states: [] };
-      
+
       // If job-specific states are available, use them; otherwise use all states
       let states = dropdownData.job_states || dropdownData.states || [];
       let locations = dropdownData.job_locations || dropdownData.locations || [];
       const roles = dropdownData.roles || [];
-      
+
       // Ensure states have the correct format (value and label)
       if (states.length > 0 && states[0].id && !states[0].value) {
-        states = states.map(state => ({
+        states = states.map((state) => ({
           value: state.id,
-          label: state.state_name || state.name || state.label
+          label: state.state_name || state.name || state.label,
         }));
       }
-      
+
       // Ensure locations have the correct format (id and location_name)
       if (locations.length > 0 && locations[0].id) {
         // Locations are already in the correct format
         locations = locations;
       }
-      
+
       setDropdowns({
         states: states,
         locations: locations,
-        roles: roles
+        roles: roles,
       });
       setDropdownsLoaded(true);
     } catch (error) {
       console.error("Error fetching dropdowns:", error);
-      
+
       // Fallback to general dropdowns if job-specific fails
       if (jobId && !isGeneral) {
         try {
@@ -278,7 +245,7 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
           console.error("Error fetching fallback dropdowns:", fallbackError);
         }
       }
-      
+
       toast.error("Failed to load dropdown options");
     }
   };
@@ -293,30 +260,27 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
     try {
       setLocationsLoading(true);
       const stateIdsParam = stateIds.join(",");
-      
+
       let endpoint = `/career/locations/by_state?state_ids=${stateIdsParam}`;
-      
+
       // If jobId is provided, fetch job-specific locations
       if (jobId && !isGeneral) {
         endpoint = `/career/jobs/${jobId}/locations/by_state?state_ids=${stateIdsParam}`;
       }
-      
+
       const { data } = await api.get(endpoint);
 
-      if (!data.success)
-        throw new Error(data.message || "Failed to fetch locations");
+      if (!data.success) throw new Error(data.message || "Failed to fetch locations");
 
       setDropdowns((prev) => ({ ...prev, locations: data.data || [] }));
     } catch (error) {
       console.error("Error fetching locations by states:", error);
-      
+
       // Fallback to general locations if job-specific fails
       if (jobId && !isGeneral) {
         try {
           const stateIdsParam = stateIds.join(",");
-          const { data } = await api.get(
-            `/career/locations/by_state?state_ids=${stateIdsParam}`
-          );
+          const { data } = await api.get(`/career/locations/by_state?state_ids=${stateIdsParam}`);
           if (data.success) {
             setDropdowns((prev) => ({ ...prev, locations: data.data || [] }));
             return;
@@ -325,7 +289,7 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
           console.error("Error fetching fallback locations:", fallbackError);
         }
       }
-      
+
       toast.error("Failed to load locations for selected states");
     } finally {
       setLocationsLoading(false);
@@ -339,17 +303,11 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
 
   // Filter locations based on search term
   const filteredLocations = dropdowns.locations.filter((location) =>
-    location.location_name
-      ?.toLowerCase()
-      .includes(locationSearchTerm.toLowerCase())
+    location.location_name?.toLowerCase().includes(locationSearchTerm.toLowerCase())
   );
 
   // Auto-fill form
   const autoFillForm = (data) => {
-    console.log("AutoFill Data:", data);
-    console.log("isGeneral:", isGeneral);
-    console.log("jobId:", jobId);
-    
     const validatedData = {
       name: data.name || "",
       phone: data.phone || "",
@@ -360,38 +318,18 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
       referred_employee_name: data.referred_employee_name || "",
       employee_referral_code: data.employee_referral_code || "",
       age: data.age?.toString() || "",
-      preferred_role: isGeneral
-        ? data.preferred_role?.toString() || ""
-        : jobId?.toString() || "",
+      preferred_role: isGeneral ? data.preferred_role?.toString() || "" : jobId?.toString() || "",
       preferred_role_name: data.preferred_role_name || "",
-     notice_period: noticePeriod.includes(data.notice_period)
-      ? data.notice_period
-      : "",
+      notice_period: noticePeriod.includes(data.notice_period) ? data.notice_period : "",
       current_salary: data.current_salary?.toString() || "",
       expected_salary: data.expected_salary?.toString() || "",
       file: null,
     };
-    
-    console.log("Validated Data preferred_role:", validatedData.preferred_role);
-    console.log(
-      "Validated Data preferred_role_name:",
-      validatedData.preferred_role_name
-    );
-    console.log(
-      "Validated Data referred_employee_name:",
-      validatedData.referred_employee_name
-    );
-    console.log(
-      "Validated Data employee_referral_code:",
-      validatedData.employee_referral_code
-    );
+
     form.reset(validatedData);
 
     // If preferred_states are loaded, fetch corresponding locations
-    if (
-      validatedData.preferred_states &&
-      validatedData.preferred_states.length > 0
-    ) {
+    if (validatedData.preferred_states && validatedData.preferred_states.length > 0) {
       fetchLocationsByStates(validatedData.preferred_states);
     }
   };
@@ -421,10 +359,7 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
         setIsStatesDropdownOpen(false);
         setStateSearchTerm("");
       }
-      if (
-        isLocationsDropdownOpen &&
-        !event.target.closest(".locations-dropdown")
-      ) {
+      if (isLocationsDropdownOpen && !event.target.closest(".locations-dropdown")) {
         setIsLocationsDropdownOpen(false);
         setLocationSearchTerm("");
       }
@@ -447,7 +382,7 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
         setSelectedFileName(parsedData.file || null);
         setVerifiedEmail(parsedData.email); // Set verified email
         setCurrentEmailInForm(parsedData.email); // Set current form email
-        
+
         // Don't auto-fill states and locations for job-specific applications
         if (jobId && !isGeneral) {
           // Remove states and locations from auto-fill data
@@ -457,9 +392,9 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
           autoFillForm(filteredData);
         } else {
           // Auto-fill everything for general applications
-        autoFillForm(parsedData);
+          autoFillForm(parsedData);
         }
-        
+
         setIsOtpVerified(true);
       }
     }
@@ -504,7 +439,7 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
           delete filteredData.preferred_states;
           delete filteredData.preferred_locations;
           autoFillForm(filteredData);
-          
+
           // Save filtered data to cookie
           Cookies.set("applicantData", JSON.stringify(filteredData), {
             expires: 7,
@@ -512,17 +447,17 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
           });
         } else {
           // Auto-fill everything for general applications
-        autoFillForm(data.data);
-        Cookies.set("applicantData", JSON.stringify(data.data), {
-          expires: 7,
-          sameSite: "strict",
-        });
+          autoFillForm(data.data);
+          Cookies.set("applicantData", JSON.stringify(data.data), {
+            expires: 7,
+            sameSite: "strict",
+          });
         }
       }
       setIsOtpVerified(true);
       setIsModalOpen(false);
       setVerifiedEmail(email); // Store the verified email
-      setCurrentEmailInForm(email); // 
+      setCurrentEmailInForm(email); //
       toast.success("OTP verified successfully");
     } catch (error) {
       console.error("Error verifying OTP:", error);
@@ -532,46 +467,45 @@ const [currentEmailInForm, setCurrentEmailInForm] = useState(""); // Track curre
     }
   };
 
-const handleEmailChange = (newEmail) => {
-  setCurrentEmailInForm(newEmail);
-  
-  // If email is different from verified email, mark as not verified and clear cookie
-  if (newEmail !== verifiedEmail) {
-    setIsOtpVerified(false);
-    
-    // Clear the cookie when email changes
-    Cookies.remove("applicantData");
-    
-    // Reset file selection since cookie data is cleared
-    setSelectedFile(null);
-    setSelectedFileName(null);
-    
-    // Reset verification states
-    setVerifiedEmail("");
-    setShowOtpInput(false);
-    
-    // Set the new email and open the modal for verification
-    setEmail(newEmail);
-    setIsModalOpen(true);
-    
-    // Reset the email form with the new email
-    emailForm.reset({ email: newEmail });
-  } else {
-    // If email matches verified email, mark as verified
-    setIsOtpVerified(true);
-  }
-};
+  const handleEmailChange = (newEmail) => {
+    setCurrentEmailInForm(newEmail);
 
+    // If email is different from verified email, mark as not verified and clear cookie
+    if (newEmail !== verifiedEmail) {
+      setIsOtpVerified(false);
+
+      // Clear the cookie when email changes
+      Cookies.remove("applicantData");
+
+      // Reset file selection since cookie data is cleared
+      setSelectedFile(null);
+      setSelectedFileName(null);
+
+      // Reset verification states
+      setVerifiedEmail("");
+      setShowOtpInput(false);
+
+      // Set the new email and open the modal for verification
+      setEmail(newEmail);
+      setIsModalOpen(true);
+
+      // Reset the email form with the new email
+      emailForm.reset({ email: newEmail });
+    } else {
+      // If email matches verified email, mark as verified
+      setIsOtpVerified(true);
+    }
+  };
 
   // Handle form submission
   const onSubmit = async (values) => {
     // Check if email has changed and needs re-verification
-  if (values.email !== verifiedEmail && !isOtpVerified) {
-    toast.error("Please verify your email before submitting the form.");
-    setEmail(values.email); // Set the new email for OTP
-    setIsModalOpen(true);
-    return;
-  }
+    if (values.email !== verifiedEmail && !isOtpVerified) {
+      toast.error("Please verify your email before submitting the form.");
+      setEmail(values.email); // Set the new email for OTP
+      setIsModalOpen(true);
+      return;
+    }
 
     if (!isOtpVerified) {
       toast.error("Please verify OTP before submitting the form.");
@@ -586,7 +520,6 @@ const handleEmailChange = (newEmail) => {
       setIsSubmitting(false);
       return;
     }
-    console.log("email address  ", values.email);
 
     const formData = new FormData();
     formData.append("applicant[name]", values.name);
@@ -600,21 +533,12 @@ const handleEmailChange = (newEmail) => {
     values.preferred_states.forEach((state) => {
       formData.append("applicant[preferred_states][]", state);
     });
-    formData.append(
-      "applicant[current_location]",
-      values.current_location || ""
-    );
-    formData.append(
-      "applicant[referred_employee_name]",
-      values.referred_employee_name || ""
-    );
-    formData.append(
-      "applicant[employee_referral_code]",
-      values.employee_referral_code || ""
-    );
+    formData.append("applicant[current_location]", values.current_location || "");
+    formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
+    formData.append("applicant[employee_referral_code]", values.employee_referral_code || "");
     if (values.age !== null && !isNaN(values.age) && values.age > 0) {
-        formData.append("applicant[age]", values.age.toString());
-      }
+      formData.append("applicant[age]", values.age.toString());
+    }
     formData.append("applicant[notice_period]", values.notice_period);
     formData.append("applicant[current_salary]", values.current_salary || "");
     formData.append("applicant[expected_salary]", values.expected_salary || "");
@@ -626,15 +550,10 @@ const handleEmailChange = (newEmail) => {
     }
     formData.append("applicant[is_active]", "true");
 
-    const apiUrl = isGeneral
-      ? "/web/careers/general_application"
-      : "/web/careers/job_application";
+    const apiUrl = isGeneral ? "/web/careers/general_application" : "/web/careers/job_application";
     if (isGeneral) {
       formData.append("general_application[role_id]", values.preferred_role);
-      formData.append(
-        "general_application[preferred_role_name]",
-        values.preferred_role_name
-      );
+      formData.append("general_application[preferred_role_name]", values.preferred_role_name);
     } else {
       formData.append("job_application[job_id]", jobId || "");
     }
@@ -646,34 +565,16 @@ const handleEmailChange = (newEmail) => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      if (!response.data.success)
-        throw new Error(
-          response.data.message || "Failed to submit application"
-        );
+      if (!response.data.success) throw new Error(response.data.message || "Failed to submit application");
 
       const cookieData = {
         ...values,
         file: selectedFile ? selectedFile.name : selectedFileName,
       };
-      
-      console.log("Saving to cookie:", cookieData);
-      console.log("preferred_role being saved:", cookieData.preferred_role);
-      console.log(
-        "preferred_role_name being saved:",
-        cookieData.preferred_role_name
-      );
-      console.log(
-        "referred_employee_name being saved:",
-        cookieData.referred_employee_name
-      );
-      console.log(
-        "employee_referral_code being saved:",
-        cookieData.employee_referral_code
-      );
 
       Cookies.set("applicantData", JSON.stringify(cookieData), {
-          expires: 7,
-          sameSite: "strict",
+        expires: 7,
+        sameSite: "strict",
       });
 
       // form.reset();
@@ -686,9 +587,7 @@ const handleEmailChange = (newEmail) => {
       toast.success(response.data.message);
     } catch (err) {
       console.error("Error submitting form:", err);
-      toast.error(
-        err.response.data.error.message || "Failed to submit application."
-      );
+      toast.error(err.response.data.error.message || "Failed to submit application.");
     } finally {
       setLoading(false);
     }
@@ -743,134 +642,92 @@ const handleEmailChange = (newEmail) => {
           <div className="w-full min-w-[340px] sm:min-w-[360px] md:min-w-[376px] lg:min-w-[420px] xl:min-w-[468px] 2xl:min-w-[576px] 3xl:min-w-[668px] bg-[#dceafb] rounded-[15px] lg:rounded-[30px] 2xl:rounded-[36px] p-[20px_25px] lg:p-[20px_30px] xl:p-[30px_50px] 2xl:p-[40px_60px] 3xl:p-[50px_80px] relative z-0">
             <AlertDialogHeader>
               <AlertDialogTitle className="text-[18px] sm:text-[22px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[48px] text-black font-bold flex items-center mb-[10px] lg:mb-[15px] 2xl:mb-[20px]">
-                    Verify Your Email
+                Verify Your Email
               </AlertDialogTitle>
-              <AlertDialogDescription className="sr-only">
-                Please verify your email address to continue with the
-                application.
-              </AlertDialogDescription>
+              <AlertDialogDescription className="sr-only">Please verify your email address to continue with the application.</AlertDialogDescription>
 
-                  <div className="mt-4">
-                    {!showOtpInput ? (
-                      <Form {...emailForm} key="email-form">
-                    <form
-                      onSubmit={emailForm.handleSubmit(handleEmailSubmit)}
-                      className="space-y-4"
-                    >
-                          <FormField
-                            control={emailForm.control}
-                            name="email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormControl>
-                                  <Input
-                                    type="email"
+              <div className="mt-4">
+                {!showOtpInput ? (
+                  <Form {...emailForm} key="email-form">
+                    <form onSubmit={emailForm.handleSubmit(handleEmailSubmit)} className="space-y-4">
+                      <FormField
+                        control={emailForm.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input
+                                type="email"
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-base1 focus:border-transparent text-gray-900 text-sm bg-white"
                                 placeholder="Enter your email address"
-                                    {...field}
-                                  />
-                                </FormControl>
-                                <FormMessage className="text-red-500 text-xs" />
-                              </FormItem>
-                            )}
-                          />
-                          <Button
-                            type="submit"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage className="text-red-500 text-xs" />
+                          </FormItem>
+                        )}
+                      />
+                      <Button
+                        type="submit"
                         className="w-full bg-base1 text-white hover:bg-base1/90 transition-colors duration-300 py-2 px-4 rounded-md font-medium"
-                            disabled={loading}
-                          >
-                            {loading ? (
+                        disabled={loading}
+                      >
+                        {loading ? (
                           <span className="flex items-center justify-center">
-                                <svg
-                                  className="animate-spin h-5 w-5 mr-2 text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                >
-                              <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                              />
-                              <path
-                                className="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z"
-                              />
-                                </svg>
-                                Sending OTP...
-                              </span>
-                            ) : (
-                              "Send OTP"
-                            )}
-                          </Button>
-                        </form>
-                      </Form>
-                    ) : (
-                      <Form {...otpForm} key="otp-form">
-                    <form
-                      onSubmit={otpForm.handleSubmit(handleOtpSubmit)}
-                      className="space-y-4"
-                    >
+                            <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z" />
+                            </svg>
+                            Sending OTP...
+                          </span>
+                        ) : (
+                          "Send OTP"
+                        )}
+                      </Button>
+                    </form>
+                  </Form>
+                ) : (
+                  <Form {...otpForm} key="otp-form">
+                    <form onSubmit={otpForm.handleSubmit(handleOtpSubmit)} className="space-y-4">
                       <div className="text-sm text-gray-600 mb-4">
-                        We've sent a 6-digit verification code to{" "}
-                        <strong>{email}</strong>
+                        We've sent a 6-digit verification code to <strong>{email}</strong>
                       </div>
-                          <FormField
-                            control={otpForm.control}
-                            name="otp"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormControl>
-                                  <Input
-                                    type="text"
-                                    inputMode="numeric"
+                      <FormField
+                        control={otpForm.control}
+                        name="otp"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input
+                                type="text"
+                                inputMode="numeric"
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-base1 focus:border-transparent text-gray-900 text-sm bg-white text-center text-lg tracking-widest"
                                 placeholder="Enter 6-digit OTP"
                                 maxLength="6"
-                                    {...field}
-                                  />
-                                </FormControl>
-                                <FormMessage className="text-red-500 text-xs" />
-                              </FormItem>
-                            )}
-                          />
-                          <Button
-                            type="submit"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage className="text-red-500 text-xs" />
+                          </FormItem>
+                        )}
+                      />
+                      <Button
+                        type="submit"
                         className="w-full bg-base1 text-white hover:bg-base1/90 transition-colors duration-300 py-2 px-4 rounded-md font-medium"
-                            disabled={loading}
-                          >
-                            {loading ? (
+                        disabled={loading}
+                      >
+                        {loading ? (
                           <span className="flex items-center justify-center">
-                                <svg
-                                  className="animate-spin h-5 w-5 mr-2 text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                >
-                              <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                              />
-                              <path
-                                className="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z"
-                              />
-                                </svg>
-                                Verifying...
-                              </span>
-                            ) : (
-                              "Verify OTP"
-                            )}
-                          </Button>
+                            <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z" />
+                            </svg>
+                            Verifying...
+                          </span>
+                        ) : (
+                          "Verify OTP"
+                        )}
+                      </Button>
                       <button
                         type="button"
                         onClick={() => setShowOtpInput(false)}
@@ -878,10 +735,10 @@ const handleEmailChange = (newEmail) => {
                       >
                         Change Email Address
                       </button>
-                        </form>
-                      </Form>
-                    )}
-                  </div>
+                    </form>
+                  </Form>
+                )}
+              </div>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel
@@ -889,26 +746,17 @@ const handleEmailChange = (newEmail) => {
                 className="sm:text-[12px] 2xl:text-[14px] 3xl:text-[16px] focus:outline-0 flex gap-[4px] lg:gap-[6px] 2xl:gap-[10px] absolute z-0 top-[15px] xl:top-[20px] 2xl:top-[25px] 3xl:top-[30px] right-[15px] xl:right-[20px] 2xl:right-[25px] 3xl:right-[30px] transition-color cursor-pointer hover:text-base2"
               >
                 <span className="hidden sm:block">Close</span>
-                <Image
-                  src="/images/modal-cancel.svg"
-                  alt="modal-cancel"
-                  width={20}
-                  height={20}
-                  className="w-[15px] lg:w-[20px]"
-                />
+                <Image src="/images/modal-cancel.svg" alt="modal-cancel" width={20} height={20} className="w-[15px] lg:w-[20px]" />
               </AlertDialogCancel>
             </AlertDialogFooter>
-            </div>
+          </div>
         </AlertDialogContent>
       </AlertDialog>
 
       {/* Main Form */}
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5">
             <div
               className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${
                 isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
@@ -926,9 +774,7 @@ const handleEmailChange = (newEmail) => {
                     height={16}
                     className="w-[14px] lg:w-[24px] filter brightness-0 invert"
                   />
-                  <span className="font-medium ml-1 lg:ml-1.5 text-white">
-                    Upload Resume
-                  </span>
+                  <span className="font-medium ml-1 lg:ml-1.5 text-white">Upload Resume</span>
                   <input
                     type="file"
                     name="file"
@@ -941,15 +787,9 @@ const handleEmailChange = (newEmail) => {
               </div>
               <div className="text-xs leading-normal font-normal pl-[10px] lg:pl-[14px] text-gray-700 truncate">
                 {selectedFile
-                  ? `${selectedFile.name} (${getFileTypeDisplay(
-                      selectedFile,
-                      null
-                    )})`
+                  ? `${selectedFile.name} (${getFileTypeDisplay(selectedFile, null)})`
                   : selectedFileName
-                  ? `${selectedFileName.replace(
-                      "uploads/job-applications/",
-                      ""
-                    )} (${getFileTypeDisplay(null, selectedFileName)})`
+                  ? `${selectedFileName.replace("uploads/job-applications/", "")} (${getFileTypeDisplay(null, selectedFileName)})`
                   : "No file chosen"}
               </div>
             </div>
@@ -960,9 +800,7 @@ const handleEmailChange = (newEmail) => {
                 name="name"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Name*
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Name*</label>
                     <FormControl>
                       <Input
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
@@ -982,9 +820,7 @@ const handleEmailChange = (newEmail) => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Phone Number*
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Phone Number*</label>
                     <FormControl>
                       <Input
                         type="tel"
@@ -1005,9 +841,7 @@ const handleEmailChange = (newEmail) => {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Email*
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Email*</label>
                     <FormControl>
                       <Input
                         type="email"
@@ -1019,10 +853,10 @@ const handleEmailChange = (newEmail) => {
                           handleEmailChange(e.target.value);
                         }}
                         onFocus={() => {
-                           if (!isOtpVerified || field.value !== verifiedEmail) {
+                          if (!isOtpVerified || field.value !== verifiedEmail) {
                             setEmail(field.value);
                             setIsModalOpen(true);
-                           }
+                          }
                         }}
                         // disabled={isOtpVerified}
                       />
@@ -1039,9 +873,7 @@ const handleEmailChange = (newEmail) => {
                 name="current_location"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Current Location
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Current Location</label>
                     <Input
                       {...field}
                       type="text"
@@ -1060,16 +892,14 @@ const handleEmailChange = (newEmail) => {
                 name="age"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Age
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Age</label>
                     <FormControl>
                       <Input
                         type="number"
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Enter age"
                         {...field}
-                      // disabled={!isOtpVerified}
+                        // disabled={!isOtpVerified}
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
@@ -1084,61 +914,40 @@ const handleEmailChange = (newEmail) => {
                 name="preferred_states"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Preferred States*
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Preferred States*</label>
                     <div className="relative states-dropdown">
                       {/* Custom Dropdown Trigger */}
                       <button
                         type="button"
-                        onClick={() =>
-                          setIsStatesDropdownOpen(!isStatesDropdownOpen)
-                        }
+                        onClick={() => setIsStatesDropdownOpen(!isStatesDropdownOpen)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 text-xs bg-white text-left flex items-center justify-between"
                         // disabled={!isOtpVerified}
                       >
                         <span className="text-gray-500 truncate">
                           {field.value && field.value.length > 0
                             ? (() => {
-                                 const selectedStates = field.value.map(
-                                   (stateId) => {
-                                     const state = dropdowns.states.find(
-                                       (st) => String(st.value) === stateId
-                                     );
-                            return (
-                                       toSentenceCase(state?.label || state?.state_name || state?.name) || stateId
-                                     );
-                                   }
-                                 );
+                                const selectedStates = field.value.map((stateId) => {
+                                  const state = dropdowns.states.find((st) => String(st.value) === stateId);
+                                  return toSentenceCase(state?.label || state?.state_name || state?.name) || stateId;
+                                });
 
                                 if (selectedStates.length === 1) {
                                   return selectedStates[0];
                                 } else if (selectedStates.length <= 2) {
                                   return selectedStates.join(", ");
                                 } else {
-                                  return `${selectedStates
-                                    .slice(0, 2)
-                                    .join(", ")}... (+${
-                                    selectedStates.length - 2
-                                  } more)`;
+                                  return `${selectedStates.slice(0, 2).join(", ")}... (+${selectedStates.length - 2} more)`;
                                 }
                               })()
                             : "Choose Preferred States*"}
                         </span>
                         <svg
-                          className={`w-4 h-4 transition-transform ${
-                            isStatesDropdownOpen ? "rotate-180" : ""
-                          }`}
+                          className={`w-4 h-4 transition-transform ${isStatesDropdownOpen ? "rotate-180" : ""}`}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 9l-7 7-7-7"
-                          />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
 
@@ -1151,9 +960,7 @@ const handleEmailChange = (newEmail) => {
                               type="text"
                               placeholder="Search states..."
                               value={stateSearchTerm}
-                              onChange={(e) =>
-                                setStateSearchTerm(e.target.value)
-                              }
+                              onChange={(e) => setStateSearchTerm(e.target.value)}
                               className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                               autoFocus
                             />
@@ -1163,46 +970,29 @@ const handleEmailChange = (newEmail) => {
                           <div className="max-h-48 overflow-y-auto">
                             {filteredStates.length > 0 ? (
                               filteredStates.map((state) => {
-                                const isSelected = field.value?.includes(
-                                  String(state.value)
-                                );
+                                const isSelected = field.value?.includes(String(state.value));
                                 return (
-                                <button
+                                  <button
                                     key={state.value}
-                                  type="button"
-                                  onClick={() => {
+                                    type="button"
+                                    onClick={() => {
                                       const currentValues = field.value || [];
                                       if (isSelected) {
                                         // Deselect if already selected
-                                        field.onChange(
-                                          currentValues.filter(
-                                            (v) => v !== String(state.value)
-                                          )
-                                        );
+                                        field.onChange(currentValues.filter((v) => v !== String(state.value)));
                                       } else {
                                         // Select if not selected
-                                        field.onChange([
-                                          ...currentValues,
-                                          String(state.value),
-                                        ]);
+                                        field.onChange([...currentValues, String(state.value)]);
                                       }
                                       setStateSearchTerm("");
                                     }}
                                     className={`w-full px-3 py-2 text-left text-xs hover:bg-gray-100 flex items-center justify-between ${
-                                      isSelected
-                                        ? "bg-blue-50 text-blue-700"
-                                        : "text-gray-900"
+                                      isSelected ? "bg-blue-50 text-blue-700" : "text-gray-900"
                                     }`}
                                   >
-                                     <span>
-                                       {toSentenceCase(state.label || state.state_name || state.name) || "-"}
-                              </span>
+                                    <span>{toSentenceCase(state.label || state.state_name || state.name) || "-"}</span>
                                     {isSelected && (
-                                      <svg
-                                        className="w-4 h-4 text-blue-600"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                      >
+                                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                         <path
                                           fillRule="evenodd"
                                           d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -1214,16 +1004,12 @@ const handleEmailChange = (newEmail) => {
                                 );
                               })
                             ) : stateSearchTerm ? (
-                              <div className="px-3 py-2 text-xs text-gray-500">
-                                No states match "{stateSearchTerm}"
-                        </div>
+                              <div className="px-3 py-2 text-xs text-gray-500">No states match "{stateSearchTerm}"</div>
                             ) : (
-                              <div className="px-3 py-2 text-xs text-gray-500">
-                                No states available
-                      </div>
-                    )}
+                              <div className="px-3 py-2 text-xs text-gray-500">No states available</div>
+                            )}
                           </div>
-                  </div>
+                        </div>
                       )}
                     </div>
                     <FormMessage className="text-red-500 text-xs" />
@@ -1231,7 +1017,7 @@ const handleEmailChange = (newEmail) => {
                 )}
               />
             </div>
-            
+
             <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
               {/* Preferred Locations Field */}
               <FormField
@@ -1242,24 +1028,16 @@ const handleEmailChange = (newEmail) => {
                   const hasSelectedStates = selectedStates.length > 0;
 
                   return (
-                  <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                      <label className="text-[10px] text-gray-600 font-medium block">
-                        Preferred Locations*
-                      </label>
+                    <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                      <label className="text-[10px] text-gray-600 font-medium block">Preferred Locations*</label>
                       <div className="relative locations-dropdown">
                         {/* Custom Dropdown Trigger */}
                         <button
                           type="button"
-                          onClick={() =>
-                            hasSelectedStates &&
-                            !locationsLoading &&
-                            setIsLocationsDropdownOpen(!isLocationsDropdownOpen)
-                          }
+                          onClick={() => hasSelectedStates && !locationsLoading && setIsLocationsDropdownOpen(!isLocationsDropdownOpen)}
                           disabled={!hasSelectedStates || locationsLoading}
                           className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 text-xs text-left flex items-center justify-between ${
-                            !hasSelectedStates || locationsLoading
-                              ? "bg-gray-100 cursor-not-allowed"
-                              : "bg-white"
+                            !hasSelectedStates || locationsLoading ? "bg-gray-100 cursor-not-allowed" : "bg-white"
                           }`}
                         >
                           <span className="text-gray-500 truncate">
@@ -1269,141 +1047,94 @@ const handleEmailChange = (newEmail) => {
                               ? "Loading locations..."
                               : field.value && field.value.length > 0
                               ? (() => {
-                                  const selectedLocations = field.value.map(
-                                    (locationId) => {
-                                      const location = dropdowns.locations.find(
-                                        (loc) => String(loc.id) === locationId
-                                      );
-                                      return (
-                                        toSentenceCase(
-                                          location?.location_name
-                                        ) || locationId
-                                      );
-                                    }
-                                  );
+                                  const selectedLocations = field.value.map((locationId) => {
+                                    const location = dropdowns.locations.find((loc) => String(loc.id) === locationId);
+                                    return toSentenceCase(location?.location_name) || locationId;
+                                  });
 
                                   if (selectedLocations.length === 1) {
                                     return selectedLocations[0];
                                   } else if (selectedLocations.length <= 2) {
                                     return selectedLocations.join(", ");
                                   } else {
-                                    return `${selectedLocations
-                                      .slice(0, 2)
-                                      .join(", ")}... (+${
-                                      selectedLocations.length - 2
-                                    } more)`;
+                                    return `${selectedLocations.slice(0, 2).join(", ")}... (+${selectedLocations.length - 2} more)`;
                                   }
                                 })()
                               : "Preferred Locations*"}
                           </span>
                           <svg
-                            className={`w-4 h-4 transition-transform ${
-                              isLocationsDropdownOpen ? "rotate-180" : ""
-                            }`}
+                            className={`w-4 h-4 transition-transform ${isLocationsDropdownOpen ? "rotate-180" : ""}`}
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M19 9l-7 7-7-7"
-                            />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                           </svg>
                         </button>
 
                         {/* Custom Dropdown Content */}
-                        {isLocationsDropdownOpen &&
-                          hasSelectedStates &&
-                          !locationsLoading && (
-                            <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-hidden">
-                              {/* Search Input Inside Dropdown */}
-                              <div className="p-2 border-b border-gray-200">
-                                <input
-                                  type="text"
-                                  placeholder="Search locations..."
-                                  value={locationSearchTerm}
-                                  onChange={(e) =>
-                                    setLocationSearchTerm(e.target.value)
-                                  }
-                                  className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
-                                  autoFocus
-                                />
-                              </div>
-
-                              {/* Locations List */}
-                              <div className="max-h-48 overflow-y-auto">
-                                {filteredLocations.length > 0 ? (
-                                  filteredLocations.map((location) => {
-                                    const isSelected = field.value?.includes(
-                                      String(location.id)
-                                    );
-                                    return (
-                                      <button
-                                        key={location.id}
-                                        type="button"
-                                        onClick={() => {
-                                          const currentValues =
-                                            field.value || [];
-                                          if (isSelected) {
-                                            // Deselect if already selected
-                                            field.onChange(
-                                              currentValues.filter(
-                                                (v) => v !== String(location.id)
-                                              )
-                                            );
-                                          } else {
-                                            // Select if not selected
-                                            field.onChange([
-                                              ...currentValues,
-                                              String(location.id),
-                                            ]);
-                                          }
-                                          setLocationSearchTerm("");
-                                        }}
-                                        className={`w-full px-3 py-2 text-left text-xs hover:bg-gray-100 flex items-center justify-between ${
-                                          isSelected
-                                            ? "bg-blue-50 text-blue-700"
-                                            : "text-gray-900"
-                                        }`}
-                                      >
-                                        <span>
-                                          {toSentenceCase(
-                                            location.location_name
-                                          ) || "-"}
-                                        </span>
-                                        {isSelected && (
-                                          <svg
-                                            className="w-4 h-4 text-blue-600"
-                                            fill="currentColor"
-                                            viewBox="0 0 20 20"
-                                          >
-                                            <path
-                                              fillRule="evenodd"
-                                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                              clipRule="evenodd"
-                                            />
-                                          </svg>
-                                        )}
-                                      </button>
-                                    );
-                                  })
-                                ) : locationSearchTerm ? (
-                                  <div className="px-3 py-2 text-xs text-gray-500">
-                                    No locations match "{locationSearchTerm}"
-                                  </div>
-                                ) : (
-                                  <div className="px-3 py-2 text-xs text-gray-500">
-                                    No locations available
-                                  </div>
-                                )}
-                              </div>
+                        {isLocationsDropdownOpen && hasSelectedStates && !locationsLoading && (
+                          <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-hidden">
+                            {/* Search Input Inside Dropdown */}
+                            <div className="p-2 border-b border-gray-200">
+                              <input
+                                type="text"
+                                placeholder="Search locations..."
+                                value={locationSearchTerm}
+                                onChange={(e) => setLocationSearchTerm(e.target.value)}
+                                className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                autoFocus
+                              />
                             </div>
-                          )}
+
+                            {/* Locations List */}
+                            <div className="max-h-48 overflow-y-auto">
+                              {filteredLocations.length > 0 ? (
+                                filteredLocations.map((location) => {
+                                  const isSelected = field.value?.includes(String(location.id));
+                                  return (
+                                    <button
+                                      key={location.id}
+                                      type="button"
+                                      onClick={() => {
+                                        const currentValues = field.value || [];
+                                        if (isSelected) {
+                                          // Deselect if already selected
+                                          field.onChange(currentValues.filter((v) => v !== String(location.id)));
+                                        } else {
+                                          // Select if not selected
+                                          field.onChange([...currentValues, String(location.id)]);
+                                        }
+                                        setLocationSearchTerm("");
+                                      }}
+                                      className={`w-full px-3 py-2 text-left text-xs hover:bg-gray-100 flex items-center justify-between ${
+                                        isSelected ? "bg-blue-50 text-blue-700" : "text-gray-900"
+                                      }`}
+                                    >
+                                      <span>{toSentenceCase(location.location_name) || "-"}</span>
+                                      {isSelected && (
+                                        <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                          <path
+                                            fillRule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clipRule="evenodd"
+                                          />
+                                        </svg>
+                                      )}
+                                    </button>
+                                  );
+                                })
+                              ) : locationSearchTerm ? (
+                                <div className="px-3 py-2 text-xs text-gray-500">No locations match "{locationSearchTerm}"</div>
+                              ) : (
+                                <div className="px-3 py-2 text-xs text-gray-500">No locations available</div>
+                              )}
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    <FormMessage className="text-red-500 text-xs" />
-                  </FormItem>
+                      <FormMessage className="text-red-500 text-xs" />
+                    </FormItem>
                   );
                 }}
               />
@@ -1415,9 +1146,7 @@ const handleEmailChange = (newEmail) => {
                 name="referred_employee_name"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Referred Employee Name
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Referred Employee Name</label>
                     <FormControl>
                       <Input
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
@@ -1437,9 +1166,7 @@ const handleEmailChange = (newEmail) => {
                 name="employee_referral_code"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Employee Referral Code
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Employee Referral Code</label>
                     <FormControl>
                       <Input
                         className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
@@ -1460,9 +1187,7 @@ const handleEmailChange = (newEmail) => {
                   name="preferred_role"
                   render={({ field }) => (
                     <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                      <label className="text-[10px] text-gray-600 font-medium block">
-                        Department*
-                      </label>
+                      <label className="text-[10px] text-gray-600 font-medium block">Department*</label>
                       <Select
                         onValueChange={field.onChange}
                         value={field.value}
@@ -1473,10 +1198,7 @@ const handleEmailChange = (newEmail) => {
                         </SelectTrigger>
                         <SelectContent className="bg-white border-gray-300">
                           {dropdowns.roles.map((role) => (
-                            <SelectItem
-                              key={role?.value}
-                              value={String(role?.value)}
-                            >
+                            <SelectItem key={role?.value} value={String(role?.value)}>
                               {role?.label || "-"}
                             </SelectItem>
                           ))}
@@ -1495,9 +1217,7 @@ const handleEmailChange = (newEmail) => {
                   name="preferred_role_name"
                   render={({ field }) => (
                     <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                      <label className="text-[10px] text-gray-600 font-medium block">
-                        Preferred Role*
-                      </label>
+                      <label className="text-[10px] text-gray-600 font-medium block">Preferred Role*</label>
                       <FormControl>
                         <Input
                           className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
@@ -1518,9 +1238,7 @@ const handleEmailChange = (newEmail) => {
                 name="notice_period"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Notice Period*
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Notice Period*</label>
                     <Select
                       onValueChange={field.onChange}
                       value={field.value}
@@ -1548,9 +1266,7 @@ const handleEmailChange = (newEmail) => {
                 name="current_salary"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Current Monthly Salary*
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Current Monthly Salary*</label>
                     <FormControl>
                       <Input
                         type="number"
@@ -1573,9 +1289,7 @@ const handleEmailChange = (newEmail) => {
                 name="expected_salary"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">
-                      Expected Monthly Salary*
-                    </label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Expected Monthly Salary*</label>
                     <FormControl>
                       <Input
                         type="number"
@@ -1609,15 +1323,8 @@ const handleEmailChange = (newEmail) => {
                     <FormControl>
                       <div className="flex items-center">
                         <label className="text-[12px] lg:text-[12px] 2xl:text-[16px] 3xl:text-[18px] leading-none font-normal text-[#373737] w-[100px] lg:w-[110px] 2xl:w-[120px] 3xl:w-[145px] h-[30px] lg:h-[35px] xl:h-[40px] 2xl:h-[45px] 3xl:h-[50px] flex items-center p-[4px_10px] lg:p-[10px_15px] 3xl:p-[10px_25px] bg-[#b3d5ff] rounded-full cursor-pointer hover:bg-[#c8e1ff] transition-background duration-300">
-                          <Image
-                            src="/images/icon-upload.svg"
-                            alt="icon-upload"
-                            width={26}
-                            height={21}
-                          />
-                          <span className="font-medium ml-1 lg:ml-1.5">
-                            Upload Resume*
-                          </span>
+                          <Image src="/images/icon-upload.svg" alt="icon-upload" width={26} height={21} />
+                          <span className="font-medium ml-1 lg:ml-1.5">Upload Resume*</span>
                           <input
                             type="file"
                             accept=".pdf,.jpeg,.png"
@@ -1628,16 +1335,9 @@ const handleEmailChange = (newEmail) => {
                         </label>
                         <span className="text-xs lg:text-xs 2xl:text-base leading-none font-normal text-gray-700 whitespace-nowrap overflow-hidden text-ellipsis flex-1 ml-1 lg:ml-1.5">
                           {selectedFile
-                            ? `${truncateFilename(
-                                selectedFile.name
-                              )} (${getFileTypeDisplay(selectedFile, null)})`
+                            ? `${truncateFilename(selectedFile.name)} (${getFileTypeDisplay(selectedFile, null)})`
                             : selectedFileName
-                            ? `${truncateFilename(
-                                selectedFileName.replace(
-                                  "uploads/job-applications/",
-                                  ""
-                                )
-                              )} (${getFileTypeDisplay(
+                            ? `${truncateFilename(selectedFileName.replace("uploads/job-applications/", ""))} (${getFileTypeDisplay(
                                 null,
                                 selectedFileName
                               )})`
@@ -1657,19 +1357,10 @@ const handleEmailChange = (newEmail) => {
                 type="submit"
                 // disabled={loading || !isOtpVerified}
               >
-                <span className="px-1 lg:px-3.5">
-                  {loading ? "Submitting..." : "Submit"}
-                </span>
-                <Image
-                  src="/images/icon-careerBtn.svg"
-                  alt="careerBtn"
-                  width={40}
-                  height={40}
-                  className="w-5 lg:w-6 2xl:w-8 h-auto"
-                />
+                <span className="px-1 lg:px-3.5">{loading ? "Submitting..." : "Submit"}</span>
+                <Image src="/images/icon-careerBtn.svg" alt="careerBtn" width={40} height={40} className="w-5 lg:w-6 2xl:w-8 h-auto" />
               </Button>
             </div>
-
           </form>
         </Form>
       </div>

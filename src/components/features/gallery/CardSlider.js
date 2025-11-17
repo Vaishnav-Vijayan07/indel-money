@@ -7,6 +7,7 @@ import { EffectCoverflow, Navigation } from "swiper/modules";
 import "./gallery.css";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const slides = [
   {
@@ -48,13 +49,14 @@ const slides = [
 
 export default function CardSlider({ sliderItems }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const router = useRouter();
 
   const handleSlideChange = (swiper) => {
     setActiveIndex(swiper.activeIndex);
   };
 
-  const handleSlideClick = (index) => {
-    
+  const handleSlideClick = (slug) => {
+    router.push(`/gallery/${slug}`);
   };
 
   return (
@@ -152,7 +154,7 @@ export default function CardSlider({ sliderItems }) {
           >
             <div
               className="relative w-full h-[370px] lg:h-[350px] xl:h-[400px] 2xl:h-[400px] 3xl:h-[518px] rounded-[38px] overflow-hidden shadow-lg"
-              onClick={() => handleSlideClick(slide?.slug)}
+              // onClick={() => handleSlideClick(slide?.slug)}
             >
               <Image
                 src={slide?.gallery ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${slide.gallery}` : "/images/gallSlide01.jpg"}

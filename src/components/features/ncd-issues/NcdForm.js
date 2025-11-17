@@ -162,14 +162,6 @@ const ContactForm = ({ isMobile = false, showDebug = false }) => {
       zc_gad: "",
     };
 
-    // Debug: Log the fields being submitted
-    console.log("Zoho Form Submission Data:", {
-      campaign: fields.COBJ8CF16,
-      source: fields.COBJ8CF17,
-      medium: fields.COBJ8CF18,
-      referralUrl: fields.COBJ8CF19,
-    });
-
     Object.keys(fields).forEach((key) => {
       const input = document.createElement("input");
       input.type = "hidden";
@@ -233,14 +225,20 @@ const ContactForm = ({ isMobile = false, showDebug = false }) => {
           <div className="mb-4 p-3 bg-yellow-50 border-2 border-yellow-400 rounded text-xs">
             <div className="font-bold text-yellow-800 mb-2">🔍 UTM Debug Panel (Dev Only)</div>
             <div className="space-y-1 text-gray-700">
-              <div><strong>Campaign:</strong> {utmParams.campaign}</div>
-              <div><strong>Source:</strong> {utmParams.source}</div>
-              <div><strong>Medium:</strong> {utmParams.medium}</div>
-              <div className="break-all"><strong>Referral URL:</strong> {utmParams.referralUrl}</div>
+              <div>
+                <strong>Campaign:</strong> {utmParams.campaign}
+              </div>
+              <div>
+                <strong>Source:</strong> {utmParams.source}
+              </div>
+              <div>
+                <strong>Medium:</strong> {utmParams.medium}
+              </div>
+              <div className="break-all">
+                <strong>Referral URL:</strong> {utmParams.referralUrl}
+              </div>
             </div>
-            <div className="mt-2 text-xs text-yellow-700">
-              ℹ️ Open browser console (F12) to see detailed logs
-            </div>
+            <div className="mt-2 text-xs text-yellow-700">ℹ️ Open browser console (F12) to see detailed logs</div>
           </div>
         )}
 

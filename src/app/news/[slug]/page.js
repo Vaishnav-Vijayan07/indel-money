@@ -93,7 +93,6 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const { meta, error } = await getMetaData(slug);
 
-
   if (!meta || error) {
     return defaultMetadata(slug);
   }
@@ -128,12 +127,10 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function News({ params }) {
-  const { slug } = params; 
-  console.log(params)
-  console.log("slug:", slug);
+  const { slug } = params;
+
   const { data: newsData, recentNews, title, error } = await fetchBlogData(slug);
 
-  
   // Handle error state for news data
   if (error || !newsData) {
     return (

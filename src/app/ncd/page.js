@@ -39,9 +39,6 @@ export default async function report() {
     return <div>Failed to fetch report data</div>;
   }
 
-  console.log("Current Reports:", currentReports);
-  console.log("Past Reports:", pastReports);
-
   return (
     <>
       <NcdReports currentReports={currentReports} pastReports={pastReports} content={contents} />

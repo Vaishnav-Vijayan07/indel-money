@@ -38,7 +38,7 @@ export default function NCData({ reports, currentReports, pastReports, title, ty
 
   const handleDisagree = () => {
     // Handle disagreement - just close modal
-    console.log("User disagreed to document:", selectedReport);
+
     setIsPDFModalOpen(false);
     setSelectedReport(null);
   };
