@@ -17,6 +17,7 @@ import { serverMediaPath } from "@/constants/constants";
 
 // Memoized ImageBox component to prevent unnecessary re-renders
 const ImageBox = memo(function ImageBox({ item, className, isVideo = false }) {
+  const isYouTube = item?.video?.includes("youtube.com") || item?.video?.includes("youtu.be");
   const src = item?.image || item?.video_thumbnail || "/images/placeholder.jpg";
   const alt = item?.thumbnail_alt || (isVideo ? "Gallery Video" : "Gallery Image");
 
@@ -27,10 +28,14 @@ const ImageBox = memo(function ImageBox({ item, className, isVideo = false }) {
           <LightGallery speed={300} plugins={[lgThumbnail, lgZoom, lgVideo]} download={false} elementClassNames="w-full">
             <a
               data-lg-size="1280-720"
-              data-video={JSON.stringify({
-                source: [{ src: `${serverMediaPath}${item?.video}`, type: "video/mp4" }],
-                attributes: { preload: false, controls: true },
-              })}
+              {...(isYouTube
+                ? { "data-src": item?.video }
+                : {
+                    "data-video": JSON.stringify({
+                      source: [{ src: `${serverMediaPath}${item?.video}`, type: "video/mp4" }],
+                      attributes: { preload: false, controls: true },
+                    }),
+                  })}
               data-poster={`${serverMediaPath}${src}`}
             >
               <Image
@@ -91,7 +96,6 @@ function GalleryItems({ slug }) {
       setGalleryItems(galleryItems);
       setPagination(pagination);
     } catch (error) {
-      
     } finally {
       setIsLoading(false);
     }
