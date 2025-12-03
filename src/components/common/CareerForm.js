@@ -32,7 +32,7 @@ const baseSchema = {
   phone: z.string().regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
   current_location: z.string().optional(),
-  preferred_locations: z.array(z.string()).min(1, { message: "Please select at least one location." }),
+  preferred_locations: z.array(z.string()).optional(),
   preferred_states: z.array(z.string()).min(1, { message: "Please select a state." }).max(1, { message: "Please select only one state." }),
   preferred_districts: z.array(z.string()).min(1, { message: "Please select a district." }).max(1, { message: "Please select only one district." }),
   preferred_role: z.string().min(1, { message: "Please select a preferred role." }),
@@ -344,6 +344,8 @@ function CareerFormInner({ jobId, isGeneral }) {
 
   // Auto-fill form
   const autoFillForm = (data) => {
+    console.log("AUTO FILL DATA", data);
+
     const validatedData = {
       name: data.name || "",
       phone: data.phone || "",
@@ -1098,7 +1100,10 @@ function CareerFormInner({ jobId, isGeneral }) {
                               ? "Loading districts..."
                               : field.value && field.value.length > 0
                               ? (() => {
-                                  const district = dropdowns.districts.find((dist) => String(dist.id) === field.value[0]);
+                                  const district = dropdowns.districts.find((dist) => String(dist.id) == String(field.value[0]));
+                                  console.log(district);
+                                  console.log(dropdowns.districts);
+                                  console.log(field.value[0]);
                                   return toSentenceCase(district?.district_name) || field.value[0];
                                 })()
                               : "Choose Preferred District*"}
@@ -1211,7 +1216,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                               : field.value && field.value.length > 0
                               ? (() => {
                                   const selectedLocations = field.value.map((locationId) => {
-                                    const location = dropdowns.locations.find((loc) => String(loc.id) === locationId);
+                                    const location = dropdowns.locations.find((loc) => String(loc.id) == String(locationId));
                                     return toSentenceCase(location?.location_name) || locationId;
                                   });
 
