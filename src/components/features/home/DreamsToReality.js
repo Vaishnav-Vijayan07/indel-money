@@ -2,8 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import CounterBox from "./CounterBox";
-// import { motion } from "framer-motion";
-import * as motion from "motion/react-client";
+import { motion } from "framer-motion";
 
 export default function DreamsToReality({ initialData, statsData }) {
   return (
