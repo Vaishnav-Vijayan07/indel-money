@@ -32,8 +32,9 @@ const baseSchema = {
   phone: z.string().regex(/^\d{10}$/, { message: "Phone number must be at least 10 digits." }),
   email: z.string().email({ message: "Invalid email address." }),
   current_location: z.string().optional(),
-  preferred_locations: z.array(z.string()).min(1, { message: "Please select at least one location." }),
-  preferred_states: z.array(z.string()).min(1, { message: "Please select at least one state." }),
+  preferred_locations: z.array(z.string()).optional(),
+  preferred_states: z.array(z.string()).min(1, { message: "Please select a state." }).max(1, { message: "Please select only one state." }),
+  preferred_districts: z.array(z.string()).min(1, { message: "Please select a district." }).max(1, { message: "Please select only one district." }),
   preferred_role: z.string().min(1, { message: "Please select a preferred role." }),
   referred_employee_name: z.string().optional(),
   employee_referral_code: z.string().optional(),
@@ -42,15 +43,15 @@ const baseSchema = {
   }),
   current_salary: z
     .string()
-    .regex(/^\d{5,}$/, {
-      message: "Must be at least 5 digits and no decimals.",
+    .regex(/^[1-9]\d{4}$/, {
+      message: "Must be exactly 5 digits, cannot start with 0 or be all zeros.",
     })
     .optional(),
 
   expected_salary: z
     .string()
-    .regex(/^\d{5,}$/, {
-      message: "Must be at least 5 digits and no decimals.",
+    .regex(/^[1-9]\d{4}$/, {
+      message: "Must be exactly 5 digits, cannot start with 0 or be all zeros.",
     })
     .optional(),
   age: z
@@ -85,11 +86,15 @@ function CareerFormInner({ jobId, isGeneral }) {
     locations: [],
     roles: [],
     states: [],
+    districts: [],
   });
   const [dropdownsLoaded, setDropdownsLoaded] = useState(false);
   const [locationsLoading, setLocationsLoading] = useState(false);
+  const [districtsLoading, setDistrictsLoading] = useState(false);
   const [stateSearchTerm, setStateSearchTerm] = useState("");
   const [isStatesDropdownOpen, setIsStatesDropdownOpen] = useState(false);
+  const [districtSearchTerm, setDistrictSearchTerm] = useState("");
+  const [isDistrictsDropdownOpen, setIsDistrictsDropdownOpen] = useState(false);
   const [locationSearchTerm, setLocationSearchTerm] = useState("");
   const [isLocationsDropdownOpen, setIsLocationsDropdownOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -175,6 +180,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       email: "",
       preferred_locations: [],
       preferred_states: [],
+      preferred_districts: [],
       current_location: "",
       referred_employee_name: "",
       employee_referral_code: "",
@@ -227,6 +233,7 @@ function CareerFormInner({ jobId, isGeneral }) {
         states: states,
         locations: locations,
         roles: roles,
+        districts: [],
       });
       setDropdownsLoaded(true);
     } catch (error) {
@@ -237,7 +244,7 @@ function CareerFormInner({ jobId, isGeneral }) {
         try {
           const { data } = await api.get("/career/jobs/dropdowns");
           if (data.success) {
-            setDropdowns(data.data || { locations: [], roles: [], states: [] });
+            setDropdowns(data.data || { locations: [], roles: [], states: [], districts: [] });
             setDropdownsLoaded(true);
             return;
           }
@@ -250,8 +257,34 @@ function CareerFormInner({ jobId, isGeneral }) {
     }
   };
 
-  // Fetch locations by state IDs
-  const fetchLocationsByStates = async (stateIds) => {
+  // Fetch districts by state ID (single state)
+  const fetchDistrictsByStates = async (stateIds) => {
+    if (!stateIds || stateIds.length === 0) {
+      setDropdowns((prev) => ({ ...prev, districts: [], locations: [] }));
+      return;
+    }
+
+    try {
+      setDistrictsLoading(true);
+      // Use first state only since we only allow one state
+      const stateId = stateIds[0];
+
+      const { data } = await api.get(`/career/districts/by_state/${stateId}`);
+
+      if (!data.success) throw new Error(data.message || "Failed to fetch districts");
+
+      setDropdowns((prev) => ({ ...prev, districts: data.data || [], locations: [] }));
+    } catch (error) {
+      console.error("Error fetching districts by state:", error);
+      toast.error("Failed to load districts for selected state");
+    } finally {
+      setDistrictsLoading(false);
+    }
+  };
+
+  // Fetch locations by state IDs and district IDs (for general applications)
+  // OR just by state IDs (for job-specific applications)
+  const fetchLocationsByStatesAndDistricts = async (stateIds, districtIds) => {
     if (!stateIds || stateIds.length === 0) {
       setDropdowns((prev) => ({ ...prev, locations: [] }));
       return;
@@ -261,12 +294,10 @@ function CareerFormInner({ jobId, isGeneral }) {
       setLocationsLoading(true);
       const stateIdsParam = stateIds.join(",");
 
-      let endpoint = `/career/locations/by_state?state_ids=${stateIdsParam}`;
+      // For general applications, use state and district filtering
+      const districtIdsParam = districtIds.join(",");
 
-      // If jobId is provided, fetch job-specific locations
-      if (jobId && !isGeneral) {
-        endpoint = `/career/jobs/${jobId}/locations/by_state?state_ids=${stateIdsParam}`;
-      }
+      const endpoint = `/career/locations/by_district_state?state_id=${stateIdsParam}&district_id=${districtIdsParam}`;
 
       const { data } = await api.get(endpoint);
 
@@ -274,7 +305,7 @@ function CareerFormInner({ jobId, isGeneral }) {
 
       setDropdowns((prev) => ({ ...prev, locations: data.data || [] }));
     } catch (error) {
-      console.error("Error fetching locations by states:", error);
+      console.error("Error fetching locations:", error);
 
       // Fallback to general locations if job-specific fails
       if (jobId && !isGeneral) {
@@ -290,7 +321,7 @@ function CareerFormInner({ jobId, isGeneral }) {
         }
       }
 
-      toast.error("Failed to load locations for selected states");
+      toast.error("Failed to load locations");
     } finally {
       setLocationsLoading(false);
     }
@@ -301,19 +332,27 @@ function CareerFormInner({ jobId, isGeneral }) {
     (state.label || state.state_name || state.name)?.toLowerCase().includes(stateSearchTerm.toLowerCase())
   );
 
+  // Filter districts based on search term
+  const filteredDistricts = dropdowns.districts
+    .filter((district) => district.district_name?.toLowerCase().includes(districtSearchTerm.toLowerCase()))
+    .sort((a, b) => a.district_name.localeCompare(b.district_name));
+
   // Filter locations based on search term
-  const filteredLocations = dropdowns.locations.filter((location) =>
-    location.location_name?.toLowerCase().includes(locationSearchTerm.toLowerCase())
-  );
+  const filteredLocations = dropdowns.locations
+    .filter((location) => location.location_name?.toLowerCase().includes(locationSearchTerm.toLowerCase()))
+    .sort((a, b) => a.location_name.localeCompare(b.location_name));
 
   // Auto-fill form
   const autoFillForm = (data) => {
+    console.log("AUTO FILL DATA", data);
+
     const validatedData = {
       name: data.name || "",
       phone: data.phone || "",
       email: data.email || "",
       preferred_locations: data.preferred_locations || [],
       preferred_states: data.preferred_states || [],
+      preferred_districts: data.preferred_districts || [],
       current_location: data.current_location || "",
       referred_employee_name: data.referred_employee_name || "",
       employee_referral_code: data.employee_referral_code || "",
@@ -328,9 +367,19 @@ function CareerFormInner({ jobId, isGeneral }) {
 
     form.reset(validatedData);
 
-    // If preferred_states are loaded, fetch corresponding locations
+    // If preferred_states are loaded, fetch corresponding districts
     if (validatedData.preferred_states && validatedData.preferred_states.length > 0) {
-      fetchLocationsByStates(validatedData.preferred_states);
+      fetchDistrictsByStates(validatedData.preferred_states);
+    }
+
+    // If preferred_districts are loaded, fetch corresponding locations
+    if (
+      validatedData.preferred_states &&
+      validatedData.preferred_states.length > 0 &&
+      validatedData.preferred_districts &&
+      validatedData.preferred_districts.length > 0
+    ) {
+      fetchLocationsByStatesAndDistricts(validatedData.preferred_states, validatedData.preferred_districts);
     }
   };
 
@@ -339,18 +388,28 @@ function CareerFormInner({ jobId, isGeneral }) {
     fetchDropdowns();
   }, []);
 
-  // Watch for changes in preferred_states and fetch locations
+  // Watch for changes in preferred_states and fetch districts/locations
   useEffect(() => {
     const subscription = form.watch((value, { name }) => {
       if (name === "preferred_states" && value.preferred_states) {
-        // Clear selected locations when states change
+        form.setValue("preferred_districts", []);
         form.setValue("preferred_locations", []);
-        // Fetch locations for selected states
-        fetchLocationsByStates(value.preferred_states);
+
+        // Fetch districts for selected states
+        fetchDistrictsByStates(value.preferred_states);
+      }
+      if (name === "preferred_districts" && value.preferred_districts) {
+        // Clear selected locations when districts change
+        form.setValue("preferred_locations", []);
+        // Fetch locations for selected states and districts
+        const selectedStates = form.getValues("preferred_states");
+        if (selectedStates && selectedStates.length > 0 && value.preferred_districts.length > 0) {
+          fetchLocationsByStatesAndDistricts(selectedStates, value.preferred_districts);
+        }
       }
     });
     return () => subscription.unsubscribe();
-  }, [form]);
+  }, [form, isGeneral]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -358,6 +417,10 @@ function CareerFormInner({ jobId, isGeneral }) {
       if (isStatesDropdownOpen && !event.target.closest(".states-dropdown")) {
         setIsStatesDropdownOpen(false);
         setStateSearchTerm("");
+      }
+      if (isDistrictsDropdownOpen && !event.target.closest(".districts-dropdown")) {
+        setIsDistrictsDropdownOpen(false);
+        setDistrictSearchTerm("");
       }
       if (isLocationsDropdownOpen && !event.target.closest(".locations-dropdown")) {
         setIsLocationsDropdownOpen(false);
@@ -369,7 +432,7 @@ function CareerFormInner({ jobId, isGeneral }) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isStatesDropdownOpen, isLocationsDropdownOpen]);
+  }, [isStatesDropdownOpen, isDistrictsDropdownOpen, isLocationsDropdownOpen]);
 
   useEffect(() => {
     if (dropdownsLoaded) {
@@ -383,11 +446,12 @@ function CareerFormInner({ jobId, isGeneral }) {
         setVerifiedEmail(parsedData.email); // Set verified email
         setCurrentEmailInForm(parsedData.email); // Set current form email
 
-        // Don't auto-fill states and locations for job-specific applications
+        // Don't auto-fill states, districts and locations for job-specific applications
         if (jobId && !isGeneral) {
-          // Remove states and locations from auto-fill data
+          // Remove states, districts and locations from auto-fill data
           const filteredData = { ...parsedData };
           delete filteredData.preferred_states;
+          delete filteredData.preferred_districts;
           delete filteredData.preferred_locations;
           autoFillForm(filteredData);
         } else {
@@ -432,11 +496,12 @@ function CareerFormInner({ jobId, isGeneral }) {
 
       if (!data.success) throw new Error(data.message || "Invalid OTP");
       if (data.data) {
-        // Don't auto-fill states and locations for job-specific applications
+        // Don't auto-fill states, districts and locations for job-specific applications
         if (jobId && !isGeneral) {
-          // Remove states and locations from auto-fill data
+          // Remove states, districts and locations from auto-fill data
           const filteredData = { ...data.data };
           delete filteredData.preferred_states;
+          delete filteredData.preferred_districts;
           delete filteredData.preferred_locations;
           autoFillForm(filteredData);
 
@@ -532,6 +597,10 @@ function CareerFormInner({ jobId, isGeneral }) {
     // Append preferred states as array
     values.preferred_states.forEach((state) => {
       formData.append("applicant[preferred_states][]", state);
+    });
+    // Append preferred districts as array
+    values.preferred_districts.forEach((district) => {
+      formData.append("applicant[preferred_districts][]", district);
     });
     formData.append("applicant[current_location]", values.current_location || "");
     formData.append("applicant[referred_employee_name]", values.referred_employee_name || "");
@@ -907,14 +976,14 @@ function CareerFormInner({ jobId, isGeneral }) {
                 )}
               />
             </div>
-            {/* Preferred States Field */}
+            {/* Preferred State Field */}
             <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
               <FormField
                 control={form.control}
                 name="preferred_states"
                 render={({ field }) => (
                   <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                    <label className="text-[10px] text-gray-600 font-medium block">Preferred States*</label>
+                    <label className="text-[10px] text-gray-600 font-medium block">Preferred State*</label>
                     <div className="relative states-dropdown">
                       {/* Custom Dropdown Trigger */}
                       <button
@@ -926,20 +995,10 @@ function CareerFormInner({ jobId, isGeneral }) {
                         <span className="text-gray-500 truncate">
                           {field.value && field.value.length > 0
                             ? (() => {
-                                const selectedStates = field.value.map((stateId) => {
-                                  const state = dropdowns.states.find((st) => String(st.value) === stateId);
-                                  return toSentenceCase(state?.label || state?.state_name || state?.name) || stateId;
-                                });
-
-                                if (selectedStates.length === 1) {
-                                  return selectedStates[0];
-                                } else if (selectedStates.length <= 2) {
-                                  return selectedStates.join(", ");
-                                } else {
-                                  return `${selectedStates.slice(0, 2).join(", ")}... (+${selectedStates.length - 2} more)`;
-                                }
+                                const state = dropdowns.states.find((st) => String(st.value) === field.value[0]);
+                                return toSentenceCase(state?.label || state?.state_name || state?.name) || field.value[0];
                               })()
-                            : "Choose Preferred States*"}
+                            : "Choose Preferred State*"}
                         </span>
                         <svg
                           className={`w-4 h-4 transition-transform ${isStatesDropdownOpen ? "rotate-180" : ""}`}
@@ -976,15 +1035,10 @@ function CareerFormInner({ jobId, isGeneral }) {
                                     key={state.value}
                                     type="button"
                                     onClick={() => {
-                                      const currentValues = field.value || [];
-                                      if (isSelected) {
-                                        // Deselect if already selected
-                                        field.onChange(currentValues.filter((v) => v !== String(state.value)));
-                                      } else {
-                                        // Select if not selected
-                                        field.onChange([...currentValues, String(state.value)]);
-                                      }
+                                      // Only allow selecting one state
+                                      field.onChange([String(state.value)]);
                                       setStateSearchTerm("");
+                                      setIsStatesDropdownOpen(false);
                                     }}
                                     className={`w-full px-3 py-2 text-left text-xs hover:bg-gray-100 flex items-center justify-between ${
                                       isSelected ? "bg-blue-50 text-blue-700" : "text-gray-900"
@@ -1019,13 +1073,125 @@ function CareerFormInner({ jobId, isGeneral }) {
             </div>
 
             <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
+              <FormField
+                control={form.control}
+                name="preferred_districts"
+                render={({ field }) => {
+                  const selectedStates = form.watch("preferred_states") || [];
+                  const hasSelectedStates = selectedStates.length > 0;
+
+                  return (
+                    <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                      <label className="text-[10px] text-gray-600 font-medium block">Preferred District*</label>
+                      <div className="relative districts-dropdown">
+                        {/* Custom Dropdown Trigger */}
+                        <button
+                          type="button"
+                          onClick={() => hasSelectedStates && !districtsLoading && setIsDistrictsDropdownOpen(!isDistrictsDropdownOpen)}
+                          disabled={!hasSelectedStates || districtsLoading}
+                          className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 text-xs text-left flex items-center justify-between ${
+                            !hasSelectedStates || districtsLoading ? "bg-gray-100 cursor-not-allowed" : "bg-white"
+                          }`}
+                        >
+                          <span className="text-gray-500 truncate">
+                            {!hasSelectedStates
+                              ? "Select states first"
+                              : districtsLoading
+                              ? "Loading districts..."
+                              : field.value && field.value.length > 0
+                              ? (() => {
+                                  const district = dropdowns.districts.find((dist) => String(dist.id) == String(field.value[0]));
+                                  console.log(district);
+                                  console.log(dropdowns.districts);
+                                  console.log(field.value[0]);
+                                  return toSentenceCase(district?.district_name) || field.value[0];
+                                })()
+                              : "Choose Preferred District*"}
+                          </span>
+                          <svg
+                            className={`w-4 h-4 transition-transform ${isDistrictsDropdownOpen ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+
+                        {/* Custom Dropdown Content */}
+                        {isDistrictsDropdownOpen && hasSelectedStates && !districtsLoading && (
+                          <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-hidden">
+                            {/* Search Input Inside Dropdown */}
+                            <div className="p-2 border-b border-gray-200">
+                              <input
+                                type="text"
+                                placeholder="Search districts..."
+                                value={districtSearchTerm}
+                                onChange={(e) => setDistrictSearchTerm(e.target.value)}
+                                className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                autoFocus
+                              />
+                            </div>
+
+                            {/* Districts List */}
+                            <div className="max-h-48 overflow-y-auto">
+                              {filteredDistricts.length > 0 ? (
+                                filteredDistricts.map((district) => {
+                                  const isSelected = field.value?.includes(String(district.id));
+                                  return (
+                                    <button
+                                      key={district.id}
+                                      type="button"
+                                      onClick={() => {
+                                        // Only allow selecting one district
+                                        field.onChange([String(district.id)]);
+                                        setDistrictSearchTerm("");
+                                        setIsDistrictsDropdownOpen(false);
+                                      }}
+                                      className={`w-full px-3 py-2 text-left text-xs hover:bg-gray-100 flex items-center justify-between ${
+                                        isSelected ? "bg-blue-50 text-blue-700" : "text-gray-900"
+                                      }`}
+                                    >
+                                      <span>{toSentenceCase(district.district_name) || "-"}</span>
+                                      {isSelected && (
+                                        <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                          <path
+                                            fillRule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clipRule="evenodd"
+                                          />
+                                        </svg>
+                                      )}
+                                    </button>
+                                  );
+                                })
+                              ) : districtSearchTerm ? (
+                                <div className="px-3 py-2 text-xs text-gray-500">No districts match "{districtSearchTerm}"</div>
+                              ) : (
+                                <div className="px-3 py-2 text-xs text-gray-500">No districts available</div>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      <FormMessage className="text-red-500 text-xs" />
+                    </FormItem>
+                  );
+                }}
+              />
+            </div>
+
+            <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
               {/* Preferred Locations Field */}
               <FormField
                 control={form.control}
                 name="preferred_locations"
                 render={({ field }) => {
                   const selectedStates = form.watch("preferred_states") || [];
+                  const selectedDistricts = form.watch("preferred_districts") || [];
                   const hasSelectedStates = selectedStates.length > 0;
+                  const hasSelectedDistricts = selectedDistricts.length > 0;
+                  const canSelectLocations = isGeneral ? hasSelectedStates && hasSelectedDistricts : hasSelectedStates;
 
                   return (
                     <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
@@ -1034,21 +1200,23 @@ function CareerFormInner({ jobId, isGeneral }) {
                         {/* Custom Dropdown Trigger */}
                         <button
                           type="button"
-                          onClick={() => hasSelectedStates && !locationsLoading && setIsLocationsDropdownOpen(!isLocationsDropdownOpen)}
-                          disabled={!hasSelectedStates || locationsLoading}
+                          onClick={() => canSelectLocations && !locationsLoading && setIsLocationsDropdownOpen(!isLocationsDropdownOpen)}
+                          disabled={!canSelectLocations || locationsLoading}
                           className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 text-xs text-left flex items-center justify-between ${
-                            !hasSelectedStates || locationsLoading ? "bg-gray-100 cursor-not-allowed" : "bg-white"
+                            !canSelectLocations || locationsLoading ? "bg-gray-100 cursor-not-allowed" : "bg-white"
                           }`}
                         >
                           <span className="text-gray-500 truncate">
                             {!hasSelectedStates
                               ? "Select states first"
+                              : isGeneral && !hasSelectedDistricts
+                              ? "Select districts first"
                               : locationsLoading
                               ? "Loading locations..."
                               : field.value && field.value.length > 0
                               ? (() => {
                                   const selectedLocations = field.value.map((locationId) => {
-                                    const location = dropdowns.locations.find((loc) => String(loc.id) === locationId);
+                                    const location = dropdowns.locations.find((loc) => String(loc.id) == String(locationId));
                                     return toSentenceCase(location?.location_name) || locationId;
                                   });
 
@@ -1073,7 +1241,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                         </button>
 
                         {/* Custom Dropdown Content */}
-                        {isLocationsDropdownOpen && hasSelectedStates && !locationsLoading && (
+                        {isLocationsDropdownOpen && canSelectLocations && !locationsLoading && (
                           <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-hidden">
                             {/* Search Input Inside Dropdown */}
                             <div className="p-2 border-b border-gray-200">
