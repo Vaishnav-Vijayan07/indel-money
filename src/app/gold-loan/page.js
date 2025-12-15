@@ -177,138 +177,204 @@ export default async function GoldLoan() {
   if (!contents && !bannerIcons && !schemes && !faqs && !features) {
     return <div>Failed to fetch Gold Loan data</div>;
   }
+
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FinancialService",
+        "name": "Indel Money Limited",
+        "url": "https://indelmoney.com/gold-loan",
+        "logo": "https://indelmoney.com/_next/image?url=https%3A%2F%2Fbackend.indelmoney.com%2Fuploads%2Fbanner%2F1763029961331-201441951.jpg&w=1920&q=75",
+        "description": "Indel Money offers instant and secure gold loans with high LTV, easy approval, flexible repayment and safe storage.",
+        "telephone": "1800 4253 990",
+        "email": "care@indelmoney.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Indel House, Changampuzhanagar",
+          "addressLocality": "South Kalamassery P O",
+          "addressRegion": "Kerala",
+          "postalCode": "682033",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 10.043098838609305,
+          "longitude": 76.31735007301208
+        },
+        "sameAs": [
+          "https://www.facebook.com/indelmoney",
+          "https://www.instagram.com/indelmoney",
+          "https://www.linkedin.com/company/indel-money",
+          "https://twitter.com/indelmoney"
+        ],
+        "serviceType": "Gold Loan",
+        "provider": {
+          "@type": "Organization",
+          "name": "Indel Money Limited",
+          "url": "https://indelmoney.com/"
+        },
+        "areaServed": "IN",
+        "offers": {
+          "@type": "Offer",
+          "name": "Gold Loan",
+          "description": "Quick and secure gold loans with high LTV, transparent interest rates, and instant disbursal.",
+          "url": "https://indelmoney.com/gold-loan"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Branches",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "LocalBusiness",
+                "name": "Indel Money Limited",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Indel House, Changampuzhanagar",
+                  "addressLocality": "South Kalamassery P O",
+                  "addressRegion": "Kerala",
+                  "postalCode": "682033",
+                  "addressCountry": "IN"
+                },
+                "telephone": "04842933979"
+              }
+            }
+          ]
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "opens": "09:30",
+            "closes": "17:30"
+          }
+        ],
+        "paymentAccepted": "Cash, Credit Card, NEFT/IMPS",
+        "currenciesAccepted": "INR"
+      },
+      {
+        "@type": "WebPage",
+        "name": "Gold Loan - Indel Money",
+        "url": "https://indelmoney.com/gold-loan",
+        "description": "Apply for an instant, secure and hassle-free gold loan from Indel Money with high LTV, low interest and quick approval."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://indelmoney.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Gold Loan",
+            "item": "https://indelmoney.com/gold-loan"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a gold loan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A loan obtained by securing your gold jewelry with the lender is called a gold loan. You will receive instant funds on pledging your gold ornaments, thus it can also be called a loan against gold. This way your gold ornaments are mobilized to generate funds instead of lying idle."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does a gold loan work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Walk into any Indel Money branch with your gold ornaments and documents. After evaluation and verification, the loan amount is sanctioned instantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the benefit of getting a gold loan from Indel Money?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Indel Money offers low interest rates, minimal documentation, flexible repayment options, in-house gold valuation and secure storage, ensuring complete peace of mind."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the gold loan interest rate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gold loan interest rates typically range from 12% to 30% annually depending on the scheme."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Am I a good candidate for a gold loan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Any Indian citizen who owns gold ornaments can apply for a gold loan from Indel Money."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my gold secure with Indel Money?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All branches have CCTV-monitored secure vaults ensuring 24x7 safety of your pledged gold."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why choose a gold loan over a personal loan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gold loans have lower interest, no prepayment charges, higher loan limits and more flexible repayment options compared to personal loans."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How fast is gold loan processing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "With correct documents, gold loans at Indel Money are processed and disbursed in 10–15 minutes."
+            }
+          }
+        ]
+      }
+    ]
+  };
   return (
-    // <>
-    //   {/* Gold loan calculator contents*/}
-    //   <div className="hidden sm:block">
-    //     <ServiceBanner
-    //       bannerIcons={bannerIcons}
-    //       title={contents?.page_title}
-    //       announcement_text={announcement?.text}
-    //       gold_rate_text={contents?.gold_rate_text}
-    //       banner_image={contents?.banner_image}
-    //       alt={contents?.banner_alt}
-    //       banner_image_mobile={contents?.banner_image_mobile}
-    //       goldRate={goldRateData}
-    //     />
-    //   </div>
-    //   <div className="block sm:hidden">
-    //     <MobServiceBanner
-    //       bannerIcons={bannerIcons}
-    //       title={contents?.page_title}
-    //       announcement_text={announcement?.text}
-    //       gold_rate_text={contents?.gold_rate_text}
-    //       banner_image={contents?.banner_image_mobile}
-    //       alt={contents?.banner_alt}
-    //       goldRate={goldRateData}
-    //     />
-    //   </div>
-
-    //   {/* Gold loan contents*/}
-    //   <div id="gold-loan-steps" className="hidden sm:block">
-    //     <StepGoldLoan
-    //       className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]"
-    //       hideTitle={true}
-    //       loanSteps={steps}
-    //       title={contents?.gold_loan_step_title}
-    //     />
-    //   </div>
-    //   <div className="block sm:hidden">
-    //     <MobStepGoldLoan loanSteps={steps} className="py-[30px_20px]" title={contents?.gold_loan_step_title} />
-    //   </div>
-
-    //   {/* Gold loan steps */}
-    //   <div id="easy-step" className="hidden sm:block">
-    //     <GoldLoanCriteria
-    //       title={contents?.gold_loan_step_title}
-    //       eligibilityTitle={contents?.eligibility_title}
-    //       description={contents?.description}
-    //       documentationTitle={contents?.documentation_title}
-    //       documentationDescription={contents?.documentation_description}
-    //       identityProofTitle={contents?.identity_proof_title}
-    //       identityProof={contents?.identity_proof_description}
-    //       addressProofTitle={contents?.address_proof}
-    //       addressProof={contents?.address_proof_description}
-    //       image={contents?.steps_image}
-    //     />
-    //   </div>
-    //   <div className="block sm:hidden">
-    //     <MobGoldLoanCriteria
-    //       title={contents?.gold_loan_step_title}
-    //       description={contents?.description}
-    //       idProofTitle={contents?.identity_proof_title}
-    //       identityProof={contents?.identity_proof_description}
-    //       addressProofTitle={contents?.address_proof}
-    //       addressProof={contents?.address_proof_description}
-    //       image={contents?.steps_image}
-    //     />
-    //   </div>
-
-    //   {/* Gold loan calculator contents*/}
-    //   <div className="hidden sm:block">
-    //     <StepGoldLoanCalculator className="py-[30px] lg:py-[40px] 2xl:py-[80px] 3xl:py-[100px]" />
-    //   </div>
-    //   <div className="block sm:hidden">
-    //     <MobStepGoldLoanCalculator />
-    //   </div>
-
-    //   {/* instant hussle free */}
-    //   <div id="hassle-free" className="hidden sm:block">
-    //     <InstantHasslefree
-    //       title={contents?.gold_loan_title}
-    //       description={contents?.gold_loan_description}
-    //       hassle_free_image={contents?.hassle_free_image}
-    //       hassle_free_image_alt={contents?.hassle_free_image_alt}
-    //       GoldloanBenefits={GoldloanBenefits}
-    //     />
-    //   </div>
-    //   <div className="block sm:hidden">
-    //     <MobInstantHasslefree
-    //       title={contents?.gold_loan_title}
-    //       description={contents?.gold_loan_description}
-    //       hassle_free_image={contents?.hassle_free_image}
-    //       hassle_free_image_alt={contents?.hassle_free_image_alt}
-    //       GoldloanBenefits={GoldloanBenefits}
-    //     />
-    //   </div>
-
-    //   {/* instant hussle free */}
-    //   <div className="hidden sm:block">
-    //     <GoldLoanServices features={features} />
-    //   </div>
-    //   <div className="block sm:hidden">
-    //     <MobGoldLoanServices features={flattenedFeatures} />
-    //   </div>
-
-    //   {/* Scheme */}
-    //   <div id="scheme" className="hidden sm:block">
-    //     <GoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
-    //   </div>
-    //   <div className="block sm:hidden">
-    //     <MobGoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
-    //   </div>
-
-    //   {/* faq contents */}
-    //   <div className="hidden sm:block">
-    //     <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
-    //   </div>
-    //   <div className="block sm:hidden">
-    //     <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} type="goldloan" />
-    //   </div>
-    // </>
-
-    <GoldLoanClient
-      steps={steps}
-      contents={contents}
-      bannerIcons={bannerIcons}
-      schemes={schemes}
-      faqs={faqs}
-      features={features}
-      GoldloanBenefits={GoldloanBenefits}
-      announcement={announcement}
-      goldRateData={goldRateData}
-      flattenedFeatures={flattenedFeatures}
-      initialIsMobile={isMobile}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+      <GoldLoanClient
+        steps={steps}
+        contents={contents}
+        bannerIcons={bannerIcons}
+        schemes={schemes}
+        faqs={faqs}
+        features={features}
+        GoldloanBenefits={GoldloanBenefits}
+        announcement={announcement}
+        goldRateData={goldRateData}
+        flattenedFeatures={flattenedFeatures}
+        initialIsMobile={isMobile}
+      />
+    </>
   );
 }
