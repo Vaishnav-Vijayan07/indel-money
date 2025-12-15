@@ -1,4 +1,5 @@
 //export const dynamic = "force-dynamic";
+import Script from "next/script";
 import ContactBanner from "@/components/features/contact/ContactBanner";
 import WriteIntel from "@/components/features/contact/WriteIntel";
 import ContactFaq from "@/components/features/contact/ContactFaq";
@@ -235,8 +236,10 @@ export default async function Contact() {
 
   return (
     <>
-      <script
+      <Script
+        id="schema-contact"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
       <ContactBanner

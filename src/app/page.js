@@ -1,5 +1,6 @@
 //export const dynamic = "force-dynamic";
 import { headers } from "next/headers";
+import Script from "next/script";
 import HomeClient from "../pages/HomeClient";
 import { defaultMeta } from "@/constants/constants";
 
@@ -288,8 +289,10 @@ export default async function HomePage() {
 
   return (
     <>
-      <script
+      <Script
+        id="schema-home"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
       <HomeClient

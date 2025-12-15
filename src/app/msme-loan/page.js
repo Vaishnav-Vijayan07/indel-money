@@ -1,4 +1,5 @@
 //export const dynamic = "force-dynamic";
+import Script from "next/script";
 import MsmeLoanClient from "@/pages/MsmeClient";
 import { headers } from "next/headers";
 
@@ -254,8 +255,10 @@ export default async function MsmeLoan() {
 
   return (
     <>
-      <script
+      <Script
+        id="schema-msme-loan"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
       <MsmeLoanClient

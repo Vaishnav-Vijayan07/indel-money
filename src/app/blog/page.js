@@ -1,4 +1,5 @@
-//export const dynamic = "force-dynamic";
+ //export const dynamic = "force-dynamic";
+import Script from "next/script";
 import LatestBlogs from "@/pages/LatestBlogs";
 import AllBlogsPage from "@/pages/AllBlogs";
 
@@ -156,8 +157,10 @@ export default async function Blog({ searchParams }) {
 
   return (
     <>
-      <script
+      <Script
+        id="schema-blog"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
       <LatestBlogs />

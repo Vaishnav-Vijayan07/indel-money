@@ -1,4 +1,5 @@
 //export const dynamic = "force-dynamic";
+import Script from "next/script";
 import { defaultMeta } from "@/constants/constants";
 import GoldLoanClient from "../../pages/GoldLoanClient";
 import { headers } from "next/headers";
@@ -358,8 +359,10 @@ export default async function GoldLoan() {
   };
   return (
     <>
-      <script
+      <Script
+        id="schema-gold-loan"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
       <GoldLoanClient
