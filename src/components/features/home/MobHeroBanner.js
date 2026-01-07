@@ -108,8 +108,8 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement, g
             // className="relative z-0 flex! items-end before:absolute before:inset-0 before:-z-1 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:w-full before:h-full py-[calc(var(--marquee-y)+50px)]"
             className="relative z-0 flex! items-end"
           >
-            <Link href={item?.button_link || "#"} aria-label={item?.image_alt_text || `Slide ${index + 1}`}>
-              {item?.media_type === "video" ? (
+            {item?.media_type === "video" ? (
+              <Link href={item?.video_link || "#"} aria-label={item?.image_alt_text || `Slide ${index + 1}`}>
                 <video
                   ref={(el) => (videoRefs.current[index] = el)}
                   autoPlay
@@ -123,7 +123,9 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement, g
                   <source src={item?.video_mobile ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video_mobile}` : ""} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-              ) : (
+              </Link>
+            ) : (
+              <Link href={item?.button_link || "#"} aria-label={item?.image_alt_text || `Slide ${index + 1}`}>
                 <Image
                   src={item?.image_mobile ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image_mobile}` : ""}
                   alt={item.image_alt_text}
@@ -133,8 +135,8 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement, g
                   fetchPriority={index === 0 ? "high" : "auto"}
                   className="-z-2 object-cover"
                 />
-              )}
-            </Link>
+              </Link>
+            )}
             <div className="container">
               <div className="max-w-full">
                 <h2 className="text-[28px] leading-[1.2] capitalize font-medium text-white mb-[10px] 4xs:mb-[15px] [&>span]:text-base2 [&>span]:font-bold">

@@ -108,20 +108,22 @@ export default function HomeSlider({ heroBanner }) {
           className="relative z-0"
         >
           {item?.media_type === "video" ? (
-            <video
-              ref={(el) => (videoRefs.current[index] = el)}
-              autoPlay
-              loop
-              muted
-              playsInline
-              controls={false}
-              className="w-full h-full object-cover"
-              preload="metadata"
-              onLoadedMetadata={() => handleVideoLoadedMetadata(index, swiperRef.current)}
-            >
-              <source src={item?.video} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <Link href={item?.video_link || "#"} aria-label={item?.image_alt_text || `Slide ${index + 1}`}>
+              <video
+                ref={(el) => (videoRefs.current[index] = el)}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls={false}
+                className="w-full h-full object-cover"
+                preload="metadata"
+                onLoadedMetadata={() => handleVideoLoadedMetadata(index, swiperRef.current)}
+              >
+                <source src={item?.video} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </Link>
           ) : (
             <Link href={item?.button_link || "#"} aria-label={item?.image_alt_text || `Slide ${index + 1}`}>
               <Image

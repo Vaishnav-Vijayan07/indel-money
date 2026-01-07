@@ -100,6 +100,28 @@ const Abouts = [
     title: "different shades of indel",
     link: "/different-shades-of-indelmoney",
   },
+  {
+    title: "media",
+    hasSubmenu: true,
+    submenu: [
+      {
+        title: "news",
+        link: "/news",
+      },
+      {
+        title: "blog",
+        link: "/blog",
+      },
+      {
+        title: "image gallery",
+        link: "/gallery",
+      },
+      {
+        title: "video gallery",
+        link: "/gallery?type=video&page=1",
+      },
+    ],
+  },
   // {
   //   title: "foreign exchange",
   //   link: "https://indelremit.com",
@@ -139,21 +161,66 @@ const Arrow = () => {
 
 function DropdownMenu({ items }) {
   const pathname = usePathname();
+  const [expandedAccordion, setExpandedAccordion] = useState(null);
+
   return (
     <ul className="flex flex-col p-[5px] 3xl:p-[10px] w-[180px] lg:w-[200px] 2xl:w-[240px]">
       {items?.map((item, index) => (
-        <li key={index}>
-          <Link href={item.link} passHref>
-            <MenubarItem>
-              <div
-                className={`${
-                  pathname === item.link ? "text-base2" : ""
-                } text-header1 hover:text-base2! capitalize cursor-pointer transition-color duration-300`}
-              >
-                {item.title}
-              </div>
-            </MenubarItem>
-          </Link>
+        <li
+          key={index}
+          onMouseEnter={() => item.hasSubmenu && setExpandedAccordion(index)}
+          onMouseLeave={() => item.hasSubmenu && setExpandedAccordion(null)}
+        >
+          {item.hasSubmenu ? (
+            <>
+              <MenubarItem className="w-full">
+                <div className="text-header1 hover:text-base2 capitalize cursor-pointer transition-colors duration-300 flex items-center justify-between w-full">
+                  <span>{item.title}</span>
+                  <svg
+                    width="11"
+                    height="6"
+                    viewBox="0 0 11 6"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={`size-2 ml-auto flex-shrink-0 transition-transform duration-300 ${expandedAccordion === index ? "rotate-180" : ""}`}
+                  >
+                    <path d="M5.5 6L10.2631 0.75H0.73686L5.5 6Z" fill="currentColor" />
+                  </svg>
+                </div>
+              </MenubarItem>
+              {expandedAccordion === index && (
+                <ul className="pl-[10px] flex flex-col">
+                  {item.submenu?.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <Link href={subItem.link} passHref>
+                        <MenubarItem className="w-full">
+                          <div
+                            className={`${
+                              pathname === subItem.link ? "text-base2" : ""
+                            } text-header1 hover:text-base2 capitalize cursor-pointer transition-colors duration-300 w-full text-sm`}
+                          >
+                            {subItem.title}
+                          </div>
+                        </MenubarItem>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
+          ) : (
+            <Link href={item.link} passHref>
+              <MenubarItem className="w-full">
+                <div
+                  className={`${
+                    pathname === item.link ? "text-base2" : ""
+                  } text-header1 hover:text-base2 capitalize cursor-pointer transition-colors duration-300 w-full`}
+                >
+                  {item.title}
+                </div>
+              </MenubarItem>
+            </Link>
+          )}
         </li>
       ))}
     </ul>
