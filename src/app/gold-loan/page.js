@@ -184,178 +184,171 @@ export default async function GoldLoan() {
     "@graph": [
       {
         "@type": "FinancialService",
-        "name": "Indel Money Limited",
-        "url": "https://indelmoney.com/gold-loan",
-        "logo": "https://indelmoney.com/_next/image?url=https%3A%2F%2Fbackend.indelmoney.com%2Fuploads%2Fbanner%2F1763029961331-201441951.jpg&w=1920&q=75",
-        "description": "Indel Money offers instant and secure gold loans with high LTV, easy approval, flexible repayment and safe storage.",
-        "telephone": "1800 4253 990",
-        "email": "care@indelmoney.com",
-        "address": {
+        name: "Indel Money Limited",
+        url: "https://indelmoney.com/gold-loan",
+        logo: "https://indelmoney.com/_next/image?url=https%3A%2F%2Fbackend.indelmoney.com%2Fuploads%2Fbanner%2F1763029961331-201441951.jpg&w=1920&q=75",
+        description: "Indel Money offers instant and secure gold loans with high LTV, easy approval, flexible repayment and safe storage.",
+        telephone: "1800 4253 990",
+        email: "care@indelmoney.com",
+        address: {
           "@type": "PostalAddress",
-          "streetAddress": "Indel House, Changampuzhanagar",
-          "addressLocality": "South Kalamassery P O",
-          "addressRegion": "Kerala",
-          "postalCode": "682033",
-          "addressCountry": "IN"
+          streetAddress: "Indel House, Changampuzhanagar",
+          addressLocality: "South Kalamassery P O",
+          addressRegion: "Kerala",
+          postalCode: "682033",
+          addressCountry: "IN",
         },
-        "geo": {
+        geo: {
           "@type": "GeoCoordinates",
-          "latitude": 10.043098838609305,
-          "longitude": 76.31735007301208
+          latitude: 10.043098838609305,
+          longitude: 76.31735007301208,
         },
-        "sameAs": [
+        sameAs: [
           "https://www.facebook.com/indelmoney",
           "https://www.instagram.com/indelmoney",
           "https://www.linkedin.com/company/indel-money",
-          "https://twitter.com/indelmoney"
+          "https://twitter.com/indelmoney",
         ],
-        "serviceType": "Gold Loan",
-        "provider": {
+        serviceType: "Gold Loan",
+        provider: {
           "@type": "Organization",
-          "name": "Indel Money Limited",
-          "url": "https://indelmoney.com/"
+          name: "Indel Money Limited",
+          url: "https://indelmoney.com/",
         },
-        "areaServed": "IN",
-        "offers": {
+        areaServed: "IN",
+        offers: {
           "@type": "Offer",
-          "name": "Gold Loan",
-          "description": "Quick and secure gold loans with high LTV, transparent interest rates, and instant disbursal.",
-          "url": "https://indelmoney.com/gold-loan"
+          name: "Gold Loan",
+          description: "Quick and secure gold loans with high LTV, transparent interest rates, and instant disbursal.",
+          url: "https://indelmoney.com/gold-loan",
         },
-        "hasOfferCatalog": {
+        hasOfferCatalog: {
           "@type": "OfferCatalog",
-          "name": "Branches",
-          "itemListElement": [
+          name: "Branches",
+          itemListElement: [
             {
               "@type": "Offer",
-              "itemOffered": {
+              itemOffered: {
                 "@type": "LocalBusiness",
-                "name": "Indel Money Limited",
-                "address": {
+                name: "Indel Money Limited",
+                address: {
                   "@type": "PostalAddress",
-                  "streetAddress": "Indel House, Changampuzhanagar",
-                  "addressLocality": "South Kalamassery P O",
-                  "addressRegion": "Kerala",
-                  "postalCode": "682033",
-                  "addressCountry": "IN"
+                  streetAddress: "Indel House, Changampuzhanagar",
+                  addressLocality: "South Kalamassery P O",
+                  addressRegion: "Kerala",
+                  postalCode: "682033",
+                  addressCountry: "IN",
                 },
-                "telephone": "04842933979"
-              }
-            }
-          ]
+                telephone: "04842933979",
+              },
+            },
+          ],
         },
-        "openingHoursSpecification": [
+        openingHoursSpecification: [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday"
-            ],
-            "opens": "09:30",
-            "closes": "17:30"
-          }
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            opens: "09:30",
+            closes: "17:30",
+          },
         ],
-        "paymentAccepted": "Cash, Credit Card, NEFT/IMPS",
-        "currenciesAccepted": "INR"
+        paymentAccepted: "Cash, Credit Card, NEFT/IMPS",
+        currenciesAccepted: "INR",
       },
       {
         "@type": "WebPage",
-        "name": "Gold Loan - Indel Money",
-        "url": "https://indelmoney.com/gold-loan",
-        "description": "Apply for an instant, secure and hassle-free gold loan from Indel Money with high LTV, low interest and quick approval."
+        name: "Gold Loan - Indel Money",
+        url: "https://indelmoney.com/gold-loan",
+        description: "Apply for an instant, secure and hassle-free gold loan from Indel Money with high LTV, low interest and quick approval.",
       },
       {
         "@type": "BreadcrumbList",
-        "itemListElement": [
+        itemListElement: [
           {
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://indelmoney.com/"
+            position: 1,
+            name: "Home",
+            item: "https://indelmoney.com/",
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "Gold Loan",
-            "item": "https://indelmoney.com/gold-loan"
-          }
-        ]
+            position: 2,
+            name: "Gold Loan",
+            item: "https://indelmoney.com/gold-loan",
+          },
+        ],
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
+        mainEntity: [
           {
             "@type": "Question",
-            "name": "What is a gold loan?",
-            "acceptedAnswer": {
+            name: "What is a gold loan?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "A loan obtained by securing your gold jewelry with the lender is called a gold loan. You will receive instant funds on pledging your gold ornaments, thus it can also be called a loan against gold. This way your gold ornaments are mobilized to generate funds instead of lying idle."
-            }
+              text: "A loan obtained by securing your gold jewelry with the lender is called a gold loan. You will receive instant funds on pledging your gold ornaments, thus it can also be called a loan against gold. This way your gold ornaments are mobilized to generate funds instead of lying idle.",
+            },
           },
           {
             "@type": "Question",
-            "name": "How does a gold loan work?",
-            "acceptedAnswer": {
+            name: "How does a gold loan work?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "Walk into any Indel Money branch with your gold ornaments and documents. After evaluation and verification, the loan amount is sanctioned instantly."
-            }
+              text: "Walk into any Indel Money branch with your gold ornaments and documents. After evaluation and verification, the loan amount is sanctioned instantly.",
+            },
           },
           {
             "@type": "Question",
-            "name": "What is the benefit of getting a gold loan from Indel Money?",
-            "acceptedAnswer": {
+            name: "What is the benefit of getting a gold loan from Indel Money?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "Indel Money offers low interest rates, minimal documentation, flexible repayment options, in-house gold valuation and secure storage, ensuring complete peace of mind."
-            }
+              text: "Indel Money offers low interest rates, minimal documentation, flexible repayment options, in-house gold valuation and secure storage, ensuring complete peace of mind.",
+            },
           },
           {
             "@type": "Question",
-            "name": "What is the gold loan interest rate?",
-            "acceptedAnswer": {
+            name: "What is the gold loan interest rate?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "Gold loan interest rates typically range from 12% to 30% annually depending on the scheme."
-            }
+              text: "Gold loan interest rates typically range from 12% to 30% annually depending on the scheme.",
+            },
           },
           {
             "@type": "Question",
-            "name": "Am I a good candidate for a gold loan?",
-            "acceptedAnswer": {
+            name: "Am I a good candidate for a gold loan?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "Any Indian citizen who owns gold ornaments can apply for a gold loan from Indel Money."
-            }
+              text: "Any Indian citizen who owns gold ornaments can apply for a gold loan from Indel Money.",
+            },
           },
           {
             "@type": "Question",
-            "name": "Is my gold secure with Indel Money?",
-            "acceptedAnswer": {
+            name: "Is my gold secure with Indel Money?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "Yes. All branches have CCTV-monitored secure vaults ensuring 24x7 safety of your pledged gold."
-            }
+              text: "Yes. All branches have CCTV-monitored secure vaults ensuring 24x7 safety of your pledged gold.",
+            },
           },
           {
             "@type": "Question",
-            "name": "Why choose a gold loan over a personal loan?",
-            "acceptedAnswer": {
+            name: "Why choose a gold loan over a personal loan?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "Gold loans have lower interest, no prepayment charges, higher loan limits and more flexible repayment options compared to personal loans."
-            }
+              text: "Gold loans have lower interest, no prepayment charges, higher loan limits and more flexible repayment options compared to personal loans.",
+            },
           },
           {
             "@type": "Question",
-            "name": "How fast is gold loan processing?",
-            "acceptedAnswer": {
+            name: "How fast is gold loan processing?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "With correct documents, gold loans at Indel Money are processed and disbursed in 10–15 minutes."
-            }
-          }
-        ]
-      }
-    ]
+              text: "With correct documents, gold loans at Indel Money are processed and disbursed in 10–15 minutes.",
+            },
+          },
+        ],
+      },
+    ],
   };
   return (
     <>
