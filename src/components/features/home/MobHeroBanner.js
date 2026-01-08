@@ -109,7 +109,10 @@ export default function MobHeroBanner({ heroBanner, initialData, announcement, g
             className="relative z-0 flex! items-end"
           >
             {item?.media_type === "video" ? (
-              <Link href={item?.video_link || "#"} aria-label={item?.image_alt_text || `Slide ${index + 1}`}>
+              <Link
+                href={item?.video_link || "https://www.youtube.com/watch?v=rdge4-9jtiI"}
+                aria-label={item?.image_alt_text || `Slide ${index + 1}`}
+              >
                 <video
                   ref={(el) => (videoRefs.current[index] = el)}
                   autoPlay
