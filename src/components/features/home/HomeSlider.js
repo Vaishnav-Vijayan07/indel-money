@@ -120,7 +120,7 @@ export default function HomeSlider({ heroBanner }) {
                 preload="metadata"
                 onLoadedMetadata={() => handleVideoLoadedMetadata(index, swiperRef.current)}
               >
-                <source src={item?.video} type="video/mp4" />
+                <source src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.video}`} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </Link>
