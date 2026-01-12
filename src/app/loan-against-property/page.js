@@ -20,6 +20,7 @@ async function fetchData() {
         contents: cdData?.cdLoanContent,
         benfits: cdData?.cdLoanBenefits,
         products: cdData?.cdLoanProducts,
+        faqs: cdData?.cdLoanFaqs,
         error: result.message,
       };
     }
@@ -122,7 +123,7 @@ export async function generateMetadata() {
 }
 
 export default async function Services() {
-  const { contents, benfits, products, error } = await fetchData();
+  const { contents, benfits, products, faqs, error } = await fetchData();
 
   const headersList = await headers(); // ✅ await here
   const userAgent = headersList.get("user-agent") || "";
@@ -136,6 +137,7 @@ export default async function Services() {
     <LAPClient
       contents={contents}
       benfits={benfits}
+      faqs={faqs}
       products={products}
       initialIsMobile={false} // Assuming you want to handle mobile detection client-side
     />

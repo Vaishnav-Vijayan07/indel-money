@@ -1,6 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/custom-accordion";
 
-
 function FaqAccordion({ items }) {
   return (
     <Accordion type="single" collapsible defaultValue="item-1" className="w-full">
@@ -21,8 +20,8 @@ function FaqAccordion({ items }) {
 export default function MobGoldLoanFaq({ faqs, faq_title }) {
   return (
     <section className="w-full block py-[30px] bg-[#f0faff] px-[var(--container-padding)]">
-      <div className="text-[12px] leading-none font-bold text-black mb-[5px]">FAQ</div>
-      <h3 className="text-title1 mb-[15px] [&>span]:text-base2 [&>span]:font-bold">{faq_title}</h3>
+      {/* <div className="text-[12px] leading-none font-bold text-black mb-[5px]">FAQ</div> */}
+      <h3 className="text-title1 mb-[15px] [&>span]:text-base2 [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: faq_title ? faq_title : "" }} />
       <FaqAccordion items={faqs} />
     </section>
   );

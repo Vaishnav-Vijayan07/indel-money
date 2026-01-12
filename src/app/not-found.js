@@ -2,6 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+  title: "404 – Page Not Found | Indel Money",
+  description: "The page you are looking for could not be found. Please return to the Indel Money's homepage or explore our services.",
+};
+
 export default function NotFound() {
   return (
     <div className="flex h-screen items-center justify-center flex-col py-[30px] xl:py-[40px] 2xl:py-[90px]">
@@ -27,10 +32,7 @@ export default function NotFound() {
         <h1 className="text-title1 mb-[15px] md:mb-[20px] xl:mb-[30px] 2xl:mb-[40px] font-bold mt-[30px] 2xl:mt-[60px] text-center">
           Page not found
         </h1>
-        <Link
-          href="/"
-          className="btn btn-base1 w-fit min-w-[120px] lg:min-w-[150px] xl:min-w-[170px] 2xl:min-w-[215px] m-auto mt-0 sm:flex hidden"
-        >
+        <Link href="/" className="btn btn-base1 w-fit min-w-[120px] lg:min-w-[150px] xl:min-w-[170px] 2xl:min-w-[215px] m-auto mt-0 sm:flex hidden">
           back to home
         </Link>
       </div>

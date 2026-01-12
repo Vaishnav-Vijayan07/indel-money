@@ -1,6 +1,7 @@
 //export const dynamic = "force-dynamic";
 import BlogDetail from "@/components/features/blog/BlogDetail";
 import RecentBlog from "@/components/features/blog/RecentBlog";
+import { notFound } from "next/navigation";
 
 // Fetch blog data for a specific post
 async function fetchBlogData(slug) {
@@ -133,12 +134,7 @@ export default async function Blog({ params }) {
 
   // Handle error state for blog data
   if (blogError || !blogData) {
-    return (
-      <div className="container py-10">
-        <h1>Error Loading Blog Post</h1>
-        <p>{blogError || "Blog post not found."}</p>
-      </div>
-    );
+    notFound();
   }
 
   return (

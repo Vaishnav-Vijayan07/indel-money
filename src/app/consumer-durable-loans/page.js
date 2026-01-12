@@ -21,6 +21,7 @@ async function fetchData() {
         contents: cdData?.cdLoanContent,
         benfits: cdData?.cdLoanBenefits,
         products: cdData?.cdLoanProducts,
+        faqs: cdData?.cdLoanFaqs,
         error: result.message,
       };
     }
@@ -122,7 +123,7 @@ export async function generateMetadata() {
 }
 
 export default async function CDLoan() {
-  const { contents, benfits, products, error } = await fetchData();
+  const { contents, benfits, products, faqs, error } = await fetchData();
 
   const headersList = await headers(); // ✅ await here
   const userAgent = headersList.get("user-agent") || "";
@@ -134,7 +135,7 @@ export default async function CDLoan() {
 
   return (
     <>
-      <CDLoanClient contents={contents} benfits={benfits} products={products} initialIsMobile={isMobile} />
+      <CDLoanClient contents={contents} benfits={benfits} products={products} initialIsMobile={isMobile} faqs={faqs} />
     </>
   );
 }
