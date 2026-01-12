@@ -39,13 +39,8 @@ export default async function PolicyPage({ params }) {
   const { slug } = await params;
   const { content, error } = await fetchData(slug);
 
-  // Handle error state
-  if (error) {
-    return (
-      <div className="container py-10">
-        <h1>Error Loading Policy</h1>
-      </div>
-    );
+  if (error || !content) {
+    notFound();
   }
 
   return (

@@ -1,6 +1,7 @@
 //export const dynamic = "force-dynamic";
 import EventDetail from "@/components/features/indel-money-cares/EventDetail";
 import RecentEvents from "@/components/features/indel-money-cares/RecentEvents";
+import { notFound } from "next/navigation";
 
 // Fetch blog data for a specific post
 async function fetchEventData(slug) {
@@ -133,12 +134,7 @@ export default async function IndelEvent({ params }) {
 
   // Handle error state for blog data
   if (eventError || !eventData) {
-    return (
-      <div className="container py-10">
-        <h1>Error Loading Indel cares event</h1>
-        <p>{eventError || "Event not found."}</p>
-      </div>
-    );
+    notFound();
   }
 
   return (

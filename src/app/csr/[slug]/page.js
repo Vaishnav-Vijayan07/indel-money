@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import CsrDetail from "@/components/features/csr/BlogDetail";
 import RecentCsr from "@/components/features/csr/RecentCSR";
+import { notFound } from "next/navigation";
 
 const LatestUpdates = dynamic(() => import("@/components/features/home/LatestUpdates"), {
   loading: () => <div>Loading slider...</div>,
@@ -102,9 +103,7 @@ export async function generateMetadata({ params }) {
       type: "article",
       images: [
         {
-          url: data?.image
-            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.image}`
-            : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
+          url: data?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.image}` : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
           width: 1200,
           height: 630,
           alt: data?.image_alt || data?.title || "CSR",
@@ -116,9 +115,7 @@ export async function generateMetadata({ params }) {
       title: data?.title || "CSR | My Website",
       description: data?.meta_description || data?.description || "Explore our CSR initiatives.",
       images: [
-        data?.meta_image
-          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.meta_image}`
-          : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
+        data?.meta_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.meta_image}` : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
       ],
     },
     alternates: {
@@ -134,12 +131,7 @@ export default async function CSRDetailPage({ params }) {
   const { data: recentCsrs, error: recentError } = await fetchRecentCsrs(slug);
 
   if (csrError || !csrData) {
-    return (
-      <div className="container py-10">
-        <h1>Error Loading CSR</h1>
-        <p>{csrError || "CSR post not found."}</p>
-      </div>
-    );
+    notFound();
   }
 
   return (
