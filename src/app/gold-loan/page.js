@@ -172,6 +172,8 @@ export default async function GoldLoan() {
   const flattenedFeatures = features?.flat()?.filter((item) => !item.is_center);
   const { data: goldRateData, error: goldRateError } = await fetchGoldRate();
 
+  console.log("Faqs:", faqs);
+
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "";
   const isMobile = isMobileDevice(userAgent);
