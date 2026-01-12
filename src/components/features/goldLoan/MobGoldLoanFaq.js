@@ -1,6 +1,7 @@
 "use client";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/custom-accordion";
+import api from "@/lib/api/axios";
 import { useEffect, useState } from "react";
 
 function FaqAccordion({ items }) {
