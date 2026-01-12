@@ -53,11 +53,7 @@ export default function LAPClient({ contents, benfits, products, initialIsMobile
           />
         )}
       </div>
-      {isMobile ? (
-        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} type="lap" />
-      ) : (
-        <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} type="lap" />
-      )}
+      {isMobile ? <MobGoldLoanFaq faq_title={contents?.faq_title} type="lap" /> : <GoldLoanFaq faq_title={contents?.faq_title} type="lap" />}
     </>
   );
 }

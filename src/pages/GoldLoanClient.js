@@ -243,11 +243,7 @@ export default function GoldLoanClient({
         <MobGoldLoanScheme goldLoanSchemes={schemes} scheme_title={contents?.scheme_title} />
       </div> */}
 
-      {isMobile ? (
-        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} type="goldloan" />
-      ) : (
-        <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} />
-      )}
+      {isMobile ? <MobGoldLoanFaq faq_title={contents?.faq_title} type="goldloan" /> : <GoldLoanFaq faq_title={contents?.faq_title} />}
 
       {/* faq contents */}
       {/* <div className="hidden sm:block">

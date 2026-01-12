@@ -53,11 +53,7 @@ export default function CDLoanClient({ contents, benfits, products, initialIsMob
         )}
       </div>
 
-      {isMobile ? (
-        <MobGoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} type="cdloan" />
-      ) : (
-        <GoldLoanFaq faqs={faqs} faq_title={contents?.faq_title} type="cdloan" />
-      )}
+      {isMobile ? <MobGoldLoanFaq faq_title={contents?.faq_title} type="cdloan" /> : <GoldLoanFaq faq_title={contents?.faq_title} type="cdloan" />}
     </>
   );
 }
