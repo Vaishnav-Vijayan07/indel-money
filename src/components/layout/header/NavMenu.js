@@ -236,7 +236,8 @@ function MegaMenu({ items }) {
           <Link href={item.link} passHref>
             <MenubarItem className="p-0">
               <div className="group flex flex-row items-center p-[10px] 3xl:p-[10px] cursor-pointer">
-                <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
+                {/* <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95"> */}
+                <div className="w-[40px] h-[40px] bg-[#17479e] rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
                   <Image src={item.image} width={28} height={28} alt={item?.alt} className="w-full h-full block max-w-2/4 object-contain" />
                 </div>
                 <div

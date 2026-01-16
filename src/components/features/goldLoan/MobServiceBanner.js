@@ -11,6 +11,12 @@ export default function MobServiceBanner({ bannerIcons, title, announcement_text
         sizes="100vw"
         className="-z-2 object-cover pointer-events-none"
       />
+      <div className="w-full absolute left-0 right-0 bottom-[90px]  flex items-end px-4">
+        <div
+          className="max-sm:text-[28px] text-title2  text-white   [&>span]:text-base2 [&>span]:font-bold"
+          dangerouslySetInnerHTML={{ __html: title || "" }}
+        />
+      </div>
       <MobHomeMarquee announcementText={announcement_text} goldRateLabel={gold_rate_text} goldRate={goldRate} />
     </section>
   );
