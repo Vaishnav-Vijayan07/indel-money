@@ -1,5 +1,3 @@
-
-
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -145,13 +143,7 @@ function MegaMenu({ items }) {
               <div className="p-0">
                 <div className="group flex flex-row items-center p-[10px] 3xl:p-[10px] cursor-pointer">
                   <div className="w-[40px] h-[40px] bg-gradient-to-r from-base1 to-base2 rounded-full flex items-center justify-center 3xl:w-[60px] 3xl:h-[60px] transition-transform duration-300 group-hover:scale-95">
-                    <Image
-                      src={item.image}
-                      width={28}
-                      height={28}
-                      alt={item?.alt}
-                      className="w-full h-full block max-w-2/4 object-contain"
-                    />
+                    <Image src={item.image} width={28} height={28} alt={item?.alt} className="w-full h-full block max-w-2/4 object-contain" />
                   </div>
                   <div
                     className={`${
@@ -170,8 +162,7 @@ function MegaMenu({ items }) {
   );
 }
 
-const tabStyle =
-  "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
+const tabStyle = "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2!";
 
 export default function NavMenu() {
   const pathname = usePathname();
@@ -182,11 +173,7 @@ export default function NavMenu() {
   const handleMouseLeave = () => setOpenDropdown(null);
   return (
     <div className="flex items-center gap-[8px] xl:gap-[10px] 2xl:gap-[12px] 3xl:gap-[15px] h-[var(--header-y)] lg:px-[10px] 2xl:px-[15px] 3xl:px-[20px] border-none shadow-none">
-      <div
-        className="relative z-0"
-        onMouseEnter={() => handleMouseEnter("goldloan")}
-        onMouseLeave={handleMouseLeave}
-      >
+      <div className="relative z-0" onMouseEnter={() => handleMouseEnter("goldloan")} onMouseLeave={handleMouseLeave}>
         <div className="flex">
           <Link href={"/gold-loan"} className={tabStyle}>
             Gold Loan
@@ -201,9 +188,7 @@ export default function NavMenu() {
       <div>
         <Link
           href={"https://indelremit.com"}
-          className={`${
-            pathname === "#" ? "" : ""
-          } text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
+          className={`${pathname === "#" ? "" : ""} text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
         >
           FOREIGN EXCHANGE
         </Link>
@@ -211,7 +196,7 @@ export default function NavMenu() {
 
       <div>
         <div className={tabStyle}>
-          <span>other loan</span>
+          <span>other loans</span>
           <Arrow />
         </div>
         <MegaMenu items={OtherLoans} />

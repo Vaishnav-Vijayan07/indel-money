@@ -300,7 +300,7 @@ export default function NavMenu() {
       <MenubarMenu open={openDropdown === "otherloan"} onOpenChange={(open) => setOpenDropdown(open ? "otherloan" : null)}>
         <div onMouseEnter={() => handleMouseEnter("otherloan")} className="relative">
           <MenubarTrigger className={tabStyle}>
-            <span>other loan</span>
+            <span>other loans</span>
             <Arrow />
           </MenubarTrigger>
           <MenubarContent className="border-[#e4e4e4] bg-white p-0">
