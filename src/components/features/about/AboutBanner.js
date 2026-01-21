@@ -48,21 +48,10 @@ export default function AboutBanner({ banners }) {
         {banners?.map((item, index) => (
           <SwiperSlide key={index} className="relative z-0">
             <div className="absolute -z-1 inset-0 w-full sm:w-[60%] h-[60%] sm:h-full bg-gradient-to-t sm:bg-gradient-to-r from-black sm:from-white/80 to-transparent pointer-events-none mt-auto"></div>
-            <Image
-              src={
-                isMobile
-                  ? item?.image_mobile
-                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image_mobile}`
-                    : "/images/aboutBanner.jpg"
-                  : item?.image
-                  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`
-                  : "/images/aboutBanner.jpg"
-              }
-              alt={"Slide Image"}
-              fill
-              priority
-              className="-z-2 object-cover"
-            />
+            <picture className="absolute -z-2 inset-0 opacity-95">
+              <source media="(max-width: 640px)" srcSet={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image_mobile}`} />
+              <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`} alt={"Slide Image"} fill priority className="-z-2 object-cover" />
+            </picture>
 
             <div className="absolute bottom-[80px] sm:bottom-1/2 left-1/2 transform -translate-x-1/2 sm:translate-y-1/2 container">
               <div className="max-w-[350px] lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[550px] 3xl:max-w-[750px]">
