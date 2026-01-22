@@ -48,7 +48,7 @@ export default function AboutBanner({ banners }) {
         {banners?.map((item, index) => (
           <SwiperSlide key={index} className="relative z-0">
             <div className="absolute -z-1 inset-0 w-full sm:w-[60%] h-[60%] sm:h-full bg-gradient-to-t sm:bg-gradient-to-r from-black sm:from-white/80 to-transparent pointer-events-none mt-auto"></div>
-            <picture className="absolute -z-2 inset-0 opacity-95">
+            <picture className="absolute -z-2 inset-0">
               <source media="(max-width: 640px)" srcSet={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image_mobile}`} />
               <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`} alt={"Slide Image"} fill priority className="-z-2 object-cover" />
             </picture>

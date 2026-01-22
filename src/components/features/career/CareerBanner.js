@@ -55,13 +55,13 @@ export default function CareerBanner({ banners }) {
         {banners?.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="w-full h-[565px] lg:h-[376px] xl:h-[420px] 2xl:h-[476px] 3xl:h-[568px] relative z-0 py-[30px] lg:py-[40px] 2xl:py-[50px] flex items-center max-sm:items-end after:content-[''] after:w-full after:h-[100%] after:absolute after:-z-1 after:top-0 after:left-0 after:block max-sm:after:bg-black/40 after:pointer-events-none">
-              <picture className="absolute -z-2 inset-0 opacity-95">
+              <picture className="absolute -z-1 inset-0">
                 <source media="(max-width: 640px)" srcSet={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image_mobile}`} />
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`}
                   alt={item?.image_alt ? item.image_alt : "career"}
                   fill
-                  sizes="1200px"
+                  sizes="100vw"
                   className="-z-1 object-cover"
                 />
               </picture>
