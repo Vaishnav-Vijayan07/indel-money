@@ -11,7 +11,7 @@ const PostDateDisplay = ({ date = "24 NOVEMBER 2024", authorImage, authorName })
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] rounded-full overflow-hidden">
             <Image
-              src={authorImage}
+              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${authorImage}`}
               alt={authorName}
               width={40}
               height={40}
@@ -45,7 +45,7 @@ const BlogDetail = ({ data }) => {
         <div className={`${styles.ckCntWrap} border-b border-b-[rgb(0,0,0,18%)] 2xl:pb-[35px] xl:pb-[20px] md:pb-[20px] sm:pb-[10px] pb-[15px]`}>
           <div className="w-full sm:hidden block">
             <h1>{data?.title}</h1>
-            <PostDateDisplay date={data?.createdAt} authorImage={data?.authorImage} authorName={data?.authorName} />
+            <PostDateDisplay date={data?.createdAt} authorImage={data?.author_image} authorName={data?.author_name} />
           </div>
           <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${data?.image}`}
@@ -56,7 +56,7 @@ const BlogDetail = ({ data }) => {
           />
           <div className="sm:block hidden">
             <h1>{data?.title}</h1>
-            <PostDateDisplay date={data?.createdAt} authorImage={data?.authorImage} authorName={data?.authorName} />
+            <PostDateDisplay date={data?.createdAt} authorImage={data?.author_image} authorName={data?.author_name} />
           </div>
           {data?.image_description ? renderHtml(data?.image_description) : ""}
           <br />
