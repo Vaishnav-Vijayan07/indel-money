@@ -63,6 +63,7 @@ const navigations = [
     links: [
       { linkname: "Contact Us", href: "/contact" },
       { linkname: "Careers", href: "/career" },
+      { linkname: "CSR", href: "/indel-money-cares" },
       { linkname: "EMI Calculator", href: "/#calculator" },
       // { linkname: "NCD Issues", href: "/ncd-issue" },
     ],
