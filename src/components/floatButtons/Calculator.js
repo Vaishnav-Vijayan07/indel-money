@@ -18,7 +18,7 @@ function Calculator({ formattedGoldCaratTypes, formattedGoldTypes }) {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <div className="w-[25px] lg:w-[30px] 2xl:w-[40px] 3xl:w-[46px] aspect-square rounded-full relative z-0 block transition-all duration-300 hover:scale-105 shadow-[0_5px_10px_rgba(0,0,0,0.10)] cursor-pointer">
-          <Image src={"/images/floating-calculator.svg"} alt="calculator" fill sizes="46px" />
+          <Image id="gold-loan-calculator-float-btn" src={"/images/floating-calculator.svg"} alt="calculator" fill sizes="46px" />
         </div>
       </AlertDialogTrigger>
       <AlertDialogContent>
