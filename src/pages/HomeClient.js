@@ -102,24 +102,12 @@ export default function Home({ initialData, serviceBanner, banner, branchLocator
       )}
 
       {isMobile ? (
-        <MobLatestUpdates
-          sliderItems={initialData?.blogs}
-          sliderTitle={initialData?.pageContent?.updates_section_title}
-          type="indel-money-cares"
-        />
+        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
       ) : (
-        <LatestUpdates
-          sliderItems={initialData?.blogs}
-          sliderTitle={initialData?.pageContent?.updates_section_title}
-          type="indel-money-cares"
-        />
+        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
       )}
 
-      {isMobile ? (
-        <MobInnovations pageContent={initialData?.pageContent} />
-      ) : (
-        <Innovations pageContent={initialData?.pageContent} />
-      )}
+      {isMobile ? <MobInnovations pageContent={initialData?.pageContent} /> : <Innovations pageContent={initialData?.pageContent} />}
 
       {/* faq contents */}
       <div className="hidden sm:block">

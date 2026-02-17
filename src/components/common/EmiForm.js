@@ -108,10 +108,7 @@ export default function EmiForm() {
           <div className="w-full mb-2 xl:mb-3 3xl:mb-4">
             <div className="flex items-center xl:justify-between gap-x-[20px] sm:gap-x-[10px] 2xl:gap-x-[20px] 3xl:gap-x-[30px]">
               <div className="max-sm:w-1/3">
-                <div
-                  className={`${labelStyle} max-sm:text-[8px] max-sm:line-clamp-none mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`}
-                  title="Loan EMI"
-                >
+                <div className={`${labelStyle} max-sm:text-[8px] max-sm:line-clamp-none mb-[5px] xl:mb-[10px] 3xl:mb-[15px]`} title="Loan EMI">
                   Loan EMI
                 </div>
                 <div className={resultStyle}>{emi}</div>
@@ -140,6 +137,7 @@ export default function EmiForm() {
           </div>
           <div className="w-full mt-[15px] lg:mt-[20px] 2xl:mt-[30px]">
             <Button
+              id="emi-calculator"
               className="btn btn-base2 max-w-[100px] lg:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[160px uppercase ml-auto"
               type="submit"
             >
@@ -149,12 +147,7 @@ export default function EmiForm() {
         </div>
       </form>
       {isDialogOpen && (
-        <EnquiryModal
-          isDialogOpen={isDialogOpen}
-          onCancel={handleCancel}
-          enquiryCalculatorData={submittedData}
-          type={"emi_calculator"}
-        />
+        <EnquiryModal isDialogOpen={isDialogOpen} onCancel={handleCancel} enquiryCalculatorData={submittedData} type={"emi_calculator"} />
       )}
     </>
   );

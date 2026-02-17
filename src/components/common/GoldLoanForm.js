@@ -212,6 +212,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes, goldRate }) {
           </div>
           <div className="w-full px-[4px] lg:px-[6px] 2xl:px-[10px] mt-[15px] lg:mt-[20px] 2xl:mt-[30px]">
             <Button
+              id="gold-loan-calculator"
               className="btn btn-base2 max-w-[105px] lg:max-w-[120px] 2xl:max-w-[140px] 3xl:max-w-[160px uppercase ml-auto"
               type="submit"
             >
@@ -221,12 +222,7 @@ export default function GoldLoanForm({ goldCaratTypes, goldTypes, goldRate }) {
         </form>
       </Form>
       {isDialogOpen && (
-        <EnquiryModal
-          isDialogOpen={isDialogOpen}
-          onCancel={handleCancel}
-          enquiryCalculatorData={submittedData}
-          type={"gold_loan_calculator"}
-        />
+        <EnquiryModal isDialogOpen={isDialogOpen} onCancel={handleCancel} enquiryCalculatorData={submittedData} type={"gold_loan_calculator"} />
       )}
     </>
   );
