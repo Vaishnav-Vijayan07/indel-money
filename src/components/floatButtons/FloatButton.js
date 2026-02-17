@@ -26,7 +26,7 @@ function FloatButton({ buttons, formattedGoldCaratTypes, formattedGoldTypes }) {
           </div>
         ))}
 
-        <div>
+        <div id="gold-loan-calculator-float-btn">
           <Calculator formattedGoldCaratTypes={formattedGoldCaratTypes} formattedGoldTypes={formattedGoldTypes} />
         </div>
       </div>
