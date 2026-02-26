@@ -2852,7 +2852,8 @@ export default [
     permanent: true,
   },
   {
-    source: "/news/mr-umesh-mohanan-is-lauded-by-asiaone-magazine-and-is-going-to-be-recognized-with-indias-greatest-leaders-2020-21-awards",
+    source:
+      "/news/mr-umesh-mohanan-is-lauded-by-asiaone-magazine-and-is-going-to-be-recognized-with-indias-greatest-leaders-2020-21-awards",
     destination: "/news",
     permanent: true,
   },
@@ -3055,7 +3056,8 @@ export default [
     permanent: true,
   },
   {
-    source: "/news/undefined/news/indel-money-partners-with-indusind-bank-for-indias-first-conventional-gold-loan-co-lending-partnership-4",
+    source:
+      "/news/undefined/news/indel-money-partners-with-indusind-bank-for-indias-first-conventional-gold-loan-co-lending-partnership-4",
     destination: "/news",
     permanent: true,
   },
@@ -3086,7 +3088,8 @@ export default [
     permanent: true,
   },
   {
-    source: "/news/undefined/news/indel-money-partners-with-indusind-bank-for-indias-first-conventional-gold-loan-co-lending-partnership-40",
+    source:
+      "/news/undefined/news/indel-money-partners-with-indusind-bank-for-indias-first-conventional-gold-loan-co-lending-partnership-40",
     destination: "/news",
     permanent: true,
   },
@@ -3379,6 +3382,11 @@ export default [
   {
     source: "/career/business-analyst",
     destination: "/career",
+    permanent: true,
+  },
+  {
+    source: "/wpcontent/uploads/2025/05/JC%20Draft_Indel%20Money_DTAA_V1_23.05.2025.pdf",
+    destination: "https://backend.indelmoney.com/uploads/file-share/1772103615242-954383275.pdf",
     permanent: true,
   },
 ];
