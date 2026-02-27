@@ -3386,7 +3386,7 @@ export default [
   },
   {
     source: "/wpcontent/uploads/2025/05/JC%20Draft_Indel%20Money_DTAA_V1_23.05.2025.pdf",
-    destination: "https://backend.indelmoney.com/uploads/file-share/1772103615242-954383275.pdf",
+    destination: "https://backend.indelmoney.com/uploads/file-share/1772193097386-752112299.pdf",
     permanent: true,
   },
 ];
