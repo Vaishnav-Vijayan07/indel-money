@@ -42,7 +42,7 @@ export default async function RootLayout({ children }) {
         <Header />
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         <Footer content={footerContent} icons={footerIcons} />
-        <FloatingButton />
+        {/* <FloatingButton /> */}
         <Toaster position="top-right" />
 
         <noscript>
