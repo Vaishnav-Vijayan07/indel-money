@@ -55,12 +55,15 @@ const baseSchema = {
     })
     .optional(),
   age: z
-    .preprocess((val) => {
-      // Treat empty, null, undefined as invalid (not optional)
-      if (val === "" || val === null || val === undefined) return "invalid";
-      const num = Number(val);
-      return isNaN(num) ? "invalid" : num;
-    }, z.number({ invalid_type_error: "Enter a valid age" }).max(99, "Enter a valid age"))
+    .preprocess(
+      (val) => {
+        // Treat empty, null, undefined as invalid (not optional)
+        if (val === "" || val === null || val === undefined) return "invalid";
+        const num = Number(val);
+        return isNaN(num) ? "invalid" : num;
+      },
+      z.number({ invalid_type_error: "Enter a valid age" }).max(99, "Enter a valid age"),
+    )
     .optional(),
 };
 
@@ -157,7 +160,7 @@ function CareerFormInner({ jobId, isGeneral }) {
         {
           message: "Please enter a role name.",
           path: ["preferred_role_name"],
-        }
+        },
       );
   }, [selectedFile, selectedFileName, isGeneral]);
 
@@ -329,7 +332,7 @@ function CareerFormInner({ jobId, isGeneral }) {
 
   // Filter states based on search term
   const filteredStates = dropdowns.states.filter((state) =>
-    (state.label || state.state_name || state.name)?.toLowerCase().includes(stateSearchTerm.toLowerCase())
+    (state.label || state.state_name || state.name)?.toLowerCase().includes(stateSearchTerm.toLowerCase()),
   );
 
   // Filter districts based on search term
@@ -344,8 +347,6 @@ function CareerFormInner({ jobId, isGeneral }) {
 
   // Auto-fill form
   const autoFillForm = (data) => {
-    console.log("AUTO FILL DATA", data);
-
     const validatedData = {
       name: data.name || "",
       phone: data.phone || "",
@@ -664,8 +665,8 @@ function CareerFormInner({ jobId, isGeneral }) {
 
   const validateAndSetFile = (file) => {
     if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        toast.error("File size should be less than 5MB");
+      if (file.size > 1 * 1024 * 1024) {
+        toast.error("File size should be less than 1MB");
         return false;
       }
       if (!["application/pdf"].includes(file.type)) {
@@ -826,42 +827,54 @@ function CareerFormInner({ jobId, isGeneral }) {
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5">
-            <div
-              className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg mb-5 w-full mx-1.5 ${
-                isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
-              }`}
-              onDragOver={(e) => handleDragOver(e, false)}
-              onDragLeave={(e) => handleDragLeave(e, false)}
-              onDrop={(e) => handleDrop(e, false)}
-            >
-              <div className="w-20 lg:w-28">
                 <label className="text-xs lg:text-sm leading-none font-normal w-20 lg:w-28 h-10 flex items-center p-2.5 lg:p-3.5 bg-base1 rounded-2.5 cursor-pointer hover:bg-[#c8e1ff] transition-colors duration-300">
-                  <Image
-                    src="/images/icon-upload.svg"
-                    alt="icon-upload"
-                    width={21}
-                    height={16}
-                    className="w-[14px] lg:w-[24px] filter brightness-0 invert"
-                  />
-                  <span className="font-medium ml-1 lg:ml-1.5 text-white">Upload Resume</span>
-                  <input
-                    type="file"
-                    name="file"
-                    accept=".pdf,.jpeg,.png"
-                    className="hidden"
-                    onChange={handleFileChange}
-                    // disabled={!isOtpVerified}
-                  />
-                </label>
-              </div>
-              <div className="text-xs leading-normal font-normal pl-[10px] lg:pl-[14px] text-gray-700 truncate">
-                {selectedFile
-                  ? `${selectedFile.name} (${getFileTypeDisplay(selectedFile, null)})`
-                  : selectedFileName
-                  ? `${selectedFileName.replace("uploads/job-applications/", "")} (${getFileTypeDisplay(null, selectedFileName)})`
-                  : "No file chosen"}
-              </div>
-            </div>
+            <FormField
+              control={form.control}
+              name="file"
+              render={({ field }) => (
+                <FormItem className="mb-5 w-full mx-1.5">
+                  <FormControl>
+                    <div
+                      className={`max-sm:flex items-center hidden p-2.5 bg-white bg-custom-svg w-full ${
+                        isDraggingMobile ? "border-2 border-blue-500 rounded-lg" : ""
+                      }`}
+                      onDragOver={(e) => handleDragOver(e, false)}
+                      onDragLeave={(e) => handleDragLeave(e, false)}
+                      onDrop={(e) => handleDrop(e, false)}
+                    >
+                      <div className="w-20 lg:w-28">
+                        <label className="text-xs lg:text-sm leading-none font-normal w-20 lg:w-28 h-10 flex items-center p-2.5 lg:p-3.5 bg-base1 rounded-2.5 cursor-pointer hover:bg-[#c8e1ff] transition-colors duration-300">
+                          <Image
+                            src="/images/icon-upload.svg"
+                            alt="icon-upload"
+                            width={21}
+                            height={16}
+                            className="w-[14px] lg:w-[24px] filter brightness-0 invert"
+                          />
+                          <span className="font-medium ml-1 lg:ml-1.5 text-white">Upload Resume</span>
+                          <input
+                            type="file"
+                            name="file"
+                            accept=".pdf"
+                            className="hidden"
+                            onChange={handleFileChange}
+                            // disabled={!isOtpVerified}
+                          />
+                        </label>
+                      </div>
+                      <div className="text-xs leading-normal font-normal pl-[10px] lg:pl-[14px] text-gray-700 truncate">
+                        {selectedFile
+                          ? `${selectedFile.name} (${getFileTypeDisplay(selectedFile, null)})`
+                          : selectedFileName
+                            ? `${selectedFileName.replace("uploads/job-applications/", "")} (${getFileTypeDisplay(null, selectedFileName)})`
+                            : "No file chosen"}
+                      </div>
+                    </div>
+                  </FormControl>
+                  <FormMessage className="text-red-500 text-xs" />
+                </FormItem>
+              )}
+            />
 
             <div className="w-full px-1 lg:px-1.5 2xl:px-2.5">
               <FormField
@@ -1097,16 +1110,13 @@ function CareerFormInner({ jobId, isGeneral }) {
                             {!hasSelectedStates
                               ? "Select states first"
                               : districtsLoading
-                              ? "Loading districts..."
-                              : field.value && field.value.length > 0
-                              ? (() => {
-                                  const district = dropdowns.districts.find((dist) => String(dist.id) == String(field.value[0]));
-                                  console.log(district);
-                                  console.log(dropdowns.districts);
-                                  console.log(field.value[0]);
-                                  return toSentenceCase(district?.district_name) || field.value[0];
-                                })()
-                              : "Choose Preferred District*"}
+                                ? "Loading districts..."
+                                : field.value && field.value.length > 0
+                                  ? (() => {
+                                      const district = dropdowns.districts.find((dist) => String(dist.id) == String(field.value[0]));
+                                      return toSentenceCase(district?.district_name) || field.value[0];
+                                    })()
+                                  : "Choose Preferred District*"}
                           </span>
                           <svg
                             className={`w-4 h-4 transition-transform ${isDistrictsDropdownOpen ? "rotate-180" : ""}`}
@@ -1210,25 +1220,25 @@ function CareerFormInner({ jobId, isGeneral }) {
                             {!hasSelectedStates
                               ? "Select states first"
                               : isGeneral && !hasSelectedDistricts
-                              ? "Select districts first"
-                              : locationsLoading
-                              ? "Loading locations..."
-                              : field.value && field.value.length > 0
-                              ? (() => {
-                                  const selectedLocations = field.value.map((locationId) => {
-                                    const location = dropdowns.locations.find((loc) => String(loc.id) == String(locationId));
-                                    return toSentenceCase(location?.location_name) || locationId;
-                                  });
+                                ? "Select districts first"
+                                : locationsLoading
+                                  ? "Loading locations..."
+                                  : field.value && field.value.length > 0
+                                    ? (() => {
+                                        const selectedLocations = field.value.map((locationId) => {
+                                          const location = dropdowns.locations.find((loc) => String(loc.id) == String(locationId));
+                                          return toSentenceCase(location?.location_name) || locationId;
+                                        });
 
-                                  if (selectedLocations.length === 1) {
-                                    return selectedLocations[0];
-                                  } else if (selectedLocations.length <= 2) {
-                                    return selectedLocations.join(", ");
-                                  } else {
-                                    return `${selectedLocations.slice(0, 2).join(", ")}... (+${selectedLocations.length - 2} more)`;
-                                  }
-                                })()
-                              : "Preferred Locations*"}
+                                        if (selectedLocations.length === 1) {
+                                          return selectedLocations[0];
+                                        } else if (selectedLocations.length <= 2) {
+                                          return selectedLocations.join(", ");
+                                        } else {
+                                          return `${selectedLocations.slice(0, 2).join(", ")}... (+${selectedLocations.length - 2} more)`;
+                                        }
+                                      })()
+                                    : "Preferred Locations*"}
                           </span>
                           <svg
                             className={`w-4 h-4 transition-transform ${isLocationsDropdownOpen ? "rotate-180" : ""}`}
@@ -1495,7 +1505,7 @@ function CareerFormInner({ jobId, isGeneral }) {
                           <span className="font-medium ml-1 lg:ml-1.5">Upload Resume*</span>
                           <input
                             type="file"
-                            accept=".pdf,.jpeg,.png"
+                            accept=".pdf"
                             className="hidden"
                             onChange={handleFileChange}
                             // disabled={!isOtpVerified}
@@ -1505,11 +1515,11 @@ function CareerFormInner({ jobId, isGeneral }) {
                           {selectedFile
                             ? `${truncateFilename(selectedFile.name)} (${getFileTypeDisplay(selectedFile, null)})`
                             : selectedFileName
-                            ? `${truncateFilename(selectedFileName.replace("uploads/job-applications/", ""))} (${getFileTypeDisplay(
-                                null,
-                                selectedFileName
-                              )})`
-                            : "No file chosen"}
+                              ? `${truncateFilename(selectedFileName.replace("uploads/job-applications/", ""))} (${getFileTypeDisplay(
+                                  null,
+                                  selectedFileName,
+                                )})`
+                              : "No file chosen"}
                         </span>
                       </div>
                     </FormControl>

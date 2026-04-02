@@ -25,10 +25,10 @@ export default function ActiveJobsInfo() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [pagination, setPagination] = useState({
-    current_page: 1,
+    currentPage: 1,
     limit: 10, // Changed from per_page to limit and set to 10 to match API
-    total: 0,
-    total_pages: 1,
+    totalItems: 0,
+    totalPages: 1,
   });
 
   const fetchJobs = async (params = {}) => {
@@ -43,7 +43,7 @@ export default function ActiveJobsInfo() {
       if (!response.data.success) {
         setError(response.data.message || "Failed to fetch jobs");
         setJobs([]);
-        setPagination({ current_page: 1, limit: 10, total: 0, total_pages: 1 });
+        setPagination({ currentPage: 1, limit: 10, totalItems: 0, totalPages: 1 });
       } else {
         const allJobs = response.data.data || [];
         // Validate job objects
@@ -54,25 +54,15 @@ export default function ActiveJobsInfo() {
             job.id &&
             (job.role == null || typeof job.role === "object") &&
             (job.location == null || typeof job.location === "object") &&
-            (job.state == null || typeof job.state === "object")
+            (job.state == null || typeof job.state === "object"),
         );
-        const page = parseInt(params.page) || 1;
-        const limit = pagination.limit; // Use limit instead of per_page
-        const start = (page - 1) * limit;
-        const end = start + limit;
-        const paginatedJobs = validJobs.slice(start, end);
-        setJobs(paginatedJobs);
-        setPagination({
-          current_page: page,
-          limit: limit,
-          total: validJobs.length,
-          total_pages: Math.ceil(validJobs.length / limit) || 1,
-        });
+        setJobs(validJobs);
+        setPagination(response.data.pagination);
       }
     } catch (err) {
       setError(err.response?.data?.message || "Failed to fetch jobs");
       setJobs([]);
-      setPagination({ current_page: 1, limit: 10, total: 0, total_pages: 1 });
+      setPagination({ currentPage: 1, limit: 10, totalItems: 0, totalPages: 1 });
     } finally {
       setLoading(false);
     }
@@ -100,21 +90,16 @@ export default function ActiveJobsInfo() {
   };
 
   const hasActiveFilters = () => {
-    return (
-      searchParams.get("state_id") ||
-      searchParams.get("district_id") ||
-      searchParams.get("location_id") ||
-      searchParams.get("role_id")
-    );
+    return searchParams.get("state_id") || searchParams.get("district_id") || searchParams.get("location_id") || searchParams.get("role_id");
   };
 
   const renderPaginationItems = () => {
-    const { current_page, total_pages } = pagination;
+    const { currentPage, totalPages } = pagination;
     const items = [];
     const maxVisiblePages = 3;
 
-    let startPage = Math.max(1, current_page - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(total_pages, startPage + maxVisiblePages - 1);
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
     if (endPage - startPage + 1 < maxVisiblePages) {
       startPage = Math.max(1, endPage - maxVisiblePages + 1);
@@ -126,13 +111,13 @@ export default function ActiveJobsInfo() {
           <PaginationLink href="#" onClick={() => handlePageChange(1)}>
             1
           </PaginationLink>
-        </PaginationItem>
+        </PaginationItem>,
       );
       if (startPage > 2) {
         items.push(
           <PaginationItem key="start-ellipsis">
             <PaginationEllipsis />
-          </PaginationItem>
+          </PaginationItem>,
         );
       }
     }
@@ -140,27 +125,27 @@ export default function ActiveJobsInfo() {
     for (let i = startPage; i <= endPage; i++) {
       items.push(
         <PaginationItem key={i}>
-          <PaginationLink href="#" isActive={i === current_page} onClick={() => handlePageChange(i)}>
+          <PaginationLink href="#" isActive={i === currentPage} onClick={() => handlePageChange(i)}>
             {i}
           </PaginationLink>
-        </PaginationItem>
+        </PaginationItem>,
       );
     }
 
-    if (endPage < total_pages) {
-      if (endPage < total_pages - 1) {
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
         items.push(
           <PaginationItem key="end-ellipsis">
             <PaginationEllipsis />
-          </PaginationItem>
+          </PaginationItem>,
         );
       }
       items.push(
         <PaginationItem key="end">
-          <PaginationLink href="#" onClick={() => handlePageChange(total_pages)}>
-            {total_pages}
+          <PaginationLink href="#" onClick={() => handlePageChange(totalPages)}>
+            {totalPages}
           </PaginationLink>
-        </PaginationItem>
+        </PaginationItem>,
       );
     }
 
@@ -185,10 +170,7 @@ export default function ActiveJobsInfo() {
             {jobs.length > 0 ? (
               <div className="flex flex-wrap -mx-[4px] sm:-mx-[15px] lg:-mx-[20px] 2xl:-mx-[25px]">
                 {jobs?.map((item) => (
-                  <div
-                    key={item.id}
-                    className="w-full lg:w-1/2 p-[4px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_20px] 3xl:p-[20px_25px]"
-                  >
+                  <div key={item.id} className="w-full lg:w-1/2 p-[4px] sm:p-[5px_10px] lg:p-[10px_15px] 2xl:p-[15px_20px] 3xl:p-[20px_25px]">
                     <div className="hidden sm:block">
                       <JobResultBox variant="activeJobs" item={item} />
                     </div>
@@ -201,8 +183,7 @@ export default function ActiveJobsInfo() {
             ) : (
               <div className="flex flex-col items-center">
                 <div className="w-full text-center text-gray-500 p-4">
-                  We would be marking our presence in your location soon. Please drop your resume so that we can call when we are
-                  there.
+                  We would be marking our presence in your location soon. Please drop your resume so that we can call when we are there.
                 </div>
                 <Link
                   href={"/career/#makemove"}
@@ -212,22 +193,22 @@ export default function ActiveJobsInfo() {
                 </Link>
               </div>
             )}
-            {pagination.total_pages > 1 && (
+            {pagination.totalPages > 1 && (
               <Pagination className="justify-start sm:justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
                 <PaginationContent>
                   <PaginationItem>
                     <PaginationPrevious
                       href="#"
-                      onClick={() => handlePageChange(Math.max(1, pagination.current_page - 1))}
-                      className={pagination.current_page === 1 ? "pointer-events-none opacity-50" : ""}
+                      onClick={() => handlePageChange(Math.max(1, pagination.currentPage - 1))}
+                      className={pagination.currentPage === 1 ? "pointer-events-none opacity-50" : ""}
                     />
                   </PaginationItem>
                   {renderPaginationItems()}
                   <PaginationItem>
                     <PaginationNext
                       href="#"
-                      onClick={() => handlePageChange(Math.min(pagination.total_pages, pagination.current_page + 1))}
-                      className={pagination.current_page === pagination.total_pages ? "pointer-events-none opacity-50" : ""}
+                      onClick={() => handlePageChange(Math.min(pagination.totalPages, pagination.currentPage + 1))}
+                      className={pagination.currentPage === pagination.totalPages ? "pointer-events-none opacity-50" : ""}
                     />
                   </PaginationItem>
                 </PaginationContent>
@@ -267,10 +248,10 @@ export default function ActiveJobsInfo() {
 //   const [loading, setLoading] = useState(false);
 //   const [error, setError] = useState(null);
 //   const [pagination, setPagination] = useState({
-//     current_page: 1,
+//     currentPage: 1,
 //     per_page: 6,
-//     total: 0,
-//     total_pages: 1,
+//     totalItems: 0,
+//     totalPages: 1,
 //   });
 
 //   const fetchJobs = async (params = {}) => {
@@ -282,7 +263,7 @@ export default function ActiveJobsInfo() {
 //       if (!response.data.success) {
 //         setError(response.data.message || "Failed to fetch jobs");
 //         setJobs([]);
-//         setPagination({ current_page: 1, per_page: 6, total: 0, total_pages: 1 });
+//         setPagination({ currentPage: 1, per_page: 6, totalItems: 0, totalPages: 1 });
 //       } else {
 //         const allJobs = response.data.data || [];
 //         // Validate job objects
@@ -302,16 +283,16 @@ export default function ActiveJobsInfo() {
 //         const paginatedJobs = validJobs.slice(start, end);
 //         setJobs(paginatedJobs);
 //         setPagination({
-//           current_page: page,
+//           currentPage: page,
 //           per_page: perPage,
-//           total: validJobs.length,
-//           total_pages: Math.ceil(validJobs.length / perPage) || 1,
+//           totalItems: validJobs.length,
+//           totalPages: Math.ceil(validJobs.length / perPage) || 1,
 //         });
 //       }
 //     } catch (err) {
 //       setError(err.response?.data?.message || "Failed to fetch jobs");
 //       setJobs([]);
-//       setPagination({ current_page: 1, per_page: 6, total: 0, total_pages: 1 });
+//       setPagination({ currentPage: 1, per_page: 6, totalItems: 0, totalPages: 1 });
 //     } finally {
 //       setLoading(false);
 //     }
@@ -348,12 +329,12 @@ export default function ActiveJobsInfo() {
 //   };
 
 //   const renderPaginationItems = () => {
-//     const { current_page, total_pages } = pagination;
+//     const { currentPage, totalPages } = pagination;
 //     const items = [];
 //     const maxVisiblePages = 3;
 
-//     let startPage = Math.max(1, current_page - Math.floor(maxVisiblePages / 2));
-//     let endPage = Math.min(total_pages, startPage + maxVisiblePages - 1);
+//     let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+//     let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
 //     if (endPage - startPage + 1 < maxVisiblePages) {
 //       startPage = Math.max(1, endPage - maxVisiblePages + 1);
@@ -379,15 +360,15 @@ export default function ActiveJobsInfo() {
 //     for (let i = startPage; i <= endPage; i++) {
 //       items.push(
 //         <PaginationItem key={i}>
-//           <PaginationLink href="#" isActive={i === current_page} onClick={() => handlePageChange(i)}>
+//           <PaginationLink href="#" isActive={i === currentPage} onClick={() => handlePageChange(i)}>
 //             {i}
 //           </PaginationLink>
 //         </PaginationItem>
 //       );
 //     }
 
-//     if (endPage < total_pages) {
-//       if (endPage < total_pages - 1) {
+//     if (endPage < totalPages) {
+//       if (endPage < totalPages - 1) {
 //         items.push(
 //           <PaginationItem key="end-ellipsis">
 //             <PaginationEllipsis />
@@ -396,8 +377,8 @@ export default function ActiveJobsInfo() {
 //       }
 //       items.push(
 //         <PaginationItem key="end">
-//           <PaginationLink href="#" onClick={() => handlePageChange(total_pages)}>
-//             {total_pages}
+//           <PaginationLink href="#" onClick={() => handlePageChange(totalPages)}>
+//             {totalPages}
 //           </PaginationLink>
 //         </PaginationItem>
 //       );
@@ -451,22 +432,22 @@ export default function ActiveJobsInfo() {
 //                 </Link>
 //               </div>
 //             )}
-//             {pagination.total_pages > 1 && (
+//             {pagination.totalPages > 1 && (
 //               <Pagination className="justify-start sm:justify-end mt-[20px] lg:mt-[40px] 2xl:mt-[60px]">
 //                 <PaginationContent>
 //                   <PaginationItem>
 //                     <PaginationPrevious
 //                       href="#"
-//                       onClick={() => handlePageChange(Math.max(1, pagination.current_page - 1))}
-//                       className={pagination.current_page === 1 ? "pointer-events-none opacity-50" : ""}
+//                       onClick={() => handlePageChange(Math.max(1, pagination.currentPage - 1))}
+//                       className={pagination.currentPage === 1 ? "pointer-events-none opacity-50" : ""}
 //                     />
 //                   </PaginationItem>
 //                   {renderPaginationItems()}
 //                   <PaginationItem>
 //                     <PaginationNext
 //                       href="#"
-//                       onClick={() => handlePageChange(Math.min(pagination.total_pages, pagination.current_page + 1))}
-//                       className={pagination.current_page === pagination.total_pages ? "pointer-events-none opacity-50" : ""}
+//                       onClick={() => handlePageChange(Math.min(pagination.totalPages, pagination.currentPage + 1))}
+//                       className={pagination.currentPage === pagination.totalPages ? "pointer-events-none opacity-50" : ""}
 //                     />
 //                   </PaginationItem>
 //                 </PaginationContent>
