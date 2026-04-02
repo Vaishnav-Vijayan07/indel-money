@@ -827,7 +827,6 @@ function CareerFormInner({ jobId, isGeneral }) {
       <div className={`transition-opacity duration-300`}>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-wrap -mx-1 lg:-mx-6.5 2xl:-mx-2.5">
-                <label className="text-xs lg:text-sm leading-none font-normal w-20 lg:w-28 h-10 flex items-center p-2.5 lg:p-3.5 bg-base1 rounded-2.5 cursor-pointer hover:bg-[#c8e1ff] transition-colors duration-300">
             <FormField
               control={form.control}
               name="file"
