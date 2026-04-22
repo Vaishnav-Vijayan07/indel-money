@@ -53,8 +53,9 @@ const contactDetails = [
   },
 ];
 
-export default function contact({ content, contacts, error }) {
+export default function contact({ content, contacts, files }) {
   const isDataPresent = contacts?.length > 0;
+  const isFilesPresent = files?.length > 0;
 
   return (
     <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
@@ -138,6 +139,26 @@ export default function contact({ content, contacts, error }) {
                               <span className="pl-[10px]">{contact.email}</span>
                             </Link>
                           </li>
+                          {contact.file && (
+                            <li className="flex items-end justify-end">
+                              <Link
+                                href={contact.file ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${contact.file}` : "#"}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-fit break-all text-[12px] 2xl:text-[16px] 3xl:text-[20px] text-[#383838] font-medium flex items-center duration-100 hover:text-base2"
+                              >
+                                <div className="w-[20px] h-[20px] xl:w-[30px] xl:h-[30px] 3xl:w-[40px] 3xl:h-[40px] bg-red-500 rounded-full flex items-center justify-center">
+                                  <Image
+                                    src="/images/pdf-icon.svg"
+                                    alt="PDF Icon"
+                                    width={24}
+                                    height={24}
+                                    className="w-[10px] h-[10px] xl:w-[15px] xl:h-[15px] 2xl:w-[20px] 2xl:h-[20px] 3xl:w-[24px] 3xl:h-[24px]"
+                                  />
+                                </div>
+                              </Link>
+                            </li>
+                          )}
                         </ul>
                       </div>
                     </div>
@@ -146,6 +167,44 @@ export default function contact({ content, contacts, error }) {
               </div>
             ) : (
               <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black-400 italic">No Data Available</span>
+            )}
+
+            {isFilesPresent && (
+              <div className="flex flex-wrap w-full sm:m-[-8px] 2xl:m-[-15px] 3xl:m-[-20px]">
+                {files?.map((policies, index) => (
+                  <div key={index} className="w-full sm:w-[calc(100%/2)] p-[8px_0px] sm:p-[8px] 2xl:p-[-15px] 3xl:p-[20px]">
+                    <div
+                      className={`w-full flex items-center justify-between py-[10px] sm:py-[25px] px-[10px] sm:px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] min-h-[55px] sm:min-h-[85px] 2xl:min-h-[100px] 3xl:min-h-[140px] rounded-2xl bg-gradient-to-r from-[rgba(23,71,158,0.40)] to-[rgba(238,56,36,0.40)]${files.length % 2 !== 0 && index === files.length - 1 ? " col-span-2" : ""}`}
+                    >
+                      <h3 className="text-[13px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-medium sm:font-bold text-black max-w-[260px]">{`${
+                        policies.title ? policies.title : ""
+                      }`}</h3>
+
+                      {policies.file && policies.file !== "" ? (
+                        <Link
+                          href={policies.file ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${policies.file}` : "#"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 md:max-lg:mt-[10px]"
+                        >
+                          <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black whitespace-nowrap sm:block hidden">View PDF</span>
+                          <div className="w-[20px] h-[20px] xl:w-[30px] xl:h-[30px] 3xl:w-[40px] 3xl:h-[40px] bg-red-500 rounded-full flex items-center justify-center">
+                            <Image
+                              src="/images/pdf-icon.svg"
+                              alt="PDF Icon"
+                              width={24}
+                              height={24}
+                              className="w-[10px] h-[10px] xl:w-[15px] xl:h-[15px] 2xl:w-[20px] 2xl:h-[20px] 3xl:w-[24px] 3xl:h-[24px]"
+                            />
+                          </div>
+                        </Link>
+                      ) : (
+                        <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black-400 italic">No PDF Available</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         </div>
