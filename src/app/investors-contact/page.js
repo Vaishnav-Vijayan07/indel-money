@@ -16,7 +16,8 @@ async function fetchContactData() {
     if (result.status === "success") {
       return {
         content: contactData?.content,
-        contacts: contactData?.contact,
+        pdf_contacts: contactData?.pdf_contacts || [],
+        text_contacts: contactData?.text_contacts || [],
         error: null,
       };
     }
@@ -35,12 +36,16 @@ async function fetchContactData() {
 }
 
 export default async function contact() {
-  const { content, contacts, error } = await fetchContactData();
+  const { content, pdf_contacts, text_contacts, error } = await fetchContactData();
+
+  const contacts = text_contacts;
+
+  console.log("Fetched Contact Data:", { content, pdf_contacts, text_contacts, error });
 
   return (
     <>
       {/* contact*/}
-      <Contact content={content} contacts={contacts} error={error} />
+      <Contact content={content} contacts={contacts} files={pdf_contacts} error={error} />
     </>
   );
 }
