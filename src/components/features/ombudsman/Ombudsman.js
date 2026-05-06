@@ -51,7 +51,7 @@ export default function Ombudsman({ files }) {
                 key={index}
                 className="flex flex-wrap sm:flex-nowrap items-center justify-between py-[10px] sm:py-[25px] px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] min-h-[75px] sm:min-h-[85px] 2xl:min-h-[100px] 3xl:min-h-[140px] rounded-2xl bg-gradient-to-r from-[rgba(23,71,158,0.40)] to-[rgba(238,56,36,0.40)]"
               >
-                <h3 className="text-[13px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold text-black max-w-[260px]">{`Ombudsman scheme-${scheme?.title}`}</h3>
+                <h3 className="text-[13px] xl:text-[14px] 2xl:text-[18px] 3xl:text-[20px] font-bold text-black max-w-[260px]">{`${scheme?.title}`}</h3>
                 {scheme.file && scheme.file !== "" ? (
                   <Link
                     href={scheme?.file ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${scheme?.file}` : scheme.link}
