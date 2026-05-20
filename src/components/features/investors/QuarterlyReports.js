@@ -89,8 +89,8 @@ export default function QuarterlyReportSection({ setContent }) {
               ))}
             </Swiper>
           </div>
-          <ScrollArea className="hidden mb-4 w-full overflow-x-auto sm:flex sm:space-x-2">
-            <div className="flex space-x-2 mb-2">
+          <ScrollArea type="auto" className="hidden mb-4 w-full sm:block">
+            <div className="flex space-x-2 mb-2 w-max">
               {years?.map((year) => (
                 <button
                   key={year?.id}
@@ -107,7 +107,7 @@ export default function QuarterlyReportSection({ setContent }) {
                 </button>
               ))}
             </div>
-            <ScrollBar orientation="horizontal" />
+            <ScrollBar orientation="horizontal" className="data-[state=hidden]:hidden" />
           </ScrollArea>
 
           <Accordion type="single" collapsible value={openAccordion}>
