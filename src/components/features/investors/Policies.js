@@ -3,31 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
-
-
 import PaginationComponent from "../../Pagination";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useState, useEffect, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper/modules";
+import api from "@/lib/api/axios";
+import { cn } from "../../../lib/utils";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
-// const policies = [
-//     { name: "Risk Management Policy", link: "/pdfs/2023-24.pdf" },
-//     { name: "CSR Policy", link: "/pdfs/2023-24.pdf" },
-//     { name: "CO Lending Policy", link: "/pdfs/2023-24.pdf" },
-//     { name: "Covid 19 Moratorium Policy ", link: "/pdfs/2023-24.pdf" },
-//     { name: "Moratorium Policy 2.0 ", link: "/pdfs/2023-24.pdf" },
-//     { name: "Policy on Loans to Related Party  ", link: "/pdfs/2023-24.pdf" },
-//     { name: "RPT Policy  ", link: "/pdfs/2023-24.pdf" },
-//     { name: "Fair Practice Code  ", link: "/pdfs/2023-24.pdf" },
-//     { name: "KYC AML CFT Policy  ", link: "/pdfs/2023-24.pdf" },
-//     { name: "Asset Liability Management Policy", link: "/pdfs/2023-24.pdf" },
-//     { name: "Whistle Blower Policy ", link: "/pdfs/2023-24.pdf" },
-//     { name: "Policy of Stakeholders Relationship Committee  ", link: "/pdfs/2023-24.pdf" },
-// ];
-
-export default function Policies({ policies, currentPage, totalPages, content }) {
-  const isDataPresent = policies?.length > 0;
+export default function Policies({ policies, initialCategories, currentPage, totalPages, content }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [categories, setCategories] = useState(initialCategories || []);
+  const [activeCategory, setActiveCategory] = useState(initialCategories?.[0] || null);
   
   const createQueryString = useCallback(
     (name, value) => {
@@ -38,9 +30,40 @@ export default function Policies({ policies, currentPage, totalPages, content })
     [searchParams]
   );
 
-  const handlePageChange = (newPage) => {
-    router.push(`?${createQueryString("page", newPage.toString())}`);
+  const [policiesList, setPoliciesList] = useState(policies || []);
+  const [localCurrentPage, setLocalCurrentPage] = useState(currentPage || 1);
+  const [localTotalPages, setLocalTotalPages] = useState(totalPages || 1);
+
+  const fetchPoliciesData = async (categoryId, page = 1) => {
+    try {
+      const { data } = await api.get("/web/investors/policies", { 
+        params: { category_id: categoryId, page, limit: 10 } 
+      });
+      setPoliciesList(data?.data?.policies || []);
+      setLocalTotalPages(data?.data?.pagination?.totalPages || 1);
+      setLocalCurrentPage(page);
+    } catch (error) {
+      console.error("Error fetching policies:", error);
+    }
   };
+
+  const handlePageChange = (newPage) => {
+    fetchPoliciesData(activeCategory?.id, newPage);
+  };
+
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (activeCategory?.id) {
+      fetchPoliciesData(activeCategory.id, 1);
+    }
+  }, [activeCategory]);
+
+  const isDataPresent = policiesList?.length > 0;
 
   return (
     <section className="py-[35px] xl:py-[45px] 2xl:py-[65px]">
@@ -87,10 +110,60 @@ export default function Policies({ policies, currentPage, totalPages, content })
           </div>
           <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-330px)] 2xl:w-[calc(100%-400px)] 3xl:w-[calc(100%-510px)] md:pl-[30px] xl:pl-[50px] 2xl:pl-[80px] 3xl:pl-[100px]">
             <div className="text-black text-title1 font-medium mb-[20px] 2xlmb-[30px] 3xl:mb-[40px]">{content?.policies_title}</div>
+            
+            {categories?.length > 0 && (
+              <>
+                <div className="sm:hidden block">
+                  <Swiper slidesPerView="auto" spaceBetween={10} freeMode={true} modules={[FreeMode]} className="mb-4 px-2">
+
+                    {categories.map((cat) => (
+                      <SwiperSlide key={cat.id} className="!w-auto">
+                        <button
+                          onClick={() => setActiveCategory(cat)}
+                          className={cn(
+                            "text-[12px] sm:text-[8px] lg:text-[14px] 2xl:text-[18px] 3xl:text-[20px] px-[15px] xl:px-[20px] py-[8px] 3xl:px-[25px] 3xl:py-[11px] rounded-full font-bold transition-all text-white cursor-pointer whitespace-nowrap mb-[4px]",
+                            activeCategory?.id === cat.id ? "bg-base1" : "bg-[#85B6CF]"
+                          )}
+                        >
+                          {cat.title}
+                        </button>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+                <ScrollArea type="auto" className="hidden mb-4 w-full sm:block">
+                  <div className="flex space-x-2 mb-2 w-max">
+                    {/* <button
+                      onClick={() => setActiveCategory(null)}
+                      className={cn(
+                        "text-xs lg:text-sm 2xl:text-base 3xl:text-lg px-4 xl:px-5 py-2 3xl:px-6 3xl:py-3 rounded-full font-bold transition-all text-white cursor-pointer truncate",
+                        activeCategory === null ? "bg-base1" : "bg-[#85B6CF]"
+                      )}
+                    >
+                      All
+                    </button> */}
+                    {categories.map((cat) => (
+                      <button
+                        key={cat.id}
+                        onClick={() => setActiveCategory(cat)}
+                        className={cn(
+                          "text-xs lg:text-sm 2xl:text-base 3xl:text-lg px-4 xl:px-5 py-2 3xl:px-6 3xl:py-3 rounded-full font-bold transition-all text-white cursor-pointer truncate",
+                          activeCategory?.id === cat.id ? "bg-base1" : "bg-[#85B6CF]"
+                        )}
+                      >
+                        {cat.title}
+                      </button>
+                    ))}
+                  </div>
+                  <ScrollBar orientation="horizontal" className="data-[state=hidden]:hidden" />
+                </ScrollArea>
+              </>
+            )}
+
             {isDataPresent ? (
               <>
                 <div className="grid grid-cols-1 4xs:grid-cols-2 gap-2 xl:gap-4 3xl:gap-6">
-                  {policies?.map((policies, index) => (
+                  {policiesList?.map((policies, index) => (
                     <div
                       key={index}
                       className="flex items-center justify-between py-[10px] sm:py-[25px] px-[10px] sm:px-[15px] xl:py-[30px] xl:px-[20px] 3xl:py-[35px] 3xl:px-[25px] min-h-[55px] sm:min-h-[85px] 2xl:min-h-[100px] 3xl:min-h-[140px] rounded-2xl bg-gradient-to-r from-[rgba(23,71,158,0.40)] to-[rgba(238,56,36,0.40)] "
@@ -123,7 +196,7 @@ export default function Policies({ policies, currentPage, totalPages, content })
                     </div>
                   ))}
                 </div>
-                <PaginationComponent totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
+                <PaginationComponent totalPages={localTotalPages} currentPage={localCurrentPage} onPageChange={handlePageChange} />
               </>
             ) : (
               <span className="text-[10px] xl:text-[12px] 3xl:text-[16px] text-black-400 italic">No Data Available</span>
