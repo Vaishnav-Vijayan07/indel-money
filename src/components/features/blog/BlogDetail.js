@@ -2,12 +2,35 @@ import Image from "next/image";
 import styles from "@/components/features/blog/Blog.module.css";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
 import { formatPostDate } from "@/lib/utils";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
-const PostDateDisplay = ({ date = "24 NOVEMBER 2024" }) => {
+const PostDateDisplay = ({ date = "24 NOVEMBER 2024", authorImage, authorName }) => {
   return (
-    <div className="flex items-center text-[#505050] font-normal 2xl:text-[18px] md:text-[14px] text-[12px] sm:border-b border-b-[rgb(0,0,0,18%)] pb-[10px] sm:pb-[15px] md:pb-[20px] 2xl:mb-[30px] md:mb-[20px] sm:mb-[15px] mb-[10px]">
-      <span>Posted On:</span>
-      <span className="uppercase lg:pl-[10px]">{formatPostDate(date)}</span>
+    <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-1 sm:border-b border-b-[rgb(0,0,0,18%)] pb-[10px] sm:pb-[15px] md:pb-[20px] 2xl:mb-[30px] md:mb-[20px] sm:mb-[15px] mb-[10px]">
+      {authorImage && authorName && (
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] rounded-full overflow-hidden">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${authorImage}`}
+              alt={authorName}
+              width={40}
+              height={40}
+              className="w-full h-full object-cover m-0! float-none! max-w-full! rounded-0!"
+            />
+          </div>
+          <div className="flex-1">
+            <div className="text-[10px] sm:text-sm font-medium text-black//60">
+              <span className="font-light uppercase">By: {""}</span>
+              {authorName}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="text-[10px] sm:text-sm font-medium text-black/60 flex items-center gap-2">
+        <span className="font-light uppercase">Posted On:</span>
+        {formatPostDate(date)}
+      </div>
     </div>
   );
 };
@@ -19,12 +42,10 @@ const BlogDetail = ({ data }) => {
         <div className="2xl:mb-[55px] md:mb-[20px] sm:mb-[10px] mb-[15px] sm:block hidden">
           <PageBreadcrumb />
         </div>
-        <div
-          className={`${styles.ckCntWrap} border-b border-b-[rgb(0,0,0,18%)] 2xl:pb-[35px] xl:pb-[20px] md:pb-[20px] sm:pb-[10px] pb-[15px]`}
-        >
+        <div className={`${styles.ckCntWrap} border-b border-b-[rgb(0,0,0,18%)] 2xl:pb-[35px] xl:pb-[20px] md:pb-[20px] sm:pb-[10px] pb-[15px]`}>
           <div className="w-full sm:hidden block">
             <h1>{data?.title}</h1>
-            <PostDateDisplay date={data?.createdAt} className="!border-b-[rgb(0,0,0,0%)]" />
+            <PostDateDisplay date={data?.createdAt} authorImage={data?.author_image} authorName={data?.author_name} />
           </div>
           <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${data?.image}`}
@@ -35,19 +56,19 @@ const BlogDetail = ({ data }) => {
           />
           <div className="sm:block hidden">
             <h1>{data?.title}</h1>
-            <PostDateDisplay date={data?.createdAt} />
+            <PostDateDisplay date={data?.createdAt} authorImage={data?.author_image} authorName={data?.author_name} />
           </div>
-          {data?.image_description}
+          {data?.image_description ? renderHtml(data?.image_description) : ""}
           <br />
-          <Image
+          {/* <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${data?.second_image}`}
             alt={"bg"}
             width={360}
             height={460}
             className="w-full mt-4 h-full object-cover transition-transform duration-600 group-hover:scale-[1.05] sm:block hidden"
           />
-          <br/>
-          {data?.second_image_description}
+          <br /> */}
+          {data?.second_image_description ? renderHtml(data?.second_image_description) : ""}
         </div>
       </div>
     </section>

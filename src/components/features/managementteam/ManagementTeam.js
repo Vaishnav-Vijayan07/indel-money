@@ -1,13 +1,10 @@
 "use client";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/custom-alert-dialog";
 // import { Button } from "@/components/ui/button";
@@ -99,7 +96,7 @@ export default function ManagementTeam({ pageContent, teams }) {
           <div className="w-full md:w-[45%] 2xl:w-[40%]">
             <h2
               className="text-title1 mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold]"
-              dangerouslySetInnerHTML={{ __html: pageContent?.title }}
+              dangerouslySetInnerHTML={{ __html: pageContent?.title ? pageContent?.title : "" }}
             />
           </div>
           <div className="w-full md:w-[55%] 2xl:w-[60%] md:pl-[30px]">

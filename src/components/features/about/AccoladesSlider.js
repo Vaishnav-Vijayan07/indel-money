@@ -17,7 +17,12 @@ const slides = [
 ];
 
 export default function AccoladesSlider({ accolades }) {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const navigation = {
+    nextEl: ".custom-next",
+    prevEl: ".custom-prev",
+  };
   return (
     <div className="w-full 3xl:px-[110px] lg:px-[70px] px-[20px]">
       <div className="relative w-full">
@@ -111,12 +116,13 @@ export default function AccoladesSlider({ accolades }) {
                 </div>
               </div>
               <div className="3xl:w-[calc(100%-250px)] 2xl:w-[calc(100%-200px)] w-[calc(100%-150px)] 2xl:pl-[55px] md:pl-[35px] pl-[25px] text-justify">
-                <div className="3xl:text-[32px] xl:text-[20px] text-[14px] text-black mb-[15px] [&>span]:block [&>span]:font-medium [&>span]:text-black">
-                  {/* {item?.title} <span className="block font-medium text-black">{item?.bold_text}</span> */}
-                </div>
+                <div
+                  className="3xl:text-[32px] xl:text-[20px] text-[14px] text-black mb-[15px] [&>span]:block [&>span]:font-medium [&>span]:text-black"
+                  dangerouslySetInnerHTML={{ __html: item?.title ? item?.title : "" }}
+                />
                 <p className="3xltext-[18px] 2xl:text-[16px]  text-[12px] text-[#343434] leading-[1.4]">{item?.description}</p>
                 <Link
-                  href="#"
+                  href="/award"
                   className="3xl:text-[18px] lg:text-[16px] text-[14px] text-white 2xl:h-[50px] h-[40px] w-full overflow-hidden rounded-[50px] bg-base2 max-w-[150px] flex items-center justify-center 2xl:mt-[40px] mt-[20px] lg:ml-auto transition-all duration-300 hover:bg-base1"
                 >
                   VIEW ALL

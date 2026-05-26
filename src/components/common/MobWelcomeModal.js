@@ -3,18 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "../ui/custom-alert-dialog";
 
 import { useState, useEffect } from "react";
 
+// Default slides - can be used as fallback if serviceBanner.services is not available
 const slides = [
   {
     src: "/images/welcome-1.jpg",
@@ -51,13 +47,12 @@ const slides = [
 ];
 
 function WelcomeBox({ item, index }) {
-  // const isActive = index === 0;
   return (
     <div className="w-full h-auto rounded-[10px] p-[10px] relative z-0 flex flex-wrap bg-[#dceafb] transition-all duration-300">
       <div className="group w-[100px] height-[115px] overflow-hidden rounded-[10px] relative z-0">
         <Image
-          src={item.src}
-          alt={item.alt}
+          src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.image}` : item?.src || "/images/welcome-4.jpg"}
+          alt={item?.image_alt || item?.alt || "welcome"}
           fill
           sizes="100px"
           className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -65,16 +60,16 @@ function WelcomeBox({ item, index }) {
       </div>
       <div className="w-[calc(100%-100px)] pl-[10px]">
         <div className="text-[14px] leading-none line-clamp-1 font-bold text-base1 mb-[5px] transition-all duration-300">
-          {item.title}
+          {item?.title || "Quick pay"}
         </div>
         <div className="text-[13px] leading-[1.3] line-clamp-3 font-normal text-black mb-[20px] transition-all duration-300">
-          {item.description}
+          {item?.description || "efficient payment solution designed to make transactions faster and easier."}
         </div>
         <Link
-          href={item.link}
+          href={item?.button_link || item?.link || "/"}
           className="group text-[12px] uppercase text-normal text-white w-full h-[27px] bg-base1 border-base1 flex items-center justify-center gap-[4px] rounded-[5px] border mt-auto transition-all duration-300"
         >
-          {item.linkname}
+          {item?.button_text || item?.linkname || "Get Started"}
           <svg
             width="5"
             height="9"
@@ -91,23 +86,30 @@ function WelcomeBox({ item, index }) {
   );
 }
 
-export default function MobWelcomeModal() {
+export default function MobWelcomeModal({ banner, serviceBanner }) {
+  const appear_in = banner?.banner_popup_appearence_time || serviceBanner?.banner_popup_appearence_time;
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Check if the user has seen the modal before using localStorage
     const hasSeenModal = localStorage.getItem("hasSeenWelcomeModal");
 
     if (!hasSeenModal) {
-      // Initial delay
+      // Get appearance time from banner props (convert to milliseconds)
+      const appearanceTime = (appear_in || 5) * 1000;
+
+      // Show modal after appearance time (initial delay)
       const initialTimer = setTimeout(() => {
         setIsOpen(true);
-      }, 2000);
+      }, appearanceTime);
 
-      // Set up a 10-minute interval (600,000 ms) to re-show the modal
+      // Set up appearance time interval to reappear
       const intervalTimer = setInterval(() => {
-        setIsOpen(true);
-      }, 600000);
+        // Check again if user has manually closed it during the interval
+        const currentStatus = localStorage.getItem("hasSeenWelcomeModal");
+        if (!currentStatus) {
+          setIsOpen(true);
+        }
+      }, appearanceTime);
 
       // Cleanup timers on component unmount
       return () => {
@@ -115,7 +117,7 @@ export default function MobWelcomeModal() {
         clearInterval(intervalTimer);
       };
     }
-  }, []);
+  }, [banner?.banner_popup_appearence_time, serviceBanner?.banner_popup_appearence_time]);
 
   // Handle closing the modal and mark it as seen
   const handleClose = () => {
@@ -129,28 +131,73 @@ export default function MobWelcomeModal() {
         <div className="w-full min-w-[380px] mx-auto bg-white rounded-[15px] p-[25px_20px]">
           <AlertDialogCancel
             onClick={handleClose}
-            className="focus:outline-0 flex gap-[4px] absolute z-0 top-[20px] right-[20px] transition-color cursor-pointer items-center"
+            className="focus:outline-0 flex gap-[4px] absolute z-0 top-[30px] right-[20px] transition-color cursor-pointer items-center"
           >
             <Image src="/images/icon-close.svg" alt="icon-close" width={10} height={10} />
           </AlertDialogCancel>
+
           <div className="flex flex-wrap gap-[30px] mb-[20px]">
             <div className="w-full max-w-[80px] h-auto inline-block">
-              <Image src="/icons/logo_sm.svg" alt="logo" width={86} height={44} inert />
+              <Image
+                src={
+                  banner?.logo
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.logo}`
+                    : serviceBanner?.logo
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${serviceBanner?.logo}`
+                    : "/icons/logo_sm.svg"
+                }
+                alt={banner?.image_alt ? banner?.image_alt : "logo"}
+                width={86}
+                height={44}
+                inert
+              />
             </div>
             <div>
               <AlertDialogTitle className="text-[20px] text-base2 leading-none font-bold mt-[2px] mb-[4px]">
-                Welcome!
+                {banner?.title ? banner?.title : serviceBanner?.title ? serviceBanner?.title : "Welcome!"}
               </AlertDialogTitle>
-              <div className="text-[14px] leading-none font-normal text-[#1e1e1e]">What Brings You Here Today?</div>
+              <div className="text-[14px] leading-none font-normal text-[#1e1e1e]">
+                {banner?.sub_title ? banner?.sub_title : serviceBanner?.sub_title ? serviceBanner?.sub_title : "What Brings You Here Today?"}
+              </div>
             </div>
           </div>
-          <div className="flex flex-wrap -mx-[4px]">
-            {slides?.map((item, index) => (
-              <div key={index} className="w-full p-[4px]">
-                <WelcomeBox item={item} index={index} />
-              </div>
-            ))}
-          </div>
+
+          {/* Show banner image if banner exists */}
+          {banner && (
+            <div className="mb-[20px]">
+              <Link href={banner?.image_link ? banner?.image_link : "/"} className="w-full block">
+                <Image
+                  src={banner?.banner_popup_image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${banner?.banner_popup_image}` : "/icons/logo_sm.svg"}
+                  width={380}
+                  height={200}
+                  alt={banner?.image_alt ? banner?.image_alt : "banner"}
+                  className="w-full h-auto object-cover rounded-[10px]"
+                />
+              </Link>
+            </div>
+          )}
+
+          {/* Show service boxes if serviceBanner exists */}
+          {serviceBanner && (
+            <div className="flex flex-wrap -mx-[4px]">
+              {serviceBanner?.services?.map((item, index) => (
+                <div key={index} className="w-full p-[4px]">
+                  <WelcomeBox item={item} index={index} />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Fallback to default slides if neither banner nor serviceBanner exists */}
+          {/* {!banner && !serviceBanner && (
+            <div className="flex flex-wrap -mx-[4px]">
+              {slides?.map((item, index) => (
+                <div key={index} className="w-full p-[4px]">
+                  <WelcomeBox item={item} index={index} />
+                </div>
+              ))}
+            </div>
+          )} */}
         </div>
       </AlertDialogContent>
     </AlertDialog>

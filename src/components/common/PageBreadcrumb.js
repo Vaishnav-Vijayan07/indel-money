@@ -52,7 +52,7 @@ export default function PageBreadcrumb({
   const segments = pathname.split("/").filter((segment) => segment !== "");
 
   // Create the breadcrumb items
-  const items = segments.map((segment, index) => {
+  const items = segments?.map((segment, index) => {
     const href = `/${segments.slice(0, index + 1).join("/")}`;
     const label = transformLabel(segment);
     const isLast = index === segments.length - 1;
@@ -79,7 +79,7 @@ export default function PageBreadcrumb({
             <BreadcrumbSeparatorImage variant={variant} />
           </BreadcrumbSeparator>
         )}
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <React.Fragment key={item.href}>
             <BreadcrumbItem>
               {item.isLast ? (

@@ -1,114 +1,51 @@
-import BlogDetail from "@/components/features/blog/BlogDetail";
-import RecentBlog from "@/components/features/blog/RecentBlog";
+//export const dynamic = "force-dynamic";
+import PrivacyPolicy from "@/components/features/privacy/PrivacyPolicy";
+import { notFound } from "next/navigation";
 
-// Fetch blog data
-async function fetchBlogData(slug) {
+async function fetchData(type) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/blogs/${slug}`, {
-      cache: "force-cache", // Ensure fresh data
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/policies?type=${type}`, {
+      cache: "no-store", // Ensure fresh data
+      // cache: "force-cache",
+      // next: { revalidate: 60 },
     });
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+
     const result = await response.json();
+    const PolicyData = result.policy;
+
     if (result.status === "success") {
-      return { data: result.data, error: null };
+      return {
+        content: PolicyData?.content,
+        error: null,
+      };
+    } else {
+      notFound();
     }
-    return { data: null, error: result.message };
-  } catch (error) {
-    console.error("Fetch error for slug:", slug, error.message);
-    return { data: null, error: "Failed to fetch blog data" };
-  }
-}
 
-// Generate dynamic metadata
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const { data, error } = await fetchBlogData(slug);
-
-  // Fallback metadata in case of error or missing data
-  if (error || !data) {
-    console.warn("Metadata fallback used for slug:", slug, "Error:", error);
     return {
-      title: "Blog Post | My Website",
-      description: "Read our latest blog post.",
-      openGraph: {
-        title: "Blog Post | My Website",
-        description: "Read our latest blog post.",
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
-        type: "article",
-        images: [
-          {
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
-            width: 1200,
-            height: 630,
-            alt: "Blog Post",
-          },
-        ],
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: "Blog Post | My Website",
-        description: "Read our latest blog post.",
-        images: [`${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`],
-      },
+      content: null,
+      error: result.message,
+    };
+  } catch (error) {
+    notFound();
+    return {
+      content: null,
+      error: "Failed to policy data",
     };
   }
-
-  return {
-    title: data?.title || "Blog Post | My Website",
-    description: data?.meta_description || data?.description || "Read our latest blog post.",
-    keywords: data?.meta_keywords || "blog, post, news",
-    openGraph: {
-      title: data?.title || "Blog Post | My Website",
-      description: data?.meta_description || data?.description || "Read our latest blog post.",
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
-      type: "article",
-      images: [
-        {
-          url: data?.meta_image
-            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.meta_image}`
-            : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: data?.title || "Blog Post",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: data?.title || "Blog Post | My Website",
-      description: data?.meta_description || data?.description || "Read our latest blog post.",
-      images: [
-        data?.meta_image
-          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.meta_image}`
-          : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.jpg`,
-      ],
-    },
-    alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
-    },
-  };
 }
 
-export default async function Blog({ params }) {
+export default async function PolicyPage({ params }) {
   const { slug } = await params;
-  const { data, error } = await fetchBlogData(slug);
+  const { content, error } = await fetchData(slug);
 
-  // Handle error state
-  if (error || !data) {
-    return (
-      <div className="container py-10">
-        <h1>Error Loading Blog Post</h1>
-        <p>{error || "Blog post not found."}</p>
-      </div>
-    );
+  if (error || !content) {
+    notFound();
   }
 
   return (
     <>
-      <BlogDetail data={data} />
-      <RecentBlog />
+      <PrivacyPolicy content={content} type={slug} />
     </>
   );
 }

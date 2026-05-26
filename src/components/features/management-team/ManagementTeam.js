@@ -1,19 +1,17 @@
 "use client";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/custom-alert-dialog";
 // import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import "./Management.css";
 import "./management.config.js";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 export default function ManagementTeam({ pageContent, teams }) {
   const slides = [
@@ -97,13 +95,12 @@ export default function ManagementTeam({ pageContent, teams }) {
       <div className="container flex flex-wrap">
         <div className="flex flex-wrap mb-[60px]">
           <div className="w-full md:w-[45%] 2xl:w-[40%]">
-            <h2
-              className="text-title1 mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold]"
-              dangerouslySetInnerHTML={{ __html: pageContent?.title }}
-            />
+            <h2 className="text-title1 mb-[15px] 2xl:mb-[20px] [&>span]:text-base2 [&>span]:font-bold">
+              {pageContent?.title ? renderHtml(pageContent?.title) : "Management Team"}
+            </h2>
           </div>
-          <div className="w-full md:w-[55%] 2xl:w-[60%] md:pl-[30px]">
-            <p className="text-sm1">{pageContent?.description}</p>
+          <div className="w-full md:w-[55%] 2xl:w-[60%] md:pl-[30px] [&>p]:text-sm1">
+            {pageContent?.description ? renderHtml(pageContent?.description) : ""}
           </div>
         </div>
         <div className="flex flex-wrap -mx-[12px] xl:-mx-[15px] 2xl:-mx-[17px] -my-[20px] xl:-my-[25px] 2xl:-my-[30px]">
@@ -130,7 +127,7 @@ function TeamBox({ item }) {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,#EFEFEF_0%,#DBEEF9_100%)] transition-opacity duration-500 group-hover:opacity-0 hidden sm:block"></div>
             <div className="absolute inset-0 sm:bg-[linear-gradient(180deg,#EE3824_0%,#17479E_100%)] bg-[linear-gradient(180deg,#17479E_0%,#EE3824_100%)] opacity-100 sm:opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
             <Image
-              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`}
+              src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/team010.png"}
               alt={item.name}
               width={380}
               height={455}
@@ -138,8 +135,8 @@ function TeamBox({ item }) {
             />
           </div>
           <div className="mt-[20px]">
-            <div className="text-footer-1 mb-[10px] sm:font-medium font-bold sm:text-left text-center">{item.name}</div>
-            <div className="text-sm-1 sm:text-left text-center">{item.title}</div>
+            <div className="text-footer-1 mb-[10px] text-[14px] lg:text-[16px] 2xl:text-[18px] 3xl:text-[22px] leading-none sm:font-medium font-bold sm:text-left text-center">{item.name}</div>
+            <div className="text-sm-1 text-[13px] sm:text-[16px] sm:text-left text-center">{item.title}</div>
           </div>
         </div>
       </AlertDialogTrigger>
@@ -170,7 +167,7 @@ function TeamModal({ item }) {
         <div className="group w-full sm:w-[150px] lg:w-[250px] xl:w-[270px] 2xl:w-[385px] flex sm:justify-center items-end sm:items-center bg-gradient-to-t from-[rgba(238,56,36,0.40)] via-[rgba(23,71,158,0.25)] to-[rgba(23,71,158,0.10)] sm:bg-gradient-to-b sm:from-[#EFEFEF] sm:to-[#AFDBF6] rounded-[10px] sm:rounded-[20px] p-[15px] pb-0 sm:p-0 overflow-hidden">
           <div className="group h-auto sm:w-full w-[135px] flex justify-center items-center">
             <Image
-              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}`}
+              src={item?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.image}` : "/images/team010.png"}
               alt={item.title}
               layout="responsive"
               width={100}
@@ -198,7 +195,7 @@ function TeamModal({ item }) {
                         [&::-webkit-scrollbar-track]:rounded-full
                         scroll-smooth"
           >
-            <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">{item.title}</div>
+            <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">{item?.description}</div>
           </div>
         </div>
         <div
@@ -210,7 +207,7 @@ function TeamModal({ item }) {
                     [&::-webkit-scrollbar-track]:rounded-full
                     scroll-smooth"
         >
-          <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">{item.title}</div>
+          <div className="text-footer-1 font-normal leading-[150%] text-[#323232] pr-[20px]">{item?.description}</div>
         </div>
       </div>
     </div>

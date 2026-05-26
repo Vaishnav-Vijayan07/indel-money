@@ -1,18 +1,72 @@
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/custom-alert-dialog";
 import Image from "next/image";
 import EnquiryForm from "./EnquiryForm";
+import { useEffect, useMemo, useState } from "react";
+import api from "@/lib/api/axios";
+import toast from 'react-hot-toast';
 
-export default function EnquiryModal({ isDialogOpen, onCancel }) {
+export default function EnquiryModal({ isDialogOpen, onCancel, enquiryCalculatorData, type }) {
+  const [serviceTypes, setServiceTypes] = useState([]);
+
+  const postEnquiryData = async (enquiryData) => {
+    try {
+      let payload = {
+        name: enquiryData.yourName,
+        phone: enquiryData.contactNumber,
+        email: enquiryData.emailAddress,
+        service_types: enquiryData.serviceType,
+        enquiry_type: type || "general",
+        enquiry_type_details: enquiryCalculatorData || {}
+      };
+
+      const { data } = await api.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/service-enquiries`, payload);
+
+      if (data.success) {
+        toast.success("Enquiry submitted successfully!");
+        onCancel();
+      }
+    } catch (error) {
+      toast.error("Enquiry submition failed!");
+    }
+  }
+
+  const fetchServiceTypes = async () => {
+    try {
+
+      const { data } = await api.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service-enquiries/service-types`);
+      if (data.success) {
+        setServiceTypes(data.data);
+      } else {
+        toast.error("Failed to fetch service types!");
+        return [];
+      }
+    } catch (error) {
+      toast.error("service fetching failed!");
+    }
+  }
+
+  useEffect(() => {
+    fetchServiceTypes();
+  }, [])
+
+  const formattedServiceTypes = useMemo(() => {
+    if (serviceTypes?.length > 0) {
+      return serviceTypes?.map(type => ({
+        label: type.type_name,
+        value: type.id
+      }));
+    }
+    return [];
+  }, [serviceTypes]);
+
   return (
     <AlertDialog open={isDialogOpen} onOpenChange={onCancel}>
       <AlertDialogContent>
@@ -24,7 +78,7 @@ export default function EnquiryModal({ isDialogOpen, onCancel }) {
             <AlertDialogDescription className="sr-only">
               This action cannot be undone.
             </AlertDialogDescription>
-            <EnquiryForm />
+            <EnquiryForm handleSubmit={postEnquiryData} serviceTypes={formattedServiceTypes} />
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel

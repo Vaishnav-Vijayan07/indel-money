@@ -12,6 +12,8 @@ const imageStyle = "w-full max-w-[80px] lg:max-w-[100px] 2xl:max-w-[125px] 3xl:m
 const stylesForEven = `${boxStyle} md:h-[calc(100%-50px)]`;
 
 export default function CountersecCopy({ statsData }) {
+
+  
   return (
     <div className="flex flex-wrap md:items-end -m-[5px] 3xl:-m-[10px] md:h-[260px] 2xl:h-[300px] 3xl:h-[370px]">
       {statsData?.map((item, index) => (
@@ -23,7 +25,10 @@ export default function CountersecCopy({ statsData }) {
             </div>
             <p className={descriptionStyle}>{item?.description}</p>
             <div className={imageStyle}>
-              <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.icon}`} alt="India Icon" width={185} height={175} className="object-cover" />
+            {
+              item?.icon ?   <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${item?.icon}`} alt="India Icon" width={185} height={175} className="object-cover" />: null
+            }
+            
             </div>
           </div>
         </div>

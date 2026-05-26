@@ -1,6 +1,7 @@
 import Image from "next/image";
 import "./History.css";
 import PageBreadcrumb from "@/components/common/PageBreadcrumb";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 // const historyImages = [
 //   { image: "/images/h1.webp", alt: "Image 1" },
@@ -17,7 +18,7 @@ export default function IndelHistory({ historyImages, pageTitle, historyDesc, hi
   return (
     <section className="relative py-[30px] lg:py-[65px]">
       <div className="container">
-        <h2 className="text-title2 mb-[5px] [&>span]:text-[#F30000] [&>span]:font-bold" dangerouslySetInnerHTML={{ __html: pageTitle }} />
+        <h2 className="text-title2 mb-[5px] [&>span]:text-base2 [&>span]:font-bold"> {pageTitle ? renderHtml(pageTitle) : ""}</h2>
 
         <div className="mb-[20px] lg:mb-[35px] 2xl:mb-[60px]">
           <PageBreadcrumb />
@@ -29,7 +30,7 @@ export default function IndelHistory({ historyImages, pageTitle, historyDesc, hi
                 {historyTitle}
               </div>
 
-              <div dangerouslySetInnerHTML={{ __html: historyDesc }} />
+              <div dangerouslySetInnerHTML={{ __html: historyDesc ? historyDesc : "" }} />
             </div>
           </div>
           <div className="w-full lg:w-[calc(100%-350px)] xl:w-[calc(100%-465px)] 2xl:w-[calc(100%-535px)] 3xl:w-[calc(100%-670px)] lg:pl-[40px]">

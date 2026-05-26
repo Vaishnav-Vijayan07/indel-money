@@ -1,44 +1,118 @@
+"use client";
+import Image from "next/image";
 import CareerForm from "@/components/common/CareerForm";
 import "./Career.css";
-
-const jobResults = [
-  {
-    id: 0,
-    job_title: "senior accountant",
-    experience: "5 years",
-    location: "kochi, kerala",
-    job_description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat commodo elementum. Integer non vestibulum turpis, non auctor nisl. Integer ipsum leo, scelerisque vel erat quis, facilisis aliquam urna. Nam vitae risus id ligula ullamcorper ultricies non sed dolor. ",
-  },
-];
-
+import parse from "html-react-parser";
+import { encodeId } from "@/lib/hashids";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 function CareerDetailInfoBox({ children }) {
   return (
-    <div className="text-[13px] sm:text-[14px] lg:text-[16px] 2xl:text-[18px] leading-none font-normal text-[#484877] w-full h-[35px] lg:h-[50px] border-[1px] border-dashed border-[linear-gradient(to right, #ff0, #f00) 1] rounded-[10px] flex items-center p-[8px_10px] lg:p-[10px_20px]">
+    <div className="text-[13px] sm:text-[14px] lg:text-[16px] 2xl:text-[18px] leading-[1.3] font-normal text-[#484877] w-full max-h-[100px] lg:max-h-[165px] overflow-auto border-[1px] border-dashed border-[linear-gradient(to right, #ff0, #f00) 1] rounded-[10px] flex p-[8px_10px] lg:p-[10px_20px]">
       {children}
     </div>
   );
 }
 
-export default function CareerDetailInfo({ jobId = 0 }) {
-  const job = jobResults.find((item) => item.id === jobId) || {};
+export default function CareerDetailInfo({ job }) {
+  const jobUrl = `${
+    process.env.NEXT_PUBLIC_SITE_URL || ""
+  }/career-list/job-details/${encodeId(job?.id)}`;
+  const jobTitle = job?.job_title || "Job Opportunity";
+  const shareText = encodeURIComponent(
+    `Check out this job opening: ${jobTitle}\n\n${jobUrl}`
+  );
+  const whatsappUrl = `https://wa.me/?text=${shareText}`;
+  const emailUrl = `mailto:?subject=${encodeURIComponent(
+    "Job Opportunity: " + jobTitle
+  )}&body=${shareText}`;
+
   return (
     <section className="w-full h-auto py-[30px] lg:py-[50px_80px]">
       <div className="container">
         <div className="w-full h-auto p-[10px] sm:p-[30px] lg:p-[50px] rounded-[30px] bg-linear-to-r from-base1/10 to-base2/10">
           <div className="w-full h-auto bg-white rounded-[20px] overflow-hidden">
-            <div className="text-[16px] sm:text-[20px] lg:text-[24px] 2xl:text-[28px] leading-none font-bold text-black w-full sm:max-w-[260px] lg:max-w-[320px] 2xl:max-w-[380px] p-[20px_20px] sm:p-[25px_40px] lg:p-[35px_50px] bg-linear-to-r from-base1/50 via-base2/50 to-transparent mt-[15px] lg:mt-[30px]">
-              APPLY FOR
+            <div className="flex justify-between items-center w-full">
+              <div className="text-[16px] sm:text-[20px] lg:text-[24px] 2xl:text-[28px] leading-none font-bold text-black w-full sm:max-w-[260px] lg:max-w-[320px] 2xl:max-w-[380px] p-[20px_20px] sm:p-[25px_40px] lg:p-[35px_50px] bg-linear-to-r from-base1/50 via-base2/50 to-transparent mt-[15px] lg:mt-[30px]">
+                APPLY FOR
+              </div>
+              <div className="w-1/2 flex justify-end items-center gap-[5px] lg:gap-[10px] 2xl:gap-[20px] mx-8">
+                {/* Share Dropdown using Radix UI */}
+                <div className="relative">
+                  <DropdownMenu.Root>
+                    <DropdownMenu.Trigger asChild>
+                      {/* Your original Share button styles */}
+                      <button
+                        className="text-[12px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[26px] font-normal leading-none text-[#484877] w-full h-auto flex items-center gap-[2px] lg:gap-[4px] 2xl:gap-[6px] hover:text-base1 bg-transparent border-none outline-none"
+                        style={{ cursor: "pointer" }}
+                        aria-label="Share"
+                        type="button"
+                      >
+                        <Image
+                          src="/images/icon-share.svg"
+                          alt="share"
+                          width={20}
+                          height={20}
+                          className="w-[10px] lg:w-[15px] 2xl:w-[20px] h-auto aspect-4/4 block"
+                        />
+                        Share
+                      </button>
+                    </DropdownMenu.Trigger>
+                    <DropdownMenu.Portal>
+                      <DropdownMenu.Content
+                        side="bottom"
+                        align="end"
+                        className="z-50 min-w-[180px] rounded-lg border border-gray-200 bg-white p-1 shadow-lg"
+                        style={{ marginTop: 8 }}
+                      >
+                        <DropdownMenu.Item asChild>
+                          <a
+                            href={whatsappUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-800 hover:bg-gray-100 transition-colors"
+                          >
+                            <Image
+                              src="/images/floating-whatsapp.svg"
+                              alt="WhatsApp"
+                              width={18}
+                              height={18}
+                              className="w-[18px] h-[18px]"
+                            />
+                            Share via WhatsApp
+                          </a>
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item asChild>
+                          <a
+                            href={emailUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-800 hover:bg-gray-100 transition-colors"
+                          >
+                            <Image
+                              src="/images/floating-mail.svg"
+                              alt="Email"
+                              width={18}
+                              height={18}
+                              className="w-[18px] h-[18px]"
+                            />
+                            Share via Email
+                          </a>
+                        </DropdownMenu.Item>
+                      </DropdownMenu.Content>
+                    </DropdownMenu.Portal>
+                  </DropdownMenu.Root>
+                </div>
+              </div>
             </div>
             <div className="w-full h-auto p-[10px_20px_0] sm:p-[30px_30px_0] lg:p-[50px_50px_0]">
               <div className="w-full h-auto mb-[30px] lg:mb-[40px] 2xl:mb-[60px]">
                 <div className="text-[14px] sm:text-[16px] lg:text-[20px] 2xl:text-[24px] leading-none font-medium capitalize text-black mb-[15px]">
-                  {job.job_title}
+                  {job?.job_title}
                 </div>
                 <div className="flex flex-wrap gap-[5px] sm:gap-[10px] lg:gap-[15px] 2xl:gap-[20px]">
                   <div>
                     <CareerDetailInfoBox>
-                      Experience: {job.experience || "Not specified"}
+                      Experience: {job?.experience || "Not specified"}
                     </CareerDetailInfoBox>
                   </div>
                   <div>
@@ -56,7 +130,7 @@ export default function CareerDetailInfo({ jobId = 0 }) {
                           fill="#17479E"
                         />
                       </svg>
-                      {job.location}
+                      {job?.locationDisplay || "Location not specified"}
                     </CareerDetailInfoBox>
                   </div>
                 </div>
@@ -67,45 +141,9 @@ export default function CareerDetailInfo({ jobId = 0 }) {
                   JOB RESPONSIBILITIES
                 </div>
                 <div className="text-editor">
-                  <h4>Purpose of Job</h4>
-                  <ul>
-                    <li>Mobilization of Financial Products</li>
-                    <li>
-                      Effective communication/ follow up with prospective
-                      customers
-                    </li>
-                    <li>Marketing activities for assigned Area</li>
-                    <li>
-                      Accountable for meeting business targets month on month
-                    </li>
-                  </ul>
-                  <br />
-                  <h4>key Responsibilities and Accountabilities</h4>
-                  <ul>
-                    <li>
-                      Acquisitions of new clients and re-activation of existing
-                      clients by selling wealth management products like
-                      debentures and Non-Convertible Debentures.
-                    </li>
-                    <li>Responsible for fulfilment of business targets.</li>
-                    <li>
-                      Have the direct to customer approach and build
-                      relationship with wide spread customers
-                    </li>
-                    <li>
-                      Acquisition and handling a group of HNI (High Net Worth
-                      Exclusive) Clients.
-                    </li>
-                    <li>
-                      Conduct HNI meets, customer interaction programs within
-                      the location.
-                    </li>
-                    <li>
-                      Responsible for the timely reporting of Business MIS.
-                    </li>
-                    <li>Plan and achieve a minimum target per month.</li>
-                    <li>Conduct Marketing activities for assigned Area</li>
-                  </ul>
+                  {parse(job?.job_description) ||
+                    "No job description provided."}
+                  {/* <h4>key Responsibilities and Accountabilities</h4> */}
                 </div>
               </div>
             </div>
@@ -114,7 +152,7 @@ export default function CareerDetailInfo({ jobId = 0 }) {
                 <div className="text-[13px] sm:text-[14px] lg:text-[16px] 2xl:text-[18px] leading-none font-normal text-black mb-[15px] lg:mb-[20px]">
                   Fill the fields below to apply for this post
                 </div>
-                <CareerForm />
+                <CareerForm jobId={job?.id} />
               </div>
             </div>
           </div>

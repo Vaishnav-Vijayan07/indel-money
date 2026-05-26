@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 const images = [
   "/images/lifeImage1.webp",
@@ -14,19 +15,8 @@ const images = [
   "/images/lifeImage1.webp",
 ];
 
-export default function LifeIndelInfo({ title, description, buttonText, buttonLink,lifeImages }) {
-  const renderTitle = (title) => {
-    const words = title?.split(" ");
-    if (words?.length === 3) {
-      return (
-        <>
-          {words[0]} {words[1]} <span className="text-[#EE3824] font-bold">{words[2]}</span>
-        </>
-      );
-    }
-    return title;
-  };
-
+export default function LifeIndelInfo({ title, description, buttonText, buttonLink, lifeImages }) {
+  
   return (
     <section className="w-full py-[80px] xl:py-[80px] 2xl:py-[120px] bg-[linear-gradient(95deg, rgba(243, 0, 0, 0) 3%, rgba(235, 2, 8, 0.15) 100%)]">
       <div className="container">
@@ -65,7 +55,7 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
                     spaceBetween: -500,
                   },
                 }}
-                className="relative w-[250px] lg:w-[260px] xl:w-[520px] h-full m-auto !overflow-visible lifeSlide"
+                className="relative w-[250px] lg:w-[260px] xl:w-[520px] h-full m-auto !overflow-visible lifeSlide lifeSlide2"
               >
                 {lifeImages?.map((img, index) => (
                   <SwiperSlide key={index} className="flex justify-center">
@@ -85,7 +75,14 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
                             transition: "transform 0.5s ease, opacity 1s ease",
                           }}
                         >
-                          <Image src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${img?.image}`} alt={`Slide ${index}`} fill sizes="240px" priority className="w-full h-full object-cover" />
+                          <Image
+                            src={img?.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${img?.image}` : "/images/lifeImage1.webp"}
+                            alt={`Slide ${index}`}
+                            fill
+                            sizes="240px"
+                            priority
+                            className="w-full h-full object-cover"
+                          />
                         </div>
                       );
                     }}
@@ -113,17 +110,12 @@ export default function LifeIndelInfo({ title, description, buttonText, buttonLi
           </div>
           <div className=" w-full xl:w-[calc(100%-600px)] 2xl:w-[calc(100%-750px)] max-xl:pt-[50px] flex items-center p-[8px]">
             <div className="w-full lg:pl-[60px]">
-              <div className="text-title1 font-medium xl:mb-[20px] mb-[10px]">{renderTitle(title)}</div>
-              <p className="3xl:text-[18px] mb-[15px]">{description}</p>
-              {/* <p className="3xl:text-[18px]">
-                Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
-                consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
-                source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &apos;de Finibus Bonorum et Malorum&apos; (The Extremes of Good and
-                Evil) by Cicero, written in 45 BC.{" "}
-              </p> */}
+              <div className="text-title1 font-medium xl:mb-[20px] mb-[10px] [&>span]:text-base2 [&>span]:font-bold">{renderHtml(title)}</div>
+              {description ? renderHtml(description) : ""}
+
               <Link
-                href={ buttonLink || "#" }
-                className="group btn btn-base1 relative z-0 flex items-center justify-between mt-[15px] lg:mt-[30px] w-fit min-w-[150px] 2xl:min-w-[200px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[60px] rounded-full bg-base2 text-white font-bold transition-all duration-300 overflow-hidden shadow-lg hover:bg-base1"
+                href={buttonLink || "#"}
+                className="group btn btn-base1 relative z-0 fle gap-2 items-center justify-between mt-[15px] lg:mt-[30px] w-fit min-w-[150px] 2xl:min-w-[200px] pr-3 pl-5 h-[45px] lg:h-[40px] 2xl:h-[50px] 3xl:h-[60px] rounded-full bg-base2 text-white font-bold transition-all duration-300 overflow-hidden shadow-lg hover:bg-base1"
               >
                 <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-[-15px]">{buttonText}</span>
                 <div className="relative z-10 flex items-center justify-center w-[30px] h-[30px] lg:w-[30px] lg:h-[30px] xl:w-[40px] 2xl:h-[40px] 3xl:w-[48px] 3xl:h-[48px] bg-base1 rounded-full text-red-500 transition-all duration-300  group-hover:translate-x-2 group-hover:bg-red-600 group-hover:text-white">

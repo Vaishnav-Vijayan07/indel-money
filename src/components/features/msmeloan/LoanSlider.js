@@ -12,8 +12,7 @@ const slides = [
     alt: "Loan Image 1",
     title: "Trader’s Loan",
     title2: "Short Term Trader’s Loan",
-    description:
-      "We understand the requirement of small trading businesses and your struggle to meet daily working capital requirements. ",
+    description: "We understand the requirement of small trading businesses and your struggle to meet daily working capital requirements. ",
     href: "/",
   },
   {
@@ -36,7 +35,8 @@ const slides = [
   },
 ];
 
-export default function LoanSlider() {
+export default function LoanSlider({ loanTypes }) {
+  
   const [showPagination, setShowPagination] = useState(false);
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export default function LoanSlider() {
       }}
       className="LoanSlider !pb-[25px] !sm:pb-[20px] !lg:pb-[20px] !xl:pb-[30px]"
     >
-      {slides.map((item, index) => (
+      {loanTypes?.map((item, index) => (
         <SwiperSlide key={index}>
           <LoanCardBx item={item} />
         </SwiperSlide>

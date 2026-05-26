@@ -1,112 +1,117 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useMediaQuery } from "@react-hook/media-query";
-
-import React from "react";
 // DESKTOP COMPONENTS
-import HeroBanner from "../components/features/home/HeroBanner";
-import DreamsToReality from "../components/features/home/DreamsToReality";
-import StepGoldLoan from "../components/features/home/StepGoldLoan";
-import StepGoldLoanCalculator from "../components/features/home/StepGoldLoanCalculator";
-import LifeAtIndel from "../components/features/home/LifeAtIndel";
-import LatestUpdates from "../components/features/home/LatestUpdates";
-import TrustedInvestment from "../components/features/home/TrustedInvestment";
-import BranchLocator from "../components/features/home/BranchLocator";
-import Innovations from "../components/features/home/Innovations";
-import FAQ from "../components/features/home/FAQ";
-import WelcomeModal from "../components/common/WelcomeModal";
+const HeroBanner = dynamic(() => import("../components/features/home/HeroBanner"), { ssr: true });
+const DreamsToReality = dynamic(() => import("../components/features/home/DreamsToReality"), { ssr: false });
+const StepGoldLoan = dynamic(() => import("../components/features/home/StepGoldLoan"), { ssr: false });
+const StepGoldLoanCalculator = dynamic(() => import("../components/features/home/StepGoldLoanCalculator"), { ssr: false });
+const LifeAtIndel = dynamic(() => import("../components/features/home/LifeAtIndel"), { ssr: false });
+const LatestUpdates = dynamic(() => import("../components/features/home/LatestUpdates"), { ssr: false });
+const BranchLocator = dynamic(() => import("../components/features/home/BranchLocator"), { ssr: false });
+const Innovations = dynamic(() => import("../components/features/home/Innovations"), { ssr: false });
+const FAQ = dynamic(() => import("../components/features/home/FAQ"), { ssr: false });
+const WelcomeModal = dynamic(() => import("../components/common/WelcomeModal"), { ssr: false });
+
 // MOBILE COMPONENTS
-import MobHeroBanner from "../components/features/home/MobHeroBanner";
-import MobSmartMoneyDeals from "../components/features/home/MobSmartMoneyDeals";
-import MobStepGoldLoan from "../components/features/home/MobStepGoldLoan";
-import MobStepGoldLoanCalculator from "../components/features/home/MobStepGoldLoanCalculator";
-import MobBranchLocator from "../components/features/home/MobBranchLocator";
-import MobJoinTeam from "../components/features/home/MobJoinTeam";
-import MobLatestUpdates from "../components/features/home/MobLatestUpdates";
-import MobInnovations from "../components/features/home/MobInnovations";
-import MobWelcomeModal from "../components/common/MobWelcomeModal";
+const MobHeroBanner = dynamic(() => import("../components/features/home/MobHeroBanner"), { ssr: true });
+const MobSmartMoneyDeals = dynamic(() => import("../components/features/home/MobSmartMoneyDeals"), { ssr: false });
+const MobStepGoldLoan = dynamic(() => import("../components/features/home/MobStepGoldLoan"), { ssr: false });
+const MobStepGoldLoanCalculator = dynamic(() => import("../components/features/home/MobStepGoldLoanCalculator"), { ssr: false });
+const MobBranchLocator = dynamic(() => import("../components/features/home/MobBranchLocator"), { ssr: false });
+const MobJoinTeam = dynamic(() => import("../components/features/home/MobJoinTeam"), { ssr: false });
+const MobLatestUpdates = dynamic(() => import("../components/features/home/MobLatestUpdates"), { ssr: false });
+const MobInnovations = dynamic(() => import("../components/features/home/MobInnovations"), { ssr: false });
+const MobWelcomeModal = dynamic(() => import("../components/common/MobWelcomeModal"), { ssr: false });
+// import MobWelcomeModal from "../components/common/MobWelcomeModal";
 
-export default function Home({ initialData, initialError }) {
-  
+export default function Home({ initialData, serviceBanner, banner, branchLocatorData, goldRate, initialIsMobile }) {
+  // const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 
-  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+  // Use media query for client-side viewport detection
+  const isMobileViewport = useMediaQuery("only screen and (max-width: 768px)");
+  // Combine server-side and client-side detection (client takes precedence after hydration)
+  const isMobile = typeof window !== "undefined" ? isMobileViewport : initialIsMobile;
+
   return (
     <>
       {/* welcome contents*/}
-      {isMobile ? <MobWelcomeModal /> : <WelcomeModal />}
 
-      {/* banner section contents*/}
-      <div className="hidden sm:block">
-        <HeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} />
-      </div>
-      <div className="block sm:hidden">
-        <MobHeroBanner heroBanner={initialData?.heroBanner || []} initialData={initialData} />
-      </div>
+      {isMobile ? (
+        <MobWelcomeModal banner={banner} serviceBanner={serviceBanner} key={1} />
+      ) : (
+        <WelcomeModal banner={banner} serviceBanner={serviceBanner} key={2} />
+      )}
 
-      {/* Dreams to Reality contents*/}
-      <div className="hidden sm:block">
+      {isMobile ? (
+        <MobHeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.pageContent?.announcement_text}
+          goldRate={goldRate}
+        />
+      ) : (
+        <HeroBanner
+          heroBanner={initialData?.heroBanner || []}
+          initialData={initialData}
+          announcement={initialData?.pageContent?.announcement_text}
+          goldRate={goldRate}
+        />
+      )}
+
+      {isMobile ? (
+        <MobSmartMoneyDeals title={initialData?.pageContent?.smart_deal_title} deals={initialData?.smartMoneyDeals} />
+      ) : (
         <DreamsToReality initialData={initialData?.pageContent} statsData={initialData?.homeStatistics} />
-      </div>
-      <div className="block sm:hidden">
-        {/* Develope api for smart money deals */}
-        <MobSmartMoneyDeals initialData={initialData} />
-      </div>
+      )}
 
-      {/* Gold loan contents*/}
-      <div className="hidden sm:block">
-        <StepGoldLoan loanSteps={initialData?.loanSteps} sectionTitle={initialData?.pageContent?.step_title} />
-      </div>
-      <div className="block sm:hidden">
-        <MobStepGoldLoan loanSteps={initialData?.loanSteps} />
-      </div>
+      {isMobile ? (
+        <MobStepGoldLoan title={initialData?.pageContent?.step_title} loanSteps={initialData?.loanSteps} />
+      ) : (
+        <StepGoldLoan
+          title={initialData?.pageContent?.step_title}
+          loanSteps={initialData?.loanSteps}
+          sectionTitle={initialData?.pageContent?.step_title}
+        />
+      )}
 
-      {/* Gold loan calculator*/}
-      <div className="hidden sm:block">
-        <StepGoldLoanCalculator />
-      </div>
-      <div className="block sm:hidden">
-        <MobStepGoldLoanCalculator />
-      </div>
+      {isMobile ? <MobStepGoldLoanCalculator goldRate={goldRate} /> : <StepGoldLoanCalculator goldRate={goldRate} />}
 
-      {/* Branch locator contents*/}
-      <div className="hidden sm:block">
-        <BranchLocator pageContent={initialData?.pageContent} variant={"home"} />
-      </div>
-      <div className="block sm:hidden">
-        <MobBranchLocator />
-      </div>
+      {isMobile ? (
+        <MobBranchLocator pageContent={branchLocatorData} />
+      ) : (
+        <BranchLocator pageContent={branchLocatorData} variant={"home"} useQueryParams={false} />
+      )}
 
-      {/* Life at Indel contents*/}
-      <div className="hidden sm:block">
-        <LifeAtIndel pageContent={initialData?.pageContent} /> 
-      </div>
-      <div className="block sm:hidden">
-        <MobJoinTeam pageContent={initialData?.pageContent} />
-      </div>
+      {isMobile ? (
+        <MobJoinTeam
+          pageContent={initialData?.pageContent}
+          lifeAtIndel={initialData?.lifeAtIndel}
+          image1={initialData?.pageContent?.life_section_image1}
+          image2={initialData?.pageContent?.life_section_image2}
+          image3={initialData?.pageContent?.life_section_image3}
+        />
+      ) : (
+        <LifeAtIndel
+          pageContent={initialData?.pageContent}
+          lifeAtIndel={initialData?.lifeAtIndel}
+          image1={initialData?.pageContent?.life_section_image1}
+          image2={initialData?.pageContent?.life_section_image2}
+          image3={initialData?.pageContent?.life_section_image3}
+        />
+      )}
 
-      {/* Latest Updates contents*/}
-      <div className="hidden sm:block">
-        <LatestUpdates />
-      </div>
-      <div className="block sm:hidden">
-        <MobLatestUpdates />
-      </div>
+      {isMobile ? (
+        <MobLatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
+      ) : (
+        <LatestUpdates sliderItems={initialData?.blogs} sliderTitle={initialData?.pageContent?.updates_section_title} type="indel-money-cares" />
+      )}
 
-      {/* Trusted investment contents*/}
-      <div className="hidden sm:block">
-        <TrustedInvestment pageContent={initialData?.pageContent} />
-      </div>
-
-      {/* Innovations*/}
-      <div className="hidden sm:block">
-        <Innovations pageContent={initialData?.pageContent} />
-      </div>
-      <div className="block sm:hidden">
-        <MobInnovations />
-      </div>
+      {isMobile ? <MobInnovations pageContent={initialData?.pageContent} /> : <Innovations pageContent={initialData?.pageContent} />}
 
       {/* faq contents */}
       <div className="hidden sm:block">
-        <FAQ faqs={initialData?.faqs} pageContents={initialData?.pageContent} />
+        <FAQ faqs={initialData?.faqs} pageContents={initialData?.pageContent} type={"home"} />
       </div>
     </>
   );
