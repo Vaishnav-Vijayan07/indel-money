@@ -473,3 +473,28 @@
   filter: brightness(0) invert(1);
 }
 
+/* Google Translate widget overrides: keep the page chrome-free, the
+   language switching is driven entirely via LanguageSwitcher. */
+#google_translate_element,
+.goog-te-banner-frame,
+.goog-te-gadget-icon,
+iframe.skiptranslate,
+iframe.goog-te-menu-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+

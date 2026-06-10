@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
 import FloatingButton from "../components/common/FloatingButton";
+import GoogleTranslate from "../components/common/GoogleTranslate";
 import { Toaster } from "react-hot-toast";
 import api from "../lib/api/axios";
 import { GoogleTagManager } from "@next/third-parties/google";
@@ -39,6 +40,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
       <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
+        <GoogleTranslate />
         <Header />
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         <Footer content={footerContent} icons={footerIcons} />

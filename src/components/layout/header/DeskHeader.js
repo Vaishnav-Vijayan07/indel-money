@@ -14,6 +14,7 @@ import {
 } from "../../ui/dropdown-menu";
 import { useEffect, useState } from "react";
 import NavMenu from "./NavMenu";
+import LanguageSwitcher from "../../common/LanguageSwitcher";
 
 function ContactBox({ href, src, title, alt }) {
   return (
@@ -86,6 +87,9 @@ export default function DeskHeader({ headerData }) {
                     title={common?.branch_locator ? common?.branch_locator : "Branch Locator"}
                     alt="location"
                   />
+                </div>
+                <div>
+                  <LanguageSwitcher />
                 </div>
                 {/* <div>
                   <ContactBox

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import MobNavMenu from "./MobNavMenu";
 import { serverMediaPath } from "@/constants/constants";
+import LanguageSwitcher from "../../common/LanguageSwitcher";
 
 const socialmedias = [
   {
@@ -126,6 +127,9 @@ export default function MobHeader({ socialLinks, links, logo, title, modes }) {
                   </a>
                 </div>
               ))}
+              <div>
+                <LanguageSwitcher triggerClassName="text-white hover:text-white/80" />
+              </div>
             </div>
           </div>
         </div>

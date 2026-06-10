@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Performance optimizations
-  turbopack: {},
   compress: true,
   poweredByHeader: false,
   eslint: {
