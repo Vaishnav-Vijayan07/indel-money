@@ -39,6 +39,14 @@ const options = {
         domToReact(node.children, options)
       );
     }
+
+    if (node.name === "table") {
+      return (
+        <div className="tableScrollWrap">
+          <table>{domToReact(node.children, options)}</table>
+        </div>
+      );
+    }
   },
 };
 

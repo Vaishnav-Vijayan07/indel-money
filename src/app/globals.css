@@ -239,6 +239,35 @@
     color: #000;
   }
 
+  .cmnContent table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+  }
+
+  .cmnContent table th,
+  .cmnContent table td {
+    border: 1px solid #d9e6f8;
+    padding: 8px 15px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .cmnContent table th {
+    background-color: #ecf4ff;
+    font-weight: 600;
+    color: #323232;
+  }
+
+  .cmnContent table tbody tr:hover {
+    background-color: #f5f9ff;
+  }
+
+  .cmnContent .tableScrollWrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
   @media (min-width: 640px) {
 
     /* sm */
