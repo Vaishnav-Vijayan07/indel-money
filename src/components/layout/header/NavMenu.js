@@ -259,6 +259,10 @@ function MegaMenu({ items }) {
 const tabStyle =
   "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2! group hover:[&*svg:rotate-45]";
 
+const stripPath = (path) => path?.split("#")[0]?.split("?")[0];
+
+const isSectionActive = (pathname, paths) => paths.some((path) => stripPath(path) === pathname);
+
 export default function NavMenu() {
   const [openDropdown, setOpenDropdown] = useState(null);
 
@@ -266,6 +270,21 @@ export default function NavMenu() {
   const handleMouseLeave = () => setOpenDropdown(null);
 
   const pathname = usePathname();
+
+  const activeStyle = (active) => (active ? "text-base2!" : "");
+
+  const isGoldLoanActive = isSectionActive(pathname, ["/gold-loan", ...GoldLoans.map((i) => i.link)]);
+  const isOtherLoanActive = isSectionActive(
+    pathname,
+    OtherLoans.map((i) => i.link).filter((link) => link !== "/gold-loan")
+  );
+  const isCareersActive = isSectionActive(pathname, ["/career", ...Careers.map((i) => i.link)]);
+  const isAboutActive = isSectionActive(pathname, [
+    "/about-indel-money",
+    ...Abouts.flatMap((i) => (i.hasSubmenu ? i.submenu.map((s) => s.link) : [i.link])),
+  ]);
+  const isInvestorsActive = isSectionActive(pathname, Investors.map((i) => i.link));
+
   return (
     <Menubar
       onMouseLeave={handleMouseLeave}
@@ -274,8 +293,8 @@ export default function NavMenu() {
       <MenubarMenu open={openDropdown === "goldloan"} onOpenChange={(open) => setOpenDropdown(open ? "goldloan" : null)}>
         <div onMouseEnter={() => handleMouseEnter("goldloan")} className="relative">
           <div className="flex">
-            <MenubarTrigger className={tabStyle}>
-              <Link href={"/gold-loan"} className={tabStyle}>
+            <MenubarTrigger className={`${tabStyle} ${activeStyle(isGoldLoanActive)}`}>
+              <Link href={"/gold-loan"} className={`${tabStyle} ${activeStyle(isGoldLoanActive)}`}>
                 Gold Loan
               </Link>
               <Arrow />
@@ -299,7 +318,7 @@ export default function NavMenu() {
 
       <MenubarMenu open={openDropdown === "otherloan"} onOpenChange={(open) => setOpenDropdown(open ? "otherloan" : null)}>
         <div onMouseEnter={() => handleMouseEnter("otherloan")} className="relative">
-          <MenubarTrigger className={tabStyle}>
+          <MenubarTrigger className={`${tabStyle} ${activeStyle(isOtherLoanActive)}`}>
             <span>other loans</span>
             <Arrow />
           </MenubarTrigger>
@@ -312,8 +331,8 @@ export default function NavMenu() {
       <MenubarMenu open={openDropdown === "careers"} onOpenChange={(open) => setOpenDropdown(open ? "careers" : null)}>
         <div onMouseEnter={() => handleMouseEnter("careers")} className="relative">
           <div className="flex">
-            <MenubarTrigger className={tabStyle}>
-              <Link href={"/career"} className={tabStyle}>
+            <MenubarTrigger className={`${tabStyle} ${activeStyle(isCareersActive)}`}>
+              <Link href={"/career"} className={`${tabStyle} ${activeStyle(isCareersActive)}`}>
                 careers
               </Link>
               <Arrow />
@@ -328,8 +347,8 @@ export default function NavMenu() {
       <MenubarMenu open={openDropdown === "about"} onOpenChange={(open) => setOpenDropdown(open ? "about" : null)}>
         <div onMouseEnter={() => handleMouseEnter("about")} className="relative">
           <div className="flex">
-            <MenubarTrigger className={tabStyle}>
-              <Link href={"/about-indel-money"} className={tabStyle}>
+            <MenubarTrigger className={`${tabStyle} ${activeStyle(isAboutActive)}`}>
+              <Link href={"/about-indel-money"} className={`${tabStyle} ${activeStyle(isAboutActive)}`}>
                 about
               </Link>
               <Arrow />
@@ -344,7 +363,7 @@ export default function NavMenu() {
       <MenubarMenu open={openDropdown === "investors"} onOpenChange={(open) => setOpenDropdown(open ? "investors" : null)}>
         <div onMouseEnter={() => handleMouseEnter("investors")} className="relative">
           <div className="flex">
-            <MenubarTrigger className={tabStyle}>
+            <MenubarTrigger className={`${tabStyle} ${activeStyle(isInvestorsActive)}`}>
               <span>Investors</span>
               <Arrow />
             </MenubarTrigger>

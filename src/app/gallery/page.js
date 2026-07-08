@@ -135,8 +135,10 @@ export async function generateMetadata() {
 }
 
 export default async function GalleryPage({ searchParams }) {
-  const page = (await searchParams?.page) || 1;
-  const type = (await searchParams?.type) || "all";
+  const resolvedSearchParams = await searchParams;
+
+  const page = resolvedSearchParams?.page || 1;
+  const type = resolvedSearchParams?.type || "all";
 
   const { contents, medias, sliderItems, pagination, error } = await fetchData(page, type);
 
