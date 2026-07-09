@@ -27,37 +27,41 @@ export default function AccoladesSlider({ accolades }) {
     <div className="w-full 3xl:px-[110px] lg:px-[70px] px-[20px]">
       <div className="relative w-full">
         {/* Custom Navigation Buttons */}
-        <button className="custom-prev absolute top-1/2 xl:left-[-80px] md:left-[-50px] left-[-40px] transform -translate-y-1/2 2xl:w-[40px] 2xl:h-[40px] w-[35px] h-[35px] flex items-center justify-center text-white rounded-full shadow-md transition-all duration-300 cursor-pointer rotate-180 opacity-100 swiper-button-disabled:opacity-50">
-          <svg viewBox="0 0 37 37" fill="none">
-            <circle cx="18.5" cy="18.5" r="18.5" fill="url(#prev-gradient)" />
-            <path
-              d="M21.125 23.375L19.9875 22.1969L22.8719 19.3125H13V17.6875H22.8719L19.9875 14.8031L21.125 13.625L26 18.5L21.125 23.375Z"
-              fill="white"
-            />
-            <defs>
-              <linearGradient id="prev-gradient" x1="18.5" y1="0" x2="18.5" y2="37" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#17479E" />
-                <stop offset="1" stopColor="#EB0208" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </button>
+        {accolades?.length > 5 && (
+          <button className="custom-prev absolute top-1/2 xl:left-[-80px] md:left-[-50px] left-[-40px] transform -translate-y-1/2 2xl:w-[40px] 2xl:h-[40px] w-[35px] h-[35px] flex items-center justify-center text-white rounded-full shadow-md transition-all duration-300 cursor-pointer rotate-180 opacity-100 swiper-button-disabled:opacity-50">
+            <svg viewBox="0 0 37 37" fill="none">
+              <circle cx="18.5" cy="18.5" r="18.5" fill="url(#prev-gradient)" />
+              <path
+                d="M21.125 23.375L19.9875 22.1969L22.8719 19.3125H13V17.6875H22.8719L19.9875 14.8031L21.125 13.625L26 18.5L21.125 23.375Z"
+                fill="white"
+              />
+              <defs>
+                <linearGradient id="prev-gradient" x1="18.5" y1="0" x2="18.5" y2="37" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#17479E" />
+                  <stop offset="1" stopColor="#EB0208" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </button>
+        )}
 
-        <button className="custom-next absolute top-1/2 xl:right-[-80px] md:right-[-50px] right-[-40px] transform -translate-y-1/2  w-[35px] h-[35px] flex items-center justify-center text-white rounded-full shadow-md transition-all duration-300 cursor-pointer opacity-100 swiper-button-disabled:opacity-50">
-          <svg viewBox="0 0 37 37" fill="none">
-            <circle cx="18.5" cy="18.5" r="18.5" fill="url(#next-gradient)" />
-            <path
-              d="M21.125 23.375L19.9875 22.1969L22.8719 19.3125H13V17.6875H22.8719L19.9875 14.8031L21.125 13.625L26 18.5L21.125 23.375Z"
-              fill="white"
-            />
-            <defs>
-              <linearGradient id="next-gradient" x1="18.5" y1="0" x2="18.5" y2="37" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#17479E" />
-                <stop offset="1" stopColor="#EB0208" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </button>
+        {accolades?.length > 5 && (
+          <button className="custom-next absolute top-1/2 xl:right-[-80px] md:right-[-50px] right-[-40px] transform -translate-y-1/2  w-[35px] h-[35px] flex items-center justify-center text-white rounded-full shadow-md transition-all duration-300 cursor-pointer opacity-100 swiper-button-disabled:opacity-50">
+            <svg viewBox="0 0 37 37" fill="none">
+              <circle cx="18.5" cy="18.5" r="18.5" fill="url(#next-gradient)" />
+              <path
+                d="M21.125 23.375L19.9875 22.1969L22.8719 19.3125H13V17.6875H22.8719L19.9875 14.8031L21.125 13.625L26 18.5L21.125 23.375Z"
+                fill="white"
+              />
+              <defs>
+                <linearGradient id="next-gradient" x1="18.5" y1="0" x2="18.5" y2="37" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#17479E" />
+                  <stop offset="1" stopColor="#EB0208" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </button>
+        )}
 
         {/*  Thumbnail Slider */}
         <Swiper
@@ -101,7 +105,7 @@ export default function AccoladesSlider({ accolades }) {
         className="w-full h-full"
       >
         {accolades?.map((item, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <div className="flex flex-wrap w-full">
               <div className="3xl:w-[250px] 2xl:w-[200px] w-[150px] max-md:mb-[20px]">
                 <div className="w-ful h-full">

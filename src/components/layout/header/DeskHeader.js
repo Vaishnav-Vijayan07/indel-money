@@ -33,6 +33,7 @@ export default function DeskHeader({ headerData }) {
 
   const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isQuickPayOpen, setIsQuickPayOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -146,7 +147,7 @@ export default function DeskHeader({ headerData }) {
                   </a>
                 </div>
                 <div>
-                  <DropdownMenu>
+                  <DropdownMenu onOpenChange={setIsQuickPayOpen}>
                     <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px] cursor-pointer">
                       {header?.button_1_text ? header?.button_1_text : "Quick Pay"}
                       <Image
@@ -156,6 +157,8 @@ export default function DeskHeader({ headerData }) {
                         style={{
                           maxWidth: "100%",
                           height: "auto",
+                          transform: isQuickPayOpen ? "rotate(180deg)" : "rotate(0deg)",
+                          transition: "transform 0.2s ease",
                         }}
                         alt="dropdown"
                         className="ml-1"

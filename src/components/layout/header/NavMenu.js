@@ -144,7 +144,7 @@ const Investors = [
   },
 ];
 
-const Arrow = () => {
+const Arrow = ({ isOpen }) => {
   return (
     <svg
       width="11"
@@ -152,7 +152,7 @@ const Arrow = () => {
       viewBox="0 0 11 6"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="size-2 ml-0.5 transition duration-300 group-data-[state=open]:rotate-180"
+      className={`size-2 ml-0.5 transition duration-300 ${isOpen ? "rotate-180" : ""}`}
     >
       <path d="M5.5 6L10.2631 0.75H0.73686L5.5 6Z" fill="#2A2A2A" />
     </svg>
@@ -297,7 +297,7 @@ export default function NavMenu() {
               <Link href={"/gold-loan"} className={`${tabStyle} ${activeStyle(isGoldLoanActive)}`}>
                 Gold Loan
               </Link>
-              <Arrow />
+              <Arrow isOpen={openDropdown === "goldloan"} />
             </MenubarTrigger>
           </div>
           <MenubarContent className="border-[#e4e4e4] bg-white p-0">
@@ -320,7 +320,7 @@ export default function NavMenu() {
         <div onMouseEnter={() => handleMouseEnter("otherloan")} className="relative">
           <MenubarTrigger className={`${tabStyle} ${activeStyle(isOtherLoanActive)}`}>
             <span>other loans</span>
-            <Arrow />
+            <Arrow isOpen={openDropdown === "otherloan"} />
           </MenubarTrigger>
           <MenubarContent className="border-[#e4e4e4] bg-white p-0">
             <MegaMenu items={OtherLoans} />
@@ -335,7 +335,7 @@ export default function NavMenu() {
               <Link href={"/career"} className={`${tabStyle} ${activeStyle(isCareersActive)}`}>
                 careers
               </Link>
-              <Arrow />
+              <Arrow isOpen={openDropdown === "careers"} />
             </MenubarTrigger>
           </div>
           <MenubarContent className="border-[#e4e4e4] bg-white p-0">
@@ -351,7 +351,7 @@ export default function NavMenu() {
               <Link href={"/about-indel-money"} className={`${tabStyle} ${activeStyle(isAboutActive)}`}>
                 about
               </Link>
-              <Arrow />
+              <Arrow isOpen={openDropdown === "about"} />
             </MenubarTrigger>
           </div>
           <MenubarContent className="border-[#e4e4e4] bg-white p-0">
@@ -365,7 +365,7 @@ export default function NavMenu() {
           <div className="flex">
             <MenubarTrigger className={`${tabStyle} ${activeStyle(isInvestorsActive)}`}>
               <span>Investors</span>
-              <Arrow />
+              <Arrow isOpen={openDropdown === "investors"} />
             </MenubarTrigger>
           </div>
           <MenubarContent className="border-[#e4e4e4] bg-white p-0">
