@@ -171,7 +171,12 @@ export default function DeskHeader({ headerData }) {
                       ) : (
                         modes.map((mode) => (
                           <DropdownMenuItem key={mode?.id} className="hover:bg-[#c3d5f2] rounded-md">
-                            <Link href={mode?.link || "/"} className="text-header1 hover:text-base2 px-2 py-1 block w-full">
+                            <Link
+                              href={mode?.link || "/"}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-header1 hover:text-base2 px-2 py-1 block w-full"
+                            >
                               {mode?.title}
                             </Link>
                           </DropdownMenuItem>
