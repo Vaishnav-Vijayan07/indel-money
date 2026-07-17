@@ -1,8 +1,8 @@
 import "./globals.css";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Noto_Sans_Tamil } from "next/font/google";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
-import FloatingButton from "../components/common/FloatingButton";
+// import FloatingButton from "../components/common/FloatingButton";
 import { Toaster } from "react-hot-toast";
 import api from "../lib/api/axios";
 import { GoogleTagManager } from "@next/third-parties/google";
@@ -11,7 +11,18 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-montserrat",
+  variable: "--font-montserrat-base",
+  display: "swap",
+});
+
+// Montserrat ships no Tamil subset, so Tamil text needs a dedicated face or it
+// renders as tofu on machines without a Tamil system font. Chained after
+// Montserrat in --font-montserrat (globals.css). Weight is omitted to get the
+// variable font: the site uses 300-900 and static weights would only cover the
+// ones enumerated here.
+const notoSansTamil = Noto_Sans_Tamil({
+  subsets: ["tamil"],
+  variable: "--font-noto-tamil",
   display: "swap",
 });
 
@@ -38,7 +49,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
-      <body className={`${montserrat.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
+      <body className={`${montserrat.variable} ${notoSansTamil.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />
         <main className="flex-grow mt-[var(--header-y)]">{children}</main>
         <Footer content={footerContent} icons={footerIcons} />
