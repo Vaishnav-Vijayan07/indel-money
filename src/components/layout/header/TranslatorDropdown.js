@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 // All 22 languages in the Constitution's Eighth Schedule except Bodo and
 // Kashmiri, which the backend's translation provider (Google's
@@ -32,8 +32,24 @@ const TRANSLATION_LANGUAGES = [
   { code: "ur", label: "اردو" },
 ];
 
+// Defense in depth against this list and the server's stateLanguageMap.js
+// drifting out of sync — a locale the client doesn't recognize is treated as
+// "nothing returned" rather than applied blindly.
+function isSupportedLanguageCode(code) {
+  return TRANSLATION_LANGUAGES.some((language) => language.code === code);
+}
 
 const BG_TRANSLATE_ENDPOINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/translate`;
+
+// One-shot, best-effort IP-geolocation lookup used only to pick a *default*
+// language for visitors who haven't chosen (or previously been assigned) one
+// yet. Separate concern from BG_TRANSLATE_ENDPOINT, which does per-string translation.
+const LOCALE_DETECT_ENDPOINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/locale-detect`;
+
+// Generous enough a healthy round trip never comes close; short enough a
+// slow/hanging geolocation call can't leave a visitor noticeably longer in
+// English than today's plain default — past this we just abort.
+const LOCALE_DETECT_TIMEOUT_MS = 2500;
 
 // Text nodes directly inside these are never prose: a <textarea>'s text child is
 // the user's own typed value, and the rest are code/markup containers.
@@ -54,6 +70,12 @@ const SKIP_PARENT_TAGS = new Set([
 // TreeWalker only reports text nodes, so without a parallel pass over these the
 // strings are unreachable and always render in English.
 const TRANSLATABLE_ATTRS = ["placeholder", "title", "aria-label", "alt"];
+
+// What the MutationObserver's attributeFilter listens for - a superset of
+// TRANSLATABLE_ATTRS (which collectAttrTargets walks unconditionally on every
+// element) that also includes "content", meaningful only on meta/title
+// elements and gated by METADATA_SELECTOR wherever it's actually handled.
+const OBSERVED_ATTRS = [...TRANSLATABLE_ATTRS, "content"];
 
 // Standard HTML opt-out, honoured on any ancestor.
 const NO_TRANSLATE_SELECTOR = '[translate="no"], .notranslate';
@@ -79,6 +101,7 @@ const translationCache = new Map();
 // other is mid-fetch re-translating it - a race on the shared document.body.
 let sharedLanguage = "en";
 let hasHydratedLanguage = false;
+let hasStartedLocaleDetection = false;
 const languageListeners = new Set();
 
 function getSharedLanguageSnapshot() {
@@ -103,21 +126,91 @@ function setSharedLanguage(next) {
   sharedLanguage = next;
   if (typeof window !== "undefined") {
     window.localStorage.setItem("siteLanguage", next);
+    // Mirrored into a cookie (same name) so getServerLocale.js
+    // (client/src/lib/locale/getServerLocale.js) can pick the same locale for
+    // server-rendered CMS content - localStorage alone is invisible to the
+    // server on the next request/refresh.
+    document.cookie = `siteLanguage=${next}; path=/; max-age=31536000; SameSite=Lax`;
   }
   languageListeners.forEach((listener) => listener());
 }
 
+// Fire-and-forget geolocation default, only ever called from
+// hydrateSharedLanguageOnce below for a genuinely fresh visitor (nothing in
+// storage yet). Local guard kept in addition to that caller's own guard so
+// this stays provably single-shot even if something else calls it later.
+function detectAndApplyGeoLanguage() {
+  if (hasStartedLocaleDetection) return;
+  hasStartedLocaleDetection = true;
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), LOCALE_DETECT_TIMEOUT_MS);
+
+  fetch(LOCALE_DETECT_ENDPOINT, { signal: controller.signal, cache: "no-store" })
+    .then((response) => (response.ok ? response.json() : null))
+    .then((result) => {
+      const locale = result?.data?.locale;
+      if (typeof locale !== "string" || !isSupportedLanguageCode(locale)) return;
+
+      // Re-check storage now, not at fetch-start time: the visitor may have
+      // picked a language by hand while this request was in flight, and an
+      // explicit pick always outranks a guessed default.
+      if (window.localStorage.getItem("siteLanguage")) return;
+
+      // Persist directly (not solely via setSharedLanguage): when the
+      // detected locale is "en" (most visitors, since most states/IPs aren't
+      // mapped), setSharedLanguage's own no-op-on-same-value guard would skip
+      // its localStorage write, leaving storage empty forever and re-running
+      // this fetch on every future fresh page load instead of once ever.
+      window.localStorage.setItem("siteLanguage", locale);
+      if (locale !== sharedLanguage) setSharedLanguage(locale);
+    })
+    .catch(() => {
+      // Timeout/abort, network failure, non-OK status, bad JSON - every
+      // failure mode lands here and is swallowed on purpose: nothing a
+      // visitor can act on, and the result matches today's plain "en" default.
+    })
+    .finally(() => {
+      clearTimeout(timeoutId);
+    });
+}
+
 // Runs from every mounted instance's mount effect, but the module-level
 // guard means only the first one to fire actually reads storage - order
-// independent, which is what removes the old two-instance mount race.
-function hydrateSharedLanguageOnce() {
+// independent, which is what removes the old two-instance mount race. The
+// guard is set synchronously as the first statement, before
+// detectAndApplyGeoLanguage (which only *starts* a fetch, never awaits it) -
+// so the second instance's call in the same synchronous tick always sees
+// hasHydratedLanguage already flipped and returns at the top.
+function hydrateSharedLanguageOnce(ssrLocale) {
   if (hasHydratedLanguage) return;
   hasHydratedLanguage = true;
   if (typeof window === "undefined") return;
+
   const stored = window.localStorage.getItem("siteLanguage");
-  if (stored && stored !== sharedLanguage) {
-    setSharedLanguage(stored);
+  if (stored) {
+    if (stored !== sharedLanguage) setSharedLanguage(stored);
+    return; // Already resolved (explicit pick or a previous visit's
+    // geolocation default) - sticky either way, geolocation is never
+    // re-consulted once anything is stored.
   }
+
+  // The server already resolved a real (non-English) locale for this request
+  // via the same IP-geolocation lookup detectAndApplyGeoLanguage would run -
+  // trust it directly instead of re-fetching, which is what caused the old
+  // English-then-translated flash. An "en" ssrLocale is ambiguous (could be a
+  // genuinely English-mapped visitor, or a failed/timed-out server lookup),
+  // so that case still falls through to the client-side detection below.
+  if (ssrLocale && ssrLocale !== "en" && isSupportedLanguageCode(ssrLocale)) {
+    window.localStorage.setItem("siteLanguage", ssrLocale);
+    if (ssrLocale !== sharedLanguage) setSharedLanguage(ssrLocale);
+    return;
+  }
+
+  // Genuinely fresh visitor (or ambiguous "en") - kick off geolocation-based
+  // detection in the background. Never blocks this synchronous mount effect
+  // (or SSR, which never runs this path) from returning immediately.
+  detectAndApplyGeoLanguage();
 }
 
 // Distinguishes prose from identifiers. Attribute values especially are often
@@ -187,6 +280,13 @@ function collectAttrTargets(element, targets) {
   TRANSLATABLE_ATTRS.forEach((attr) => {
     if (isEligibleAttr(element, attr)) targets.push(attrTarget(element, attr));
   });
+  // Newly-added <head> nodes (title/meta swapped in via childList) carry their
+  // text in "content", not one of TRANSLATABLE_ATTRS - scoped to
+  // METADATA_SELECTOR so this doesn't turn into a blanket check of every
+  // element's "content" attribute.
+  if (element.matches?.(METADATA_SELECTOR) && isEligibleAttr(element, "content")) {
+    targets.push(attrTarget(element, "content"));
+  }
 }
 
 function collectTargets(root) {
@@ -284,7 +384,7 @@ async function translateTexts(targetLocale, texts) {
   return texts.map((text) => translationCache.get(`${targetLocale}::${text}`) ?? text);
 }
 
-export default function TranslatorDropdown() {
+export default function TranslatorDropdown({ ssrLocale = "en" }) {
   const selectedLanguage = useSyncExternalStore(
     subscribeToSharedLanguage,
     getSharedLanguageSnapshot,
@@ -297,6 +397,7 @@ export default function TranslatorDropdown() {
   const flushTimeoutRef = useRef(null);
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const router = useRouter();
   const routeKey = `${pathname}?${searchParams.toString()}`;
   const langSelectId = useId();
 
@@ -305,8 +406,8 @@ export default function TranslatorDropdown() {
   }, [selectedLanguage]);
 
   useEffect(() => {
-    hydrateSharedLanguageOnce();
-  }, []);
+    hydrateSharedLanguageOnce(ssrLocale);
+  }, [ssrLocale]);
 
   const translateTargets = useCallback((targets) => {
     const store = originalValueMap.current;
@@ -341,6 +442,10 @@ export default function TranslatorDropdown() {
       items.map((item) => item.trimmed),
     )
       .then((translatedTexts) => {
+        // A newer language selection may have superseded this in-flight
+        // request - dropping a stale response here (rather than writing it)
+        // stops it from clobbering whatever the latest selection produces.
+        if (languageRef.current !== locale) return;
         translatedTexts.forEach((translated, index) => {
           const { target, original, leading, trailing } = items[index];
           const written = `${leading}${translated}${trailing}`;
@@ -360,16 +465,27 @@ export default function TranslatorDropdown() {
   // route (path or query string) changes so newly-navigated pages - including
   // query-string-only pagination like blog/news "next page" - get translated
   // instead of staying in English until the language is re-selected.
-  // <head> rides along here rather than in the observer below: it isn't under
-  // document.body, and a route change is exactly when Next.js swaps it.
+  // <head> rides along here too, as the fast (non-debounced) path for the
+  // common case; the observer below now also covers document.documentElement
+  // (head included) as a catch-all for head mutations that land after this
+  // pass already ran - e.g. Next streaming in a new <title> a tick late.
   useEffect(() => {
     if (typeof window === "undefined") return;
     // Keep the declared language matching the script actually rendered - both
     // for screen readers and because browsers consult it when picking a
     // fallback face for generic families.
     document.documentElement.lang = selectedLanguage;
+
+    // Some CMS-driven content (server/middlewares/translateMiddleware.js, via
+    // buildLocalizedUrl in the page's data fetches) may already be rendered
+    // in this locale when selectedLanguage === ssrLocale, but plenty of body
+    // text - hardcoded nav/footer labels, anything outside the CMS fetches -
+    // never goes through that pipeline and still needs this pass every time.
+    // Re-running here on already-translated text is safe: isTranslatableValue
+    // requires an ASCII letter, and none of TRANSLATION_LANGUAGES use a Latin
+    // script, so real translated strings just fail that check and pass through.
     translateTargets([...collectTargets(document.body), ...collectMetadataTargets()]);
-  }, [selectedLanguage, routeKey, translateTargets]);
+  }, [selectedLanguage, routeKey, translateTargets, ssrLocale]);
 
   // Catch text that mounts after a pass has already run - dropdown/mega
   // menus, modals, and other content Radix/portals only render once opened.
@@ -413,12 +529,28 @@ export default function TranslatorDropdown() {
         if (mutation.type === "attributes") {
           const element = mutation.target;
           const attr = mutation.attributeName;
+          // "content" is only meaningful on meta/title elements (see
+          // collectAttrTargets) - attributeFilter is document-wide and can't
+          // scope itself, so do it here instead.
+          if (attr === "content" && !element.matches?.(METADATA_SELECTOR)) return;
           const memo = readMemo(originalValueMap.current, element, attr);
           // setAttribute emits a record even when the value is unchanged, so
           // our own writes would re-queue themselves forever. Anything already
           // showing what we last wrote is our echo — drop it.
           if (memo && memo.lastWritten === element.getAttribute(attr)) return;
           if (isEligibleAttr(element, attr)) queue(attrTarget(element, attr));
+          return;
+        }
+
+        if (mutation.type === "characterData") {
+          const node = mutation.target;
+          // CharacterData covers Comment/CDATASection too, not just Text -
+          // Next's streaming/hydration markers are structural comments, some
+          // with ASCII letters, and must never be rewritten.
+          if (node.nodeType !== Node.TEXT_NODE) return;
+          const memo = readMemo(originalValueMap.current, node, TEXT_SLOT);
+          if (memo && memo.lastWritten === node.nodeValue) return;
+          if (isEligibleTextNode(node)) queue(textTarget(node));
           return;
         }
 
@@ -435,11 +567,12 @@ export default function TranslatorDropdown() {
       }, 150);
     });
 
-    observer.observe(document.body, {
+    observer.observe(document.documentElement, {
       childList: true,
       subtree: true,
       attributes: true,
-      attributeFilter: TRANSLATABLE_ATTRS,
+      attributeFilter: OBSERVED_ATTRS,
+      characterData: true,
     });
 
     return () => {
@@ -457,7 +590,15 @@ export default function TranslatorDropdown() {
       <select
         id={langSelectId}
         value={selectedLanguage}
-        onChange={(event) => setSharedLanguage(event.target.value)}
+        onChange={(event) => {
+          setSharedLanguage(event.target.value);
+          // Explicit pick only - not the hydration/geo-detect paths inside
+          // setSharedLanguage, which already match what SSR just rendered and
+          // would otherwise trigger a needless refetch flash on every load.
+          // The cookie write above is synchronous, so this refresh's RSC
+          // fetch already carries the new locale.
+          router.refresh();
+        }}
         disabled={isTranslating}
         // Each option is already written in the language it names, so this
         // subtree must never be rewritten by our own pass.

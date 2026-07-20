@@ -7,6 +7,8 @@ import { Toaster } from "react-hot-toast";
 import api from "../lib/api/axios";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { getServerLocale } from "../lib/locale/getServerLocale";
+import { buildLocalizedUrl } from "../lib/locale/localizedUrl";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -33,11 +35,13 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
+  const locale = await getServerLocale();
+
   let footerContent = "";
   let footerIcons = [];
 
   try {
-    const res = await api.get("/web/footer", { cache: "no-store", next: { revalidate: 600 } });
+    const res = await api.get(buildLocalizedUrl("/web/footer", locale), { cache: "no-store", next: { revalidate: 600 } });
     if (res.data.status === "success") {
       footerContent = res.data.data.content || "";
       footerIcons = res.data.data.icons || [];
@@ -47,7 +51,7 @@ export default async function RootLayout({ children }) {
   }
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
       <body className={`${montserrat.variable} ${notoSansTamil.variable} font-montserrat min-h-screen flex flex-col antialiased`}>
         <Header />

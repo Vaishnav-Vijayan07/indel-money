@@ -27,7 +27,7 @@ function ContactBox({ href, src, title, alt }) {
   );
 }
 
-export default function DeskHeader({ headerData }) {
+export default function DeskHeader({ headerData, locale }) {
   const header = headerData?.content;
   const common = headerData?.footerContent;
   const modes = headerData?.modes;
@@ -90,7 +90,7 @@ export default function DeskHeader({ headerData }) {
                   />
                 </div>
                 <div className="hidden lg:block">
-                  <TranslatorDropdown />
+                  <TranslatorDropdown ssrLocale={locale} />
                 </div>
                 {/* <div>
                   <ContactBox
