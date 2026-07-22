@@ -271,12 +271,12 @@ function isEligibleAttr(element, attr) {
   if (typeof element.hasAttribute !== "function" || !element.hasAttribute(attr)) return false;
   const value = element.getAttribute(attr);
   if (!value || !value.trim()) return false;
-  // next/image consumes placeholder="blur" as a directive, not as user text.
-  if (attr === "placeholder" && element.nodeName.toLowerCase() === "img") return false;
   return !isSkippedElement(element);
 }
 
 function collectAttrTargets(element, targets) {
+  // Image and video attributes (alt, title, etc.) are never sent for translation.
+  if (["img", "video"].includes(element.nodeName.toLowerCase())) return;
   TRANSLATABLE_ATTRS.forEach((attr) => {
     if (isEligibleAttr(element, attr)) targets.push(attrTarget(element, attr));
   });
@@ -533,6 +533,7 @@ export default function TranslatorDropdown({ ssrLocale = "en" }) {
           // collectAttrTargets) - attributeFilter is document-wide and can't
           // scope itself, so do it here instead.
           if (attr === "content" && !element.matches?.(METADATA_SELECTOR)) return;
+          if (["img", "video"].includes(element.nodeName.toLowerCase())) return;
           const memo = readMemo(originalValueMap.current, element, attr);
           // setAttribute emits a record even when the value is unchanged, so
           // our own writes would re-queue themselves forever. Anything already
