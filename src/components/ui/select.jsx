@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 
 import { cn } from "../../lib/utils";
 
@@ -23,7 +23,8 @@ function SelectTrigger({ className, children, ...props }) {
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "text-[13px] sm:text-[12px] lg:text-[12px] 2xl-[14px] 3xl:text-[16px] h-[35px] sm:h-[30px] xl:h-[35px] 2xl:h-[40px] 3xl:h-[48px] border-input data-[placeholder]:text-[#404040] [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:none aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 whitespace-nowrap shadow-none transition-[color,box-shadow] outline-none focus-visible:none disabled:cursor-not-allowed disabled:opacity-50 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "group text-[13px] sm:text-[12px] lg:text-[12px] 2xl-[14px] 3xl:text-[16px] text-left h-[35px] sm:h-[30px] xl:h-[35px] 2xl:h-[40px] 3xl:h-[48px] border-input data-[placeholder]:text-[#404040] [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:none aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 shadow-none transition-[color,box-shadow] outline-none focus-visible:none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "*:data-[slot=select-value]:line-clamp-1",
         className
       )}
       {...props}
@@ -37,7 +38,7 @@ function SelectTrigger({ className, children, ...props }) {
           viewBox="0 0 11 6"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="size-2 2xl:size-3 opacity-50"
+          className="size-2 2xl:size-3 opacity-50 transition-transform duration-300 group-data-[state=open]:rotate-180"
         >
           <path
             d="M5.50002 6L10.2632 0.75H0.736877L5.50002 6Z"

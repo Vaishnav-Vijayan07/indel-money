@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import { renderHtml } from "@/lib/utils/htmlParser";
 
 import Image from "next/image";
 
@@ -11,8 +12,7 @@ const benefitsEmployee = [
     src: "/images/benefitsEmployee-1.svg",
     alt: "benefitsEmployee",
     title: "Career Growth",
-    description:
-      "Indel offers ample opportunities for professional development and advancement.",
+    description: "Indel offers ample opportunities for professional development and advancement.",
   },
   {
     src: "/images/benefitsEmployee-2.svg",
@@ -24,39 +24,34 @@ const benefitsEmployee = [
     src: "/images/benefitsEmployee-3.svg",
     alt: "benefitsEmployee",
     title: "Work-Life Balance",
-    description:
-      "Enjoy a healthy work-life balance with flexible work arrangements.",
+    description: "Enjoy a healthy work-life balance with flexible work arrangements.",
   },
   {
     src: "/images/benefitsEmployee-4.svg",
     alt: "benefitsEmployee",
     title: "Employee Welfare",
-    description:
-      "Benefit from comprehensive employee welfare programs and initiatives.",
+    description: "Benefit from comprehensive employee welfare programs and initiatives.",
   },
   {
     src: "/images/benefitsEmployee-5.svg",
     alt: "benefitsEmployee",
     title: "Financial Rewards",
-    description:
-      "Receive competitive compensation packages and performance-based incentives.",
+    description: "Receive competitive compensation packages and performance-based incentives.",
   },
   {
     src: "/images/benefitsEmployee-6.svg",
     alt: "benefitsEmployee",
     title: "Strong Leadership",
-    description:
-      "Learn from experienced leaders and mentors who inspire and guide.",
+    description: "Learn from experienced leaders and mentors who inspire and guide.",
   },
 ];
 
-export default function BenefitsEmployee() {
+export default function BenefitsEmployee({ benefits, benefits_title }) {
   return (
     <section className="w-full block py-[30px_0] overflow-hidden">
       <div className="container">
-        <div className="text-title1 font-medium capitalize mb-[15px]">
-          Benefits of being an
-          <span className="text-base2 font-bold">&nbsp;indel employee</span>
+        <div className="text-title1 font-medium capitalize mb-[15px] [&>span]:font-bold [&>span]:text-base2">
+          {benefits_title ? renderHtml(benefits_title) : ""}
         </div>
         <Swiper
           modules={[Autoplay, Pagination]}
@@ -84,29 +79,28 @@ export default function BenefitsEmployee() {
             "--swiper-pagination-bullet-inactive-opacity": "1",
           }}
         >
-          {benefitsEmployee?.map((item, index) => (
+          {benefits?.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="w-full h-full min-h-[150px] block rounded-[10px] shadow-[0_0_15px_0_rgba(0,0,0,0.1)] overflow-hidden hover:-translate-y-[5px] transition-all duration-300">
+              <div
+                className="w-full h-full min-h-[150px] block rounded-[10px] bg-white
+               shadow-[0_0_15px_0_rgba(0,0,0,0.1)] overflow-hidden hover:-translate-y-[5px] transition-all duration-300"
+              >
                 <div
                   className={`
                     ${index % 2 === 0 ? "bg-base1" : "bg-[#d6071e]"} 
                     w-full h-[50px] p-[10px_10px_10px_15px] flex items-center`}
                 >
                   <Image
-                    src={item.src}
-                    alt={item.alt}
+                    src={item.icon ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.icon}` : "/images/benefitsEmployee-1.svg"}
+                    alt={item.image_alt ? item.image_alt : "benefitsEmployee"}
                     width={25}
                     height={25}
                     className="aspect-square"
                   />
-                  <div className="text-[14px] font-medium leading-none line-clamp-2 text-white pl-[10px]">
-                    {item.title}
-                  </div>
+                  <div className="text-[14px] font-medium leading-none line-clamp-2 text-white pl-[10px]">{item.title}</div>
                 </div>
                 <div className="w-full h-auto p-[10px_10px]">
-                  <div className="text-sm1 text-[#161616] line-clamp-4">
-                    {item.description}
-                  </div>
+                  <div className="text-sm1 text-[#161616] line-clamp-4">{item.description}</div>
                 </div>
               </div>
             </SwiperSlide>

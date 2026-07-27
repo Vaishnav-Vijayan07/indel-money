@@ -1,148 +1,77 @@
-import AsideMenu from "@/components/common/AsideMenu";
-import MobAsideMenu from "@/components/common/MobAsideMenu";
-import PageBreadcrumb from "@/components/common/PageBreadcrumb";
-import Image from "next/image";
+//export const dynamic = "force-dynamic";
+import PartnersSection from "@/components/partners/Partners";
+import { getServerLocale } from "@/lib/locale/getServerLocale";
+import { buildLocalizedUrl } from "@/lib/locale/localizedUrl";
 
-export const navigationItems = [
-  {
-    title: "Debt partners",
-    href: "/partners",
-  },
-  {
-    title: "Rating Agencies",
-    href: "/",
-    sub_menu: [
-      {
-        title: "Contact Form",
-        href: "/investors/contact",
-      },
-      {
-        title: "FAQ",
-        href: "/partners",
-      },
-    ],
-  },
-  {
-    title: "Credit Bureau",
-    href: "/",
-  },
-  {
-    title: "Auditors",
-    href: "/",
-  },
-  {
-    title: "Self-regulatory association",
-    href: "/",
-  },
-  {
-    title: "Tech partners",
-    href: "/",
-  },
-  {
-    title: "Trustee ships",
-    href: "/",
-  },
-  {
-    title: "Strategic consultant",
-    href: "/",
-  },
-  {
-    title: "Business Partners",
-    href: "/",
-  },
-];
+async function fetchPartnersData(locale) {
+  try {
+    const response = await fetch(buildLocalizedUrl(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/partners`, locale), {
+      // cache: "no-store", // Ensure fresh data
+      cache: "force-cache",
+      next: { revalidate: 600 },
+    });
+    const result = await response?.json();
 
-const partners = [
-  {
-    src: "/images/partners-1.png",
-    alt: "partners",
-  },
-  {
-    src: "/images/partners-2.png",
-    alt: "partners 2",
-  },
-  {
-    src: "/images/partners-3.png",
-    alt: "partners",
-  },
-  {
-    src: "/images/partners-4.png",
-    alt: "partners 2",
-  },
-  {
-    src: "/images/partners-5.png",
-    alt: "partners",
-  },
-  {
-    src: "/images/partners-6.png",
-    alt: "partners 2",
-  },
-  {
-    src: "/images/partners-7.png",
-    alt: "partners",
-  },
-  {
-    src: "/images/partners-8.png",
-    alt: "partners 2",
-  },
-  {
-    src: "/images/partners-9.png",
-    alt: "partners",
-  },
-  {
-    src: "/images/partners-10.png",
-    alt: "partners 2",
-  },
-];
-
-function PartnerLogo({ item }) {
-  return (
-    <div className="w-full h-full aspect-5/3 flex justify-center items-center border-[1px] border-solid border-[rgba(0,0,0,0.2)] rounded-[10px] 4xs:rounded-[16px] p-[6px] 3xs:p-[10px] sm:p-[15px] lg:p-[20px] 2xl:p-[25px] transition-border hover:border-base2">
-      <Image
-        src={item.src}
-        alt={item.alt}
-        width="200"
-        height="100"
-        className="w-full h-auto object-contain"
-      />
-    </div>
-  );
+    if (result.status === "success") {
+      return { data: result?.data?.content, partners: result?.data?.partners, error: null };
+    }
+    return { data: null, partners: null, error: result?.message };
+  } catch (error) {
+    return { data: null, partners: null, error: "Failed to about data" };
+  }
 }
 
-export default function Partners() {
-  return (
-    <section className="w-full block py-[30px] lg:py-[40px] 2xl:py-[50px]">
-      <div className="container">
-        <div className="w-full mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[50px]">
-          <div className="text-title1 font-bold text-base2">Partners</div>
-          <PageBreadcrumb />
-        </div>
-        <div className="flex flex-wrap -mx-[10px] lg:-mx-[15px] xl:-mx-[20px] 2xl:-mx-[30px] 3xl:-mx-[35px] gap-y-[25px]">
-          <div className="w-full sm:w-[220px] lg:w-[320px] xl:w-[420px] 2xl:w-[476px] 3xl:w-[576px] px-[10px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px] 3xl:px-[35px]">
-            <div className="hidden sm:block">
-              <AsideMenu navigationItems={navigationItems} />
-            </div>
-            <div className="block sm:hidden">
-              <MobAsideMenu navigationItems={navigationItems} />
-            </div>
-          </div>
-          <div className="w-full sm:w-[calc(100%-220px)] lg:w-[calc(100%-320px)] xl:w-[calc(100%-420px)] 2xl:w-[calc(100%-476px)] 3xl:w-[calc(100%-576px)] px-[10px] lg:px-[15px] xl:px-[20px] 2xl:px-[30px] 3xl:px-[35px]">
-            <div className="text-title1 font-medium mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">
-              Debt Partners
-            </div>
-            <div className="flex flex-wrap -mx-[2px] 4xs:-mx-[4px] lg:-mx-[6px] 2xl:-mx-[10px]">
-              {partners?.map((item, index) => (
-                <div
-                  key={index}
-                  className="w-1/4 sm:w-1/3 md:w-1/4 p-[4px_2px] 4xs:p-[6px_4px] lg:p-[10px_6px] 2xl:p-[15px_10px]"
-                >
-                  <PartnerLogo item={item} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+async function getMetaData(locale) {
+  try {
+    const response = await fetch(buildLocalizedUrl(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/meta?page=partners`, locale), {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+    });
+    const result = await response.json();
+    const meta = result.data;
+
+    if (result.status === "success") {
+      return {
+        title: meta?.meta_title || "Our Partners | My Website",
+        description: meta?.meta_description || "Explore our partners offering consumer durable loans and financial services.",
+        keywords: meta?.meta_keywords || "partners, consumer durable loans, financial services",
+        error: null,
+      };
+    }
+    return {
+      title: "Our Partners | My Website",
+      description: "Explore our partners offering consumer durable loans and financial services.",
+      keywords: "partners, consumer durable loans, financial services",
+      error: result.message,
+    };
+  } catch (error) {
+    return {
+      title: "Our Partners | My Website",
+      description: "Explore our partners offering consumer durable loans and financial services.",
+      keywords: "partners, consumer durable loans, financial services",
+      error: "Failed to fetch service data",
+    };
+  }
+}
+
+export async function generateMetadata() {
+  const locale = await getServerLocale();
+  const { title, description, keywords } = await getMetaData(locale);
+
+  return {
+    title,
+    description,
+    keywords,
+  };
+}
+
+export default async function Partners() {
+  const locale = await getServerLocale();
+  const { data, partners, error } = await fetchPartnersData(locale);
+
+  if (!data && !partners) {
+    return <div>Failed to fetch partners data</div>;
+  }
+
+  return <PartnersSection content={data} partners={partners} initialError={error} />;
 }
