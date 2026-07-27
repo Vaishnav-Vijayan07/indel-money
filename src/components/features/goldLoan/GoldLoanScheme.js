@@ -28,24 +28,28 @@ export default function Scheme({ goldLoanSchemes, scheme_title }) {
           <div className="w-full xl:w-[700px] 2xl:w-[950px] 3xl:w-[1020px]">
             <Swiper
               onSwiper={setThumbsSwiper}
-              loop={true}
               spaceBetween={10}
-              slidesPerView={6}
               watchSlidesProgress
+              slidesPerView={1}
+              slideToClickedSlide={true}
               modules={[Thumbs]}
               className="w-full"
               breakpoints={{
-                320: { slidesPerView: 2, spaceBetween: 5 },
-                480: { slidesPerView: 3, spaceBetween: 8 },
-                768: { slidesPerView: 4, spaceBetween: 10 },
-                1024: { slidesPerView: 5, spaceBetween: 12 },
-                1280: { slidesPerView: 6, spaceBetween: 15 },
+                320: { spaceBetween: 5 },
+                480: { spaceBetween: 8 },
+                768: { spaceBetween: 10 },
+                1024: { spaceBetween: 12 },
+                1280: { spaceBetween: 15 },
               }}
             >
               {schemes?.map((type, index) => (
-                <SwiperSlide key={index}>
+                <SwiperSlide key={index} className="!w-auto">
                   <h4
-                    className={`w-full h-[40px] 2xl:h-[50px] 3xl:h-[60px] text-[12px] 2xl:text-[16px] 3xl:text-[18px] px-[10px] font-bold flex items-center justify-center rounded-[100px] cursor-pointer transition-all duration-300
+                    onClick={() => {
+                      setActiveIndex(index);
+                      thumbsSwiper?.slideTo(index);
+                    }}
+                    className={`w-fit h-[40px] 2xl:h-[50px] 3xl:h-[60px] text-[12px] 2xl:text-[16px] 3xl:text-[18px] px-[10px] font-bold flex items-center justify-center rounded-[100px] cursor-pointer transition-all duration-300 whitespace-nowrap
                                         ${activeIndex === index ? "bg-base1 text-white thumbActive" : "bg-[#CFDFFE] text-black"}`}
                   >
                     {type}
