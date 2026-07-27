@@ -75,7 +75,7 @@
     :root {
       --container-x: var(--breakpoint-lg);
       --container-padding: 5rem;
-      --header-y: 60px;
+      --header-y: 80px;
       --marquee-y: 40px;
     }
   }

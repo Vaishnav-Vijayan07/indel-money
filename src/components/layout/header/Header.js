@@ -35,10 +35,10 @@ export default async function Header() {
 
   return (
     <>
-      <div className="hidden lg:block">
+      <div className="hidden xl:block">
         <DeskHeader headerData={headerData} locale={locale} />
       </div>
-      <div className="block lg:hidden">
+      <div className="block xl:hidden">
         <MobHeader
           socialLinks={socialLinks}
           logo={headerData?.content?.logo}
