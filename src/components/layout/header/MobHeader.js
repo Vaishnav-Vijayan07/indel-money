@@ -139,7 +139,7 @@ export default function MobHeader({ socialLinks, links, logo, title, modes, loca
                 </Link>
               </div>
               <div className="w-[calc(100%-60px)] @sm:w-[calc(100%-80px)]">
-                <div className="flex items-center justify-end gap-x-[15px] @sm:gap-x-[20px]">
+                <div className="flex flex-nowrap items-center justify-end gap-x-[15px] @sm:gap-x-[20px] overflow-x-auto">
                   {/* <div>
                     <Link href="/" className="block transition-transform duration-300 hover:scale-105">
                       <Image src="/images/mob-icon-search.svg" alt="search" width={18} height={18} />
@@ -162,10 +162,10 @@ export default function MobHeader({ socialLinks, links, logo, title, modes, loca
                   >
                     Apply for NCD
                   </a> */}
-                  <div className="block">
+                  <div className="block flex-shrink-0">
                     <TranslatorDropdown ssrLocale={locale} />
                   </div>
-                  <div>
+                  <div className="flex-shrink-0">
                     <MobNavMenu logo={logo} serverMediaPath={serverMediaPath} title={title} modes={modes} />
                   </div>
                 </div>

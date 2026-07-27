@@ -1,7 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../../ui/dropdown-menu";
 
 // All 22 languages in the Constitution's Eighth Schedule except Bodo and
 // Kashmiri, which the backend's translation provider (Google's
@@ -399,7 +407,6 @@ export default function TranslatorDropdown({ ssrLocale = "en" }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const routeKey = `${pathname}?${searchParams.toString()}`;
-  const langSelectId = useId();
 
   useEffect(() => {
     languageRef.current = selectedLanguage;
@@ -583,35 +590,62 @@ export default function TranslatorDropdown({ ssrLocale = "en" }) {
     };
   }, [translateTargets]);
 
+  const currentLanguage =
+    TRANSLATION_LANGUAGES.find((language) => language.code === selectedLanguage) ?? TRANSLATION_LANGUAGES[0];
+
+  const handleSelect = (code) => {
+    if (code === selectedLanguage) return;
+    setSharedLanguage(code);
+    // Explicit pick only - not the hydration/geo-detect paths inside
+    // setSharedLanguage, which already match what SSR just rendered and
+    // would otherwise trigger a needless refetch flash on every load.
+    // The cookie write above is synchronous, so this refresh's RSC
+    // fetch already carries the new locale.
+    router.refresh();
+  };
+
   return (
-    <div className="flex items-center gap-2">
-      <label htmlFor={langSelectId} className="sr-only">
-        Language
-      </label>
-      <select
-        id={langSelectId}
-        value={selectedLanguage}
-        onChange={(event) => {
-          setSharedLanguage(event.target.value);
-          // Explicit pick only - not the hydration/geo-detect paths inside
-          // setSharedLanguage, which already match what SSR just rendered and
-          // would otherwise trigger a needless refetch flash on every load.
-          // The cookie write above is synchronous, so this refresh's RSC
-          // fetch already carries the new locale.
-          router.refresh();
-        }}
+    <DropdownMenu>
+      <DropdownMenuTrigger
         disabled={isTranslating}
-        // Each option is already written in the language it names, so this
-        // subtree must never be rewritten by our own pass.
+        aria-label="Select language"
+        // The trigger only ever shows the language code (EN, HI, TA, ...),
+        // so its width - and this subtree's own eligibility for the
+        // translator's DOM pass - never changes with the selection.
         translate="no"
-        className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200 disabled:cursor-not-allowed disabled:opacity-70"
+        className="notranslate flex items-center gap-1 rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold uppercase text-slate-800 shadow-sm outline-none transition whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-70"
       >
+        {currentLanguage.code}
+        <svg
+          width="11"
+          height="6"
+          viewBox="0 0 11 6"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="ml-0.5 flex-shrink-0"
+          aria-hidden="true"
+        >
+          <path d="M5.5 6L10.2631 0.75H0.73686L5.5 6Z" fill="currentColor" />
+        </svg>
+      </DropdownMenuTrigger>
+      {/* Radix portals this into document.body, outside the trigger's DOM
+          subtree, so it needs its own translate="no"/.notranslate - a
+          wrapper around just the trigger would not protect it. */}
+      <DropdownMenuContent translate="no" className="notranslate bg-white border-[#e4e4e4] max-h-[320px] overflow-y-auto">
+        <DropdownMenuLabel>
+          <div className="text-header1">Language</div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator className="bg-black/10" />
         {TRANSLATION_LANGUAGES.map((language) => (
-          <option key={language.code} value={language.code}>
+          <DropdownMenuItem
+            key={language.code}
+            onSelect={() => handleSelect(language.code)}
+            className="hover:bg-[#c3d5f2] rounded-md"
+          >
             {language.label}
-          </option>
+          </DropdownMenuItem>
         ))}
-      </select>
-    </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

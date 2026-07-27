@@ -257,7 +257,7 @@ function MegaMenu({ items }) {
 }
 
 const tabStyle =
-  "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2! group hover:[&*svg:rotate-45]";
+  "text-header1 uppercase hover:text-base2! transition-color duration-300 group p-0 cursor-pointer data-[state=open]:text-base2! group hover:[&*svg:rotate-45] whitespace-nowrap";
 
 const stripPath = (path) => path?.split("#")[0]?.split("?")[0];
 
@@ -310,7 +310,7 @@ export default function NavMenu() {
         <a
           href={"https://indelremit.com"}
           target="_blank"
-          className={`${pathname === "#" ? "" : ""} text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block`}
+          className={`${pathname === "#" ? "" : ""} text-header1 uppercase hover:text-base2! transition-color duration-300 p-0 cursor-pointer block whitespace-nowrap`}
         >
           FOREIGN EXCHANGE
         </a>
