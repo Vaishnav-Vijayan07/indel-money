@@ -45,7 +45,6 @@ export default function DeskHeader({ headerData, locale }) {
       setIsVisible(currentScrollPos < 10 || !isScrollingDown);
       setPrevScrollPos(currentScrollPos);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos]);
