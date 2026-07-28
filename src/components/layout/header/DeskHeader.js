@@ -156,7 +156,7 @@ export default function DeskHeader({ headerData, locale }) {
                   </div>
                   <div className="flex-shrink-0">
                     <DropdownMenu onOpenChange={setIsQuickPayOpen}>
-                      <DropdownMenuTrigger className="btn btn-base1 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px] cursor-pointer whitespace-nowrap">
+                      <DropdownMenuTrigger className="text-[10px] btn btn-base1 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px] cursor-pointer whitespace-nowrap">
                         {header?.button_1_text ? header?.button_1_text : "Quick Pay"}
                         <Image
                           src="/images/icon-dropdown.svg"
@@ -199,7 +199,7 @@ export default function DeskHeader({ headerData, locale }) {
                   <div className="flex-shrink-0">
                     <Link
                       href={header?.button_2_link || "#"}
-                      className="btn btn-base2 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px] whitespace-nowrap"
+                      className="btn text-[10px] btn-base2 min-w-[80px] lg:min-w-[85px] xl:min-w-[95px] 2xl:min-w-[115px] 3xl:min-w-[140px] whitespace-nowrap"
                     >
                       {header?.button_2_text ? header?.button_2_text : "Contact Us"}
                     </Link>
