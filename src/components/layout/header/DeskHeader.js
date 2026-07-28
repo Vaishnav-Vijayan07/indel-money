@@ -71,11 +71,13 @@ export default function DeskHeader({ headerData, locale }) {
               </Link>
             </div>
             <nav className="w-[calc(100%-60px)] xl:w-[calc(100%-90px)] 2xl:w-[calc(100%-120px)] 3xl:w-[calc(100%-140px)] flex justify-end">
-              <div className="flex items-center gap-[6px] xl:gap-[10px] 2xl:gap-[14px] 3xl:gap-[14px] w-full min-w-0">
+              <div className="flex items-center justify-end gap-[6px] xl:gap-[10px] 2xl:gap-[14px] 3xl:gap-[14px] w-full min-w-0">
                 {/* NavMenu is the one item whose content width genuinely varies a
                     lot with the selected language - let it scroll internally
-                    instead of squeezing (and cropping) the action buttons below. */}
-                <div className="flex flex-1 flex-nowrap items-center overflow-x-auto min-w-0">
+                    instead of squeezing (and cropping) the action buttons below.
+                    It no longer grows to fill the row so it stays grouped with
+                    the action cluster on the right, away from the logo. */}
+                <div className="flex shrink flex-nowrap items-center overflow-x-auto min-w-0">
                   <div className="flex-shrink-0">
                     <NavMenu />
                   </div>
