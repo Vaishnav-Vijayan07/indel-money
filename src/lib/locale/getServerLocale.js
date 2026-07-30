@@ -12,7 +12,7 @@ const COOKIE_LOCALE_PATTERN = /^[a-zA-Z-]{1,10}$/;
 // collapses to a single cookie read instead of one each.
 export const getServerLocale = cache(async function getServerLocale() {
   // An explicit pick (made via TranslatorDropdown.js, which mirrors it into
-  // this same cookie name alongside localStorage) is the only thing that
+  // this same cookie name alongside sessionStorage) is the only thing that
   // moves the site off English - there is no IP-based auto-detection.
   const cookieStore = await cookies();
   const cookieLocale = cookieStore.get("siteLanguage")?.value;

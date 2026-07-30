@@ -121,10 +121,10 @@ function setSharedLanguage(next) {
   if (next === sharedLanguage) return;
   sharedLanguage = next;
   if (typeof window !== "undefined") {
-    window.localStorage.setItem("siteLanguage", next);
+    window.sessionStorage.setItem("siteLanguage", next);
     // Mirrored into a cookie (same name) so getServerLocale.js
     // (client/src/lib/locale/getServerLocale.js) can pick the same locale for
-    // server-rendered CMS content - localStorage alone is invisible to the
+    // server-rendered CMS content - sessionStorage alone is invisible to the
     // server on the next request/refresh.
     document.cookie = `siteLanguage=${next}; path=/; max-age=31536000; SameSite=Lax`;
   }
@@ -139,7 +139,7 @@ function hydrateSharedLanguageOnce(ssrLocale) {
   hasHydratedLanguage = true;
   if (typeof window === "undefined") return;
 
-  const stored = window.localStorage.getItem("siteLanguage");
+  const stored = window.sessionStorage.getItem("siteLanguage");
   if (stored) {
     if (stored !== sharedLanguage) setSharedLanguage(stored);
     return; // Already resolved via an explicit pick - sticky, no
@@ -153,7 +153,7 @@ function hydrateSharedLanguageOnce(ssrLocale) {
   // fresh visitor with nothing stored and no cookie simply stays on the
   // module's "en" default.
   if (ssrLocale && ssrLocale !== "en" && isSupportedLanguageCode(ssrLocale)) {
-    window.localStorage.setItem("siteLanguage", ssrLocale);
+    window.sessionStorage.setItem("siteLanguage", ssrLocale);
     if (ssrLocale !== sharedLanguage) setSharedLanguage(ssrLocale);
   }
 }
