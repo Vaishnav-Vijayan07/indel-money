@@ -59,6 +59,14 @@ const LOCALE_DETECT_ENDPOINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/l
 // English than today's plain default — past this we just abort.
 const LOCALE_DETECT_TIMEOUT_MS = 2500;
 
+// GPS-based accuracy upgrade over the IP-based lookup above: browser
+// coordinates aren't subject to mobile-carrier CGNAT resolving to the
+// wrong city, so when granted this silently overrides whatever the IP path
+// already set. Separate endpoint/budget since this call only ever fires
+// after a permission prompt + hardware fix, not a plain network round trip.
+const LOCALE_DETECT_GPS_ENDPOINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/web/locale-detect-gps`;
+const GPS_LOCALE_DETECT_TIMEOUT_MS = 3000;
+
 // Text nodes directly inside these are never prose: a <textarea>'s text child is
 // the user's own typed value, and the rest are code/markup containers.
 // <select>/<option> are deliberately NOT here — option labels are real UI text.
@@ -110,6 +118,14 @@ const translationCache = new Map();
 let sharedLanguage = "en";
 let hasHydratedLanguage = false;
 let hasStartedLocaleDetection = false;
+let hasStartedGpsLocaleDetection = false;
+// Set by handleSelect the moment a visitor explicitly picks a language.
+// Lets the (slower-resolving) GPS lookup tell "this is still just an
+// auto-guess, safe to upgrade" apart from "the visitor chose this, never
+// touch it" - the IP path already has this guarantee via its localStorage
+// check, but that check runs at hydration time, before a pick during the
+// same page load would exist yet.
+let hasManualLanguagePick = false;
 const languageListeners = new Set();
 
 function getSharedLanguageSnapshot() {
@@ -183,6 +199,77 @@ function detectAndApplyGeoLanguage() {
     });
 }
 
+// Accuracy upgrade over detectAndApplyGeoLanguage above: asks the browser
+// for the visitor's actual GPS/WiFi-derived coordinates and re-resolves the
+// locale from those instead of their IP. Only ever called alongside (never
+// instead of) the IP-based detector from hydrateSharedLanguageOnce, so a
+// denied/unsupported/slow GPS lookup never leaves a visitor worse off than
+// today's IP-only behavior - this can only improve the guess, never block it.
+function detectAndApplyGeoLanguageViaGps() {
+  if (hasStartedGpsLocaleDetection) return;
+  hasStartedGpsLocaleDetection = true;
+
+  if (typeof window === "undefined" || !("geolocation" in navigator)) return;
+
+  const requestPosition = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        // A manual pick may have landed while the permission prompt was open.
+        if (hasManualLanguagePick) return;
+
+        const { latitude, longitude } = position.coords;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), GPS_LOCALE_DETECT_TIMEOUT_MS);
+
+        fetch(`${LOCALE_DETECT_GPS_ENDPOINT}?lat=${latitude}&lng=${longitude}`, {
+          signal: controller.signal,
+          cache: "no-store",
+        })
+          .then((response) => (response.ok ? response.json() : null))
+          .then((result) => {
+            const locale = result?.data?.locale;
+            if (typeof locale !== "string" || !isSupportedLanguageCode(locale)) return;
+
+            // Re-check: a pick may have landed while this request was in
+            // flight too.
+            if (hasManualLanguagePick) return;
+
+            // Unconditional, unlike the IP path's "only if nothing stored
+            // yet" check: GPS is the more accurate signal, so it always wins
+            // over whatever the IP path already guessed for this visit.
+            setSharedLanguage(locale);
+          })
+          .catch(() => {
+            // Timeout/abort, network failure, non-OK status, bad JSON - the
+            // IP-derived result (or "en") just stands as-is.
+          })
+          .finally(() => {
+            clearTimeout(timeoutId);
+          });
+      },
+      () => {
+        // Denied, unavailable, or timed out - swallowed on purpose, same as
+        // above: nothing a visitor can act on, IP result stands.
+      },
+      { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
+    );
+  };
+
+  // Where supported, skip straight past already-denied visitors instead of
+  // re-issuing a doomed getCurrentPosition call (and its error round trip)
+  // on every single page load.
+  if (navigator.permissions?.query) {
+    navigator.permissions
+      .query({ name: "geolocation" })
+      .then((status) => {
+        if (status.state !== "denied") requestPosition();
+      })
+      .catch(requestPosition);
+  } else {
+    requestPosition();
+  }
+}
+
 // Runs from every mounted instance's mount effect, but the module-level
 // guard means only the first one to fire actually reads storage - order
 // independent, which is what removes the old two-instance mount race. The
@@ -217,8 +304,13 @@ function hydrateSharedLanguageOnce(ssrLocale) {
 
   // Genuinely fresh visitor (or ambiguous "en") - kick off geolocation-based
   // detection in the background. Never blocks this synchronous mount effect
-  // (or SSR, which never runs this path) from returning immediately.
+  // (or SSR, which never runs this path) from returning immediately. Both
+  // detectors run in parallel; the IP-based one typically resolves first
+  // (single network call vs. a permission prompt + hardware fix), so the
+  // natural result is "IP guess appears immediately, GPS silently upgrades
+  // it a moment later if granted."
   detectAndApplyGeoLanguage();
+  detectAndApplyGeoLanguageViaGps();
 }
 
 // Distinguishes prose from identifiers. Attribute values especially are often
@@ -595,6 +687,7 @@ export default function TranslatorDropdown({ ssrLocale = "en" }) {
 
   const handleSelect = (code) => {
     if (code === selectedLanguage) return;
+    hasManualLanguagePick = true;
     setSharedLanguage(code);
     // Explicit pick only - not the hydration/geo-detect paths inside
     // setSharedLanguage, which already match what SSR just rendered and
