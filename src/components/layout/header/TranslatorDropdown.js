@@ -550,9 +550,9 @@ export default function TranslatorDropdown({ ssrLocale = "en" }) {
         // so its width - and this subtree's own eligibility for the
         // translator's DOM pass - never changes with the selection.
         translate="no"
-        className="notranslate flex items-center gap-1 rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold uppercase text-slate-800 shadow-sm outline-none transition whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-70"
+        className="notranslate flex items-center gap-1 rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold capitalize text-slate-800 shadow-sm outline-none transition whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {currentLanguage.code}
+        {currentLanguage.label}
         <svg
           width="11"
           height="6"
@@ -570,7 +570,7 @@ export default function TranslatorDropdown({ ssrLocale = "en" }) {
           wrapper around just the trigger would not protect it. */}
       <DropdownMenuContent translate="no" className="notranslate bg-white border-[#e4e4e4] max-h-[320px] overflow-y-auto">
         <DropdownMenuLabel>
-          <div className="text-header1">Language</div>
+          <div>Language</div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-black/10" />
         {TRANSLATION_LANGUAGES.map((language) => (
