@@ -336,6 +336,7 @@ export default function TranslatorDropdown({ ssrLocale = "en" }) {
     getServerLanguageSnapshot,
   );
   const [isTranslating, setIsTranslating] = useState(false);
+  const [hasUserSelected, setHasUserSelected] = useState(false);
   const originalValueMap = useRef(new WeakMap());
   const languageRef = useRef(selectedLanguage);
   const pendingRef = useRef(new Map());
@@ -531,6 +532,7 @@ export default function TranslatorDropdown({ ssrLocale = "en" }) {
     TRANSLATION_LANGUAGES.find((language) => language.code === selectedLanguage) ?? TRANSLATION_LANGUAGES[0];
 
   const handleSelect = (code) => {
+    setHasUserSelected(true);
     if (code === selectedLanguage) return;
     setSharedLanguage(code);
     // Explicit pick only - not the hydration/geo-detect paths inside
@@ -552,7 +554,7 @@ export default function TranslatorDropdown({ ssrLocale = "en" }) {
         translate="no"
         className="notranslate flex items-center gap-1 rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold capitalize text-slate-800 shadow-sm outline-none transition whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {currentLanguage.label}
+        {hasUserSelected ? currentLanguage.label : "Select Language"}
         <svg
           width="11"
           height="6"
