@@ -78,7 +78,7 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
 
   const fetchAllBranchLocations = useCallback(async () => {
     try {
-      const { data } = await api.get("/branch/branches");
+      const { data } = await api.get("/branch/branches/active");
       if (data?.success) {
         setAllBranchLocations(data?.data || []);
         if (!selectedBranch) {
