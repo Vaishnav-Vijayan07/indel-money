@@ -64,7 +64,7 @@ export default function MobBranchLocator({ pageContent }) {
 
   const fetchBranchLocations = async () => {
     try {
-      const { data } = await api.get("/branch/branches");
+      const { data } = await api.get("/branch/branches/active");
       if (data?.success) {
         setBranchLocationsAPI(data?.data || []);
         setSelectedBranch(data?.data?.[0] || null);
