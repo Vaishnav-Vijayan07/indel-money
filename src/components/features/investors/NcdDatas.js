@@ -98,7 +98,7 @@ export default function NCData({ reports, currentReports, pastReports, title, ty
         {type === "ncd" && (currentReports?.length > 0 || pastReports?.length > 0) && (
           <div className="mt-[25px] xl:mt-[30px] 3xl:mt-[40px] space-y-[15px] xl:space-y-[20px]">
             {/* Application Section Button */}
-            {/* <div>
+            <div>
               <button
                 onClick={() =>
                   window.open(
@@ -111,7 +111,7 @@ export default function NCData({ reports, currentReports, pastReports, title, ty
               >
                 {content?.ncd_button_text || "Application Section"}
               </button>
-            </div> */}
+            </div>
 
             {/* Toggle Button for Past/Current NCDs */}
             <div className="flex justify-center">
