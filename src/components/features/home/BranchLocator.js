@@ -108,7 +108,7 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
         console.error("Error fetching nearby branch locations:", error);
       }
     }, 300),
-    [selectedBranch]
+    [selectedBranch],
   );
 
   const updateQueryParams = useCallback(
@@ -126,7 +126,7 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
       });
       router.push(`${pathname}?${params.toString()}`, { scroll: false });
     },
-    [searchParams, router, pathname, useQueryParams]
+    [searchParams, router, pathname, useQueryParams],
   );
 
   const hasActiveFilters = useCallback(() => {
@@ -156,9 +156,8 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
             updateQueryParams({ distance: distance || selectedDistance || "20" });
           },
           (error) => {
-            console.error("Error fetching location:", error);
             debouncedFetchNearbyBranchLocations(queryParams);
-          }
+          },
         );
       } else {
         debouncedFetchNearbyBranchLocations(queryParams);
@@ -169,15 +168,7 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
         }
       }
     },
-    [
-      selectedState,
-      selectedDistrict,
-      selectedLocation,
-      selectedDistance,
-      debouncedFetchNearbyBranchLocations,
-      updateQueryParams,
-      hasActiveFilters,
-    ]
+    [selectedState, selectedDistrict, selectedLocation, selectedDistance, debouncedFetchNearbyBranchLocations, updateQueryParams, hasActiveFilters],
   );
 
   const handleDistanceOpen = useCallback(() => {
@@ -200,9 +191,7 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
           });
           updateQueryParams({ distance: selectedDistance || "20" });
         },
-        (error) => {
-          console.error("Error fetching location:", error);
-        }
+        () => {},
       );
     } else if (userLocation) {
       debouncedFetchNearbyBranchLocations({
@@ -299,7 +288,7 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
       fetchNearbyBranchesWithLocation,
       updateQueryParams,
       hasActiveFilters,
-    ]
+    ],
   );
 
   useEffect(() => {
@@ -326,15 +315,7 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
     // Fetch nearby branches for the initial list based on geolocation or filters
     fetchNearbyBranchesWithLocation(distance);
     setIsInitialLoad(false);
-  }, [
-    searchParams,
-    fetchStates,
-    fetchDistricts,
-    fetchLocations,
-    fetchAllBranchLocations,
-    fetchNearbyBranchesWithLocation,
-    useQueryParams,
-  ]);
+  }, [searchParams, fetchStates, fetchDistricts, fetchLocations, fetchAllBranchLocations, fetchNearbyBranchesWithLocation, useQueryParams]);
 
   return (
     <section
@@ -373,12 +354,7 @@ export default function BranchLocator({ variant = "default", pageContent, useQue
             </motion.div>
           </div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="container mx-auto"
-        >
+        <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="container mx-auto">
           <div className="bg-white shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-[12px] p-[12px] sm:p-[16px] lg:p-[20px] 2xl:p-[24px] mb-6">
             <BranchForm
               states={states}

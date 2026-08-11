@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import MobNavMenu from "./MobNavMenu";
+import TranslatorDropdown from "./TranslatorDropdown";
 import { serverMediaPath } from "@/constants/constants";
 
 const socialmedias = [
@@ -57,7 +58,7 @@ const quickactions = [
   },
 ];
 
-export default function MobHeader({ socialLinks, links, logo, title, modes }) {
+export default function MobHeader({ socialLinks, links, logo, title, modes, locale }) {
   const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
@@ -138,7 +139,7 @@ export default function MobHeader({ socialLinks, links, logo, title, modes }) {
                 </Link>
               </div>
               <div className="w-[calc(100%-60px)] @sm:w-[calc(100%-80px)]">
-                <div className="flex items-center justify-end gap-x-[15px] @sm:gap-x-[20px]">
+                <div className="flex flex-nowrap items-center justify-end gap-x-[15px] @sm:gap-x-[20px] overflow-x-auto">
                   {/* <div>
                     <Link href="/" className="block transition-transform duration-300 hover:scale-105">
                       <Image src="/images/mob-icon-search.svg" alt="search" width={18} height={18} />
@@ -161,7 +162,10 @@ export default function MobHeader({ socialLinks, links, logo, title, modes }) {
                   >
                     Apply for NCD
                   </a> */}
-                  <div>
+                  <div className="block flex-shrink-0">
+                    <TranslatorDropdown ssrLocale={locale} />
+                  </div>
+                  <div className="flex-shrink-0">
                     <MobNavMenu logo={logo} serverMediaPath={serverMediaPath} title={title} modes={modes} />
                   </div>
                 </div>

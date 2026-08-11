@@ -177,6 +177,8 @@ function CareerFormInner({ jobId, isGeneral }) {
 
   const form = useForm({
     resolver: zodResolver(formSchema),
+    mode: "onChange",
+    reValidateMode: "onChange",
     defaultValues: {
       name: "",
       phone: "",
@@ -276,7 +278,7 @@ function CareerFormInner({ jobId, isGeneral }) {
 
       if (!data.success) throw new Error(data.message || "Failed to fetch districts");
 
-      setDropdowns((prev) => ({ ...prev, districts: data.data || [], locations: [] }));
+      setDropdowns((prev) => ({ ...prev, districts: data.data || [] }));
     } catch (error) {
       console.error("Error fetching districts by state:", error);
       toast.error("Failed to load districts for selected state");
@@ -365,6 +367,8 @@ function CareerFormInner({ jobId, isGeneral }) {
       expected_salary: data.expected_salary?.toString() || "",
       file: null,
     };
+
+    console.log("Auto-filling form with data:", validatedData);
 
     form.reset(validatedData);
 
@@ -475,7 +479,7 @@ function CareerFormInner({ jobId, isGeneral }) {
 
       if (!data.success) throw new Error(data.message || "Failed to send OTP");
       setEmail(values.email);
-      form.setValue("email", values.email);
+      form.setValue("email", values.email, { shouldValidate: true });
       setShowOtpInput(true);
 
       toast.success("OTP sent to your email");
@@ -524,6 +528,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       setIsModalOpen(false);
       setVerifiedEmail(email); // Store the verified email
       setCurrentEmailInForm(email); //
+      form.trigger("email");
       toast.success("OTP verified successfully");
     } catch (error) {
       console.error("Error verifying OTP:", error);
@@ -637,9 +642,19 @@ function CareerFormInner({ jobId, isGeneral }) {
 
       if (!response.data.success) throw new Error(response.data.message || "Failed to submit application");
 
+      const existingCookieRaw = Cookies.get("applicantData");
+      const existingCookie = existingCookieRaw ? JSON.parse(existingCookieRaw) : {};
+
       const cookieData = {
         ...values,
         file: selectedFile ? selectedFile.name : selectedFileName,
+        ...(!isGeneral && {
+          preferred_states: existingCookie.preferred_states ?? values.preferred_states,
+          preferred_districts: existingCookie.preferred_districts ?? values.preferred_districts,
+          preferred_locations: existingCookie.preferred_locations ?? values.preferred_locations,
+          preferred_role: existingCookie.preferred_role ?? "",
+          preferred_role_name: existingCookie.preferred_role_name ?? "",
+        }),
       };
 
       Cookies.set("applicantData", JSON.stringify(cookieData), {
@@ -676,6 +691,7 @@ function CareerFormInner({ jobId, isGeneral }) {
       setSelectedFile(file);
       setSelectedFileName(file.name);
       form.setValue("file", file);
+      form.clearErrors("file");
       return true;
     }
     return false;
@@ -1362,28 +1378,33 @@ function CareerFormInner({ jobId, isGeneral }) {
                 <FormField
                   control={form.control}
                   name="preferred_role"
-                  render={({ field }) => (
-                    <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
-                      <label className="text-[10px] text-gray-600 font-medium block">Department*</label>
-                      <Select
-                        onValueChange={field.onChange}
-                        value={field.value}
-                        // disabled={!isOtpVerified}
-                      >
-                        <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                          <SelectValue placeholder="Choose Department*" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-white border-gray-300">
-                          {dropdowns.roles.map((role) => (
-                            <SelectItem key={role?.value} value={String(role?.value)}>
-                              {role?.label || "-"}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage className="text-red-500 text-xs" />
-                    </FormItem>
-                  )}
+                  render={({ field }) => {
+                    console.log("field.value:", field.value, typeof field.value);
+                    console.log("roles:", dropdowns.roles);
+                    console.log(
+                      "selected role:",
+                      dropdowns.roles.find((r) => String(r.value) === String(field.value)),
+                    );
+
+                    return (
+                      <FormItem className="mb-2 xl:mb-3 2xl:mb-4">
+                        <label className="text-[10px] text-gray-600 font-medium block">Department*</label>
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <SelectTrigger className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                            <SelectValue placeholder="Choose Department*" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-white border-gray-300">
+                            {dropdowns.roles.map((role) => (
+                              <SelectItem key={role.value} value={String(role.value)}>
+                                {role.label || "-"}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage className="text-red-500 text-xs" />
+                      </FormItem>
+                    );
+                  }}
                 />
               </div>
             )}

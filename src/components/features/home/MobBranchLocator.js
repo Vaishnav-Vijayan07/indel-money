@@ -107,9 +107,7 @@ export default function MobBranchLocator({ pageContent }) {
             longitude: position.coords.longitude,
           });
         },
-        (error) => {
-          console.error("Error fetching location:", error);
-        }
+        () => {},
       );
     } else {
       console.error("Geolocation not supported by this browser.");

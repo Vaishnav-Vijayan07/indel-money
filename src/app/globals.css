@@ -3,10 +3,19 @@
 @import url('~leaflet.markercluster/dist/MarkerCluster.Default.css');
 
 
-@theme {
+/* Font tokens must live in `@theme inline`, not `@theme`. They reference the
+   next/font variables, which are declared on <body>. A plain @theme token
+   substitutes its var()s at :root, where those variables don't exist - that
+   makes the whole token invalid, so font-family falls back to preflight's
+   system sans and --font-noto-tamil is never referenced by anything (rendering
+   Tamil as tofu). `inline` inlines the value into the utility instead, so the
+   var()s resolve on <body> where they're defined. */
+@theme inline {
   --font-amino: "Amino", sans-serif;
-  --font-montserrat: "Montserrat", sans-serif;
+  --font-montserrat: var(--font-montserrat-base), var(--font-noto-tamil), sans-serif;
+}
 
+@theme {
   --color-base1: #17479e;
   --color-base2: #ee3824;
   --color-base3: #b7d0ff;
@@ -66,7 +75,7 @@
     :root {
       --container-x: var(--breakpoint-lg);
       --container-padding: 5rem;
-      --header-y: 60px;
+      --header-y: 80px;
       --marquee-y: 40px;
     }
   }
@@ -237,6 +246,35 @@
     line-height: 1.4;
     font-weight: 400;
     color: #000;
+  }
+
+  .cmnContent table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+  }
+
+  .cmnContent table th,
+  .cmnContent table td {
+    border: 1px solid #d9e6f8;
+    padding: 8px 15px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .cmnContent table th {
+    background-color: #ecf4ff;
+    font-weight: 600;
+    color: #323232;
+  }
+
+  .cmnContent table tbody tr:hover {
+    background-color: #f5f9ff;
+  }
+
+  .cmnContent .tableScrollWrap {
+    width: 100%;
+    overflow-x: auto;
   }
 
   @media (min-width: 640px) {
@@ -447,6 +485,13 @@
   .custom-prev.swiper-button-disabled,
   .custom-next.swiper-button-disabled {
     opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .goldSchemeThumbPrev.swiper-button-disabled,
+  .goldSchemeThumbNext.swiper-button-disabled {
+    opacity: 0.4;
     cursor: not-allowed;
     pointer-events: none;
   }

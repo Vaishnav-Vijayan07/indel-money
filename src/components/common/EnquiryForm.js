@@ -4,30 +4,69 @@ import { z } from "zod";
 import Image from "next/image";
 
 import { Button } from "../ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "../ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { useState } from "react";
+
+// Sanitize input - strip HTML tags, stray angle brackets, and trim
+function sanitizeInput(value) {
+  if (typeof value !== "string") return value;
+  return value
+    .replace(/<[^>]*>/g, "")
+    .replace(/[<>]/g, "")
+    .trim();
+}
+
+// Check for HTML tags or dangerous XSS/SQLi patterns
+function hasMaliciousContent(value) {
+  if (typeof value !== "string") return false;
+
+  const dangerousPatterns = [
+    /<[^>]*>/,
+    /[<>]/,
+    /javascript\s*:/i,
+    /vbscript\s*:/i,
+    /data\s*:\s*text\/html/i,
+    /on\w+\s*=/i,
+    /expression\s*\(/i,
+    /eval\s*\(/i,
+    /alert\s*\(/i,
+    /confirm\s*\(/i,
+    /prompt\s*\(/i,
+    /document\s*\./i,
+    /window\s*\./i,
+    /String\.fromCharCode/i,
+    /&#x?[0-9a-f]+;/i,
+    /%3c|%3e/i,
+    /\b(union\s+select|select\s+.+\s+from|insert\s+into|drop\s+table|delete\s+from|--\s|;--)\b/i,
+  ];
+
+  return dangerousPatterns.some((pattern) => pattern.test(value));
+}
+
+// Only letters, numbers, spaces, and common name punctuation allowed
+function isValidNameFormat(value) {
+  if (typeof value !== "string") return false;
+  return /^[a-zA-Z0-9\s.,'-]+$/.test(value);
+}
 
 // Schema Validation
 const formSchema = z.object({
-  yourName: z.string().min(2, {
-    message: "Your Name must be at least 2 characters.",
-  }),
-  contactNumber: z.string().min(10, {
-    message: "Contact Number must be at least 10 digits.",
+  yourName: z
+    .string()
+    .min(2, {
+      message: "Your Name must be at least 2 characters.",
+    })
+    .max(100, { message: "Your Name is too long." })
+    .refine((val) => !hasMaliciousContent(val), {
+      message: "Your Name contains invalid characters.",
+    })
+    .refine((val) => isValidNameFormat(val), {
+      message: "Your Name can only contain letters, numbers, spaces, and . , ' -",
+    }),
+  contactNumber: z.string().regex(/^\+?\d{10,15}$/, {
+    message: "Contact Number must be 10-15 digits.",
   }),
   emailAddress: z.string().email({
     message: "Invalid email address.",
@@ -55,7 +94,23 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
   async function onSubmit(values) {
     try {
       setIsSubmitting(true);
-      await handleSubmit(values);
+
+      // Sanitize all string fields before submission
+      const sanitizedValues = {
+        ...values,
+        yourName: sanitizeInput(values.yourName),
+        contactNumber: sanitizeInput(values.contactNumber),
+        emailAddress: sanitizeInput(values.emailAddress),
+      };
+
+      // Defense-in-depth: re-check after sanitizing in case something slipped through
+      const stillDangerous = ["yourName", "contactNumber", "emailAddress"].some((key) => hasMaliciousContent(sanitizedValues[key]));
+      if (stillDangerous) {
+        setIsSubmitting(false);
+        return;
+      }
+
+      await handleSubmit(sanitizedValues);
       form.reset();
     } finally {
       setIsSubmitting(false);
@@ -80,11 +135,7 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
                 alt="Your Name"
               />
               <FormControl>
-                <Input
-                  className="pl-[40px] bg-white border-white"
-                  placeholder="Your Name"
-                  {...field}
-                />
+                <Input className="pl-[40px] bg-white border-white" placeholder="Your Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -106,11 +157,7 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
                 alt="Contact Number"
               />
               <FormControl>
-                <Input
-                  className="pl-[40px] bg-white border-white"
-                  placeholder="Contact Number"
-                  {...field}
-                />
+                <Input className="pl-[40px] bg-white border-white" placeholder="Contact Number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -132,12 +179,7 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
                 alt="Email Address"
               />
               <FormControl>
-                <Input
-                  type="email"
-                  className="pl-[40px] bg-white border-white"
-                  placeholder="Email Address"
-                  {...field}
-                />
+                <Input type="email" className="pl-[40px] bg-white border-white" placeholder="Email Address" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -150,19 +192,13 @@ export default function EnquiryForm({ handleSubmit, serviceTypes }) {
           name="serviceType"
           render={({ field }) => (
             <FormItem className="relative mb-[10px] sm:mb-2 xl:mb-3 3xl:mb-5">
-              <Select
-                onValueChange={field.onChange}
-                value={field.value ? String(field.value) : ""}
-              >
+              <Select onValueChange={field.onChange} value={field.value ? String(field.value) : ""}>
                 <SelectTrigger className="w-full bg-white border-white">
                   <SelectValue placeholder="Select service" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-white">
                   {serviceTypes?.map((service) => (
-                    <SelectItem
-                      key={service.value}
-                      value={String(service.value)}
-                    >
+                    <SelectItem key={service.value} value={String(service.value)}>
                       {service.label}
                     </SelectItem>
                   ))}
